@@ -1,0 +1,613 @@
+{
+  "total_count": 72,
+  "extraction_date": "2025-08-14 10:30:00",
+  "source": "Yanghuasti Official Website News Media",
+  "company": "Yanghuasti (Shenzhen) New Energy Equipment Co., Ltd.",
+  "website": "http://www.yanghuasti.com",
+  "description": "All news articles extracted from Yanghuasti official website news media pages, cleaned and processed to remove header, footer, navigation bars and other irrelevant content",
+  "news": [
+    {
+      "title": "Yanghua Insights: Chemical Plant Multi-core Cable Connections Causing Problems vs. Flexible Busbar Easy Solutions",
+      "date": "2025-07-30",
+      "url": "http://www.yanghuasti.com/news-media/532260",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250730/6388946934226416318418939.jpg",
+      "summary": "How many multi-core cable connections have you made in chemical plants? This is the power distribution of a large chemical enterprise's plant, with numerous black cables intertwined between equipment like an impenetrable \"cable forest,\" which is quite spectacular. Chemical plants operate 24 hours a day without interruption, and large equipment typically requires over 1000A...",
+      "author": "",
+      "content": "**How many parallel cable connections have you dealt with in chemical plants?**\n\n![微信图片_20250630113027.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946900420037967099851.jpg)\n\nThis is the distribution system of a large chemical enterprise plant, with numerous black cables weaving into a network between equipment, like an impenetrable 'cable forest,' quite spectacular.\n\n![微信图片_20250630105858.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946929007860321130095.jpg)\n\nChemical plants operate 24 hours non-stop, with large equipment typically requiring currents above 1000A. Over 80% of workshop main cables use 4-8 parallel designs, with some old plants even showing extreme cases of 10 parallel cables.\n\n![微信图片_20250630105720.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946930937832503301686.jpg)\n\nThis 'quantity stacking' approach essentially uses simple addition to address complex needs, laying hidden dangers for safety.\n\n![微信图片_20250624164739.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946931966107413793583.jpg)\n\nWhat do chemical plant power systems fear? Besides high current, invisible water vapor and dust are 'invisible killers'!\n\n![微信图片_20250624164311.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946934226416318418939.jpg)\n\nDue to limited single cable current capacity, multiple parallel connections (i.e., 'multiple parallels') are needed to increase load capacity. However, multiple parallel cables present the following problems:\n\n① Uneven current distribution, with some cables facing dramatically increased overload risks.\n\n![微信图片_20250624164151.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946935573979547567196.jpg)\n\n② Multiple parallel cables lead to tight installation space and reduced heat dissipation efficiency.\n\n![微信图片_20250624164848.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946937228518029483016.jpg)\n\n③ Doubled number of connections, more troublesome installation, increased failure points (each additional parallel increases connection hazards by over 30%). For example, when workshops need to carry currents above 1600A, at least 6 parallel 185mm² cables are required.\n\n![IMG20240301083434(1).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946938382538704488942.jpg)\n\n④ Steam, acid-alkali dust, equipment vibration, high temperature, and other environmental factors in chemical plants will infinitely amplify the defects of multiple parallel cables, making later troubleshooting and maintenance difficult for multiple parallel cables.\n\n![c79d51f50e204b3c868f6ba84e900116~tplv-tt-origin-web_gif.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946939878915711447867.jpg)\n\nFlexible busbars easily solve these problems~\n\n**Highlight 1:** High-current flexible busbars have large single conductor current capacity, greatly reducing the number of parallels needed while being able to run long distances, meeting IP68 high standards, suitable for both indoor and outdoor installation.\n\n![惠州仲恺中集智谷产业园2.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946942521302886142731.png)\n\n**Highlight 2:** Greatly reduced number of connections! High flexibility allows direct bending within bending radius without needing turning connections; no intermediate connections needed for long-distance installation, preventing water vapor and various dusts from penetrating, more secure!\n\n![北京某高校项目4.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946943436682204780149.png)\n\n**Highlight 3:** Small size, light weight, convenient installation and connection! Connection with copper bars only requires drilling, installation can go through cable trays, conduits, trenches, etc.\n\n![湖北宜化项目7.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250730/6388946944228143447430955.png)"
+    },
+    {
+      "title": "Yanghua Insights: Main Busbar Explosion in Electrical Room? Flexible Busbar Emergency Power Repair Project Installation Site",
+      "date": "2025-07-23",
+      "url": "http://www.yanghuasti.com/news-media/568108",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250723/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250702093426_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghua Insights: Joint-free Long-distance Installation! Flexible Busbar vs. Copper Busbar Comparison",
+      "date": "2025-07-18",
+      "url": "http://www.yanghuasti.com/news-media/559236",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250716/%E9%93%9C%E6%8E%92%E5%AF%B9%E6%AF%94%E5%9B%BE_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghua Insights: High Current Multi-core Cables Requiring 4 or Even 8 Parallel Connections? 1600A Flexible Busbar VS 240mm² Cable 4-Parallel",
+      "date": "2025-07-08",
+      "url": "http://www.yanghuasti.com/news-media/591755",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250708/f421ed80-56a8-4c7b-b3e7-261542d819be_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghua Insights: Multi-parallel Cables Always Have One Heating Up First? This Flexible Busbar Cures \"Current Inequality\"!",
+      "date": "2025-07-03",
+      "url": "http://www.yanghuasti.com/news-media/505135",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250703/pic(32)_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2.png",
+      "summary": "",
+      "author": "",
+      "content": "**Why do multiple parallel cables always have one heating up first?**\n\n![pic(32)_副本.png](http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715242653421775624089.png)\n\nIn the actual operation of electrical systems, have you encountered situations where multiple parallel cables have current deviation or shunting?\n\n![pic(21)_副本.png](http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715250475370847665699.png)\n\nDuring parallel installation of cables, the actual current capacity is not a simple '1+1=2' relationship. **Very likely '1+1=1.5' or even '1+1=1' phenomena may occur!**\n\n![微信图片_20241225134921.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715290784623529022834.jpg)\n\n**What exactly is cable current deviation?**\n\nIn scenarios where multiple cables are used in parallel, ideally, the current in each conductor should be evenly distributed.\n\n![企业微信截图_17501329644704.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715298284674518109911.png)\n\nHowever, reality is often not the case. If current distribution among conductors becomes uneven, cable current deviation occurs.\n\n![pic(36)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715302508251049106387.png)\n\n**What causes multiple parallel cable current deviation or shunting?**\n\nCable current deviation is usually caused by multiple factors: ① Three-phase load imbalance is an important reason. ② Harmonic interference cannot be ignored. ③ Line faults are also factors leading to cable current deviation.\n\n![微信图片_20241210151756.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715316966132061970060.jpg)\n\nEspecially noteworthy is that multiple parallel cables present numerous troubles during installation.\n\n- If copper lugs are not properly made, such as loose compression of copper lugs, this will not only affect normal cable operation but may also further exacerbate current deviation.\n\n![03c93ce8-0444-4a0f-a921-0ef133ab066a.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715333385043201677435.jpg)\n\n- Or if contact surfaces are not properly connected, with oxidation, dirt, and other conditions, contact resistance will change, causing uneven current distribution.\n\n![企业微信截图_17243125447572.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715336638225561838498.png)\n\nThe consequences of current deviation are very serious. Conductors with high current will experience abnormal heating, and conductor heating will accelerate insulation material aging. After insulation aging, its insulation performance will decline, easily causing safety accidents such as leakage, and may even cause short circuits and fires.\n\n![b940f6e1-5636-460e-948c-5f42f4f722c3.jpg](http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715340427526513796717.jpg)\n\nMoreover, **the more complex the situation with high current, dense wiring, and parallel cables**, the more attention current deviation problems require.\n\n![微信图片_20250702094015.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715354560272396719951.jpg)\n\n**How to reduce the probability of current deviation?**\n\nTo effectively reduce the probability of cable current deviation, **high-current flexible busbars are a good solution.**\n\n![展厅施耐德配电柜1.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715357870363588010081.jpg)\n\nHigh-current flexible busbars have large single conductor current capacity, covering 200-6300A.\n\n![湖南长沙光伏并网项目2.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715360691874756187723.png)\n\nThis characteristic allows them to reduce the number of parallels needed to meet the same power requirements, or even eliminate the need for multiple parallels. Compared to multiple parallel cables, this reduces installation complexity and potential problems.\n\n![广州鹏辉储能项目1.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715374175188373702659.jpg)\n\nMoreover, the connection method for high-current flexible busbars is more convenient, allowing direct drilling for connections without installing copper lugs.\n\n![佛山诗歌新能源光伏项目1.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715395225047775231145.jpg)\n\nThis not only reduces installation costs and difficulty but also greatly reduces the possibility of current deviation caused by improper copper lug installation or poor contact surface connections.\n\n![东莞工业厂房项目3.jpg](http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715384371320695384422.jpg)\n\nMany newly built commercial buildings and industrial plants have adopted high-current flexible busbars in their power distribution systems, with good operational results, greatly improving the safety and stability of electrical systems.\n\n![展厅施耐德配电柜3.jpg](http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715386963543264936126.jpg)\n\nIf you are interested in electrical knowledge or want to learn more about cable operation and electrical safety, welcome to follow us. We will provide you with more professional and practical electrical knowledge!\n\n![侧面 5840x1340x2_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715397101079623732160.png)"
+    },
+    {
+      "title": "Dragon Boat Festival Greetings",
+      "date": "2025-05-30",
+      "url": "http://www.yanghuasti.com/news-media/757667",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250529/%E7%AB%AF%E5%8D%88%E6%B5%B7%E6%8A%A52025(1)_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "May Day Special Edition - The Shining Yanghuasti Team",
+      "date": "2025-04-30",
+      "url": "http://www.yanghuasti.com/news-media/917586",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250430/%E7%94%9F%E4%BA%A7_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Invitation | April 10-12 13th International Energy Storage Summit & Exhibition High Current Flexible Busbar Booth B2119, Hall B2",
+      "date": "2025-04-08",
+      "url": "http://www.yanghuasti.com/news-media/515322",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250408/%E6%BC%94%E7%A4%BA%E6%96%87%E7%A8%BF(36)_01(3)_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": "![演示文稿(36)_01(3).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250408/6387970366153123369070059.jpg)\n\n**Invitation | April 10-12 13th International Energy Storage Summit and Exhibition, High-Current Flexible Busbar Hall B2 Booth B2119**"
+    },
+    {
+      "title": "Remembering Qingming, Living in the Present, Year After Year, Forever Missing Our Loved Ones",
+      "date": "2025-04-04",
+      "url": "http://www.yanghuasti.com/news-media/559713",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250403/%E6%B8%85%E6%98%8E%E8%8A%82banner.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Second Appearance! High Current Flexible Busbar Showcased at Building Electrical Low-Carbon Energy Efficiency Forum",
+      "date": "2025-03-20",
+      "url": "http://www.yanghuasti.com/news-media/551521",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250321/IMG_9058.JPG",
+      "summary": "",
+      "author": "",
+      "content": "**Second Appearance! High-Current Flexible Busbar Closely Follows 'Spectacular National Games, Low-Carbon Practice' Theme, Shines at Architectural Electrical Low-Carbon Energy Saving Forum**\n\nOn March 19, flexible busbars participated again in the 17th Architectural Electrical Low-Carbon Energy Saving Forum. The forum closely followed the 'Spectacular National Games, Low-Carbon Practice' theme, highly aligned with global sustainable development trends.\n\nThis is the second time Yanghua Technology's high-current flexible busbars have participated in this technical forum. With unique product advantages, they break through traditional limitations, featuring high current capacity and convenient installation, effectively solving pain points in current high-current power transmission and distribution traditional solutions.\n\nDuring this participation, flexible busbars engaged in deep exchanges with designers from major design institutes nationwide again, helping the architectural electrical field achieve low-carbon transformation and contributing to achieving 'dual carbon' goals.\n\n![640.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814670425165811838484.jpg)\n\n![640 (1).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814674096078537025244.jpg)\n\n![640 (2).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814677167589101474283.jpg)\n\n![640 (3).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814679671710673155884.jpg)\n\n![640 (5).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814687694782892380566.jpg)\n\n![640 (6).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814691482166831109541.jpg)\n\n![640 (7).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814693668074893065854.jpg)\n\n![640 (9).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814697486765611765111.jpg)\n\n![640 (10).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814699543585195978149.jpg)\n\n![640 (11).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814701891695474175437.jpg)"
+    },
+    {
+      "title": "Ten Years of Chamber Platform Building Dreams, High Current Flexible Busbar Moving Forward with Honor",
+      "date": "2025-03-20",
+      "url": "http://www.yanghuasti.com/news-media/859905",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250321/IMG20250318115314.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**Second Appearance! High-Current Flexible Busbar Closely Follows 'Spectacular National Games, Low-Carbon Practice' Theme, Shines at Architectural Electrical Low-Carbon Energy Saving Forum**\n\nOn March 19, flexible busbars participated again in the 17th Architectural Electrical Low-Carbon Energy Saving Forum. The forum closely followed the 'Spectacular National Games, Low-Carbon Practice' theme, highly aligned with global sustainable development trends.\n\nThis is the second time Yanghua Technology's high-current flexible busbars have participated in this technical forum. With unique product advantages, they break through traditional limitations, featuring high current capacity and convenient installation, effectively solving pain points in current high-current power transmission and distribution traditional solutions.\n\nDuring this participation, flexible busbars engaged in deep exchanges with designers from major design institutes nationwide again, helping the architectural electrical field achieve low-carbon transformation and contributing to achieving 'dual carbon' goals.\n\n![640.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814670425165811838484.jpg)\n\n![640 (1).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814674096078537025244.jpg)\n\n![640 (2).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814677167589101474283.jpg)\n\n![640 (3).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814679671710673155884.jpg)\n\n![640 (5).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814687694782892380566.jpg)\n\n![640 (6).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814691482166831109541.jpg)\n\n![640 (7).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814693668074893065854.jpg)\n\n![640 (9).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814697486765611765111.jpg)\n\n![640 (10).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814699543585195978149.jpg)\n\n![640 (11).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814701891695474175437.jpg)"
+    },
+    {
+      "title": "China Construction Third Engineering Bureau Group Experts Visit Yanghuasti for Inspection",
+      "date": "2025-02-21",
+      "url": "http://www.yanghuasti.com/news-media/552925",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250303/f2ed2993-97a5-4797-b498-f48a0c4cbe1d_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Changshun County Mayor of Guizhou Province Visits Yanghuasti for Inspection",
+      "date": "2025-02-21",
+      "url": "http://www.yanghuasti.com/news-media/613506",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250303/IMG_4146_%E5%89%AF%E6%9C%AC-1.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Shenzhen China Southern Power Grid Shenzhen-Hong Kong Technology Innovation Co., Ltd. Leadership Visits Yanghuasti for Exchange",
+      "date": "2025-02-20",
+      "url": "http://www.yanghuasti.com/news-media/508737",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250303/IMG_7410.JPG_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**Shenzhen Southern Power Grid Shenzhen-Hong Kong Technology Innovation Co., Ltd. Leadership Team Visits Yanghua Technology for Investigation and Exchange**\n\n![Visit Image 1](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939161528996250495.jpg)\n![Visit Image 2](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939162926304777913.jpg)\n![Visit Image 3](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939167622649763820.jpg)\n![Visit Image 4](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939169535233993066.jpg)\n![Visit Image 5](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939175749967506391.jpg)\n![Visit Image 6](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939177258521735636.jpg)"
+    },
+    {
+      "title": "Yanghuasti 2024 Annual Review",
+      "date": "2025-02-05",
+      "url": "http://www.yanghuasti.com/news-media/528905",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250213/20250205%E5%AE%98%E6%96%B9%E5%8F%B7%EF%BC%881%EF%BC%89-%E5%B0%81%E9%9D%A2.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**Work Begins Auspiciously, All Things Can Be Expected**\n\n![开工海报_副本.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250121/6387305166874023024632050.jpg)"
+    },
+    {
+      "title": "Work Resumes with Good Fortune, Everything is Promising",
+      "date": "2025-02-05",
+      "url": "http://www.yanghuasti.com/news-media/532350",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250121/%E5%BC%80%E5%B7%A5%E6%B5%B7%E6%8A%A5_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**Work Begins Auspiciously, All Things Can Be Expected**\n\n![开工海报_副本.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250121/6387305166874023024632050.jpg)"
+    },
+    {
+      "title": "Fifth Day of Lunar New Year Welcoming the God of Wealth | Gods of Wealth Come to My Home, 2025 Must Prosper",
+      "date": "2025-02-02",
+      "url": "http://www.yanghuasti.com/news-media/571057",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250121/%E8%B4%A2%E7%A5%9E%E6%B5%B7%E6%8A%A52_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Year of the Snake Blessing, Prosperity and Joy, Wishing Everyone a Happy New Year!",
+      "date": "2025-01-28",
+      "url": "http://www.yanghuasti.com/news-media/505792",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250121/%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B8%80%E6%B5%B7%E6%8A%A5_%E6%96%B0%E9%97%BB%E5%AA%92%E4%BD%93%E5%B0%81%E9%9D%A2.jpg",
+      "summary": "",
+      "author": "",
+      "content": "![大年初一海报_副本长海报.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250121/6387305023729528872082602.jpg)\n\nAuspicious Snake Welcomes the New Year, Fortune Fills the Universe, Wishing Everyone a Happy New Year!"
+    },
+    {
+      "title": "Hello! 2025!",
+      "date": "2025-01-01",
+      "url": "http://www.yanghuasti.com/news-media/576128",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20241231/%E5%85%83%E6%97%A6%E6%8E%A8%E9%80%81%E9%95%BF%E5%9B%BE(1)_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Supporting Xinjiang's \"Belt and Road\" Construction, Flexible Busbar Always on the Road",
+      "date": "2024-12-27",
+      "url": "http://www.yanghuasti.com/news-media/532899",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250103/66d795d3-5085-49da-8da6-47e0a79f991f.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**Supporting Xinjiang's 'Belt and Road' Construction, Flexible Busbars Always on the Road**\n\nXinjiang, known as the 'Golden Corridor' open to innovation and connectivity, is located in the center of the Eurasian continent and is an important node of the ancient Silk Road. With the deepening of the 'Belt and Road' initiative and Western Development, the gradual improvement of transportation hubs, Xinjiang's trade exchanges with various countries have become increasingly close, and the role of the 'Golden Corridor' has become more prominent. According to incomplete statistics, as of November 2024, Xinjiang's total foreign trade import and export value exceeded 400 billion yuan, with growth rates ranking first in the country.\n\n![微信图片_20250103142840.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151135772742497717749.png)\n\nFor the 'Belt and Road' and Western Development, Yanghua Technology has always maintained high attention and full participation, from project implementation to investment and factory construction, flexible busbars have always been at the 'forefront.'\n\n![微信图片_20250103142848.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151138338219721812496.jpg)\n\nOn December 23, Xu Feng, Party Group Member and Deputy Mayor of Alashankou City People's Government, led a team to visit Yanghua Technology to investigate flexible busbars. Yanghua Technology Chairman Zhang Haidong explained in detail the advantages and applications of flexible busbars, and both sides conducted in-depth discussions about future cooperation. As of November this year, Xinjiang Free Trade Zone's import and export reached 162.92 billion yuan, accounting for over 40%, with Alashankou Comprehensive Bonded Zone and the other three comprehensive bonded zones showing year-on-year import and export growth exceeding 21%.\n\n![微信图片_20250103142852.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151141742754721944546.jpg)\n\nAlashankou City leadership team expressed that whether for import and export trade or local energy-related infrastructure, power systems are a very important sector, and flexible busbars will definitely shine on the local high-current power transmission and distribution stage.\n\n![微信图片_20250103142855.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151144815512455393585.jpg)\n\nIn addition to inviting relevant teams from various regions in Xinjiang to visit the company and exhibition hall for technical exchanges, Yanghua Technology also actively participates in the exchange and development between 'Shenzhen and Xinjiang.' On December 26, the company was invited to participate in the 'Shenzhen-Xinjiang Linkage, Belt and Road New Chapter' investment promotion conference. This conference was hosted by the national-level Wujiaqu Economic and Technological Development Zone, aiming to establish trade ties between Xinjiang's 'Belt and Road' and excellent enterprises in the Bay Area. Wujiaqu has rich mineral resources and solid industrial foundation, such as domestic agricultural machinery manufacturing base, steel production and processing base, and various chemical parks.\n\n![微信图片_20250103142901.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/66d795d3-5085-49da-8da6-47e0a79f991f.jpg)\n\nFor high-current power transmission and distribution needs, Wujiaqu needs and hopes to have innovative, cutting-edge, high-quality solutions that can solve power transmission and distribution needs while optimizing power energy structure and driving local related industrial chain development.\n\n![微信图片_20250103142904.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151149951344417568988.png)\n\nWhether it's Wujiaqu Economic and Technological Development Zone or Alashankou City, Yanghua Technology actively responds and promotes the practice and application of flexible busbars in Xinjiang and even the western regions. In low-voltage high-current power transmission and distribution scenarios, we firmly believe that flexible busbars will leverage product advantages to contribute to national 'Belt and Road' construction and Xinjiang's energy and industrial development."
+    },
+    {
+      "title": "Yanghuasti Signs Strategic Cooperation Agreement with Subsidiary of Sichuan Shudao Group",
+      "date": "2024-11-29",
+      "url": "http://www.yanghuasti.com/news-media/765758",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20241203/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241129151712_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Empowers Yunnan Industrial Park Construction with Flexible Busbar",
+      "date": "2024-11-29",
+      "url": "http://www.yanghuasti.com/news-media/876002",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20241203/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241203093411_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Invited to Participate in Cable Industry New Quality Productivity Development Technology Forum",
+      "date": "2024-10-31",
+      "url": "http://www.yanghuasti.com/news-media/839972",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20241031/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1730278744367.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Focus on Electrical Engineering, Gathering in Guangzhou - Highlights from 2024 China Survey & Design Electrical Branch Annual Conference",
+      "date": "2024-09-27",
+      "url": "http://www.yanghuasti.com/news-media/790559",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240929/6386322608963194386859980.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Digital Energy Pioneer, Smart Innovation Future - High Current Flexible Busbar Exhibition Highlights",
+      "date": "2024-09-11",
+      "url": "http://www.yanghuasti.com/news-media/512155",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240913/6386184363501228038216844.png",
+      "summary": "",
+      "author": "",
+      "content": "**Digital Energy Pioneer, Smart Innovation Future — High-Current Flexible Busbar Exhibition Highlights**\n\nOn September 11, 2024, the 4-day 2024 International Digital Energy Exhibition concluded perfectly at the Shenzhen Convention and Exhibition Center. Yanghua Technology's high-current flexible busbar exhibition booth was fully upgraded, with multiple flexible busbar solutions and coiled flexible busbars making their debut, attracting numerous domestic and international industry friends to visit!\n\nDuring the exhibition, leaders from Shenzhen Power Supply Bureau visited the booth for guidance and expressed recognition for the innovation and future development of high-current flexible busbars.\n\nAs an innovative product for power transmission and distribution, high-current flexible busbars inject new vitality into the power industry's development toward green and smart electricity.\n\n![微信图片_20240913165432_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184358268813623970276.png)\n\n![数能展1(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184361134953533777752.png)\n\n![2ad6c82363f7b2eaf07a62f8782d17cd_origin(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184362403431718569230.png)\n\n![5(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184363501228038216844.png)\n\n![6R0A0245(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184365337827314303178.png)\n\n![6R0A0251(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184366658552395237815.png)\n\n![4(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184367895126762127938.png)\n\n![3(1)_副本.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184369855786074269811.png)"
+    },
+    {
+      "title": "Factory Rooftop Distributed Solar Projects, Flexible Busbar Handles It with Ease!",
+      "date": "2024-08-28",
+      "url": "http://www.yanghuasti.com/news-media/966599",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240828/6386045762594419704642082.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Still Hesitating About High Current Flexible Busbar? Listen to What Our Partners Say",
+      "date": "2024-07-31",
+      "url": "http://www.yanghuasti.com/news-media/573337",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240805/6385845292932856698053861.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Signed! Yanghuasti and China-Korea International Cooperation Demonstration Zone Hold Project Signing Ceremony",
+      "date": "2024-07-25",
+      "url": "http://www.yanghuasti.com/news-media/906150",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240725/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240725161512_%E5%89%AF%E6%9C%AC1.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "President of Guangdong Sichuan Dazhou Chamber of Commerce Visits Yanghuasti for Exchange and Guidance",
+      "date": "2024-07-15",
+      "url": "http://www.yanghuasti.com/news-media/617080",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240718/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240718140810_%E5%89%AF%E6%9C%AC1_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Good Products, Market Decides! - High Current Flexible Busbar Debuts at 2024 Asia Power & Asia Energy Storage Exhibition",
+      "date": "2024-06-28",
+      "url": "http://www.yanghuasti.com/news-media/569829",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240703/36385c84-5785-483e-8614-1307c71afacb_%E5%89%AF%E6%9C%AC1.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Key Points! - Yanghuasti Advances China-Korea (Changchun) International Cooperation Demonstration Zone Project",
+      "date": "2024-06-21",
+      "url": "http://www.yanghuasti.com/news-media/556822",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240703/640%20(33)_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Heilongjiang, Liaoning, Jilin Media Reports on Yanghuasti High Current Flexible Busbar at Changchun Optical Expo",
+      "date": "2024-06-20",
+      "url": "http://www.yanghuasti.com/news-media/821007",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240620/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17188537023603.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Riding on \"Electricity\", Welcoming \"Light\" - High Current Flexible Busbar Debuts in Changchun",
+      "date": "2024-06-19",
+      "url": "http://www.yanghuasti.com/news-media/782151",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240620/6385447489965218451582593.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "China Architecture Society Electrical Branch Vice Chairman Li Binghua and Experts Visit Yanghuasti for Inspection and Exchange",
+      "date": "2024-06-05",
+      "url": "http://www.yanghuasti.com/news-media/658773",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240605/6385318247109594859266156.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Setting Sail, Opening the \"Flexible\" Power Era",
+      "date": "2024-05-29",
+      "url": "http://www.yanghuasti.com/news-media/568255",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240529/IMG_2524_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Flexible Busbar Debuts at 16th China Architecture Society Building Electrical Branch Low-Carbon Energy Efficiency Technology Forum",
+      "date": "2024-05-21",
+      "url": "http://www.yanghuasti.com/news-media/856106",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240521/CLA05580-opq835825613_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "High Current Flexible Busbar Manufacturer - Yanghuasti",
+      "date": "2024-05-17",
+      "url": "http://www.yanghuasti.com/news-media/560371",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240517/DSC03785_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Guangdong Wire and Cable Industry Association Secretary-General Visits Yanghuasti",
+      "date": "2024-05-15",
+      "url": "http://www.yanghuasti.com/news-media/526020",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240515/7c1eb965-a2c7-4a11-aa17-b506ceacab93_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**Guangdong Wire and Cable Industry Association Secretary-General Visits Yanghua Technology**\n\nOn May 14, 2024, Lin Wei, Secretary-General of Guangdong Wire and Cable Industry Association, visited Yanghua Technology for observation and exchange.\n\n![d5a89d9c-9ce2-4912-81dc-c05755d6286f.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139228545404182459138.jpg)\n\nLeft: Yanghua Technology Chief Technical Expert Du Jinbiao; Right: Guangdong Wire and Cable Industry Association Secretary-General Lin Wei\n\nUnder the enthusiastic guidance of Yanghua Technology's Chief Technical Expert Du Jinbiao, Lin Wei visited the exhibition hall at Yanghua Technology's Shenzhen Nanshan headquarters.\n\n![7c1eb965-a2c7-4a11-aa17-b506ceacab93.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139232445763397744419.jpg)\n\nDuring the visit, Du Jinbiao specially introduced the high-current flexible busbar product. The outstanding highlights of flexible busbars include integrated installation design and unique no-joint features. Compared to multiple parallel cables, flexible busbars have high current density and significant copper savings, not only greatly improving safety and reliability but also reducing installation and maintenance costs, bringing revolutionary innovation to the industry.\n\n![9c682443-0c22-43dc-9729-3efb5adb482f.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139234124458419346441.jpg)\n\nLin Wei first affirmed the innovation of flexible busbar products and expressed anticipation for future applications of flexible busbar products, believing that flexible busbars are expected to bring broader market prospects to the wire and cable industry.\n\n![23ff970e-610b-4e08-b324-688073c3078a.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139236043403917316971.jpg)\n\nGuangdong Cable Association, established in 2013, provides services covering wires and cables, material equipment, testing certification, cable accessories, connectors, wire harnesses, and over 2,000 enterprises. The association fully utilizes its advantages of wide information coverage, strong connectivity, and outstanding resource integration capabilities, creating value through service, building industry public service platforms, actively guiding and promoting the forward and positive development of Guangdong's cable industry, playing an active role in promoting industry economic development.\n\n![Guangdong Development Guide Image](https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/8b4761ca36744ae2861d3da1fae02d88~tplv-tt-shrink:640:0.image?lk3s=06827d14&traceid=20240515174555C6761D50ECEBA80E936D&x-expires=2147483647&x-signature=civL1TYxeLdm4YR6qySBi4Hglvw%3D)\n\nYanghua Technology's Chief Engineer Hu Runyi once served as Deputy Director of the Editorial Committee for the 'Guangdong Wire and Cable Industry Development Guidance' (2022-2025)\n\n![Team Photo](https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/f9424426d6f04bdcbb574a6b06ba6999~tplv-tt-shrink:640:0.image?lk3s=06827d14&traceid=20240515174555C6761D50ECEBA80E936D&x-expires=2147483647&x-signature=06nmLQQm%2Fy%2B5oyMDplW%2BTtCMUFk%3D)\n\nFirst from right: Yanghua Technology Chief Engineer Hu Runyi"
+    },
+    {
+      "title": "Yanghuasti Releases Flexible Busbar Industry Solutions for Industrial Plants",
+      "date": "2024-05-07",
+      "url": "http://www.yanghuasti.com/news-media/596829",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240507/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17150637027803_%E5%89%AF%E6%9C%AC.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Pays Tribute to Every Worker",
+      "date": "2024-05-01",
+      "url": "http://www.yanghuasti.com/news-media/577809",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240430/%E5%8A%B3%E5%8A%A8%E8%8A%820429_%E5%89%AF%E6%9C%AC2.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Participates in 2024 Shenzhen Building Electrical Academic Annual Conference",
+      "date": "2024-04-29",
+      "url": "http://www.yanghuasti.com/news-media/501606",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/a51ccc30-1e91-44c4-857e-4b4dc3af052d(1)_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": "![6fff7f43-648e-4e89-8ed3-5619f6187d3c(1).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998633849389967800591.jpg)\n\nOn April 25, 2024, the 2024 Shenzhen Architectural Electrical Academic Annual Conference hosted by the Architectural Electrical Professional Committee of Shenzhen Civil Engineering and Architecture Society was held at the Hilton Shenzhen Shekou Nanhai. This annual conference was themed 'Chasing Light and Meeting, Bathing in Light and Moving Forward,' with over a hundred participants including experts, scholars, designers, and enterprise representatives from the provincial and municipal architectural electrical fields.\n\n![084f57ad-6ea1-4358-aa4f-240ddc2ad249(1).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998636667701428923398.jpg)\n\nThe event was conducted in the format of 'Product Exhibition Display + Academic Presentation Exchange,' with design institute leaders, well-known enterprise representatives, and experts sharing and introducing applications and innovations of electrical industry-related products from multiple aspects including national policies, industry trends, and innovation trends. Yanghua Technology's high-current flexible busbars also received significant attention at this event.\n\n![122b4020-6f2d-4131-8f63-f59af892b2be(1).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998639642197687072027.jpg)\n\nDuring the event, Yanghua Technology's Chief Engineer Du Jinbiao comprehensively introduced high-current flexible busbars from aspects including product research and development background, structure, performance, and application cases.\n\n![a59c85d5dfd16078f09409a87779890c(2).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998648292247585179124.jpg)\n\nAt the product exhibition booth, there was a continuous stream of visitors wanting to learn more, all expressing that flexible busbars are an exciting product that the market needs.\n\n![695b8b4a0f77ca7ce13c111550b6e376(2).jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998655092995377700653.jpg)\n\nYanghua Technology's high-current flexible busbar is a product researched, developed, and innovated by company experts based on over thirty years of experience in the power transmission and distribution cable industry. It solves numerous problems in traditional solutions for high-current power transmission and distribution products, including high costs, multiple accessories, numerous connections, complex construction, and inability to achieve fully automated production. Currently, high-current flexible busbars have been successfully applied in various project scenarios including super-charging stations, photovoltaics, energy storage, and industrial plants.\n\n![图层 1.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998660351843466931595.png)\n\nThe new era of power transmission and distribution has arrived. Under the extremely competitive situation in the cable and busbar market, using innovative products to reduce costs and increase efficiency while seeking optimization and upgrading paths for power systems is imperative! For more information about high-current flexible busbar products, industry solutions, project quotations, project cooperation, etc., you can send private messages, call the consultation hotline, or add the corporate WeChat QR code at the end of the article. Chasing light and meeting, bathing in light and moving forward, Yanghua Technology is on the road!\n\n![解决方案@3x.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998663583105088094191.png)"
+    },
+    {
+      "title": "Flexible Busbar Industry Solutions [Energy Storage] (With Complete Manual Download Instructions)",
+      "date": "2024-04-24",
+      "url": "http://www.yanghuasti.com/news-media/566962",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240423/6384946747054896274060237.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Flexible Busbar Industry Solutions [Solar PV] (With Complete Manual Download Instructions)",
+      "date": "2024-04-23",
+      "url": "http://www.yanghuasti.com/news-media/517369",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240423/6384946468530922966332375.png",
+      "summary": "",
+      "author": "",
+      "content": "**Flexible Busbar Industry Solution [Photovoltaic]**\n\n![1d4508e53917e4b80e7dd334869d2e8b.jpeg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240423/6384946463915153972537914.jpeg)\n\nWith the transformation and upgrading of global energy structure, photovoltaic power generation has become an important representative of clean energy due to its pollution-free and renewable characteristics, favored by countries worldwide. When the industry enters full commercial competition, how to achieve cost reduction and efficiency improvement during construction and operation, enhancing overall economic benefits, has become the industry's focus.\n\n![光伏1.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240423/6384946466338401836633491.png)\n\nAs an innovative application product for power transmission and distribution, high-current flexible busbars have many advantages. Due to special manufacturing processes, they ensure the safe and stable operation of photovoltaic power stations while fundamentally helping the industry achieve cost reduction and efficiency improvement.\n\nYanghua Technology's flexible busbar photovoltaic industry solution manual aims to comprehensively introduce the application technology, advantage analysis, and practical case sharing of high-current flexible busbars in photovoltaic power stations, providing beneficial references for photovoltaic industry practitioners.\n\n![光伏解决方案.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240423/6384946468530922966332375.png)\n\nCall the number below or add customer service WeChat to get the complete solution manual for free, free consultation, free quotation, and customized solutions for your projects.\n\nConsultation Hotline: 400-883-1383"
+    },
+    {
+      "title": "World Earth Day | Protecting Earth Together with Flexible Busbar",
+      "date": "2024-04-22",
+      "url": "http://www.yanghuasti.com/news-media/730902",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/%E5%9C%B0%E7%90%83%E6%97%A5_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Another Breakthrough! Flexible Busbar Assists Energy Storage Project Implementation!",
+      "date": "2024-04-16",
+      "url": "http://www.yanghuasti.com/news-media/560298",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240416/6384887413894182003474885.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Flexible Busbar Industry Solutions [Charging Stations] (With Complete Manual Download Instructions)",
+      "date": "2024-04-12",
+      "url": "http://www.yanghuasti.com/news-media/527307",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240410/6384837423429763242577009.png",
+      "summary": "",
+      "author": "",
+      "content": "**Flexible Busbar Industry Solution [Charging Station]**\n\n![4d26c0a9-4f70-4987-98ee-152309a50a71.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240412/6384853591201103604103204.jpg)\n\nWith the popularization of electric vehicles and rapid development of charging infrastructure, the charging station industry is gradually becoming an important part of the new energy field. In November 2023, Shenzhen's super charging city construction work deployment meeting was held, clearly stating the need to treat building a high-quality charging infrastructure system as important work and help achieve carbon peak and carbon neutrality goals.\n\n![充电站1.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240412/6384853594820201524146805.png)\n\nIn this context, high-current flexible busbars, as an innovative power transmission solution, can not only improve charging efficiency but also reduce operating costs, and are gradually being widely applied in the charging station industry.\n\n![充电站2.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240412/6384853596031931177809216.png)\n\nYanghua Technology's flexible busbar charging station industry solution manual aims to comprehensively introduce the application technology, advantage analysis, and practical case sharing of current flexible busbars in the charging station industry, providing strong technical support and practical reference guides for charging station builders and operators. Through in-depth understanding and application of current flexible busbar technology, we hope to help the charging station industry achieve cost reduction and efficiency improvement goals, promoting sustainable development of electric vehicles and the new energy field.\n\n![充电桩解决方案官网@3x.png](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240410/6384837423429763242577009.png)\n\nCall the number below or add customer service WeChat to get the complete solution manual for free, free consultation, free quotation, and customized solutions for your projects.\n\nConsultation Hotline: 400-883-1383"
+    },
+    {
+      "title": "Continuous Presence | Yanghuasti Participates in Northwest Electrical & New Energy Industry Chain Cooperation Conference",
+      "date": "2024-04-10",
+      "url": "http://www.yanghuasti.com/news-media/551905",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240410/6384837201445207185284652.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "High Current Flexible Busbar Officially Debuts in Dongguan! Yanghuasti Dongguan Alliance Partner Product Promotion Successfully Held!",
+      "date": "2024-04-01",
+      "url": "http://www.yanghuasti.com/news-media/501599",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240401/IMG_5399_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": "![640 (2).webp](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756736700209386515465.webp)\n\nSpring winds bring prosperity, setting sail to ride the waves. On the afternoon of March 29, Yanghua Technology held a flexible busbar product promotion event for Dongguan alliance partners in Dongguan, Guangdong.\n\nThis event holds special significance for Yanghua Technology, being not only the first time introducing high-current flexible busbars to the market through a product presentation format, but also the first large-scale promotion event for partners since the company's establishment. This event was jointly organized by Yanghua Technology's official Dongguan alliance partner Zhongyede Mechanical & Electrical, with over 150 participants from more than 40 companies related to the power industry in Dongguan area. The event was bustling with activity.\n\n![199225a4-fb69-46ff-9362-f31da19f3fa2_副本.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756742401133957229062.jpg)\n\nThe Chairman of Yanghua Technology delivered opening remarks at the event, expressing special gratitude to industry leaders, experts, and friends for attending this presentation, as well as thanking the Zhongyede Mechanical & Electrical team for their efforts in organizing this event. He hoped that through this event, everyone could deepen their understanding of high-current flexible busbars, and establish a platform for communication and learning in Dongguan's power industry through this activity.\n\nThe person in charge of Yanghua Technology's Dongguan alliance partner Zhongyede Mechanical & Electrical also stated that as the official alliance partner in Dongguan area, they will uphold Yanghua Technology's values of innovation, responsibility, cooperation, and sustainability, provide dedicated customer service, bridge the gap between headquarters and Dongguan market, and serve as the 'vanguard' for headquarters' national market expansion.\n\n![IMG_5413_副本.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756753529982063033384.jpg)\n\nSubsequently, Yanghua Technology's technical engineers formally introduced the high-current flexible busbar product to everyone. From the research and development background, development process, product structure, product selection, product classification, product installation, and practical application cases, they provided comprehensive and detailed explanations of the product from multiple aspects. Currently, Yanghua Technology's high-current flexible busbars have been successfully applied in photovoltaic, energy storage, super-charging stations, and industrial and civil construction projects in Shenzhen, Guangzhou, Foshan, Shanghai, Guizhou, Hunan, and other provinces and cities, not only safeguarding the 'safety and efficiency' lifeline for customers but also achieving cost reduction and efficiency improvement targets.\n\n![IMG_5469_副本.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756758784918386278418.jpg)\n\nDuring the subsequent networking dinner, attendees expressed their approval and recognition of the flexible busbar products. Now is both a golden era and a highly challenging time for the power industry. Especially after the beginning of 2024, policies and government work reports have pointed out development directions for the power industry through multiple 'compass indicators.' Requirements for reform such as 'dual carbon,' 'new three categories,' 'clean energy,' and 'old power upgrades' are challenges but also opportunities for the power industry. On the path of progress, only innovation is fundamental, and only innovation is the inexhaustible driving force for developing the country's new quality productive forces. High-current flexible busbars are this 'key,' not only locking in safety, efficiency, and quality requirements for customers but also opening the door to exploration of a new era in power transmission and distribution."
+    },
+    {
+      "title": "2024 Yanghuasti Dongguan Alliance Partner High Current Flexible Busbar Product Promotion Tomorrow! Coming Strong!",
+      "date": "2024-03-28",
+      "url": "http://www.yanghuasti.com/news-media/507559",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/%E4%B8%9C%E8%8E%9E%E9%82%80%E8%AF%B7%E5%87%BD_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**2024 Yanghua Technology Dongguan Alliance Partner High-Current Flexible Busbar Product Promotion Event**\n\n![Promotion Event Image 1](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240328/6384724660910401166394788.jpg)\n![Promotion Event Image 2](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240328/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1711434468374.png)"
+    },
+    {
+      "title": "Yanghuasti Wishes All Women a Happy International Women's Day!",
+      "date": "2024-03-08",
+      "url": "http://www.yanghuasti.com/news-media/595859",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/%E5%A6%87%E5%A5%B3%E8%8A%82_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Officially Resumes Work on the Ninth Day of Lunar New Year!",
+      "date": "2024-02-18",
+      "url": "http://www.yanghuasti.com/news-media/551711",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B9%9D_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "As Spring Festival Approaches, Yanghuasti Wishes You a Happy New Year",
+      "date": "2024-02-07",
+      "url": "http://www.yanghuasti.com/news-media/532956",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240206/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17072080064080.png",
+      "summary": "",
+      "author": "",
+      "content": "**As New Spring Approaches,**\n**Yanghua Technology wishes everyone a Happy New Year!**\n**Xiao Yang is afraid the firecrackers on New Year's Day will be too noisy,**\n**And you won't hear my blessings,**\n**Yanghua Technology and flexible busbars wish everyone a Happy New Year!**"
+    },
+    {
+      "title": "China Construction Fourth Engineering Bureau South China Company Visits Yanghuasti for Exchange and Discussion",
+      "date": "2024-02-05",
+      "url": "http://www.yanghuasti.com/news-media/683970",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240205/6384272573902948401771955.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "2024 Setting Sail - Partnering with New Energy for Low-Carbon Progress",
+      "date": "2024-02-05",
+      "url": "http://www.yanghuasti.com/news-media/813260",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240205/6384272476912003996750899.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Another Breakthrough! First Solar PV Application Project of Flexible Busbar Passes Acceptance and Energized!",
+      "date": "2024-02-05",
+      "url": "http://www.yanghuasti.com/news-media/690390",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240205/6384272341820074328098244.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "China Institute of Standardization Expert Review Team Visits Yanghuasti for Inspection and Exchange",
+      "date": "2024-01-30",
+      "url": "http://www.yanghuasti.com/news-media/625892",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240130/6384220589056145568367076.png",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Receives VDE \"Flexible Industrial Cable\" Cable Technology Seminar Training Certificate",
+      "date": "2024-01-25",
+      "url": "http://www.yanghuasti.com/news-media/571132",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240125/AL_00471-opq724631379.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "China-Korea (Changchun) International Cooperation Demonstration Zone Development and Reform Bureau Visits Yanghuasti for Exchange and Negotiation",
+      "date": "2024-01-16",
+      "url": "http://www.yanghuasti.com/news-media/526050",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240116/IMG_2575.JPG",
+      "summary": "",
+      "author": "",
+      "content": "**China-Korea (Changchun) International Cooperation Demonstration Zone Development and Reform Bureau Team Visits Yanghua Technology for Exchange and Discussion**\n\n![Meeting Image](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240130/6384221246019186211537061.jpg)\n\nOn January 11, the leadership team from the Development and Reform Bureau of China-Korea (Changchun) International Cooperation Demonstration Zone visited Yanghua Technology headquarters and production base for exchange and discussion. This exchange focused on Yanghua Technology's high-current flexible busbars, jointly exploring future cooperation potential and discussing cooperation development models.\n\n**Exploring Cooperation Development**\n\n![Meeting Image 2](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240130/6384221246030171515738122.jpg)\n\nDuring the exchange meeting, Yanghua Technology's sales department head provided detailed introductions about company conditions, development history, and basic information about high-current flexible busbar products, application scenarios, and demonstration cases. The China-Korea Development and Reform participating leaders first recognized the innovative advantages and unlimited market potential of Yanghua Technology's high-current flexible busbar products, hoping that future cooperation could explore more cooperation methods and models beyond project cooperation. They also stated that schools, hospitals, and other large projects will gradually move into the park starting in 2025, with huge market development potential for high-current flexible busbar products, and there will be substantial electrical equipment demand for surrounding supporting infrastructure.\n\n![Factory Visit Image](http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20240130/6384221246025430986522969.jpg)\n\nIn the afternoon, the China-Korea Development and Reform Bureau leadership team visited Yanghua Technology's Longgang manufacturing base for observation, gaining detailed understanding of flexible busbar research and development and production processes, visiting flexible busbar production lines, electrical laboratories, physical and chemical laboratories, and physical mechanical laboratories.\n\nThey mentioned that Yanghua Technology's flexible busbars are innovative products that break through traditional high-current busbar product limitations. Advanced manufacturing processes can greatly reduce copper consumption, improve copper saving rates, while ensuring stable and efficient current output. Such high-quality, advanced products are exactly the breakthrough point for the demonstration zone to break through traditional thinking. Innovative and stable products can ensure the demonstration zone's high-quality development, from 'inside' to 'outside' toward high-level development.\n\n![China-Korea Zone Image](http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240130/6384221284160254762881514.png)\n\n**China-Korea (Changchun) International Cooperation Demonstration Zone**\n\nThe China-Korea (Changchun) International Cooperation Demonstration Zone was approved by the State Council on April 21, 2020. It focuses on China-Korea cooperation in industry, technology, trade, and culture, committed to creating a new engine for Jilin Province and even Northeast China's revitalization and development, a leading area for Northeast Asia regional cooperation and development, and a pioneering area for comprehensive China-Korea cooperation across all fields. At the same time, the China-Korea Demonstration Zone is also a demonstration park for national 'energy conservation and emission reduction,' 'dual carbon,' and other sustainable development construction, so all aspects of demonstration zone construction must achieve green and energy-saving goals.\n\nThe park's development and reform office proposed to further implement relevant policy organization and flexible busbar market capacity data situations, actively connect with Yanghua Technology, and promote project implementation as soon as possible."
+    },
+    {
+      "title": "Yanghuasti High Current Flexible Busbar R&D Experimental Center Officially Unveiled",
+      "date": "2024-01-12",
+      "url": "http://www.yanghuasti.com/news-media/582961",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240116/IMG_2359_%E5%89%AF%E6%9C%AC.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "First Academic Monograph in Fire-Resistant Cable Field - Yanghuasti Chief Technical Expert Du Jinbiao and Chief Engineer Hu Runyi Participate in Writing",
+      "date": "2023-12-15",
+      "url": "http://www.yanghuasti.com/news-media/501651",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C1.jpg",
+      "summary": "",
+      "author": "",
+      "content": "![耐火手册.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C.jpg)\n\nThe 'Fire-Resistant Cable Design and Procurement Manual' (hereinafter referred to as 'Fire-Resistant Manual' or 'Manual') is a compilation and publication project jointly initiated by Guoxin Yunlian Data Technology Co., Ltd. (Material Cloud) and Mechanical Industry Press, as part of the 'Mechanical and Electrical Product Design and Procurement Series Manual.' It comprehensively analyzes the design, selection, pricing, procurement, installation, and maintenance of fire-resistant cables, and provides guidance reference materials such as procurement technical specifications and typical design selections in appendix form. It aims to distinguish truth from falsehood, clarify chaos, help enterprises strive for reasonable profits, assist users in procuring qualified products, and promote healthy and orderly industry development.\n\nThe 'Fire-Resistant Manual' is the first academic monograph in the fire-resistant cable field, led by Director Ouyang Dong of the Electrical Branch of China Survey and Design Association as consultant, and Chief Editor Wu Changshun, Deputy Director of the China Research Committee of the International Large Power Grid Insulated Cable. It was compiled over more than three years by 169 editorial committee members from cable manufacturing enterprises, end users, well-known design institutes, and testing certification institutions, earning approval from Professor Cao Xiaolong of Xi'an Jiaotong University, who wrote a preface recommendation. Among them, Yanghua Technology's Chief Technical Expert Du Jinbiao and Chief Engineer Hu Runyi participated in writing the manual throughout the entire process.\n\n![来源.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%9D%A5%E6%BA%90.jpg)\n![名单.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%90%8D%E5%8D%95.jpg)\n\nIn high-rise buildings, underground railways, underground streets, important industrial and mining enterprises, and large power stations, fire-resistant cables are widely used. These places are closely related to fire safety and firefighting rescue. In buildings, transportation, petrochemicals, ships, subways, nuclear power plants, and other locations, the use of fire-resistant cables can improve the safety and reliability of electrical systems, protect people's lives and property safety, and reduce the impact of fire accidents on society. The need for fire-resistant cables is mainly to respond to emergencies such as fires. When a fire occurs, flames may ignite insulation and sheath materials in wires and cables, causing fire accidents to further expand. Therefore, fire-resistant cables must be used in power and control circuits for firefighting equipment and emergency guide lights and other emergency facilities. Fire-resistant cables can maintain safe operation for a certain period during fires, thus playing an important role in power and signal transmission and distribution. They are also important components of fire protection systems, smoke prevention, alarm systems, and evacuation systems. In addition, fire-resistant cables have a longer service life, do not release any toxic chemicals during combustion, can prevent the formation of 'fire' signals, provide safety, and prevent other alarms from opening or failing in a short time. For more information about fire-resistant cables, please read the 'Fire-Resistant Cable Design and Procurement Manual.' Welcome to follow Yanghua Technology, and we will further share the latest information about fire-resistant busbars and flame-retardant busbars!\n\n**Technology Leadership, Product Leadership — Yanghua Technology**\n\nYanghua Technology (Shenzhen) New Energy Equipment Co., Ltd., where Du Jinbiao and Hu Runyi work, is a high-tech enterprise engaged in research, production, sales, and service of high-current power transmission and distribution products. Yanghua Technology focuses on solving industry pain points, innovative design concepts, and the application of various new materials. Relying on over ten years of technical foundation, they independently created high-current flexible busbar products. Currently, they have over 30 related patents, effectively filling domestic and international gaps, representing an innovative breakthrough in the high-current power transmission and distribution field.\n\nAt Yanghua Technology, technical talents led by senior technical experts like Du Jinbiao and Hu Runyi account for over 40%. The internal team covers technical fields such as power technology, cable research and development, and product materials. The main technical backbone consists of senior engineers, industry experts, and professors from design research institutes, large cable manufacturers, and university laboratories.\n\n**High-Current Flexible Busbar**\n\n![柔性母线1.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF1.jpg)\n\nHigh-current flexible insulated busbar (abbreviated: flexible busbar) is a type of flexible insulated bus conductor made of copper wire strips as conductors, using partial cable technology. The product structure mainly consists of flexible copper wire strip conductors, wrapping layers, insulation layers, interlocking metal armor layers, and sheath layers. Currently, flexible busbars have general-purpose, flame-retardant, fire-resistant, and environmentally friendly series products.\n\nFlexible busbar products have seven major highlights: high protection level, compact structure, high power efficiency, high reliability, high safety, low cost, and intelligence.\n\nYanghua Technology insists on continuous technological innovation and high-quality standards. Currently, it has over 30 patents related to flexible busbars, including invention patents, utility model patents, and design patents. Flexible busbars have undergone extensive basic experiments in the early stages."
+    },
+    {
+      "title": "Good News | Yanghuasti Chief Engineer Receives \"Guangdong Cable Industry Development Special Contribution Individual Award\"",
+      "date": "2023-12-13",
+      "url": "http://www.yanghuasti.com/news-media/712276",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20231213/6383808920673981322067602.jpeg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "New Infrastructure Track: New Energy Vehicle Charging Pile Development | \"New Infrastructure New Busbar\" Series Sharing",
+      "date": "2023-12-08",
+      "url": "http://www.yanghuasti.com/news-media/507951",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%9B%E6%96%B01.jpg",
+      "summary": "",
+      "author": "",
+      "content": "**New Energy Vehicle Charging Piles**\n\n![新能源汽车充电桩.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E5%85%85%E7%94%B5%E6%A1%A9.jpg)\n\nCharging piles are charging devices that provide energy replenishment for electric vehicles. Their function is similar to gas pumps at gas stations. They can be fixed on the ground or walls, installed in public buildings (public buildings, shopping malls, public parking lots, etc.) and residential community parking lots or charging stations, and can charge various types of electric vehicles according to different voltage levels.\n\n**Charging Pile Classification**\n\n![充电桩分类.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%86%E7%B1%BB.jpg)\n\nAccording to different charging methods, service objects, installation methods, and charging interfaces, charging piles can be classified into: DC/AC charging piles, public/private charging piles, floor-standing/wall-mounted charging piles, single-pile single-charge/single-pile multiple-charge, etc.\n\n**AC Slow Charging vs DC Fast Charging**\n\n![对比.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%AF%B9%E6%AF%94.jpg)\n\nAccording to output current methods, they can be divided into AC charging piles and DC charging piles.\n\nAC charging piles are widely used in both public and private charging. AC charging piles are specialized power supply devices that provide AC power for electric vehicles with onboard charging devices. AC charging piles have small charging current and long charging time, suitable for slow charging in residential areas and office building parking spaces.\n\n![直流充电桩.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E7%9B%B4%E6%B5%81%E5%85%85%E7%94%B5%E6%A1%A9.jpg)\n\nDC charging piles are mainly used for public charging. DC charging piles are specialized devices that convert AC power to DC power for charging electric vehicle power batteries. DC charging piles have large charging current and short charging time, suitable for public places requiring fast charging.\n\n**Future Development Prospects of Charging Piles**\n\n![充电车.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E8%BD%A6.jpg)\n\nIn the future, charging infrastructure will depend on collaborative support from big data, 5G, and other new technologies and fields. It is expected that after 2025, as the competitiveness of new energy vehicles gradually surpasses fuel vehicles, the charging infrastructure market will enter maturity, with a vehicle-to-pile ratio reaching 2:1, and the industry may achieve large-scale profitability.\n\n**Policy Interpretation**\n\n![政策解读.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%94%BF%E7%AD%96%E8%A7%A3%E8%AF%BB.jpg)\n\nIn 2020, the government work report included charging piles in the seven key areas of 'new infrastructure,' marking a further increase in national emphasis on charging infrastructure construction. In January 2022, the National Development and Reform Commission and other departments issued policies proposing that by the end of the '14th Five-Year Plan,' the country should form a moderately advanced, balanced layout, intelligent and efficient charging infrastructure system capable of meeting the charging needs of more than 20 million electric vehicles. The introduction of multiple policies has driven rapid development in the domestic charging pile industry.\n\n**Shenzhen - Super Charging City Construction**\n\nOn November 30, a mobilization and deployment meeting for Shenzhen's super charging city construction was held. Mayor Qin Weizhong attended the event and delivered a mobilization speech. The meeting pointed out the need to treat building a high-quality charging infrastructure system as important work, accelerate the construction of a world-class super charging city, create a global digital energy pioneer city, better support high-quality development of the new energy industry, promote green transformation of economic and social development, and help achieve carbon peak and carbon neutrality goals.\n\nIncluding the Futian Inli Super Charging Station, Shenzhen has currently built 41 new energy vehicle super charging stations. Shenzhen's future goal is: by 2025, build 300 super charging stations, with the 'super charging/refueling' ratio reaching 1:1 first in the country; by 2035, over 2,000 super charging stations, achieving charging piles wherever there are roads.\n\n**Continuous Technological Innovation**\n\n![创新.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%88%9B%E6%96%B0.jpg)\n\nRecently, Huawei's fully liquid-cooled super charging technology has begun nationwide deployment. According to reports, Huawei's liquid-cooled super charging terminal has a maximum output power of 600kW. High-power fast charging and even super charging will be a major trend in charging technology in the future.\n\nHigh-power fast charging brings greater challenges to the power grid. First, charging equipment may cause power quality problems. Second, due to the uncertainty and randomness of new energy vehicle user charging, when a large number of new energy vehicles charge during peak electricity consumption periods, it will further increase the operational burden on the power system. As the number of new energy vehicles increases, their electricity consumption growth will follow, and the contradiction between high-power fast charging pile construction and power systems will intensify.\n\n**High-Current Flexible Busbar**\n\n**High-Current Power Supply and Distribution**\n\n![大电流供配电.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%A4%A7%E7%94%B5%E6%B5%81%E4%BE%9B%E9%85%8D%E7%94%B5.jpg)\n\nCurrently, although DC charging piles solve the problem of excessive charging time for AC charging piles, they also place higher requirements on the safety of power supply and equipment. Charging piles consist of charging equipment, power distribution equipment, and management equipment. On the power distribution side, with the construction and upgrading of high-power super charging stations, safe, efficient, and stable high-current power supply and distribution products are particularly important.\n\n**High-Current Flexible Busbar**\n\n![大电流柔性母线-4.jpg](http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%A4%A7%E7%94%B5%E6%B5%81%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF-4.jpg)\n\nAs an innovative application product for high-current power supply and distribution, the high-current flexible insulated busbar (abbreviated: flexible busbar) is a type of flexible insulated bus conductor made of copper wire strips as conductors using partial cable technology. The product structure mainly consists of flexible copper wire strip conductors, wrapping layers, insulation layers, interlocking metal armor layers, and sheath layers.\n\nFlexible busbar products have seven major highlights: high protection level, compact structure, high power efficiency, high reliability, high safety, low cost, and intelligence.\n\n**Flexible Busbar Applications**\n\n**Shenzhen Futian Inli Super Charging Station**\n\nCurrently, high-current flexible busbar products have been successfully applied in the demonstration of Shenzhen Futian Inli Super Charging Station's '600kW' taxi super charging station. High-current flexible busbars can provide power to Huawei super charging hosts more efficiently, quickly, and safely. This super charging station can achieve 'one cup of coffee, full charge and go,' providing new energy vehicle owners with more convenient and fast charging experiences while greatly improving the stability and efficiency of super charging stations. This project has completed power-on acceptance for over two months and is operating well."
+    },
+    {
+      "title": "Discussion on Power Industry Development Under New Infrastructure Strategy | \"New Infrastructure New Busbar\" Series Sharing",
+      "date": "2023-11-24",
+      "url": "http://www.yanghuasti.com/news-media/556925",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/ICB.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Yanghuasti Invited to Participate in New Energy Vehicle Charging and Battery Swapping Ecosystem Salon",
+      "date": "2023-11-17",
+      "url": "http://www.yanghuasti.com/news-media/556515",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E7%94%9F%E6%80%81%E6%B2%99%E9%BE%992.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "New Energy Charging Pile Industry Development and High Current Flexible Busbar Product Applications | Yanghua \"Electric\" Insights",
+      "date": "2023-11-10",
+      "url": "http://www.yanghuasti.com/news-media/976286",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E8%BD%A6.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Flexible Busbar Supporting New Energy Charging Pile Construction - Shanghai \"All-Day Charging\" Charging Pile Application Case",
+      "date": "2023-11-02",
+      "url": "http://www.yanghuasti.com/news-media/982127",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%A8%E6%97%A5%E5%85%851.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    },
+    {
+      "title": "Good News | Yanghuasti Self-developed Flexible Busbar Products Successfully Obtain Type Test Report",
+      "date": "2023-10-24",
+      "url": "http://www.yanghuasti.com/news-media/911021",
+      "image": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%A3%80%E6%B5%8B%E6%8A%A5%E5%91%8A1.jpg",
+      "summary": "",
+      "author": "",
+      "content": ""
+    }
+  ]
+}

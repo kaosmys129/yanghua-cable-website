@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-09-07T03:29:24.926Z",
+  "summary": {
+    "projects": {
+      "total": 0,
+      "valid": 0,
+      "invalid": 0,
+      "successRate": 0
+    },
+    "news": {
+      "total": 0,
+      "valid": 0,
+      "invalid": 0,
+      "successRate": 0
+    }
+  },
+  "details": {
+    "projects": {
+      "totalRecords": 0,
+      "validRecords": 0,
+      "invalidRecords": 0,
+      "errors": [],
+      "warnings": []
+    },
+    "news": {
+      "totalRecords": 0,
+      "validRecords": 0,
+      "invalidRecords": 0,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  "recommendations": [
+    "定期验证数据一致性",
+    "建立自动化数据验证流程"
+  ]
+}

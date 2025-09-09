@@ -1,0 +1,163 @@
+{
+  "page": "Home Page",
+  "extraction_date": "2024-12-19",
+  "sections": {
+    "hero": {
+      "title": "High Current Flexible Busbar Solutions for Critical Power Systems",
+      "subtitle": "200-6300A Current Range • 7 Major Application Industries • Advanced Power Transmission Technology",
+      "description": "Trusted by industry leaders like Huawei, BYD, and CATL for mission-critical power infrastructure projects worldwide.",
+      "call_to_action": {
+        "primary": "Get Custom Quote",
+        "secondary": "View Products"
+      },
+      "social_proof": "Trusted by 500+ industry leaders worldwide"
+    },
+    "company_strength": {
+      "title": "Why Industry Leaders Choose Yanghua STI",
+      "description": "Our commitment to innovation and quality is backed by extensive R&D capabilities, comprehensive quality assurance systems, and proven track records with Fortune 500 companies.",
+      "statistics": [
+        {
+          "value": "40+",
+          "label": "Patents & Certifications",
+          "description": "Innovation-driven technology leadership"
+        },
+        {
+          "value": "2",
+          "label": "Production Lines",
+          "description": "State-of-the-art manufacturing facilities"
+        },
+        {
+          "value": "3",
+          "label": "Testing Laboratories",
+          "description": "Comprehensive quality assurance"
+        },
+        {
+          "value": "11",
+          "label": "Enterprise Standards",
+          "description": "Industry-leading specifications"
+        }
+      ]
+    },
+    "product_features": {
+      "title": "Engineered for Excellence",
+      "description": "Our high current flexible busbar solutions are engineered to deliver exceptional performance and reliability in demanding industrial environments.",
+      "features": [
+        {
+          "title": "Safe & Reliable",
+          "description": "Advanced safety features with comprehensive testing and certifications. Built to withstand extreme conditions with zero failure rate.",
+          "details": ["CE & ISO certified", "IP65 protection rating", "Fire-resistant materials"]
+        },
+        {
+          "title": "Convenient & Efficient",
+          "description": "Quick installation with flexible design. Reduces installation time by 70% compared to traditional busbar systems.",
+          "details": ["Tool-free installation", "Flexible routing", "Modular design"]
+        },
+        {
+          "title": "Superior Performance",
+          "description": "Optimized electrical performance with minimal power loss. Delivers consistent performance across 200-6300A range.",
+          "details": ["Low impedance design", "High conductivity", "Temperature stable"]
+        },
+        {
+          "title": "Cost Effective",
+          "description": "Long-term value with reduced maintenance costs. Total cost of ownership 30% lower than conventional solutions.",
+          "details": ["50-year lifespan", "Minimal maintenance", "Energy efficient"]
+        }
+      ]
+    },
+    "application_areas": {
+      "title": "Proven Across Industries",
+      "description": "Our flexible busbar solutions are designed to meet the demanding requirements of various high-current applications across multiple industries.",
+      "industries": [
+        {
+          "name": "New Energy",
+          "description": "Solar, wind, and energy storage systems"
+        },
+        {
+          "name": "Power Systems",
+          "description": "Grid infrastructure and power distribution"
+        },
+        {
+          "name": "Industrial Buildings",
+          "description": "Manufacturing facilities and industrial complexes"
+        },
+        {
+          "name": "Data Centers",
+          "description": "High-density computing and server facilities"
+        },
+        {
+          "name": "Rail Transit",
+          "description": "Metro systems and railway infrastructure"
+        },
+        {
+          "name": "Metallurgy & Chemical",
+          "description": "Heavy industry and chemical processing"
+        },
+        {
+          "name": "Marine & Shipping",
+          "description": "Ports, vessels, and offshore platforms"
+        }
+      ]
+    },
+    "partners": {
+      "title": "Trusted by Global Industry Leaders",
+      "description": "We partner with the world's most innovative companies to deliver cutting-edge power transmission solutions that power their critical operations.",
+      "partner_names": ["Huawei", "BYD", "CATL", "Tesla", "Siemens", "ABB"]
+    },
+    "inquiry_form": {
+      "title": "Ready to Power Your Project?",
+      "description": "Get a custom quote and technical consultation from our experts today.",
+      "form_fields": [
+        {
+          "name": "full_name",
+          "label": "Full Name",
+          "type": "text",
+          "required": true,
+          "placeholder": "Enter your full name"
+        },
+        {
+          "name": "work_email",
+          "label": "Work Email",
+          "type": "email",
+          "required": true,
+          "placeholder": "Enter your work email"
+        },
+        {
+          "name": "company",
+          "label": "Company",
+          "type": "text",
+          "required": true,
+          "placeholder": "Enter your company name"
+        },
+        {
+          "name": "product_interest",
+          "label": "Product Interest",
+          "type": "select",
+          "options": ["Flexible Busbar", "Busbar Connector", "Custom Solutions", "Other"]
+        },
+        {
+          "name": "message",
+          "label": "Your Message",
+          "type": "textarea",
+          "required": true,
+          "placeholder": "Tell us about your requirements, project timeline, and any specific questions you have"
+        }
+      ],
+      "submit_button": "Get Custom Quote",
+      "success_message": {
+        "title": "Message Sent Successfully!",
+        "description": "Thank you for your inquiry. Our team will contact you within 24 hours."
+      },
+      "privacy_notice": "By submitting this form, you agree to our privacy policy and consent to receive communications from us."
+    }
+  },
+  "navigation": {
+    "primary_links": ["Get Custom Quote", "View Products"],
+    "secondary_links": ["Learn more about our company story", "Explore full product range", "Explore All Solutions", "View all our partners"]
+  },
+  "metadata": {
+    "total_sections": 6,
+    "total_text_nodes": 45,
+    "languages": ["English"],
+    "character_count": 2847
+  }
+}

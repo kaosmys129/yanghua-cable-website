@@ -1,0 +1,108 @@
+{
+  "timestamp": "2025-09-07T03:04:12.334Z",
+  "baseUrl": "http://localhost:8080",
+  "summary": {
+    "totalTests": 12,
+    "successfulTests": 8,
+    "failedTests": 4,
+    "avgResponseTime": 67
+  },
+  "results": [
+    {
+      "endpoint": "/wp-json/",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 220,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/posts",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 53,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/pages",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 59,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/media",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 41,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/categories",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 48,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/tags",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 43,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/projects",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 164,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/news",
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "responseTime": 54,
+      "authRequired": false
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/posts",
+      "method": "POST",
+      "status": 200,
+      "success": false,
+      "responseTime": 34,
+      "authRequired": true
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/media",
+      "method": "POST",
+      "status": 200,
+      "success": false,
+      "responseTime": 29,
+      "authRequired": true
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/projects",
+      "method": "POST",
+      "status": 200,
+      "success": false,
+      "responseTime": 29,
+      "authRequired": true
+    },
+    {
+      "endpoint": "/wp-json/wp/v2/news",
+      "method": "POST",
+      "status": 200,
+      "success": false,
+      "responseTime": 30,
+      "authRequired": true
+    }
+  ]
+}

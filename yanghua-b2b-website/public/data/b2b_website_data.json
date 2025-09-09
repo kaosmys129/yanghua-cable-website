@@ -1,0 +1,193 @@
+{
+  "products": {
+    "hero": {
+      "title": "High Current Flexible Busbar",
+      "subtitle": "Full-scene solution provider of high current flexible busbar",
+      "description": "Innovative application products for high current transmission and distribution, rated current range 200-6300A",
+      "currentRange": "200-6300A"
+    },
+   
+    "features": [
+      {
+        "title": "Safe & Reliable",
+        "description": "Combine partial cable manufacturing technology and original fine craftsmanship. Integrate machine assembly lines for standardized production. Comprehensive testing system and strict quality control. Real-time online monitoring of flexible busbar current, voltage, temperature, etc."
+      },
+      {
+        "title": "Convenient & Efficient", 
+        "description": "Compact structure with small volume, easy to store and transport. Flexible and lightweight, easy to construct, lay and install. Integrated long-distance laying without the need for multiple accessories. Suitable for various space sizes, and high flexibility in renovation."
+      },
+      {
+        "title": "Better Performance",
+        "description": "High protection level, moisture-proof, water-resistant, and high-temperature resistant, suitable for outdoor and humid environments. No eddy currents, good heat dissipation performance, low temperature rise, high current carrying capacity, low line loss, and high electrical efficiency."
+      },
+      {
+        "title": "Higher Cost Performance",
+        "description": "Within equal current carrying capacity, copper wire conductors have high current density and low material cost. Less accessories, lower cost. Low construction difficulty, short construction period, and low construction cost. Low failure rate and low maintenance cost."
+      }
+    ],
+
+    "name explaination":[
+      {
+        "TMR":"Flexible busbar",
+        "V":"PVC insulation",
+        "S":"Aluminum alloy armor ",
+        "T":"Copper alloy armor",
+        "V":"PVC Sheath",
+        "Y":"Polyolefins"
+      }
+    ],
+
+    "productCategories": [
+      {
+        "name": "General",
+        "models": ["TMRVV", "TMRVSV"],
+        "description":[],
+        "applications": ["Indoor", "Outdoor"],
+        "structure": [
+          "Copper wire conductors",
+          "Winding layers", 
+          "Insulation layers",
+          "Metal armor layers",
+          "Sheath layers"
+        ],
+      "specifications": {
+          "ratedCurrent": "200-6300A",
+          "ratedVoltage": "≤3kV",
+          "ratedFrequency": "50Hz",
+          "protectionLevel": "IP68",
+          "maxOperatingTemp": "105℃"
+      },
+      "coreConfigurations": [
+          "4-core: A,B,C,N equal cross-section",
+          "5-core: A,B,C,N,PE equal cross-section", 
+          "3+1: A,B,C equal cross section, N 50% cross section (without PE)",
+          "4+1: A,B,C,N equal cross section, PE 50%",
+          "3+2: A,B,C equal cross section, N and PE 50% cross section"
+        ]
+      },
+      {
+        "name": "Flame-retardant",
+        "models": ["Z(A,B,C)-TMRVV", "Z(A,B,C)-TMRYY", "Z(A,B,C)-TMRYSY"],
+        "applications": ["In densely populated public places such as high-rise buildings, shopping malls, schools, subway stations, airports, sports stadiums, exhibition halls, hospitals, etc."],
+        "structure": [
+          "Copper wire conductors",
+          "Winding layers", 
+          "Insulation layers",
+          "Metal armor layers",
+          "Sheath layers"
+        ],
+      "specifications": {
+          "ratedCurrent": "200-6300A",
+          "ratedVoltage": "≤3kV",
+          "ratedFrequency": "50Hz",
+          "protectionLevel": "IP68",
+          "maxOperatingTemp": "105℃"
+      },
+      "coreConfigurations": [
+          "4-core: A,B,C,N equal cross-section",
+          "5-core: A,B,C,N,PE equal cross-section", 
+          "3+1: A,B,C equal cross section, N 50% cross section (without PE)",
+          "4+1: A,B,C,N equal cross section, PE 50%",
+          "3+2: A,B,C equal cross section, N and PE 50% cross section"
+        ]      
+      },
+      {
+        "name": "Fire-resistant", 
+        "models": ["Z(A,B,C)N-TMRVV", "Z(A,B,C)N-TMRYY", "Z(A,B,C)N-TMRYSY"],
+        "applications": ["Use fire-resistant and high-temperature resistant materials. In a fire environment, ensure normal and stable power supply for a certain period of time."],
+        "structure": [
+          "Copper wire conductors",
+          "Winding layers", 
+          "Insulation layers",
+          "Metal armor layers",
+          "Sheath layers"
+        ],
+      "specifications": {
+          "ratedCurrent": "200-6300A",
+          "ratedVoltage": "≤3kV",
+          "ratedFrequency": "50Hz",
+          "protectionLevel": "IP68",
+          "maxOperatingTemp": "105℃"
+        },
+      "coreConfigurations": [
+          "4-core: A,B,C,N equal cross-section",
+          "5-core: A,B,C,N,PE equal cross-section", 
+          "3+1: A,B,C equal cross section, N 50% cross section (without PE)",
+          "4+1: A,B,C,N equal cross section, PE 50%",
+          "3+2: A,B,C equal cross section, N and PE 50% cross section"
+        ]
+      },
+      {
+        "name": "Low smoke & halogen-free",
+        "models": ["WDZ(A,B,C)-TMRYY", "WDZ(A,B,C)N-TMRYY", "B1(60,90,α1)-WDZ(A,B,C)-TMRYY"],
+        "applications": ["The material does not contain halogens, and the corrosiveness of combustion products is low."],
+        "structure": [
+          "Copper wire conductors",
+          "Winding layers", 
+          "Insulation layers",
+          "Metal armor layers",
+          "Sheath layers"
+        ],
+      "specifications": {
+          "ratedCurrent": "200-6300A",
+          "ratedVoltage": "≤3kV",
+          "ratedFrequency": "50Hz",
+          "protectionLevel": "IP68",
+          "maxOperatingTemp": "105℃"
+        },
+      "coreConfigurations": [
+          "4-core: A,B,C,N equal cross-section",
+          "5-core: A,B,C,N,PE equal cross-section", 
+          "3+1: A,B,C equal cross section, N 50% cross section (without PE)",
+          "4+1: A,B,C,N equal cross section, PE 50%",
+          "3+2: A,B,C equal cross section, N and PE 50% cross section"
+        ]
+        },
+      {
+        "name": "accessories",
+        "models": ["Converse Case", "Connector"],
+        "applications": ["The material does not contain halogens, and the corrosiveness of combustion products is low."],
+        "structure": [
+          "Copper wire conductors",
+          "Winding layers", 
+          "Insulation layers",
+          "Metal armor layers",
+          "Sheath layers"
+        ],
+      "specifications": {
+          "ratedCurrent": "200-6300A",
+          "ratedVoltage": "≤3kV",
+          "ratedFrequency": "50Hz",
+          "protectionLevel": "IP68",
+          "maxOperatingTemp": "105℃"
+        },
+      "coreConfigurations": [
+          "4-core: A,B,C,N equal cross-section",
+          "5-core: A,B,C,N,PE equal cross-section", 
+          "3+1: A,B,C equal cross section, N 50% cross section (without PE)",
+          "4+1: A,B,C,N equal cross section, PE 50%",
+          "3+2: A,B,C equal cross section, N and PE 50% cross section"
+        ]
+      }
+    ],
+    "qualityAssurance": {
+      "certifications": ["ISO9001", "ISO14001", "ISO45001", "CE"],
+      "testReports": "40+ relevant testing reports and patents",
+      "testTypes": ["Fire resistance", "Combustion", "Waterproofing", "Temperature rise"],
+      "standardParticipation": "Currently participating in the customization of national standard atlas"
+    }
+  },
+
+  "projects": {
+    
+    "projectStats": {
+      "totalProjects": "100+",
+      "industriesCovered": "7",
+      "countriesServed": "10+",
+      "totalCapacity": "50000A+"
+    }
+  }
+  
+    
+  
+}

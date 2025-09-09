@@ -1,0 +1,213 @@
+{
+  "company_info": {
+    "name": {
+  
+      "english": "Yanghua STI (Shenzhen) New Energy Equipment Co., Ltd"
+    },
+    "tagline": {
+  
+      "english": "The expert of high current transmission and distribution"
+    },
+    "vision": {
+  
+      "english": "the leader of high current digital ecosystem service provider"
+    },
+    "mission": {
+  
+      "english": "Leading the New Era of High Current Transmission and Distribution"
+    },
+    "values": {
+  
+      "english": "Innovation, responsibility, cooperation, sustainability"
+    },
+    "description": {
+  
+      "english": "Yanghua STI is a high-tech enterprise focusing on the research, production, sales and service of high current transmission and distribution products. At present, we have more than 40 relevant testing reports and patents, including various product testing reports such as flexible busbar type test, waterproof testing, combustion performance testing, as well as standard technical documents such as enterprise standards and flexible busbar construction and installation specifications. This is an innovative breakthrough in the field of high current transmission and distribution, and we are currently participating in the customization of national standard atlas."
+    }
+  },
+  "development_timeline": [
+    {
+      "year": "2013",
+      "description": {
+    
+        "english": "Yanghua Technology was founded with the aim of becoming a leading supplier in the field of electromechanical equipment"
+      }
+    },
+    {
+      "year": "2016",
+      "description": {
+    
+        "english": "Upgraded the positioning as a provider of electromechanical system solutions, and have reached deep cooperation with multiple rail transit groups"
+      }
+    },
+    {
+      "year": "2018",
+      "description": {
+    
+        "english": "Yanghua Technology and the National Electrification Center of Southwest Jiaotong University have reached a strategic cooperation between industry, academia and research"
+      }
+    },
+    {
+      "year": "2020",
+      "description": {
+    
+        "english": "Yanghua Technology has become an important service provider for Shenzhen Metro Group, contributing to the construction of multiple subway lines in Shenzhen"
+      }
+    },
+    {
+      "year": "2021",
+      "description": {
+    
+        "english": "Yanghua Technology has applied for multiple patents for high current flexible busbar, filling the technological gap both domestically and internationally"
+      }
+    },
+    {
+      "year": "2023.6",
+      "description": {
+    
+        "english": "Yanghua Technology fully established Yanghua STI"
+      }
+    },
+    {
+      "year": "2023.8",
+      "description": {
+    
+        "english": "The first flexible busbar production line with independent intellectual property rights of Yanghua STI has been launched"
+      }
+    },
+    {
+      "year": "2023.9",
+      "description": {
+    
+        "english": "The world's first high current flexible busbar has been successfully applied at Huawei Supercharging Station in Shenzhen"
+      }
+    },
+    {
+      "year": "2024.2",
+      "description": {
+    
+        "english": "The first flexible busbar photovoltaic application project was electrified and accepted"
+      }
+    },
+    {
+      "year": "2024.4",
+      "description": {
+    
+        "english": "The first flexible busbar energy storage project has been launched. The first flexible busbar industrial plant project has landed"
+      }
+    },
+    {
+      "year": "2024.8",
+      "description": {
+    
+        "english": "Establishment of a joint venture company and signing of a project cooperation agreement with the China Korea demonstration zone. The Midea factory project has landed"
+      }
+    },
+    {
+      "year": "2024.10",
+      "description": {
+    
+        "english": "CATL project landing. The plant in southeast Asia project landing"
+      }
+    }
+  ],
+  "quality_assurance": {
+    "certifications": {
+      "description": {
+    
+        "english": "The high current flexible busbar has passed multiple product certifications such as ISO9001, ISO14001, ISO45001, CE, etc. All models and specifications of products have undergone various testing experiments such as fire resistance, combustion, waterproofing, and temperature rise, and have obtained multiple reports such as combustion performance labeling authorization, product testing reports, and type test reports. At the same time, the product is participating in the production of national standard atlas."
+      },
+      "standards": [
+        "ISO9001",
+        "ISO14001", 
+        "ISO45001",
+        "CE"
+      ],
+      "test_reports": [
+        {
+      
+          "english": "Flexible busbar type test report"
+        },
+        {
+      
+          "english": "Waterproof testing report"
+        },
+        {
+      
+          "english": "Combustion performance testing report"
+        },
+        {
+      
+          "english": "Combustion performance labeling authorization"
+        }
+      ]
+    }
+  },
+  "company_strength": {
+    "production_lines": {
+      "count": 2,
+      "description": {
+    
+        "english": "2 production lines with fully independent intellectual property rights"
+      }
+    },
+    "laboratories": {
+      "count": 3,
+      "types": [
+        {
+      
+          "english": "Research and development laboratory"
+        },
+        {
+      
+          "english": "Temperature rise current carrying capacity laboratory"
+        },
+        {
+      
+          "english": "High voltage withstand laboratory"
+        }
+      ]
+    },
+    "product_series": {
+      "count": 4,
+      "types": [
+        {
+      
+          "english": "General"
+        },
+        {
+      
+          "english": "Flame retardant"
+        },
+        {
+      
+          "english": "Fire-resistant"
+        },
+        {
+      
+          "english": "Low smoke and halogen-free"
+        }
+      ]
+    },
+    "enterprise_standards": {
+      "count": 11,
+      "description": {
+    
+        "english": "11 enterprise standards covering various product and application related standards"
+      }
+    },
+    "patents_and_reports": {
+      "count": 40,
+      "description": {
+    
+        "english": "More than 40 patents and testing reports covering materials, processes, equipment, applications, etc"
+      }
+    }
+  },
+  "achievements": {
+    "description": {
+  
+      "english": "At present, we have more than 40 relevant testing reports and patents, including various product testing reports such as flexible busbar type test, waterproof testing, combustion performance testing, as well as standard technical documents such as enterprise standards and flexible busbar construction and installation specifications. This is an innovative breakthrough in the field of high current transmission and distribution, and we are currently participating in the customization of national standard atlas."
+    }
+  }
+}

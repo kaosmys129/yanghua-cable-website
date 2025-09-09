@@ -1,0 +1,13 @@
+{
+  "totalArticles": 5,
+  "categories": {
+    "general": 5
+  },
+  "dateRange": {
+    "earliest": "2024-09-11",
+    "latest": "2025-07-30"
+  },
+  "totalWords": 6392,
+  "averageWordsPerArticle": 1278,
+  "topKeywords": []
+}

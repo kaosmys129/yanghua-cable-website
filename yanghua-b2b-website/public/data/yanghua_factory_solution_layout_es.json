@@ -1,0 +1,340 @@
+{
+  "page_info": {
+    "title": "Soluciones de Busbar Flexible para Industria de Fábricas",
+    "subtitle": "Soluciones de Transmisión de Alta Corriente Seguras, Rentables y Confiables",
+    "description": "Yanghua STI se especializa en proporcionar productos de busbar flexible de alta calidad para plantas industriales, resolviendo puntos débiles de las soluciones tradicionales de transmisión de energía, mejorando la eficiencia energética de la fábrica y reduciendo costos operativos"
+  },
+  "hero_section": {
+    "background_image": "/images/industrial-plant-aerial.jpg",
+    "title": "Soluciones de Industria de Busbar Flexible para Fábricas",
+    "tagline": "Ayudando a reducir costos y aumentar eficiencia en el uso de electricidad de la planta",
+    "highlights": [
+      "Seguro y Confiable",
+      "Rentable",
+      "Confiable y Estable"
+    ],
+    "cta_button": {
+      "text": "Contactar Ahora",
+      "phone": "400-883-1383"
+    }
+  },
+  "industry_overview": {
+    "title": "Desafíos de Transmisión de Energía de Plantas Industriales",
+    "content": "Los cables de transmisión y distribución de energía son los 'vasos sanguíneos' de las plantas industriales, que están estrechamente relacionados con la operación diaria y la producción de las plantas, por lo que la estabilidad, seguridad y eficiencia son las condiciones primarias para la selección. Cómo optimizar la estructura de producción y mejorar la eficiencia de producción es un nuevo tema para los profesionales actuales, y la actualización del sistema de transmisión y distribución de energía es un paso necesario e importante.",
+    "pain_points": [
+      {
+        "icon": "size-weight",
+        "title": "Gran Tamaño y Peso de Soluciones Tradicionales",
+        "description": "Gran tamaño y peso de canaletas y conectores, construcción e instalación inconvenientes"
+      },
+      {
+        "icon": "multiple-connections",
+        "title": "Riesgos de Conexión Multi-empalme",
+        "description": "Las soluciones tradicionales tienen varios riesgos y defectos de cables multi-empalmados y conductos de bus"
+      },
+      {
+        "icon": "maintenance-cost",
+        "title": "Altos Costos de Operación y Mantenimiento",
+        "description": "Altos riesgos operativos, altos costos de operación y mantenimiento, pobre estabilidad del sistema"
+      }
+    ]
+  },
+  "product_introduction": {
+    "title": "Introducción al Producto de Busbar Flexible",
+    "subtitle": "Aplicación Innovadora para Transmisión y Distribución de Alta Corriente",
+    "description": "El busbar flexible, como aplicación innovadora para transmisión y distribución de alta corriente, utiliza hilos de cobre de alta pureza como conductor, combinando proceso de fabricación de cable parcial con nuevos materiales para crear busbar flexible.",
+    "structure": {
+      "title": "Componentes de Estructura del Producto",
+      "image": "/images/flexible-busbar-structure.jpg",
+      "components": [
+        {
+          "name": "Conductor de Hilera de Hilos de Cobre",
+          "description": "Hilera de hilos de cobre de alta pureza como conductor",
+          "color": "#FFD700"
+        },
+        {
+          "name": "Capa de Revestimiento",
+          "description": "Capa de protección de envoltura",
+          "color": "#E6E6FA"
+        },
+        {
+          "name": "Capa de Aislamiento",
+          "description": "Capa de protección de aislamiento",
+          "color": "#87CEEB"
+        },
+        {
+          "name": "Capa de Armadura Metálica",
+          "description": "Protección de armadura metálica",
+          "color": "#C0C0C0"
+        },
+        {
+          "name": "Capa de Chaqueta",
+          "description": "Capa exterior de chaqueta",
+          "color": "#228B22"
+        }
+      ]
+    }
+  },
+  "product_advantages": {
+    "title": "Cuatro Destacados Principales del Producto",
+    "advantages": [
+      {
+        "icon": "shield-check",
+        "title": "Seguro y Confiable",
+        "features": [
+          "Adoptando proceso de fabricación de cable parcial y artesanía fina original combinada con proceso avanzado autocrático, línea de ensamblaje de máquina integrada producción estándar",
+          "Sistema de pruebas perfecto, control de calidad estricto",
+          "Monitoreo en línea en tiempo real de corriente, voltaje, temperatura y muchos otros parámetros del busbar flexible"
+        ]
+      },
+      {
+        "icon": "tools",
+        "title": "Conveniente y Eficiente",
+        "features": [
+          "Estructura compacta y volumen pequeño, fácil de almacenar y transportar; buena flexibilidad y peso ligero, fácil de construir e instalar",
+          "Tendido integrado de larga distancia, eliminando la necesidad de múltiples accesorios para ser conectados",
+          "Remodelación de instalación tiene alta habitabilidad para mejoras"
+        ]
+      },
+      {
+        "icon": "trending-up",
+        "title": "Mejor Rendimiento",
+        "features": [
+          "Alto nivel de protección, resistencia a la humedad y agua, resistencia a altas temperaturas, puede adaptarse mejor al ambiente exterior y húmedo",
+          "Sin corriente de Foucault, buena disipación de calor, baja elevación de temperatura, alta capacidad de transporte de corriente, baja pérdida de línea y alta eficiencia",
+          "Los materiales de aislamiento y protección de superficie están completamente cubiertos, y la cubierta exterior está libre de electricidad inductiva para buena seguridad"
+        ]
+      },
+      {
+        "icon": "dollar-sign",
+        "title": "Menor Costo",
+        "features": [
+          "La densidad de corriente de la hilera de hilos de cobre es alta, la misma cantidad de capacidad de transporte de corriente, el costo del material es bajo",
+          "Menos necesidad de repuestos y accesorios, costo total bajo",
+          "Baja dificultad de construcción, corto período de construcción, bajo costo de construcción",
+          "Baja tasa de fallas y bajo costo de mantenimiento"
+        ]
+      }
+    ]
+  },
+  "solution_scenarios": {
+    "title": "Soluciones de Aplicación de Fábrica",
+    "scenarios": [
+      {
+        "id": "internal_power",
+        "title": "Soluciones de Energía Interna de Planta",
+        "description": "El sistema de suministro de energía interna de plantas industriales generalmente presenta una estructura dispersa, conectado desde el gabinete de distribución de la planta, y luego distribuido a cada equipo de energía y línea de producción según demanda",
+        "image": "/images/internal-power-solution.jpg",
+        "features": [
+          "Integración en Toda la Planta",
+          "Derivación Flexible T-conector",
+          "Configuración de Capacidad Flexible"
+        ],
+        "advantages": [
+          "El busbar flexible es compacto, tamaño pequeño, buena disipación de calor, baja elevación de temperatura",
+          "La solución de busbar flexible utiliza un busbar troncal a través de toda la planta tendido de manera que el conector T correspondiente más la caja adaptadora se configura en cada área de energía para derivación",
+          "La derivación es flexible, y cada rama puede aumentar o disminuir el conector T según la demanda",
+          "Y su caja adaptadora acompañante, no se requiere truncamiento adicional"
+        ],
+        "vs_traditional": {
+          "traditional_problems": [
+            "En soluciones de cable convencionales, cada área de consumo de electricidad necesita poner una línea separada, por lo que la cantidad de cables, y el tendido denso, mala disipación de calor, ocupando gran espacio",
+            "En la solución de busbar denso, la construcción del espacio reservado para la con alta interconexión requerida y la presencia de múltiples conectores y adaptadores, reduciendo así la confiabilidad y estabilidad del suministro de energía"
+          ],
+          "flexible_advantages": [
+            "Un busbar troncal a través del diseño de toda la planta, conector T más caja adaptadora para configuración de derivación flexible",
+            "Estructura compacta, buena disipación de calor, baja elevación de temperatura"
+          ]
+        }
+      },
+      {
+        "id": "external_power",
+        "title": "Soluciones de Energía Externa de Planta",
+        "description": "El sistema de suministro de energía externa de plantas industriales generalmente se refiere al sistema de transmisión y distribución entre plantas. La energía del sistema es grande, el ambiente de tendido se encuentra mayormente al aire libre",
+        "image": "/images/external-power-solution.jpg",
+        "features": [
+          "Alta Capacidad de Corriente",
+          "Tamaño Pequeño",
+          "Buena Disipación de Calor"
+        ],
+        "advantages": [
+          "Los busbars flexibles tienen alta capacidad de transporte de corriente y son lo suficientemente largos para ser tendidos de larga distancia en una sola pieza y no se requieren conectores adicionales",
+          "Los busbars flexibles son compactos, disipan bien el calor, y son fáciles de construir, ahorran tiempo, costos de mano de obra",
+          "El consumo de energía externa de plantas industriales es alto, y en soluciones tradicionales, los cables necesitan ser usados en múltiples combinaciones, lo cual es costoso y requiere reducción de capacidad",
+          "El método de multi-empalme de cables es grande en tamaño y tiene mala disipación de calor después de ser tendido en una zanja enterrada"
+        ],
+        "vs_traditional": {
+          "traditional_problems": [
+            "El consumo de energía externa de plantas industriales es alto, y en soluciones tradicionales, los cables necesitan ser usados en múltiples combinaciones, lo cual es costoso y requiere reducción de capacidad",
+            "El método de multi-empalme de cables es grande en tamaño y tiene mala disipación de calor después de ser tendido en una zanja enterrada"
+          ],
+          "flexible_advantages": [
+            "Los busbars flexibles tienen alta capacidad de transporte de corriente, pueden ser tendidos de larga distancia en una sola pieza, no se requieren conectores adicionales",
+            "Estructura compacta, buena disipación de calor, construcción fácil, ahorro de costos"
+          ]
+        }
+      }
+    ]
+  },
+  "case_studies": {
+    "title": "Casos Clásicos de Aplicación",
+    "cases": [
+      {
+        "title": "Base de Producción de Busbar Flexible Yanghua",
+        "location": "Shenzhen, China",
+        "application": "Solución de Energía Interna de Planta",
+        "description": "Adopta el método de tender un busbar troncal a través de toda la planta, y configura la capacidad correspondiente del conector T más caja adaptadora en cada área de energía para derivación para lograr el propósito de suministro de energía en cada área",
+        "benefits": [
+          "La derivación es muy flexible, y cada rama puede aumentar o disminuir el conector T según la demanda",
+          "No necesita hacer truncamiento, más estable, seguro y eficiente para asegurar el suministro de energía de la línea de producción de busbar flexible"
+        ],
+        "image": "/images/case-yanghua-base.jpg"
+      },
+      {
+        "title": "Estación de Supercarga Huawei en Wutong Center",
+        "location": "Shenzhen, China",
+        "application": "Estación de Supercarga de Taxi 600kW",
+        "current_rating": "3200A, 800A",
+        "commissioning_date": "27 de octubre de 2023",
+        "description": "Aplicado exitosamente al proyecto de estación de supercarga de taxi 600kW, capaz de suministrar energía a los anfitriones de supercarga de Huawei de manera más eficiente, rápida y segura",
+        "benefits": [
+          "Dirigido a la necesidad de carga rápida para taxis, taxis en línea y otros escenarios de aplicación",
+          "Un rango de 200 kilómetros puede ser realizado en el tiempo que toma una taza de café"
+        ],
+        "image": "/images/case-huawei-charging.jpg"
+      },
+      {
+        "title": "Proyecto FV de Nueva Energía Foshan",
+        "location": "Foshan, China",
+        "application": "Acceso al Sistema de Generación de Energía FV",
+        "current_rating": "1600A",
+        "commissioning_date": "Febrero 2024",
+        "description": "Busbar flexible de alta corriente aplicado exitosamente a la parte de acceso del sistema de generación de energía FV. En el proyecto con 3 giros al aire libre, el busbar flexible puede hacer 'giro directo'",
+        "benefits": [
+          "Conexión punto a punto, tendido integrado de producto reduce el uso de uniones",
+          "Mejora grandemente la seguridad y estabilidad del suministro de energía del sistema",
+          "Ahorra materiales y costos de construcción, logrando reducción de costos total del 10%"
+        ],
+        "image": "/images/case-foshan-solar.jpg"
+      }
+    ]
+  },
+  "service_model": {
+    "title": "Servicio 'Todo en Uno' de Busbar Flexible",
+    "subtitle": "Servicio profesional desde consulta hasta postventa",
+    "phases": [
+      {
+        "phase": "Etapa Temprana",
+        "icon": "search",
+        "title": "Encuesta en Sitio",
+        "description": "Investigación de campo, proporcionando soluciones personalizadas"
+      },
+      {
+        "phase": "Etapa Media",
+        "icon": "cog",
+        "title": "Alta Eficiencia y Calidad",
+        "services": [
+          "Producción directa de fábrica, control de calidad",
+          "Transporte seguro, entrega rápida"
+        ]
+      },
+      {
+        "phase": "Etapa Posterior",
+        "icon": "user-check",
+        "title": "Servicio Considerado",
+        "services": [
+          "Capacitación técnica profesional",
+          "Guía de instalación en sitio"
+        ]
+      }
+    ],
+    "additional_services": [
+      {
+        "title": "Servicio de Seguimiento de Proceso Completo",
+        "description": "Proceso completo, servicio de seguimiento integral, monitoreo de temperatura"
+      },
+      {
+        "title": "Respuesta 24 Horas",
+        "description": "Servicio de respuesta 24 horas"
+      }
+    ]
+  },
+  "technical_specs": {
+    "title": "Especificaciones Técnicas",
+    "categories": [
+      {
+        "title": "Rendimiento Eléctrico",
+        "specs": [
+          {
+            "parameter": "Corriente Nominal",
+            "value": "800A-4000A",
+            "unit": "A"
+          },
+          {
+            "parameter": "Voltaje Nominal",
+            "value": "1kV-35kV",
+            "unit": "V"
+          },
+          {
+            "parameter": "Elevación de Temperatura",
+            "value": "≤40K",
+            "unit": "K"
+          }
+        ]
+      },
+      {
+        "title": "Rendimiento Mecánico",
+        "specs": [
+          {
+            "parameter": "Radio de Curvatura",
+            "value": "≥6D",
+            "unit": ""
+          },
+          {
+            "parameter": "Nivel de Protección",
+            "value": "IP67",
+            "unit": ""
+          },
+          {
+            "parameter": "Temperatura de Operación",
+            "value": "-40℃~+90℃",
+            "unit": "℃"
+          }
+        ]
+      }
+    ]
+  },
+  "contact_section": {
+    "title": "Contáctenos",
+    "subtitle": "Obtenga consulta profesional de solución de busbar flexible",
+    "contact_info": {
+      "hotline": "400-883-1383",
+      "phone": "180-2697-1293",
+      "email": "yhsti@yanghuasti.com",
+      "website": "www.yanghuasti.com",
+      "address": {
+        "headquarters": "Piso 23, Bloque 1A, Base de Industria de Software, Calle Yuehai, Distrito Nanshan, Shenzhen, China",
+        "manufacturing": "Parque Industrial de Tecnología Shangrong, Calle Baolong, Distrito Longgang, Shenzhen, China"
+      }
+    },
+    "qr_codes": [
+      {
+        "title": "Sitio Web Oficial",
+        "image": "/images/qr-website.png"
+      },
+      {
+        "title": "Cuenta Oficial WeChat",
+        "image": "/images/qr-wechat.png"
+      },
+      {
+        "title": "Servicio al Cliente",
+        "image": "/images/qr-service.png"
+      }
+    ]
+  },
+  "seo_meta": {
+    "title": "Soluciones de Busbar Flexible para Fábricas - Busbar Flexible de Alta Corriente Yanghua STI",
+    "description": "Yanghua STI proporciona profesionalmente soluciones de busbar flexible para plantas industriales, incluyendo soluciones de transmisión de energía interna y externa de la planta. Seguro, confiable, conveniente, eficiente, rendimiento superior, menor costo. Línea directa de consulta: 400-883-1383",
+    "keywords": "busbar flexible,soluciones de energía de fábrica,transmisión de alta corriente,distribución de planta industrial,Yanghua STI,sistema de transmisión de energía"
+  }
+}

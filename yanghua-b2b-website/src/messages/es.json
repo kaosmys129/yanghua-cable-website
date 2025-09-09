@@ -1,0 +1,1116 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "products": "Productos",
+    "solutions": "Soluciones",
+    "about": "Acerca de",
+    "news": "Noticias",
+    "contact": "Contacto",
+    "language": "Idioma"
+  },
+  "hero": {
+    "title": "Innovador en distribución de energía de bajo voltaje y alta corriente",
+    "subtitle": "La única barra colectora flexible de alta corriente del mundo, en la que puedes confiar",
+    "description": "Grado de protección IP68, capacidad máxima de corriente individual 6400A, flexible y fácil de instalar",
+    "cta": "Explorar Productos",
+    "learnMore": "Saber Más"
+  },
+  "company": {
+    "strength": {
+      "title": "Fortaleza de la Empresa",
+      "manufacturing": "Fabricación Avanzada",
+      "quality": "Garantía de Calidad",
+      "innovation": "Innovación e I+D",
+      "service": "Servicio Global"
+    }
+  },
+  "products": {
+    "title": "Nuestros Productos",
+    "subtitle": "Soluciones integrales de cables para diversas industrias",
+    "viewAll": "Ver Todos los Productos"
+  },
+  "productFeatures": {
+    "title": "¿Por Qué Elegir Nuestros Cables?",
+    "subtitle": "Descubra las ventajas clave que hacen que nuestras soluciones de cables sean la opción preferida para líderes de la industria",
+    "cards": {
+      "safeReliable": {
+        "title": "Seguro y Confiable",
+        "description": "Estándares de seguridad y confiabilidad líderes en la industria",
+        "details": {
+          "fireResistant": "Materiales resistentes al fuego",
+          "lowSmoke": "Baja emisión de humo",
+          "halogenFree": "Compuestos libres de halógenos"
+        }
+      },
+      "highEfficiency": {
+        "title": "Alta Eficiencia",
+        "description": "Optimizado para la máxima transmisión de energía",
+        "details": {
+          "lowResistance": "Baja resistencia eléctrica",
+          "minimalLoss": "Pérdida de energía mínima",
+          "highConductivity": "Conductividad mejorada"
+        }
+      },
+      "superiorPerformance": {
+        "title": "Rendimiento Superior",
+        "description": "Durabilidad excepcional y larga vida útil",
+        "details": {
+          "weatherResistant": "Resistente a la intemperie",
+          "uvProtection": "Protección UV",
+          "extendedLifespan": "Vida útil prolongada"
+        }
+      },
+      "costEffective": {
+        "title": "Rentable",
+        "description": "Precios competitivos con excelente valor",
+        "details": {
+          "competitivePricing": "Precios competitivos",
+          "lowMaintenance": "Bajos costos de mantenimiento",
+          "highRoi": "Alto ROI"
+        }
+      }
+    },
+    "ctaExplore": "Explorar toda la gama de productos"
+  },
+  "applications": {
+    "title": "Áreas de Aplicación",
+    "subtitle": "Sirviendo a diversas industrias con soluciones especializadas de cables",
+    "cards": {
+      "newEnergy": {
+        "name": "Energía Nueva",
+        "description": "Soluciones avanzadas de cables para sistemas solares, eólicos y de almacenamiento de energía."
+      },
+      "powerSystems": {
+        "name": "Sistemas de Energía",
+        "description": "Cables confiables de transmisión y distribución de energía para servicios públicos."
+      },
+      "industrial": {
+        "name": "Industrial",
+        "description": "Cables de uso pesado para aplicaciones de fabricación e industriales."
+      },
+      "dataCenter": {
+        "name": "Centro de Datos",
+        "description": "Cables de alto rendimiento para centros de datos e infraestructura de TI."
+      },
+      "railTransit": {
+        "name": "Transporte Ferroviario",
+        "description": "Cables especializados para sistemas ferroviarios y de tránsito urbano."
+      },
+      "metallurgyChemical": {
+        "name": "Metalurgia y Química",
+        "description": "Cables resistentes a la corrosión para entornos industriales agresivos."
+      },
+      "marineShipping": {
+        "name": "Marítimo y Naval",
+        "description": "Cables de grado marino para aplicaciones offshore y construcción naval."
+      }
+    }
+  },
+  "applicationAreas": {
+    "title": "Áreas de Aplicación",
+    "subtitle": "Sirviendo a diversas industrias con soluciones especializadas de cables",
+    "areas": {
+      "energy": {
+        "title": "Energía Nueva",
+        "description": "Soluciones avanzadas de cables para sistemas solares, eólicos y de almacenamiento de energía."
+      },
+      "building": {
+        "title": "Sistemas de Energía",
+        "description": "Cables confiables de transmisión y distribución de energía para servicios públicos."
+      },
+      "industry": {
+        "title": "Industrial",
+        "description": "Cables de uso pesado para aplicaciones de fabricación e industriales."
+      },
+      "dataCenter": {
+        "title": "Centro de Datos",
+        "description": "Cables de alto rendimiento para centros de datos e infraestructura de TI."
+      },
+      "railway": {
+        "title": "Transporte Ferroviario",
+        "description": "Cables especializados para sistemas ferroviarios y de tránsito urbano."
+      },
+      "chemical": {
+        "title": "Metalurgia y Química",
+        "description": "Cables resistentes a la corrosión para entornos industriales agresivos."
+      },
+      "marine": {
+        "title": "Marítimo y Naval",
+        "description": "Cables de grado marino para aplicaciones offshore y construcción naval."
+      }
+    },
+    "ctaViewSolution": "Ver Solución",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
+  },
+  "partners": {
+    "title": "Nuestros Socios",
+    "subtitle": "Confiado por empresas líderes en todo el mundo",
+    "viewAll": "Ver Todos los Socios",
+    "ctaAllPartners": "Ver Todos los Socios"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Póngase en contacto para sus necesidades de soluciones de cables",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "company": "Empresa",
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado con éxito!",
+      "error": "Error al enviar el mensaje. Por favor, inténtelo de nuevo."
+    }
+  },
+  "footer": {
+    "company": "Empresa",
+    "products": "Productos",
+    "support": "Soporte",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados"
+  },
+  "companyStrength": {
+    "title": "Nuestra Fortaleza Empresarial",
+    "subtitle": "Nuestro compromiso con la innovación y la calidad está respaldado por amplias capacidades de I+D, sistemas integrales de garantía de calidad y un historial comprobado con empresas Fortune 500.",
+    "stats": {
+      "certifications": {
+        "value": "40+",
+        "label": "Patentes y Certificaciones",
+        "description": "Liderazgo tecnológico impulsado por la innovación"
+      },
+      "capacity": {
+        "value": "2",
+        "label": "Líneas de Producción",
+        "description": "Instalaciones de fabricación de última generación"
+      },
+      "testing": {
+        "value": "3",
+        "label": "Laboratorios de Pruebas",
+        "description": "Garantía de calidad integral"
+      },
+      "documentation": {
+        "value": "11",
+        "label": "Estándares Empresariales",
+        "description": "Especificaciones líderes en la industria"
+      }
+    },
+    "ctaLearnMore": "Conoce Más Sobre Nosotros"
+  },
+  "flexibleBusbarComparison": {
+    "title": "¿Por Qué Elegir Barras Flexibles?",
+    "subtitle": "Compare nuestra avanzada tecnología de barras flexibles con soluciones tradicionales",
+    "tabs": {
+      "traditional": "vs Cable Tradicional",
+      "compact": "vs Barra Compacta"
+    },
+    "traditional": {
+      "name": "Cable Tradicional",
+      "description": "Múltiples tendidos de cables con conexiones complejas",
+      "features": {
+        "currentCapacity": {
+          "name": "Capacidad de Corriente",
+          "description": "Se requieren múltiples unidades para alta corriente"
+        },
+        "heatManagement": {
+          "name": "Gestión de Calor",
+          "description": "El flujo de corriente desigual causa puntos calientes"
+        },
+        "installation": {
+          "name": "Instalación",
+          "description": "Configuración compleja de múltiples empalmes y voluminosa"
+        },
+        "spaceEfficiency": {
+          "name": "Eficiencia de Espacio",
+          "description": "Se requiere gran volumen de instalación"
+        },
+        "costEfficiency": {
+          "name": "Eficiencia de Costos",
+          "description": "Mayor uso de cobre, mayor costo de material"
+        }
+      }
+    },
+    "compact": {
+      "name": "Barra Compacta",
+      "description": "Sistema de barras rígidas preensambladas en fábrica",
+      "features": {
+        "installationFlexibility": {
+          "name": "Flexibilidad de Instalación",
+          "description": "Se requiere preensamblaje en fábrica, cambios limitados"
+        },
+        "temperaturePerformance": {
+          "name": "Rendimiento de Temperatura",
+          "description": "Límite de 70°C, la capacidad se reduce al 15%"
+        },
+        "emergencyBackup": {
+          "name": "Respaldo de Emergencia",
+          "description": "No puede restaurar el suministro de energía rápidamente"
+        },
+        "energyEfficiency": {
+          "name": "Eficiencia Energética",
+          "description": "Alta pérdida de línea superior al 20%"
+        },
+        "spaceRequirements": {
+          "name": "Requisitos de Espacio",
+          "description": "Ocupa un espacio de instalación significativo"
+        }
+      }
+    },
+    "flexibleBusbar": {
+      "name": "Barra Flexible",
+      "description": "Solución flexible avanzada para sistemas eléctricos modernos",
+      "features": {
+        "currentCapacity": {
+          "name": "Alta Capacidad de Corriente",
+          "description": "Unidad única de 200-6300A, sin necesidad de reducción"
+        },
+        "heatManagement": {
+          "name": "Gestión Superior del Calor",
+          "description": "Resistencia constante, generación mínima de calor"
+        },
+        "installation": {
+          "name": "Instalación Fácil",
+          "description": "Tamaño compacto, sistema simple de conector en T"
+        },
+        "spaceOptimization": {
+          "name": "Optimización de Espacio",
+          "description": "Forma ordenada y adaptable ahorra espacio de instalación"
+        },
+        "costSavings": {
+          "name": "Ahorro de Costos",
+          "description": "Diseño de alta densidad reduce el uso de cobre"
+        }
+      }
+    },
+    "recommended": "Recomendado",
+    "learnMore": "Más información →",
+    "getQuote": "Solicitar Cotización →"
+  },
+  "inquiry": {
+    "title": "Obtenga Su Cotización Personalizada",
+    "subtitle": "Cuéntanos sobre los requisitos de tu proyecto y te proporcionaremos una solución a medida",
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Dirección de Correo Electrónico",
+      "company": "Nombre de la Empresa",
+      "productInterest": "Interés en Productos",
+      "message": "Detalles del Proyecto"
+    },
+    "placeholders": {
+      "name": "Ingrese su nombre completo",
+      "email": "Ingrese su dirección de correo electrónico",
+      "company": "Ingrese el nombre de su empresa",
+      "selectCategory": "Seleccione una categoría de producto",
+      "message": "Describa los requisitos de su proyecto, capacidad actual, cronograma y cualquier necesidad técnica específica..."
+    },
+    "options": {
+      "flexibleBusbar": "Barra Flexible",
+      "busbarConnector": "Conector de Barra",
+      "customSolutions": "Soluciones Personalizadas",
+      "other": "Otro"
+    },
+    "buttons": {
+      "submit": "Enviar Consulta",
+      "submitting": "Enviando...",
+      "sendAnother": "Enviar Otra Consulta"
+    },
+    "success": {
+      "title": "¡Consulta Enviada Exitosamente!",
+      "description": "Gracias por su interés. Nuestro equipo técnico revisará sus requisitos y se pondrá en contacto con usted dentro de 24 horas."
+    },
+    "errors": {
+      "submitFailed": "Error al enviar la consulta. Por favor, inténtelo de nuevo."
+    },
+    "privacyNote": "Su información es segura y solo se utilizará para responder a su consulta."
+  },
+  "about": {
+    "hero": {
+      "title": "Acerca de Yanghua Cable",
+      "subtitle": "Liderando el futuro de la tecnología de cables con innovación, calidad y confiabilidad desde 2013.",
+      "cta": {
+        "explore": "Explorar Nuestras Soluciones",
+        "download": "Descargar Perfil de la Empresa"
+      }
+    },
+    "overview": {
+      "title": "Excelencia Líder en Fabricación de Cables",
+      "description": "Con más de una década de experiencia, estamos comprometidos a entregar cables de alta calidad que cumplan con los estándares industriales más exigentes. Nuestras instalaciones de vanguardia y equipo experto aseguran soluciones confiables para cada aplicación.",
+      "stats": {
+        "patents": "50+ Patentes",
+        "productionlines": "8 Líneas de Producción",
+        "laboratories": "3 Laboratorios de Pruebas",
+        "enterprisestandards": "15 Estándares Empresariales"
+      }
+    },
+    "mission": {
+      "title": "Misión y Valores",
+      "subtitle": "Impulsando la innovación y la excelencia en la fabricación de cables",
+      "missionTitle": "Nuestra Misión",
+      "missionContent": "Proporcionar soluciones de cables innovadoras, confiables y sostenibles que alimenten la infraestructura más crítica del mundo y permitan el avance tecnológico.",
+      "missionDescription": "Estamos comprometidos con la excelencia en todos los aspectos de nuestro negocio, desde la investigación y desarrollo hasta la fabricación y el servicio al cliente.",
+      "valuesTitle": "Nuestros Valores",
+      "values": {
+        "innovation": "Innovación - Empujando continuamente los límites de la tecnología de cables",
+        "responsibility": "Responsabilidad - Comprometidos con la sostenibilidad ambiental y la responsabilidad social",
+        "cooperation": "Cooperación - Construyendo asociaciones sólidas con clientes y proveedores",
+        "sustainability": "Sostenibilidad - Desarrollando soluciones ecológicas para un futuro mejor"
+      }
+     },
+      "journey": {
+      "title": "Nuestro Viaje",
+      "subtitle": "De una pequeña startup a líder de la industria, nuestro viaje refleja nuestro compromiso con la excelencia e innovación."
+    },
+    "timeline": {
+      "title": "Nuestro Viaje de Desarrollo",
+      "subtitle": "Hitos clave en nuestro crecimiento e innovación",
+      "milestones": [
+        {
+          "year": "2010",
+          "event": "Fundación de la empresa con la visión de revolucionar la fabricación de cables"
+        },
+        {
+          "year": "2015",
+          "event": "Obtención de la certificación ISO 9001 y expansión de la capacidad de producción"
+        },
+        {
+          "year": "2018",
+          "event": "Lanzamiento de la serie innovadora de cables resistentes al fuego para aplicaciones críticas"
+        },
+        {
+          "year": "2021",
+          "event": "Establecimiento de asociaciones internacionales e ingreso a mercados globales"
+        },
+        {
+          "year": "2023",
+          "event": "Alcanzamos el hito de 1 millón de metros de producción de cables"
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Calidad y Certificaciones",
+      "subtitle": "Nuestro compromiso con la calidad está validado por certificaciones internacionales y estándares de prueba rigurosos.",
+      "description": "Todos nuestros productos se someten a procesos rigurosos de prueba y control de calidad para asegurar que cumplan o superen los estándares internacionales de seguridad, rendimiento y confiabilidad.",
+      "cta": "Ver Todas las Certificaciones"
+    },
+    "team": {
+      "title": "Nuestro Equipo de Liderazgo",
+      "subtitle": "Conozca a los profesionales experimentados que impulsan la visión y el crecimiento de nuestra empresa.",
+      "positions": {
+        "ceo": "Director Ejecutivo",
+        "cto": "Director de Tecnología",
+        "engineer": "Ingeniero Senior",
+        "qa": "Director de Aseguramiento de Calidad"
+      },
+      "experience": {
+        "ceo": "15+ años en ingeniería eléctrica y liderazgo empresarial",
+        "cto": "20+ años en investigación y desarrollo de tecnología de cables",
+        "engineer": "12+ años en diseño de productos y optimización de manufactura",
+        "qa": "18+ años en gestión de calidad y estándares internacionales"
+      }
+    },
+    "equipment": {
+      "title": "Equipo de Pruebas",
+      "subtitle": "Nuestro equipo de pruebas de última generación asegura la más alta calidad y confiabilidad de nuestros productos"
+    },
+    "cta": {
+      "title": "¿Listo para Asociarse con Nosotros?",
+      "subtitle": "Discutamos cómo nuestras soluciones innovadoras de cables pueden satisfacer sus requisitos específicos y ayudarle a lograr sus objetivos de proyecto.",
+      "description": "Discutamos cómo nuestras soluciones innovadoras de cables pueden satisfacer sus requisitos específicos e impulsar el éxito de su proyecto.",
+      "buttons": {
+        "contact": "Ponerse en Contacto",
+        "quote": "Solicitar Cotización"
+      }
+    },
+    "video": {
+      "playButton": "Reproducir Video",
+      "companyIntro": "Presentación de la Empresa",
+      "watchVideo": "Ver Nuestra Historia",
+      "loading": "Cargando video...",
+      "error": "No se puede cargar el video"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "download": "Descargar",
+    "learnMore": "Saber Más"
+  },
+  "products": {
+    "hero": {
+      "title": "Nuestros Productos",
+      "subtitle": "Descubre nuestra amplia gama de cables y accesorios de alta calidad diseñados para diversas aplicaciones industriales y comerciales."
+    },
+    "overview": {
+      "title": "Resumen de Productos",
+      "subtitle": "Nuestro portafolio de productos incluye una amplia gama de cables especializados diseñados para cumplir con los más altos estándares de la industria y requisitos de seguridad."
+    },
+    "common": {
+      "models": "Modelos",
+      "availableModels": "Modelos Disponibles",
+      "exploreProducts": "Explorar Productos de {categoryName}"
+    },
+    "specifications": {
+      "title": "Especificaciones Técnicas",
+      "currentRange": {
+        "title": "Rango de Corriente (A)",
+        "description": "Amplio rango de capacidad de transporte de corriente para satisfacer diversos requisitos de aplicación"
+      },
+      "ratedVoltage": {
+        "title": "Voltaje Nominal",
+        "description": "Adecuado para aplicaciones de voltaje bajo a medio con excelentes propiedades de aislamiento"
+      },
+      "protectionLevel": {
+        "title": "Nivel de Protección",
+        "description": "Máxima protección contra ingreso de polvo y agua para entornos adversos"
+      }
+    },
+    "categories": [
+      {
+        "name": "Cables de Propósito General",
+        "productIndex": 0,
+        "models": ["TMRVV", "TMRVSV"],
+        "applications": ["Instalaciones interiores", "Instalaciones exteriores"],
+        "description": "Cables estándar para instalaciones eléctricas generales y aplicaciones de transmisión de energía."
+      },
+      {
+        "name": "Cables Retardantes de Llama",
+        "productIndex": 1,
+        "models": ["Z(A,B,C)-TMRVV", "Z(A,B,C)-TMRYY", "Z(A,B,C)-TMRYSY"],
+        "applications": [
+          "Edificios de gran altura",
+          "Centros comerciales",
+          "Escuelas y universidades",
+          "Sistemas de metro",
+          "Aeropuertos",
+          "Estadios deportivos",
+          "Centros de exposiciones",
+          "Hospitales"
+        ],
+        "description": "Cables diseñados para resistir la propagación de llamas y reducir los riesgos de incendio en instalaciones críticas."
+      },
+      {
+        "name": "Cables Resistentes al Fuego",
+        "productIndex": 2,
+        "models": ["Z(A,B,C)N-TMRVV", "Z(A,B,C)N-TMRYY", "Z(A,B,C)N-TMRYSY"],
+        "applications": [
+          "Sistemas de emergencia",
+          "Equipos de seguridad contra incendios",
+          "Infraestructura crítica"
+        ],
+        "description": "Cables que mantienen la integridad del circuito durante condiciones de incendio para sistemas de emergencia y seguridad."
+      },
+      {
+        "name": "Cables Libres de Humo y Halógenos",
+        "productIndex": 3,
+        "models": ["WDZ(A,B,C)-TMRYY", "WDZ(A,B,C)N-TMRYY", "B1(60,90,α1)-WDZ(A,B,C)-TMRYY"],
+        "applications": [
+          "Salas limpias",
+          "Centros de datos",
+          "Instalaciones de atención médica",
+          "Instituciones educativas"
+        ],
+        "description": "Cables ecológicos que producen humo mínimo y gases tóxicos cuando se exponen al fuego."
+      },
+      {
+        "name": "Accesorios y Componentes",
+        "productIndex": 4,
+        "models": ["Caja Conversora", "Conector"],
+        "applications": [
+          "Soporte de instalación",
+          "Integración de sistemas",
+          "Operaciones de mantenimiento"
+        ],
+        "description": "Accesorios y componentes esenciales para soluciones completas de instalación y mantenimiento de cables."
+      }
+    ]
+  },
+  "solutions": {
+    "page": {
+      "title": "Soluciones Industriales",
+      "description": "Descubra nuestras soluciones especializadas de conexión eléctrica diseñadas para industrias y aplicaciones específicas. Cada solución está diseñada para cumplir con requisitos y desafíos únicos."
+    },
+    "navigation": {
+      "backToSolutions": "Volver a Soluciones"
+    },
+    "common": {
+      "keyHighlights": "Características Principales",
+      "keyApplications": "Aplicaciones Clave",
+      "keyAdvantages": "Ventajas Clave",
+      "technicalSpecifications": "Especificaciones Técnicas",
+      "caseStudies": "Casos de Estudio",
+      "viewDetails": "Ver Detalles",
+      "contactUs": "Contáctanos"
+    },
+    "cta": {
+      "solutionOverview": "Resumen de la Solución",
+      "description": "¿Listo para implementar esta solución? Descargue nuestro resumen detallado de la solución o programe una consulta con nuestros expertos.",
+      "downloadBrief": "Descargar Resumen de Solución",
+      "requestConsultation": "Solicitar Consulta",
+      "customSolution": {
+        "title": "¿Necesita una Solución Personalizada?",
+        "description": "Nuestro equipo de ingeniería puede desarrollar soluciones de conexión eléctrica personalizadas adaptadas a sus requisitos específicos y necesidades de la industria."
+      }
+    },
+    "solutions": [
+      {
+        "id": "new-energy",
+        "title": "Soluciones de Nueva Energía",
+        "subtitle": "Transmisión de energía avanzada para sistemas solares, eólicos y de almacenamiento de energía",
+        "description": "Yanghua STI proporciona soluciones especializadas de barras colectoras flexibles para el sector de nueva energía, abordando los desafíos únicos de transmisión de energía en aplicaciones solares, eólicas y de almacenamiento de energía. Nuestras soluciones aseguran una entrega de energía confiable y eficiente incluso en entornos exigentes.",
+        "image": "/images/solutions/new-energy.webp",
+        "highlights": [
+          "Alta capacidad de corriente para instalaciones a gran escala",
+          "Diseños resistentes a la intemperie para aplicaciones exteriores",
+          "Configuraciones flexibles para diseños complejos",
+          "Disipación de calor superior para operación continua"
+        ],
+        "applications": [
+          "Sistemas fotovoltaicos solares",
+          "Parques eólicos",
+          "Almacenamiento de baterías",
+          "Carga de vehículos eléctricos"
+        ],
+        "advantages": [
+          {
+            "title": "Confiabilidad Mejorada",
+            "description": "Nuestros sistemas de barras colectoras flexibles están diseñados para operación continua en entornos hostiles, proporcionando confiabilidad superior comparado con soluciones tradicionales."
+          },
+          {
+            "title": "Instalación Rentable",
+            "description": "Con tiempo de instalación reducido y menos componentes, nuestras soluciones reducen significativamente los costos generales del proyecto."
+          },
+          {
+            "title": "Rendimiento Superior",
+            "description": "Alta capacidad de transporte de corriente con caída de voltaje mínima asegura un rendimiento óptimo del sistema."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 6300A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "Hasta 1kV"
+          },
+          {
+            "parameter": "Nivel de Protección",
+            "value": "IP65/IP67"
+          },
+          {
+            "parameter": "Temperatura de Operación",
+            "value": "-40°C a +90°C"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Granja Solar a Gran Escala",
+            "description": "Implementamos nuestra solución de barras colectoras flexibles en una instalación solar de 500MW, reduciendo el tiempo de instalación en un 40%."
+          },
+          {
+            "title": "Plataforma Eólica Marina",
+            "description": "Proporcionamos sistema de barras colectoras resistente a la corrosión para distribución de energía crítica en entorno marino hostil."
+          }
+        ]
+      },
+      {
+        "id": "power-system",
+        "title": "Soluciones de Sistemas de Energía",
+        "subtitle": "Infraestructura de red confiable y soluciones de distribución de energía",
+        "description": "Nuestras soluciones de barras colectoras flexibles mejoran la confiabilidad y eficiencia de los sistemas de transmisión y distribución de energía. Diseñadas para subestaciones, equipos de conmutación y proyectos de modernización de red, ofrecen rendimiento superior comparado con conductores tradicionales.",
+        "image": "/images/solutions/power-systems.webp",
+        "highlights": [
+          "Compatible con modernización de red",
+          "Requisitos de mantenimiento reducidos",
+          "Características de seguridad mejoradas",
+          "Fácil integración con infraestructura existente"
+        ],
+        "applications": [
+          "Subestaciones",
+          "Equipos de conmutación",
+          "Plantas de energía",
+          "Modernización de red"
+        ],
+        "advantages": [
+          {
+            "title": "Estabilidad de Red",
+            "description": "Nuestras soluciones contribuyen a una estabilidad de red mejorada con características eléctricas consistentes y pérdidas reducidas."
+          },
+          {
+            "title": "Instalación Rápida",
+            "description": "Secciones prefabricadas y conexiones simplificadas reducen el tiempo y complejidad de instalación."
+          },
+          {
+            "title": "Confiabilidad a Largo Plazo",
+            "description": "Diseñado para décadas de servicio confiable con requisitos mínimos de mantenimiento."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 5000A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "Hasta 35kV"
+          },
+          {
+            "parameter": "Nivel de Protección",
+            "value": "IP65"
+          },
+          {
+            "parameter": "Clasificación de Cortocircuito",
+            "value": "Hasta 63kA"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Modernización de Red Nacional",
+            "description": "Actualizamos 200km de línea de transmisión con nuestra tecnología de barras colectoras flexibles, mejorando la eficiencia en un 15%."
+          }
+        ]
+      },
+      {
+        "id": "manufacturing",
+        "title": "Soluciones de Manufactura",
+        "subtitle": "Distribución de energía flexible para instalaciones de manufactura modernas",
+        "description": "Optimice sus operaciones de manufactura con nuestras soluciones de barras colectoras flexibles diseñadas para instalaciones de producción modernas. Nuestros sistemas proporcionan distribución de energía confiable que se adapta a diseños de producción cambiantes y configuraciones de equipos.",
+        "image": "/images/solutions/manufacturing.webp",
+        "highlights": [
+          "Adaptable a diseños de producción cambiantes",
+          "Complejidad de instalación reducida",
+          "Seguridad mejorada para trabajadores",
+          "Diseño a prueba de futuro"
+        ],
+        "applications": [
+          "Líneas de ensamblaje",
+          "Sistemas robóticos",
+          "Máquinas CNC",
+          "Sistemas de transporte"
+        ],
+        "advantages": [
+          {
+            "title": "Flexibilidad de Diseño",
+            "description": "Reconfigure fácilmente la distribución de energía a medida que cambian los diseños de producción sin modificaciones importantes de infraestructura."
+          },
+          {
+            "title": "Flexibilidad de Instalación",
+            "description": "Enrute fácilmente alrededor de obstáculos estructurales sin fabricación personalizada."
+          },
+          {
+            "title": "Tiempo de Inactividad Reducido",
+            "description": "Instalación rápida y modificaciones fáciles minimizan el tiempo de inactividad de la instalación durante actualizaciones."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 4000A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "Hasta 1kV"
+          },
+          {
+            "parameter": "Radio de Curvatura",
+            "value": "Mínimo 6x diámetro"
+          },
+          {
+            "parameter": "Temperatura de Operación",
+            "value": "-25°C a +90°C"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Planta de Manufactura Automotriz",
+            "description": "Modernizamos la distribución de energía de línea de ensamblaje con nuestras barras colectoras flexibles, reduciendo el tiempo de instalación en un 50%."
+          }
+        ]
+      },
+      {
+        "id": "data-center",
+        "title": "Soluciones para Centros de Datos",
+        "subtitle": "Soluciones de energía de alta densidad para infraestructura de TI crítica",
+        "description": "Asegure la entrega ininterrumpida de energía a su infraestructura de TI crítica con nuestras soluciones especializadas para centros de datos. Diseñadas para granjas de servidores de alta densidad, instalaciones en la nube y centros de colocación, proporcionan energía confiable con características de seguridad mejoradas.",
+        "image": "/images/solutions/data-center.webp",
+        "highlights": [
+          "Distribución de energía de alta densidad",
+          "Seguridad mejorada para personal de TI",
+          "Mantenimiento y actualizaciones fáciles",
+          "Materiales resistentes al fuego"
+        ],
+        "applications": [
+          "Granjas de servidores",
+          "Instalaciones en la nube",
+          "Centros de colocación",
+          "Computación en el borde"
+        ],
+        "advantages": [
+          {
+            "title": "Confiabilidad de Misión Crítica",
+            "description": "Diseñado para 99.99% de tiempo de actividad con rutas de energía redundantes y mecanismos a prueba de fallos."
+          },
+          {
+            "title": "Eficiencia de Enfriamiento",
+            "description": "Generación de calor reducida y diseño de flujo de aire mejorado minimizan los costos de enfriamiento."
+          },
+          {
+            "title": "Escalabilidad",
+            "description": "Diseño fácilmente expandible acomoda demandas de energía crecientes sin cambios importantes de infraestructura."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 3200A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "230V/400V"
+          },
+          {
+            "parameter": "Nivel de Protección",
+            "value": "IP65"
+          },
+          {
+            "parameter": "Resistencia al Fuego",
+            "value": "Cumple con IEC 60331"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Centro de Datos Hiperescala",
+            "description": "Desplegamos sistema de distribución de energía de 100MW para proveedor principal de nube, logrando 99.99% de tiempo de actividad."
+          }
+        ]
+      },
+      {
+        "id": "rail-transit",
+        "title": "Soluciones de Tránsito Ferroviario",
+        "subtitle": "Energía segura y confiable para sistemas ferroviarios y de metro",
+        "description": "Nuestras soluciones de barras colectoras flexibles proporcionan distribución de energía segura y confiable para sistemas ferroviarios y de metro. Diseñadas para sistemas de metro, estaciones ferroviarias y sistemas de señalización, ofrecen seguridad y rendimiento mejorados en entornos de tránsito.",
+        "image": "/images/solutions/rail-transit.webp",
+        "highlights": [
+          "Seguridad mejorada para entornos de pasajeros",
+          "Diseño resistente a vibraciones",
+          "Mantenimiento fácil en espacios confinados",
+          "Cumplimiento con estándares de seguridad de tránsito"
+        ],
+        "applications": [
+          "Sistemas de metro",
+          "Estaciones ferroviarias",
+          "Sistemas de señalización",
+          "Instalaciones de mantenimiento"
+        ],
+        "advantages": [
+          {
+            "title": "Seguridad de Pasajeros",
+            "description": "Funda no inductiva y materiales resistentes al fuego aseguran máxima seguridad para pasajeros y personal."
+          },
+          {
+            "title": "Resistencia a Vibraciones",
+            "description": "Construcción especializada resiste vibraciones continuas de operaciones de trenes."
+          },
+          {
+            "title": "Mantenimiento Mínimo",
+            "description": "Diseño robusto reduce requisitos de mantenimiento en entornos de tránsito de difícil acceso."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 2500A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "Hasta 1kV"
+          },
+          {
+            "parameter": "Resistencia a Vibraciones",
+            "value": "Cumple con EN 61373"
+          },
+          {
+            "parameter": "Integridad al Fuego",
+            "value": "Resistencia al fuego de 30 minutos"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Expansión de Metro Urbano",
+            "description": "Suministramos sistema de barras colectoras para nueva línea de metro, cumpliendo estrictos requisitos de seguridad y rendimiento."
+          }
+        ]
+      },
+      {
+        "id": "metallurgy-chemical",
+        "title": "Soluciones de Metalurgia y Química",
+        "subtitle": "Soluciones de energía de servicio pesado para entornos industriales hostiles",
+        "description": "Entregue energía confiable en los entornos industriales más hostiles con nuestras soluciones de metalurgia y química. Diseñadas para acerías, plantas químicas y refinerías, proporcionan durabilidad y rendimiento excepcionales en condiciones extremas.",
+        "image": "/images/solutions/metallurgy.webp",
+        "highlights": [
+          "Materiales resistentes a la corrosión",
+          "Rendimiento a alta temperatura",
+          "Resistencia química",
+          "Diseños a prueba de explosiones disponibles"
+        ],
+        "applications": [
+          "Acerías",
+          "Plantas químicas",
+          "Refinerías",
+          "Operaciones de fundición"
+        ],
+        "advantages": [
+          {
+            "title": "Rendimiento en Entornos Extremos",
+            "description": "Diseñado para operar confiablemente en temperaturas hasta 200°C y entornos químicos corrosivos."
+          },
+          {
+            "title": "Cumplimiento de Seguridad",
+            "description": "Cumple estándares de seguridad estrictos para entornos industriales peligrosos incluyendo certificación ATEX."
+          },
+          {
+            "title": "Vida Útil Prolongada",
+            "description": "Materiales especializados y construcción proporcionan vida útil extendida incluso en condiciones hostiles."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 6000A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "Hasta 1.5kV"
+          },
+          {
+            "parameter": "Temperatura de Operación",
+            "value": "-40°C a +200°C"
+          },
+          {
+            "parameter": "Resistencia Química",
+            "value": "Recubrimiento PTFE/PFA disponible"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Modernización de Acería",
+            "description": "Actualizamos distribución de energía para línea de producción de acero de 2000 toneladas, mejorando eficiencia y seguridad."
+          }
+        ]
+      },
+      {
+        "id": "marine-shipping",
+        "title": "Soluciones Marinas y de Transporte",
+        "subtitle": "Soluciones de energía resistentes a la corrosión para aplicaciones marinas",
+        "description": "Nuestras soluciones marinas y de transporte proporcionan distribución de energía confiable y resistente a la corrosión para aplicaciones marítimas. Diseñadas para puertos, barcos y plataformas marinas, aseguran entrega de energía segura y eficiente en entornos marinos desafiantes.",
+        "image": "/images/solutions/marine.webp",
+        "highlights": [
+          "Resistencia a la corrosión por agua salada",
+          "Certificaciones de seguridad marina",
+          "Instalación flexible en embarcaciones",
+          "Construcción robusta para condiciones marinas hostiles"
+        ],
+        "applications": [
+          "Puertos",
+          "Barcos",
+          "Plataformas marinas",
+          "Instalaciones costeras"
+        ],
+        "advantages": [
+          {
+            "title": "Durabilidad de Grado Marino",
+            "description": "Materiales especializados y recubrimientos proporcionan resistencia excepcional a la corrosión por agua salada y condiciones marinas."
+          },
+          {
+            "title": "Cumplimiento de Seguridad",
+            "description": "Cumple estándares internacionales de seguridad marina para embarcaciones de pasajeros y carga."
+          },
+          {
+            "title": "Optimización de Embarcaciones",
+            "description": "Diseño ligero y flexible reduce el peso de la embarcación y acomoda movimientos del barco."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Clasificación de Corriente",
+            "value": "Hasta 3000A"
+          },
+          {
+            "parameter": "Clasificación de Voltaje",
+            "value": "Hasta 1kV"
+          },
+          {
+            "parameter": "Certificación Marina",
+            "value": "DNV GL, Lloyd's Register"
+          },
+          {
+            "parameter": "Resistencia a Rocío Salino",
+            "value": "2000+ horas"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Plataforma Petrolera Marina",
+            "description": "Proporcionamos sistema de barras colectoras a prueba de explosiones para distribución de energía crítica en entorno marino peligroso."
+          }
+        ]
+      }
+    ],
+    "power-system": {
+      "title": "Soluciones de Sistemas de Energía",
+      "subtitle": "Infraestructura de red confiable y soluciones de distribución de energía",
+      "description": "Nuestras soluciones de barras flexibles mejoran la confiabilidad y eficiencia de los sistemas de transmisión y distribución de energía. Diseñadas para subestaciones, equipos de conmutación y proyectos de modernización de redes, ofrecen rendimiento superior comparado con conductores tradicionales."
+    },
+    "manufacturing": {
+      "title": "Soluciones de Manufactura",
+      "subtitle": "Distribución de energía flexible para instalaciones de manufactura modernas",
+      "description": "Optimice sus operaciones de manufactura con nuestras soluciones de barras flexibles diseñadas para instalaciones de producción modernas. Nuestros sistemas proporcionan distribución de energía confiable que se adapta a los cambios en los diseños de producción y configuraciones de equipos."
+    },
+    "data-center": {
+      "title": "Soluciones de Centro de Datos",
+      "subtitle": "Soluciones de energía de alta densidad para infraestructura de TI crítica",
+      "description": "Asegure la entrega de energía ininterrumpida a su infraestructura de TI crítica con nuestras soluciones especializadas para centros de datos. Diseñadas para granjas de servidores de alta densidad, instalaciones en la nube y centros de colocación, proporcionan energía confiable con características de seguridad mejoradas."
+    },
+    "rail-transit": {
+      "title": "Soluciones de Tránsito Ferroviario",
+      "subtitle": "Energía segura y confiable para sistemas ferroviarios y de metro",
+      "description": "Nuestras soluciones de barras colectoras flexibles proporcionan distribución de energía segura y confiable para sistemas ferroviarios y de metro. Diseñadas para sistemas de metro, estaciones ferroviarias y sistemas de señalización, ofrecen seguridad y rendimiento mejorados en entornos de tránsito."
+    },
+    "metallurgy-chemical": {
+      "title": "Soluciones de Metalurgia y Química",
+      "subtitle": "Soluciones de energía de servicio pesado para entornos industriales hostiles",
+      "description": "Entregue energía confiable en los entornos industriales más hostiles con nuestras soluciones de metalurgia y química. Diseñadas para acerías, plantas químicas y refinerías, proporcionan durabilidad y rendimiento excepcionales en condiciones extremas."
+    },
+    "marine-shipping": {
+      "title": "Soluciones Marinas y de Transporte",
+      "subtitle": "Soluciones de energía resistentes a la corrosión para aplicaciones marinas",
+      "description": "Nuestras soluciones marinas y de transporte proporcionan distribución de energía confiable y resistente a la corrosión para aplicaciones marítimas. Diseñadas para puertos, barcos y plataformas marinas, aseguran entrega de energía segura y eficiente en entornos marinos desafiantes."
+    }
+  },
+  "contact": {
+    "page": {
+      "title": "Contáctanos",
+      "description": "Ponte en contacto con nuestro equipo para cotizaciones, soporte técnico o cualquier pregunta sobre nuestras soluciones de barras flexibles."
+    },
+    "sections": {
+      "getInTouch": "Ponte en Contacto"
+    },
+    "info": {
+      "phone": {
+        "title": "Teléfono",
+        "content": "+86-755-8888-8888",
+        "description": "Llámanos durante el horario comercial"
+      },
+      "email": {
+        "title": "Correo Electrónico",
+        "content": "info@yanghuasti.com",
+        "description": "Envíanos un correo en cualquier momento"
+      },
+      "address": {
+        "title": "Dirección",
+        "content": "Dongguan, Guangdong, China",
+        "description": "Visita nuestra instalación de fabricación"
+      },
+      "hours": {
+        "title": "Horario Comercial",
+        "content": "Lun-Vie: 8:00 AM - 6:00 PM (CST)",
+        "description": "Estamos aquí para ayudarte"
+      }
+    },
+    "globalSupport": {
+      "title": "Soporte Global",
+      "description": "Proporcionamos soporte y servicio mundial para todos nuestros productos.",
+      "regions": {
+        "northAmerica": "América del Norte",
+        "europe": "Europa",
+        "asiaPacific": "Asia Pacífico"
+      }
+    }
+  },
+  "projects": {
+    "page": {
+      "title": "Nuestros Proyectos",
+      "description": "Explore nuestros proyectos exitosos y casos de estudio que demuestran nuestra experiencia en soluciones de distribución de energía."
+    },
+    "stats": {
+      "totalProjects": "100+",
+      "industriesCovered": "7",
+      "countriesServed": "10+",
+      "totalCapacity": "50000A+"
+    },
+    "labels": {
+      "client": "Cliente",
+      "industry": "Industria",
+      "scale": "Escala",
+      "year": "Año",
+      "viewDetails": "Ver Detalles",
+      "backToProjects": "Volver a Proyectos"
+    },
+    "list": [
+      {
+        "id": "huawei-data-center-expansion",
+        "title": "Sistema de Distribución de Energía del Centro de Datos Huawei",
+        "client": "Huawei Technologies Co., Ltd.",
+        "industry": "Centro de Datos",
+        "scale": "Distribución de Energía 50MW",
+        "year": "2024",
+        "description": "Sistema de barras colectoras flexibles de alta corriente para distribución de energía de centros de datos a gran escala, asegurando conexiones eléctricas confiables y eficientes."
+      },
+      {
+        "id": "byd-battery-manufacturing",
+        "title": "Sistema Eléctrico de Planta de Fabricación de Baterías BYD",
+        "client": "BYD Company Limited",
+        "industry": "Vehículo de Nueva Energía",
+        "scale": "Instalación de Fabricación 100MW",
+        "year": "2024",
+        "description": "Soluciones de conexión eléctrica personalizadas para líneas de producción de baterías, con trenzas de cobre de alta precisión y barras colectoras flexibles."
+      },
+      {
+        "id": "catl-energy-storage",
+        "title": "Integración del Sistema de Almacenamiento de Energía CATL",
+        "client": "Contemporary Amperex Technology Co. Limited",
+        "industry": "Almacenamiento de Energía",
+        "scale": "Sistema de Almacenamiento 200MWh",
+        "year": "2023",
+        "description": "Soluciones avanzadas de conexión eléctrica para sistemas de almacenamiento de energía a gran escala, asegurando rendimiento y seguridad óptimos."
+      },
+      {
+        "id": "midea-industrial-complex",
+        "title": "Infraestructura de Energía del Complejo Industrial Midea",
+        "client": "Midea Group Co., Ltd.",
+        "industry": "Manufactura",
+        "scale": "Complejo Industrial 80MW",
+        "year": "2023",
+        "description": "Sistema integral de distribución eléctrica para instalaciones de fabricación inteligente con soluciones de barras colectoras flexibles."
+      },
+      {
+        "id": "metro-line-14",
+        "title": "Sistema Eléctrico de la Línea 14 del Metro de Shenzhen",
+        "client": "Shenzhen Metro Group",
+        "industry": "Tránsito Ferroviario",
+        "scale": "Línea de Metro 38km",
+        "year": "2023",
+        "description": "Soluciones de distribución de energía para sistemas de tránsito masivo, proporcionando conexiones eléctricas seguras y eficientes para operaciones de metro."
+      },
+      {
+        "id": "tesla-gigafactory",
+        "title": "Infraestructura Eléctrica de Tesla Gigafactory",
+        "client": "Tesla, Inc.",
+        "industry": "Vehículo Eléctrico",
+        "scale": "Gigafactory 120MW",
+        "year": "2022",
+        "description": "Sistemas de distribución de energía de alta capacidad para instalaciones de fabricación de vehículos eléctricos, optimizados para eficiencia y confiabilidad."
+      }
+    ]
+  }
+}

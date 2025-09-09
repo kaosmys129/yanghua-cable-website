@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-09-07T03:03:39.843Z",
+  "results": [
+    {
+      "isValid": false,
+      "errors": [
+        "项目数据文件不存在"
+      ],
+      "warnings": [],
+      "fieldMappings": {}
+    }
+  ]
+}

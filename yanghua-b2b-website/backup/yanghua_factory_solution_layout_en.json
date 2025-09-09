@@ -1,0 +1,340 @@
+{
+  "page_info": {
+    "title": "Factory Industry Flexible Busbar Solutions",
+    "subtitle": "Safe, Cost-effective and Reliable High-Current Transmission Solutions",
+    "description": "Yanghua STI specializes in providing high-quality flexible busbar products for industrial plants, solving pain points of traditional power transmission solutions, improving factory power efficiency, and reducing operating costs"
+  },
+  "hero_section": {
+    "background_image": "/images/industrial-plant-aerial.jpg",
+    "title": "Factory Flexible Busbar Industry Solutions",
+    "tagline": "Helping to reduce costs and increase efficiency in plant electricity use",
+    "highlights": [
+      "Safe and Reliable",
+      "Cost-effective", 
+      "Reliable and Stable"
+    ],
+    "cta_button": {
+      "text": "Contact Now",
+      "phone": "400-883-1383"
+    }
+  },
+  "industry_overview": {
+    "title": "Industrial Plant Power Transmission Challenges",
+    "content": "Power transmission and distribution cables are the 'blood vessels' of industrial plants, which are closely related to the daily operation and production of plants, so stability, safety and efficiency are the primary conditions for selection. How to optimize the production structure and improve production efficiency is a new topic for current practitioners, and upgrading the power transmission and distribution system is a necessary and important step.",
+    "pain_points": [
+      {
+        "icon": "size-weight",
+        "title": "Large Size and Weight of Traditional Solutions",
+        "description": "Large size and weight of trunking and connectors, inconvenient construction and installation"
+      },
+      {
+        "icon": "multiple-connections", 
+        "title": "Multi-splicing Connection Risks",
+        "description": "Traditional solutions have various risks and defects of multi-spliced cables and bus ducts"
+      },
+      {
+        "icon": "maintenance-cost",
+        "title": "High Operation & Maintenance Costs",
+        "description": "High operational risks, high O&M costs, poor system stability"
+      }
+    ]
+  },
+  "product_introduction": {
+    "title": "Flexible Busbar Product Introduction",
+    "subtitle": "Innovative Application for High-Current Transmission and Distribution",
+    "description": "Flexible busbar, as an innovative application for high-current transmission and distribution, uses high-purity copper wire row as conductor, combining partial cable manufacturing process with new materials to create flexible busbar.",
+    "structure": {
+      "title": "Product Structure Components",
+      "image": "/images/flexible-busbar-structure.jpg",
+      "components": [
+        {
+          "name": "Copper Wire Row Conductor",
+          "description": "High-purity copper wire row as conductor",
+          "color": "#FFD700"
+        },
+        {
+          "name": "Cladding Layer", 
+          "description": "Wrapping layer protection",
+          "color": "#E6E6FA"
+        },
+        {
+          "name": "Insulation Layer",
+          "description": "Insulation protection layer",
+          "color": "#87CEEB"
+        },
+        {
+          "name": "Metal Armor Layer",
+          "description": "Metal armor protection",
+          "color": "#C0C0C0"
+        },
+        {
+          "name": "Jacket Layer",
+          "description": "Outer jacket layer",
+          "color": "#228B22"
+        }
+      ]
+    }
+  },
+  "product_advantages": {
+    "title": "Four Major Product Highlights",
+    "advantages": [
+      {
+        "icon": "shield-check",
+        "title": "Safe and Reliable",
+        "features": [
+          "Adopting partial cable manufacturing process and original fine craft combined with self-created advanced process, machine assembly line integrated standard production",
+          "Perfect testing system, strict quality control",
+          "Real-time online monitoring of flexible busbar current, voltage, temperature and many other parameters"
+        ]
+      },
+      {
+        "icon": "tools",
+        "title": "Convenient and Efficient", 
+        "features": [
+          "Compact structure and small volume, easy to store and carry; good flexibility and light weight, easy to construct and install",
+          "One-piece, long-distance laying, eliminating the need for multiple fittings to be connected together",
+          "Facility remodeling has high room for improvement"
+        ]
+      },
+      {
+        "icon": "trending-up",
+        "title": "Better Performance",
+        "features": [
+          "High level of protection, moisture and water resistance, high temperature resistance, can be better adapted to outdoor and humid environment",
+          "No eddy current, good heat dissipation, low temperature rise, high current-carrying capacity, low line loss, and high efficiency",
+          "Surface insulation and protective materials are fully covered, and the outer sheath is free of inductive electricity for good safety"
+        ]
+      },
+      {
+        "icon": "dollar-sign",
+        "title": "Lower Cost",
+        "features": [
+          "Copper wire row conductor current density is high, the same amount of current-carrying capacity, the material cost is low",
+          "Less need for spare parts and accessories, low overall cost",
+          "Low construction difficulty, short construction period, low construction cost",
+          "Low failure rate and low maintenance cost"
+        ]
+      }
+    ]
+  },
+  "solution_scenarios": {
+    "title": "Factory Application Solutions",
+    "scenarios": [
+      {
+        "id": "internal_power",
+        "title": "Internal Plant Power Solutions",
+        "description": "The internal power supply system of industrial plants usually presents a scattered structure, connected from the plant distribution cabinet, and then distributed to each power equipment and production line according to demand",
+        "image": "/images/internal-power-solution.jpg",
+        "features": [
+          "Integration Throughout Plant",
+          "T-connect Flexible Shunt",
+          "Flexible Capacity Configuration"
+        ],
+        "advantages": [
+          "Flexible busbar is compact, small size, good heat dissipation, low temperature rise",
+          "The flexible busbar solution utilizes one backbone busbar through the entire plant laid in a way that the corresponding capacity of the T-connector plus adapter box is set up in each power area for shunting",
+          "The shunt is flexible, and each branch can increase or decrease the T-connector according to the demand",
+          "And its accompanying adapter box, no additional truncation is required"
+        ],
+        "vs_traditional": {
+          "traditional_problems": [
+            "In conventional cable solutions, each area of electricity consumption needs to put a separate line, so the number of cables, and the laying of dense, poor heat dissipation, occupying a large space",
+            "In the dense busbar solution, the construction of the reserved space for the with high interconnection requirements and the presence of multiple connectors and adapters, thus reducing the reliability and stability of the power supply"
+          ],
+          "flexible_advantages": [
+            "One backbone busbar through the entire plant layout, T-connector plus adapter box for flexible shunting setup",
+            "Compact structure, good heat dissipation, low temperature rise"
+          ]
+        }
+      },
+      {
+        "id": "external_power", 
+        "title": "External Plant Power Solutions",
+        "description": "The external power supply system of industrial plants usually refers to the transmission and distribution system between plants. System power is large, laying environment is mostly located outdoors",
+        "image": "/images/external-power-solution.jpg",
+        "features": [
+          "High Current Capacity",
+          "Small Size",
+          "Good Heat Dissipation"
+        ],
+        "advantages": [
+          "Flexible busbars have high current carrying capacity and are laid long enough to be one-piece long-distance laying and no additional connectors are required",
+          "Flexible busbars are compact, dissipate heat well, and are easy to construct, save time, labor costs",
+          "The external power consumption of industrial plants is high, and in traditional solutions, cables need to be used in multiple collocations, which is costly and requires capacity reduction",
+          "The cable multi-splicing method is large in size and has poor heat dissipation after being laid in a buried trench"
+        ],
+        "vs_traditional": {
+          "traditional_problems": [
+            "The external power consumption of industrial plants is high, and in traditional solutions, cables need to be used in multiple collocations, which is costly and requires capacity reduction",
+            "The cable multi-splicing method is large in size and has poor heat dissipation after being laid in a buried trench"
+          ],
+          "flexible_advantages": [
+            "Flexible busbars have high current carrying capacity, can be one-piece long-distance laying, no additional connectors required",
+            "Compact structure, good heat dissipation, easy construction, cost-saving"
+          ]
+        }
+      }
+    ]
+  },
+  "case_studies": {
+    "title": "Classic Application Cases",
+    "cases": [
+      {
+        "title": "Yanghua Flexible Busbar Production Base",
+        "location": "Shenzhen, China",
+        "application": "Internal Plant Power Solution",
+        "description": "Adopts the method of laying one backbone busbar through the whole plant, and sets the corresponding capacity of T-connector plus adapter box in each power area for shunting to achieve the purpose of power supply in each area",
+        "benefits": [
+          "The tap is very flexible, and each branch can increase or decrease the T-connector according to the demand",
+          "No need to do truncation, more stable, safe and efficient to ensure the power supply of flexible busbar production line"
+        ],
+        "image": "/images/case-yanghua-base.jpg"
+      },
+      {
+        "title": "Huawei Supercharging Station at Wutong Center",
+        "location": "Shenzhen, China",
+        "application": "600kW Taxi Supercharging Station",
+        "current_rating": "3200A, 800A",
+        "commissioning_date": "October 27, 2023",
+        "description": "Successfully applied to the 600kW taxi supercharging station project, able to supply power to Huawei's supercharging hosts in a more efficient, faster, and safer way",
+        "benefits": [
+          "Targeting the need for fast charging for taxis, online taxis, and other application scenarios",
+          "A range of 200 kilometers can be realized in the time it takes for a cup of coffee"
+        ],
+        "image": "/images/case-huawei-charging.jpg"
+      },
+      {
+        "title": "Foshan New Energy PV Project",
+        "location": "Foshan, China",
+        "application": "PV Power Generation System Access",
+        "current_rating": "1600A",
+        "commissioning_date": "February 2024",
+        "description": "High-current flexible busbar successfully applied to the access part of PV power generation system. In the project with outdoor 3 turns, flexible busbar can do 'direct turn'",
+        "benefits": [
+          "Point-to-point connection, product integration laying reduces the use of joints",
+          "Greatly improves the safety and stability of the system power supply",
+          "Saves materials and construction costs, achieving overall cost reduction of 10%"
+        ],
+        "image": "/images/case-foshan-solar.jpg"
+      }
+    ]
+  },
+  "service_model": {
+    "title": "Flexible Busbar 'One-Stop' Service",
+    "subtitle": "Professional service from consultation to after-sales",
+    "phases": [
+      {
+        "phase": "Early Stage",
+        "icon": "search",
+        "title": "On-site Survey",
+        "description": "Field investigation, providing customized solutions"
+      },
+      {
+        "phase": "Mid Stage", 
+        "icon": "cog",
+        "title": "High Efficiency & Quality",
+        "services": [
+          "Factory direct production, quality control",
+          "Safe transportation, fast delivery"
+        ]
+      },
+      {
+        "phase": "Later Stage",
+        "icon": "user-check", 
+        "title": "Considerate Service",
+        "services": [
+          "Professional technical training",
+          "On-site installation guidance"
+        ]
+      }
+    ],
+    "additional_services": [
+      {
+        "title": "Full Process Tracking Service",
+        "description": "Full process, comprehensive tracking service, temperature monitoring"
+      },
+      {
+        "title": "24-Hour Response",
+        "description": "24-hour response service"
+      }
+    ]
+  },
+  "technical_specs": {
+    "title": "Technical Specifications",
+    "categories": [
+      {
+        "title": "Electrical Performance",
+        "specs": [
+          {
+            "parameter": "Rated Current",
+            "value": "800A-4000A",
+            "unit": "A"
+          },
+          {
+            "parameter": "Rated Voltage",
+            "value": "1kV-35kV",
+            "unit": "V"
+          },
+          {
+            "parameter": "Temperature Rise",
+            "value": "≤40K",
+            "unit": "K"
+          }
+        ]
+      },
+      {
+        "title": "Mechanical Performance",
+        "specs": [
+          {
+            "parameter": "Bending Radius",
+            "value": "≥6D",
+            "unit": ""
+          },
+          {
+            "parameter": "Protection Level",
+            "value": "IP67",
+            "unit": ""
+          },
+          {
+            "parameter": "Operating Temperature",
+            "value": "-40℃~+90℃",
+            "unit": "℃"
+          }
+        ]
+      }
+    ]
+  },
+  "contact_section": {
+    "title": "Contact Us",
+    "subtitle": "Get professional flexible busbar solution consultation",
+    "contact_info": {
+      "hotline": "400-883-1383",
+      "phone": "180-2697-1293",
+      "email": "yhsti@yanghuasti.com",
+      "website": "www.yanghuasti.com",
+      "address": {
+        "headquarters": "23/F, Block 1A, Software Industry Base, Yuehai Street, Nanshan District, Shenzhen, China",
+        "manufacturing": "Shangrong Technology Industrial Park, Baolong Street, Longgang District, Shenzhen, China"
+      }
+    },
+    "qr_codes": [
+      {
+        "title": "Official Website",
+        "image": "/images/qr-website.png"
+      },
+      {
+        "title": "WeChat Official Account",
+        "image": "/images/qr-wechat.png"
+      },
+      {
+        "title": "Customer Service",
+        "image": "/images/qr-service.png"
+      }
+    ]
+  },
+  "seo_meta": {
+    "title": "Factory Flexible Busbar Solutions - Yanghua STI High-Current Flexible Busbar",
+    "description": "Yanghua STI professionally provides industrial plant flexible busbar solutions, including internal and external plant power transmission solutions. Safe, reliable, convenient, efficient, superior performance, lower cost. Consultation hotline: 400-883-1383",
+    "keywords": "flexible busbar,factory power solutions,high current transmission,industrial plant distribution,Yanghua STI,power transmission system"
+  }
+}

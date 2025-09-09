@@ -1,0 +1,159 @@
+{
+  "product_comparison": {
+    "yanghua_sti_flexible_busbar_vs_traditional_solutions": {
+      "comparison_categories": [
+        {
+          "category": "performance",
+          "flexible_busbar": {
+            "description": "Good resistance consistency and low heat generation"
+          },
+          "multiple_cables": {
+            "description": "Each resistor has a different value, resulting in differences in current flow and making it prone to heating"
+          }
+        },
+        {
+          "category": "installation",
+          "flexible_busbar": {
+            "description": "Small size, compact structure, easy installation; Specialized T-connector with high safety factor"
+          },
+          "multiple_cables": {
+            "description": "Multi splicing has a large volume and weight, and the joints are difficult to handle, which poses certain safety hazards"
+          }
+        },
+        {
+          "category": "capacity",
+          "flexible_busbar": {
+            "description": "The product has a current carrying capacity of 200-6300A and does not require derating"
+          },
+          "multiple_cables": {
+            "description": "A single unit has a small current carrying capacity and requires multiple splicing and capacity reduction for use"
+          }
+        },
+        {
+          "category": "overall_cost",
+          "flexible_busbar": {
+            "description": "High current density, significant copper savings, and higher cost-effectiveness"
+          },
+          "multiple_cables": {
+            "description": "Low current density, more copper is used, and the cost-effectiveness is lower"
+          }
+        }
+      ]
+    },
+    "flexible_busbar_vs_compact_busbar": {
+      "comparison_categories": [
+        {
+          "category": "shape_and_volume",
+          "flexible_busbar": {
+            "description": "Neat, tight and clear"
+          },
+          "compact_busbar": {
+            "description": "It takes up a lot of installation space"
+          }
+        },
+        {
+          "category": "overload_capacity",
+          "flexible_busbar": {
+            "description": "When the temperature rises by 135K and the surrounding environment temperature is 40°C, the overload capacity can withstand more than 33%"
+          },
+          "compact_busbar": {
+            "description": "When the temperature rises by 70K and the surrounding environment temperature is 30°C, the overload capacity can withstand 15%"
+          }
+        },
+        {
+          "category": "installation_and_construction",
+          "flexible_busbar": {
+            "description": "The on-site assembly of flexible busbar is easy to construct, easy to install and disassemble, and can be rearranged as needed. The branch circuit can be modified without affecting the overall power supply when the main circuit is live"
+          },
+          "compact_busbar": {
+            "description": "Need to assemble in factory in advance, and the construction difficulty is high. If there is design change happens on site, products need to be returned to the factory. Low reuse rate, unable to carry out live branch operations"
+          }
+        },
+        {
+          "category": "emergency_management",
+          "flexible_busbar": {
+            "description": "Emergency backup can be used in case of system failure, utilizing the backup circuit conversion box can quickly restore power supply and improve system power supply stability"
+          },
+          "compact_busbar": {
+            "description": "Due to an accident requiring power outage for maintenance, it is impossible to restore power supply in a timely manner"
+          }
+        },
+        {
+          "category": "line_loss_and_energy_consumption",
+          "flexible_busbar": {
+            "description": "Low temperature rise, low energy consumption, energy-saving, and the larger the current specification, the more superior its energy consumption value is displayed"
+          },
+          "compact_busbar": {
+            "description": "Poor heat dissipation, high line loss, and energy consumption exceeding 20%"
+          }
+        }
+      ]
+    },
+    "key_product_specifications": {
+      "current_range": "200-6300A",
+      "rated_voltage": "≤3kV",
+      "rated_frequency": "50Hz",
+      "protection_level": "IP68",
+      "max_operating_temperature": "105°C"
+    },
+    "core_advantages": [
+      {
+        "feature": "Safe & Reliable",
+        "details": [
+          "Combine partial cable manufacturing technology and original fine craftsmanship",
+          "Integrate machine assembly lines for standardized production", 
+          "Comprehensive testing system and strict quality control",
+          "Real time online monitoring of flexible busbar current, voltage, temperature, etc."
+        ]
+      },
+      {
+        "feature": "Convenient & Efficient",
+        "details": [
+          "Compact structure with small volume, easy to store and transport",
+          "Flexible and lightweight, easy to construct, lay and install",
+          "Integrated long-distance laying without the need for multiple accessories",
+          "Suitable for various space sizes, and high flexibility in renovation"
+        ]
+      },
+      {
+        "feature": "Better Performance",
+        "details": [
+          "High protection level, moisture-proof, water-resistant, and high-temperature resistant",
+          "Suitable for outdoor and humid environments",
+          "No eddy currents, good heat dissipation performance, low temperature rise",
+          "High current carrying capacity, low line loss, and high electrical efficiency",
+          "Surface insulation and protective materials are fully covered",
+          "Outer sheath has no induced electricity, with good safety performance"
+        ]
+      },
+      {
+        "feature": "Higher Cost Performance",
+        "details": [
+          "Within equal current carrying capacity, copper wire conductors have high current density, and low material cost",
+          "Less accessories, lower cost",
+          "Low construction difficulty, short construction period, and low construction cost",
+          "Low failure rate and low maintenance cost"
+        ]
+      }
+    ],
+    "product_structure": {
+      "components": [
+        "Copper wire conductors",
+        "Winding layers", 
+        "Insulation layers",
+        "Metal armor layers",
+        "Sheath layers"
+      ],
+      "description": "High current flexible busbar is made of high-purity copper wire as the conductor, combined with some cable technology and new materials, which is an innovative application product for high current transmission and distribution"
+    },
+    "application_fields": [
+      "New energy",
+      "Power system", 
+      "Industrial and commercial buildings",
+      "IDC room",
+      "Rail transit",
+      "Metallurgy and chemical industry",
+      "Ships"
+    ]
+  }
+}

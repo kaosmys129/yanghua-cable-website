@@ -1,0 +1,1087 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "solutions": "Solutions",
+    "about": "About",
+    "news": "News",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Innovator in low-voltage, high-current power distribution",
+    "subtitle": "The world's only flexible high-current busbar, you can trust it",
+    "description": "IP68 protection grade, maximum single current carrying capacity 6400A, flexible and easy to lay",
+    "cta": "Explore Products",
+    "learnMore": "Learn More"
+  },
+  "company": {
+    "strength": {
+      "title": "Company Strength",
+      "manufacturing": "Advanced Manufacturing",
+      "quality": "Quality Assurance",
+      "innovation": "Innovation & R&D",
+      "service": "Global Service"
+    }
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Comprehensive cable solutions for various industries",
+    "viewAll": "View All Products"
+  },
+  "productFeatures": {
+    "title": "Why Choose Our Cables",
+    "subtitle": "Discover the key advantages that make our cable solutions the preferred choice for industry leaders",
+    "cards": {
+      "safeReliable": {
+        "title": "Safe & Reliable",
+        "description": "Industry-leading safety standards and reliability",
+        "details": {
+          "fireResistant": "Fire-resistant materials",
+          "lowSmoke": "Low smoke emission",
+          "halogenFree": "Halogen-free compounds"
+        }
+      },
+      "highEfficiency": {
+        "title": "High Efficiency",
+        "description": "Optimized for maximum power transmission",
+        "details": {
+          "lowResistance": "Low electrical resistance",
+          "minimalLoss": "Minimal power loss",
+          "highConductivity": "Enhanced conductivity"
+        }
+      },
+      "superiorPerformance": {
+        "title": "Superior Performance",
+        "description": "Exceptional durability and long service life",
+        "details": {
+          "weatherResistant": "Weather resistant",
+          "uvProtection": "UV protection",
+          "extendedLifespan": "Extended lifespan"
+        }
+      },
+      "costEffective": {
+        "title": "Cost Effective",
+        "description": "Competitive pricing with excellent value",
+        "details": {
+          "competitivePricing": "Competitive pricing",
+          "lowMaintenance": "Low maintenance costs",
+          "highRoi": "High ROI"
+        }
+      }
+    },
+    "ctaExplore": "Explore full product range"
+  },
+  "applications": {
+    "title": "Application Areas",
+    "subtitle": "Serving diverse industries with specialized cable solutions",
+    "cards": {
+      "newEnergy": {
+        "name": "New Energy",
+        "description": "Advanced cable solutions for solar, wind, and energy storage systems."
+      },
+      "powerSystems": {
+        "name": "Power Systems",
+        "description": "Reliable power transmission and distribution cables for utilities."
+      },
+      "industrial": {
+        "name": "Industrial",
+        "description": "Heavy-duty cables for manufacturing and industrial applications."
+      },
+      "dataCenter": {
+        "name": "Data Center",
+        "description": "High-performance cables for data centers and IT infrastructure."
+      },
+      "railTransit": {
+        "name": "Rail Transit",
+        "description": "Specialized cables for railway and urban transit systems."
+      },
+      "metallurgyChemical": {
+        "name": "Metallurgy & Chemical",
+        "description": "Corrosion-resistant cables for harsh industrial environments."
+      },
+      "marineShipping": {
+        "name": "Marine & Shipping",
+        "description": "Marine-grade cables for offshore and shipbuilding applications."
+      }
+    }
+  },
+  "applicationAreas": {
+    "title": "Application Areas",
+    "subtitle": "Serving diverse industries with specialized cable solutions",
+    "areas": {
+      "energy": {
+        "title": "New Energy",
+        "description": "Advanced cable solutions for solar, wind, and energy storage systems."
+      },
+      "building": {
+        "title": "Power Systems",
+        "description": "Reliable power transmission and distribution cables for utilities."
+      },
+      "industry": {
+        "title": "Industrial",
+        "description": "Heavy-duty cables for manufacturing and industrial applications."
+      },
+      "dataCenter": {
+        "title": "Data Center",
+        "description": "High-performance cables for data centers and IT infrastructure."
+      },
+      "railway": {
+        "title": "Rail Transit",
+        "description": "Specialized cables for railway and urban transit systems."
+      },
+      "chemical": {
+        "title": "Metallurgy & Chemical",
+        "description": "Corrosion-resistant cables for harsh industrial environments."
+      },
+      "marine": {
+        "title": "Marine & Shipping",
+        "description": "Marine-grade cables for offshore and shipbuilding applications."
+      }
+    },
+    "ctaViewSolution": "View Solution",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "Trusted by leading companies worldwide",
+    "viewAll": "View All Partners",
+    "ctaAllPartners": "View All Partners"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for your cable solution needs",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "footer": {
+    "company": "Company",
+    "products": "Products",
+    "support": "Support",
+    "contact": "Contact",
+    "rights": "All rights reserved"
+  },
+  "companyStrength": {
+    "title": "Our Company Strength",
+    "subtitle": "Our commitment to innovation and quality is backed by extensive R&D capabilities, comprehensive quality assurance systems, and proven track records with Fortune 500 companies.",
+    "stats": {
+      "certifications": {
+        "value": "40+",
+        "label": "Patents & Certifications",
+        "description": "Innovation-driven technology leadership"
+      },
+      "capacity": {
+        "value": "2",
+        "label": "Production Lines",
+        "description": "State-of-the-art manufacturing facilities"
+      },
+      "testing": {
+        "value": "3",
+        "label": "Testing Laboratories",
+        "description": "Comprehensive quality assurance"
+      },
+      "documentation": {
+        "value": "11",
+        "label": "Enterprise Standards",
+        "description": "Industry-leading specifications"
+      }
+    },
+    "ctaLearnMore": "Learn More About Us"
+  },
+  "flexibleBusbarComparison": {
+    "title": "Why Choose Flexible Busbar?",
+    "subtitle": "Compare our advanced flexible busbar technology with traditional solutions",
+    "tabs": {
+      "traditional": "vs Traditional Cable",
+      "compact": "vs Compact Busbar"
+    },
+    "traditional": {
+      "name": "Traditional Cable",
+      "description": "Multiple cable runs with complex connections",
+      "features": {
+        "currentCapacity": {
+          "name": "Current Capacity",
+          "description": "Multiple units required for high current"
+        },
+        "heatManagement": {
+          "name": "Heat Management",
+          "description": "Uneven current flow causes hot spots"
+        },
+        "installation": {
+          "name": "Installation",
+          "description": "Complex multi-splicing and bulky setup"
+        },
+        "spaceEfficiency": {
+          "name": "Space Efficiency",
+          "description": "Large installation volume required"
+        },
+        "costEfficiency": {
+          "name": "Cost Efficiency",
+          "description": "More copper usage, higher material cost"
+        }
+      }
+    },
+    "compact": {
+      "name": "Compact Busbar",
+      "description": "Factory pre-assembled rigid busbar system",
+      "features": {
+        "installationFlexibility": {
+          "name": "Installation Flexibility",
+          "description": "Factory pre-assembly required, limited changes"
+        },
+        "temperaturePerformance": {
+          "name": "Temperature Performance",
+          "description": "70°C limit, capacity reduces to 15%"
+        },
+        "emergencyBackup": {
+          "name": "Emergency Backup",
+          "description": "Cannot restore power supply quickly"
+        },
+        "energyEfficiency": {
+          "name": "Energy Efficiency",
+          "description": "High line loss over 20%"
+        },
+        "spaceRequirements": {
+          "name": "Space Requirements",
+          "description": "Takes up significant installation space"
+        }
+      }
+    },
+    "flexibleBusbar": {
+      "name": "Flexible Busbar",
+      "description": "Advanced flexible solution for modern electrical systems",
+      "features": {
+        "currentCapacity": {
+          "name": "High Current Capacity",
+          "description": "200-6300A single unit, no derating needed"
+        },
+        "heatManagement": {
+          "name": "Superior Heat Management",
+          "description": "Consistent resistance, minimal heat generation"
+        },
+        "installation": {
+          "name": "Easy Installation",
+          "description": "Compact size, simple T-connector system"
+        },
+        "spaceOptimization": {
+          "name": "Space Optimization",
+          "description": "Neat, adaptable shape saves installation space"
+        },
+        "costSavings": {
+          "name": "Cost Savings",
+          "description": "High density design reduces copper usage"
+        }
+      }
+    },
+    "recommended": "Recommended",
+    "learnMore": "Learn more →",
+    "getQuote": "Get Quote →"
+  },
+  "inquiry": {
+    "title": "Get Your Custom Quote",
+    "subtitle": "Tell us about your project requirements and we'll provide a tailored solution",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "company": "Company Name",
+      "productInterest": "Product Interest",
+      "message": "Project Details"
+    },
+    "placeholders": {
+      "name": "Enter your full name",
+      "email": "Enter your email address",
+      "company": "Enter your company name",
+      "selectCategory": "Select a product category",
+      "message": "Describe your project requirements, current capacity, timeline, and any specific technical needs..."
+    },
+    "options": {
+      "flexibleBusbar": "Flexible Busbar",
+      "busbarConnector": "Busbar Connector",
+      "customSolutions": "Custom Solutions",
+      "other": "Other"
+    },
+    "buttons": {
+      "submit": "Send Inquiry",
+      "submitting": "Sending...",
+      "sendAnother": "Send Another Inquiry"
+    },
+    "success": {
+      "title": "Inquiry Sent Successfully!",
+      "description": "Thank you for your interest. Our technical team will review your requirements and get back to you within 24 hours."
+    },
+    "errors": {
+      "submitFailed": "Failed to send inquiry. Please try again."
+    },
+    "privacyNote": "Your information is secure and will only be used to respond to your inquiry."
+  },
+  "about": {
+    "hero": {
+      "title": "About Yanghua Cable",
+      "subtitle": "Leading the future of cable technology with innovation, quality, and reliability since 2013.",
+      "cta": {
+        "explore": "Explore Our Solutions",
+        "download": "Download Company Profile"
+      }
+    },
+    "overview": {
+      "title": "Leading Cable Manufacturing Excellence",
+      "description": "With over a decade of experience, we are committed to delivering high-quality cables that meet the most demanding industry standards. Our state-of-the-art facilities and expert team ensure reliable solutions for every application.",
+      "stats": {
+        "patents": "50+ Patents",
+        "productionlines": "8 Production Lines",
+        "laboratories": "3 Testing Labs",
+        "enterprisestandards": "15 Enterprise Standards"
+      }
+    },
+    "mission": {
+      "title": "Mission & Values",
+      "subtitle": "Driving innovation and excellence in cable manufacturing",
+      "missionTitle": "Our Mission",
+      "missionContent": "To provide innovative, reliable, and sustainable cable solutions that power the world's most critical infrastructure and enable technological advancement.",
+      "missionDescription": "We are committed to excellence in every aspect of our business, from research and development to manufacturing and customer service.",
+      "valuesTitle": "Our Values",
+      "values": {
+        "innovation": "Innovation - Continuously pushing the boundaries of cable technology",
+        "responsibility": "Responsibility - Committed to environmental sustainability and social responsibility",
+        "cooperation": "Cooperation - Building strong partnerships with customers and suppliers",
+        "sustainability": "Sustainability - Developing eco-friendly solutions for a better future"
+      }
+     },
+      "journey": {
+      "title": "Our Journey",
+      "subtitle": "From a small startup to an industry leader, our journey reflects our commitment to excellence and innovation."
+    },
+    "timeline": {
+      "title": "Our Development Journey",
+      "subtitle": "Key milestones in our growth and innovation",
+      "milestones": [
+        {
+          "year": "2010",
+          "event": "Company founded with a vision to revolutionize cable manufacturing"
+        },
+        {
+          "year": "2015",
+          "event": "Achieved ISO 9001 certification and expanded production capacity"
+        },
+        {
+          "year": "2018",
+          "event": "Launched innovative fire-resistant cable series for critical applications"
+        },
+        {
+          "year": "2021",
+          "event": "Established international partnerships and entered global markets"
+        },
+        {
+          "year": "2023",
+          "event": "Reached 1 million meters of cable production milestone"
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Quality & Certifications",
+      "subtitle": "Our commitment to quality is validated by international certifications and rigorous testing standards.",
+      "description": "All our products undergo rigorous testing and quality control processes to ensure they meet or exceed international standards for safety, performance, and reliability.",
+      "cta": "View All Certifications"
+    },
+    "team": {
+      "title": "Our Leadership Team",
+      "subtitle": "Meet the experienced professionals driving our company's vision and growth.",
+      "positions": {
+        "ceo": "Chief Executive Officer",
+        "cto": "Chief Technology Officer",
+        "engineer": "Senior Engineer",
+        "qa": "Quality Assurance Director"
+      },
+      "experience": {
+        "ceo": "15+ years in electrical engineering and business leadership",
+        "cto": "20+ years in cable technology research and development",
+        "engineer": "12+ years in product design and manufacturing optimization",
+        "qa": "18+ years in quality management and international standards"
+      }
+    },
+    "cta": {
+      "title": "Ready to Partner with Us?",
+      "subtitle": "Let's discuss how our innovative cable solutions can meet your specific requirements and help you achieve your project goals.",
+      "description": "Let's discuss how our innovative cable solutions can meet your specific requirements and drive your project's success.",
+      "buttons": {
+        "contact": "Get in Touch",
+        "quote": "Request a Quote"
+      }
+    },
+    "video": {
+      "playButton": "Play Video",
+      "companyIntro": "Company Introduction",
+      "watchVideo": "Watch Our Story",
+      "loading": "Loading video...",
+      "error": "Unable to load video"
+    },
+    "equipment": {
+      "title": "Testing Equipment",
+      "subtitle": "Our state-of-the-art testing equipment ensures the highest quality and reliability of our products",
+      "badge": "Advanced Technology"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download",
+    "learnMore": "Learn More"
+  },
+  "products": {
+    "hero": {
+      "title": "Our Products",
+      "subtitle": "Discover our comprehensive range of high-quality cables and accessories designed for various industrial and commercial applications."
+    },
+    "overview": {
+      "title": "Product Overview",
+      "subtitle": "Our product portfolio includes a wide range of specialized cables designed to meet the highest industry standards and safety requirements."
+    },
+    "common": {
+      "models": "Models",
+      "availableModels": "Available Models",
+      "exploreProducts": "Explore {categoryName} Products"
+    },
+    "specifications": {
+      "title": "Technical Specifications",
+      "currentRange": {
+        "title": "Current Range (A)",
+        "description": "Wide range of current carrying capacity to meet various application requirements"
+      },
+      "ratedVoltage": {
+        "title": "Rated Voltage",
+        "description": "Suitable for low to medium voltage applications with excellent insulation properties"
+      },
+      "protectionLevel": {
+        "title": "Protection Level",
+        "description": "Maximum protection against dust and water ingress for harsh environments"
+      }
+    },
+    "categories": [
+      {
+        "name": "General Purpose Cables",
+        "productIndex": 0,
+        "models": ["TMRVV", "TMRVSV"],
+        "applications": ["Indoor installations", "Outdoor installations"],
+        "description": "Standard cables for general electrical installations and power transmission applications."
+      },
+      {
+        "name": "Flame Retardant Cables",
+        "productIndex": 1,
+        "models": ["Z(A,B,C)-TMRVV", "Z(A,B,C)-TMRYY", "Z(A,B,C)-TMRYSY"],
+        "applications": [
+          "High-rise buildings",
+          "Shopping malls",
+          "Schools and universities",
+          "Subway systems",
+          "Airports",
+          "Sports stadiums",
+          "Exhibition centers",
+          "Hospitals"
+        ],
+        "description": "Cables designed to resist flame propagation and reduce fire hazards in critical installations."
+      },
+      {
+        "name": "Fire Resistant Cables",
+        "productIndex": 2,
+        "models": ["Z(A,B,C)N-TMRVV", "Z(A,B,C)N-TMRYY", "Z(A,B,C)N-TMRYSY"],
+        "applications": [
+          "Emergency systems",
+          "Fire safety equipment",
+          "Critical infrastructure"
+        ],
+        "description": "Cables that maintain circuit integrity during fire conditions for emergency and safety systems."
+      },
+      {
+        "name": "Low Smoke & Halogen-Free Cables",
+        "productIndex": 3,
+        "models": ["WDZ(A,B,C)-TMRYY", "WDZ(A,B,C)N-TMRYY", "B1(60,90,α1)-WDZ(A,B,C)-TMRYY"],
+        "applications": [
+          "Clean rooms",
+          "Data centers",
+          "Healthcare facilities",
+          "Educational institutions"
+        ],
+        "description": "Environmentally friendly cables that produce minimal smoke and toxic gases when exposed to fire."
+      },
+      {
+        "name": "Accessories & Components",
+        "productIndex": 4,
+        "models": ["Converse Case", "Connector"],
+        "applications": [
+          "Installation support",
+          "System integration",
+          "Maintenance operations"
+        ],
+        "description": "Essential accessories and components for complete cable installation and maintenance solutions."
+      }
+    ]
+  },
+  "solutions": {
+    "page": {
+      "title": "Industry Solutions",
+      "description": "Discover our specialized electrical connection solutions designed for specific industries and applications. Each solution is engineered to meet unique requirements and challenges."
+    },
+    "navigation": {
+      "backToSolutions": "Back to Solutions"
+    },
+    "common": {
+      "keyHighlights": "Key Highlights",
+      "keyApplications": "Key Applications",
+      "keyAdvantages": "Key Advantages",
+      "technicalSpecifications": "Technical Specifications",
+      "caseStudies": "Case Studies",
+      "viewDetails": "View Details",
+      "contactUs": "Contact Us"
+    },
+    "cta": {
+      "solutionOverview": "Solution Overview",
+      "description": "Ready to implement this solution? Download our detailed solution brief or schedule a consultation with our experts.",
+      "downloadBrief": "Download Solution Brief",
+      "requestConsultation": "Request Consultation",
+      "customSolution": {
+        "title": "Need a Custom Solution?",
+        "description": "Our engineering team can develop custom electrical connection solutions tailored to your specific requirements and industry needs."
+      }
+    },
+    "solutions": [
+      {
+        "id": "new-energy",
+        "title": "New Energy Solutions",
+        "subtitle": "Advanced power transmission for solar, wind, and energy storage systems",
+        "description": "Yanghua STI provides specialized flexible busbar solutions for the new energy sector, addressing the unique power transmission challenges in solar, wind, and energy storage applications. Our solutions ensure reliable, efficient power delivery even in demanding environments.",
+        "image": "/images/solutions/new-energy.webp",
+        "highlights": [
+          "High current capacity for large-scale installations",
+          "Weather-resistant designs for outdoor applications",
+          "Flexible configurations for complex layouts",
+          "Superior heat dissipation for continuous operation"
+        ],
+        "applications": [
+          "Solar PV systems",
+          "Wind farms",
+          "Battery storage",
+          "EV charging"
+        ],
+        "advantages": [
+          {
+            "title": "Enhanced Reliability",
+            "description": "Our flexible busbar systems are engineered for continuous operation in harsh environments, providing superior reliability compared to traditional solutions."
+          },
+          {
+            "title": "Cost-Effective Installation",
+            "description": "With reduced installation time and fewer components, our solutions significantly lower overall project costs."
+          },
+          {
+            "title": "Superior Performance",
+            "description": "High current-carrying capacity with minimal voltage drop ensures optimal system performance."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 6300A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "Up to 1kV"
+          },
+          {
+            "parameter": "Protection Level",
+            "value": "IP65/IP67"
+          },
+          {
+            "parameter": "Operating Temperature",
+            "value": "-40°C to +90°C"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Large-Scale Solar Farm",
+            "description": "Implemented our flexible busbar solution across 500MW solar installation, reducing installation time by 40%."
+          },
+          {
+            "title": "Offshore Wind Platform",
+            "description": "Provided corrosion-resistant busbar system for critical power distribution in harsh marine environment."
+          }
+        ]
+      },
+      {
+        "id": "power-system",
+        "title": "Power System Solutions",
+        "subtitle": "Reliable grid infrastructure and power distribution solutions",
+        "description": "Our flexible busbar solutions enhance the reliability and efficiency of power transmission and distribution systems. Designed for substations, switchgear, and grid modernization projects, they offer superior performance compared to traditional conductors.",
+        "image": "/images/solutions/power-systems.webp",
+        "highlights": [
+          "Grid modernization compatible",
+          "Reduced maintenance requirements",
+          "Enhanced safety features",
+          "Easy integration with existing infrastructure"
+        ],
+        "applications": [
+          "Substations",
+          "Switchgear",
+          "Power plants",
+          "Grid modernization"
+        ],
+        "advantages": [
+          {
+            "title": "Grid Stability",
+            "description": "Our solutions contribute to enhanced grid stability with consistent electrical characteristics and reduced losses."
+          },
+          {
+            "title": "Quick Installation",
+            "description": "Pre-fabricated sections and simplified connections reduce installation time and complexity."
+          },
+          {
+            "title": "Long-term Reliability",
+            "description": "Engineered for decades of reliable service with minimal maintenance requirements."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 5000A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "Up to 35kV"
+          },
+          {
+            "parameter": "Protection Level",
+            "value": "IP65"
+          },
+          {
+            "parameter": "Short Circuit Rating",
+            "value": "Up to 63kA"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "National Grid Modernization",
+            "description": "Upgraded 200km transmission line with our flexible busbar technology, improving efficiency by 15%."
+          }
+        ]
+      },
+      {
+        "id": "manufacturing",
+        "title": "Manufacturing Solutions",
+        "subtitle": "Flexible power distribution for modern manufacturing facilities",
+        "description": "Optimize your manufacturing operations with our flexible busbar solutions designed for modern production facilities. Our systems provide reliable power distribution that adapts to changing production layouts and equipment configurations.",
+        "image": "/images/solutions/manufacturing.webp",
+        "highlights": [
+          "Adaptable to changing production layouts",
+          "Reduced installation complexity",
+          "Enhanced worker safety",
+          "Future-proof design"
+        ],
+        "applications": [
+          "Assembly lines",
+          "Robotic systems",
+          "CNC machines",
+          "Conveyor systems"
+        ],
+        "advantages": [
+          {
+            "title": "Layout Flexibility",
+            "description": "Easily reconfigure power distribution as production layouts change without major infrastructure modifications."
+          },
+          {
+            "title": "Installation Flexibility",
+            "description": "Easily route around structural obstacles without custom fabrication."
+          },
+          {
+            "title": "Reduced Downtime",
+            "description": "Quick installation and easy modifications minimize facility downtime during upgrades."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 4000A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "Up to 1kV"
+          },
+          {
+            "parameter": "Bending Radius",
+            "value": "6x diameter minimum"
+          },
+          {
+            "parameter": "Operating Temperature",
+            "value": "-25°C to +90°C"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Automotive Manufacturing Plant",
+            "description": "Retrofitted assembly line power distribution with our flexible busbar, reducing installation time by 50%."
+          }
+        ]
+      },
+      {
+        "id": "data-center",
+        "title": "Data Center Solutions",
+        "subtitle": "High-density power solutions for critical IT infrastructure",
+        "description": "Ensure uninterrupted power delivery to your critical IT infrastructure with our specialized data center solutions. Designed for high-density server farms, cloud facilities, and colocation centers, they provide reliable power with enhanced safety features.",
+        "image": "/images/solutions/data-center.webp",
+        "highlights": [
+          "High-density power distribution",
+          "Enhanced safety for IT personnel",
+          "Easy maintenance and upgrades",
+          "Fire-resistant materials"
+        ],
+        "applications": [
+          "Server farms",
+          "Cloud facilities",
+          "Colocation centers",
+          "Edge computing"
+        ],
+        "advantages": [
+          {
+            "title": "Mission-Critical Reliability",
+            "description": "Engineered for 99.99% uptime with redundant power paths and fail-safe mechanisms."
+          },
+          {
+            "title": "Cooling Efficiency",
+            "description": "Reduced heat generation and improved airflow design minimize cooling costs."
+          },
+          {
+            "title": "Scalability",
+            "description": "Easily expandable design accommodates growing power demands without major infrastructure changes."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 3200A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "230V/400V"
+          },
+          {
+            "parameter": "Protection Level",
+            "value": "IP65"
+          },
+          {
+            "parameter": "Fire Resistance",
+            "value": "IEC 60331 compliant"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Hyperscale Data Center",
+            "description": "Deployed 100MW power distribution system for major cloud provider, achieving 99.99% uptime."
+          }
+        ]
+      },
+      {
+        "id": "rail-transit",
+        "title": "Rail Transit Solutions",
+        "subtitle": "Safe and reliable power for railway and metro systems",
+        "description": "Our flexible busbar solutions provide safe, reliable power distribution for railway and metro systems. Engineered for metro systems, railway stations, and signaling systems, they offer enhanced safety and performance in transit environments.",
+        "image": "/images/solutions/rail-transit.webp",
+        "highlights": [
+          "Enhanced safety for passenger environments",
+          "Vibration-resistant design",
+          "Easy maintenance in confined spaces",
+          "Compliance with transit safety standards"
+        ],
+        "applications": [
+          "Metro systems",
+          "Railway stations",
+          "Signaling systems",
+          "Maintenance facilities"
+        ],
+        "advantages": [
+          {
+            "title": "Passenger Safety",
+            "description": "Non-inductive sheath and fire-resistant materials ensure maximum safety for passengers and personnel."
+          },
+          {
+            "title": "Vibration Resistance",
+            "description": "Specialized construction withstands continuous vibrations from train operations."
+          },
+          {
+            "title": "Minimal Maintenance",
+            "description": "Robust design reduces maintenance requirements in hard-to-access transit environments."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 2500A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "Up to 1kV"
+          },
+          {
+            "parameter": "Vibration Resistance",
+            "value": "EN 61373 compliant"
+          },
+          {
+            "parameter": "Fire Integrity",
+            "value": "30-minute fire resistance"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Urban Metro Expansion",
+            "description": "Supplied busbar system for new metro line, meeting strict safety and performance requirements."
+          }
+        ]
+      },
+      {
+        "id": "metallurgy-chemical",
+        "title": "Metallurgy & Chemical Solutions",
+        "subtitle": "Heavy-duty power solutions for harsh industrial environments",
+        "description": "Deliver reliable power in the harshest industrial environments with our metallurgy and chemical solutions. Designed for steel mills, chemical plants, and refineries, they provide exceptional durability and performance in extreme conditions.",
+        "image": "/images/solutions/metallurgy.webp",
+        "highlights": [
+          "Corrosion-resistant materials",
+          "High-temperature performance",
+          "Chemical resistance",
+          "Explosion-proof designs available"
+        ],
+        "applications": [
+          "Steel mills",
+          "Chemical plants",
+          "Refineries",
+          "Smelting operations"
+        ],
+        "advantages": [
+          {
+            "title": "Extreme Environment Performance",
+            "description": "Engineered to operate reliably in temperatures up to 200°C and corrosive chemical environments."
+          },
+          {
+            "title": "Safety Compliance",
+            "description": "Meets stringent safety standards for hazardous industrial environments including ATEX certification."
+          },
+          {
+            "title": "Long Service Life",
+            "description": "Specialized materials and construction provide extended service life even in harsh conditions."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 6000A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "Up to 1.5kV"
+          },
+          {
+            "parameter": "Operating Temperature",
+            "value": "-40°C to +200°C"
+          },
+          {
+            "parameter": "Chemical Resistance",
+            "value": "PTFE/PFA coating available"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Steel Mill Modernization",
+            "description": "Upgraded power distribution for 2000-ton steel production line, improving efficiency and safety."
+          }
+        ]
+      },
+      {
+        "id": "marine-shipping",
+        "title": "Marine & Shipping Solutions",
+        "subtitle": "Corrosion-resistant power solutions for marine applications",
+        "description": "Our marine and shipping solutions provide reliable, corrosion-resistant power distribution for maritime applications. Designed for ports, ships, and offshore platforms, they ensure safe, efficient power delivery in challenging marine environments.",
+        "image": "/images/solutions/marine.webp",
+        "highlights": [
+          "Saltwater corrosion resistance",
+          "Marine safety certifications",
+          "Flexible installation on vessels",
+          "Robust construction for harsh marine conditions"
+        ],
+        "applications": [
+          "Ports",
+          "Ships",
+          "Offshore platforms",
+          "Coastal facilities"
+        ],
+        "advantages": [
+          {
+            "title": "Marine-Grade Durability",
+            "description": "Specialized materials and coatings provide exceptional resistance to saltwater corrosion and marine conditions."
+          },
+          {
+            "title": "Safety Compliance",
+            "description": "Meets international marine safety standards for passenger and cargo vessels."
+          },
+          {
+            "title": "Vessel Optimization",
+            "description": "Lightweight, flexible design reduces vessel weight and accommodates ship movements."
+          }
+        ],
+        "technicalSpecs": [
+          {
+            "parameter": "Current Rating",
+            "value": "Up to 3000A"
+          },
+          {
+            "parameter": "Voltage Rating",
+            "value": "Up to 1kV"
+          },
+          {
+            "parameter": "Marine Certification",
+            "value": "DNV GL, Lloyd's Register"
+          },
+          {
+            "parameter": "Salt Spray Resistance",
+            "value": "2000+ hours"
+          }
+        ],
+        "caseStudies": [
+          {
+            "title": "Offshore Oil Platform",
+            "description": "Provided explosion-proof busbar system for critical power distribution in hazardous offshore environment."
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "page": {
+      "title": "Contact Us",
+      "description": "Get in touch with our team for quotes, technical support, or any questions about our flexible busbar solutions."
+    },
+    "sections": {
+      "getInTouch": "Get in Touch"
+    },
+    "info": {
+      "phone": {
+        "title": "Phone",
+        "content": "+86-755-8888-8888",
+        "description": "Call us during business hours"
+      },
+      "email": {
+        "title": "Email",
+        "content": "info@yanghuasti.com",
+        "description": "Send us an email anytime"
+      },
+      "address": {
+        "title": "Address",
+        "content": "Dongguan, Guangdong, China",
+        "description": "Visit our manufacturing facility"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "content": "Mon-Fri: 8:00 AM - 6:00 PM (CST)",
+        "description": "We are here to help"
+      }
+    },
+    "globalSupport": {
+      "title": "Global Support",
+      "description": "We provide worldwide support and service for all our products.",
+      "regions": {
+        "northAmerica": "North America",
+        "europe": "Europe",
+        "asiaPacific": "Asia Pacific"
+      }
+    }
+  },
+  "projects": {
+    "page": {
+      "title": "Our Projects",
+      "description": "Explore our successful projects and case studies that demonstrate our expertise in power distribution solutions."
+    },
+    "stats": {
+      "totalProjects": "100+",
+      "industriesCovered": "7",
+      "countriesServed": "10+",
+      "totalCapacity": "50000A+"
+    },
+    "labels": {
+      "client": "Client",
+      "industry": "Industry",
+      "scale": "Scale",
+      "year": "Year",
+      "viewDetails": "View Details",
+      "backToProjects": "Back to Projects"
+    },
+    "list": [
+      {
+        "id": "huawei-data-center-expansion",
+        "title": "Huawei Data Center Power Distribution System",
+        "client": "Huawei Technologies Co., Ltd.",
+        "industry": "Data Center",
+        "scale": "50MW Power Distribution",
+        "year": "2024",
+        "description": "High-current flexible busbar system for large-scale data center power distribution, ensuring reliable and efficient electrical connections."
+      },
+      {
+        "id": "byd-battery-manufacturing",
+        "title": "BYD Battery Manufacturing Plant Electrical System",
+        "client": "BYD Company Limited",
+        "industry": "New Energy Vehicle",
+        "scale": "100MW Manufacturing Facility",
+        "year": "2024",
+        "description": "Custom electrical connection solutions for battery production lines, featuring high-precision copper braids and flexible busbars."
+      },
+      {
+        "id": "catl-energy-storage",
+        "title": "CATL Energy Storage System Integration",
+        "client": "Contemporary Amperex Technology Co. Limited",
+        "industry": "Energy Storage",
+        "scale": "200MWh Storage System",
+        "year": "2023",
+        "description": "Advanced electrical connection solutions for large-scale energy storage systems, ensuring optimal performance and safety."
+      },
+      {
+        "id": "midea-industrial-complex",
+        "title": "Midea Industrial Complex Power Infrastructure",
+        "client": "Midea Group Co., Ltd.",
+        "industry": "Manufacturing",
+        "scale": "80MW Industrial Complex",
+        "year": "2023",
+        "description": "Comprehensive electrical distribution system for smart manufacturing facilities with flexible busbar solutions."
+      },
+      {
+        "id": "metro-line-14",
+        "title": "Shenzhen Metro Line 14 Electrical System",
+        "client": "Shenzhen Metro Group",
+        "industry": "Rail Transit",
+        "scale": "38km Metro Line",
+        "year": "2023",
+        "description": "Power distribution solutions for mass transit systems, providing safe and efficient electrical connections for metro operations."
+      },
+      {
+        "id": "tesla-gigafactory",
+        "title": "Tesla Gigafactory Electrical Infrastructure",
+        "client": "Tesla, Inc.",
+        "industry": "Electric Vehicle",
+        "scale": "120MW Gigafactory",
+        "year": "2022",
+        "description": "High-capacity power distribution systems for electric vehicle manufacturing facilities, optimized for efficiency and reliability."
+      }
+    ]
+  }
+}

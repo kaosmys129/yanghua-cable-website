@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Center - YANGHUA STI | High Current Flexible Busbar Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Using Inter as the primary font */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #f8f9fa; /* Light gray background for a professional look */
+        }
+        /* Enhanced title style */
+        .section-title {
+            font-weight: 700;
+            color: #1a202c;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #0056b3; /* Brand's primary color */
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- 1. Header -->
+    <!-- The header should include the company logo, main page links, and contact info, reflecting a professional B2B site. -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <!-- Company Logo -->
+                <a href="#" class="text-2xl font-bold text-gray-800">YANGHUA STI</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">About Us</a>
+                <a href="#" class="text-blue-600 font-semibold border-b-2 border-blue-600 pb-1">Products</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">Solutions</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">Projects</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">News</a>
+            </div>
+            <a href="#" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 cta-button">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <!-- Emphasizes the core value "Full-scene solution provider" and provides key calls to action. -->
+    <section class="bg-white">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">High Current Flexible Busbar Product Center</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">Providing innovative solutions for high current power transmission and distribution, serving diverse application scenarios such as new energy, data centers, and industrial plants.</p>
+            <div>
+                <a href="#product-list" class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 cta-button">Browse All Products</a>
+                <a href="#" class="ml-4 border border-gray-300 text-gray-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 cta-button">Download Brochure</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Main Content: Product Filters & List -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row gap-8">
+
+            <!-- 3.1. Filters Sidebar - A key feature for B2B sites -->
+            <aside class="w-full md:w-1/4 lg:w-1/5">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-xl mb-4 border-b pb-2">Filter Products</h3>
+                    
+                    <!-- Filter by Product Series -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">By Series</h4>
+                        <ul class="space-y-2 text-gray-600">
+                            <li><a href="#" class="hover:text-blue-600 hover:font-semibold">All Series</a></li>
+                            <li><a href="#" class="hover:text-blue-600">General Series</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Flame-retardant Series</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Fire-resistant Series</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Low Smoke Halogen-free</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Filter by Application -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">By Application</h4>
+                         <ul class="space-y-2 text-gray-600">
+                            <li><a href="#" class="hover:text-blue-600">New Energy (EV Charging/PV/Storage)</a></li>
+                            <li><a href="#" class="hover:text-blue-600">IDC Data Center</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Industrial & Commercial Buildings</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Rail Transit</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Chemical & Metallurgy</a></li>
+                            <li><a href="#" class="hover:text-blue-600">Shipping</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Filter by Technical Specs -->
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-3">By Specs</h4>
+                        <label for="current-range" class="text-sm text-gray-600">Rated Current (A): <span id="current-value" class="font-bold text-blue-600">4000A</span></label>
+                        <input type="range" id="current-range" min="200" max="6300" value="4000" step="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 3.2. Product Grid -->
+            <div id="product-list" class="w-full md:w-3/4 lg:w-4/5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    
+                    <!-- Product Card 1: General Type -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/E2E8F0/4A5568?text=General+Type+Image" alt="TMRVV Product Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">TMRVV / TMRVSV General Type</h4>
+                            <p class="text-gray-600 text-sm mb-4">Waterproof, wear-resistant, with excellent electrical performance for standard indoor and outdoor environments.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">200-6300A</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">IP68 Protection</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">General Use</span>
+                            </div>
+                            <a href="#" class="w-full text-center block bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2: Flame-retardant -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/E2E8F0/4A5568?text=Flame-retardant+Image" alt="Flame-retardant Product Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Z-TMRYY Flame-retardant</h4>
+                            <p class="text-gray-600 text-sm mb-4">Uses flame-retardant materials to prevent or delay the spread of fire, ensuring safety in public spaces.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">200-6300A</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Class A/B/C</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Public Venues</span>
+                            </div>
+                            <a href="#" class="w-full text-center block bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3: Fire-resistant -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/E2E8F0/4A5568?text=Fire-resistant+Image" alt="Fire-resistant Product Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">ZN-TMRYY Fire-resistant</h4>
+                            <p class="text-gray-600 text-sm mb-4">Maintains power supply for a certain period during a fire, ideal for critical circuits like fire safety systems.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">200-6300A</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Fire-resistant</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Emergency Power</span>
+                            </div>
+                            <a href="#" class="w-full text-center block bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- More product cards... -->
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 4. Why Choose Us - Building Trust -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl text-center section-title mx-auto max-w-md">Why Choose YANGHUA STI?</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">We don't just supply products; we are your trusted partner in high current power distribution technology.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                        <!-- SVG Icon -->
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Certified Quality</h3>
+                    <p class="text-gray-600">ISO, CE, and other certifications, with over 40 patents and test reports ensuring guaranteed quality.</p>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Innovative Technology</h3>
+                    <p class="text-gray-600">Independent IP rights for production lines and deep industry-academia-research collaboration.</p>
+                </div>
+                <div class="p-6">
+                     <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Superior Performance</h3>
+                    <p class="text-gray-600">Safe, reliable, and efficient with low temperature rise, minimal line loss, and higher cost-effectiveness.</p>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                         <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Full-Scene Solutions</h3>
+                    <p class="text-gray-600">End-to-end service from design to supply, with proven success in major projects like Huawei and CATL.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Call to Action -->
+    <section class="bg-blue-600">
+        <div class="container mx-auto px-6 py-16">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-white text-center md:text-left mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold">Have a project or need technical support?</h2>
+                    <p class="text-blue-100 mt-2">Our team of experts is ready to provide you with customized consulting and quotation services.</p>
+                </div>
+                <div>
+                    <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 cta-button">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">YANGHUA STI</h3>
+                    <p class="text-gray-400">Leader of high current digital ecosystem service provider.</p>
+                    <p class="text-gray-400 mt-4">National Service Hotline:<br><span class="font-bold text-lg">400-883-1383</span></p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Product Series</a></li>
+                        <li><a href="#" class="hover:text-white">Solutions</a></li>
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Industries</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">New Energy</a></li>
+                        <li><a href="#" class="hover:text-white">Data Centers</a></li>
+                        <li><a href="#" class="hover:text-white">Industrial Buildings</a></li>
+                        <li><a href="#" class="hover:text-white">Rail Transit</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <p class="text-gray-400 mb-2">Get the latest product and industry news.</p>
+                    <!-- Placeholders for WeChat QR codes -->
+                    <div class="flex space-x-4">
+                        <img src="https://placehold.co/80x80/FFFFFF/4A5568?text=WeChat" alt="Official Account QR Code" class="rounded">
+                        <img src="https://placehold.co/80x80/FFFFFF/4A5568?text=Channel" alt="Video Channel QR Code" class="rounded">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 YANGHUA STI (SHENZHEN) NEW ENERGY EQUIPMENT CO.,LTD. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to update the range slider's displayed value
+        const currentRange = document.getElementById('current-range');
+        const currentValue = document.getElementById('current-value');
+        currentRange.addEventListener('input', (event) => {
+            currentValue.textContent = `${event.target.value}A`;
+        });
+    </script>
+
+</body>
+</html>

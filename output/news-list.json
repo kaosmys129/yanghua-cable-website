@@ -1,0 +1,71 @@
+{
+  "companyInfo": {
+    "name": "Yanghuasti (Shenzhen) New Energy Equipment Co., Ltd.",
+    "website": "http://www.yanghuasti.com",
+    "totalArticles": 72,
+    "extractionDate": "2025-08-14 10:30:00"
+  },
+  "totalCount": 5,
+  "articles": [
+    {
+      "id": 1,
+      "title": "Chemical Plant Multi-core Cable Connections vs. Flexible Busbar Solutions",
+      "date": "2025-07-30",
+      "url": "http://www.yanghuasti.com/news-media/532260",
+      "summary": "How many parallel cable connections have you dealt in chemical plants? This is the distribution system of a large chemical enterprise plant, with numerous black cables weaving into a network between e...",
+      "category": "general",
+      "keywords": [],
+      "imageUrl": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250730/6388946900420037967099851.jpg",
+      "readingTime": 4,
+      "wordCount": 1659
+    },
+    {
+      "id": 2,
+      "title": "Multi-parallel Cable Current Deviation Problems",
+      "date": "2025-07-03",
+      "url": "http://www.yanghuasti.com/news-media/505135",
+      "summary": "Why do multiple parallel cables always have one heating up first? In electrical systems operation, current deviation or shunting in multiple parallel cables is common. During parallel installation, th...",
+      "category": "general",
+      "keywords": [],
+      "imageUrl": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715242653421775624089.png",
+      "readingTime": 3,
+      "wordCount": 1465
+    },
+    {
+      "id": 3,
+      "title": "Building Electrical Low-Carbon Energy Efficiency Forum",
+      "date": "2025-03-20",
+      "url": "http://www.yanghuasti.com/news-media/551521",
+      "summary": "Second Appearance! High-Current Flexible Busbar at Architectural Electrical Low-Carbon Energy Saving Forum On March 19, flexible busbars participated again in the 17th Architectural Electrical Low-Car...",
+      "category": "general",
+      "keywords": [],
+      "imageUrl": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814670425165811838484.jpg",
+      "readingTime": 3,
+      "wordCount": 1001
+    },
+    {
+      "id": 4,
+      "title": "Supporting Xinjiang's Belt and Road Construction",
+      "date": "2024-12-27",
+      "url": "http://www.yanghuasti.com/news-media/532899",
+      "summary": "Supporting Xinjiang's 'Belt and Road' Construction, Flexible Busbars Always on the Road Xinjiang, known as the 'Golden Corridor' open to innovation and connectivity, is located in the center of the Eu...",
+      "category": "general",
+      "keywords": [],
+      "imageUrl": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151135772742497717749.png",
+      "readingTime": 3,
+      "wordCount": 1466
+    },
+    {
+      "id": 5,
+      "title": "Digital Energy Pioneer Exhibition",
+      "date": "2024-09-11",
+      "url": "http://www.yanghuasti.com/news-media/512155",
+      "summary": "Digital Energy Pioneer, Smart Innovation Future — High-Current Flexible Busbar Exhibition Highlights On September 11, 2024, the 4-day 2024 International Digital Energy Exhibition concluded at the Shen...",
+      "category": "general",
+      "keywords": [],
+      "imageUrl": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184358268813623970276.png",
+      "readingTime": 2,
+      "wordCount": 801
+    }
+  ]
+}
