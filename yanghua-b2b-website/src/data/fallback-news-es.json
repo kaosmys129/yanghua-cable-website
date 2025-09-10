@@ -1,0 +1,41 @@
+[
+  {
+    "id": "fallback-1",
+    "title": "Yanghua Technology: Liderando la Innovación en Soluciones de Barras Conductoras Flexibles",
+    "excerpt": "Descubre cómo nuestra tecnología de barras conductoras flexibles está revolucionando la distribución de energía en todas las industrias.",
+    "content": "Yanghua Technology continúa liderando la industria con soluciones innovadoras de barras conductoras flexibles que proporcionan rendimiento, seguridad y eficiencia superiores en aplicaciones de distribución de energía.",
+    "date": "2024-01-15",
+    "readTime": "3 min",
+    "category": "Noticias de la Empresa",
+    "author": "Yanghua Technology",
+    "image": "/images/placeholder-image.jpg",
+    "featured": true,
+    "tags": ["Innovación", "Barra Conductora Flexible", "Tecnología"]
+  },
+  {
+    "id": "fallback-2",
+    "title": "Soluciones de Alta Corriente para Infraestructura Moderna",
+    "excerpt": "Explorando los beneficios de las barras conductoras flexibles de alta corriente en centros de datos y aplicaciones industriales.",
+    "content": "La infraestructura moderna exige soluciones de distribución de energía confiables y eficientes. Nuestras barras conductoras flexibles de alta corriente enfrentan estos desafíos con diseño innovador y rendimiento superior.",
+    "date": "2024-01-10",
+    "readTime": "4 min",
+    "category": "Perspectivas Técnicas",
+    "author": "Equipo de Ingeniería",
+    "image": "/images/placeholder-image.jpg",
+    "featured": false,
+    "tags": ["Alta Corriente", "Infraestructura", "Centros de Datos"]
+  },
+  {
+    "id": "fallback-3",
+    "title": "Distribución de Energía Sostenible para el Futuro",
+    "excerpt": "Cómo las barras conductoras flexibles contribuyen a sistemas de energía más sostenibles y eficientes.",
+    "content": "La sostenibilidad está en el núcleo de nuestro diseño de barras conductoras flexibles, ofreciendo uso reducido de materiales, eficiencia mejorada y vida útil más larga comparado con soluciones tradicionales.",
+    "date": "2024-01-05",
+    "readTime": "5 min",
+    "category": "Sostenibilidad",
+    "author": "Yanghua Technology",
+    "image": "/images/placeholder-image.jpg",
+    "featured": false,
+    "tags": ["Sostenibilidad", "Eficiencia", "Tecnología Verde"]
+  }
+]

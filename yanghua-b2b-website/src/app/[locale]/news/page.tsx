@@ -1,24 +1,22 @@
-import fs from 'fs';
-import path from 'path';
+import { Suspense } from 'react';
 import NewsPageClient from './NewsPageClient';
-import { getNewsArticles } from './NewsPageServer';
+import NewsPageFallback from './NewsPageFallback';
 
-import { NewsArticle } from '@/types/news';
+// Static fallback data
+const staticNewsData = {
+  regularArticles: [],
+  categories: ['Industry News', 'Product Updates', 'Company News'],
+  tags: ['cables', 'technology', 'manufacturing']
+};
 
 export default function NewsPage() {
-  const articles = getNewsArticles();
-  const featuredArticle = articles.find(article => article.featured);
-  const regularArticles = articles.filter(article => !article.featured);
-
-  const categories = ['All', 'Company News', 'Industry Trends', 'Technical Articles'];
-  const tags = ['New Product Launch', 'Technological Innovation', 'New Energy', 'Data Center', 'Policy Interpretation'];
-
   return (
-    <NewsPageClient 
-      featuredArticle={featuredArticle}
-      regularArticles={regularArticles}
-      categories={categories}
-      tags={tags}
-    />
+    <Suspense fallback={<NewsPageFallback />}>
+      <NewsPageClient 
+        regularArticles={staticNewsData.regularArticles}
+        categories={staticNewsData.categories}
+        tags={staticNewsData.tags}
+      />
+    </Suspense>
   );
 }

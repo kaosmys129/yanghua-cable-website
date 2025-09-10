@@ -1,0 +1,41 @@
+[
+  {
+    "id": "fallback-1",
+    "title": "Yanghua Technology: Leading Innovation in Flexible Busbar Solutions",
+    "excerpt": "Discover how our flexible busbar technology is revolutionizing power distribution across industries.",
+    "content": "Yanghua Technology continues to lead the industry with innovative flexible busbar solutions that provide superior performance, safety, and efficiency in power distribution applications.",
+    "date": "2024-01-15",
+    "readTime": "3 min",
+    "category": "Company News",
+    "author": "Yanghua Technology",
+    "image": "/images/placeholder-image.jpg",
+    "featured": true,
+    "tags": ["Innovation", "Flexible Busbar", "Technology"]
+  },
+  {
+    "id": "fallback-2",
+    "title": "High Current Solutions for Modern Infrastructure",
+    "excerpt": "Exploring the benefits of high-current flexible busbars in data centers and industrial applications.",
+    "content": "Modern infrastructure demands reliable, efficient power distribution solutions. Our high-current flexible busbars meet these challenges with innovative design and superior performance.",
+    "date": "2024-01-10",
+    "readTime": "4 min",
+    "category": "Technical Insights",
+    "author": "Engineering Team",
+    "image": "/images/placeholder-image.jpg",
+    "featured": false,
+    "tags": ["High Current", "Infrastructure", "Data Centers"]
+  },
+  {
+    "id": "fallback-3",
+    "title": "Sustainable Power Distribution for the Future",
+    "excerpt": "How flexible busbars contribute to more sustainable and efficient power systems.",
+    "content": "Sustainability is at the core of our flexible busbar design, offering reduced material usage, improved efficiency, and longer service life compared to traditional solutions.",
+    "date": "2024-01-05",
+    "readTime": "5 min",
+    "category": "Sustainability",
+    "author": "Yanghua Technology",
+    "image": "/images/placeholder-image.jpg",
+    "featured": false,
+    "tags": ["Sustainability", "Efficiency", "Green Technology"]
+  }
+]

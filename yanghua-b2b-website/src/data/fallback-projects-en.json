@@ -1,0 +1,80 @@
+[
+  {
+    "id": "fallback-1",
+    "title": "Data Center Power Distribution",
+    "client": "Tech Corporation",
+    "industry": "Data Center",
+    "location": "Shenzhen, China",
+    "duration": "3 months",
+    "completionDate": "2024-01-01",
+    "projectScale": "1000A system",
+    "scale": "1000A system",
+    "year": "2024",
+    "description": "High-efficiency power distribution solution for modern data center infrastructure.",
+    "content": "This project involved implementing a comprehensive power distribution system for a modern data center facility. The flexible busbar solution provided superior efficiency and reliability.",
+    "tags": ["Data Center", "High Efficiency", "Power Distribution"],
+    "author": "Yanghua STI Engineering Team",
+    "performanceMetrics": {
+      "efficiency": "95%",
+      "reliability": "99.9%"
+    },
+    "productsUsed": ["1000A Flexible Busbar", "Smart monitoring system"],
+    "testimonial": "Excellent solution that met all our requirements.",
+    "testimonialAuthor": "Project Manager",
+    "testimonialPosition": "Technical Lead",
+    "imageUrl": "/images/placeholder-project.jpg",
+    "featured": true
+  },
+  {
+    "id": "fallback-2",
+    "title": "Industrial Manufacturing Upgrade",
+    "client": "Manufacturing Corp",
+    "industry": "Industrial",
+    "location": "Guangzhou, China",
+    "duration": "4 months",
+    "completionDate": "2023-12-01",
+    "projectScale": "1500A system",
+    "scale": "1500A system",
+    "year": "2023",
+    "description": "Power system modernization for large-scale manufacturing facility.",
+    "content": "Comprehensive upgrade of power distribution infrastructure for a major manufacturing facility, improving efficiency and reducing downtime.",
+    "tags": ["Industrial", "Manufacturing", "Upgrade"],
+    "author": "Yanghua STI Engineering Team",
+    "performanceMetrics": {
+      "downtime_reduction": "60%",
+      "efficiency_improvement": "25%"
+    },
+    "productsUsed": ["1500A Flexible Busbar", "Industrial connectors"],
+    "testimonial": "Significant improvement in our power system reliability.",
+    "testimonialAuthor": "Operations Manager",
+    "testimonialPosition": "Facility Manager",
+    "imageUrl": "/images/placeholder-project.jpg",
+    "featured": false
+  },
+  {
+    "id": "fallback-3",
+    "title": "Renewable Energy Integration",
+    "client": "Green Energy Solutions",
+    "industry": "New Energy",
+    "location": "Shanghai, China",
+    "duration": "6 months",
+    "completionDate": "2023-11-01",
+    "projectScale": "2000A system",
+    "scale": "2000A system",
+    "year": "2023",
+    "description": "Advanced power distribution for renewable energy facility.",
+    "content": "Implementation of flexible busbar technology for a large-scale renewable energy facility, enabling efficient power distribution and grid integration.",
+    "tags": ["Renewable Energy", "Grid Integration", "Sustainability"],
+    "author": "Yanghua STI Engineering Team",
+    "performanceMetrics": {
+      "power_efficiency": "97%",
+      "grid_stability": "99.8%"
+    },
+    "productsUsed": ["2000A Flexible Busbar", "Grid integration systems"],
+    "testimonial": "Outstanding performance in renewable energy applications.",
+    "testimonialAuthor": "Chief Engineer",
+    "testimonialPosition": "Technical Director",
+    "imageUrl": "/images/placeholder-project.jpg",
+    "featured": false
+  }
+]

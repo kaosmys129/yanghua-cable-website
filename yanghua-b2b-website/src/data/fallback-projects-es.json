@@ -1,0 +1,80 @@
+[
+  {
+    "id": "fallback-1",
+    "title": "Distribución de Energía para Centro de Datos",
+    "client": "Corporación Tecnológica",
+    "industry": "Centro de Datos",
+    "location": "Shenzhen, China",
+    "duration": "3 meses",
+    "completionDate": "2024-01-01",
+    "projectScale": "Sistema 1000A",
+    "scale": "Sistema 1000A",
+    "year": "2024",
+    "description": "Solución de distribución de energía de alta eficiencia para infraestructura moderna de centros de datos.",
+    "content": "Este proyecto involucró la implementación de un sistema integral de distribución de energía para una instalación moderna de centro de datos. La solución de barras conductoras flexibles proporcionó eficiencia y confiabilidad superiores.",
+    "tags": ["Centro de Datos", "Alta Eficiencia", "Distribución de Energía"],
+    "author": "Equipo de Ingeniería Yanghua STI",
+    "performanceMetrics": {
+      "efficiency": "95%",
+      "reliability": "99.9%"
+    },
+    "productsUsed": ["Barra Conductora Flexible 1000A", "Sistema de monitoreo inteligente"],
+    "testimonial": "Excelente solución que cumplió con todos nuestros requisitos.",
+    "testimonialAuthor": "Gerente de Proyecto",
+    "testimonialPosition": "Líder Técnico",
+    "imageUrl": "/images/placeholder-project.jpg",
+    "featured": true
+  },
+  {
+    "id": "fallback-2",
+    "title": "Actualización de Manufactura Industrial",
+    "client": "Corporación Manufacturera",
+    "industry": "Industrial",
+    "location": "Guangzhou, China",
+    "duration": "4 meses",
+    "completionDate": "2023-12-01",
+    "projectScale": "Sistema 1500A",
+    "scale": "Sistema 1500A",
+    "year": "2023",
+    "description": "Modernización del sistema de energía para instalación de manufactura a gran escala.",
+    "content": "Actualización integral de la infraestructura de distribución de energía para una importante instalación manufacturera, mejorando la eficiencia y reduciendo el tiempo de inactividad.",
+    "tags": ["Industrial", "Manufactura", "Actualización"],
+    "author": "Equipo de Ingeniería Yanghua STI",
+    "performanceMetrics": {
+      "downtime_reduction": "60%",
+      "efficiency_improvement": "25%"
+    },
+    "productsUsed": ["Barra Conductora Flexible 1500A", "Conectores industriales"],
+    "testimonial": "Mejora significativa en la confiabilidad de nuestro sistema de energía.",
+    "testimonialAuthor": "Gerente de Operaciones",
+    "testimonialPosition": "Gerente de Instalaciones",
+    "imageUrl": "/images/placeholder-project.jpg",
+    "featured": false
+  },
+  {
+    "id": "fallback-3",
+    "title": "Integración de Energía Renovable",
+    "client": "Soluciones de Energía Verde",
+    "industry": "Nueva Energía",
+    "location": "Shanghai, China",
+    "duration": "6 meses",
+    "completionDate": "2023-11-01",
+    "projectScale": "Sistema 2000A",
+    "scale": "Sistema 2000A",
+    "year": "2023",
+    "description": "Distribución de energía avanzada para instalación de energía renovable.",
+    "content": "Implementación de tecnología de barras conductoras flexibles para una instalación de energía renovable a gran escala, permitiendo distribución eficiente de energía e integración a la red.",
+    "tags": ["Energía Renovable", "Integración a la Red", "Sostenibilidad"],
+    "author": "Equipo de Ingeniería Yanghua STI",
+    "performanceMetrics": {
+      "power_efficiency": "97%",
+      "grid_stability": "99.8%"
+    },
+    "productsUsed": ["Barra Conductora Flexible 2000A", "Sistemas de integración a la red"],
+    "testimonial": "Rendimiento excepcional en aplicaciones de energía renovable.",
+    "testimonialAuthor": "Ingeniero Jefe",
+    "testimonialPosition": "Director Técnico",
+    "imageUrl": "/images/placeholder-project.jpg",
+    "featured": false
+  }
+]
