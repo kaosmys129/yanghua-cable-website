@@ -127,5 +127,11 @@
     "download": "下载",
     "learnMore": "了解更多",
     "locale": "zh"
+  },
+  "projectGallery": {
+    "title": "精选项目",
+    "subtitle": "探索我们成功的项目案例，展示我们在各行业电力分配解决方案方面的专业实力。",
+    "viewDetails": "查看详情",
+    "viewAllProjects": "查看所有项目"
   }
 }

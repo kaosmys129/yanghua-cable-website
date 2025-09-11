@@ -1112,5 +1112,11 @@
         "description": "Sistemas de distribución de energía de alta capacidad para instalaciones de fabricación de vehículos eléctricos, optimizados para eficiencia y confiabilidad."
       }
     ]
+  },
+  "projectGallery": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Descubre nuestros proyectos exitosos y casos de estudio que demuestran nuestra experiencia en soluciones de distribución de energía en diversas industrias.",
+    "viewDetails": "Ver Detalles",
+    "viewAllProjects": "Ver Todos los Proyectos"
   }
 }

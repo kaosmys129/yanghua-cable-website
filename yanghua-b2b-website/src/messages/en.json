@@ -1083,5 +1083,11 @@
         "description": "High-capacity power distribution systems for electric vehicle manufacturing facilities, optimized for efficiency and reliability."
       }
     ]
+  },
+  "projectGallery": {
+    "title": "Featured Projects",
+    "subtitle": "Discover our successful projects and case studies that demonstrate our expertise in power distribution solutions across various industries.",
+    "viewDetails": "View Details",
+    "viewAllProjects": "View All Projects"
   }
 }
