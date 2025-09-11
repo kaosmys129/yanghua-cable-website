@@ -9,9 +9,10 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const pathname = request.nextUrl.pathname;
   // Debug
   console.log('[middleware] pathname:', pathname);
+  console.log('[middleware] processing pathname:', pathname);
 
   // Skip static assets, API and Next.js internals
   if (
@@ -28,11 +29,37 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Handle /news and /news/[id] paths without locale prefix
+  // Handle /news to /articles redirect
   if (pathname === '/news' || pathname.startsWith('/news/')) {
     const url = request.nextUrl.clone();
+    url.pathname = pathname.replace('/news', `/${defaultLocale}/articles`);
+    console.log('[middleware] redirect news to articles ->', url.pathname);
+    return NextResponse.redirect(url);
+  }
+
+  // Handle locale-prefixed /blogs paths - redirect to articles (check first)
+  if (pathname.match(/^\/[a-z]{2}\/blogs(\/.*)?$/)) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace('/blogs', '/articles');
+    console.log('[middleware] redirect locale blogs to articles ->', url.pathname);
+    const response = NextResponse.redirect(url);
+    response.headers.set('X-Middleware-Debug', 'locale-blogs-redirect');
+    return response;
+  }
+
+  // Handle /blogs and /blogs/[id] paths - redirect to articles
+  if (pathname === '/blogs' || pathname.startsWith('/blogs/')) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace('/blogs', `/${defaultLocale}/articles`);
+    console.log('[middleware] redirect blogs to articles ->', url.pathname);
+    return NextResponse.redirect(url);
+  }
+  
+  // Handle /articles and /articles/[id] paths without locale prefix
+  if (pathname === '/articles' || pathname.startsWith('/articles/')) {
+    const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}${pathname}`;
-    console.log('[middleware] redirect news ->', url.pathname);
+    console.log('[middleware] redirect articles ->', url.pathname);
     return NextResponse.redirect(url);
   }
   

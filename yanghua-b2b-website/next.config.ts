@@ -22,16 +22,75 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Redirect /news to /en/news
+      // Redirect /news to /en/articles
       {
         source: '/news',
-        destination: '/en/news',
+        destination: '/en/articles',
         permanent: true,
       },
-      // Redirect /news/:id to /en/news/:id
+      // Redirect /news/:id to /en/articles/:id
       {
         source: '/news/:id',
-        destination: '/en/news/:id',
+        destination: '/en/articles/:id',
+        permanent: true,
+      },
+      // --- Add locale-specific redirects for news ---
+      {
+        source: '/en/news',
+        destination: '/en/articles',
+        permanent: true,
+      },
+      {
+        source: '/es/news',
+        destination: '/es/articles',
+        permanent: true,
+      },
+      {
+        source: '/en/news/:id',
+        destination: '/en/articles/:id',
+        permanent: true,
+      },
+      {
+        source: '/es/news/:id',
+        destination: '/es/articles/:id',
+        permanent: true,
+      },
+      // -----------------------------------------
+
+      // Redirect /blogs to /en/articles
+      {
+        source: '/blogs',
+        destination: '/en/articles',
+        permanent: true,
+      },
+      // Redirect /blogs/:id to /en/articles/:id
+      {
+        source: '/blogs/:id',
+        destination: '/en/articles/:id',
+        permanent: true,
+      },
+      // Redirect /en/blogs to /en/articles
+      {
+        source: '/en/blogs',
+        destination: '/en/articles',
+        permanent: true,
+      },
+      // Redirect /en/blogs/:id to /en/articles/:id
+      {
+        source: '/en/blogs/:id',
+        destination: '/en/articles/:id',
+        permanent: true,
+      },
+      // Redirect /es/blogs to /es/articles
+      {
+        source: '/es/blogs',
+        destination: '/es/articles',
+        permanent: true,
+      },
+      // Redirect /es/blogs/:id to /es/articles/:id
+      {
+        source: '/es/blogs/:id',
+        destination: '/es/articles/:id',
         permanent: true,
       },
       // Redirect /projects to /en/projects
