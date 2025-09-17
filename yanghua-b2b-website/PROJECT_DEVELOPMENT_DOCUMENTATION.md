@@ -38,14 +38,19 @@ yanghua-b2b-website/
 │   ├── app/                 # Next.js App Router
 │   │   ├── [locale]/        # 国际化路由
 │   │   ├── admin/           # 管理后台
+│   │   ├── test-cloud/      # Strapi Cloud测试页面
 │   │   └── api/             # API路由
 │   ├── components/          # React组件
 │   │   ├── admin/           # 管理组件
 │   │   ├── business/        # 业务组件
 │   │   ├── features/        # 功能组件
 │   │   ├── layout/          # 布局组件
+│   │   ├── providers/       # React Query等Provider
 │   │   └── ui/              # UI组件
 │   ├── lib/                 # 工具库
+│   │   ├── strapi-client.ts # Strapi Cloud客户端
+│   │   ├── queries.ts       # React Query配置
+│   │   └── utils.ts         # 工具函数
 │   ├── messages/            # 国际化文件
 │   └── types/               # TypeScript类型定义
 ├── public/                  # 静态资源
@@ -53,6 +58,28 @@ yanghua-b2b-website/
 │   ├── images/              # 图片资源
 │   └── videos/              # 视频资源
 └── 配置文件
+```
+
+### 1.3 Strapi Cloud集成
+
+项目已集成Strapi Cloud作为内容管理系统：
+
+- **Strapi Cloud URL**: `https://fruitful-presence-02d7be759c.strapiapp.com`
+- **数据获取**: 使用React Query进行数据缓存和状态管理
+- **错误处理**: 针对云服务优化的错误处理和重试机制
+- **性能优化**: 扩展缓存时间和智能重试策略
+- **测试页面**: `/test-cloud` 用于验证连接状态
+
+#### 环境变量配置
+
+```bash
+# Strapi Cloud Configuration
+STRAPI_BASE_URL=https://fruitful-presence-02d7be759c.strapiapp.com
+# STRAPI_API_TOKEN=your_api_token_here   # 公开文章端点无需API Token
+
+# Next.js Configuration
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_ENVIRONMENT=development
 ```
 
 ---

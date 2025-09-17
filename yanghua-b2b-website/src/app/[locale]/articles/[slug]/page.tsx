@@ -1,32 +1,30 @@
+'use client';
+
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { getArticleBySlug } from "@/lib/strapi-client";
-import { StrapiLocale } from "strapi-sdk-js";
+import { formatDate } from "@/lib/utils";
 import { StrapiImage } from "@/components/custom/strapi-image";
 import BlockRenderer from "@/components/block-renderer";
+import { useArticle } from '@/lib/queries';
+import ArticleErrorBoundary, { 
+  ArticleDetailErrorFallback, 
+  ArticleDetailSkeleton 
+} from '@/components/ui/ArticleErrorBoundary';
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: {
-    slug: string;
-    locale: string;
-  };
-}) {
-  const article = await getArticleBySlug(
-    params.slug,
-    params.locale as StrapiLocale
-  );
+function ArticleContent({ params }: { params: { slug: string; locale: string } }) {
+  const { data: article, isLoading, isError, error } = useArticle(params.slug);
 
-  console.log("article with simplified populate", JSON.stringify(article, null, 2));
+  if (isLoading) {
+    return <ArticleDetailSkeleton />;
+  }
+
+  if (isError) {
+    console.error('Error loading article:', error);
+    return <ArticleDetailErrorFallback error={error} />;
+  }
 
   if (!article) {
-    return (
-      <div className="h-full w-full flex flex-col items-center justify-center">
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Back to articles
-      </div>
-    );
+    return <ArticleDetailErrorFallback />;
   }
 
   return (
@@ -45,15 +43,15 @@ export default async function ArticlePage({
         <div className="flex items-center text-gray-500 mb-8">
           <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
             <StrapiImage
-              src={article.author.avatar.url}
-              alt={article.author.avatar.alternativeText || "Author avatar"}
+              src={article.author?.avatar?.url || "/placeholder.svg?height=48&width=48&query=avatar"}
+              alt={article.author?.avatar?.alternativeText || "Author avatar"}
               width={48}
               height={48}
               className="object-cover"
             />
           </div>
           <div>
-            <p className="font-semibold">{article.author.name}</p>
+            <p className="font-semibold">{article.author?.name || "Unknown Author"}</p>
             <p className="text-sm">
               {new Date(article.publishedAt).toLocaleDateString()}
             </p>
@@ -62,19 +60,34 @@ export default async function ArticlePage({
 
         <div className="w-full h-96 relative rounded-lg overflow-hidden mb-8">
           <StrapiImage
-            src={article.cover.url}
-            alt={article.cover.alternativeText || "Article cover image"}
+            src={article.cover?.url || "/placeholder.svg?height=400&width=800&query=cover"}
+            alt={article.cover?.alternativeText || "Article cover image"}
             fill
             className="object-cover"
           />
         </div>
 
         <div className="mt-8">
-          {article.blocks.map((block) => (
+          {article.blocks?.map((block: any) => (
             <BlockRenderer key={block.id} block={block} />
           ))}
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ArticlePage({
+  params,
+}: {
+  params: {
+    slug: string;
+    locale: string;
+  };
+}) {
+  return (
+    <ArticleErrorBoundary fallback={ArticleDetailErrorFallback}>
+      <ArticleContent params={params} />
+    </ArticleErrorBoundary>
   );
 }

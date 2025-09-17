@@ -19,5 +19,5 @@ export function combineClasses(...classes: (string | boolean | undefined)[]) {
 }
 
 export function getStrapiURL() {
-  return process.env.STRAPI_BASE_URL ?? "http://localhost:1337";
+  return process.env.STRAPI_BASE_URL ?? "https://fruitful-presence-02d7be759c.strapiapp.com";
 }

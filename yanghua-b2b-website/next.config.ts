@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         protocol: 'http',
         hostname: '127.0.0.1',
       },
+      // Allow Strapi Cloud media assets
+      {
+        protocol: 'https',
+        hostname: '**.media.strapiapp.com',
+      }
     ],
   },
   async redirects() {

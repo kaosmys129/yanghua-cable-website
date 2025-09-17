@@ -1,4 +1,5 @@
 import './globals.css';
+import { QueryProvider } from '@/components/providers/QueryProvider';
 
 export const metadata = {
   title: 'Yanghua Cable - Professional Cable Solutions',
@@ -13,7 +14,9 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        {children}
+        <QueryProvider>
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
