@@ -9,7 +9,7 @@ interface DebugPanelProps {
   onToggle?: () => void;
 }
 
-const DebugPanel: React.FC<DebugPanelProps> = ({ isVisible = false, onToggle }) => {
+export default function DebugPanel({ isVisible = false, onToggle }: DebugPanelProps) {
   const [logs, setLogs] = useState<ErrorLogEntry[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<'all' | 'error' | 'warn' | 'info'>('all');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -207,5 +207,3 @@ const DebugPanel: React.FC<DebugPanelProps> = ({ isVisible = false, onToggle }) 
     </>
   );
 };
-
-export default DebugPanel;
