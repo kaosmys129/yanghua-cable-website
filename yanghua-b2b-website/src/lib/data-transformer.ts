@@ -277,12 +277,12 @@ export function transformImageUrl(url: string, baseUrl?: string): string {
   
   // If URL starts with /, prepend base URL
   if (url.startsWith('/')) {
-    const base = baseUrl || process.env.STRAPI_BASE_URL || 'http://localhost:1337';
+    const base = baseUrl || process.env.STRAPI_BASE_URL || 'https://fruitful-presence-02d7be759c.strapiapp.com';
     return `${base}${url}`;
   }
   
   // Otherwise, assume it's a relative path
-  const base = baseUrl || process.env.STRAPI_BASE_URL || 'http://localhost:1337';
+  const base = baseUrl || process.env.STRAPI_BASE_URL || 'https://fruitful-presence-02d7be759c.strapiapp.com';
   return `${base}/${url}`;
 }
 

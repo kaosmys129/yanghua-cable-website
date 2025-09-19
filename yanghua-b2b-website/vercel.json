@@ -51,6 +51,14 @@
     {
       "source": "/api/revalidate",
       "destination": "/api/revalidate"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|bmp|js|css|woff|woff2|ttf|otf|eot)).*)",
+      "destination": "/"
     }
   ]
 }
