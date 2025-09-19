@@ -24,7 +24,7 @@ interface StatsDashboardProps {
   refreshInterval?: number;
 }
 
-const StatsDashboard: React.FC<StatsDashboardProps> = ({ refreshInterval = 30000 }) => {
+export default function StatsDashboard({ refreshInterval = 30000 }: StatsDashboardProps) {
   const [stats, setStats] = useState<SystemStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
@@ -222,6 +222,4 @@ const StatsDashboard: React.FC<StatsDashboardProps> = ({ refreshInterval = 30000
       </div>
     </div>
   );
-};
-
-export default StatsDashboard;
+}
