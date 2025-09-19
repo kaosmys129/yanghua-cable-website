@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { InfiniteSlider } from '@/components/ui/infinite-slider';
+import { InfiniteSlider } from '@/components/ui/InfiniteSlider';
 
 export default function Partners() {
   const t = useTranslations('partners');

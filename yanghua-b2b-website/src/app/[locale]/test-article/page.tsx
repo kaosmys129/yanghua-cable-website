@@ -1,8 +1,8 @@
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
-import BlockRenderer from "@/components/block-renderer"
+import BlockRenderer from "@/components/BlockRenderer"
 import { ArrowLeft } from "lucide-react"
-import { StrapiImage } from "@/components/custom/strapi-image"
+import { StrapiImage } from "@/components/custom/StrapiImage"
 import { articles } from "@/lib/data"
 
 export default function StaticTestArticlePage() {

@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getAllArticles, getArticleBySlug, getAllArticlesWithDrafts, getArticleBySlugWithDrafts, checkStrapiHealth } from './strapi-client';
 import { Article } from './types';
 import { generateCacheKey } from './data-transformer';
-import { logError } from './errorLogger';
+import { logError } from './error-logger';
 
 // Query keys for consistent caching
 export const queryKeys = {

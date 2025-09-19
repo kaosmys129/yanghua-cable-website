@@ -3,12 +3,12 @@
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 import { useArticles } from '@/lib/queries';
-import { StrapiImage } from '@/components/custom/strapi-image';
+import { StrapiImage } from "@/components/custom/StrapiImage";
 import { Article } from '@/lib/types';
-import ArticleErrorBoundary, { 
-  ArticleListErrorFallback, 
-  ArticleListSkeleton 
-} from '@/components/ui/ArticleErrorBoundary';
+// import ArticleErrorBoundary, { 
+//   ArticleListErrorFallback, 
+//   ArticleListSkeleton 
+// } from '@/components/ui/ArticleErrorBoundary';
 import { useParams } from 'next/navigation';
 
 function EmptyState() {
@@ -29,12 +29,34 @@ function ArticlesList() {
   const { data: articles, isLoading, isError, error } = useArticles(locale);
 
   if (isLoading) {
-    return <ArticleListSkeleton />;
+    return (
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+              <div className="h-48 bg-gray-300"></div>
+              <div className="p-6">
+                <div className="h-6 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded w-2/3"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   if (isError) {
     console.error('Error loading articles:', error);
-    return <ArticleListErrorFallback error={error} />;
+    return (
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Error Loading Articles</h2>
+          <p className="text-gray-600">Failed to load articles. Please try again later.</p>
+        </div>
+      </div>
+    );
   }
 
   if (!articles || articles.length === 0) {
@@ -97,8 +119,8 @@ function ArticlesList() {
 
 export default function Home() {
   return (
-    <ArticleErrorBoundary FallbackComponent={ArticleListErrorFallback}>
+    // <ArticleErrorBoundary FallbackComponent={ArticleListErrorFallback}>
       <ArticlesList />
-    </ArticleErrorBoundary>
+    // </ArticleErrorBoundary>
   );
 }

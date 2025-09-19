@@ -24,6 +24,20 @@ export function getStrapiMedia(url: string | null) {
   if (url == null) return null;
   if (url.startsWith("data:")) return url;
   if (url.startsWith("http") || url.startsWith("//")) return url;
-  if (url.startsWith("/") && !url.startsWith("/uploads/")) return url;
-  return getStrapiURL() + url;
+  
+  // Handle absolute paths that are not Strapi uploads
+  if (url.startsWith("/") && !url.startsWith("/uploads/")) {
+    return url;
+  }
+  
+  // Handle Strapi uploads - always prepend base URL
+  if (url.startsWith("/uploads/") || url.startsWith("uploads/")) {
+    const baseUrl = getStrapiURL();
+    const cleanUrl = url.startsWith("/") ? url : "/" + url;
+    return baseUrl + cleanUrl;
+  }
+  
+  // Handle relative paths - prepend base URL
+  const baseUrl = getStrapiURL();
+  return baseUrl + (url.startsWith("/") ? url : "/" + url);
 }

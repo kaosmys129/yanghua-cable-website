@@ -1,7 +1,7 @@
 import Strapi, { StrapiLocale } from "strapi-sdk-js";
 import { getStrapiURL } from "./utils";
 import { Article } from "./types";
-import { logError } from "./errorLogger";
+import { logError } from "./error-logger";
 import { transformArticles, normalizeApiResponse } from "./data-transformer";
 
 // Enhanced Strapi client configuration for Strapi Cloud

@@ -1,5 +1,5 @@
 import type { Block } from "@/lib/types"
-import RichText from "./blocks/rich-text"
+import RichText from "./blocks/RichText"
 import Quote from "./blocks/quote"
 import Media from "./blocks/media"
 import Slider from "./blocks/slider"

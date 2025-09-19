@@ -1,5 +1,5 @@
 import { Article, Block } from './types';
-import { logError } from './errorLogger';
+import { logError } from './error-logger';
 
 // Data transformation utilities for Strapi Cloud responses
 

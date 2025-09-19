@@ -31,7 +31,9 @@ export default function TestCloudPage() {
               <details className="mt-2">
                 <summary>Technical Details</summary>
                 <pre className="mt-2 text-sm">
-                  {JSON.stringify((error as any).originalError, null, 2)}
+                  {typeof (error as any).originalError === 'object' 
+                    ? JSON.stringify((error as any).originalError, null, 2)
+                    : String((error as any).originalError || 'No additional error details')}
                 </pre>
               </details>
             )}

@@ -8,13 +8,11 @@ import { useInView } from 'react-intersection-observer';
 type EquipmentCardProps = {
   name: {
     en: string;
-    zh?: string;
     es?: string;
   };
   image: string;
   description: {
     en: string;
-    zh?: string;
     es?: string;
   };
   className?: string;

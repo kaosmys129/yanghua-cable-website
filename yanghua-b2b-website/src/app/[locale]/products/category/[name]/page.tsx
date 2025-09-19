@@ -1,8 +1,5 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import React from 'react';
+import { notFound } from 'next/navigation';
 
 interface ProductCategory {
   name: string;
@@ -414,47 +411,38 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
   return categoryData[decodedName] || null;
 }
 
-export default function ProductCategoryPage({ params }: { params: Promise<{ name: string }> }) {
-  // Use React.use() to unwrap params Promise
-  const resolvedParams = React.use(params);
-  const [categoryData, setCategoryData] = useState<ProductCategory | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchCategoryData = async () => {
-      try {
-        // Use the parameter directly as it matches the data keys
-        const categoryKey = resolvedParams.name;
-        const data = await getProductCategoryData(categoryKey);
-        setCategoryData(data);
-      } catch (error) {
-        console.error('Failed to fetch category data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCategoryData();
-  }, [resolvedParams.name]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading product category details...</div>
-      </div>
-    );
+// Generate static params for all available categories
+export async function generateStaticParams() {
+  const categories = ['general', 'fire-resistant', 'halogen-free', 'low-smoke', 'special-purpose'];
+  const locales = ['en', 'es'];
+  
+  const params = [];
+  for (const locale of locales) {
+    for (const name of categories) {
+      params.push({ locale, name });
+    }
   }
+  
+  return params;
+}
+
+interface PageProps {
+  params: {
+    name: string;
+    locale: string;
+  };
+}
+
+export default async function ProductCategoryPage({ params }: PageProps) {
+  const { name } = params;
+  const categoryData = await getProductCategoryData(name);
 
   if (!categoryData) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-2xl text-red-600">Product category not found</div>
-      </div>
-    );
+    notFound();
   }
 
   return (
-    <div className="min-h-screen bg-white">
+     <div className="min-h-screen bg-white">
       {/* Product category header */}
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>

@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { InfiniteSlider } from '../ui/infinite-slider';
-import { EquipmentCard } from '../ui/equipment-card';
+import { InfiniteSlider } from '../ui/InfiniteSlider';
+import { EquipmentCard } from '../ui/EquipmentCard';
 import { testingEquipment } from '@/data/testing-equipment';
 import { useEffect, useState } from 'react';
 

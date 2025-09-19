@@ -1,5 +1,6 @@
 import './globals.css';
 import { QueryProvider } from '@/components/providers/QueryProvider';
+import { MonitoringProvider } from '@/components/providers/MonitoringProvider';
 
 export const metadata = {
   title: 'Yanghua Cable - Professional Cable Solutions',
@@ -12,10 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en" suppressHydrationWarning>
       <body>
         <QueryProvider>
-          {children}
+          <MonitoringProvider>
+            {children}
+          </MonitoringProvider>
         </QueryProvider>
       </body>
     </html>

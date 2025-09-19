@@ -1,7 +1,5 @@
-'use client';
-
 import Image from 'next/image';
-import { useState, useEffect, use } from 'react';
+import { notFound } from 'next/navigation';
 
 interface Product {
   id: string;
@@ -23,11 +21,9 @@ interface Product {
 }
 
 // Simulate product data fetching function
-function getProduct(id: string): Promise<Product> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // Simulate product data
-      const products: { [key: string]: Product } = {
+async function getProduct(id: string): Promise<Product | null> {
+  // Simulate product data
+  const products: { [key: string]: Product } = {
         'flexible-busbar-2000a': {
           id: 'flexible-busbar-2000a',
           name: '2000A Flexible Busbar System',
@@ -60,31 +56,38 @@ function getProduct(id: string): Promise<Product> {
         }
       };
       
-      resolve(products[id] || products['flexible-busbar-2000a']);
-    }, 500); // Simulate network delay
-  });
+      return products[id] || null;
 }
 
-export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  // Use React.use() to unwrap params Promise
-  const unwrappedParams = use(params);
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
+// Generate static params for all available products
+export async function generateStaticParams() {
+  const productIds = ['flexible-busbar-2000a', 'flexible-busbar-1500a', 'flexible-busbar-2500a', 'insulation-accessories'];
+  const locales = ['en', 'es'];
+  
+  const params = [];
+  for (const locale of locales) {
+    for (const id of productIds) {
+      params.push({ locale, id });
+    }
+  }
+  
+  return params;
+}
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const data = await getProduct(unwrappedParams.id);
-        setProduct(data);
-      } catch (error) {
-        console.error('Failed to fetch product:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+interface PageProps {
+  params: {
+    id: string;
+    locale: string;
+  };
+}
 
-    fetchProduct();
-  }, [unwrappedParams.id]);
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { id } = params;
+  const product = await getProduct(id);
+
+  if (!product) {
+    notFound();
+  }
 
   // Placeholder image component
   const PlaceholderImage = ({ className }: { className?: string }) => (
@@ -93,40 +96,17 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
     </div>
   );
 
-  // Loadable image component
-  const LoadableImage = ({ src, alt, className, fill = true }: { src: string; alt: string; className?: string; fill?: boolean; }) => {
-    const [hasError, setHasError] = useState(false);
-    
-    if (hasError) {
-      return <PlaceholderImage className={className} />;
-    }
-    
+  // Simple image component for server rendering
+  const ProductImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
     return (
       <Image
         src={src}
         alt={alt}
-        fill={fill}
+        fill
         className={`object-cover ${className}`}
-        onError={() => setHasError(true)}
       />
     );
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading product details...</div>
-      </div>
-    );
-  }
-
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-2xl text-red-600">Product not found</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -134,10 +114,10 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">
         <div className="absolute inset-0">
           {product.images[0] ? (
-            <LoadableImage
+            <ProductImage
               src={product.images[0]}
               alt={product.name}
-              className="object-cover opacity-50"
+              className="opacity-50"
             />
           ) : (
             <PlaceholderImage className="w-full h-full opacity-50" />
@@ -294,10 +274,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                 {product.images.map((image, index) => (
                   <div key={index} className="relative h-64 rounded-lg overflow-hidden shadow-lg">
                     {image ? (
-                      <LoadableImage
+                      <ProductImage
                         src={image}
                         alt={`Product image ${index + 1}`}
-                        fill={true}
                         className="transition-transform duration-300 hover:scale-105"
                       />
                     ) : (

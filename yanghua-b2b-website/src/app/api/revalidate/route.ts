@@ -29,8 +29,7 @@ export async function POST(request: NextRequest) {
         if (entry?.slug) {
           // 重新验证特定文章页面
           revalidatePath(`/en/articles/${entry.slug}`);
-          revalidatePath(`/zh/articles/${entry.slug}`);
-          revalidatePath(`/zh-TW/articles/${entry.slug}`);
+          revalidatePath(`/es/articles/${entry.slug}`);
         }
         break;
         

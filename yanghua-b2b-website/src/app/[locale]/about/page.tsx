@@ -35,6 +35,55 @@ export default function AboutPage() {
   const milestones = getMilestones() as Array<{year: string, event: string}>;
   const companyStats = getCompanyStats();
 
+  // Handle empty milestones gracefully - return early if no data
+  if (!milestones || milestones.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        {/* Hero Section - Attention */}
+        <div className="relative bg-gradient-to-r from-[#212529] to-[#343a40] text-white overflow-hidden">
+          {/* Background Image with Overlay for Dimming Effect */}
+          <div className="absolute inset-0 opacity-30">
+            <img 
+              src="/images/about/img-strength.jpg" 
+              alt="Yanghua Manufacturing Facility" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                {t('hero.title')}
+              </h1>
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10 text-gray-200">
+                {t('hero.subtitle')}
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <button className="bg-[#fdb827] hover:bg-[#e6a51e] text-[#212529] font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                  {t('hero.cta.explore')}
+                </button>
+                <button className="bg-transparent border-2 border-white hover:bg-white hover:text-[#212529] text-white font-semibold py-3 px-8 rounded-lg transition duration-300">
+                  {t('hero.cta.download')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              {t('common.timelineLoadingError', { defaultValue: 'Timeline data is currently unavailable' })}
+            </h2>
+            <p className="text-gray-600">
+              {t('common.timelineLoadingDescription', { defaultValue: 'We are experiencing technical difficulties loading our company timeline. Please try again later.' })}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Attention */}

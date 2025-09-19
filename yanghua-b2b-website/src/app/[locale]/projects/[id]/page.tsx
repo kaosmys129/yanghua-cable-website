@@ -151,7 +151,29 @@ function getFallbackProject(id: string): Project | null {
   return projects[id] || null;
 }
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+// Generate static params for all available projects
+export async function generateStaticParams() {
+  const projectIds = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const locales = ['en', 'es'];
+  
+  const params = [];
+  for (const locale of locales) {
+    for (const id of projectIds) {
+      params.push({ locale, id });
+    }
+  }
+  
+  return params;
+}
+
+interface PageProps {
+  params: Promise<{
+    id: string;
+    locale: string;
+  }>;
+}
+
+export default async function ProjectDetailPage({ params }: PageProps) {
   const { id } = await params;
   const project = await getProject(id);
 

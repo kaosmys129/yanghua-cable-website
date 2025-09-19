@@ -18,6 +18,38 @@ export default function ProductsPage() {
 
   const productCategories = getProductCategories();
 
+  // Handle empty categories gracefully
+  if (!productCategories || productCategories.length === 0) {
+    return (
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <div className="relative bg-gradient-to-r from-[#212529] to-gray-700 py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t('hero.title')}
+              </h1>
+              <p className="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+                {t('hero.subtitle')}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              {t('common.noProductsAvailable', { defaultValue: 'No products available at the moment' })}
+            </h2>
+            <p className="text-gray-600">
+              {t('common.productsLoadingError', { defaultValue: 'We are experiencing technical difficulties. Please try again later.' })}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

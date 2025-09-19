@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './src/lib/i18n';
+import { authMiddleware } from './src/lib/auth-middleware';
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -8,83 +9,68 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'always'
 });
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  // Debug
-  console.log('[middleware] pathname:', pathname);
-  console.log('[middleware] processing pathname:', pathname);
-
-  // Skip static assets, API and Next.js internals
+  
+  // 添加调试日志
+  console.log('Middleware called for:', pathname);
+  
+  // 明确排除所有静态资源，直接放行
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/images') ||
     pathname.startsWith('/videos') ||
     pathname.startsWith('/data') ||
-    pathname === '/favicon.ico' ||
-    pathname === '/manifest.json' ||
-    pathname === '/service-worker.js' ||
-    /\.[a-zA-Z0-9]{2,5}$/.test(pathname) // files with extensions
+    pathname.includes('.') // 所有包含点号的文件（图片、CSS、JS等）
   ) {
+    console.log('Skipping middleware for static asset:', pathname);
     return NextResponse.next();
   }
 
-  // Handle /news to /articles redirect
-  if (pathname === '/news' || pathname.startsWith('/news/')) {
-    const url = request.nextUrl.clone();
-    url.pathname = pathname.replace('/news', `/${defaultLocale}/articles`);
-    console.log('[middleware] redirect news to articles ->', url.pathname);
-    return NextResponse.redirect(url);
-  }
-
-  // Handle locale-prefixed /blogs paths - redirect to articles (check first)
-  if (pathname.match(/^\/[a-z]{2}\/blogs(\/.*)?$/)) {
-    const url = request.nextUrl.clone();
-    url.pathname = pathname.replace('/blogs', '/articles');
-    console.log('[middleware] redirect locale blogs to articles ->', url.pathname);
-    const response = NextResponse.redirect(url);
-    response.headers.set('X-Middleware-Debug', 'locale-blogs-redirect');
-    return response;
-  }
-
-  // Handle /blogs and /blogs/[id] paths - redirect to articles
-  if (pathname === '/blogs' || pathname.startsWith('/blogs/')) {
-    const url = request.nextUrl.clone();
-    url.pathname = pathname.replace('/blogs', `/${defaultLocale}/articles`);
-    console.log('[middleware] redirect blogs to articles ->', url.pathname);
-    return NextResponse.redirect(url);
-  }
-  
-  // Handle /articles and /articles/[id] paths without locale prefix
-  if (pathname === '/articles' || pathname.startsWith('/articles/')) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${defaultLocale}${pathname}`;
-    console.log('[middleware] redirect articles ->', url.pathname);
-    return NextResponse.redirect(url);
-  }
-  
-  // Handle /projects and /projects/[id] paths without locale prefix
-  if (pathname === '/projects' || pathname.startsWith('/projects/')) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${defaultLocale}${pathname}`;
-    console.log('[middleware] redirect projects ->', url.pathname);
-    return NextResponse.redirect(url);
+  // 首先执行认证检查
+  const authResponse = await authMiddleware(request);
+  if (authResponse) {
+    return authResponse;
   }
 
   // Handle root '/' redirect
   if (pathname === '/' || pathname === '') {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
-    console.log('[middleware] redirect ->', url.pathname);
     return NextResponse.redirect(url);
   }
 
+  // 临时禁用国际化中间件来测试
+  console.log('Skipping intl middleware for testing:', pathname);
+  return NextResponse.next();
+  
   // Fallback to next-intl middleware for all other paths
-  return intlMiddleware(request);
+  // console.log('Processing with intl middleware:', pathname);
+  // const response = intlMiddleware(request as any);
+  // 
+  // // 添加安全头部
+  // if (response instanceof NextResponse) {
+  //   response.headers.set('X-Frame-Options', 'DENY');
+  //   response.headers.set('X-Content-Type-Options', 'nosniff');
+  //   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  //   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  //   response.headers.set('X-XSS-Protection', '1; mode=block');
+  //   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  //   
+  //   // CORS 头部（如果需要）
+  //   if (pathname.startsWith('/api/')) {
+  //     response.headers.set('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS || '*');
+  //     response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  //     response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  //   }
+  // }
+  // 
+  // return response;
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)',
+    '/((?!_next|api|images|videos|data|.*\.).*)',
   ]
 };

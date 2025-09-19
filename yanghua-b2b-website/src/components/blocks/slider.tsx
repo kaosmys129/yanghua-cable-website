@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { SliderBlock } from "@/lib/types"
-import { StrapiImage } from "../custom/strapi-image"
+import { StrapiImage } from "../custom/StrapiImage"
 
 export default function Slider({ data }: { data: SliderBlock }) {
   const [currentIndex, setCurrentIndex] = useState(0)

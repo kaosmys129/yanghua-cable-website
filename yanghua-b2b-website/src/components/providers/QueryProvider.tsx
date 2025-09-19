@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { logError } from '@/lib/errorLogger';
+import { logError } from '@/lib/error-logger';
 
 // Create a client with optimized settings for Strapi Cloud
 function createQueryClient() {
@@ -47,7 +47,7 @@ interface QueryProviderProps {
   children: React.ReactNode;
 }
 
-export function QueryProvider({ children }: QueryProviderProps) {
+export default function QueryProvider({ children }: QueryProviderProps): JSX.Element {
   // Create query client with React state to ensure it's stable across renders
   const [queryClient] = React.useState(() => createQueryClient());
 
@@ -71,7 +71,7 @@ export function QueryProvider({ children }: QueryProviderProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      {children as any}
       {process.env.NODE_ENV === 'development' && (
         <ReactQueryDevtools
           initialIsOpen={false}
@@ -85,11 +85,10 @@ export function QueryProvider({ children }: QueryProviderProps) {
 // Export the query client type for use in other components
 export type { QueryClient };
 
-// Hook to access the query client
-export function useQueryClientInstance() {
-  const queryClient = React.useContext(QueryClientProvider as any);
-  if (!queryClient) {
-    throw new Error('useQueryClientInstance must be used within a QueryProvider');
-  }
-  return queryClient;
+// Hook to access the query client - 使用官方提供的hook
+export function useQueryClientInstance(): QueryClient {
+  return useQueryClient();
 }
+
+// 保持向后兼容的导出
+export { QueryProvider };

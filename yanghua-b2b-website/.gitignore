@@ -1,0 +1,53 @@
+.vercel
+
+# Playwright test results
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Error collection reports
+test-results/
+
+# Logs
+logs
+*.log
+
+# Temp files
+.tmp/
+.temp/
+
+# Node modules
+node_modules/
+
+# Environment files
+.env*
+!.env.example
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Next.js
+.next/
+out/
+
+# TypeScript
+*.tsbuildinfo
+
+# Build outputs
+build/
+dist/
+
+# Cache
+.cache/
+coverage/
+*.tmp

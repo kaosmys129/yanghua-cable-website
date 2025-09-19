@@ -1,6 +1,28 @@
 import { notFound } from 'next/navigation';
 
-export default async function SolutionDetailPage({ params }: { params: Promise<{ id: string }> }) {
+// Generate static params for all available solutions
+export async function generateStaticParams() {
+  const solutionIds = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const locales = ['en', 'es'];
+  
+  const params = [];
+  for (const locale of locales) {
+    for (const id of solutionIds) {
+      params.push({ locale, id });
+    }
+  }
+  
+  return params;
+}
+
+interface PageProps {
+  params: Promise<{
+    id: string;
+    locale: string;
+  }>;
+}
+
+export default async function SolutionDetailPage({ params }: PageProps) {
   const { id } = await params;
   
   // Simple solution detail page

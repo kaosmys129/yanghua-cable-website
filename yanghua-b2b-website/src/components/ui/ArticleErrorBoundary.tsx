@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
-import { logError } from '@/lib/errorLogger';
+import { logError } from '@/lib/error-logger';
 
 interface ArticleErrorBoundaryState {
   hasError: boolean;

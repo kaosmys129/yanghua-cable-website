@@ -2,7 +2,7 @@ import Link from "next/link"
 import { getAllArticles } from "@/lib/strapi-client"
 import { formatDate } from "@/lib/utils"
 
-import { StrapiImage } from "@/components/custom/strapi-image"
+import { StrapiImage } from "@/components/custom/StrapiImage"
 
 export default async function Home() {
   const articles = await getAllArticles();

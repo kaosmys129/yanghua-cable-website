@@ -1,6 +1,6 @@
 import Image from "next/image"
 import type { MediaBlock } from "@/lib/types"
-import { StrapiImage } from "../custom/strapi-image"
+import { StrapiImage } from "../custom/StrapiImage"
 
 export default function Media({ data }: { data: MediaBlock }) {
   // Check if file exists

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Bug, X, Download, Trash2, AlertTriangle, Info, AlertCircle } from 'lucide-react';
-import errorLogger, { ErrorLogEntry } from '../../lib/errorLogger';
+import errorLogger, { ErrorLogEntry } from '../../lib/error-logger';
 
 interface DebugPanelProps {
   isVisible?: boolean;

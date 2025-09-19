@@ -1,58 +1,83 @@
-'use client';
-
 import Link from "next/link";
 import { ArrowLeft, AlertTriangle } from "lucide-react";
-import { formatDate } from "@/lib/utils";
-import { StrapiImage } from "@/components/custom/strapi-image";
-import BlockRenderer from "@/components/block-renderer";
-import { useArticle, useArticleWithDrafts } from '@/lib/queries';
-import ArticleErrorBoundary, { 
-  ArticleDetailErrorFallback, 
-  ArticleDetailSkeleton 
-} from '@/components/ui/ArticleErrorBoundary';
-import { useParams, useSearchParams } from 'next/navigation';
+import { formatDate, getStrapiURL } from "@/lib/utils";
+import { StrapiImage } from "@/components/custom/StrapiImage";
+import BlockRenderer from "@/components/BlockRenderer";
+import { notFound } from 'next/navigation';
+import { Article } from '@/lib/types';
 
-
-function ArticleContent() {
-  const { slug, locale } = useParams<{ slug: string; locale: string }>();
-  const searchParams = useSearchParams();
-  const isPreview = searchParams.get('preview') === 'true';
+// Generate static params for all articles
+export async function generateStaticParams() {
+  const articleSlugs = [
+    'company-news-1',
+    'industry-insights-1', 
+    'product-updates-1',
+    'technology-trends-1',
+    'market-analysis-1',
+    'case-study-1',
+    'innovation-spotlight-1',
+    'sustainability-report-1',
+    'partnership-announcement-1',
+    'quarterly-review-1'
+  ];
+  const locales = ['en', 'es'];
   
-  // Always call both hooks to avoid conditional hook calls
-  const draftData = useArticleWithDrafts(slug, locale);
-  const publishedData = useArticle(slug, locale);
+  const params = [];
+  for (const locale of locales) {
+    for (const slug of articleSlugs) {
+      params.push({ locale, slug });
+    }
+  }
   
-  // Use the appropriate data based on preview mode
-  const articleData = isPreview ? draftData : publishedData;
-  const { data: article, isLoading, isError, error } = articleData;
+  return params;
+}
 
-  if (isLoading) {
-    return <ArticleDetailSkeleton />;
+// Fetch article data
+async function getArticle(slug: string, locale: string): Promise<Article | null> {
+  try {
+    const strapiUrl = getStrapiURL();
+    const response = await fetch(
+      `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&locale=${locale}&populate=*`,
+      {
+        headers: {
+          'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        },
+        next: { revalidate: 60 }, // Revalidate every minute
+      }
+    );
+    
+    if (!response.ok) {
+      return null;
+    }
+    
+    const data = await response.json();
+    return data.data?.[0] || null;
+  } catch (error) {
+    console.error('Error fetching article:', error);
+    return null;
   }
+}
 
-  if (isError) {
-    console.error('Error loading article:', error);
-    return <ArticleDetailErrorFallback error={error} />;
-  }
 
+interface PageProps {
+  params: Promise<{
+    slug: string;
+    locale: string;
+  }>;
+}
+
+export default async function ArticlePage({ params }: PageProps) {
+  const { slug, locale } = await params;
+  
+  // Fetch article data
+  const article = await getArticle(slug, locale);
+  
   if (!article) {
-    return <ArticleDetailErrorFallback />;
+    notFound();
   }
 
   return (
     <main className="container mx-auto px-4 py-12 max-w-4xl">
-      {/* Preview Mode Alert */}
-      {isPreview && (
-        <div className="mb-6 p-4 bg-orange-50 border border-orange-200 rounded-lg">
-          <div className="flex items-center">
-            <AlertTriangle className="h-4 w-4 text-orange-600 mr-2" />
-            <div className="text-orange-800">
-              <strong>预览模式</strong> - 您正在查看草稿内容，此内容可能尚未发布。
-            </div>
-          </div>
-        </div>
-      )}
-      
       <div className="container py-8">
         <Link
           href={`/${locale}/articles`}
@@ -98,13 +123,5 @@ function ArticleContent() {
         </div>
       </div>
     </main>
-  );
-}
-
-export default function ArticlePage() {
-  return (
-    <ArticleErrorBoundary FallbackComponent={ArticleDetailErrorFallback}>
-      <ArticleContent />
-    </ArticleErrorBoundary>
   );
 }
