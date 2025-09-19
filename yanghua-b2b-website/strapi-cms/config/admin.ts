@@ -1,4 +1,4 @@
-export default ({ env }: { env: any }) => ({
+export default ({ env, strapi }: { env: any, strapi: any }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
