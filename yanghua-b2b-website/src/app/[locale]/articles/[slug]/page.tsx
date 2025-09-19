@@ -18,10 +18,13 @@ function ArticleContent() {
   const searchParams = useSearchParams();
   const isPreview = searchParams.get('preview') === 'true';
   
-  // Use different hooks based on preview mode
-  const { data: article, isLoading, isError, error } = isPreview 
-    ? useArticleWithDrafts(slug, locale)
-    : useArticle(slug, locale);
+  // Always call both hooks to avoid conditional hook calls
+  const draftData = useArticleWithDrafts(slug, locale);
+  const publishedData = useArticle(slug, locale);
+  
+  // Use the appropriate data based on preview mode
+  const articleData = isPreview ? draftData : publishedData;
+  const { data: article, isLoading, isError, error } = articleData;
 
   if (isLoading) {
     return <ArticleDetailSkeleton />;
