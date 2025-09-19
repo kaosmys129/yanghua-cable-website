@@ -2,7 +2,7 @@ import Strapi, { StrapiLocale } from "strapi-sdk-js";
 import { getStrapiURL } from "./utils";
 import { Article } from "./types";
 import { logError } from "./errorLogger";
-import { transformArticle, transformArticles, normalizeApiResponse } from "./data-transformer";
+import { transformArticles, normalizeApiResponse } from "./data-transformer";
 
 // Enhanced Strapi client configuration for Strapi Cloud
 const strapi = new Strapi({
@@ -10,7 +10,7 @@ const strapi = new Strapi({
 });
 
 // Configure axios for cloud service optimization
-strapi.axios.defaults.timeout = 15000; // 15 seconds timeout for cloud services
+strapi.axios.defaults.timeout = 25000; // 25 seconds timeout to cover Strapi Cloud cold-start latency
 strapi.axios.defaults.headers.common['Accept'] = 'application/json';
 strapi.axios.defaults.headers.common['Content-Type'] = 'application/json';
 
@@ -21,10 +21,10 @@ if (process.env.STRAPI_API_TOKEN) {
 
 // Enhanced retry configuration for cloud services
 const RETRY_CONFIG = {
-  maxRetries: 4, // Increased for cloud reliability
-  retryDelay: 1500, // 1.5 seconds initial delay
-  backoffMultiplier: 2.5, // More aggressive backoff
-  timeoutRetries: 2, // Additional retries for timeout errors
+  maxRetries: 5, // Increased to 5 for better cold-start handling
+  retryDelay: 2000, // 2 seconds initial delay
+  backoffMultiplier: 2.0, // Exponential backoff factor
+  timeoutRetries: 3, // Allow more retries specifically for timeouts
 };
 
 // Enhanced retry logic for cloud services
@@ -100,7 +100,7 @@ const handleStrapiError = (error: any, operation: string) => {
   throw enhancedError;
 };
 
-export async function getAllArticles(): Promise<{ data: Article[] }> {
+export async function getAllArticles(locale?: StrapiLocale): Promise<{ data: Article[] }> {
   return withRetry(async () => {
     try {
       // Log cloud API request for monitoring
@@ -117,6 +117,7 @@ export async function getAllArticles(): Promise<{ data: Article[] }> {
             populate: "*",
           },
         },
+        locale,
       });
       const normalized = normalizeApiResponse(articles, transformArticles);
        if (normalized.error) {
@@ -161,6 +162,75 @@ export async function getArticleBySlug(slug: string, locale?: StrapiLocale): Pro
     } catch (error) {
       handleStrapiError(error, `getArticleBySlug(${slug})`);
       throw error; // This won't be reached due to handleStrapiError throwing
+    }
+  });
+}
+
+// New function to get articles with draft support for preview mode
+export async function getAllArticlesWithDrafts(locale?: StrapiLocale): Promise<{ data: Article[] }> {
+  return withRetry(async () => {
+    try {
+      console.log('Fetching articles (including drafts) from Strapi Cloud:', getStrapiURL());
+      const articles = await strapi.find("articles", {
+        populate: {
+          cover: { populate: "*" },
+          author: {
+            populate: {
+              avatar: { populate: "*" },
+            },
+          },
+          blocks: {
+            populate: "*",
+          },
+        },
+        locale,
+        publicationState: 'preview', // Include both published and draft articles
+      } as any);
+      const normalized = normalizeApiResponse(articles, transformArticles);
+       if (normalized.error) {
+         throw new Error(normalized.error);
+       }
+       return { data: normalized.data || [] };
+    } catch (error) {
+      handleStrapiError(error, 'getAllArticlesWithDrafts');
+      throw error;
+    }
+  });
+}
+
+// Enhanced function to get article by slug with draft support
+export async function getArticleBySlugWithDrafts(slug: string, locale?: StrapiLocale): Promise<Article | null> {
+  return withRetry(async () => {
+    try {
+      console.log(`Fetching article (including drafts) by slug: ${slug}`);
+      const articles = await strapi.find("articles", {
+        filters: { slug: { $eq: slug } },
+        populate: {
+          cover: { populate: "*" },
+          author: {
+            populate: {
+              avatar: { populate: "*" },
+            },
+          },
+          blocks: {
+            populate: "*",
+          },
+        },
+        locale: locale,
+        publicationState: 'preview', // Include both published and draft articles
+      } as any);
+      const normalized = normalizeApiResponse(articles, (data) => {
+         const articleArray = Array.isArray(data) ? data : [data];
+         const transformed = transformArticles(articleArray);
+         return transformed[0] || null;
+       });
+       if (normalized.error) {
+         throw new Error(normalized.error);
+       }
+       return normalized.data;
+    } catch (error) {
+      handleStrapiError(error, `getArticleBySlugWithDrafts(${slug})`);
+      throw error;
     }
   });
 }

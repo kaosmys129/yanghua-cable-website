@@ -1,18 +1,27 @@
 'use client';
 
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, AlertTriangle } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { StrapiImage } from "@/components/custom/strapi-image";
 import BlockRenderer from "@/components/block-renderer";
-import { useArticle } from '@/lib/queries';
+import { useArticle, useArticleWithDrafts } from '@/lib/queries';
 import ArticleErrorBoundary, { 
   ArticleDetailErrorFallback, 
   ArticleDetailSkeleton 
 } from '@/components/ui/ArticleErrorBoundary';
+import { useParams, useSearchParams } from 'next/navigation';
 
-function ArticleContent({ params }: { params: { slug: string; locale: string } }) {
-  const { data: article, isLoading, isError, error } = useArticle(params.slug);
+
+function ArticleContent() {
+  const { slug, locale } = useParams<{ slug: string; locale: string }>();
+  const searchParams = useSearchParams();
+  const isPreview = searchParams.get('preview') === 'true';
+  
+  // Use different hooks based on preview mode
+  const { data: article, isLoading, isError, error } = isPreview 
+    ? useArticleWithDrafts(slug, locale)
+    : useArticle(slug, locale);
 
   if (isLoading) {
     return <ArticleDetailSkeleton />;
@@ -29,9 +38,21 @@ function ArticleContent({ params }: { params: { slug: string; locale: string } }
 
   return (
     <main className="container mx-auto px-4 py-12 max-w-4xl">
+      {/* Preview Mode Alert */}
+      {isPreview && (
+        <div className="mb-6 p-4 bg-orange-50 border border-orange-200 rounded-lg">
+          <div className="flex items-center">
+            <AlertTriangle className="h-4 w-4 text-orange-600 mr-2" />
+            <div className="text-orange-800">
+              <strong>预览模式</strong> - 您正在查看草稿内容，此内容可能尚未发布。
+            </div>
+          </div>
+        </div>
+      )}
+      
       <div className="container py-8">
         <Link
-          href={`/${params.locale}/articles`}
+          href={`/${locale}/articles`}
           className="inline-flex items-center mb-8 text-gray-500 hover:text-gray-900"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -77,17 +98,10 @@ function ArticleContent({ params }: { params: { slug: string; locale: string } }
   );
 }
 
-export default function ArticlePage({
-  params,
-}: {
-  params: {
-    slug: string;
-    locale: string;
-  };
-}) {
+export default function ArticlePage() {
   return (
     <ArticleErrorBoundary fallback={ArticleDetailErrorFallback}>
-      <ArticleContent params={params} />
+      <ArticleContent />
     </ArticleErrorBoundary>
   );
 }

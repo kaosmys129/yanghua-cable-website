@@ -9,6 +9,7 @@ import ArticleErrorBoundary, {
   ArticleListErrorFallback, 
   ArticleListSkeleton 
 } from '@/components/ui/ArticleErrorBoundary';
+import { useParams } from 'next/navigation';
 
 function EmptyState() {
   return (
@@ -24,7 +25,8 @@ function EmptyState() {
 }
 
 function ArticlesList() {
-  const { data: articles, isLoading, isError, error } = useArticles();
+  const { locale } = useParams<{ locale: string }>();
+  const { data: articles, isLoading, isError, error } = useArticles(locale);
 
   if (isLoading) {
     return <ArticleListSkeleton />;

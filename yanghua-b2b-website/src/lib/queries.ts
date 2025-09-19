@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getAllArticles, getArticleBySlug, checkStrapiHealth } from './strapi-client';
+import { getAllArticles, getArticleBySlug, getAllArticlesWithDrafts, getArticleBySlugWithDrafts, checkStrapiHealth } from './strapi-client';
 import { Article } from './types';
 import { generateCacheKey } from './data-transformer';
 import { logError } from './errorLogger';
@@ -22,12 +22,12 @@ const CACHE_CONFIG = {
 /**
  * Hook for fetching all articles with caching
  */
-export function useArticles() {
+export function useArticles(locale?: string) {
   return useQuery({
-    queryKey: queryKeys.articles,
+    queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
     queryFn: async () => {
       try {
-        const result = await getAllArticles();
+        const result = await getAllArticles(locale as any);
         return result.data;
       } catch (error) {
         logError('Failed to fetch articles', error instanceof Error ? error : new Error(String(error)));
@@ -51,12 +51,12 @@ export function useArticles() {
 /**
  * Hook for fetching a single article by slug with caching
  */
-export function useArticle(slug: string, enabled: boolean = true) {
+export function useArticle(slug: string, locale?: string, enabled: boolean = true) {
   return useQuery({
-    queryKey: queryKeys.article(slug),
+    queryKey: locale ? [queryKeys.article(slug)[0], slug, locale] : [queryKeys.article(slug)[0], slug],
     queryFn: async () => {
       try {
-        const result = await getArticleBySlug(slug);
+        const result = await getArticleBySlug(slug, locale as any);
         if (!result) {
           throw new Error(`Article with slug '${slug}' not found`);
         }
@@ -102,11 +102,11 @@ export function usePrefetchArticles() {
   const queryClient = useQueryClient();
 
   return {
-    prefetchArticles: () => {
+    prefetchArticles: (locale?: string) => {
       queryClient.prefetchQuery({
-        queryKey: queryKeys.articles,
+        queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
         queryFn: async () => {
-          const result = await getAllArticles();
+          const result = await getAllArticles(locale as any);
           return result.data;
         },
         staleTime: CACHE_CONFIG.staleTime,
@@ -216,4 +216,63 @@ export function useLoadingStates() {
       health: healthQuery.error,
     },
   };
+}
+
+/**
+ * Hook for fetching articles with draft support (for preview mode)
+ */
+export function useArticlesWithDrafts(locale?: string) {
+  return useQuery({
+    queryKey: locale ? [queryKeys.articles[0], 'drafts', locale] : [queryKeys.articles[0], 'drafts'],
+    queryFn: async () => {
+      try {
+        const result = await getAllArticlesWithDrafts(locale as any);
+        return result.data;
+      } catch (error) {
+        logError('Failed to fetch articles with drafts', error instanceof Error ? error : new Error(String(error)));
+        throw error;
+      }
+    },
+    staleTime: 2 * 60 * 1000, // 2 minutes - shorter for draft content
+    gcTime: 5 * 60 * 1000, // 5 minutes - shorter garbage collection for drafts
+    retry: (failureCount, error: any) => {
+      if (error?.originalError?.response?.status === 404) return false;
+      return failureCount < 3;
+    },
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchOnMount: 'always',
+  });
+}
+
+/**
+ * Hook for fetching single article with draft support (for preview mode)
+ */
+export function useArticleWithDrafts(slug: string, locale?: string, enabled: boolean = true) {
+  return useQuery({
+    queryKey: locale ? [queryKeys.article(slug)[0], slug, 'drafts', locale] : [queryKeys.article(slug)[0], slug, 'drafts'],
+    queryFn: async () => {
+      try {
+        const result = await getArticleBySlugWithDrafts(slug, locale as any);
+        if (!result) {
+          throw new Error(`Article with slug '${slug}' not found`);
+        }
+        return result;
+      } catch (error) {
+        logError(`Failed to fetch article with drafts: ${slug}`, error instanceof Error ? error : new Error(String(error)));
+        throw error;
+      }
+    },
+    enabled: enabled && !!slug,
+    staleTime: 1 * 60 * 1000, // 1 minute - very short for draft content
+    gcTime: 5 * 60 * 1000, // 5 minutes - shorter for drafts
+    retry: (failureCount, error: any) => {
+      if (error?.originalError?.response?.status === 404) return false;
+      return failureCount < 3;
+    },
+    retryDelay: (attemptIndex) => Math.min(1500 * 2 ** attemptIndex, 45000),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+  });
 }
