@@ -1,4 +1,4 @@
-export default ({ env }) => ({
+export default ({ env }: { env: any }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
@@ -24,12 +24,11 @@ export default ({ env }) => ({
     
     allowedOrigins: env("CLIENT_URL"),  // Usually your frontend application URL
     // …
-   async handler(uid, { documentId, locale, status }) {
+   async handler(uid: any, { documentId, locale, status }: any) {
        const document = await strapi.documents(uid).findOne({
-          documentId,
-          populate: null,
-          fields: ["slug"],
-        });
+           documentId,
+           fields: ["slug"],
+         });
         const { slug } = document;
 
         const urlSearchParams = new URLSearchParams({
