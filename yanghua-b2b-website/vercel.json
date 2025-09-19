@@ -69,7 +69,7 @@
       "destination": "/api/$1"
     },
     {
-      "source": "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|bmp|js|css|woff|woff2|ttf|otf|eot)).*)",
+      "source": "/((?!api|_next|images|videos|data|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|bmp|js|css|woff|woff2|ttf|otf|eot)).*)",
       "destination": "/"
     }
   ]

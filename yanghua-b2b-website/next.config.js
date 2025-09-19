@@ -3,8 +3,8 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 const nextConfig = {
-  // 静态导出配置 - 临时禁用用于测试
-  // output: 'export',
+  // 为Vercel部署启用输出独立性
+  output: 'standalone',
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
   eslint: {
@@ -16,6 +16,8 @@ const nextConfig = {
   experimental: {
     // 优化包导入
     optimizePackageImports: ['lucide-react', 'framer-motion'],
+    // 为Vercel启用独立输出
+    outputFileTracingRoot: undefined,
   },
   // 性能优化配置
   compiler: {
