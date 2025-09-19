@@ -103,7 +103,7 @@ function ArticleContent() {
 
 export default function ArticlePage() {
   return (
-    <ArticleErrorBoundary fallback={ArticleDetailErrorFallback}>
+    <ArticleErrorBoundary FallbackComponent={ArticleDetailErrorFallback}>
       <ArticleContent />
     </ArticleErrorBoundary>
   );
