@@ -95,3 +95,6 @@ out
 
 # Backup
 /backup/
+
+# TypeScript build info
+*.tsbuildinfo
