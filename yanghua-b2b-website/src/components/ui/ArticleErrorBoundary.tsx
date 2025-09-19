@@ -14,37 +14,9 @@ interface ArticleErrorBoundaryProps {
   fallback?: React.ComponentType<{ error?: Error; retry?: () => void }>;
 }
 
-class ArticleErrorBoundary extends React.Component<
-  ArticleErrorBoundaryProps,
-  ArticleErrorBoundaryState
-> {
-  constructor(props: ArticleErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
+import { ErrorBoundary } from "react-error-boundary";
 
-  static getDerivedStateFromError(error: Error): ArticleErrorBoundaryState {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    logError('Article Error Boundary caught an error', error);
-    console.error('Article Error Boundary:', error, errorInfo);
-  }
-
-  retry = () => {
-    this.setState({ hasError: false, error: undefined });
-  };
-
-  render() {
-    if (this.state.hasError) {
-      const FallbackComponent = this.props.fallback || DefaultErrorFallback;
-      return <FallbackComponent error={this.state.error} retry={this.retry} />;
-    }
-
-    return this.props.children;
-  }
-}
+const ArticleErrorBoundary = ErrorBoundary;
 
 // Default error fallback component
 function DefaultErrorFallback({ error, retry }: { error?: Error; retry?: () => void }) {
