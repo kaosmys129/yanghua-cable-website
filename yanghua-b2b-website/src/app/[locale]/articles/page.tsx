@@ -97,7 +97,7 @@ function ArticlesList() {
 
 export default function Home() {
   return (
-    <ArticleErrorBoundary fallback={ArticleListErrorFallback}>
+    <ArticleErrorBoundary FallbackComponent={ArticleListErrorFallback}>
       <ArticlesList />
     </ArticleErrorBoundary>
   );
