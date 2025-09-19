@@ -1,4 +1,10 @@
 {
+  "name": "yanghua-b2b-monorepo",
+  "private": true,
+  "workspaces": [
+    "strapi-cms",
+    "yanghua-b2b-website"
+  ],
   "dependencies": {
     "@babel/parser": "^7.28.3",
     "@babel/traverse": "^7.28.3",
