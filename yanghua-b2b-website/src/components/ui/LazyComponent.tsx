@@ -148,7 +148,7 @@ export function withLazyLoading<P extends object>(
       fallback={options.fallback}
       errorFallback={options.errorFallback}
     >
-      <LazyComponent {...props} />
+      <LazyComponent {...props as any} />
     </LazyComponentWrapper>
   );
 
