@@ -12,7 +12,7 @@ export default {
   },
   
   // 预览密钥配置
-  secret: process.env.PREVIEW_SECRET || 'your-preview-secret-key',
+  secret: process.env.PREVIEW_SECRET || 'Pq2206613!',
   
   // 允许的预览域名
   allowedOrigins: [

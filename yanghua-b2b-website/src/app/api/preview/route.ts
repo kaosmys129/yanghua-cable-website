@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
     draft.enable();
     
     // Redirect to the article page with preview mode enabled
-    redirect(`/${locale}/articles/${slug}`);
+    return NextResponse.redirect(new URL(`/${locale}/articles/${slug}`, request.url));
     
   } catch (error) {
     console.error('Preview API error:', error);

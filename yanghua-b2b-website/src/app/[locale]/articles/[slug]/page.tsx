@@ -5,6 +5,7 @@ import { StrapiImage } from "@/components/custom/StrapiImage";
 import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
+import { draftMode } from 'next/headers';
 
 // Generate static params for all articles
 export async function generateStaticParams() {
@@ -36,13 +37,16 @@ export async function generateStaticParams() {
 async function getArticle(slug: string, locale: string): Promise<Article | null> {
   try {
     const strapiUrl = getStrapiURL();
+    const draft = await draftMode();
+    const publicationState = draft.isEnabled ? 'preview' : 'live';
+    
     const response = await fetch(
-      `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&locale=${locale}&populate=*`,
+      `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&locale=${locale}&publicationState=${publicationState}&populate=*`,
       {
         headers: {
           'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
         },
-        next: { revalidate: 60 }, // Revalidate every minute
+        next: { revalidate: draft.isEnabled ? 0 : 60 }, // No revalidation in preview mode
       }
     );
     
@@ -71,6 +75,7 @@ export default async function ArticlePage({ params }: PageProps) {
   
   // Fetch article data
   const article = await getArticle(slug, locale);
+  const draft = await draftMode();
   
   if (!article) {
     notFound();
@@ -78,6 +83,15 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <main className="container mx-auto px-4 py-12 max-w-4xl">
+      {draft.isEnabled && (
+        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6">
+          <div className="flex items-center">
+            <AlertTriangle className="w-5 h-5 mr-2" />
+            <p className="font-medium">Preview Mode Active</p>
+          </div>
+          <p className="text-sm mt-1">You are viewing this article in preview mode. This content may not be published yet.</p>
+        </div>
+      )}
       <div className="container py-8">
         <Link
           href={`/${locale}/articles`}
