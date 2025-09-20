@@ -1,0 +1,664 @@
+{
+  "testDate": "2025-09-20T15:52:30.966Z",
+  "articleTitle": "Yanghua Insights: Chemical Plant Multi-core Cable Connections Causing Problems vs. Flexible Busbar Easy Solutions",
+  "articleSlug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions",
+  "results": {
+    "cover": null,
+    "blocks": [
+      {
+        "blockIndex": 2,
+        "uploaded": {
+          "id": 379,
+          "documentId": "pjjeo134hctq2n1ph2bs5407",
+          "name": "block_3_6388946900420037967099851.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 800,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_3_6388946900420037967099851_e85450f0aa.jpg",
+              "hash": "small_block_3_6388946900420037967099851_e85450f0aa",
+              "mime": "image/jpeg",
+              "name": "small_block_3_6388946900420037967099851.jpg",
+              "path": null,
+              "size": 40.52,
+              "width": 375,
+              "height": 500,
+              "sizeInBytes": 40515
+            },
+            "medium": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/medium_block_3_6388946900420037967099851_e85450f0aa.jpg",
+              "hash": "medium_block_3_6388946900420037967099851_e85450f0aa",
+              "mime": "image/jpeg",
+              "name": "medium_block_3_6388946900420037967099851.jpg",
+              "path": null,
+              "size": 80.9,
+              "width": 563,
+              "height": 750,
+              "sizeInBytes": 80904
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_3_6388946900420037967099851_e85450f0aa.jpg",
+              "hash": "thumbnail_block_3_6388946900420037967099851_e85450f0aa",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_3_6388946900420037967099851.jpg",
+              "path": null,
+              "size": 5.28,
+              "width": 117,
+              "height": 156,
+              "sizeInBytes": 5281
+            }
+          },
+          "hash": "block_3_6388946900420037967099851_e85450f0aa",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 90.44,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_3_6388946900420037967099851_e85450f0aa.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:51:59.964Z",
+          "updatedAt": "2025-09-20T15:51:59.964Z",
+          "publishedAt": "2025-09-20T15:51:59.964Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 4,
+        "uploaded": {
+          "id": 380,
+          "documentId": "lpncw6xg8mfnxxt6kcmh5lu0",
+          "name": "block_5_6388946929007860321130095.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 450,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_5_6388946929007860321130095_19e85853eb.jpg",
+              "hash": "small_block_5_6388946929007860321130095_19e85853eb",
+              "mime": "image/jpeg",
+              "name": "small_block_5_6388946929007860321130095.jpg",
+              "path": null,
+              "size": 39.05,
+              "width": 500,
+              "height": 375,
+              "sizeInBytes": 39052
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_5_6388946929007860321130095_19e85853eb.jpg",
+              "hash": "thumbnail_block_5_6388946929007860321130095_19e85853eb",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_5_6388946929007860321130095.jpg",
+              "path": null,
+              "size": 7.92,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 7921
+            }
+          },
+          "hash": "block_5_6388946929007860321130095_19e85853eb",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 54.39,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_5_6388946929007860321130095_19e85853eb.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:01.328Z",
+          "updatedAt": "2025-09-20T15:52:01.328Z",
+          "publishedAt": "2025-09-20T15:52:01.329Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 6,
+        "uploaded": {
+          "id": 381,
+          "documentId": "qmc47rkq4e1w85tarloexfs9",
+          "name": "block_7_6388946930937832503301686.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 450,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_7_6388946930937832503301686_e6eb57e3ee.jpg",
+              "hash": "small_block_7_6388946930937832503301686_e6eb57e3ee",
+              "mime": "image/jpeg",
+              "name": "small_block_7_6388946930937832503301686.jpg",
+              "path": null,
+              "size": 54.56,
+              "width": 500,
+              "height": 375,
+              "sizeInBytes": 54559
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_7_6388946930937832503301686_e6eb57e3ee.jpg",
+              "hash": "thumbnail_block_7_6388946930937832503301686_e6eb57e3ee",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_7_6388946930937832503301686.jpg",
+              "path": null,
+              "size": 11.11,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 11113
+            }
+          },
+          "hash": "block_7_6388946930937832503301686_e6eb57e3ee",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 76.33,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_7_6388946930937832503301686_e6eb57e3ee.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:05.602Z",
+          "updatedAt": "2025-09-20T15:52:05.602Z",
+          "publishedAt": "2025-09-20T15:52:05.602Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 8,
+        "uploaded": {
+          "id": 382,
+          "documentId": "l9y1xtapfuu27vsc5rqdo76t",
+          "name": "block_9_6388946931966107413793583.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 800,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_9_6388946931966107413793583_eeb1c92eef.jpg",
+              "hash": "small_block_9_6388946931966107413793583_eeb1c92eef",
+              "mime": "image/jpeg",
+              "name": "small_block_9_6388946931966107413793583.jpg",
+              "path": null,
+              "size": 35.75,
+              "width": 375,
+              "height": 500,
+              "sizeInBytes": 35747
+            },
+            "medium": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/medium_block_9_6388946931966107413793583_eeb1c92eef.jpg",
+              "hash": "medium_block_9_6388946931966107413793583_eeb1c92eef",
+              "mime": "image/jpeg",
+              "name": "medium_block_9_6388946931966107413793583.jpg",
+              "path": null,
+              "size": 70.26,
+              "width": 563,
+              "height": 750,
+              "sizeInBytes": 70259
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_9_6388946931966107413793583_eeb1c92eef.jpg",
+              "hash": "thumbnail_block_9_6388946931966107413793583_eeb1c92eef",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_9_6388946931966107413793583.jpg",
+              "path": null,
+              "size": 4.9,
+              "width": 117,
+              "height": 156,
+              "sizeInBytes": 4898
+            }
+          },
+          "hash": "block_9_6388946931966107413793583_eeb1c92eef",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 78.26,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_9_6388946931966107413793583_eeb1c92eef.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:07.711Z",
+          "updatedAt": "2025-09-20T15:52:07.711Z",
+          "publishedAt": "2025-09-20T15:52:07.711Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 10,
+        "uploaded": {
+          "id": 383,
+          "documentId": "wm7cw3591z8nv4txng4tgfrw",
+          "name": "block_11_6388946934226416318418939.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 450,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_11_6388946934226416318418939_98707f0e90.jpg",
+              "hash": "small_block_11_6388946934226416318418939_98707f0e90",
+              "mime": "image/jpeg",
+              "name": "small_block_11_6388946934226416318418939.jpg",
+              "path": null,
+              "size": 30.6,
+              "width": 500,
+              "height": 375,
+              "sizeInBytes": 30603
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_11_6388946934226416318418939_98707f0e90.jpg",
+              "hash": "thumbnail_block_11_6388946934226416318418939_98707f0e90",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_11_6388946934226416318418939.jpg",
+              "path": null,
+              "size": 6.69,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 6688
+            }
+          },
+          "hash": "block_11_6388946934226416318418939_98707f0e90",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 42.55,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_11_6388946934226416318418939_98707f0e90.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:09.349Z",
+          "updatedAt": "2025-09-20T15:52:09.349Z",
+          "publishedAt": "2025-09-20T15:52:09.349Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 12,
+        "uploaded": {
+          "id": 384,
+          "documentId": "up8jvqwvbaovavcfjlery587",
+          "name": "block_13_6388946935573979547567196.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 450,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_13_6388946935573979547567196_95f3951347.jpg",
+              "hash": "small_block_13_6388946935573979547567196_95f3951347",
+              "mime": "image/jpeg",
+              "name": "small_block_13_6388946935573979547567196.jpg",
+              "path": null,
+              "size": 47.94,
+              "width": 500,
+              "height": 375,
+              "sizeInBytes": 47942
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_13_6388946935573979547567196_95f3951347.jpg",
+              "hash": "thumbnail_block_13_6388946935573979547567196_95f3951347",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_13_6388946935573979547567196.jpg",
+              "path": null,
+              "size": 11.14,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 11135
+            }
+          },
+          "hash": "block_13_6388946935573979547567196_95f3951347",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 65.26,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_13_6388946935573979547567196_95f3951347.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:12.205Z",
+          "updatedAt": "2025-09-20T15:52:12.205Z",
+          "publishedAt": "2025-09-20T15:52:12.205Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 14,
+        "uploaded": {
+          "id": 385,
+          "documentId": "hwuf4nxe9kh18hr3poimdcdb",
+          "name": "block_15_6388946937228518029483016.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 450,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_15_6388946937228518029483016_29578e9d80.jpg",
+              "hash": "small_block_15_6388946937228518029483016_29578e9d80",
+              "mime": "image/jpeg",
+              "name": "small_block_15_6388946937228518029483016.jpg",
+              "path": null,
+              "size": 47.92,
+              "width": 500,
+              "height": 375,
+              "sizeInBytes": 47922
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_15_6388946937228518029483016_29578e9d80.jpg",
+              "hash": "thumbnail_block_15_6388946937228518029483016_29578e9d80",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_15_6388946937228518029483016.jpg",
+              "path": null,
+              "size": 10.58,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 10578
+            }
+          },
+          "hash": "block_15_6388946937228518029483016_29578e9d80",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 66.02,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_15_6388946937228518029483016_29578e9d80.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:14.680Z",
+          "updatedAt": "2025-09-20T15:52:14.680Z",
+          "publishedAt": "2025-09-20T15:52:14.681Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 16,
+        "uploaded": {
+          "id": 386,
+          "documentId": "he8o3lh4asee1mvb6yioq0xr",
+          "name": "block_17_6388946938382538704488942.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 800,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_17_6388946938382538704488942_e5294f1824.jpg",
+              "hash": "small_block_17_6388946938382538704488942_e5294f1824",
+              "mime": "image/jpeg",
+              "name": "small_block_17_6388946938382538704488942.jpg",
+              "path": null,
+              "size": 37.16,
+              "width": 375,
+              "height": 500,
+              "sizeInBytes": 37155
+            },
+            "medium": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/medium_block_17_6388946938382538704488942_e5294f1824.jpg",
+              "hash": "medium_block_17_6388946938382538704488942_e5294f1824",
+              "mime": "image/jpeg",
+              "name": "medium_block_17_6388946938382538704488942.jpg",
+              "path": null,
+              "size": 69.74,
+              "width": 563,
+              "height": 750,
+              "sizeInBytes": 69741
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_17_6388946938382538704488942_e5294f1824.jpg",
+              "hash": "thumbnail_block_17_6388946938382538704488942_e5294f1824",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_17_6388946938382538704488942.jpg",
+              "path": null,
+              "size": 5.43,
+              "width": 117,
+              "height": 156,
+              "sizeInBytes": 5434
+            }
+          },
+          "hash": "block_17_6388946938382538704488942_e5294f1824",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 77.08,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_17_6388946938382538704488942_e5294f1824.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:16.295Z",
+          "updatedAt": "2025-09-20T15:52:16.295Z",
+          "publishedAt": "2025-09-20T15:52:16.296Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 18,
+        "uploaded": {
+          "id": 387,
+          "documentId": "ezuzrbyqdvql3m9fuoi79eep",
+          "name": "block_19_6388946939878915711447867.jpg",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 600,
+          "formats": {
+            "small": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_19_6388946939878915711447867_371e34f683.jpg",
+              "hash": "small_block_19_6388946939878915711447867_371e34f683",
+              "mime": "image/jpeg",
+              "name": "small_block_19_6388946939878915711447867.jpg",
+              "path": null,
+              "size": 71.35,
+              "width": 500,
+              "height": 500,
+              "sizeInBytes": 71349
+            },
+            "thumbnail": {
+              "ext": ".jpg",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_19_6388946939878915711447867_371e34f683.jpg",
+              "hash": "thumbnail_block_19_6388946939878915711447867_371e34f683",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_19_6388946939878915711447867.jpg",
+              "path": null,
+              "size": 8.57,
+              "width": 156,
+              "height": 156,
+              "sizeInBytes": 8574
+            }
+          },
+          "hash": "block_19_6388946939878915711447867_371e34f683",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 99.44,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_19_6388946939878915711447867_371e34f683.jpg",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:17.736Z",
+          "updatedAt": "2025-09-20T15:52:17.736Z",
+          "publishedAt": "2025-09-20T15:52:17.736Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 20,
+        "uploaded": {
+          "id": 388,
+          "documentId": "y41pwoanqni5j17lwlt4di6z",
+          "name": "block_21_6388946942521302886142731.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 802,
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_21_6388946942521302886142731_cbcedc1d78.png",
+              "hash": "small_block_21_6388946942521302886142731_cbcedc1d78",
+              "mime": "image/jpeg",
+              "name": "small_block_21_6388946942521302886142731.png",
+              "path": null,
+              "size": 374.9,
+              "width": 374,
+              "height": 500,
+              "sizeInBytes": 374898
+            },
+            "medium": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/medium_block_21_6388946942521302886142731_cbcedc1d78.png",
+              "hash": "medium_block_21_6388946942521302886142731_cbcedc1d78",
+              "mime": "image/jpeg",
+              "name": "medium_block_21_6388946942521302886142731.png",
+              "path": null,
+              "size": 757.8,
+              "width": 561,
+              "height": 750,
+              "sizeInBytes": 757799
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_21_6388946942521302886142731_cbcedc1d78.png",
+              "hash": "thumbnail_block_21_6388946942521302886142731_cbcedc1d78",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_21_6388946942521302886142731.png",
+              "path": null,
+              "size": 49.17,
+              "width": 117,
+              "height": 156,
+              "sizeInBytes": 49171
+            }
+          },
+          "hash": "block_21_6388946942521302886142731_cbcedc1d78",
+          "ext": ".png",
+          "mime": "image/jpeg",
+          "size": 180.51,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_21_6388946942521302886142731_cbcedc1d78.png",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:22.094Z",
+          "updatedAt": "2025-09-20T15:52:22.094Z",
+          "publishedAt": "2025-09-20T15:52:22.094Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 22,
+        "uploaded": {
+          "id": 389,
+          "documentId": "xrg4abmtkpvmtcpuci1ugqqo",
+          "name": "block_23_6388946943436682204780149.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 449,
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_23_6388946943436682204780149_ff07988445.png",
+              "hash": "small_block_23_6388946943436682204780149_ff07988445",
+              "mime": "image/jpeg",
+              "name": "small_block_23_6388946943436682204780149.png",
+              "path": null,
+              "size": 416.9,
+              "width": 500,
+              "height": 374,
+              "sizeInBytes": 416896
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_23_6388946943436682204780149_ff07988445.png",
+              "hash": "thumbnail_block_23_6388946943436682204780149_ff07988445",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_23_6388946943436682204780149.png",
+              "path": null,
+              "size": 82.64,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 82642
+            }
+          },
+          "hash": "block_23_6388946943436682204780149_ff07988445",
+          "ext": ".png",
+          "mime": "image/jpeg",
+          "size": 165.2,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_23_6388946943436682204780149_ff07988445.png",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:24.068Z",
+          "updatedAt": "2025-09-20T15:52:24.068Z",
+          "publishedAt": "2025-09-20T15:52:24.068Z"
+        },
+        "success": true
+      },
+      {
+        "blockIndex": 24,
+        "uploaded": {
+          "id": 390,
+          "documentId": "xhuwz3783j9rldgvfnew0n0u",
+          "name": "block_25_6388946944228143447430955.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 600,
+          "height": 450,
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/small_block_25_6388946944228143447430955_8e4d585809.png",
+              "hash": "small_block_25_6388946944228143447430955_8e4d585809",
+              "mime": "image/jpeg",
+              "name": "small_block_25_6388946944228143447430955.png",
+              "path": null,
+              "size": 330.58,
+              "width": 500,
+              "height": 375,
+              "sizeInBytes": 330579
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/thumbnail_block_25_6388946944228143447430955_8e4d585809.png",
+              "hash": "thumbnail_block_25_6388946944228143447430955_8e4d585809",
+              "mime": "image/jpeg",
+              "name": "thumbnail_block_25_6388946944228143447430955.png",
+              "path": null,
+              "size": 66.9,
+              "width": 208,
+              "height": 156,
+              "sizeInBytes": 66895
+            }
+          },
+          "hash": "block_25_6388946944228143447430955_8e4d585809",
+          "ext": ".png",
+          "mime": "image/jpeg",
+          "size": 125.93,
+          "url": "https://fruitful-presence-02d7be759c.media.strapiapp.com/block_25_6388946944228143447430955_8e4d585809.png",
+          "previewUrl": null,
+          "provider": "strapi-provider-upload-strapi-cloud",
+          "provider_metadata": null,
+          "createdAt": "2025-09-20T15:52:26.128Z",
+          "updatedAt": "2025-09-20T15:52:26.128Z",
+          "publishedAt": "2025-09-20T15:52:26.129Z"
+        },
+        "success": true
+      }
+    ],
+    "errors": []
+  },
+  "summary": {
+    "coverSuccess": false,
+    "blocksSuccess": 12,
+    "totalErrors": 0
+  }
+}
