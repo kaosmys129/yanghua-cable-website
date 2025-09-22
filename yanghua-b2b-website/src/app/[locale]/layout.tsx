@@ -23,6 +23,9 @@ export default async function LocaleLayout({
   // Debug log
   console.log('[LocaleLayout] params:', resolvedParams);
   
+  // Load network debugging script in development
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
   // Validate that the incoming `locale` parameter is valid
   const isValid = locales.includes(locale as any);
   if (!isValid) {
@@ -41,6 +44,10 @@ export default async function LocaleLayout({
         <Footer />
       </ErrorBoundary>
       <DebugPanel />
+      {/* Load network debugging script in development */}
+      {isDevelopment && (
+        <script src="/debug-network.js" />
+      )}
     </NextIntlClientProvider>
   );
 }

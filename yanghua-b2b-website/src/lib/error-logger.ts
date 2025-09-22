@@ -26,13 +26,49 @@ class ErrorLogger {
     error?: Error,
     context?: Record<string, any>
   ): ErrorLogEntry {
+    // Enhanced stack trace handling
+    let stack: string | undefined;
+    
+    if (error?.stack) {
+      stack = error.stack;
+    } else if (error && typeof error === 'object') {
+      // Try to extract stack from error object properties
+      const errorObj = error as any;
+      if (errorObj.originalError?.stack) {
+        stack = errorObj.originalError.stack;
+      } else if (errorObj.cause?.stack) {
+        stack = errorObj.cause.stack;
+      } else {
+        // Generate a basic stack trace if none exists
+        try {
+          throw new Error('Stack trace generation');
+        } catch (e) {
+          stack = (e as Error).stack?.split('\n').slice(2).join('\n'); // Remove first 2 lines
+        }
+      }
+    } else if (!error) {
+      // Generate stack trace for non-error logs
+      try {
+        throw new Error('Stack trace generation');
+      } catch (e) {
+        stack = (e as Error).stack?.split('\n').slice(2).join('\n');
+      }
+    }
+    
     return {
       id: this.generateId(),
       timestamp: new Date().toISOString(),
       level,
       message,
-      stack: error?.stack,
-      context,
+      stack,
+      context: {
+        ...context,
+        // Add enhanced error context
+        errorType: error?.constructor?.name,
+        errorMessage: error?.message,
+        hasOriginalError: !!(context?.originalError),
+        detailedErrorInfo: context?.detailedErrorInfo
+      },
       userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
       url: typeof window !== 'undefined' ? window.location.href : undefined,
     };

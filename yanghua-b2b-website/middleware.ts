@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './src/lib/i18n';
 import { authMiddleware } from './src/lib/auth-middleware';
+import { generateCSPHeader } from './src/lib/security';
 
 const intlMiddleware = createMiddleware({
   locales: ['en', 'es'],
@@ -47,6 +48,7 @@ export default async function middleware(request: NextRequest) {
 
   // 添加安全头部
   if (response instanceof NextResponse) {
+    response.headers.set('Content-Security-Policy', generateCSPHeader());
     response.headers.set('X-Frame-Options', 'DENY');
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');

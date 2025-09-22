@@ -35,6 +35,7 @@ export const CSP_DIRECTIVES = {
     "'self'",
     'https://api.strapi.io',
     'https://yanghua-strapi-cms.onrender.com',
+    'https://fruitful-presence-02d7be759c.strapiapp.com',
     'https://www.google-analytics.com',
     'https://vitals.vercel-analytics.com',
     'wss://ws.vercel.live',

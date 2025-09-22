@@ -19,12 +19,19 @@ export async function generateStaticParams() {
       const url = `${baseUrl}/api/articles?fields[0]=slug&locale=${locale}`;
       console.log(`Fetching articles for locale ${locale} from: ${url}`);
       
+      const headers: Record<string, string> = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      };
+      
+      // Add authentication if token is available
+      if (process.env.STRAPI_API_TOKEN) {
+        headers['Authorization'] = `Bearer ${process.env.STRAPI_API_TOKEN}`;
+      }
+      
       const response = await fetch(url, {
         method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
+        headers,
       });
       
       if (!response.ok) {

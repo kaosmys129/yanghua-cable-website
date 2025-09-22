@@ -39,12 +39,22 @@ export function useArticles(locale?: string) {
     retry: (failureCount, error: any) => {
       // Custom retry logic for cloud services
       if (error?.originalError?.response?.status === 404) return false;
-      return failureCount < 3;
+      // Increase retry count for initial load issues
+      return failureCount < 5;
     },
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: (attemptIndex) => {
+      // Progressive delay for Strapi Cloud cold start
+      const baseDelay = 1000;
+      const maxDelay = 10000;
+      return Math.min(baseDelay * Math.pow(2, attemptIndex), maxDelay);
+    },
     refetchOnWindowFocus: false, // Reduce unnecessary requests
     refetchOnReconnect: true, // Refetch when connection is restored
-    refetchOnMount: 'always',
+    refetchOnMount: true, // Ensure data is fetched on component mount for proper initial load
+    // Enable background refetch for better UX
+    refetchInterval: (query) => query.state.status === 'error' ? 5000 : false,
+    // Network mode to handle offline scenarios
+    networkMode: 'online',
   });
 }
 
