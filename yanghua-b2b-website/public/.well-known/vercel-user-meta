@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "deployment": {
+    "platform": "vercel",
+    "framework": "next.js",
+    "region": "auto"
+  },
+  "analytics": {
+    "enabled": true,
+    "provider": "vercel"
+  },
+  "monitoring": {
+    "performance": true,
+    "errors": true
+  }
+}

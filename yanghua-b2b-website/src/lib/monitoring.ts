@@ -104,6 +104,14 @@ export class PerformanceMonitor {
 
   private async sendToAnalytics(metric: PerformanceMetric): Promise<void> {
     try {
+      // Only send analytics in development or when explicitly enabled
+      const isProduction = process.env.NODE_ENV === 'production';
+      const analyticsEnabled = process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === 'true';
+      
+      if (isProduction && !analyticsEnabled) {
+        return; // Skip analytics in production unless explicitly enabled
+      }
+
       // Send to Google Analytics 4
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'web_vital', {
@@ -114,20 +122,29 @@ export class PerformanceMonitor {
         });
       }
 
-      // Send to custom analytics endpoint
+      // Send to custom analytics endpoint with timeout
       if (typeof fetch !== 'undefined') {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        
         await fetch('/api/analytics/performance', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(metric),
+          signal: controller.signal,
         }).catch(() => {
           // Silently fail to avoid affecting user experience
         });
+        
+        clearTimeout(timeoutId);
       }
     } catch (error) {
-      console.warn('Failed to send performance metric:', error);
+      // Silently fail in production to avoid console noise
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('Failed to send performance metric:', error);
+      }
     }
   }
 }
@@ -195,6 +212,14 @@ export class ErrorMonitor {
 
   private async sendToErrorService(error: ErrorReport): Promise<void> {
     try {
+      // Only send error reports in development or when explicitly enabled
+      const isProduction = process.env.NODE_ENV === 'production';
+      const errorReportingEnabled = process.env.NEXT_PUBLIC_ERROR_REPORTING_ENABLED === 'true';
+      
+      if (isProduction && !errorReportingEnabled) {
+        return; // Skip error reporting in production unless explicitly enabled
+      }
+
       // Send to Sentry or similar service
       if (typeof window !== 'undefined' && (window as any).Sentry) {
         (window as any).Sentry.captureException(new Error(error.message), {
@@ -206,20 +231,29 @@ export class ErrorMonitor {
         });
       }
 
-      // Send to custom error endpoint
+      // Send to custom error endpoint with timeout
       if (typeof fetch !== 'undefined') {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        
         await fetch('/api/monitoring/errors', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(error),
+          signal: controller.signal,
         }).catch(() => {
           // Silently fail
         });
+        
+        clearTimeout(timeoutId);
       }
     } catch (err) {
-      console.warn('Failed to send error report:', err);
+      // Silently fail in production to avoid console noise
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('Failed to send error report:', err);
+      }
     }
   }
 }
@@ -298,16 +332,30 @@ export class Logger {
 
   private async sendToLoggingService(log: LogEntry): Promise<void> {
     try {
+      // Only send logs in development or when explicitly enabled
+      const isProduction = process.env.NODE_ENV === 'production';
+      const loggingEnabled = process.env.NEXT_PUBLIC_LOGGING_ENABLED === 'true';
+      
+      if (isProduction && !loggingEnabled) {
+        return; // Skip logging in production unless explicitly enabled
+      }
+
       if (typeof fetch !== 'undefined') {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+        
         await fetch('/api/monitoring/logs', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(log),
+          signal: controller.signal,
         }).catch(() => {
           // Silently fail
         });
+        
+        clearTimeout(timeoutId);
       }
     } catch (error) {
       // Silently fail to avoid infinite loops

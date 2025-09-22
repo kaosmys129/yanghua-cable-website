@@ -19,7 +19,7 @@ export default function Header() {
     { name: t('products'), href: `/${locale}/products` },
     { name: t('solutions'), href: `/${locale}/solutions` },
     { name: 'Projects', href: `/${locale}/projects` },
-    { name: t('news'), href: `/${locale}/news` },
+    { name: t('news'), href: `/${locale}/articles` },
     { name: 'Services', href: `/${locale}/services` },
     { name: t('contact'), href: `/${locale}/contact` },
   ];

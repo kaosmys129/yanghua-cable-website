@@ -11,7 +11,13 @@ export function MonitoringProvider({ children }: MonitoringProviderProps) {
   useEffect(() => {
     // Initialize monitoring on client side
     if (typeof window !== 'undefined') {
-      initializeMonitoring();
+      // Only initialize monitoring in development or when explicitly enabled
+      const isProduction = process.env.NODE_ENV === 'production';
+      const monitoringEnabled = process.env.NEXT_PUBLIC_MONITORING_ENABLED === 'true';
+      
+      if (!isProduction || monitoringEnabled) {
+        initializeMonitoring();
+      }
     }
   }, []);
 

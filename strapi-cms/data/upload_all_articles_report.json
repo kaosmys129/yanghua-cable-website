@@ -1,0 +1,128 @@
+{
+  "uploadDate": "2025-09-22T02:25:43.670Z",
+  "results": [
+    {
+      "title": "Yanghua Insights: Chemical Plant Multi-core Cable Connections Causing Problems vs. Flexible Busbar Easy Solutions",
+      "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions",
+      "cover_success": true,
+      "blocks_success": 11,
+      "errors": [
+        {
+          "type": "block",
+          "blockIndex": 24,
+          "error": "Failed to upload image: Request failed with status code 504"
+        },
+        {
+          "type": "article_create",
+          "error": "Request failed with status code 504",
+          "details": "      <!DOCTYPE html>\n      <html>\n      <head>\n          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n          <meta name=\"robots\" content=\"noindex\">\n          <style>body,html{height:100%;margin:0}body{display:flex;align-items:center;justify-content:center;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}p{text-align:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;color:#000;font-size:14px;margin-top:-50px}p.code{font-size:24px;font-weight:500;border-bottom:1px solid #e0e1e2;padding:0 20px 15px}p.text{margin:0}a,a:visited{color:#aaa}</style>\n      </head>\n      <body>\n      <p class=\"code\">\n        Error\n      </p>\n      <p class=\"text\">\n        We encountered an error when trying to load your application and your page could not be served. Check the logs for your application in the App Platform dashboard.\n      </p>\n        <div style=\"display:none;\">\n          <h1>\n    via_upstream (502 -)      </h1>\n          <p data-translate=\"connection_timed_out\">App Platform failed to forward this request to the application.</p>\n      </div>\n      </body>\n      </html>\n    "
+        }
+      ]
+    },
+    {
+      "title": "Invitation | April 10-12 13th International Energy Storage Summit & Exhibition High Current Flexible Busbar Booth B2119, Hall B2",
+      "slug": "invitation-april-10-12-13th-international-energy-storage-summit-exhibition-high-current-flexible-busbar-booth-b2119-hall-b2",
+      "cover_success": true,
+      "blocks_success": 1,
+      "errors": [],
+      "strapi_id": 291
+    },
+    {
+      "title": "Second Appearance! High Current Flexible Busbar Showcased at Building Electrical Low-Carbon Energy Efficiency Forum",
+      "slug": "second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum",
+      "cover_success": true,
+      "blocks_success": 10,
+      "errors": [],
+      "strapi_id": 293
+    },
+    {
+      "title": "Ten Years of Chamber Platform Building Dreams, High Current Flexible Busbar Moving Forward with Honor",
+      "slug": "ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor",
+      "cover_success": true,
+      "blocks_success": 10,
+      "errors": [],
+      "strapi_id": 295
+    },
+    {
+      "title": "Year of the Snake Blessing, Prosperity and Joy, Wishing Everyone a Happy New Year!",
+      "slug": "year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year",
+      "cover_success": true,
+      "blocks_success": 1,
+      "errors": [],
+      "strapi_id": 297
+    },
+    {
+      "title": "Supporting Xinjiang's \"Belt and Road\" Construction, Flexible Busbar Always on the Road",
+      "slug": "supporting-xinjiangs-belt-and-road-construction-flexible-busbar-always-on-the-road",
+      "cover_success": true,
+      "blocks_success": 6,
+      "errors": [],
+      "strapi_id": 299
+    },
+    {
+      "title": "Guangdong Wire and Cable Industry Association Secretary-General Visits Yanghuasti",
+      "slug": "guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti",
+      "cover_success": true,
+      "blocks_success": 4,
+      "errors": [
+        {
+          "type": "block",
+          "blockIndex": 9,
+          "error": "Failed to upload image: Request failed with status code 400"
+        },
+        {
+          "type": "block",
+          "blockIndex": 11,
+          "error": "Failed to upload image: Request failed with status code 400"
+        }
+      ],
+      "strapi_id": 301
+    },
+    {
+      "title": "Flexible Busbar Industry Solutions [Solar PV] (With Complete Manual Download Instructions)",
+      "slug": "flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions",
+      "cover_success": true,
+      "blocks_success": 3,
+      "errors": [],
+      "strapi_id": 303
+    },
+    {
+      "title": "High Current Flexible Busbar Officially Debuts in Dongguan! Yanghuasti Dongguan Alliance Partner Product Promotion Successfully Held!",
+      "slug": "high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held",
+      "cover_success": true,
+      "blocks_success": 4,
+      "errors": [],
+      "strapi_id": 305
+    },
+    {
+      "title": "2024 Yanghuasti Dongguan Alliance Partner High Current Flexible Busbar Product Promotion Tomorrow! Coming Strong!",
+      "slug": "2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong",
+      "cover_success": true,
+      "blocks_success": 2,
+      "errors": [],
+      "strapi_id": 307
+    },
+    {
+      "title": "As Spring Festival Approaches, Yanghuasti Wishes You a Happy New Year",
+      "slug": "as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year",
+      "cover_success": true,
+      "blocks_success": 0,
+      "errors": [],
+      "strapi_id": 309
+    },
+    {
+      "title": "New Infrastructure Track: New Energy Vehicle Charging Pile Development | \"New Infrastructure New Busbar\" Series Sharing",
+      "slug": "new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing",
+      "cover_success": true,
+      "blocks_success": 9,
+      "errors": [],
+      "strapi_id": 311
+    }
+  ],
+  "summary": {
+    "totalArticles": 21,
+    "successfulUploads": 11,
+    "failedUploads": 1,
+    "skippedUploads": 9
+  }
+}

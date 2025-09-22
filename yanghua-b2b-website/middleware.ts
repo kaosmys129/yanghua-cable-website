@@ -4,8 +4,8 @@ import { locales, defaultLocale } from './src/lib/i18n';
 import { authMiddleware } from './src/lib/auth-middleware';
 
 const intlMiddleware = createMiddleware({
-  locales,
-  defaultLocale,
+  locales: ['en', 'es'],
+  defaultLocale: 'en',
   localePrefix: 'always'
 });
 
@@ -41,32 +41,28 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // 临时禁用国际化中间件来测试
-  console.log('Skipping intl middleware for testing:', pathname);
-  return NextResponse.next();
-  
-  // Fallback to next-intl middleware for all other paths
-  // console.log('Processing with intl middleware:', pathname);
-  // const response = intlMiddleware(request as any);
-  // 
-  // // 添加安全头部
-  // if (response instanceof NextResponse) {
-  //   response.headers.set('X-Frame-Options', 'DENY');
-  //   response.headers.set('X-Content-Type-Options', 'nosniff');
-  //   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  //   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  //   response.headers.set('X-XSS-Protection', '1; mode=block');
-  //   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  //   
-  //   // CORS 头部（如果需要）
-  //   if (pathname.startsWith('/api/')) {
-  //     response.headers.set('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS || '*');
-  //     response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  //     response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  //   }
-  // }
-  // 
-  // return response;
+  // 调用 next-intl 中间件
+  console.log('Processing with intl middleware:', pathname);
+  const response = intlMiddleware(request as any);
+
+  // 添加安全头部
+  if (response instanceof NextResponse) {
+    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    response.headers.set('X-XSS-Protection', '1; mode=block');
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+
+    // CORS 头部（如果需要）
+    if (pathname.startsWith('/api/')) {
+      response.headers.set('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS || '*');
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+      response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
+  }
+
+  return response;
 }
 
 export const config = {

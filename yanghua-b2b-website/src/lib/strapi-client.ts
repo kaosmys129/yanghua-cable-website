@@ -14,10 +14,11 @@ strapi.axios.defaults.timeout = 25000; // 25 seconds timeout to cover Strapi Clo
 strapi.axios.defaults.headers.common['Accept'] = 'application/json';
 strapi.axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-// Set API token if available (optional for public endpoints)
-if (process.env.STRAPI_API_TOKEN) {
-  strapi.axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.STRAPI_API_TOKEN}`;
-}
+// Note: Strapi Cloud public endpoints don't require authentication
+// Commenting out token to test public access
+// if (process.env.STRAPI_API_TOKEN) {
+//   strapi.axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.STRAPI_API_TOKEN}`;
+// }
 
 // Enhanced retry configuration for cloud services
 const RETRY_CONFIG = {
@@ -64,13 +65,13 @@ const handleStrapiError = (error: any, operation: string) => {
   let errorMessage = `Strapi Cloud ${operation} failed`;
   let userFriendlyMessage = 'Unable to fetch data. Please try again later.';
   
-  if (error.code === 'ECONNABORTED') {
+  if (error && error.code === 'ECONNABORTED') {
     errorMessage += ': Request timeout';
     userFriendlyMessage = 'Request timed out. Please check your internet connection.';
-  } else if (error.code === 'ENOTFOUND') {
+  } else if (error && error.code === 'ENOTFOUND') {
     errorMessage += ': DNS resolution failed';
     userFriendlyMessage = 'Unable to connect to the server. Please check your internet connection.';
-  } else if (error.response) {
+  } else if (error && error.response) {
     const status = error.response.status;
     errorMessage += `: HTTP ${status} - ${error.response.statusText}`;
     
@@ -134,7 +135,7 @@ export async function getAllArticles(locale?: StrapiLocale): Promise<{ data: Art
 export async function getArticleBySlug(slug: string, locale?: StrapiLocale): Promise<Article | null> {
   return withRetry(async () => {
     try {
-      console.log(slug, "slug");
+      console.log(`Fetching article by slug: ${slug}`);
       const articles = await strapi.find("articles", {
         filters: { slug: { $eq: slug } },
         populate: {
@@ -148,8 +149,8 @@ export async function getArticleBySlug(slug: string, locale?: StrapiLocale): Pro
             populate: "*",
           },
         },
-        locale: locale
-      });
+        locale: locale,
+      } as any);
       const normalized = normalizeApiResponse(articles, (data) => {
          const articleArray = Array.isArray(data) ? data : [data];
          const transformed = transformArticles(articleArray);
@@ -161,7 +162,7 @@ export async function getArticleBySlug(slug: string, locale?: StrapiLocale): Pro
        return normalized.data;
     } catch (error) {
       handleStrapiError(error, `getArticleBySlug(${slug})`);
-      throw error; // This won't be reached due to handleStrapiError throwing
+      throw error;
     }
   });
 }

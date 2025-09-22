@@ -6,56 +6,63 @@ import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
 import { draftMode } from 'next/headers';
+import { getArticleBySlug } from "@/lib/strapi-client";
 
 // Generate static params for all articles
 export async function generateStaticParams() {
-  const articleSlugs = [
-    'company-news-1',
-    'industry-insights-1', 
-    'product-updates-1',
-    'technology-trends-1',
-    'market-analysis-1',
-    'case-study-1',
-    'innovation-spotlight-1',
-    'sustainability-report-1',
-    'partnership-announcement-1',
-    'quarterly-review-1'
-  ];
-  const locales = ['en', 'es'];
-  
-  const params = [];
-  for (const locale of locales) {
-    for (const slug of articleSlugs) {
-      params.push({ locale, slug });
+  try {
+    const baseUrl = "https://fruitful-presence-02d7be759c.strapiapp.com";
+    const locales = ['en', 'es'];
+    const params = [];
+    
+    for (const locale of locales) {
+      const url = `${baseUrl}/api/articles?fields[0]=slug&locale=${locale}`;
+      console.log(`Fetching articles for locale ${locale} from: ${url}`);
+      
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        console.error(`Failed to fetch articles for locale ${locale}: ${response.status}`);
+        continue;
+      }
+      
+      const result = await response.json();
+      console.log(`Found ${result.data?.length || 0} articles for locale ${locale}`);
+      
+      if (result.data && Array.isArray(result.data)) {
+        for (const article of result.data) {
+          if (article.slug) {
+            params.push({ locale, slug: article.slug });
+          }
+        }
+      }
     }
+    
+    console.log(`Total static params generated: ${params.length}`);
+    return params;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    // Fallback to empty array to allow dynamic rendering
+    return [];
   }
-  
-  return params;
 }
 
-// Fetch article data
+// Fetch article data using native fetch
 async function getArticle(slug: string, locale: string): Promise<Article | null> {
   try {
-    const strapiUrl = getStrapiURL();
-    const draft = await draftMode();
-    const publicationState = draft.isEnabled ? 'preview' : 'live';
-    
-    const response = await fetch(
-      `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&locale=${locale}&publicationState=${publicationState}&populate=*`,
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
-        },
-        next: { revalidate: draft.isEnabled ? 0 : 60 }, // No revalidation in preview mode
-      }
-    );
-    
-    if (!response.ok) {
+    const article = await getArticleBySlug(slug, locale as any);
+    if (!article) {
+      console.log(`No article found with slug: ${slug}`);
       return null;
     }
-    
-    const data = await response.json();
-    return data.data?.[0] || null;
+    console.log(`Article found: ${article.title}`);
+    return article;
   } catch (error) {
     console.error('Error fetching article:', error);
     return null;
@@ -78,8 +85,12 @@ export default async function ArticlePage({ params }: PageProps) {
   const draft = await draftMode();
   
   if (!article) {
+    console.log('Article not found, calling notFound()');
     notFound();
+    return; // This line should never be reached, but added for clarity
   }
+  
+  console.log('Article found:', article.title);
 
   return (
     <main className="container mx-auto px-4 py-12 max-w-4xl">

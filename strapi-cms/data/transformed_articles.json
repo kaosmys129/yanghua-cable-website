@@ -277,7 +277,19 @@
     "description": "Yanghua Insights: Multi-parallel Cables Always Have One Heating Up First? This F",
     "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "pic(32)_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2",
+      "alternativeText": "Yanghua Insights: Multi-parallel Cables Always Have One Heating Up First? This Flexible Busbar Cures \"Current Inequality\"!",
+      "caption": "Yanghua Insights: Multi-parallel Cables Always Have One Heating Up First? This Flexible Busbar Cures \"Current Inequality\"!",
+      "width": 1200,
+      "height": 800,
+      "hash": "pic(32)_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2_bnat0k",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250703/pic(32)_%E5%89%AF%E6%9C%AC_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2.png",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -285,7 +297,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715242653421775624089",
+          "alternativeText": "Current Inequality Illustration",
+          "caption": "Current Inequality Illustration",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715242653421775624089_ew7ztu",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715242653421775624089.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -293,7 +317,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715250475370847665699",
+          "alternativeText": "Cable Current Distribution",
+          "caption": "Cable Current Distribution",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715250475370847665699_33vrsm",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715250475370847665699.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -301,7 +337,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715290784623529022834",
+          "alternativeText": "Parallel Cable Issues",
+          "caption": "Parallel Cable Issues",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715290784623529022834_jp0z05",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715290784623529022834.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -309,7 +357,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715298284674518109911",
+          "alternativeText": "Ideal Current Distribution",
+          "caption": "Ideal Current Distribution",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715298284674518109911_kdtqwu",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715298284674518109911.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -317,7 +377,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715302508251049106387",
+          "alternativeText": "Current Deviation Reality",
+          "caption": "Current Deviation Reality",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715302508251049106387_kks2xk",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715302508251049106387.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -325,7 +397,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715316966132061970060",
+          "alternativeText": "Deviation Causes",
+          "caption": "Deviation Causes",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715316966132061970060_zs9pme",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715316966132061970060.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -333,7 +417,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715333385043201677435",
+          "alternativeText": "Copper Lug Connection Issues",
+          "caption": "Copper Lug Connection Issues",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715333385043201677435_xgdm6e",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715333385043201677435.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -341,7 +437,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715336638225561838498",
+          "alternativeText": "Contact Surface Problems",
+          "caption": "Contact Surface Problems",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715336638225561838498_j5bf7y",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715336638225561838498.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -349,7 +457,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715340427526513796717",
+          "alternativeText": "Safety Consequences",
+          "caption": "Safety Consequences",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715340427526513796717_ythqmc",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715340427526513796717.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -357,7 +477,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715354560272396719951",
+          "alternativeText": "Complex Installation",
+          "caption": "Complex Installation",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715354560272396719951_88gvsa",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715354560272396719951.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -365,7 +497,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715357870363588010081",
+          "alternativeText": "Flexible Busbar Solution",
+          "caption": "Flexible Busbar Solution",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715357870363588010081_tdwv20",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715357870363588010081.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -373,7 +517,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715360691874756187723",
+          "alternativeText": "High Current Capacity",
+          "caption": "High Current Capacity",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715360691874756187723_caskl5",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715360691874756187723.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -381,7 +537,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715374175188373702659",
+          "alternativeText": "Simplified Installation",
+          "caption": "Simplified Installation",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715374175188373702659_502fe7",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715374175188373702659.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -389,7 +557,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715395225047775231145",
+          "alternativeText": "Easy Connection Method",
+          "caption": "Easy Connection Method",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715395225047775231145_rmlf51",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715395225047775231145.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -397,7 +577,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715384371320695384422",
+          "alternativeText": "Improved Reliability",
+          "caption": "Improved Reliability",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715384371320695384422_x0w8k3",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715384371320695384422.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -405,7 +597,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715386963543264936126",
+          "alternativeText": "Successful Applications",
+          "caption": "Successful Applications",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715386963543264936126_w909f2",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20250703/6388715386963543264936126.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -413,7 +617,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6388715397101079623732160",
+          "alternativeText": "Product Information",
+          "caption": "Product Information",
+          "width": 1200,
+          "height": 800,
+          "hash": "6388715397101079623732160_t67bxk",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250703/6388715397101079623732160.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -433,11 +649,35 @@
     "description": "Invitation | April 10-12 13th International Energy Storage Summit & Exhibition H",
     "slug": "invitation-april-10-12-13th-international-energy-storage-summit-exhibition-high-current-flexible-busbar-booth-b2119-hall-b2",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E6%BC%94%E7%A4%BA%E6%96%87%E7%A8%BF(36)_01(3)_%E5%89%AF%E6%9C%AC",
+      "alternativeText": "Invitation | April 10-12 13th International Energy Storage Summit & Exhibition High Current Flexible Busbar Booth B2119, Hall B2",
+      "caption": "Invitation | April 10-12 13th International Energy Storage Summit & Exhibition High Current Flexible Busbar Booth B2119, Hall B2",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E6%BC%94%E7%A4%BA%E6%96%87%E7%A8%BF(36)_01(3)_%E5%89%AF%E6%9C%AC_duusfw",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250408/%E6%BC%94%E7%A4%BA%E6%96%87%E7%A8%BF(36)_01(3)_%E5%89%AF%E6%9C%AC.png",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387970366153123369070059",
+          "alternativeText": "Exhibition Invitation",
+          "caption": "Exhibition Invitation",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387970366153123369070059_2g270j",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250408/6387970366153123369070059.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -461,7 +701,19 @@
     "description": "Second Appearance! High Current Flexible Busbar Showcased at Building Electrical",
     "slug": "second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "IMG_9058",
+      "alternativeText": "Second Appearance! High Current Flexible Busbar Showcased at Building Electrical Low-Carbon Energy Efficiency Forum",
+      "caption": "Second Appearance! High Current Flexible Busbar Showcased at Building Electrical Low-Carbon Energy Efficiency Forum",
+      "width": 1200,
+      "height": 800,
+      "hash": "IMG_9058_0b5bqd",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250321/IMG_9058.JPG",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -469,43 +721,163 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814670425165811838484",
+          "alternativeText": "Forum Scene 1",
+          "caption": "Forum Scene 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814670425165811838484_dntw1k",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814670425165811838484.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814674096078537025244",
+          "alternativeText": "Forum Scene 2",
+          "caption": "Forum Scene 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814674096078537025244_0hbz2m",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814674096078537025244.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814677167589101474283",
+          "alternativeText": "Forum Scene 3",
+          "caption": "Forum Scene 3",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814677167589101474283_jatpn0",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814677167589101474283.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814679671710673155884",
+          "alternativeText": "Forum Scene 4",
+          "caption": "Forum Scene 4",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814679671710673155884_hmqp60",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814679671710673155884.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814687694782892380566",
+          "alternativeText": "Forum Scene 5",
+          "caption": "Forum Scene 5",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814687694782892380566_jk21jb",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814687694782892380566.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814691482166831109541",
+          "alternativeText": "Forum Scene 6",
+          "caption": "Forum Scene 6",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814691482166831109541_satp4e",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814691482166831109541.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814693668074893065854",
+          "alternativeText": "Forum Scene 7",
+          "caption": "Forum Scene 7",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814693668074893065854_jj3q41",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814693668074893065854.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814697486765611765111",
+          "alternativeText": "Forum Scene 8",
+          "caption": "Forum Scene 8",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814697486765611765111_jnzh5j",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814697486765611765111.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814699543585195978149",
+          "alternativeText": "Forum Scene 9",
+          "caption": "Forum Scene 9",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814699543585195978149_t1oyjk",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814699543585195978149.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814701891695474175437",
+          "alternativeText": "Forum Scene 10",
+          "caption": "Forum Scene 10",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814701891695474175437_bx527u",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814701891695474175437.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -525,7 +897,19 @@
     "description": "Ten Years of Chamber Platform Building Dreams, High Current Flexible Busbar Movi",
     "slug": "ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "IMG20250318115314",
+      "alternativeText": "Ten Years of Chamber Platform Building Dreams, High Current Flexible Busbar Moving Forward with Honor",
+      "caption": "Ten Years of Chamber Platform Building Dreams, High Current Flexible Busbar Moving Forward with Honor",
+      "width": 1200,
+      "height": 800,
+      "hash": "IMG20250318115314_yz6sbh",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250321/IMG20250318115314.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -533,43 +917,163 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814670425165811838484",
+          "alternativeText": "Forum Scene 1",
+          "caption": "Forum Scene 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814670425165811838484_d2m1b7",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814670425165811838484.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814674096078537025244",
+          "alternativeText": "Forum Scene 2",
+          "caption": "Forum Scene 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814674096078537025244_oo1z09",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814674096078537025244.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814677167589101474283",
+          "alternativeText": "Forum Scene 3",
+          "caption": "Forum Scene 3",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814677167589101474283_0hgdr4",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814677167589101474283.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814679671710673155884",
+          "alternativeText": "Forum Scene 4",
+          "caption": "Forum Scene 4",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814679671710673155884_v64ix3",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814679671710673155884.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814687694782892380566",
+          "alternativeText": "Forum Scene 5",
+          "caption": "Forum Scene 5",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814687694782892380566_obr3s2",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814687694782892380566.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814691482166831109541",
+          "alternativeText": "Forum Scene 6",
+          "caption": "Forum Scene 6",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814691482166831109541_mhd9zi",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814691482166831109541.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814693668074893065854",
+          "alternativeText": "Forum Scene 7",
+          "caption": "Forum Scene 7",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814693668074893065854_n7qnmi",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814693668074893065854.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814697486765611765111",
+          "alternativeText": "Forum Scene 8",
+          "caption": "Forum Scene 8",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814697486765611765111_di8a65",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814697486765611765111.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814699543585195978149",
+          "alternativeText": "Forum Scene 9",
+          "caption": "Forum Scene 9",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814699543585195978149_7ynwjo",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814699543585195978149.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387814701891695474175437",
+          "alternativeText": "Forum Scene 10",
+          "caption": "Forum Scene 10",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387814701891695474175437_8lgbkr",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250321/6387814701891695474175437.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -589,7 +1093,19 @@
     "description": "Shenzhen China Southern Power Grid Shenzhen-Hong Kong Technology Innovation Co.,",
     "slug": "shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "IMG_7410",
+      "alternativeText": "Shenzhen China Southern Power Grid Shenzhen-Hong Kong Technology Innovation Co., Ltd. Leadership Visits Yanghuasti for Exchange",
+      "caption": "Shenzhen China Southern Power Grid Shenzhen-Hong Kong Technology Innovation Co., Ltd. Leadership Visits Yanghuasti for Exchange",
+      "width": 1200,
+      "height": 800,
+      "hash": "IMG_7410_ptv709",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250303/IMG_7410.JPG_%E5%89%AF%E6%9C%AC.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -597,27 +1113,99 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387660939161528996250495",
+          "alternativeText": "Visit Image 1",
+          "caption": "Visit Image 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387660939161528996250495_82fgww",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939161528996250495.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387660939162926304777913",
+          "alternativeText": "Visit Image 2",
+          "caption": "Visit Image 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387660939162926304777913_bp8rzp",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939162926304777913.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387660939167622649763820",
+          "alternativeText": "Visit Image 3",
+          "caption": "Visit Image 3",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387660939167622649763820_pfqjfu",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939167622649763820.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387660939169535233993066",
+          "alternativeText": "Visit Image 4",
+          "caption": "Visit Image 4",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387660939169535233993066_nfjee0",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939169535233993066.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387660939175749967506391",
+          "alternativeText": "Visit Image 5",
+          "caption": "Visit Image 5",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387660939175749967506391_7yyzsa",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939175749967506391.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387660939177258521735636",
+          "alternativeText": "Visit Image 6",
+          "caption": "Visit Image 6",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387660939177258521735636_kn4ym7",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250303/6387660939177258521735636.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -637,7 +1225,19 @@
     "description": "Yanghuasti 2024 Annual Review - Yanghuasti Technology News",
     "slug": "yanghuasti-2024-annual-review",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "20250205%E5%AE%98%E6%96%B9%E5%8F%B7%EF%BC%881%EF%BC%89-%E5%B0%81%E9%9D%A2",
+      "alternativeText": "Yanghuasti 2024 Annual Review",
+      "caption": "Yanghuasti 2024 Annual Review",
+      "width": 1200,
+      "height": 800,
+      "hash": "20250205%E5%AE%98%E6%96%B9%E5%8F%B7%EF%BC%881%EF%BC%89-%E5%B0%81%E9%9D%A2_qvadht",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250213/20250205%E5%AE%98%E6%96%B9%E5%8F%B7%EF%BC%881%EF%BC%89-%E5%B0%81%E9%9D%A2.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -645,7 +1245,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387305166874023024632050",
+          "alternativeText": "Work Begins Poster",
+          "caption": "Work Begins Poster",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387305166874023024632050_7adb0w",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250121/6387305166874023024632050.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -665,7 +1277,19 @@
     "description": "Work Resumes with Good Fortune, Everything is Promising - Yanghuasti Technology ",
     "slug": "work-resumes-with-good-fortune-everything-is-promising",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E5%BC%80%E5%B7%A5%E6%B5%B7%E6%8A%A5_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2",
+      "alternativeText": "Work Resumes with Good Fortune, Everything is Promising",
+      "caption": "Work Resumes with Good Fortune, Everything is Promising",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E5%BC%80%E5%B7%A5%E6%B5%B7%E6%8A%A5_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2_laeo93",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250121/%E5%BC%80%E5%B7%A5%E6%B5%B7%E6%8A%A5_%E5%89%AF%E6%9C%AC%E5%B0%81%E9%9D%A2.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -673,7 +1297,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387305166874023024632050",
+          "alternativeText": "Work Begins Poster",
+          "caption": "Work Begins Poster",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387305166874023024632050_h4f7qm",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250121/6387305166874023024632050.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -693,11 +1329,35 @@
     "description": "Year of the Snake Blessing, Prosperity and Joy, Wishing Everyone a Happy New Yea",
     "slug": "year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B8%80%E6%B5%B7%E6%8A%A5_%E6%96%B0%E9%97%BB%E5%AA%92%E4%BD%93%E5%B0%81%E9%9D%A2",
+      "alternativeText": "Year of the Snake Blessing, Prosperity and Joy, Wishing Everyone a Happy New Year!",
+      "caption": "Year of the Snake Blessing, Prosperity and Joy, Wishing Everyone a Happy New Year!",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B8%80%E6%B5%B7%E6%8A%A5_%E6%96%B0%E9%97%BB%E5%AA%92%E4%BD%93%E5%B0%81%E9%9D%A2_g8u5z5",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250121/%E5%A4%A7%E5%B9%B4%E5%88%9D%E4%B8%80%E6%B5%B7%E6%8A%A5_%E6%96%B0%E9%97%BB%E5%AA%92%E4%BD%93%E5%B0%81%E9%9D%A2.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387305023729528872082602",
+          "alternativeText": "New Year Greetings",
+          "caption": "New Year Greetings",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387305023729528872082602_56f49i",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250121/6387305023729528872082602.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -721,7 +1381,19 @@
     "description": "Supporting Xinjiang's \"Belt and Road\" Construction, Flexible Busbar Always on th",
     "slug": "supporting-xinjiangs-belt-and-road-construction-flexible-busbar-always-on-the-road",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "66d795d3-5085-49da-8da6-47e0a79f991f",
+      "alternativeText": "Supporting Xinjiang's \"Belt and Road\" Construction, Flexible Busbar Always on the Road",
+      "caption": "Supporting Xinjiang's \"Belt and Road\" Construction, Flexible Busbar Always on the Road",
+      "width": 1200,
+      "height": 800,
+      "hash": "66d795d3-5085-49da-8da6-47e0a79f991f_cdt2gm",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20250103/66d795d3-5085-49da-8da6-47e0a79f991f.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -729,7 +1401,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387151135772742497717749",
+          "alternativeText": "Xinjiang Trade Growth",
+          "caption": "Xinjiang Trade Growth",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387151135772742497717749_ynw1jo",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151135772742497717749.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -737,7 +1421,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387151138338219721812496",
+          "alternativeText": "Belt and Road Development",
+          "caption": "Belt and Road Development",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387151138338219721812496_8ryivo",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151138338219721812496.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -745,7 +1441,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387151141742754721944546",
+          "alternativeText": "Government Visit",
+          "caption": "Government Visit",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387151141742754721944546_ipk8h0",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151141742754721944546.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -753,7 +1461,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387151144815512455393585",
+          "alternativeText": "Industry Discussion",
+          "caption": "Industry Discussion",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387151144815512455393585_664ki6",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151144815512455393585.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -761,7 +1481,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "66d795d3-5085-49da-8da6-47e0a79f991f",
+          "alternativeText": "Conference Scene",
+          "caption": "Conference Scene",
+          "width": 1200,
+          "height": 800,
+          "hash": "66d795d3-5085-49da-8da6-47e0a79f991f_hl7c6b",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/66d795d3-5085-49da-8da6-47e0a79f991f.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -769,7 +1501,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6387151149951344417568988",
+          "alternativeText": "Development Vision",
+          "caption": "Development Vision",
+          "width": 1200,
+          "height": 800,
+          "hash": "6387151149951344417568988_xtw2ww",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20250103/6387151149951344417568988.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -793,7 +1537,19 @@
     "description": "Digital Energy Pioneer, Smart Innovation Future - High Current Flexible Busbar E",
     "slug": "digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "6386184363501228038216844",
+      "alternativeText": "Digital Energy Pioneer, Smart Innovation Future - High Current Flexible Busbar Exhibition Highlights",
+      "caption": "Digital Energy Pioneer, Smart Innovation Future - High Current Flexible Busbar Exhibition Highlights",
+      "width": 1200,
+      "height": 800,
+      "hash": "6386184363501228038216844_t5u3xu",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240913/6386184363501228038216844.png",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -801,35 +1557,131 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184358268813623970276",
+          "alternativeText": "Exhibition Overview",
+          "caption": "Exhibition Overview",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184358268813623970276_nm9ib3",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184358268813623970276.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184361134953533777752",
+          "alternativeText": "Exhibition Booth 1",
+          "caption": "Exhibition Booth 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184361134953533777752_owdu99",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184361134953533777752.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184362403431718569230",
+          "alternativeText": "Exhibition Booth 2",
+          "caption": "Exhibition Booth 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184362403431718569230_b70f4x",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184362403431718569230.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184363501228038216844",
+          "alternativeText": "Exhibition Booth 3",
+          "caption": "Exhibition Booth 3",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184363501228038216844_wplc0m",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184363501228038216844.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184365337827314303178",
+          "alternativeText": "Exhibition Scene 1",
+          "caption": "Exhibition Scene 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184365337827314303178_if6g28",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184365337827314303178.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184366658552395237815",
+          "alternativeText": "Exhibition Scene 2",
+          "caption": "Exhibition Scene 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184366658552395237815_y0poek",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184366658552395237815.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184367895126762127938",
+          "alternativeText": "Exhibition Scene 3",
+          "caption": "Exhibition Scene 3",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184367895126762127938_8ue1mh",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184367895126762127938.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6386184369855786074269811",
+          "alternativeText": "Exhibition Scene 4",
+          "caption": "Exhibition Scene 4",
+          "width": 1200,
+          "height": 800,
+          "hash": "6386184369855786074269811_6zei7c",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240913/6386184369855786074269811.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -849,7 +1701,19 @@
     "description": "Guangdong Wire and Cable Industry Association Secretary-General Visits Yanghuast",
     "slug": "guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "7c1eb965-a2c7-4a11-aa17-b506ceacab93_%E5%89%AF%E6%9C%AC",
+      "alternativeText": "Guangdong Wire and Cable Industry Association Secretary-General Visits Yanghuasti",
+      "caption": "Guangdong Wire and Cable Industry Association Secretary-General Visits Yanghuasti",
+      "width": 1200,
+      "height": 800,
+      "hash": "7c1eb965-a2c7-4a11-aa17-b506ceacab93_%E5%89%AF%E6%9C%AC_rn8iyq",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240515/7c1eb965-a2c7-4a11-aa17-b506ceacab93_%E5%89%AF%E6%9C%AC.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -857,7 +1721,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6385139228545404182459138",
+          "alternativeText": "Visit Photo 1",
+          "caption": "Visit Photo 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6385139228545404182459138_apaics",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139228545404182459138.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -865,7 +1741,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6385139232445763397744419",
+          "alternativeText": "Visit Photo 2",
+          "caption": "Visit Photo 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "6385139232445763397744419_df4ow9",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139232445763397744419.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -873,7 +1761,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6385139234124458419346441",
+          "alternativeText": "Visit Photo 3",
+          "caption": "Visit Photo 3",
+          "width": 1200,
+          "height": 800,
+          "hash": "6385139234124458419346441_wp5dxv",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139234124458419346441.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -881,7 +1781,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6385139236043403917316971",
+          "alternativeText": "Visit Photo 4",
+          "caption": "Visit Photo 4",
+          "width": 1200,
+          "height": 800,
+          "hash": "6385139236043403917316971_p50fyb",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240515/6385139236043403917316971.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -889,7 +1801,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "8b4761ca36744ae2861d3da1fae02d88~tplv-tt-shrink:640:0",
+          "alternativeText": "Guangdong Development Guide",
+          "caption": "Guangdong Development Guide",
+          "width": 1200,
+          "height": 800,
+          "hash": "8b4761ca36744ae2861d3da1fae02d88~tplv-tt-shrink:640:0_5m9gl0",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/8b4761ca36744ae2861d3da1fae02d88~tplv-tt-shrink:640:0.image?lk3s=06827d14&traceid=20240515174555C6761D50ECEBA80E936D&x-expires=2147483647&x-signature=civL1TYxeLdm4YR6qySBi4Hglvw%3D",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -897,7 +1821,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "f9424426d6f04bdcbb574a6b06ba6999~tplv-tt-shrink:640:0",
+          "alternativeText": "Team Photo",
+          "caption": "Team Photo",
+          "width": 1200,
+          "height": 800,
+          "hash": "f9424426d6f04bdcbb574a6b06ba6999~tplv-tt-shrink:640:0_6wbm42",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "https://p3-sign.toutiaoimg.com/tos-cn-i-6w9my0ksvp/f9424426d6f04bdcbb574a6b06ba6999~tplv-tt-shrink:640:0.image?lk3s=06827d14&traceid=20240515174555C6761D50ECEBA80E936D&x-expires=2147483647&x-signature=06nmLQQm%2Fy%2B5oyMDplW%2BTtCMUFk%3D",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -921,11 +1857,35 @@
     "description": "Yanghuasti Participates in 2024 Shenzhen Building Electrical Academic Annual Con",
     "slug": "yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "a51ccc30-1e91-44c4-857e-4b4dc3af052d(1)_%E5%89%AF%E6%9C%AC",
+      "alternativeText": "Yanghuasti Participates in 2024 Shenzhen Building Electrical Academic Annual Conference",
+      "caption": "Yanghuasti Participates in 2024 Shenzhen Building Electrical Academic Annual Conference",
+      "width": 1200,
+      "height": 800,
+      "hash": "a51ccc30-1e91-44c4-857e-4b4dc3af052d(1)_%E5%89%AF%E6%9C%AC_f7jwf8",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/a51ccc30-1e91-44c4-857e-4b4dc3af052d(1)_%E5%89%AF%E6%9C%AC.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998633849389967800591",
+          "alternativeText": "Conference Opening",
+          "caption": "Conference Opening",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998633849389967800591_69153s",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998633849389967800591.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -933,7 +1893,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998636667701428923398",
+          "alternativeText": "Conference Scene",
+          "caption": "Conference Scene",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998636667701428923398_r7z07i",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998636667701428923398.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -941,7 +1913,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998639642197687072027",
+          "alternativeText": "Presentation Scene",
+          "caption": "Presentation Scene",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998639642197687072027_vk2rph",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998639642197687072027.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -949,7 +1933,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998648292247585179124",
+          "alternativeText": "Technical Presentation",
+          "caption": "Technical Presentation",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998648292247585179124_o0gjc7",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998648292247585179124.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -957,7 +1953,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998655092995377700653",
+          "alternativeText": "Exhibition Booth",
+          "caption": "Exhibition Booth",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998655092995377700653_4qppf6",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998655092995377700653.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -965,7 +1973,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998660351843466931595",
+          "alternativeText": "Product Overview",
+          "caption": "Product Overview",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998660351843466931595_srso3l",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998660351843466931595.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -973,7 +1993,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384998663583105088094191",
+          "alternativeText": "Solutions Overview",
+          "caption": "Solutions Overview",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384998663583105088094191_i5pl44",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240429/6384998663583105088094191.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -993,7 +2025,19 @@
     "description": "Flexible Busbar Industry Solutions [Solar PV] (With Complete Manual Download Ins",
     "slug": "flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "6384946468530922966332375",
+      "alternativeText": "Flexible Busbar Industry Solutions [Solar PV] (With Complete Manual Download Instructions)",
+      "caption": "Flexible Busbar Industry Solutions [Solar PV] (With Complete Manual Download Instructions)",
+      "width": 1200,
+      "height": 800,
+      "hash": "6384946468530922966332375_yaq7sq",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240423/6384946468530922966332375.png",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -1001,7 +2045,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384946463915153972537914",
+          "alternativeText": "Solar PV System",
+          "caption": "Solar PV System",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384946463915153972537914_h7ij59",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240423/6384946463915153972537914.jpeg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1009,7 +2065,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384946466338401836633491",
+          "alternativeText": "Solar Installation",
+          "caption": "Solar Installation",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384946466338401836633491_v4d450",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240423/6384946466338401836633491.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1017,7 +2085,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384946468530922966332375",
+          "alternativeText": "PV Solution Manual",
+          "caption": "PV Solution Manual",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384946468530922966332375_r8l9hf",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240423/6384946468530922966332375.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1041,7 +2121,19 @@
     "description": "Flexible Busbar Industry Solutions [Charging Stations] (With Complete Manual Dow",
     "slug": "flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "6384837423429763242577009",
+      "alternativeText": "Flexible Busbar Industry Solutions [Charging Stations] (With Complete Manual Download Instructions)",
+      "caption": "Flexible Busbar Industry Solutions [Charging Stations] (With Complete Manual Download Instructions)",
+      "width": 1200,
+      "height": 800,
+      "hash": "6384837423429763242577009_5f8hjz",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240410/6384837423429763242577009.png",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -1049,7 +2141,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384853591201103604103204",
+          "alternativeText": "EV Charging Station",
+          "caption": "EV Charging Station",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384853591201103604103204_48ahoc",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240412/6384853591201103604103204.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1057,7 +2161,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384853594820201524146805",
+          "alternativeText": "Charging Infrastructure",
+          "caption": "Charging Infrastructure",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384853594820201524146805_6s3q0u",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240412/6384853594820201524146805.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1065,7 +2181,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384853596031931177809216",
+          "alternativeText": "Flexible Busbar Application",
+          "caption": "Flexible Busbar Application",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384853596031931177809216_zpjtm0",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240412/6384853596031931177809216.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1073,7 +2201,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384837423429763242577009",
+          "alternativeText": "Charging Station Solution Manual",
+          "caption": "Charging Station Solution Manual",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384837423429763242577009_anmzoc",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240410/6384837423429763242577009.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1097,11 +2237,35 @@
     "description": "High Current Flexible Busbar Officially Debuts in Dongguan! Yanghuasti Dongguan ",
     "slug": "high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "IMG_5399_%E5%89%AF%E6%9C%AC",
+      "alternativeText": "High Current Flexible Busbar Officially Debuts in Dongguan! Yanghuasti Dongguan Alliance Partner Product Promotion Successfully Held!",
+      "caption": "High Current Flexible Busbar Officially Debuts in Dongguan! Yanghuasti Dongguan Alliance Partner Product Promotion Successfully Held!",
+      "width": 1200,
+      "height": 800,
+      "hash": "IMG_5399_%E5%89%AF%E6%9C%AC_zf737v",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240401/IMG_5399_%E5%89%AF%E6%9C%AC.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384756736700209386515465",
+          "alternativeText": "Dongguan Event Opening",
+          "caption": "Dongguan Event Opening",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384756736700209386515465_1mqcjd",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756736700209386515465.webp",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1109,7 +2273,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384756742401133957229062",
+          "alternativeText": "Chairman Speech",
+          "caption": "Chairman Speech",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384756742401133957229062_0tnt3z",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756742401133957229062.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1117,7 +2293,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384756753529982063033384",
+          "alternativeText": "Technical Presentation",
+          "caption": "Technical Presentation",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384756753529982063033384_68n6rc",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756753529982063033384.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1125,7 +2313,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384756758784918386278418",
+          "alternativeText": "Networking Event",
+          "caption": "Networking Event",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384756758784918386278418_2rn5wz",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240401/6384756758784918386278418.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1149,7 +2349,19 @@
     "description": "2024 Yanghuasti Dongguan Alliance Partner High Current Flexible Busbar Product P",
     "slug": "2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E4%B8%9C%E8%8E%9E%E9%82%80%E8%AF%B7%E5%87%BD_%E5%89%AF%E6%9C%AC",
+      "alternativeText": "2024 Yanghuasti Dongguan Alliance Partner High Current Flexible Busbar Product Promotion Tomorrow! Coming Strong!",
+      "caption": "2024 Yanghuasti Dongguan Alliance Partner High Current Flexible Busbar Product Promotion Tomorrow! Coming Strong!",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E4%B8%9C%E8%8E%9E%E9%82%80%E8%AF%B7%E5%87%BD_%E5%89%AF%E6%9C%AC_9g2yt0",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240429/%E4%B8%9C%E8%8E%9E%E9%82%80%E8%AF%B7%E5%87%BD_%E5%89%AF%E6%9C%AC.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -1157,11 +2369,35 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384724660910401166394788",
+          "alternativeText": "Promotion Event Invitation 1",
+          "caption": "Promotion Event Invitation 1",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384724660910401166394788_detm1p",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240328/6384724660910401166394788.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1711434468374",
+          "alternativeText": "Promotion Event Invitation 2",
+          "caption": "Promotion Event Invitation 2",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1711434468374_ie9yj3",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240328/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1711434468374.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.quote",
@@ -1181,7 +2417,19 @@
     "description": "As Spring Festival Approaches, Yanghuasti Wishes You a Happy New Year - Yanghuas",
     "slug": "as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17072080064080",
+      "alternativeText": "As Spring Festival Approaches, Yanghuasti Wishes You a Happy New Year",
+      "caption": "As Spring Festival Approaches, Yanghuasti Wishes You a Happy New Year",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17072080064080_bjfrfg",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240206/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17072080064080.png",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -1205,7 +2453,19 @@
     "description": "China-Korea (Changchun) International Cooperation Demonstration Zone Development",
     "slug": "china-korea-changchun-international-cooperation-demonstration-zone-development-and-reform-bureau-visits-yanghuasti-for-exchange-and-negotiation",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "IMG_2575",
+      "alternativeText": "China-Korea (Changchun) International Cooperation Demonstration Zone Development and Reform Bureau Visits Yanghuasti for Exchange and Negotiation",
+      "caption": "China-Korea (Changchun) International Cooperation Demonstration Zone Development and Reform Bureau Visits Yanghuasti for Exchange and Negotiation",
+      "width": 1200,
+      "height": 800,
+      "hash": "IMG_2575_oq2kii",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/20240116/IMG_2575.JPG",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -1213,7 +2473,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384221246019186211537061",
+          "alternativeText": "Meeting Scene",
+          "caption": "Meeting Scene",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384221246019186211537061_4psm5u",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240130/6384221246019186211537061.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1221,7 +2493,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384221246030171515738122",
+          "alternativeText": "Discussion Meeting",
+          "caption": "Discussion Meeting",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384221246030171515738122_5xc393",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240130/6384221246030171515738122.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1229,7 +2513,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384221246025430986522969",
+          "alternativeText": "Factory Visit",
+          "caption": "Factory Visit",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384221246025430986522969_7fcwmo",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://yanghuasti.jx5.szbdk.cn/Data/yanghuasti/upload/image/20240130/6384221246025430986522969.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1237,7 +2533,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "6384221284160254762881514",
+          "alternativeText": "China-Korea Zone Overview",
+          "caption": "China-Korea Zone Overview",
+          "width": 1200,
+          "height": 800,
+          "hash": "6384221284160254762881514_m8op6b",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/20240130/6384221284160254762881514.png",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1261,11 +2569,35 @@
     "description": "First Academic Monograph in Fire-Resistant Cable Field - Yanghuasti Chief Techni",
     "slug": "first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C1",
+      "alternativeText": "First Academic Monograph in Fire-Resistant Cable Field - Yanghuasti Chief Technical Expert Du Jinbiao and Chief Engineer Hu Runyi Participate in Writing",
+      "caption": "First Academic Monograph in Fire-Resistant Cable Field - Yanghuasti Chief Technical Expert Du Jinbiao and Chief Engineer Hu Runyi Participate in Writing",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C1_yjlit4",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C1.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C",
+          "alternativeText": "Fire-Resistant Cable Manual",
+          "caption": "Fire-Resistant Cable Manual",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C_m4xo8d",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E8%80%90%E7%81%AB%E6%89%8B%E5%86%8C.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1273,11 +2605,35 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E6%9D%A5%E6%BA%90",
+          "alternativeText": "Manual Source",
+          "caption": "Manual Source",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E6%9D%A5%E6%BA%90_bggdm5",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%9D%A5%E6%BA%90.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%90%8D%E5%8D%95",
+          "alternativeText": "Editorial Committee",
+          "caption": "Editorial Committee",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%90%8D%E5%8D%95_ouulvm",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%90%8D%E5%8D%95.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1285,7 +2641,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF1",
+          "alternativeText": "Flexible Busbar Product",
+          "caption": "Flexible Busbar Product",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF1_ue6le1",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF1.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1309,7 +2677,19 @@
     "description": "New Infrastructure Track: New Energy Vehicle Charging Pile Development | \"New In",
     "slug": "new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing",
     "locale": "en",
-    "cover": null,
+    "cover": {
+      "name": "%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%9B%E6%96%B01",
+      "alternativeText": "New Infrastructure Track: New Energy Vehicle Charging Pile Development | \"New Infrastructure New Busbar\" Series Sharing",
+      "caption": "New Infrastructure Track: New Energy Vehicle Charging Pile Development | \"New Infrastructure New Busbar\" Series Sharing",
+      "width": 1200,
+      "height": 800,
+      "hash": "%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%9B%E6%96%B01_zdjipu",
+      "ext": ".jpeg",
+      "mime": "image/jpeg",
+      "size": 234.02,
+      "url": "https://yanghuasti.oss-cn-shenzhen.aliyuncs.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%9B%E6%96%B01.jpg",
+      "previewUrl": null
+    },
     "blocks": [
       {
         "__component": "shared.rich-text",
@@ -1317,7 +2697,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E5%85%85%E7%94%B5%E6%A1%A9",
+          "alternativeText": "EV Charging Stations",
+          "caption": "EV Charging Stations",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E5%85%85%E7%94%B5%E6%A1%A9_182de0",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6%E5%85%85%E7%94%B5%E6%A1%A9.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1325,7 +2717,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%86%E7%B1%BB",
+          "alternativeText": "Charging Pile Types",
+          "caption": "Charging Pile Types",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%86%E7%B1%BB_89llf3",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E6%A1%A9%E5%88%86%E7%B1%BB.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1333,7 +2737,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%AF%B9%E6%AF%94",
+          "alternativeText": "AC vs DC Comparison",
+          "caption": "AC vs DC Comparison",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%AF%B9%E6%AF%94_pn3msg",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%AF%B9%E6%AF%94.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1341,7 +2757,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E7%9B%B4%E6%B5%81%E5%85%85%E7%94%B5%E6%A1%A9",
+          "alternativeText": "DC Charging Pile",
+          "caption": "DC Charging Pile",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E7%9B%B4%E6%B5%81%E5%85%85%E7%94%B5%E6%A1%A9_heynih",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E7%9B%B4%E6%B5%81%E5%85%85%E7%94%B5%E6%A1%A9.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1349,7 +2777,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%85%85%E7%94%B5%E8%BD%A6",
+          "alternativeText": "EV Market Growth",
+          "caption": "EV Market Growth",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%85%85%E7%94%B5%E8%BD%A6_o3bhkm",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%85%85%E7%94%B5%E8%BD%A6.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1357,7 +2797,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E6%94%BF%E7%AD%96%E8%A7%A3%E8%AF%BB",
+          "alternativeText": "Policy Framework",
+          "caption": "Policy Framework",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E6%94%BF%E7%AD%96%E8%A7%A3%E8%AF%BB_ueyg91",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E6%94%BF%E7%AD%96%E8%A7%A3%E8%AF%BB.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1365,7 +2817,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%88%9B%E6%96%B0",
+          "alternativeText": "Technology Innovation",
+          "caption": "Technology Innovation",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%88%9B%E6%96%B0_pteco6",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%88%9B%E6%96%B0.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1373,7 +2837,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%A4%A7%E7%94%B5%E6%B5%81%E4%BE%9B%E9%85%8D%E7%94%B5",
+          "alternativeText": "High Current Distribution",
+          "caption": "High Current Distribution",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%A4%A7%E7%94%B5%E6%B5%81%E4%BE%9B%E9%85%8D%E7%94%B5_60nwzf",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%A4%A7%E7%94%B5%E6%B5%81%E4%BE%9B%E9%85%8D%E7%94%B5.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",
@@ -1381,7 +2857,19 @@
       },
       {
         "__component": "shared.media",
-        "file": null
+        "file": {
+          "name": "%E5%A4%A7%E7%94%B5%E6%B5%81%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF-4",
+          "alternativeText": "Flexible Busbar Product",
+          "caption": "Flexible Busbar Product",
+          "width": 1200,
+          "height": 800,
+          "hash": "%E5%A4%A7%E7%94%B5%E6%B5%81%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF-4_bqt05e",
+          "ext": ".jpeg",
+          "mime": "image/jpeg",
+          "size": 234.02,
+          "url": "http://www.yanghuasti.com/Data/yanghuasti/upload/image/%E6%96%B0%E9%97%BB/%E5%A4%A7%E7%94%B5%E6%B5%81%E6%9F%94%E6%80%A7%E6%AF%8D%E7%BA%BF-4.jpg",
+          "previewUrl": null
+        }
       },
       {
         "__component": "shared.rich-text",

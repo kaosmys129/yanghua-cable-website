@@ -53,7 +53,7 @@ function ArticlesList() {
       <div className="container mx-auto px-4 py-12">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-red-600 mb-4">Error Loading Articles</h2>
-          <p className="text-gray-600">Failed to load articles. Please try again later.</p>
+          <p className="text-gray-600">{error?.message || 'Failed to load articles. Please try again later.'}</p>
         </div>
       </div>
     );
