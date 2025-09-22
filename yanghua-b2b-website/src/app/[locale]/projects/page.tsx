@@ -14,20 +14,33 @@ function getProjects() {
     const jsonData = fs.readFileSync(jsonPath, 'utf8');
     const projectsData = JSON.parse(jsonData);
     
+    const imageMap: { [key: string]: string } = {
+      'Huawei Data Center Expansion': 'huawei-data-center-expansion.webp',
+      'BYD Battery Manufacturing': 'byd-battery-manufacturing.webp',
+      'CATL Energy Storage': 'catl-energy-storage.webp',
+      'Midea Industrial Complex': 'midea-industrial-complex.webp',
+      'Metro Line 14': 'metro-line-14.webp',
+      'Steel Mill Modernization': 'steel-mill-modernization.webp',
+      '50MW Solar Farm Power Distribution': '50mw-solar-farm-power-distribution.webp'
+    };
+
     // 转换数据格式以匹配组件需要的结构
-    return projectsData.projects.map((project: any, index: number) => ({
-      id: (index + 1).toString(),
-      title: project.title,
-      client: project.metadata.client,
-      industry: project.metadata.industry,
-      location: project.metadata.location,
-      duration: project.metadata.duration,
-      completionDate: project.metadata.completion_date,
-      projectScale: project.metadata.project_scale,
-      scale: project.metadata.project_scale,
-      year: new Date(project.created_at).getFullYear().toString(),
-      description: project.description
-    }));
+    return projectsData.projects.map((project: any, index: number) => {
+      return {
+        id: (index + 1).toString(),
+        title: project.title,
+        client: project.metadata.client,
+        industry: project.metadata.industry,
+        location: project.metadata.location,
+        duration: project.metadata.duration,
+        completionDate: project.metadata.completion_date,
+        projectScale: project.metadata.project_scale,
+        scale: project.metadata.project_scale,
+        year: new Date(project.created_at).getFullYear().toString(),
+        description: project.description,
+        image: imageMap[project.title] ? `/images/projects/${imageMap[project.title]}` : '/images/no-image-available.webp'
+      }
+    });
   } catch (error) {
     console.error('Error loading projects data:', error);
     return getFallbackProjects();
@@ -57,26 +70,6 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   const projects = getProjects();
   
-  // Get image source with fallback - map project titles to actual image filenames
-  const getImageSrc = (project: any) => {
-    const imageMap: { [key: string]: string } = {
-      'Huawei Data Center Expansion': 'huawei-data-center-expansion.webp',
-      'BYD Battery Manufacturing': 'byd-battery-manufacturing.webp',
-      'CATL Energy Storage': 'catl-energy-storage.webp',
-      'Midea Industrial Complex': 'midea-industrial-complex.webp',
-      'Metro Line 14': 'shenzhen-metro.webp',
-      'Steel Mill Modernization': 'steel-mill.webp',
-      '50MW Solar Farm Power Distribution': '50MW Solar Farm Power Distribution.webp'
-    };
-    
-    const imageName = imageMap[project.title];
-    if (imageName) {
-      return `/images/projects/${imageName}`;
-    } else {
-      return '/images/no-image-available.webp';
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -105,13 +98,13 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
             <div key={project.id} className="card overflow-hidden group">
               <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
                 <Image 
-                  src={getImageSrc(project)}
+                  src={project.image}
                   alt={project.title}
                   width={400}
                   height={200}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
               
