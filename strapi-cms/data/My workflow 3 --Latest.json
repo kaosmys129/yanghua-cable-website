@@ -1,0 +1,433 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "764581d9-ce3f-46e5-932d-8b99d03f4d51",
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        -1984,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://fruitful-presence-02d7be759c.strapiapp.com/api/articles",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "locale",
+              "value": "en"
+            },
+            {
+              "name": "populate",
+              "value": "*"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "46444ccf-4983-4bf6-a26e-6241aeb546a1",
+      "name": "Get English Articles",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1760,
+        192
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "kDRKSNatwiv4IA77",
+          "name": "Strapi Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 提取文章数据\nconst articles = $input.all()[0].json.data;\n\n// 返回每篇文章作为单独项目\nreturn articles.map(article => ({\n  json: article\n}));"
+      },
+      "id": "d67dbac6-4646-4acc-a395-9fd407a85d55",
+      "name": "Extract Articles",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1552,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ad974a21-1a4d-479b-8747-dca5c272e71a",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1328,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取当前文章数据\nconst article = $input.all()[0].json;\n\n// 检查数据结构并提取文章属性\nlet articleData;\nif (article.attributes) {\n  // 如果数据有attributes包装（Strapi v4标准格式）\n  articleData = article.attributes;\n} else {\n  // 如果数据直接包含字段（您的实际数据格式）\n  articleData = article;\n}\n\n// 增强版特殊字符清理函数 - 多层清理确保彻底去除反斜杠\nfunction cleanText(text) {\n  if (!text) return text;\n  \n  console.log('清理前原始文本:', JSON.stringify(text));\n  \n  let cleanedText = text;\n  \n  // 第一步：处理所有可能的转义序列\n  cleanedText = cleanedText.replace(/\\\\\"/g, '\"');  // \\\" → \"\n  cleanedText = cleanedText.replace(/\\\\\"/g, '\"');    // \\\" → \"\n  \n  // 第二步：处理其他转义字符\n  cleanedText = cleanedText.replace(/\\\\n/g, '\\n'); // \\\\n → \\n\n  cleanedText = cleanedText.replace(/\\n/g, ' ');     // \\n → 空格\n  cleanedText = cleanedText.replace(/\\\\t/g, ' ');   // \\\\t → 空格\n  cleanedText = cleanedText.replace(/\\t/g, ' ');     // \\t → 空格\n  \n  // 第三步：移除所有剩余的单独反斜杠\n  cleanedText = cleanedText.replace(/\\\\\\\\/g, '');  // \\\\\\\\ → 空\n  cleanedText = cleanedText.replace(/\\\\/g, '');     // \\\\ → 空\n  cleanedText = cleanedText.replace(/\\\\/g, '');     // 再次清理\n  \n  // 第四步：最后的清理 - 移除任何剩余的单个反斜杠\n  cleanedText = cleanedText.split('\\\\').join('');   // 使用split/join方法强制移除\n  \n  // 第五步：清理多余空格\n  cleanedText = cleanedText.replace(/\\s+/g, ' ').trim();\n  \n  console.log('清理后文本:', JSON.stringify(cleanedText));\n  console.log('是否还含反斜杠:', cleanedText.includes('\\\\'));\n  \n  return cleanedText;\n}\n\n// 标题专用清理（更严格）\nfunction cleanTitle(title) {\n  if (!title) return title;\n  \n  console.log('=== 开始清理标题 ===');\n  let cleanedTitle = cleanText(title);\n  \n  // 额外的标题特殊处理\n  cleanedTitle = cleanedTitle.replace(/\\n/g, ' ');\n  cleanedTitle = cleanedTitle.replace(/\\s+/g, ' ').trim();\n  \n  // 最终检查：如果还有反斜杠，逐字符清理\n  if (cleanedTitle.includes('\\\\')) {\n    console.log('检测到残留反斜杠，进行逐字符清理...');\n    cleanedTitle = cleanedTitle.split('').filter(char => char !== '\\\\').join('');\n  }\n  \n  console.log('标题最终清理结果:', JSON.stringify(cleanedTitle));\n  \n  return cleanedTitle;\n}\n\n// 提取需要翻译的文本内容，保留非文本内容的完整结构\nconst textsToTranslate = {\n  title: cleanTitle(articleData.title),\n  description: cleanText(articleData.description),\n  blocks: []\n};\n\n// 遍历blocks，只提取rich-text组件的body内容进行翻译\n// 同时保留完整的blocks结构信息用于后续重构\nlet richTextIndices = [];\nif (articleData.blocks && Array.isArray(articleData.blocks)) {\n  articleData.blocks.forEach((block, index) => {\n    if (block.__component === 'shared.rich-text' && block.body) {\n      // 对文本块内容进行清理\n      const cleanedBody = cleanText(block.body);\n      textsToTranslate.blocks.push(cleanedBody);\n      richTextIndices.push(index); // 记录rich-text组件在原数组中的位置\n    }\n  });\n}\n\n// 记录详细的调试信息和清理前后对比\nconsole.log('=== 最终文本处理报告 ===');\nconsole.log('Article ID:', article.id);\nconsole.log('原始标题:', JSON.stringify(articleData.title));\nconsole.log('处理后标题:', JSON.stringify(textsToTranslate.title));\nconsole.log('标题长度:', textsToTranslate.title.length, 'characters');\nconsole.log('标题是否包含反斜杠:', textsToTranslate.title.includes('\\\\') ? '是 ❌' : '否 ✅');\nconsole.log('标题字符分析:', textsToTranslate.title.split('').map((char, i) => `${i}: \"${char}\"`));\nconsole.log('Blocks count:', articleData.blocks ? articleData.blocks.length : 0);\nconsole.log('Rich-text blocks to translate:', richTextIndices.length);\n\nreturn [{\n  json: {\n    originalArticle: article,\n    articleData: articleData, // 保存实际的文章数据引用\n    textsToTranslate: textsToTranslate,\n    richTextIndices: richTextIndices // 用于后续准确重构\n  }\n}];\n"
+      },
+      "id": "90c0d360-a9da-4cc9-8711-d230e1d1d370",
+      "name": "Extract Content for Translation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1104,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a professional translator. Translate from English to Spanish. CRITICAL: Title must be ≤80 characters. Return only JSON with same structure as input.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": {{ \"Translate this JSON to Spanish: \" + JSON.stringify($json.textsToTranslate) }}\n    }\n  ],\n  \"temperature\": 0.3,\n  \"max_tokens\": 4000\n}\n",
+        "options": {}
+      },
+      "id": "e082f9e3-9960-41b6-a4b0-45a38df4df33",
+      "name": "Unified Translation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -880,
+        192
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "UrZToJi1KcfFhMnB",
+          "name": "deepk api token 923"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取原文章和翻译结果\nconst originalData = $('Extract Content for Translation').all()[0].json;\nconst translationResponse = $input.all()[0].json;\n\nlet translatedContent;\ntry {\n  // 解析DeepSeek的响应\n  const responseText = translationResponse.choices[0].message.content;\n  translatedContent = JSON.parse(responseText);\n} catch (error) {\n  console.error('Translation parsing error:', error);\n  // 如果解析失败，返回原内容\n  translatedContent = originalData.textsToTranslate;\n}\n\n// 验证并调整title长度（确保不超过80个字符）\nif (translatedContent.title && translatedContent.title.length > 80) {\n  console.log(`Title too long (${translatedContent.title.length} chars): ${translatedContent.title}`);\n  // 截断title到80个字符并确保不在单词中间截断\n  let truncatedTitle = translatedContent.title.substring(0, 77); // 留3个字符给省略号\n  const lastSpaceIndex = truncatedTitle.lastIndexOf(' ');\n  if (lastSpaceIndex > 60) { // 确保截断位置合理\n    truncatedTitle = truncatedTitle.substring(0, lastSpaceIndex);\n  }\n  translatedContent.title = truncatedTitle + '...';\n  console.log(`Title truncated to: ${translatedContent.title} (${translatedContent.title.length} chars)`);\n}\n\n// 获取实际的文章数据（不管是否有attributes包装）\nconst articleData = originalData.articleData;\nconst originalArticle = originalData.originalArticle;\n\n// 深度克隆原始blocks数组，保留所有非文本组件\nconst clonedBlocks = JSON.parse(JSON.stringify(articleData.blocks || []));\n\n// 只更新rich-text组件的body内容\nif (originalData.richTextIndices && translatedContent.blocks) {\n  originalData.richTextIndices.forEach((blockIndex, translationIndex) => {\n    if (clonedBlocks[blockIndex] && \n        clonedBlocks[blockIndex].__component === 'shared.rich-text' &&\n        translatedContent.blocks[translationIndex]) {\n      clonedBlocks[blockIndex].body = translatedContent.blocks[translationIndex];\n    }\n  });\n}\n\n// 构建完整的西班牙语文章数据，保留所有原始数据结构\nconst spanishArticleData = {\n  title: translatedContent.title || articleData.title,\n  description: translatedContent.description || articleData.description,\n  slug: articleData.slug + '-es',\n  locale: 'es',\n  publishedAt: null, // 设为草稿状态\n  englishVersion: originalArticle.id,\n  \n  // 完整保留所有非文本内容\n  cover: articleData.cover, // 保留封面图片\n  author: articleData.author, // 保留作者信息\n  category: articleData.category, // 保留分类信息\n  \n  // 保留完整的blocks结构，包括所有media、quote等组件\n  blocks: clonedBlocks\n};\n\n// 记录翻译统计信息\nconsole.log(`Article processed: ${articleData.title}`);\nconsole.log(`Spanish title: ${spanishArticleData.title} (${spanishArticleData.title.length} chars)`);\nconsole.log(`Blocks count: ${clonedBlocks.length}`);\nconsole.log(`Rich-text blocks translated: ${originalData.richTextIndices.length}`);\n\nreturn [{\n  json: {\n    data: spanishArticleData,\n    originalId: originalArticle.id,\n    translationStats: {\n      titleLength: spanishArticleData.title.length,\n      blocksCount: clonedBlocks.length,\n      richTextBlocksTranslated: originalData.richTextIndices.length,\n      originalTitle: articleData.title\n    }\n  }\n}];\n"
+      },
+      "id": "84fb3195-8104-4cc4-bacf-0a41f5393a5c",
+      "name": "Build Spanish Article",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -656,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1",
+              "leftValue": "{{ $json.data.title }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            },
+            {
+              "id": "2",
+              "leftValue": "{{ $json.data.blocks }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty"
+              }
+            },
+            {
+              "id": "3",
+              "leftValue": "{{ $json.data.title.length }}",
+              "rightValue": "80",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "10318de7-3394-41a5-a568-5b97fc493170",
+      "name": "Validate Translation",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -448,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://your-strapi-cloud.com/api/articles",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "options": {}
+      },
+      "id": "308e7067-65de-4898-a316-582373c831a4",
+      "name": "Upload Spanish Article",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -224,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://your-strapi-cloud.com/api/articles/{{ $('Build Spanish Article').all()[0].json.originalId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "options": {}
+      },
+      "id": "7fab10c4-6af1-4d52-8248-e6a8d78a5ce0",
+      "name": "Update English Article Reference",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "id": "867f2374-e516-468f-bef4-cf04c2d100b2",
+      "name": "Rate Limit Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        352
+      ],
+      "webhookId": "2a88774c-b9b6-43da-a5e1-4649b1162efc"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 记录翻译失败的文章详细信息\nconst articleData = $('Build Spanish Article').all()[0].json;\nconst stats = articleData.translationStats;\n\nconsole.log('Translation validation failed for article:', articleData.originalId);\nconsole.log('Original title:', stats.originalTitle);\nconsole.log('Spanish title:', articleData.data.title);\nconsole.log('Title length:', stats.titleLength, 'characters');\nconsole.log('Blocks count:', stats.blocksCount);\nconsole.log('Rich-text blocks translated:', stats.richTextBlocksTranslated);\n\nreturn [{\n  json: {\n    error: 'Translation validation failed',\n    originalId: articleData.originalId,\n    originalTitle: stats.originalTitle,\n    spanishTitle: articleData.data.title,\n    titleLength: stats.titleLength,\n    blocksCount: stats.blocksCount,\n    richTextBlocksTranslated: stats.richTextBlocksTranslated,\n    validationFailureReason: stats.titleLength > 80 ? 'Title too long' : 'Other validation failure'\n  }\n}];"
+      },
+      "id": "bfff6ee5-cfc2-455f-897f-790700b5ea8d",
+      "name": "Log Translation Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -224,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 记录成功处理的文章统计信息\nconst articleData = $input.all()[0].json;\nconst stats = articleData.translationStats;\n\nconsole.log('Article successfully uploaded:', articleData.data.id);\nconsole.log('Original title:', stats.originalTitle);\nconsole.log('Spanish title:', articleData.data.title, `(${stats.titleLength} chars)`);\nconsole.log('Total blocks:', stats.blocksCount);\nconsole.log('Translated rich-text blocks:', stats.richTextBlocksTranslated);\nconsole.log('Spanish slug:', articleData.data.slug);\n\nreturn [{\n  json: {\n    success: true,\n    spanishArticleId: articleData.data.id,\n    originalId: articleData.originalId,\n    originalTitle: stats.originalTitle,\n    spanishTitle: articleData.data.title,\n    titleLength: stats.titleLength,\n    slug: articleData.data.slug,\n    blocksProcessed: stats.blocksCount,\n    richTextBlocksTranslated: stats.richTextBlocksTranslated\n  }\n}];"
+      },
+      "id": "b3f42238-00d1-431f-97fa-6498a4573600",
+      "name": "Log Success Stats",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get English Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get English Articles": {
+      "main": [
+        [
+          {
+            "node": "Extract Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Articles": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Extract Content for Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Content for Translation": {
+      "main": [
+        [
+          {
+            "node": "Unified Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unified Translation": {
+      "main": [
+        [
+          {
+            "node": "Build Spanish Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Spanish Article": {
+      "main": [
+        [
+          {
+            "node": "Validate Translation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Rate Limit Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Translation": {
+      "main": [
+        [
+          {
+            "node": "Upload Spanish Article",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Translation Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Spanish Article": {
+      "main": [
+        [
+          {
+            "node": "Update English Article Reference",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log Success Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rate Limit Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "db8223d6-2d6e-4146-bc0b-ff6965cc67d3",
+  "meta": {
+    "instanceId": "51005159e88c5c762020ce82957f6eccb6317526124f305a48520e8ef97ab126"
+  },
+  "id": "HRbdvfYhhHMAobdH",
+  "tags": []
+}

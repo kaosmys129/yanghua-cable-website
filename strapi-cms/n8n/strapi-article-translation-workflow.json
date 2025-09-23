@@ -1,0 +1,391 @@
+{
+  "name": "Strapi Article Translation to Spanish",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{$env.STRAPI_API_URL}}/api/articles",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "locale",
+              "value": "en"
+            },
+            {
+              "name": "populate",
+              "value": "deep"
+            },
+            {
+              "name": "pagination[limit]",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000,
+          "retry": {
+            "enabled": true,
+            "maxRetries": 3
+          }
+        }
+      },
+      "id": "fetch-english-articles",
+      "name": "Fetch English Articles",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "strapi-auth",
+          "name": "Strapi API Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract articles from Strapi response\nconst response = $input.first().json;\nconst articles = response.data || [];\n\n// Filter and validate articles\nconst validArticles = articles.filter(article => {\n  const data = article.attributes || article;\n  return data.title && data.description && data.blocks && data.blocks.length > 0;\n});\n\nconst processedArticles = validArticles.map(article => {\n  const data = article.attributes || article;\n  \n  return {\n    id: article.id,\n    title: data.title,\n    description: data.description,\n    slug: data.slug,\n    cover: data.cover,\n    blocks: data.blocks,\n    author: data.author,\n    category: data.category,\n    originalLocale: data.locale || 'en'\n  };\n});\n\nreturn processedArticles.map(article => ({ json: article }));"
+      },
+      "id": "process-articles",
+      "name": "Process Articles",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract text content for translation\nconst article = $input.first().json;\n\n// Extract text from blocks\nconst extractTextFromBlocks = (blocks) => {\n  const textContent = [];\n  \n  blocks.forEach((block, index) => {\n    if (block.__component === 'shared.rich-text' && block.body) {\n      textContent.push({\n        type: 'rich-text',\n        index: index,\n        content: block.body\n      });\n    } else if (block.__component === 'shared.quote' && block.body) {\n      textContent.push({\n        type: 'quote-body',\n        index: index,\n        content: block.body\n      });\n    } else if (block.__component === 'shared.quote' && block.title) {\n      textContent.push({\n        type: 'quote-title',\n        index: index,\n        content: block.title\n      });\n    }\n  });\n  \n  return textContent;\n};\n\nconst textToTranslate = {\n  title: article.title,\n  description: article.description,\n  blocks: extractTextFromBlocks(article.blocks || [])\n};\n\nreturn [{\n  json: {\n    ...article,\n    textToTranslate: textToTranslate\n  }\n}];"
+      },
+      "id": "extract-text",
+      "name": "Extract Text for Translation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyContentType": true,
+        "contentType": "application/json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "deepseek-chat"
+            },
+            {
+              "name": "messages",
+              "value": "={{[\n  {\n    \"role\": \"system\",\n    \"content\": \"You are a professional translator. Translate the following content from English to Spanish. Maintain the original formatting, including markdown syntax, HTML tags, and line breaks. Only return the translated text without any additional comments or explanations.\"\n  },\n  {\n    \"role\": \"user\",\n    \"content\": JSON.stringify($json.textToTranslate)\n  }\n]}}"
+            },
+            {
+              "name": "temperature",
+              "value": 0.3
+            },
+            {
+              "name": "max_tokens",
+              "value": 4000
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000,
+          "retry": {
+            "enabled": true,
+            "maxRetries": 2
+          }
+        }
+      },
+      "id": "deepseek-translation",
+      "name": "DeepSeek Translation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1120, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "deepseek-auth",
+          "name": "DeepSeek API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process translation response and reconstruct article\nconst article = $input.first().json;\nconst translationResponse = article.choices?.[0]?.message?.content;\n\nif (!translationResponse) {\n  throw new Error('Translation failed: No response from DeepSeek API');\n}\n\nlet translatedContent;\ntry {\n  translatedContent = JSON.parse(translationResponse);\n} catch (error) {\n  throw new Error('Failed to parse translation response: ' + error.message);\n}\n\n// Reconstruct blocks with translated content\nconst reconstructBlocks = (originalBlocks, translatedBlocks) => {\n  const translatedBlocksMap = new Map();\n  \n  translatedBlocks.forEach(block => {\n    const key = `${block.type}-${block.index}`;\n    translatedBlocksMap.set(key, block.content);\n  });\n  \n  return originalBlocks.map((block, index) => {\n    const newBlock = { ...block };\n    \n    if (block.__component === 'shared.rich-text') {\n      const key = `rich-text-${index}`;\n      if (translatedBlocksMap.has(key)) {\n        newBlock.body = translatedBlocksMap.get(key);\n      }\n    } else if (block.__component === 'shared.quote') {\n      const bodyKey = `quote-body-${index}`;\n      const titleKey = `quote-title-${index}`;\n      \n      if (translatedBlocksMap.has(bodyKey)) {\n        newBlock.body = translatedBlocksMap.get(bodyKey);\n      }\n      if (translatedBlocksMap.has(titleKey)) {\n        newBlock.title = translatedBlocksMap.get(titleKey);\n      }\n    }\n    \n    return newBlock;\n  });\n};\n\n// Create Spanish article\nconst spanishArticle = {\n  title: translatedContent.title,\n  description: translatedContent.description,\n  slug: article.slug + '-es',\n  locale: 'es',\n  cover: article.cover,\n  blocks: reconstructBlocks(article.blocks, translatedContent.blocks),\n  author: article.author,\n  category: article.category,\n  originalArticleId: article.id\n};\n\nreturn [{ json: spanishArticle }];"
+      },
+      "id": "reconstruct-article",
+      "name": "Reconstruct Spanish Article",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{$env.STRAPI_API_URL}}/api/articles",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyContentType": true,
+        "contentType": "application/json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "={{$json}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000,
+          "retry": {
+            "enabled": true,
+            "maxRetries": 3
+          }
+        }
+      },
+      "id": "upload-spanish-article",
+      "name": "Upload Spanish Article",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1560, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "strapi-auth",
+          "name": "Strapi API Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create relationship between English and Spanish articles\nconst spanishArticleResponse = $input.first().json;\nconst spanishArticleId = spanishArticleResponse.data?.id;\nconst originalArticleId = spanishArticleResponse.data?.attributes?.originalArticleId;\n\nif (!spanishArticleId || !originalArticleId) {\n  throw new Error('Failed to create article relationship: Missing article IDs');\n}\n\n// Update English article to reference Spanish version\nconst updateData = {\n  data: {\n    spanishVersion: spanishArticleId\n  }\n};\n\nreturn [{\n  json: {\n    originalArticleId: originalArticleId,\n    spanishArticleId: spanishArticleId,\n    updateData: updateData\n  }\n}];"
+      },
+      "id": "create-relationship",
+      "name": "Create Article Relationship",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1780, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{$env.STRAPI_API_URL}}/api/articles/{{$json.originalArticleId}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyContentType": true,
+        "contentType": "application/json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "={{$json.updateData.data}}"
+            }
+          ]
+        },
+        "requestMethod": "PUT",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "update-english-article",
+      "name": "Update English Article",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [2000, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "strapi-auth",
+          "name": "Strapi API Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log successful translation\nconst result = $input.first().json;\n\nconsole.log('✅ Article translation completed successfully');\nconsole.log('Original Article ID:', $('create-relationship').first().json.originalArticleId);\nconsole.log('Spanish Article ID:', $('create-relationship').first().json.spanishArticleId);\n\nreturn [{\n  json: {\n    status: 'success',\n    message: 'Article translated and uploaded successfully',\n    originalArticleId: $('create-relationship').first().json.originalArticleId,\n    spanishArticleId: $('create-relationship').first().json.spanishArticleId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "log-success",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2220, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log error details\nconst error = $input.first().json;\n\nconsole.error('❌ Translation workflow failed:', error);\n\nreturn [{\n  json: {\n    status: 'error',\n    message: 'Translation workflow failed',\n    error: error,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "log-error",
+      "name": "Log Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 500]
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "id": "rate-limit-delay",
+      "name": "Rate Limit Delay",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1120, 500]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Fetch English Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch English Articles": {
+      "main": [
+        [
+          {
+            "node": "Process Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Articles": {
+      "main": [
+        [
+          {
+            "node": "Extract Text for Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Text for Translation": {
+      "main": [
+        [
+          {
+            "node": "Rate Limit Delay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rate Limit Delay": {
+      "main": [
+        [
+          {
+            "node": "DeepSeek Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Translation": {
+      "main": [
+        [
+          {
+            "node": "Reconstruct Spanish Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reconstruct Spanish Article": {
+      "main": [
+        [
+          {
+            "node": "Upload Spanish Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Spanish Article": {
+      "main": [
+        [
+          {
+            "node": "Create Article Relationship",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Article Relationship": {
+      "main": [
+        [
+          {
+            "node": "Update English Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update English Article": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": {
+      "Log Error": {
+        "main": [
+          [
+            {
+              "node": "Log Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "id": "translation",
+      "name": "Translation"
+    },
+    {
+      "id": "strapi",
+      "name": "Strapi"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-20T10:00:00.000Z",
+  "versionId": "1"
+}

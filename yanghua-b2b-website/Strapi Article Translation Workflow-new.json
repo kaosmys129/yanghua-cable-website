@@ -1,0 +1,666 @@
+{
+  "name": "Strapi Article Translation Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://fruitful-presence-02d7be759c.strapiapp.com/api/articles?locale=en&populate=*",
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "get-articles",
+      "name": "Get English Articles",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        464,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "batch": {
+          "batchSize": 1
+        },
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "split-articles",
+      "name": "Split Articles",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        688,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const article = $input.item;\nconst textContent = {\n  title: article.attributes.title,\n  description: article.attributes.description,\n  blocks: []\n};\n\n// Extract text from blocks\nif (article.attributes.blocks) {\n  article.attributes.blocks.forEach(block => {\n    if (block.__component === 'shared.rich-text' && block.body) {\n      textContent.blocks.push({\n        type: 'rich-text',\n        content: block.body\n      });\n    }\n  });\n}\n\nreturn {\n  originalArticle: article,\n  textToTranslate: textContent\n};"
+      },
+      "id": "extract-text",
+      "name": "Extract Text Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        944,
+        272
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$credentials.deepseekApiKey}}"
+            }
+          ]
+        },
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "deepseek-chat"
+            },
+            {
+              "name": "messages",
+              "value": "=[{\"role\": \"system\", \"content\": \"You are a professional translator. Translate the following text from English to Spanish. Return only the translation without any additional text or explanation.\"}, {\"role\": \"user\", \"content\": \"{{$('Extract Text Content').item(0).textToTranslate.title}}\"}]"
+            },
+            {
+              "name": "temperature",
+              "value": "0.3"
+            },
+            {
+              "name": "max_tokens",
+              "value": "1000"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30,
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "id": "translate-title",
+      "name": "Translate Title",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$credentials.deepseekApiKey}}"
+            }
+          ]
+        },
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "deepseek-chat"
+            },
+            {
+              "name": "messages",
+              "value": "=[{\"role\": \"system\", \"content\": \"You are a professional translator. Translate the following text from English to Spanish. Return only the translation without any additional text or explanation.\"}, {\"role\": \"user\", \"content\": \"{{$('Extract Text Content').item(0).textToTranslate.description}}\"}]"
+            },
+            {
+              "name": "temperature",
+              "value": "0.3"
+            },
+            {
+              "name": "max_tokens",
+              "value": "2000"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30,
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "id": "translate-description",
+      "name": "Translate Description",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$credentials.deepseekApiKey}}"
+            }
+          ]
+        },
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "deepseek-chat"
+            },
+            {
+              "name": "messages",
+              "value": "=[{\"role\": \"system\", \"content\": \"You are a professional translator. Translate the following text blocks from English to Spanish. Return a JSON array with the same structure, where each object has 'type' and 'content' fields with the translated content. Example: [{\"type\": \"rich-text\", \"content\": \"translated text\"}]\"}, {\"role\": \"user\", \"content\": \"{{JSON.stringify($('Extract Text Content').item(0).textToTranslate.blocks)}}\"}]"
+            },
+            {
+              "name": "temperature",
+              "value": "0.3"
+            },
+            {
+              "name": "max_tokens",
+              "value": "4000"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60,
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "id": "translate-blocks",
+      "name": "Translate Blocks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex",
+        "options": {}
+      },
+      "id": "merge-translations",
+      "name": "Merge Translations",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1344,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const originalArticle = $('Extract Text Content').item(0).originalArticle;\nconst translatedTitle = $('Translate Title').item(0).choices[0].message.content;\nconst translatedDescription = $('Translate Description').item(0).choices[0].message.content;\nconst translatedBlocks = JSON.parse($('Translate Blocks').item(0).choices[0].message.content);\n\n// Build Spanish article structure\nconst spanishArticle = {\n  data: {\n    title: translatedTitle,\n    description: translatedDescription,\n    slug: originalArticle.attributes.slug + '-es',\n    locale: 'es',\n    cover: originalArticle.attributes.cover?.data?.id || null,\n    blocks: [],\n    category: originalArticle.attributes.category?.data?.id || null,\n    author: originalArticle.attributes.author?.data?.id || null,\n    reference: originalArticle.id\n  }\n};\n\n// Rebuild blocks with translations\nif (originalArticle.attributes.blocks) {\n  let textBlockIndex = 0;\n  originalArticle.attributes.blocks.forEach(block => {\n    if (block.__component === 'shared.rich-text') {\n      spanishArticle.data.blocks.push({\n        __component: 'shared.rich-text',\n        body: translatedBlocks[textBlockIndex]?.content || block.body\n      });\n      textBlockIndex++;\n    } else {\n      spanishArticle.data.blocks.push(block);\n    }\n  });\n}\n\nreturn spanishArticle;"
+      },
+      "id": "build-spanish-article",
+      "name": "Build Spanish Article",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://strapi.yanghuasti.com/api/articles",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$credentials.strapiApiToken}}"
+            }
+          ]
+        },
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "={{$('Build Spanish Article').item(0).json.data}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30
+        }
+      },
+      "id": "upload-spanish-article",
+      "name": "Upload Spanish Article",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1792,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://strapi.yanghuasti.com/api/articles/{{$('Extract Text Content').item(0).originalArticle.id}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$credentials.strapiApiToken}}"
+            }
+          ]
+        },
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "={\"spanish_reference\": {{$('Upload Spanish Article').item(0).id}}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30
+        }
+      },
+      "id": "update-reference",
+      "name": "Update English Article Reference",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log successful translation completion\nconst article = $('Extract Text Content').item(0).originalArticle;\nconst uploadResult = $('Upload Spanish Article').item(0);\n\nconsole.log(`✅ Successfully translated article: ${article.attributes.title}`);\nconsole.log(`   Spanish article ID: ${uploadResult.id}`);\nconsole.log(`   Translation completed at: ${new Date().toISOString()}`);\n\nreturn {\n  success: true,\n  articleId: article.id,\n  spanishArticleId: uploadResult.id,\n  timestamp: new Date().toISOString()\n};"
+      },
+      "id": "log-success",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2224,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Handle errors during translation process\nconst error = $input.error;\nconst currentItem = $('Extract Text Content').item(0) || {};\n\nconsole.error('❌ Translation failed for article:', {\n  articleTitle: currentItem.originalArticle?.attributes?.title || 'Unknown',\n  articleId: currentItem.originalArticle?.id || 'Unknown',\n  error: error.message || error,\n  timestamp: new Date().toISOString()\n});\n\n// Continue with next article despite error\nreturn {\n  success: false,\n  error: error.message || error,\n  articleId: currentItem.originalArticle?.id || 'Unknown',\n  timestamp: new Date().toISOString()\n};"
+      },
+      "id": "error-handler",
+      "name": "Error Handler",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2224,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "has-more-items",
+              "leftValue": "={{$node['Split Articles'].context['noItemsLeft']}}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEqual",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-loop-completion",
+      "name": "Check Loop Completion",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2448,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Final summary of translation process\nconst allResults = $input.all();\nconst successCount = allResults.filter(result => result.json.success === true).length;\nconst errorCount = allResults.filter(result => result.json.success === false).length;\n\nconsole.log('📊 Translation Process Completed');\nconsole.log(`   Total articles processed: ${allResults.length}`);\nconsole.log(`   Successful translations: ${successCount}`);\nconsole.log(`   Failed translations: ${errorCount}`);\nconsole.log(`   Completion time: ${new Date().toISOString()}`);\n\nreturn {\n  summary: {\n    totalProcessed: allResults.length,\n    successful: successCount,\n    failed: errorCount,\n    completionTime: new Date().toISOString()\n  }\n};"
+      },
+      "id": "final-summary",
+      "name": "Final Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2672,
+        304
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get English Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get English Articles": {
+      "main": [
+        [
+          {
+            "node": "Split Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Articles": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Extract Text Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Text Content": {
+      "main": [
+        [
+          {
+            "node": "Translate Title",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Translate Description",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Translate Blocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Translate Title": {
+      "main": [
+        [
+          {
+            "node": "Merge Translations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Translate Description": {
+      "main": [
+        [
+          {
+            "node": "Merge Translations",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Translate Blocks": {
+      "main": [
+        [
+          {
+            "node": "Merge Translations",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Translations": {
+      "main": [
+        [
+          {
+            "node": "Build Spanish Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Spanish Article": {
+      "main": [
+        [
+          {
+            "node": "Upload Spanish Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Spanish Article": {
+      "main": [
+        [
+          {
+            "node": "Update English Article Reference",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update English Article Reference": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "error": [
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Success": {
+      "main": [
+        [
+          {
+            "node": "Check Loop Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Handler": {
+      "main": [
+        [
+          {
+            "node": "Check Loop Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Loop Completion": {
+      "main": [
+        [
+          {
+            "node": "Split Articles",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Final Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true
+  },
+  "versionId": "cdadb2d2-9ac9-43e0-a272-e3cdeb1a2304",
+  "meta": {
+    "instanceId": "51005159e88c5c762020ce82957f6eccb6317526124f305a48520e8ef97ab126"
+  },
+  "id": "CT06m0CA8WdeilYw",
+  "tags": []
+}

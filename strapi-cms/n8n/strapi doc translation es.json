@@ -1,0 +1,497 @@
+{
+  "name": "strapi doc translation es",
+  "nodes": [
+    {
+      "jsCode": "parameters": {},
+      "id": "905fd7f2-02f0-4e7c-882c-592bcf02db82",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1568,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.apiUrl || 'https://fruitful-presence-02d7be759c.strapiapp.com/api/articles' }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "populate[blocks]",
+              "value": "*"
+            },
+            {
+              "name": "populate[cover]",
+              "value": "*"
+            },
+            {
+              "name": "populate[author]",
+              "value": "*"
+            },
+            {
+              "name": "populate[category]",
+              "value": "*"
+            },
+            {
+              "name": "pagination[page]",
+              "value": "={{ $json.page || 1 }}"
+            },
+            {
+              "name": "pagination[pageSize]",
+              "value": "100"
+            },
+            {
+              "name": "sort[0]",
+              "value": "publishedAt:desc"
+            },
+            {
+              "name": "filters[locale][$eq]",
+              "value": "en"
+            },
+            {
+              "name": "filters[publishedAt][$null]",
+              "value": "false"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000,
+          "batching": {
+            "batch": {
+              "enabled": false
+            }
+          }
+        }
+      },
+      "id": "a9a8b961-253d-4492-9fe8-576179da82fb",
+      "name": "Get English Articles",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1360,
+        176
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "hI08jGS9Lltb1ypT",
+          "name": "strapi"
+        }
+      },
+      "continueOnFail": true,
+      "retryOnFail": true,
+      "maxTries": 3
+    },
+    {
+      "parameters": {
+        "jsCode": "// Enhanced filter and process English articles with comprehensive validation\nconst articles = $json.data || [];\nconst processedArticles = [];\nconst validationErrors = [];\n\nconsole.log(`Processing ${articles.length} articles from API response`);\n\nfor (const article of articles) {\n  try {\n    // Comprehensive data validation\n    if (!article?.id || !article?.attributes) {\n      validationErrors.push({\n        articleId: article?.id || 'unknown',\n        error: 'Missing article ID or attributes',\n        severity: 'critical'\n      });\n      continue;\n    }\n\n    const attributes = article.attributes;\n    \n    // Validate required fields with detailed logging\n    const missingFields = [];\n    if (!attributes.title) missingFields.push('title');\n    if (!attributes.slug) missingFields.push('slug');\n    if (!attributes.blocks && !attributes.content) missingFields.push('blocks/content');\n    \n    if (missingFields.length > 0) {\n      validationErrors.push({\n        articleId: article.id,\n        error: `Missing required fields: ${missingFields.join(', ')}`,\n        severity: 'critical',\n        fields: missingFields\n      });\n      continue;\n    }\n\n    // Enhanced Spanish translation check\n    const hasSpanishTranslation = attributes.localizations?.data?.some(\n      loc => loc.attributes?.locale === 'es'\n    );\n    \n    if (hasSpanishTranslation) {\n      console.log(`Article ${article.id} already has Spanish translation`);\n      continue;\n    }\n\n    // Validate and process blocks structure\n    const blocks = attributes.blocks || attributes.content || [];\n    const validatedBlocks = blocks.map((block, index) => {\n      if (!block?.__component) {\n        validationErrors.push({\n          articleId: article.id,\n          blockIndex: index,\n          error: 'Block missing __component field',\n          severity: 'warning'\n        });\n        return null;\n      }\n      return block;\n    }).filter(Boolean);\n\n    // Validate relationships\n    const relationships = {\n      cover: attributes.cover?.data || null,\n      author: attributes.author?.data || null,\n      category: attributes.category?.data || null\n    };\n\n    // Enhanced article processing with all metadata preservation\n    const processedArticle = {\n      id: article.id,\n      title: attributes.title.trim(),\n      description: (attributes.description || '').trim(),\n      slug: attributes.slug.trim(),\n      blocks: validatedBlocks,\n      cover: relationships.cover,\n      author: relationships.author,\n      category: relationships.category,\n      publishedAt: attributes.publishedAt,\n      createdAt: attributes.createdAt,\n      updatedAt: attributes.updatedAt,\n      locale: attributes.locale || 'en',\n      // Preserve all metadata for reconstruction\n      originalAttributes: {\n        metaTitle: attributes.metaTitle,\n        metaDescription: attributes.metaDescription,\n        metaImage: attributes.metaImage,\n        article_type: attributes.article_type,\n        readingTime: attributes.readingTime,\n        featured: attributes.featured,\n        tags: attributes.tags\n      },\n      // Validation metadata\n      validationStatus: {\n        hasValidBlocks: validatedBlocks.length > 0,\n        hasCover: !!relationships.cover,\n        hasAuthor: !!relationships.author,\n        hasCategory: !!relationships.category,\n        blockCount: validatedBlocks.length\n      }\n    };\n    processedArticles.push(processedArticle);\n    \n  } catch (error) {\n    validationErrors.push({\n      articleId: article?.id || 'unknown',\n      error: `Processing error: ${error.message}`,\n      severity: 'error'\n    });\n  }\n}\n\n// Log processing summary\nconsole.log(`Successfully processed ${processedArticles.length} articles`);\nconsole.log(`Validation errors encountered: ${validationErrors.length}`);\n\nif (validationErrors.length > 0) {\n  console.log('Validation errors:', JSON.stringify(validationErrors.slice(0, 10), null, 2));\n}\n\n// Return processed articles with validation metadata\nreturn processedArticles.map(article => ({\n  json: {\n    ...article,\n    processingMetadata: {\n      processedAt: new Date().toISOString(),\n      totalArticlesProcessed: processedArticles.length,\n      validationErrors: validationErrors.length\n  }\n  }\n}));"
+      },
+      "id": "ce532cbe-0455-4a5e-9259-230694350327",
+      "name": "Filter & Process English Articles",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        -1136,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "3e7dc365-1804-4128-b974-93804aaf6467",
+      "name": "Sequential Processing",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -912,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Enhanced translation preparation with comprehensive content extraction and validation\nconst article = $json;\n\n// Comprehensive validation of article structure\nconst validation = {\n  hasTitle: !!article.title && article.title.trim().length > 0,\n  hasDescription: !!article.description && article.description.trim().length > 0,\n  hasBlocks: Array.isArray(article.blocks) && article.blocks.length > 0,\n  hasSlug: !!article.slug && article.slug.trim().length > 0,\n  hasId: !!article.id\n};\n\nconst missingFields = Object.keys(validation).filter(key => !validation[key]);\nif (missingFields.length > 0) {\n  throw new Error(`Missing required article fields for translation: ${missingFields.join(', ')}`);\n}\n\n// Extract all translatable content with enhanced block processing\nconst translatableContent = [];\nconst processedBlocks = [];\n\n// Add title and description with enhanced context\ntranslatableContent.push({\n  type: 'title',\n  text: article.title.trim(),\n  context: 'Article title for Yanghua Cable industry website - professional cable manufacturing company',\n  maxLength: 120,\n  required: true\n});\n\nif (article.description && article.description.trim()) {\n  translatableContent.push({\n  type: 'description',\n    text: article.description.trim(),\n    context: 'Article meta description for SEO - should be compelling and include key cable industry terms',\n    maxLength: 160,\n    required: true\n  });\n}\n\n// Enhanced block processing with comprehensive component support\narticle.blocks.forEach((block, index) => {\n  if (!block || !block.__component) {\n    console.warn(`Block ${index} missing __component field, skipping`);\n    return;\n  }\n  \n  const processedBlock = { ...block };\n  \n  switch (block.__component) {\n    case 'shared.rich-text':\n      if (block.body && typeof block.body === 'string' && block.body.trim()) {\n        translatableContent.push({\n          type: 'rich-text',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.body.trim(),\n          context: 'Main article content about cable industry, manufacturing processes, or technical specifications',\n          maxLength: 5000\n        });\n      }\n      break;\n      \n    case 'shared.quote':\n      if (block.title && typeof block.title === 'string' && block.title.trim()) {\n        translatableContent.push({\n          type: 'quote-title',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.title.trim(),\n          context: 'Quote title - professional testimonial or industry insight',\n          maxLength: 200\n        });\n      }\n      if (block.body && typeof block.body === 'string' && block.body.trim()) {\n        translatableContent.push({\n          type: 'quote-body',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.body.trim(),\n          context: 'Quote body text - professional statement or industry expertise',\n          maxLength: 500\n        });\n      }\n      break;\n      \n    case 'shared.media':\n      // Handle alt text and captions for images\n      if (block.alt && typeof block.alt === 'string' && block.alt.trim()) {\n        translatableContent.push({\n          type: 'media-alt',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.alt.trim(),\n          context: 'Image alt text for accessibility - describe cable products or manufacturing processes',\n          maxLength: 125\n        });\n      }\n      if (block.caption && typeof block.caption === 'string' && block.caption.trim()) {\n        translatableContent.push({\n          type: 'media-caption',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.caption.trim(),\n          context: 'Image caption - provide context for cable industry images',\n          maxLength: 200\n        });\n      }\n      break;\n      \n    case 'shared.slider':\n      // Handle slider component text content\n      if (block.title && typeof block.title === 'string' && block.title.trim()) {\n        translatableContent.push({\n          type: 'slider-title',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.title.trim(),\n          context: 'Slider title - product showcase or feature highlight',\n          maxLength: 100\n        });\n      }\n      if (block.description && typeof block.description === 'string' && block.description.trim()) {\n        translatableContent.push({\n          type: 'slider-description',\n          blockIndex: index,\n          componentId: block.id,\n          text: block.description.trim(),\n          context: 'Slider description - detailed product or service description',\n          maxLength: 300\n        });\n      }\n      break;\n      \n    default:\n      console.log(`Unknown component type: ${block.__component}`);\n  }\n  \n  processedBlocks.push(processedBlock);\n});\n\n// Create comprehensive translation prompt with industry context\nconst translationPrompt = `You are an expert technical translator specializing in the cable and electrical industry. Translate the following content from English to Spanish for Yanghua Cable, a professional cable manufacturing company.\n\n**Industry Context:**\n- Company: Yanghua Cable (阳华科技)\n- Industry: Cable manufacturing, electrical equipment, power transmission\n- Target Audience: Spanish-speaking electrical engineers, contractors, and industry professionals\n- Website: Professional B2B cable industry website\n\n**Translation Guidelines:**\n\n1. **Technical Accuracy:**\n   - Use correct Spanish terminology for cable types (cable de cobre, cable de aluminio, cable unipolar, cable multipolar)\n   - Maintain technical specifications and measurements\n   - Preserve electrical terminology (voltaje, corriente, aislamiento, conductividad)\n\n2. **Industry-Specific Terms:**\n   - Power cables → Cables de energía\n   - Control cables → Cables de control\n   - Insulation → Aislamiento\n   - Conductor → Conductor\n   - Voltage rating → Clasificación de voltaje\n\n3. **Cultural & Regional Adaptation:**\n   - Adapt for Latin American Spanish (neutral, professional)\n   - Use formal business language (usted form)\n   - Include regional electrical standards when relevant\n\n4. **SEO & Marketing:**\n   - Maintain keyword density for cable-related terms\n   - Include Spanish cable industry keywords\n   - Keep meta descriptions under 160 characters\n\n5. **Content Structure:**\n   - Preserve formatting and paragraph structure\n   - Maintain professional tone throughout\n   - Keep technical data and specifications exact\n\n**Content to Translate:**\n${translatableContent.map(item => `\n---\n[TYPE: ${item.type.toUpperCase()}]\n[CONTEXT: ${item.context}]\n${item.maxLength ? `[MAX LENGTH: ${item.maxLength} chars]\\n' : ''}${item.required ? '[REQUIRED]' : ''}\n\\n${item.text}`).join('\\n\\n')}\n\n**Output Format:**\nReturn translations in the same structure, maintaining all type and context markers.\n\n**Quality Requirements:**\n- 100% accuracy for technical specifications\n- Professional business Spanish\n- SEO-optimized with relevant Spanish keywords\n- Culturally appropriate for Spanish-speaking markets`\n\n// Enhanced logging and metadata\nconst contentTypes = [...new Set(translatableContent.map(item => item.type))];\nconst totalWords = translatableContent.reduce((sum, item) => sum + item.text.split(/\\s+/).length, 0);\nconst requiredItems = translatableContent.filter(item => item.required).length;\n\nconsole.log(`Translation preparation complete for: ${article.title}`);\nconsole.log(`Content types: ${contentTypes.join(', ')}`);\nconsole.log(`Total items: ${translatableContent.length} (${requiredItems} required)`);\nconsole.log(`Total words: ${totalWords}`);\nconsole.log(`Block count: ${processedBlocks.length}`);\n\n// Enhanced validation and return structure\nreturn {\n  json: {\n    originalArticle: article,\n    translatableContent: translatableContent,\n    processedBlocks: processedBlocks,\n    translationPrompt: translationPrompt,\n    totalTexts: translatableContent.length,\n    metadata: {\n      totalItems: translatableContent.length,\n      contentTypes: contentTypes,\n      wordCount: totalWords,\n      requiredItems: requiredItems,\n      blockCount: processedBlocks.length,\n      preparationTimestamp: new Date().toISOString(),\n      validationStatus: {\n        hasTitle: !!article.title,\n        hasDescription: !!article.description,\n        hasBlocks: processedBlocks.length > 0,\n        hasSlug: !!article.slug\n      }\n    }\n  }\n};"}
+      },
+      "id": "10010249-4825-404a-9297-cf35e600b6ad",
+      "name": "Prepare Translation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4,
+      "position": [
+        -688,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.translationRequest) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "b02265d3-7ac9-46e1-a3c0-276d2289eb88",
+      "name": "Unified Translation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        -496,
+        -144
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zEDKJ6W1PLle9HRd",
+          "name": "deepseek"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n    const translationResponse = $json;\n    const originalData = $('Prepare Translation').first().json;\n    const article = originalData.originalArticle;\n\n    console.log(`🔄 Processing translation results for: ${article.title}`);\n\n    let translatedData = null;\n    let translationSuccess = false;\n\n    // Parse translation response\n    if (translationResponse.choices && translationResponse.choices[0]?.message?.content) {\n      const content = translationResponse.choices[0].message.content.trim();\n      \n      try {\n        translatedData = JSON.parse(content);\n        translationSuccess = true;\n        console.log('✅ Translation parsed successfully');\n      } catch (parseError) {\n        console.log('⚠️ Failed to parse JSON, attempting manual extraction...');\n        \n        // Fallback: manual extraction\n        const titleMatch = content.match(/[\\\"\\']title[\\\"\\']\\s*:\\s*[\\\"\\']([^\\\"\\']+)[\\\"\\']/i);\n        const descMatch = content.match(/[\\\"\\']description[\\\"\\']\\s*:\\s*[\\\"\\']([^\\\"\\']+)[\\\"\\']/i);\n        \n        if (titleMatch || descMatch) {\n          translatedData = {\n            title: titleMatch ? titleMatch[1] : article.title + ' (ES)',\n            description: descMatch ? descMatch[1] : 'Descripción no disponible',\n            blocks: [] // Will be handled below\n          };\n          \n          // Try to extract blocks\n          const blockMatches = content.match(/[\\\"\\']blocks[\\\"\\']\\s*:\\s*\\[(.*?)\\]/s);\n          if (blockMatches) {\n            try {\n              const blocksStr = '[' + blockMatches[1] + ']';\n              translatedData.blocks = JSON.parse(blocksStr);\n            } catch (e) {\n              console.log('⚠️ Could not parse blocks array');\n            }\n          }\n          \n          translationSuccess = true;\n        }\n      }\n    }\n\n    if (!translationSuccess) {\n      console.log('❌ Translation failed, using fallback');\n      translatedData = {\n        title: article.title + ' (ES)',\n        description: article.description ? article.description + ' (Traducción automática)' : 'Descripción no disponible',\n        blocks: []\n      };\n    }\n\n    // Apply translations to blocks - PRESERVE ORIGINAL STRUCTURE\n    let translatedBlocks = JSON.parse(JSON.stringify(article.blocks));\n    let translationStats = { attempted: 0, successful: 0, failed: 0 };\n\n    // Only translate text-based components\n    if (translatedData.blocks && Array.isArray(translatedData.blocks) && article.translatableTexts) {\n      article.translatableTexts.forEach((textItem, index) => {\n        translationStats.attempted++;\n        \n        const targetBlock = translatedBlocks[textItem.blockIndex];\n        if (!targetBlock) {\n          translationStats.failed++;\n          return;\n        }\n        \n        if (index < translatedData.blocks.length) {\n          const translatedText = translatedData.blocks[index];\n          \n          if (translatedText && translatedText.trim().length > 0) {\n            if (textItem.type === 'rich-text' && targetBlock.__component === 'shared.rich-text') {\n              targetBlock.body = translatedText;\n              translationStats.successful++;\n            } else if (textItem.type === 'quote-title' && targetBlock.__component === 'shared.quote') {\n              targetBlock.title = translatedText;\n              translationStats.successful++;\n            } else if (textItem.type === 'quote-body' && targetBlock.__component === 'shared.quote') {\n              targetBlock.body = translatedText;\n              translationStats.successful++;\n            } else {\n              translationStats.failed++;\n            }\n          } else {\n            translationStats.failed++;\n          }\n        } else {\n          translationStats.failed++;\n        }\n      });\n    }\n\n    // Ensure non-text blocks retain their original file references\n    translatedBlocks.forEach((block, index) => {\n      const originalBlock = article.blocks[index];\n      if (!originalBlock) return;\n      \n      // Preserve file references for media and slider components\n      if (block.__component === 'shared.media') {\n        if (originalBlock.file) {\n          block.file = originalBlock.file;\n        } else {\n          // Remove incomplete media blocks\n          console.log('⚠️ Removing incomplete media block');\n          block._shouldRemove = true;\n        }\n      }\n      if (block.__component === 'shared.slider') {\n        if (originalBlock.files && originalBlock.files.length > 0) {\n          block.files = originalBlock.files;\n        } else {\n          // Remove incomplete slider blocks\n          console.log('⚠️ Removing incomplete slider block');\n          block._shouldRemove = true;\n        }\n      }\n    });\n\n    // Remove incomplete blocks\n    translatedBlocks = translatedBlocks.filter(block => !block._shouldRemove);\n\n    // Prepare final Spanish article data\n    const spanishArticle = {\n      originalId: article.id,\n      documentId: article.documentId,\n      title: translatedData.title,\n      description: translatedData.description,\n      slug: article.slug + '-es',\n      locale: 'es',\n      cover: article.cover ? { id: article.cover.id } : null,\n      author: article.author ? { id: article.author.id } : null,\n      category: article.category ? { id: article.category.id } : null, // Preserve category\n      blocks: translatedBlocks,\n      translationStats: translationStats\n    };\n\n    console.log(`📊 Translation stats - Attempted: ${translationStats.attempted}, Successful: ${translationStats.successful}, Failed: ${translationStats.failed}`);\n\n    return { json: spanishArticle };\n} catch (error) {\n    console.error('Error in Process Translation:', error);\n    return [{ json: { error: error.message, stack: error.stack } }];\n}"
+      },
+      "id": "4c64dca0-d329-4f27-ae8b-3c08b22d3f93",
+      "name": "Process Translation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        -272,
+        -128
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const uploadResponse = $json;\nconst articleData = $(\'Process Translation\').first().json;\n\nconsole.log(`✅ Successfully uploaded: ${articleData.title}`);\n\nreturn {\n  json: {\n    success: true,\n    originalId: articleData.originalId,\n    spanishId: uploadResponse.data?.id || 'unknown',\n    originalTitle: $(\'Sequential Processing\').first().json.title,\n    spanishTitle: articleData.title,\n    translationStats: articleData.translationStats,\n    uploadedAt: new Date().toISOString()\n  }\n};"
+      },
+      "id": "95810a1d-47e3-4312-b18c-361e09a1ea12",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        624,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const error = $json;\nconst originalArticle = $(\'Sequential Processing\').first().json;\n\nconsole.log(`❌ Failed to upload: ${originalArticle.title}`);\nconsole.log('Error details:', error.message || error);\n\nreturn {\n  json: {\n    success: false,\n    originalId: originalArticle.id,\n    originalTitle: originalArticle.title,\n    error: error.message || 'Upload failed',\n    statusCode: error.statusCode || 'unknown',\n    failedAt: new Date().toISOString()\n  }\n};"
+      },
+      "id": "75d65365-950d-4787-8976-549cc8450614",
+      "name": "Log Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        432,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const allResults = $input.all();\nconst successful = allResults.filter(r => r.json.success === true);\nconst failed = allResults.filter(r => r.json.success === false);\n\nconst now = new Date();\nconst timestamp = now.toISOString();\n\n// Calculate total translation statistics\nconst totalStats = successful.reduce((acc, result) => {\n  const stats = result.json.translationStats || { attempted: 0, successful: 0, failed: 0 };\n  acc.attempted += stats.attempted;\n  acc.successful += stats.successful;\n  acc.failed += stats.failed;\n  return acc;\n}, { attempted: 0, successful: 0, failed: 0 });\n\n// Generate detailed report\nconst report = {\n  timestamp: timestamp,\n  summary: {\n    totalArticles: allResults.length,\n    successfulUploads: successful.length,\n    failedUploads: failed.length,\n    successRate: allResults.length > 0 ? Math.round((successful.length / allResults.length) * 100) : 0,\n    translationStats: {\n      totalTextsAttempted: totalStats.attempted,\n      totalTextsTranslated: totalStats.successful,\n      totalTextsFailed: totalStats.failed,\n      translationRate: totalStats.attempted > 0 ? Math.round((totalStats.successful / totalStats.attempted) * 100) : 0\n    }\n  },\n  successfulArticles: successful.map(r => ({\n    originalId: r.json.originalId,\n    spanishId: r.json.spanishId,\n    originalTitle: r.json.originalTitle,\n    spanishTitle: r.json.spanishTitle,\n    translationStats: r.json.translationStats,\n    uploadedAt: r.json.uploadedAt\n  })),\n  failedArticles: failed.map(r => ({\n    originalId: r.json.originalId,\n    originalTitle: r.json.originalTitle,\n    error: r.json.error,\n    statusCode: r.json.statusCode,\n    failedAt: r.json.failedAt\n  }))\n};\n\n// Log comprehensive summary\nconsole.log('\\n🎯 TRANSLATION WORKFLOW COMPLETED');\nconsole.log('=====================================');\nconsole.log(`📊 Total Articles Processed: ${report.summary.totalArticles}`);\nconsole.log(`✅ Successful Uploads: ${report.summary.successfulUploads}`);\nconsole.log(`❌ Failed Uploads: ${report.summary.failedUploads}`);\nconsole.log(`📈 Success Rate: ${report.summary.successRate}%`);\nconsole.log(`\\n🔤 Translation Statistics:`);\nconsole.log(`📝 Total Texts Attempted: ${report.summary.translationStats.totalTextsAttempted}`);\nconsole.log(`✅ Total Texts Translated: ${report.summary.translationStats.totalTextsTranslated}`);\nconsole.log(`❌ Total Texts Failed: ${report.summary.translationStats.totalTextsFailed}`);\nconsole.log(`📊 Translation Rate: ${report.summary.translationStats.translationRate}%`);\n\nif (successful.length > 0) {\n  console.log('\\n✅ Successfully Translated Articles:');\n  successful.forEach(r => {\n    console.log(`  - ${r.json.originalTitle} → ${r.json.spanishTitle}`);\n  });\n}\n\nif (failed.length > 0) {\n  console.log('\\n❌ Failed Articles:');\n  failed.forEach(r => {\n    console.log(`  - ${r.json.originalTitle}: ${r.json.error}`);\n  });\n}\n\nconsole.log('\\n🏁 Workflow completed at:', timestamp);\n\nreturn { json: report };\n} catch (error) {\n    console.error('Error in Generate Final Report:', error);\n    return [{ json: { error: error.message, stack: error.stack } }];\n}"
+      },
+      "id": "53b42639-ca44-4f83-a97d-f4939a9a7eea",
+      "name": "Generate Final Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        848,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "=seconds"
+      },
+      "id": "ccce328d-16da-41d9-988c-92472d4b9d21",
+      "name": "Rate Limit Delay",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -336
+      ],
+      "webhookId": "65a5661b-7c4f-4e85-b298-0c90216b6e8e"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fruitful-presence-02d7be759c.strapiapp.com/api/articles?locale=es",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 45000
+        }
+      },
+      "id": "3a8a3b78-57f5-49d5-b903-c0a6524d4ad8",
+      "name": "Upload to Strapi",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        -16,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "hI08jGS9Lltb1ypT",
+          "name": "strapi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Enhanced Strapi data preparation with comprehensive field handling\ntry {\n    const inputData = $json;\n    \n    console.log(`📦 Preparing Strapi payload for: ${inputData.title}`);\n    \n    // Validate required fields\n    if (!inputData.title || !inputData.slug) {\n      throw new Error('Missing required fields: title or slug');\n    }\n\n    // Build comprehensive Strapi payload\n    const strapiPayload = {\n      data: {\n        title: inputData.title,\n        description: inputData.description || '',\n        slug: inputData.slug,\n        locale: \"es\",\n        publishedAt: null,\n        \n        // Handle media fields\n        cover: inputData.cover || null,\n        avatar: inputData.avatar || null, // Add avatar field\n        \n        // Handle relationship fields\n        author: inputData.author || null,\n        category: inputData.category || null,\n        \n        // Handle blocks with validation\n        blocks: Array.isArray(inputData.blocks) ? inputData.blocks.filter(block => {\n          // Validate block structure\n          if (!block || !block.__component) {\n            console.warn('⚠️ Skipping invalid block: missing __component');\n            return false;\n          }\n          \n          // Validate component-specific required fields\n          switch (block.__component) {\n            case 'shared.rich-text':\n              if (!block.body || typeof block.body !== 'string') {\n                console.warn('⚠️ Skipping rich-text block: missing body');\n                return false;\n              }\n              break;\n              \n            case 'shared.media':\n              if (!block.file) {\n                console.warn('⚠️ Skipping media block: missing file reference');\n                return false;\n              }\n              break;\n              \n            case 'shared.slider':\n              if (!block.files || !Array.isArray(block.files) || block.files.length === 0) {\n                console.warn('⚠️ Skipping slider block: missing files array');\n                return false;\n              }\n              break;\n              \n            case 'shared.quote':\n              if (!block.title && !block.body) {\n                console.warn('⚠️ Skipping quote block: missing title and body');\n                return false;\n              }\n              break;\n          }\n          \n          return true;\n        }) : []\n      }\n    };\n\n    // Add metadata if available\n    if (inputData.processingMetadata) {\n      strapiPayload.data.translationMetadata = inputData.processingMetadata;\n    }\n\n    console.log(`✅ Payload prepared with ${strapiPayload.data.blocks.length} valid blocks`);\n    \n    // Log field summary\n    const fieldSummary = {\n      title: !!strapiPayload.data.title,\n      description: !!strapiPayload.data.description,\n      slug: !!strapiPayload.data.slug,\n      cover: !!strapiPayload.data.cover,\n      avatar: !!strapiPayload.data.avatar,\n      author: !!strapiPayload.data.author,\n      category: !!strapiPayload.data.category,\n      blocks: strapiPayload.data.blocks.length\n    };\n    \n    console.log('📋 Field summary:', JSON.stringify(fieldSummary, null, 2));\n\n    return { json: strapiPayload };\n} catch (error) {\n    console.error('❌ Error in Prepare Strapi Data:', error);\n    return [{ json: { \n      error: error.message, \n      stack: error.stack,\n      context: 'Strapi data preparation failed'\n    } }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        32,
+        -304
+      ],
+      "id": "f9ca036e-9dcd-4db2-b081-27cba407898e",
+      "name": "Prepare Strapi Data"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c0d13b89-1f89-4b97-8130-b989e949f7bd",
+              "leftValue": "={{ $json.data.id }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        400,
+        -112
+      ],
+      "id": "0c1c5225-40d8-440f-803a-c504eed70c51",
+      "name": "upload success check"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const uploadResult = $json;\n\n// 缓存完整的上传结果\nconst cachedData = {\n  success: uploadResult.data && uploadResult.data.id ? true : false,\n  articleId: uploadResult.data?.id || null,\n  responseData: uploadResult\n};\n\nconsole.log('Upload result cached:', cachedData.success ? 'SUCCESS' : 'FAILED');\nconsole.log('Article ID:', cachedData.articleId);\n\nreturn { json: cachedData };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 4.1,
+      "position": [
+        208,
+        -96
+      ],
+      "id": "6dffd332-1bad-4ff8-ad50-163d3fce645e",
+      "name": "catch article id"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get English Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get English Articles": {
+      "main": [
+        [
+          {
+            "node": "Filter & Process English Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter & Process English Articles": {
+      "main": [
+        [
+          {
+            "node": "Sequential Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sequential Processing": {
+      "main": [
+        [
+          {
+            "node": "Generate Final Report",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Translation": {
+      "main": [
+        [
+          {
+            "node": "Unified Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unified Translation": {
+      "main": [
+        [
+          {
+            "node": "Process Translation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Translation": {
+      "main": [
+        [
+          {
+            "node": "Rate Limit Delay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rate Limit Delay": {
+      "main": [
+        [
+          {
+            "node": "Prepare Strapi Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Success": {
+      "main": [
+        [
+          {
+            "node": "Sequential Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Error": {
+      "main": [
+        [
+          {
+            "node": "Sequential Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Strapi": {
+      "main": [
+        [
+          {
+            "node": "catch article id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Strapi Data": {
+      "main": [
+        [
+          {
+            "node": "Upload to Strapi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "upload success check": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "catch article id": {
+      "main": [
+        [
+          {
+            "node": "upload success check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "5f6dbc7f-14e1-46b3-a7b5-4532043aae13",
+  "meta": {
+    "instanceId": "51005159e88c5c762020ce82957f6eccb6317526124f305a48520e8ef97ab126"
+  },
+  "id": "8TZnahzuMWGRHCsc",
+  "tags": []
+}
