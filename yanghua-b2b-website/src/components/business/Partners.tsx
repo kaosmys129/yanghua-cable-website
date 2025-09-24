@@ -11,14 +11,14 @@ export default function Partners() {
   const locale = useLocale();
 
   const partners = [
-    { name: 'BYD', logo: '/images/partners/byd.png' },
-    { name: 'CATL', logo: '/images/partners/catl.png' },
-    { name: 'Huawei', logo: '/images/partners/huawei.png' },
-    { name: 'State Grid', logo: '/images/partners/state grid.png' },
-    { name: 'Power China', logo: '/images/partners/power china.png' },
-    { name: 'Cedc', logo: '/images/partners/cedc.png' },
-    { name: 'Crcc', logo: '/images/partners/crcc.png' },
-    { name: 'Sinopec', logo: '/images/partners/中石化.png' },
+    { name: 'BYD', logo: '/images/partners/byd.webp' },
+    { name: 'CATL', logo: '/images/partners/catl.webp' },
+    { name: 'Huawei', logo: '/images/partners/huawei.webp' },
+    { name: 'State Grid', logo: '/images/partners/state grid.webp' },
+    { name: 'Power China', logo: '/images/partners/powerchina.webp' },
+    { name: 'China Southern Power Grid', logo: '/images/partners/southern power grid.webp' },
+    { name: 'PetroChina', logo: '/images/partners/oil china.webp' },
+    { name: 'Sinopec', logo: '/images/partners/sinopec.webp' },
   ];
 
   return (
@@ -40,21 +40,22 @@ export default function Partners() {
             {partners.map((partner, idx) => (
               <div
                 key={`${partner.name}-${idx}`}
-                className="flex items-center justify-center h-16 w-48 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow duration-300 flex-shrink-0 p-4"
+                className="h-16 w-36 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow duration-300 flex-shrink-0 p-4"
               >
-                <Image
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  width={120}
-                  height={40}
-                  className="object-contain h-full w-auto filter grayscale hover:grayscale-0 transition-all duration-300"
-                  priority={idx < 4}
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    fill
+                    className="object-contain transition-all duration-300"
+                    sizes="9rem"
+                    priority={idx < 4}
+                  />
+                </div>
               </div>
             ))}
           </InfiniteSlider>
         </div>
-
         <div className="mt-12 text-center">
           <Link href={`/${locale}/partners`} className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium transition-colors duration-200">
             {t('ctaAllPartners')} <ArrowRight className="ml-2 h-4 w-4" />
