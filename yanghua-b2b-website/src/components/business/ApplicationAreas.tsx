@@ -1,14 +1,12 @@
 'use client';
 
-import { Zap, Building, Factory, Database, Train, FlaskConical, Ship, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Zap, Building, Factory, Database, Train, FlaskConical, Ship, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
 
 export default function ApplicationAreas() {
   const t = useTranslations('applicationAreas');
-  const locale = useLocale();
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6;
 
@@ -17,43 +15,36 @@ export default function ApplicationAreas() {
       icon: Zap,
       title: t('areas.energy.title'),
       description: t('areas.energy.description'),
-      href: `/${locale}/solutions/energy`,
     },
     {
       icon: Building,
       title: t('areas.building.title'),
       description: t('areas.building.description'),
-      href: `/${locale}/solutions/building`,
     },
     {
       icon: Factory,
       title: t('areas.industry.title'),
       description: t('areas.industry.description'),
-      href: `/${locale}/solutions/industry`,
     },
     {
       icon: Database,
       title: t('areas.dataCenter.title'),
       description: t('areas.dataCenter.description'),
-      href: `/${locale}/solutions/data-center`,
     },
     {
       icon: Train,
       title: t('areas.railway.title'),
       description: t('areas.railway.description'),
-      href: `/${locale}/solutions/railway`,
     },
     {
       icon: FlaskConical,
       title: t('areas.chemical.title'),
       description: t('areas.chemical.description'),
-      href: `/${locale}/solutions/chemical`,
     },
     {
       icon: Ship,
       title: t('areas.marine.title'),
       description: t('areas.marine.description'),
-      href: `/${locale}/solutions/marine`,
     },
   ];
 
@@ -99,12 +90,7 @@ export default function ApplicationAreas() {
                 </div>
               </div>
               <h3 className="text-xl font-bold text-[#212529] text-center mb-2">{area.title}</h3>
-              <p className="text-gray-600 text-center mb-6">{area.description}</p>
-              <div className="text-center">
-                <Link href={area.href} className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium">
-                  {t('ctaViewSolution')} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
+              <p className="text-gray-600 text-center">{area.description}</p>
             </motion.div>
           ))}
         </div>
