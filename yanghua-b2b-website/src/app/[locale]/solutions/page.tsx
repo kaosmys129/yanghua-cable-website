@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, CheckCircle, Download, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useParams } from 'next/navigation';
 
 // Get solutions data from translations
 function getSolutions(t: any) {
@@ -17,12 +18,12 @@ function getSolutions(t: any) {
 }
 
 export default function SolutionsPage() {
-  const [selectedSolution, setSelectedSolution] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const t = useTranslations('solutions');
+  const params = useParams();
+  const locale = params.locale;
   
   const solutions = getSolutions(t);
-  const solution = selectedSolution ? solutions.find((s: any) => s.id === selectedSolution) : null;
   
   // Handle empty solutions gracefully
   if (!solutions || solutions.length === 0) {
@@ -74,139 +75,6 @@ export default function SolutionsPage() {
     }
   };
 
-  if (solution) {
-    return (
-      <div className="min-h-screen bg-white">
-        {/* Back Navigation */}
-        <div className="bg-gray-50 py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <button 
-              onClick={() => setSelectedSolution(null)}
-              className="text-[#fdb827] hover:text-[#e0a020] font-medium flex items-center"
-            >
-              ← {t('navigation.backToSolutions')}
-            </button>
-          </div>
-        </div>
-
-        {/* Solution Detail */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Hero Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div>
-              <h1 className="text-4xl font-bold text-[#212529] mb-4">{t(`${solution.id}.title`)}</h1>
-              <p className="text-xl text-[#6c757d] mb-6">{t(`${solution.id}.subtitle`)}</p>
-              <p className="text-[#6c757d] mb-8">{t(`${solution.id}.description`)}</p>
-              
-              <div className="space-y-3">
-                {solution.highlights.map((highlight: string, index: number) => (
-                  <div key={index} className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-[#fdb827] mr-3" />
-                    <span className="text-[#6c757d]">{highlight}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <img 
-                src={solution.image} 
-                alt={solution.title}
-                className="w-full h-96 object-cover rounded-lg"
-              />
-            </div>
-          </div>
-
-          {/* Applications */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-[#212529] mb-6">{t('common.keyApplications')}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {solution.applications.map((app: string, index: number) => (
-                <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
-                  <span className="text-[#212529] font-medium">{app}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Advantages */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-[#212529] mb-6">{t('common.keyAdvantages')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {solution.advantages.map((advantage: any, index: number) => (
-                <div key={index} className="card p-6">
-                  <h3 className="text-lg font-semibold text-[#212529] mb-3">{advantage.title}</h3>
-                  <p className="text-[#6c757d]">{advantage.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technical Specifications */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-[#212529] mb-6">{t('common.technicalSpecifications')}</h2>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {solution.technicalSpecs.map((spec: any, index: number) => (
-                  <div key={index} className="flex justify-between py-2 border-b border-gray-200 last:border-b-0">
-                    <span className="font-medium text-[#212529]">{spec.parameter}</span>
-                    <span className="text-[#6c757d]">{spec.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Case Studies */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-[#212529] mb-6">{t('common.caseStudies')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {solution.caseStudies.map((study: any, index: number) => (
-                <div key={index} className="card p-6">
-                  <h3 className="text-lg font-semibold text-[#212529] mb-2">{study.title}</h3>
-                  <p className="text-[#6c757d]">{study.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="bg-[#212529] text-white rounded-lg p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-4">{t('cta.solutionOverview')}</h3>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center justify-between">
-                    <span>Applications:</span>
-                    <span className="text-gray-300">{solution.applications.length} key areas</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span>Industry:</span>
-                    <span className="text-gray-300">{solution.title.split(' ')[0]}</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span>Case Studies:</span>
-                    <span className="text-gray-300">{solution.caseStudies.length} successful projects</span>
-                  </li>
-                </ul>
-                
-                <button className="w-full mt-6 bg-white text-[#212529] py-3 px-4 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center">
-                  <Download className="mr-2 h-4 w-4" />
-                  {t('cta.downloadBrief')}
-                </button>
-                
-                <button className="w-full mt-3 bg-[#fdb827] text-[#212529] py-3 px-4 rounded-md font-medium hover:bg-[#e0a020] transition-colors duration-300 flex items-center justify-center">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  {t('cta.requestConsultation')}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -223,7 +91,7 @@ export default function SolutionsPage() {
         {/* Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentSolutions.map((solution: any) => (
-            <div key={solution.id} className="card overflow-hidden group cursor-pointer" onClick={() => setSelectedSolution(solution.id)}>
+            <Link key={solution.id} href={`/${locale}/solutions/${solution.id}`} className="card overflow-hidden group cursor-pointer">
               <div className="h-48 overflow-hidden">
                 <img 
                   src={solution.image} 
@@ -255,7 +123,7 @@ export default function SolutionsPage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
