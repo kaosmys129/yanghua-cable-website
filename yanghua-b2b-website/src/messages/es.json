@@ -1053,63 +1053,327 @@
       "industry": "Industria",
       "scale": "Escala",
       "year": "Año",
+      "location": "Ubicación",
+      "duration": "Duración",
+      "completionDate": "Fecha de Finalización",
+      "projectScale": "Escala del Proyecto",
       "viewDetails": "Ver Detalles",
-      "backToProjects": "Volver a Proyectos"
+      "backToProjects": "Volver a Proyectos",
+      "allProjects": "Todos los Proyectos",
+      "dataCenter": "Centro de Datos",
+      "newEnergy": "Nueva Energía",
+      "industrial": "Industrial",
+      "railTransit": "Tránsito Ferroviario",
+      "metallurgy": "Metalurgia"
+    },
+    "detailPage": {
+      "overview": "Resumen del Proyecto",
+      "challenges": "Antecedentes del Proyecto y Desafíos",
+      "solution": "Solución",
+      "results": "Resultados del Proyecto",
+      "products": "Productos Utilizados",
+      "testimonial": "Testimonio del Cliente",
+      "relatedProjects": "Proyectos Relacionados",
+      "quickInquiry": "Consultar sobre Proyectos Similares",
+      "getQuote": "Obtener Cotización para Proyecto Similar",
+      "projectGallery": "Galería del Proyecto",
+      "projectInformation": "Información del Proyecto",
+      "projectLocation": "Ubicación del Proyecto",
+      "completionDate": "Fecha de Finalización",
+      "projectDuration": "Duración del Proyecto",
+      "projectNotFound": "Proyecto No Encontrado",
+      "projectNotFoundDesc": "El proyecto que buscas no existe o ha sido movido."
+    },
+    "form": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "company": "Empresa",
+      "message": "Requisitos del Proyecto",
+      "submit": "Enviar Consulta",
+      "submitting": "Enviando...",
+      "success": "¡Consulta enviada exitosamente!",
+      "error": "Error al enviar la consulta. Por favor, inténtelo de nuevo."
     },
     "list": [
       {
-        "id": "huawei-data-center-expansion",
-        "title": "Sistema de Distribución de Energía del Centro de Datos Huawei",
-        "client": "Huawei Technologies Co., Ltd.",
+        "id": "1",
+        "title": "Expansión del Centro de Datos Huawei",
+        "client": "Huawei Technologies",
         "industry": "Centro de Datos",
-        "scale": "Distribución de Energía 50MW",
+        "location": "Shenzhen, China",
+        "duration": "4 meses",
+        "completionDate": "Junio 2024",
+        "projectScale": "Sistema 2000A",
+        "scale": "Sistema 2000A",
         "year": "2024",
-        "description": "Sistema de barras colectoras flexibles de alta corriente para distribución de energía de centros de datos a gran escala, asegurando conexiones eléctricas confiables y eficientes."
+        "description": "Distribución de energía de alta densidad para expansión de infraestructura en la nube",
+        "content": "Este proyecto involucró la expansión de la infraestructura del centro de datos de Huawei, requiriendo un sistema de distribución de energía confiable y escalable. Se implementó el sistema de barras colectoras flexibles de 2000A para proporcionar distribución de energía de alta densidad para la expansión de infraestructura en la nube. El diseño modular permite fácil expansión y mantenimiento mientras mantiene alta confiabilidad. La solución mejoró significativamente la eficiencia y confiabilidad de la distribución de energía, logrando 95% de eficiencia energética y 40% de ahorro de espacio.",
+        "tags": ["Centro de Datos", "Infraestructura en la Nube", "Energía de Alta Densidad", "Soluciones Escalables"],
+        "challenge": "Diseñar e implementar una infraestructura de centro de datos de alta capacidad y eficiencia energética capaz de soportar los servicios en la nube en expansión de Huawei manteniendo 99.99% de tiempo de actividad y cumpliendo con estrictas regulaciones ambientales.",
+        "solution": "Desplegó sistemas de enfriamiento avanzados, infraestructura de energía redundante e implementó soluciones de monitoreo inteligente. Utilizó diseño modular para escalabilidad futura e integró fuentes de energía renovable para reducir la huella de carbono.",
+        "challenges": [
+          "Requisitos de distribución de energía de alta densidad",
+          "Infraestructura escalable para expansión futura",
+          "Tiempo de inactividad mínimo durante la instalación",
+          "Optimización de espacio en instalación existente"
+        ],
+        "solutionPoints": [
+          "Implementación de sistema de barras colectoras flexibles de 2000A",
+          "Diseño modular para fácil expansión",
+          "Sistemas avanzados de monitoreo y control",
+          "Diseño optimizado para eficiencia de espacio"
+        ],
+        "results": [
+          { "metric": "Eficiencia Energética", "value": "95%" },
+          { "metric": "Ahorro de Espacio", "value": "40%" },
+          { "metric": "Velocidad de Instalación", "value": "50% más rápida" },
+          { "metric": "Reducción de Mantenimiento", "value": "30%" }
+        ],
+        "productsUsed": ["Barra Colectora Flexible 2000A", "Conectores de alta densidad", "Sistema de monitoreo inteligente", "Aislamiento resistente al fuego"],
+        "images": ["/images/projects/huawei-data-center-expansion.webp"],
+        "testimonial": "La solución de barras colectoras flexibles mejoró significativamente la eficiencia y confiabilidad de la distribución de energía de nuestro centro de datos.",
+        "testimonialAuthor": "Li Wei",
+        "testimonialPosition": "Gerente del Centro de Datos"
       },
       {
-        "id": "byd-battery-manufacturing",
-        "title": "Sistema Eléctrico de Planta de Fabricación de Baterías BYD",
-        "client": "BYD Company Limited",
-        "industry": "Vehículo de Nueva Energía",
-        "scale": "Instalación de Fabricación 100MW",
+        "id": "2",
+        "title": "Fabricación de Baterías BYD",
+        "client": "BYD Company",
+        "industry": "Nueva Energía",
+        "location": "Shenzhen, China",
+        "duration": "5 meses",
+        "completionDate": "Abril 2024",
+        "projectScale": "Sistema 1600A",
+        "scale": "Sistema 1600A",
         "year": "2024",
-        "description": "Soluciones de conexión eléctrica personalizadas para líneas de producción de baterías, con trenzas de cobre de alta precisión y barras colectoras flexibles."
+        "description": "Solución de energía flexible para líneas de producción de baterías de litio",
+        "content": "Este proyecto proporcionó una solución de energía integral para la instalación de fabricación de baterías de litio de BYD. El sistema de barras colectoras flexibles de 1600A fue diseñado para manejar requisitos de energía complejos para líneas de producción de baterías con cargas variables y estándares de seguridad estrictos. El sistema cuenta con equilibrio dinámico de carga y características de seguridad mejoradas para procesos de fabricación críticos. La implementación resultó en un aumento del 25% en la eficiencia de producción con cero incidentes de seguridad.",
+        "tags": ["Nueva Energía", "Fabricación de Baterías", "Batería de Litio", "Sistemas de Seguridad"],
+        "challenge": "Diseñar e implementar un sistema de distribución de energía flexible para líneas de producción de baterías de litio con cargas variables y estándares de seguridad estrictos.",
+        "solution": "Implementó sistema de barras colectoras flexibles de 1600A con equilibrio dinámico de carga y características de seguridad mejoradas para procesos de fabricación críticos.",
+        "challenges": [
+          "Requisitos de energía complejos para producción de baterías",
+          "Cargas variables en líneas de producción",
+          "Cumplimiento de estándares de seguridad estrictos",
+          "Requisitos de equilibrio dinámico de carga"
+        ],
+        "solutionPoints": [
+          "Diseño de sistema de barras colectoras flexibles de 1600A",
+          "Implementación de equilibrio dinámico de carga",
+          "Integración de características de seguridad mejoradas",
+          "Monitoreo y control en tiempo real"
+        ],
+        "results": [
+          { "metric": "Eficiencia de Producción", "value": "25% de aumento" },
+          { "metric": "Incidentes de Seguridad", "value": "Cero" },
+          { "metric": "Ahorro Energético", "value": "15%" },
+          { "metric": "Reducción de Tiempo de Inactividad", "value": "60%" }
+        ],
+        "productsUsed": ["Barra Colectora Flexible 1600A", "Bloqueos de seguridad", "Monitoreo de carga", "Sistemas de parada de emergencia"],
+        "images": ["/images/projects/byd-battery-manufacturing.webp"],
+        "testimonial": "Solución profesional que cumplió con todos nuestros requisitos estrictos para la fabricación de baterías.",
+        "testimonialAuthor": "Wang Ming",
+        "testimonialPosition": "Director de Producción"
       },
       {
-        "id": "catl-energy-storage",
-        "title": "Integración del Sistema de Almacenamiento de Energía CATL",
-        "client": "Contemporary Amperex Technology Co. Limited",
-        "industry": "Almacenamiento de Energía",
-        "scale": "Sistema de Almacenamiento 200MWh",
+        "id": "3",
+        "title": "Almacenamiento de Energía CATL",
+        "client": "CATL",
+        "industry": "Nueva Energía",
+        "location": "Ningde, China",
+        "duration": "6 meses",
+        "completionDate": "Diciembre 2023",
+        "projectScale": "Sistema 2500A",
+        "scale": "Sistema 2500A",
         "year": "2023",
-        "description": "Soluciones avanzadas de conexión eléctrica para sistemas de almacenamiento de energía a gran escala, asegurando rendimiento y seguridad óptimos."
+        "description": "Sistema de barras colectoras de alta corriente para instalación de almacenamiento de energía de baterías",
+        "content": "Este proyecto involucró la implementación de un sistema de distribución de energía de alta capacidad para la instalación de almacenamiento de energía de baterías de CATL. El sistema de barras colectoras flexibles de alta corriente de 2500A fue diseñado con arquitectura redundante y capacidades de monitoreo avanzadas para cumplir con estándares de confiabilidad exigentes. El sistema logró 99.9% de confiabilidad del sistema con tiempos de respuesta menores a 10ms, mejorando significativamente la densidad energética en 30% y reduciendo los costos operacionales en 20%.",
+        "tags": ["Nueva Energía", "Almacenamiento de Energía", "Almacenamiento de Baterías", "Alta Confiabilidad"],
+        "challenge": "Implementar un sistema de distribución de energía de alta capacidad para instalación de almacenamiento de energía de baterías con estándares de confiabilidad exigentes y requisitos de respuesta rápida.",
+        "solution": "Desplegó sistema de barras colectoras flexibles de alta corriente de 2500A con arquitectura redundante y capacidades de monitoreo avanzadas para cumplir con estándares de confiabilidad exigentes.",
+        "challenges": [
+          "Requisitos de distribución de energía de alta capacidad",
+          "Estándares de confiabilidad exigentes",
+          "Requisitos de tiempo de respuesta rápido",
+          "Optimización de densidad energética"
+        ],
+        "solutionPoints": [
+          "Sistema de barras colectoras flexibles de alta corriente de 2500A",
+          "Diseño de arquitectura redundante",
+          "Capacidades de monitoreo avanzadas",
+          "Optimización de respuesta en tiempo real"
+        ],
+        "results": [
+          { "metric": "Confiabilidad del Sistema", "value": "99.9%" },
+          { "metric": "Tiempo de Respuesta", "value": "<10ms" },
+          { "metric": "Densidad Energética", "value": "30% de mejora" },
+          { "metric": "Reducción de Costos Operacionales", "value": "20%" }
+        ],
+        "productsUsed": ["Barra Colectora Flexible 2500A", "Rutas de energía redundantes", "Monitoreo en tiempo real", "Gestión térmica"],
+        "images": ["/images/projects/catl-energy-storage.webp"],
+        "testimonial": "Rendimiento excepcional en nuestras aplicaciones de almacenamiento de energía con confiabilidad sobresaliente.",
+        "testimonialAuthor": "Chen Hua",
+        "testimonialPosition": "Director Técnico"
       },
       {
-        "id": "midea-industrial-complex",
-        "title": "Infraestructura de Energía del Complejo Industrial Midea",
-        "client": "Midea Group Co., Ltd.",
-        "industry": "Manufactura",
-        "scale": "Complejo Industrial 80MW",
+        "id": "4",
+        "title": "Complejo Industrial Midea",
+        "client": "Midea Group",
+        "industry": "Industrial",
+        "location": "Foshan, China",
+        "duration": "3 meses",
+        "completionDate": "Septiembre 2023",
+        "projectScale": "Sistema 1000A",
+        "scale": "Sistema 1000A",
         "year": "2023",
-        "description": "Sistema integral de distribución eléctrica para instalaciones de fabricación inteligente con soluciones de barras colectoras flexibles."
+        "description": "Distribución de energía moderna para actualización de instalación de fabricación",
+        "content": "Este proyecto se enfocó en la modernización de la distribución de energía en la instalación de fabricación existente de Midea sin interrumpir las operaciones de producción. El sistema de barras colectoras flexibles de 1000A fue implementado usando un enfoque de instalación por fases para minimizar el tiempo de inactividad durante la actualización. El diseño modular logró una reducción del 80% en tiempo de inactividad mientras mejoraba significativamente la calidad de la energía y proporcionaba capacidades de expansión futura.",
+        "tags": ["Industrial", "Fabricación", "Actualización de Instalación", "Tiempo de Inactividad Mínimo"],
+        "challenge": "Modernizar la distribución de energía en instalación de fabricación existente sin interrumpir las operaciones de producción mientras se mejora la calidad de la energía.",
+        "solution": "Implementó sistema de barras colectoras flexibles de 1000A usando enfoque de instalación por fases para minimizar el tiempo de inactividad durante la actualización con diseño modular para expansión futura.",
+        "challenges": [
+          "Modernización sin interrupción de producción",
+          "Minimizar tiempo de inactividad durante actualización",
+          "Requisitos de mejora de calidad de energía",
+          "Necesidades de capacidad de expansión futura"
+        ],
+        "solutionPoints": [
+          "Implementación de sistema de barras colectoras flexibles de 1000A",
+          "Enfoque de instalación por fases",
+          "Diseño modular para flexibilidad",
+          "Monitoreo avanzado de calidad de energía"
+        ],
+        "results": [
+          { "metric": "Reducción de Tiempo de Inactividad", "value": "80%" },
+          { "metric": "Calidad de Energía", "value": "Mejora significativa" },
+          { "metric": "Expansión Futura", "value": "Lista" },
+          { "metric": "Logro de ROI", "value": "18 meses" }
+        ],
+        "productsUsed": ["Barra Colectora Flexible 1000A", "Conectores modulares", "Monitoreo de calidad de energía", "Soluciones de modernización"],
+        "images": ["/images/projects/midea-industrial-complex.webp"],
+        "testimonial": "Proceso de actualización suave con mínima interrupción a nuestro cronograma de producción.",
+        "testimonialAuthor": "Liu Qiang",
+        "testimonialPosition": "Gerente de Instalaciones"
       },
       {
-        "id": "metro-line-14",
-        "title": "Sistema Eléctrico de la Línea 14 del Metro de Shenzhen",
-        "client": "Shenzhen Metro Group",
+        "id": "5",
+        "title": "Línea de Metro 14",
+        "client": "Metro de Shenzhen",
         "industry": "Tránsito Ferroviario",
-        "scale": "Línea de Metro 38km",
+        "location": "Shenzhen, China",
+        "duration": "8 meses",
+        "completionDate": "Junio 2023",
+        "projectScale": "Sistema 800A",
+        "scale": "Sistema 800A",
         "year": "2023",
-        "description": "Soluciones de distribución de energía para sistemas de tránsito masivo, proporcionando conexiones eléctricas seguras y eficientes para operaciones de metro."
+        "description": "Distribución de energía subterránea para nueva línea de metro",
+        "content": "Este proyecto proporcionó distribución de energía subterránea para la nueva Línea 14 del Metro de Shenzhen. El sistema de barras colectoras flexibles compactas de 800A fue específicamente diseñado para ambientes subterráneos con características de seguridad mejoradas. El sistema logró 50% de ahorro de espacio mientras cumplía con el 100% de los estándares de cumplimiento de seguridad para aplicaciones de transporte público.",
+        "tags": ["Tránsito Ferroviario", "Metro Subterráneo", "Transporte Público", "Cumplimiento de Seguridad"],
+        "challenge": "Proporcionar distribución de energía subterránea para nueva línea de metro con características de seguridad mejoradas y optimización de espacio para ambientes subterráneos.",
+        "solution": "Desplegó sistema de barras colectoras flexibles compactas de 800A específicamente diseñado para ambientes subterráneos con características de seguridad mejoradas y optimización de espacio.",
+        "challenges": [
+          "Requisitos de ambiente subterráneo",
+          "Características de seguridad mejoradas necesarias",
+          "Restricciones de optimización de espacio",
+          "Estándares de seguridad de transporte público"
+        ],
+        "solutionPoints": [
+          "Sistema de barras colectoras flexibles compactas de 800A",
+          "Características de diseño específicas para subterráneo",
+          "Integración de sistemas de seguridad mejorados",
+          "Instalación optimizada para espacio"
+        ],
+        "results": [
+          { "metric": "Ahorro de Espacio", "value": "50%" },
+          { "metric": "Cumplimiento de Seguridad", "value": "100%" },
+          { "metric": "Tiempo de Instalación", "value": "40% más rápido" },
+          { "metric": "Confiabilidad del Sistema", "value": "99.8%" }
+        ],
+        "productsUsed": ["Barra Colectora Flexible 800A", "Componentes clasificados para subterráneo", "Sistemas de seguridad contra incendios", "Amortiguación de vibraciones"],
+        "images": ["/images/projects/metro-line-14.webp"],
+        "testimonial": "Solución confiable que cumplió con todos nuestros requisitos de metro subterráneo.",
+        "testimonialAuthor": "Zhang Lei",
+        "testimonialPosition": "Gerente de Proyecto"
       },
       {
-        "id": "tesla-gigafactory",
-        "title": "Infraestructura Eléctrica de Tesla Gigafactory",
-        "client": "Tesla, Inc.",
-        "industry": "Vehículo Eléctrico",
-        "scale": "Gigafactory 120MW",
+        "id": "6",
+        "title": "Modernización de Acería",
+        "client": "Baosteel Group",
+        "industry": "Metalurgia",
+        "location": "Shanghai, China",
+        "duration": "10 meses",
+        "completionDate": "Marzo 2022",
+        "projectScale": "Sistema 4000A",
+        "scale": "Sistema 4000A",
         "year": "2022",
-        "description": "Sistemas de distribución de energía de alta capacidad para instalaciones de fabricación de vehículos eléctricos, optimizados para eficiencia y confiabilidad."
+        "description": "Solución de energía de servicio pesado para modernización de producción de acero",
+        "content": "Este proyecto proporcionó distribución de energía de servicio pesado para la modernización de producción de acero de Baosteel Group. El sistema de barras colectoras flexibles de servicio pesado de 4000A fue diseñado para ambientes industriales duros con protección clasificada IP65 y diseño redundante. El sistema logró 99.5% de tiempo de actividad de producción con intervalos de mantenimiento extendidos el doble del estándar de la industria.",
+        "tags": ["Metalurgia", "Producción de Acero", "Servicio Pesado", "Ambiente Industrial"],
+        "challenge": "Proporcionar distribución de energía de servicio pesado para modernización de producción de acero en ambientes industriales duros con requisitos de alto tiempo de actividad de producción.",
+        "solution": "Implementó sistema de barras colectoras flexibles de servicio pesado de 4000A diseñado para ambientes industriales duros con protección clasificada IP65 y diseño redundante.",
+        "challenges": [
+          "Condiciones de ambiente industrial duro",
+          "Requisitos de energía de servicio pesado",
+          "Demandas de alto tiempo de actividad de producción",
+          "Necesidades de intervalo de mantenimiento extendido"
+        ],
+        "solutionPoints": [
+          "Sistema de barras colectoras flexibles de servicio pesado de 4000A",
+          "Diseño de protección clasificada IP65",
+          "Arquitectura de sistema redundante",
+          "Componentes de grado industrial"
+        ],
+        "results": [
+          { "metric": "Tiempo de Actividad de Producción", "value": "99.5%" },
+          { "metric": "Intervalo de Mantenimiento", "value": "2x estándar de industria" },
+          { "metric": "Capacidad de Energía", "value": "4000A continua" },
+          { "metric": "Resistencia Ambiental", "value": "Clasificada IP65" }
+        ],
+        "productsUsed": ["Barra Colectora de Servicio Pesado 4000A", "Gabinetes industriales", "Protección ambiental", "Sistemas redundantes"],
+        "images": ["/images/projects/steel-mill-modernization.webp"],
+        "testimonial": "Solución robusta que resiste nuestro ambiente de producción de acero exigente.",
+        "testimonialAuthor": "Sun Jian",
+        "testimonialPosition": "Ingeniero Jefe"
+      },
+      {
+        "id": "7",
+        "title": "Distribución de Energía de Granja Solar de 50MW",
+        "client": "Ningxia Solar Energy Co.",
+        "industry": "Nueva Energía",
+        "location": "Ningxia, China",
+        "duration": "6 meses",
+        "completionDate": "Marzo 2024",
+        "projectScale": "Granja Solar 50MW, Sistema de Barras Colectoras Flexibles 2000A",
+        "scale": "Granja Solar 50MW",
+        "year": "2024",
+        "description": "Solución de transmisión de energía eficiente para granja solar a gran escala",
+        "content": "Este proyecto proporcionó distribución de energía para una granja solar de 50MW en Ningxia, China. El sistema de barras colectoras flexibles de alta corriente de 2000A reemplazó las soluciones de cables tradicionales, abordando problemas como alta caída de voltaje, instalación compleja y mantenimiento difícil. El diseño de diseño optimizado redujo los puntos de conexión y mejoró la confiabilidad del sistema, resultando en 35% de reducción de pérdida de energía y 60% de reducción de tiempo de instalación.",
+        "tags": ["Nueva Energía", "Granja Solar", "Energía Renovable", "Transmisión de Energía"],
+        "challenge": "Proporcionar solución de transmisión de energía eficiente para granja solar a gran escala, abordando problemas con soluciones de cables tradicionales incluyendo alta caída de voltaje e instalación compleja.",
+        "solution": "Implementó sistema de barras colectoras flexibles de alta corriente de 2000A para reemplazar soluciones de cables tradicionales con diseño de diseño optimizado para reducir puntos de conexión y mejorar la confiabilidad del sistema.",
+        "challenges": [
+          "Alta caída de voltaje en soluciones de cables tradicionales",
+          "Requisitos de instalación complejos",
+          "Acceso de mantenimiento difícil",
+          "Optimización de confiabilidad del sistema"
+        ],
+        "solutionPoints": [
+          "Sistema de barras colectoras flexibles de alta corriente de 2000A",
+          "Diseño de diseño optimizado",
+          "Puntos de conexión reducidos",
+          "Características de confiabilidad del sistema mejoradas"
+        ],
+        "results": [
+          { "metric": "Reducción de Pérdida de Energía", "value": "35%" },
+          { "metric": "Reducción de Tiempo de Instalación", "value": "60%" },
+          { "metric": "Mejora de Eficiencia del Sistema", "value": "8%" },
+          { "metric": "Reducción de Costo de Mantenimiento", "value": "40%" }
+        ],
+        "productsUsed": ["Barra Colectora Flexible 2000A", "Terminales de Conexión", "Accesorios de Aislamiento", "Sistema de Monitoreo"],
+        "images": ["/images/projects/50mw-solar-farm-power-distribution.webp"],
+        "testimonial": "El sistema de barras colectoras flexibles de Yanghua Tech no solo resolvió nuestros desafíos técnicos sino que también mejoró enormemente la eficiencia general del proyecto. El equipo de soporte técnico profesional aseguró un progreso de proyecto suave.",
+        "testimonialAuthor": "Ingeniero Zhang",
+        "testimonialPosition": "Director Técnico del Proyecto"
       }
     ]
   },

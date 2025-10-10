@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
@@ -13,147 +14,55 @@ interface Project {
   projectScale: string;
   challenge: string;
   solution: string;
+  challenges: string[];
+  solutionPoints: string[];
   results: { metric: string; value: string }[];
-  products: string[];
+  productsUsed: string[];
   images: string[];
-  testimonial?: {
-    text: string;
-    author: string;
-    position: string;
-  };
+  testimonial?: string;
+  testimonialAuthor?: string;
+  testimonialPosition?: string;
 }
 
-// Get image source with fallback - map project titles to actual image filenames
-function getProjectImageSrc(title: string): string {
-  const imageMap: { [key: string]: string } = {
-    'Huawei Data Center Expansion': 'huawei-data-center-expansion.webp',
-    'BYD Battery Manufacturing': 'byd-battery-manufacturing.webp',
-    'CATL Energy Storage': 'catl-energy-storage.webp',
-    'Midea Industrial Complex': 'midea-industrial-complex.webp',
-    'Metro Line 14': 'shenzhen-metro.webp',
-    'Steel Mill Modernization': 'steel-mill.webp',
-    '50MW Solar Farm Power Distribution': '50MW Solar Farm Power Distribution.webp'
-  };
-  
-  const imageName = imageMap[title];
-  if (imageName) {
-    return `/images/projects/${imageName}`;
-  } else {
-    return '/images/no-image-available.webp';
-  }
-}
-
-// Get project data from static data
-async function getProject(id: string): Promise<Project | null> {
+// Get project data from translations
+async function getProject(id: string, t: any): Promise<Project | null> {
   try {
-    const fs = await import('fs');
-    const path = await import('path');
-    const filePath = path.join(process.cwd(), 'public/data/projects_complete_content.json');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
+    const projects = t.raw('list') as any[];
+    const project = projects.find(p => p.id === id);
     
-    const projectIndex = parseInt(id) - 1;
-    if (isNaN(projectIndex) || projectIndex < 0 || projectIndex >= data.projects.length) {
-      console.warn(`Project with ID ${id} not found (index: ${projectIndex})`);
-      return getFallbackProject(id);
+    if (!project) {
+      return null;
     }
     
-    const project = data.projects[projectIndex];
     return {
-      id: id,
+      id: project.id,
       title: project.title,
-      client: project.metadata?.client || 'N/A',
-      industry: project.metadata?.industry || 'N/A',
-      location: project.metadata?.location || 'N/A',
-      duration: project.metadata?.duration || 'N/A',
-      completionDate: project.metadata?.completion_date || project.created_at,
-      projectScale: project.metadata?.project_scale || 'N/A',
-      challenge: 'Advanced power distribution requirements for modern infrastructure',
-      solution: project.content || project.description,
-      results: [
-        { metric: 'Power Efficiency', value: project.metadata?.power_efficiency || '95%' },
-        { metric: 'Space Savings', value: project.metadata?.space_savings || '40%' },
-        { metric: 'Installation Speed', value: project.metadata?.installation_speed || '50% faster' },
-        { metric: 'Maintenance Reduction', value: project.metadata?.maintenance_reduction || '30%' }
-      ],
-      products: project.metadata?.products_used || ['Flexible Busbar System'],
-      images: [getProjectImageSrc(project.title)],
-      testimonial: project.metadata?.testimonial ? {
-        text: project.metadata.testimonial,
-        author: project.metadata.testimonial_author || 'Client',
-        position: project.metadata.testimonial_position || 'Project Manager'
-      } : undefined
+      client: project.client,
+      industry: project.industry,
+      location: project.location,
+      duration: project.duration,
+      completionDate: project.completionDate,
+      projectScale: project.projectScale,
+      challenge: project.challenge || project.content,
+      solution: project.solution || project.content,
+      challenges: project.challenges || [],
+      solutionPoints: project.solutionPoints || [],
+      results: project.results || [],
+      productsUsed: project.productsUsed || [],
+      images: project.images || [],
+      testimonial: project.testimonial,
+      testimonialAuthor: project.testimonialAuthor,
+      testimonialPosition: project.testimonialPosition
     };
   } catch (error) {
     console.error('Error loading project data:', error);
-    return getFallbackProject(id);
+    return null;
   }
-}
-
-function transformStrapiProject(strapiProject: any): Project {
-  return {
-    id: strapiProject.id.toString(),
-    title: strapiProject.attributes.title,
-    client: strapiProject.attributes.client,
-    industry: strapiProject.attributes.industry?.data?.attributes?.name || strapiProject.attributes.industry || '',
-    location: strapiProject.attributes.location,
-    duration: strapiProject.attributes.duration,
-    completionDate: strapiProject.attributes.completionDate,
-    projectScale: strapiProject.attributes.projectScale,
-    challenge: strapiProject.attributes.challenge,
-    solution: strapiProject.attributes.solution,
-    results: strapiProject.attributes.results || [],
-    products: strapiProject.attributes.products?.data?.map((p: any) => p.attributes.name) || strapiProject.attributes.products || [],
-    images: strapiProject.attributes.images?.data?.map((img: any) => img.attributes.url) || strapiProject.attributes.images || [],
-    testimonial: strapiProject.attributes.testimonial
-  };
-}
-
-// Fallback function for static data
-function getFallbackProject(id: string): Project | null {
-  const projects: Record<string, Project> = {
-    '1': {
-      id: '1',
-      title: 'Huawei Data Center Expansion',
-      client: 'Huawei Technologies',
-      industry: 'Technology',
-      location: 'Shenzhen, China',
-      duration: '18 months',
-      completionDate: '2023-12-15',
-      projectScale: 'Large-scale enterprise data center with 10,000+ server capacity',
-      challenge: 'Design and implement a high-capacity, energy-efficient data center infrastructure capable of supporting Huawei\'s expanding cloud services while maintaining 99.99% uptime and meeting strict environmental regulations.',
-      solution: 'Deployed advanced cooling systems, redundant power infrastructure, and implemented smart monitoring solutions. Utilized modular design for future scalability and integrated renewable energy sources to reduce carbon footprint.',
-      results: [
-        { metric: 'Uptime', value: '99.99%' },
-        { metric: 'Energy Reduction', value: '30%' },
-        { metric: 'Server Capacity Increase', value: '300%' },
-        { metric: 'Zero Downtime Maintenance', value: 'Implemented' }
-      ],
-      products: [
-        'High-voltage power cables',
-        'Data center cooling systems',
-        'Fiber optic networks',
-        'Smart monitoring solutions'
-      ],
-      images: [
-        '/images/projects/huawei-datacenter-1.jpg',
-        '/images/projects/huawei-datacenter-2.jpg',
-        '/images/projects/huawei-datacenter-3.jpg'
-      ],
-      testimonial: {
-        text: 'Yanghua STI delivered exceptional results on our data center project. Their innovative approach to energy efficiency and scalability exceeded our expectations.',
-        author: 'Li Wei',
-        position: 'Infrastructure Director, Huawei Technologies'
-      }
-    }
-  };
-  
-  return projects[id] || null;
 }
 
 // Generate static params for all available projects
 export async function generateStaticParams() {
-  const projectIds = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const projectIds = ['1', '2', '3', '4', '5', '6', '7'];
   const locales = ['en', 'es'];
   
   const params = [];
@@ -174,8 +83,9 @@ interface PageProps {
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { id } = await params;
-  const project = await getProject(id);
+  const { id, locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'projects' });
+  const project = await getProject(id, t);
 
   // Placeholder image component
   const PlaceholderImage = ({ className }: { className?: string }) => (
@@ -201,10 +111,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="text-6xl mb-4">🔍</div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Project Not Found</h1>
-          <p className="text-gray-600 mb-4">The project you're looking for doesn't exist or has been moved.</p>
-          <Link href="/projects" className="btn-primary">
-            Back to Projects
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('detailPage.projectNotFound')}</h1>
+          <p className="text-gray-600 mb-4">{t('detailPage.projectNotFoundDesc')}</p>
+          <Link href={`/${locale}/projects`} className="btn-primary">
+            {t('labels.backToProjects')}
           </Link>
         </div>
       </div>
@@ -250,28 +160,28 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="bg-yellow-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-gray-900" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">Project Location</h3>
+              <h3 className="text-lg font-semibold text-gray-900">{t('detailPage.projectLocation')}</h3>
               <p className="text-gray-600 mt-2">{project.location}</p>
             </div>
             <div className="text-center">
               <div className="bg-yellow-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Calendar className="h-8 w-8 text-gray-900" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">Completion Date</h3>
+              <h3 className="text-lg font-semibold text-gray-900">{t('detailPage.completionDate')}</h3>
               <p className="text-gray-600 mt-2">{project.completionDate}</p>
             </div>
             <div className="text-center">
               <div className="bg-yellow-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-gray-900" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">Project Scale</h3>
+              <h3 className="text-lg font-semibold text-gray-900">{t('labels.projectScale')}</h3>
               <p className="text-gray-600 mt-2">{project.projectScale}</p>
             </div>
             <div className="text-center">
               <div className="bg-yellow-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8 text-gray-900" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900">Project Duration</h3>
+              <h3 className="text-lg font-semibold text-gray-900">{t('detailPage.projectDuration')}</h3>
               <p className="text-gray-600 mt-2">{project.duration}</p>
             </div>
           </div>
@@ -283,27 +193,49 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">{project.title}</h1>
           <div className="flex flex-wrap justify-center gap-6 text-lg text-gray-600">
-            <span>Client: {project.client}</span>
-            <span>Industry: {project.industry}</span>
-            <span>Location: {project.location}</span>
-            <span>Duration: {project.duration}</span>
-            <span>Completion: {project.completionDate}</span>
+            <span>{t('labels.client')}: {project.client}</span>
+            <span>{t('labels.industry')}: {project.industry}</span>
+            <span>{t('labels.location')}: {project.location}</span>
+            <span>{t('labels.duration')}: {project.duration}</span>
+            <span>{t('labels.completionDate')}: {project.completionDate}</span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Project Background & Challenges</h2>
-            <p className="text-gray-600 leading-relaxed">{project.challenge}</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('detailPage.challenges')}</h2>
+            {project.challenges.length > 0 ? (
+              <ul className="space-y-2">
+                {project.challenges.map((challenge: string, index: number) => (
+                  <li key={index} className="text-gray-600 leading-relaxed flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-600 leading-relaxed">{project.challenge}</p>
+            )}
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Solution</h2>
-            <p className="text-gray-600 leading-relaxed">{project.solution}</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('detailPage.solution')}</h2>
+            {project.solutionPoints.length > 0 ? (
+              <ul className="space-y-2">
+                {project.solutionPoints.map((point: string, index: number) => (
+                  <li key={index} className="text-gray-600 leading-relaxed flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-600 leading-relaxed">{project.solution}</p>
+            )}
           </div>
         </div>
 
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Project Results</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('detailPage.results')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {project.results.map((result: any, index: number) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -315,16 +247,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
 
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Products Used</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('detailPage.products')}</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            {project.products.map((product: any, index: number) => (
+            {project.productsUsed.map((product: any, index: number) => (
               <span key={index} className="bg-[#F9BB67] text-gray-900 px-4 py-2 rounded-full">{product}</span>
             ))}
           </div>
         </div>
 
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Project Gallery</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('detailPage.projectGallery')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {project.images.map((image: any, index: number) => (
               <div key={index} className="relative h-64 rounded-lg overflow-hidden shadow-lg">
@@ -344,12 +276,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
 
         <div className="bg-gray-50 p-8 rounded-lg mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Client Testimonial</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">{t('detailPage.testimonial')}</h2>
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xl text-gray-600 italic mb-6">"{project.testimonial?.text || 'No testimonial available'}"</p>
+            <p className="text-xl text-gray-600 italic mb-6">"{project.testimonial || 'No testimonial available'}"</p>
             <div>
-              <p className="font-semibold text-gray-900">{project.testimonial?.author || 'Anonymous'}</p>
-              <p className="text-gray-600">{project.testimonial?.position || 'Client'}</p>
+              <p className="font-semibold text-gray-900">{project.testimonialAuthor || 'Anonymous'}</p>
+              <p className="text-gray-600">{project.testimonialPosition || 'Client'}</p>
             </div>
           </div>
         </div>
@@ -359,22 +291,22 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <div className="space-y-8">
         {/* Project navigation */}
         <div className="bg-gray-50 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Information</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('detailPage.projectInformation')}</h3>
           <div className="space-y-3">
             <div>
-              <span className="text-sm text-gray-600">Client</span>
+              <span className="text-sm text-gray-600">{t('labels.client')}</span>
               <div className="font-medium text-gray-900">{project.client}</div>
             </div>
             <div>
-              <span className="text-sm text-gray-600">Industry</span>
+              <span className="text-sm text-gray-600">{t('labels.industry')}</span>
               <div className="font-medium text-gray-900">{project.industry}</div>
             </div>
             <div>
-              <span className="text-sm text-gray-600">Location</span>
+              <span className="text-sm text-gray-600">{t('labels.location')}</span>
               <div className="font-medium text-gray-900">{project.location}</div>
             </div>
             <div>
-              <span className="text-sm text-gray-600">Project Scale</span>
+              <span className="text-sm text-gray-600">{t('labels.projectScale')}</span>
               <div className="font-medium text-gray-900">{project.projectScale}</div>
             </div>
           </div>
@@ -382,25 +314,25 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     
         {/* Quick inquiry */}
         <div className="bg-yellow-500 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Inquire About Similar Projects</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('detailPage.quickInquiry')}</h3>
           <form className="space-y-4">
             <input
               type="text"
-              placeholder="Name"
+              placeholder={t('form.name')}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
             />
             <input
               type="email"
-              placeholder="Email"
+              placeholder={t('form.email')}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
             />
             <input
               type="text"
-              placeholder="Company"
+              placeholder={t('form.company')}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
             />
             <textarea
-              placeholder="Project Requirements"
+              placeholder={t('form.message')}
               rows={3}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
             />
@@ -408,14 +340,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               type="submit"
               className="w-full bg-gray-900 text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors"
             >
-              Submit Inquiry
+              {t('form.submit')}
             </button>
           </form>
         </div>
     
         {/* Related projects */}
         <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Related Projects</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('detailPage.relatedProjects')}</h3>
           <div className="space-y-4">
             {[
               { title: '30MW Wind Power Project', industry: 'New Energy' },
@@ -424,7 +356,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             ].map((relatedProject, index) => (
               <Link
                 key={index}
-                href={`/projects/${relatedProject.title.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`/${locale}/projects/${relatedProject.title.toLowerCase().replace(/\s+/g, '-')}`}
                 className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <div className="font-medium text-gray-900">{relatedProject.title}</div>
