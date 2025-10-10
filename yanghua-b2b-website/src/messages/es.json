@@ -1479,5 +1479,19 @@
       "contactSupport": "Contactar Soporte Técnico",
       "downloadResources": "Descargar Recursos"
     }
+  },
+  "footer": {
+    "company": {
+      "description": "Fabricante líder de soluciones de barras colectoras flexibles de alta calidad para industrias globales. Confiado por más de 500 empresas en todo el mundo.",
+      "address": "Dongguan, Guangdong, China"
+    },
+    "support": {
+      "title": "Soporte"
+    },
+    "copyright": "© {year} YanghuaSTI. Todos los derechos reservados.",
+    "links": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio"
+    }
   }
 }

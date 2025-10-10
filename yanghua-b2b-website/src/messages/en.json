@@ -1450,5 +1450,19 @@
       "contactSupport": "Contact Technical Support",
       "downloadResources": "Download Resources"
     }
+  },
+  "footer": {
+    "company": {
+      "description": "Leading manufacturer of high-quality flexible busbar solutions for global industries. Trusted by 500+ companies worldwide.",
+      "address": "Dongguan, Guangdong, China"
+    },
+    "support": {
+      "title": "Support"
+    },
+    "copyright": "© {year} YanghuaSTI. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
   }
 }

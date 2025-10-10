@@ -2,27 +2,68 @@
 
 import Link from 'next/link';
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Footer() {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  // Get products from translation data
+  const getProductCategories = () => {
+    try {
+      const categories = t.raw('products.categories');
+      return Array.isArray(categories) ? categories.slice(0, 4) : [];
+    } catch (error) {
+      console.error('Error loading product categories:', error);
+      return [];
+    }
+  };
+
+  // Get solutions from translation data
+  const getSolutions = () => {
+    try {
+      const solutions = t.raw('solutions.solutions');
+      return Array.isArray(solutions) ? solutions.slice(0, 4) : [];
+    } catch (error) {
+      console.error('Error loading solutions:', error);
+      return [];
+    }
+  };
+
+  const productCategories = getProductCategories();
+  const solutions = getSolutions();
+
+  // Get services from translation data
+  const getServices = () => {
+    try {
+      const services = t.raw('services.services');
+      return Array.isArray(services) ? services.slice(0, 4) : [];
+    } catch (error) {
+      console.error('Error loading services:', error);
+      return [
+        { title: t('services.technicalSupport.title', { defaultValue: 'Technical Support' }) },
+        { title: t('services.installationGuide.title', { defaultValue: 'Installation Guide' }) },
+        { title: t('services.afterSalesService.title', { defaultValue: 'After-sales Service' }) },
+        { title: t('services.downloadCenter.title', { defaultValue: 'Downloads' }) }
+      ];
+    }
+  };
+
+  const services = getServices();
+
   const footerLinks = {
-    products: [
-      { name: 'Flexible Busbar', href: '/products' },
-      { name: 'Specifications', href: '/products/specs' },
-      { name: 'Product Comparison', href: '/products/compare' },
-      { name: 'Accessories', href: '/products/accessories' },
-    ],
-    solutions: [
-      { name: 'New Energy', href: '/solutions/new-energy' },
-      { name: 'Power Systems', href: '/solutions/power-systems' },
-      { name: 'Industrial Applications', href: '/solutions/industrial' },
-      { name: 'Data Center', href: '/solutions/data-center' },
-    ],
-    support: [
-      { name: 'Technical Support', href: '/services/technical-support' },
-      { name: 'Installation Guide', href: '/services/installation' },
-      { name: 'After-sales Service', href: '/services/after-sales' },
-      { name: 'Downloads', href: '/services/downloads' },
-    ],
+    products: productCategories.map(category => ({
+      name: category.name,
+      href: `/${locale}/products/category/${category.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`
+    })),
+    solutions: solutions.map(solution => ({
+      name: solution.title,
+      href: `/${locale}/solutions/${solution.id}`
+    })),
+    support: services.map(service => ({
+      name: service.title,
+      href: `/${locale}/services`
+    })),
   };
   return (
     <footer className="bg-[#212529] text-white">
@@ -34,7 +75,9 @@ export default function Footer() {
               Yanghua<span className="text-[#fdb827]">STI</span>
             </h3>
             <p className="text-gray-300 mb-4">
-              Leading manufacturer of high-quality flexible busbar solutions for global industries. Trusted by 500+ companies worldwide.
+              {t('footer.company.description', { 
+                defaultValue: 'Leading manufacturer of high-quality flexible busbar solutions for global industries. Trusted by 500+ companies worldwide.' 
+              })}
             </p>
             <div className="space-y-2">
               <div className="flex items-center">
@@ -47,14 +90,16 @@ export default function Footer() {
               </div>
               <div className="flex items-center">
                 <MapPin size={16} className="mr-2 text-[#fdb827]" />
-                <span className="text-sm">Dongguan, Guangdong, China</span>
+                <span className="text-sm">
+                  {t('footer.company.address', { defaultValue: 'Dongguan, Guangdong, China' })}
+                </span>
               </div>
             </div>
           </div>
 
           {/* Products */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Products</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('navigation.products')}</h4>
             <ul className="space-y-2">
               {footerLinks.products.map((link) => (
                 <li key={link.name}>
@@ -72,7 +117,7 @@ export default function Footer() {
 
           {/* Solutions */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Solutions</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('navigation.solutions')}</h4>
             <ul className="space-y-2">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
@@ -90,7 +135,7 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Support</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.support.title', { defaultValue: 'Support' })}</h4>
             <ul className="space-y-2">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
@@ -110,14 +155,17 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 text-sm">
-              © 2024 YanghuaSTI. All rights reserved.
+              {t('footer.copyright', { 
+                defaultValue: '© 2024 YanghuaSTI. All rights reserved.',
+                year: new Date().getFullYear()
+              })}
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy" className="text-gray-300 hover:text-[#fdb827] text-sm">
-                Privacy Policy
+              <Link href={`/${locale}/privacy`} className="text-gray-300 hover:text-[#fdb827] text-sm">
+                {t('footer.links.privacy', { defaultValue: 'Privacy Policy' })}
               </Link>
-              <Link href="/terms" className="text-gray-300 hover:text-[#fdb827] text-sm">
-                Terms of Service
+              <Link href={`/${locale}/terms`} className="text-gray-300 hover:text-[#fdb827] text-sm">
+                {t('footer.links.terms', { defaultValue: 'Terms of Service' })}
               </Link>
             </div>
           </div>
