@@ -1035,6 +1035,45 @@
         "europe": "Europa",
         "asiaPacific": "Asia Pacífico"
       }
+    },
+    "form": {
+      "labels": {
+        "name": "Nombre",
+        "email": "Correo Electrónico",
+        "company": "Empresa",
+        "country": "País",
+        "phone": "Teléfono",
+        "subject": "Asunto",
+        "message": "Mensaje"
+      },
+      "placeholders": {
+        "name": "Ingrese su nombre completo",
+        "email": "Ingrese su dirección de correo electrónico",
+        "company": "Ingrese el nombre de su empresa",
+        "country": "Ingrese su país",
+        "phone": "Ingrese su número de teléfono",
+        "subject": "Seleccione un asunto",
+        "message": "Ingrese su mensaje"
+      },
+      "subjects": {
+        "selectSubject": "Seleccione un asunto",
+        "productInquiry": "Consulta de Producto",
+        "technicalSupport": "Soporte Técnico",
+        "partnership": "Asociación",
+        "customSolution": "Solución Personalizada",
+        "other": "Otro"
+      },
+      "buttons": {
+        "submit": "Enviar Mensaje",
+        "sending": "Enviando..."
+      },
+      "messages": {
+        "success": "¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.",
+        "error": "Error al enviar el mensaje. Por favor, inténtelo de nuevo."
+      },
+      "validation": {
+        "required": "Este campo es obligatorio"
+      }
     }
   },
   "projects": {
@@ -1382,5 +1421,63 @@
     "subtitle": "Descubre nuestros proyectos exitosos y casos de estudio que demuestran nuestra experiencia en soluciones de distribución de energía en diversas industrias.",
     "viewDetails": "Ver Detalles",
     "viewAllProjects": "Ver Todos los Proyectos"
+  },
+  "services": {
+    "page": {
+      "title": "Servicio y Soporte",
+      "description": "Soporte integral durante todo el ciclo de vida de su proyecto, desde el diseño inicial hasta el mantenimiento a largo plazo."
+    },
+    "services": [
+      {
+        "number": "01",
+        "title": "Soporte Técnico",
+        "description": "Orientación experta desde la consulta inicial hasta la puesta en servicio del sistema",
+        "features": [
+          "Consulta técnica 24/7",
+          "Asistencia en diseño de sistemas",
+          "Supervisión de instalación",
+          "Optimización de rendimiento"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Guía de Instalación",
+        "description": "Soporte integral de instalación con documentación detallada y capacitación",
+        "features": [
+          "Manuales de instalación detallados",
+          "Tutoriales en video",
+          "Capacitación en sitio",
+          "Asistencia remota"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Servicio Postventa",
+        "description": "Soporte y mantenimiento a largo plazo para garantizar el rendimiento óptimo del sistema",
+        "features": [
+          "Mantenimiento preventivo",
+          "Servicio de garantía",
+          "Suministro de repuestos",
+          "Actualizaciones del sistema"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Centro de Descargas",
+        "description": "Acceso a documentos técnicos, certificaciones y recursos las 24 horas",
+        "features": [
+          "Especificaciones de productos",
+          "Dibujos CAD",
+          "Documentos de certificación",
+          "Casos de estudio"
+        ]
+      }
+    ],
+    "cta": {
+      "title": "¿Necesita Soporte Técnico?",
+      "description": "Nuestro equipo técnico está listo para ayudar con sus requisitos específicos.",
+      "contactSupport": "Contactar Soporte Técnico",
+      "downloadResources": "Descargar Recursos"
+    }
   }
 }

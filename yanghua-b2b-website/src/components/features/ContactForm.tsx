@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function ContactForm() {
+  const t = useTranslations('contact');
   
   const [formData, setFormData] = useState({
     name: '',
@@ -25,7 +27,7 @@ export default function ContactForm() {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     console.log('Contact form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
+    alert(t('form.messages.success'));
     
     // Reset form
     setFormData({
@@ -52,7 +54,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-[#212529] mb-2">
-            Name *
+            {t('form.labels.name')} *
           </label>
           <input
             type="text"
@@ -62,13 +64,13 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
-            placeholder="Enter your full name"
+            placeholder={t('form.placeholders.name')}
           />
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-[#212529] mb-2">
-            Email *
+            {t('form.labels.email')} *
           </label>
           <input
             type="email"
@@ -78,13 +80,13 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
-            placeholder="Enter your email address"
+            placeholder={t('form.placeholders.email')}
           />
         </div>
 
         <div>
           <label htmlFor="company" className="block text-sm font-medium text-[#212529] mb-2">
-            Company *
+            {t('form.labels.company')} *
           </label>
           <input
             type="text"
@@ -94,13 +96,13 @@ export default function ContactForm() {
             value={formData.company}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
-            placeholder="Enter your company name"
+            placeholder={t('form.placeholders.company')}
           />
         </div>
 
         <div>
           <label htmlFor="country" className="block text-sm font-medium text-[#212529] mb-2">
-            Country *
+            {t('form.labels.country')} *
           </label>
           <input
             type="text"
@@ -110,13 +112,13 @@ export default function ContactForm() {
             value={formData.country}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
-            placeholder="Enter your country"
+            placeholder={t('form.placeholders.country')}
           />
         </div>
 
         <div className="md:col-span-2">
           <label htmlFor="phone" className="block text-sm font-medium text-[#212529] mb-2">
-            Phone
+            {t('form.labels.phone')}
           </label>
           <input
             type="tel"
@@ -125,14 +127,14 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
-            placeholder="Enter your phone number"
+            placeholder={t('form.placeholders.phone')}
           />
         </div>
       </div>
 
       <div>
         <label htmlFor="subject" className="block text-sm font-medium text-[#212529] mb-2">
-          Subject *
+          {t('form.labels.subject')} *
         </label>
         <select
           id="subject"
@@ -142,18 +144,18 @@ export default function ContactForm() {
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
         >
-          <option value="">Select a subject</option>
-          <option value="product-inquiry">Product Inquiry</option>
-          <option value="technical-support">Technical Support</option>
-          <option value="partnership">Partnership</option>
-          <option value="custom-solution">Custom Solution</option>
-          <option value="other">Other</option>
+          <option value="">{t('form.subjects.selectSubject')}</option>
+          <option value="product-inquiry">{t('form.subjects.productInquiry')}</option>
+          <option value="technical-support">{t('form.subjects.technicalSupport')}</option>
+          <option value="partnership">{t('form.subjects.partnership')}</option>
+          <option value="custom-solution">{t('form.subjects.customSolution')}</option>
+          <option value="other">{t('form.subjects.other')}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-[#212529] mb-2">
-          Message *
+          {t('form.labels.message')} *
         </label>
         <textarea
           id="message"
@@ -163,7 +165,7 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-[#fdb827] focus:outline-none"
-          placeholder="Enter your message"
+          placeholder={t('form.placeholders.message')}
         />
       </div>
 
@@ -175,12 +177,12 @@ export default function ContactForm() {
         {isSubmitting ? (
           <>
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#212529] mr-2"></div>
-            Sending...
+            {t('form.buttons.sending')}
           </>
         ) : (
           <>
             <Send className="mr-2 h-5 w-5" />
-            Send Message
+            {t('form.buttons.submit')}
           </>
         )}
       </button>

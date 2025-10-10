@@ -1006,6 +1006,45 @@
         "europe": "Europe",
         "asiaPacific": "Asia Pacific"
       }
+    },
+    "form": {
+      "labels": {
+        "name": "Name",
+        "email": "Email",
+        "company": "Company",
+        "country": "Country",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Enter your full name",
+        "email": "Enter your email address",
+        "company": "Enter your company name",
+        "country": "Enter your country",
+        "phone": "Enter your phone number",
+        "subject": "Select a subject",
+        "message": "Enter your message"
+      },
+      "subjects": {
+        "selectSubject": "Select a subject",
+        "productInquiry": "Product Inquiry",
+        "technicalSupport": "Technical Support",
+        "partnership": "Partnership",
+        "customSolution": "Custom Solution",
+        "other": "Other"
+      },
+      "buttons": {
+        "submit": "Send Message",
+        "sending": "Sending..."
+      },
+      "messages": {
+        "success": "Thank you for your message! We will get back to you soon.",
+        "error": "Error sending message. Please try again."
+      },
+      "validation": {
+        "required": "This field is required"
+      }
     }
   },
   "projects": {
@@ -1353,5 +1392,63 @@
     "subtitle": "Discover our successful projects and case studies that demonstrate our expertise in power distribution solutions across various industries.",
     "viewDetails": "View Details",
     "viewAllProjects": "View All Projects"
+  },
+  "services": {
+    "page": {
+      "title": "Service & Support",
+      "description": "Comprehensive support throughout your project lifecycle, from initial design to long-term maintenance."
+    },
+    "services": [
+      {
+        "number": "01",
+        "title": "Technical Support",
+        "description": "Expert guidance from initial consultation through system commissioning",
+        "features": [
+          "24/7 technical consultation",
+          "System design assistance",
+          "Installation supervision",
+          "Performance optimization"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Installation Guide",
+        "description": "Comprehensive installation support with detailed documentation and training",
+        "features": [
+          "Detailed installation manuals",
+          "Video tutorials",
+          "On-site training",
+          "Remote assistance"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "After-sales Service",
+        "description": "Long-term support and maintenance to ensure optimal system performance",
+        "features": [
+          "Preventive maintenance",
+          "Warranty service",
+          "Spare parts supply",
+          "System upgrades"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Download Center",
+        "description": "Access technical documents, certifications, and resources 24/7",
+        "features": [
+          "Product specifications",
+          "CAD drawings",
+          "Certification documents",
+          "Case studies"
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Need Technical Support?",
+      "description": "Our technical team is ready to assist with your specific requirements.",
+      "contactSupport": "Contact Technical Support",
+      "downloadResources": "Download Resources"
+    }
   }
 }
