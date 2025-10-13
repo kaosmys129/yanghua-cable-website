@@ -1455,6 +1455,29 @@
         ]
       }
     ],
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "What are the main advantages of flexible busbar systems over traditional cable systems?",
+        "answer": "Flexible busbar systems offer superior current carrying capacity, better heat dissipation, reduced installation time, and lower maintenance requirements compared to traditional cable systems. They also provide better space utilization and improved safety features."
+      },
+      "q2": {
+        "question": "How do I determine the right current rating for my application?",
+        "answer": "The current rating depends on your load requirements, ambient temperature, installation method, and safety factors. Our technical team can help you calculate the optimal rating based on your specific application requirements and local electrical codes."
+      },
+      "q3": {
+        "question": "What certifications do your products have?",
+        "answer": "Our products are certified to international standards including IEC, UL, CE, and CCC. We also have ISO 9001 quality management certification and ISO 14001 environmental management certification. Specific certifications vary by product line."
+      },
+      "q4": {
+        "question": "Do you provide installation support and training?",
+        "answer": "Yes, we provide comprehensive installation support including detailed manuals, video tutorials, on-site training, and remote assistance. Our technical team can also supervise critical installations to ensure optimal performance."
+      },
+      "q5": {
+        "question": "What is the typical lead time for custom orders?",
+        "answer": "Lead times vary depending on the complexity and quantity of the order. Standard products typically ship within 2-3 weeks, while custom solutions may require 4-8 weeks. We'll provide accurate delivery schedules during the quotation process."
+      }
+    },
     "cta": {
       "title": "Need Technical Support?",
       "description": "Our technical team is ready to assist with your specific requirements.",

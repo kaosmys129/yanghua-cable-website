@@ -2,6 +2,7 @@
 
 import { Wrench, FileText, Package, Download } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import FAQList from '@/components/Service/FAQList';
 
 // Get services data from translations
 function getServices(t: any) {
@@ -60,6 +61,8 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
+
+        <FAQList />
 
         <div className="bg-[#f8f9fa] rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold text-[#212529] mb-4">
