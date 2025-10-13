@@ -137,11 +137,17 @@ export default function AboutPage() {
             </div>
           </div>
           <VideoPlayer
-            videoUrl={{
-              en: '/videos/company-intro-en.mp4',
-              es: '/videos/company-intro-es.mp4'
+            videoSources={{
+              en: [
+                { src: '/videos/company-intro-en.mp4', type: 'video/mp4' },
+                { src: '/videos/company-intro-en.webm', type: 'video/webm' },
+              ],
+              es: [
+                { src: '/videos/company-intro-es.mp4', type: 'video/mp4' },
+                { src: '/videos/company-intro-es.webm', type: 'video/webm' },
+              ],
             }}
-            thumbnailUrl="/images/company-video-thumbnail.svg"
+            thumbnailUrl="/images/company-intro.webp"
             title={t('video.companyIntro')}
             className="shadow-lg"
           />

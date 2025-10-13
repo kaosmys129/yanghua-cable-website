@@ -1,123 +1,118 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Play, Loader2, AlertCircle } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
+import Image from 'next/image';
+
+interface VideoSource {
+  src: string;
+  type: string;
+}
 
 interface VideoPlayerProps {
-  videoUrl: {
-    en: string;
-    es: string;
-  };
-  thumbnailUrl?: string;
-  title?: string;
+  videoSources: Record<string, VideoSource[]>;
+  thumbnailUrl: string;
+  title: string;
   className?: string;
 }
 
-export default function VideoPlayer({ 
-  videoUrl, 
-  thumbnailUrl = '/images/company-video-thumbnail.jpg',
-  title,
-  className = '' 
-}: VideoPlayerProps) {
+export default function VideoPlayer({ videoSources, thumbnailUrl, title, className }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const t = useTranslations();
-  
-  // Get current locale from URL or default to 'en'
-  const currentLocale = typeof window !== 'undefined' 
-    ? window.location.pathname.split('/')[1] || 'en'
-    : 'en';
-  
-  const currentVideoUrl = videoUrl[currentLocale as keyof typeof videoUrl] || videoUrl.en;
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const t = useTranslations('VideoPlayer');
+  const locale = useLocale();
 
-  const handlePlayClick = () => {
-    setIsLoading(true);
-    setHasError(false);
-    setIsPlaying(true);
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
-  const handleVideoLoad = () => {
-    setIsLoading(false);
-  };
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
 
-  const handleVideoError = () => {
-    setIsLoading(false);
-    setHasError(true);
-    setIsPlaying(false);
-  };
+    const handleWaiting = () => setIsLoading(true);
+    const handleCanPlay = () => setIsLoading(false);
+    const handleError = () => {
+      setIsLoading(false);
+      setError(t('error.loading'));
+    };
 
-  if (isPlaying && !hasError) {
-    return (
-      <div className={`relative w-full h-96 rounded-xl overflow-hidden ${className}`}>
-        <video
-          className="w-full h-full object-cover"
-          controls
-          autoPlay
-          onLoadedData={handleVideoLoad}
-          onError={handleVideoError}
-          poster={thumbnailUrl}
-        >
-          <source src={currentVideoUrl} type="video/mp4" />
-          <source src={currentVideoUrl.replace('.mp4', '.webm')} type="video/webm" />
-          {t('about.video.error')}
-        </video>
-        
-        {isLoading && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="flex items-center space-x-2 text-white">
-              <Loader2 className="h-6 w-6 animate-spin" />
-              <span>{t('about.video.loading')}</span>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
+    videoElement.addEventListener('waiting', handleWaiting);
+    videoElement.addEventListener('canplay', handleCanPlay);
+    videoElement.addEventListener('error', handleError);
+
+    // Set initial loading state
+    if (videoElement.readyState < 3) {
+      setIsLoading(true);
+    }
+
+    return () => {
+      videoElement.removeEventListener('waiting', handleWaiting);
+      videoElement.removeEventListener('canplay', handleCanPlay);
+      videoElement.removeEventListener('error', handleError);
+    };
+  }, [t]);
+
+  const currentVideoSources = videoSources[locale] || [];
 
   return (
-    <div className={`relative w-full h-96 rounded-xl overflow-hidden cursor-pointer group ${className}`}>
-      {/* Video Thumbnail */}
-      <div 
-        className="w-full h-full bg-cover bg-center bg-gray-200 border-2 border-dashed border-gray-300 group-hover:border-gray-400 transition-all duration-300"
-        style={{
-          backgroundImage: thumbnailUrl ? `url(${thumbnailUrl})` : 'none'
-        }}
-        onClick={handlePlayClick}
+    <div className={`relative w-full h-auto overflow-hidden rounded-lg ${className}`}>
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        controls={isPlaying}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        playsInline
+        preload="metadata"
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-          {hasError ? (
-            <div className="text-center text-white">
-              <AlertCircle className="h-12 w-12 mx-auto mb-2 text-red-400" />
-              <p className="text-sm">{t('about.video.error')}</p>
-            </div>
-          ) : (
-            <div className="text-center text-white">
-              {/* Play Button */}
-              <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-6 mb-4 group-hover:bg-opacity-30 transition-all duration-300 transform group-hover:scale-110">
-                <Play className="h-12 w-12 text-white fill-current" />
-              </div>
-              
-              {/* Title and CTA */}
-              <h3 className="text-xl font-semibold mb-2">
-                {title || t('about.video.companyIntro')}
-              </h3>
-              <p className="text-sm opacity-90">
-                {t('about.video.watchVideo')}
-              </p>
-            </div>
-          )}
+        {currentVideoSources.map((source) => (
+          <source key={source.src} src={source.src} type={source.type} />
+        ))}
+        {t('error.browserNotSupported')}
+      </video>
+      {!isPlaying && (
+        <div 
+          className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 cursor-pointer"
+          style={{ backgroundImage: `url(${thumbnailUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          onClick={handlePlay}
+        >
+          <div className="p-4 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+            {/* Play icon is removed as it's causing 404, the whole area is clickable now */}
+          </div>
+          <h3 className="mt-4 text-white text-xl font-semibold">company introduction video</h3>
         </div>
-      </div>
-      
-      {/* Play Button Text */}
-      <div className="absolute bottom-4 left-4 right-4">
-        <div className="bg-black bg-opacity-50 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
-          <span className="text-white font-medium">{t('about.video.playButton')}</span>
+      )}
+      {isLoading && isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="loader" />
+          <p className="text-white ml-2">{t('loading')}</p>
         </div>
-      </div>
+      )}
+      {error && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
+          <p className="text-white text-center">{error}</p>
+        </div>
+      )}
+      <style jsx>{`
+        .loader {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #3498db;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }

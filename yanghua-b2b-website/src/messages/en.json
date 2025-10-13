@@ -15,6 +15,17 @@
     "cta": "Explore Products",
     "learnMore": "Learn More"
   },
+  "VideoPlayer": {
+    "playButton": {
+      "ariaLabel": "Play video",
+      "alt": "Play icon"
+    },
+    "loading": "Loading...",
+    "error": {
+      "loading": "Error loading video.",
+      "browserNotSupported": "Your browser does not support the video tag."
+    }
+  },
   "company": {
     "strength": {
       "title": "Company Strength",
@@ -421,7 +432,7 @@
     },
     "video": {
       "playButton": "Play Video",
-      "companyIntro": "Company Introduction",
+      "companyIntro": "Company Introduction Video",
       "watchVideo": "Watch Our Story",
       "loading": "Loading video...",
       "error": "Unable to load video"

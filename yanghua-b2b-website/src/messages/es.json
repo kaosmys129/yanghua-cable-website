@@ -15,6 +15,17 @@
     "cta": "Explorar Productos",
     "learnMore": "Saber Más"
   },
+  "VideoPlayer": {
+    "playButton": {
+      "ariaLabel": "Reproducir video",
+      "alt": "Icono de reproducción"
+    },
+    "loading": "Cargando...",
+    "error": {
+      "loading": "Error al cargar el video.",
+      "browserNotSupported": "Su navegador no soporta la etiqueta de video."
+    }
+  },
   "company": {
     "strength": {
       "title": "Fortaleza de la Empresa",
@@ -425,7 +436,7 @@
     },
     "video": {
       "playButton": "Reproducir Video",
-      "companyIntro": "Presentación de la Empresa",
+      "companyIntro": "Vídeo de introducción de la empresa",
       "watchVideo": "Ver Nuestra Historia",
       "loading": "Cargando video...",
       "error": "No se puede cargar el video"
