@@ -1,0 +1,12 @@
+This directory should contain the following PDF files:
+
+1. service_resources_package_en_v1.0.pdf - English service resources
+2. service_resources_package_es_v1.0.pdf - Spanish service resources
+
+Please add the actual PDF files to enable the download functionality.
+
+File specifications:
+- Format: PDF
+- Size: Recommended 5-10MB
+- Content: Installation guides, technical manuals, support documentation
+- Languages: English and Spanish versions

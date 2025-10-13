@@ -1,0 +1,263 @@
+{
+  "analysis_metadata": {
+    "generated_at": "2025-01-13T10:00:00Z",
+    "total_download_buttons": 6,
+    "analysis_scope": "全站download按钮统计",
+    "version": "1.0.0"
+  },
+  "download_buttons": [
+    {
+      "id": "about_page_hero_download",
+      "location": {
+        "file_path": "src/app/[locale]/about/page.tsx",
+        "line_numbers": [66, 113],
+        "page_route": "/[locale]/about",
+        "section": "Hero Section",
+        "component": "AboutPage"
+      },
+      "button_details": {
+        "text_content": "{t('hero.cta.download')}",
+        "translated_text": {
+          "en": "Download Company Profile",
+          "es": "Descargar Perfil de la Empresa"
+        },
+        "css_classes": "bg-transparent border-2 border-white hover:bg-white hover:text-[#212529] text-white font-semibold py-3 px-8 rounded-lg transition duration-300",
+        "element_type": "button",
+        "is_functional": false,
+        "current_href": null
+      },
+      "pdf_download_config": {
+        "target_pdf_name": "yanghua_company_profile.pdf",
+        "target_pdf_path": "/downloads/company-profile/",
+        "file_size_estimate": "2-5MB",
+        "content_type": "公司简介资料",
+        "languages": [ "en", "es"],
+        "status": "待配置"
+      },
+      "implementation_notes": "需要添加onClick事件处理器和PDF文件链接"
+    },
+    {
+      "id": "solutions_detail_download_pdf",
+      "location": {
+        "file_path": "src/app/[locale]/solutions/[id]/page.tsx",
+        "line_numbers": [131, 132],
+        "page_route": "/[locale]/solutions/[id]",
+        "section": "Call to Action Section",
+        "component": "SolutionDetailPage"
+      },
+      "button_details": {
+        "text_content": "Download PDF",
+        "translated_text": {
+          "en": "Download PDF",
+          "es": "Descargar PDF"
+        },
+        "css_classes": "btn-secondary px-8 py-3",
+        "element_type": "button",
+        "is_functional": false,
+        "current_href": null
+      },
+      "pdf_download_config": {
+        "target_pdf_name": "solution_specification_sheet_{solution_id}.pdf",
+        "target_pdf_path": "/downloads/solutions/",
+        "file_size_estimate": "1-3MB",
+        "content_type": "解决方案规格说明书",
+        "languages": [ "en", "es"],
+        "status": "待配置"
+      },
+      "implementation_notes": "需要根据解决方案ID动态生成PDF下载链接"
+    },
+    {
+      "id": "services_page_download_resources",
+      "location": {
+        "file_path": "src/app/[locale]/services/page.tsx",
+        "line_numbers": [79],
+        "page_route": "/[locale]/services",
+        "section": "Call to Action Section",
+        "component": "ServicesPage"
+      },
+      "button_details": {
+        "text_content": "{t('cta.downloadResources')}",
+        "translated_text": {
+          "en": "Download Resources",
+          "es": "Descargar Recursos"
+        },
+        "css_classes": "btn-secondary",
+        "element_type": "button",
+        "is_functional": false,
+        "current_href": null
+      },
+      "pdf_download_config": {
+        "target_pdf_name": "service_resources_package.zip",
+        "target_pdf_path": "/downloads/services/",
+        "file_size_estimate": "5-10MB",
+        "content_type": "服务资源包（包含多个PDF文件）",
+        "languages": ["en", "es"],
+        "status": "待配置"
+      },
+      "implementation_notes": "可能需要提供资源包下载，包含安装指南、技术手册等"
+    },
+    {
+      "id": "debug_panel_download_logs",
+      "location": {
+        "file_path": "src/components/ui/DebugPanel.tsx",
+        "line_numbers": [126, 130],
+        "page_route": "全局组件（调试面板）",
+        "section": "Debug Panel Controls",
+        "component": "DebugPanel"
+      },
+      "button_details": {
+        "text_content": "Export",
+        "translated_text": {
+          "en": "Export",
+          "es": "Exportar"
+        },
+        "css_classes": "text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 flex items-center",
+        "element_type": "button",
+        "is_functional": true,
+        "current_href": null,
+        "onclick_handler": "handleDownloadLogs"
+      },
+      "pdf_download_config": {
+        "target_pdf_name": "error-logs-{timestamp}.json",
+        "target_pdf_path": "动态生成",
+        "file_size_estimate": "< 1MB",
+        "content_type": "错误日志JSON文件",
+        "languages": ["通用"],
+        "status": "已实现"
+      },
+      "implementation_notes": "已实现功能，下载调试日志为JSON格式"
+    },
+    {
+      "id": "network_test_download_results",
+      "location": {
+        "file_path": "src/app/[locale]/debug/network-test/page.tsx",
+        "line_numbers": [204],
+        "page_route": "/[locale]/debug/network-test",
+        "section": "Test Results Export",
+        "component": "NetworkTestPage"
+      },
+      "button_details": {
+        "text_content": "下载测试结果",
+        "translated_text": {
+          "en": "Download Test Results",
+          "es": "Descargar Resultados de Prueba"
+        },
+        "css_classes": "未明确指定",
+        "element_type": "动态创建的a标签",
+        "is_functional": true,
+        "current_href": "动态生成",
+        "download_attribute": "network-test-results-{timestamp}.json"
+      },
+      "pdf_download_config": {
+        "target_pdf_name": "network-test-results-{timestamp}.json",
+        "target_pdf_path": "动态生成",
+        "file_size_estimate": "< 1MB",
+        "content_type": "网络测试结果JSON文件",
+        "languages": ["通用"],
+        "status": "已实现"
+      },
+      "implementation_notes": "已实现功能，下载网络测试结果为JSON格式"
+    },
+    {
+      "id": "footer_download_center_link",
+      "location": {
+        "file_path": "src/components/layout/Footer.tsx",
+        "line_numbers": [47],
+        "page_route": "全局组件（页脚）",
+        "section": "Footer Navigation",
+        "component": "Footer"
+      },
+      "button_details": {
+        "text_content": "{t('services.downloadCenter.title', { defaultValue: 'Downloads' })}",
+        "translated_text": {
+          "en": "Downloads",
+          "es": "Descargas"
+        },
+        "css_classes": "未明确指定（继承父级样式）",
+        "element_type": "导航链接",
+        "is_functional": false,
+        "current_href": "待配置"
+      },
+      "pdf_download_config": {
+        "target_pdf_name": "下载中心页面（非直接下载）",
+        "target_pdf_path": "/downloads/",
+        "file_size_estimate": "N/A",
+        "content_type": "下载中心导航链接",
+        "languages": ["zh", "en", "es"],
+        "status": "待实现页面"
+      },
+      "implementation_notes": "需要创建专门的下载中心页面，集中管理所有下载资源"
+    }
+  ],
+  "translation_keys_analysis": {
+    "download_related_keys": [
+      {
+        "key": "hero.cta.download",
+        "en_value": "Download Company Profile",
+        "es_value": "Descargar Perfil de la Empresa",
+        "usage_locations": ["about/page.tsx"]
+      },
+      {
+        "key": "cta.downloadResources", 
+        "en_value": "Download Resources",
+        "es_value": "Descargar Recursos",
+        "usage_locations": ["services/page.tsx"]
+      },
+      {
+        "key": "solutions.cta.downloadBrief",
+        "en_value": "Download Solution Brief", 
+        "es_value": "Descargar Resumen de Solución",
+        "usage_locations": ["翻译文件中定义，未在组件中使用"]
+      },
+      {
+        "key": "services.downloadCenter.title",
+        "en_value": "Download Center",
+        "es_value": "Centro de Descargas", 
+        "usage_locations": ["layout/Footer.tsx"]
+      }
+    ]
+  },
+  "implementation_recommendations": {
+    "priority_1_high": [
+      "为关于页面的公司简介下载按钮添加PDF文件和功能实现",
+      "为解决方案详情页面的PDF下载按钮添加规格说明书文件",
+      "创建下载中心页面，统一管理所有下载资源"
+    ],
+    "priority_2_medium": [
+      "为服务页面的资源下载按钮创建资源包",
+      "优化现有下载功能的用户体验和错误处理"
+    ],
+    "priority_3_low": [
+      "添加下载统计和分析功能",
+      "实现下载进度显示和断点续传功能"
+    ]
+  },
+  "technical_requirements": {
+    "file_storage": {
+      "recommended_location": "/public/downloads/",
+      "folder_structure": {
+        "company-profile": "公司简介相关文件",
+        "solutions": "解决方案规格说明书",
+        "services": "服务资源包",
+        "products": "产品手册和规格书"
+      }
+    },
+    "file_naming_convention": {
+      "pattern": "{category}_{name}_{language}_{version}.{extension}",
+      "examples": [
+        "company_profile_en_v1.0.pdf",
+        "solution_flexible_busbar_zh_v2.1.pdf",
+        "service_installation_guide_es_v1.5.pdf"
+      ]
+    },
+    "implementation_checklist": [
+      "创建PDF文件并上传到指定目录",
+      "为每个按钮添加onClick事件处理器",
+      "实现文件下载功能（使用a标签的download属性）",
+      "添加下载前的确认提示和加载状态",
+      "实现多语言版本的文件下载",
+      "添加下载错误处理和重试机制",
+      "实现下载统计和日志记录"
+    ]
+  }
+}

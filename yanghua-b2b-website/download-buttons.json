@@ -1,0 +1,20 @@
+[
+  {
+    "id": "about-hero-download",
+    "name": "Download Company Profile",
+    "location": "/about hero section",
+    "pdf_url": "${pdf_link}"
+  },
+  {
+    "id": "solutions-detail-download",
+    "name": "Download PDF",
+    "location": "/solutions/[id] page",
+    "pdf_url": "${pdf_link}"
+  },
+  {
+    "id": "services-cta-download",
+    "name": "Download Resources",
+    "location": "/services page",
+    "pdf_url": "${pdf_link}"
+  }
+]

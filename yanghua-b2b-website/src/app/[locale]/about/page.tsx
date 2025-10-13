@@ -2,11 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 import VideoPlayer from '@/components/business/VideoPlayer';
 import TestingEquipmentSlider from '@/components/business/TestingEquipmentSlider';
+import DownloadButton from '@/components/ui/DownloadButton';
 
 export default function AboutPage() {
   const t = useTranslations('about');
+  const params = useParams();
+  const locale = params.locale as string;
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -109,9 +113,14 @@ export default function AboutPage() {
               <button className="bg-[#fdb827] hover:bg-[#e6a51e] text-[#212529] font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                 {t('hero.cta.explore')}
               </button>
-              <button className="bg-transparent border-2 border-white hover:bg-white hover:text-[#212529] text-white font-semibold py-3 px-8 rounded-lg transition duration-300">
+              <DownloadButton 
+                resourceId="company-profile"
+                locale={locale}
+                variant="secondary"
+                className="bg-transparent border-2 border-white hover:bg-white hover:text-[#212529] text-white"
+              >
                 {t('hero.cta.download')}
-              </button>
+              </DownloadButton>
             </div>
           </div>
         </div>

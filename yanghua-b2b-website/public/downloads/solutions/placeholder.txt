@@ -1,0 +1,12 @@
+This directory should contain the following PDF files:
+
+1. flexible_busbar_specification_en_v1.5.pdf - English solution specification
+2. flexible_busbar_specification_es_v1.5.pdf - Spanish solution specification
+
+Please add the actual PDF files to enable the download functionality.
+
+File specifications:
+- Format: PDF
+- Size: Recommended 1-3MB
+- Content: Technical specifications, installation guides, performance data
+- Languages: English and Spanish versions

@@ -2,7 +2,9 @@
 
 import { Wrench, FileText, Package, Download } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 import FAQList from '@/components/Service/FAQList';
+import DownloadButton from '@/components/ui/DownloadButton';
 
 // Get services data from translations
 function getServices(t: any) {
@@ -17,6 +19,8 @@ function getServices(t: any) {
 
 export default function ServicesPage() {
   const t = useTranslations('services');
+  const params = useParams();
+  const locale = params.locale as string;
   const services = getServices(t);
 
   // Icon mapping
@@ -75,9 +79,14 @@ export default function ServicesPage() {
             <button className="btn-primary">
               {t('cta.contactSupport')}
             </button>
-            <button className="btn-secondary">
+            <DownloadButton 
+              resourceId="service-resources"
+              locale={locale}
+              variant="secondary"
+              className="btn-secondary"
+            >
               {t('cta.downloadResources')}
-            </button>
+            </DownloadButton>
           </div>
         </div>
       </div>

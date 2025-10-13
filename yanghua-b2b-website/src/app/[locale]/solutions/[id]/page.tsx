@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import LightboxImage from '@/components/LightboxImage';
+import SolutionDownloadButton from '@/components/ui/SolutionDownloadButton';
 
 type Solution = {
   id: string;
@@ -128,9 +129,13 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
           Download the full specification sheet for more details or get in touch with our experts to find the perfect solution for you.
         </p>
         <div className="flex justify-center items-center gap-4">
-          <button className="btn-secondary px-8 py-3">
+          <SolutionDownloadButton 
+            solutionId={id}
+            locale={locale}
+            className="px-8 py-3"
+          >
             Download PDF
-          </button>
+          </SolutionDownloadButton>
           <Link href="/contact" className="btn-primary px-8 py-3">
             Get in Touch
           </Link>

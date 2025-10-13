@@ -1,0 +1,12 @@
+This directory should contain the following PDF files:
+
+1. yanghua_company_profile_en_v2.0.pdf - English company profile
+2. yanghua_company_profile_es_v2.0.pdf - Spanish company profile
+
+Please add the actual PDF files to enable the download functionality.
+
+File specifications:
+- Format: PDF
+- Size: Recommended 2-5MB
+- Content: Company overview, history, capabilities, certifications
+- Languages: English and Spanish versions
