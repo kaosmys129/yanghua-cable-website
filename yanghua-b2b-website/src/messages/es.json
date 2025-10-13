@@ -806,11 +806,11 @@
         ]
       },
       {
-        "id": "rail-transit",
-        "title": "Soluciones de Tránsito Ferroviario",
+        "id": "charging-station",
+        "title": "Soluciones de EV charging",
         "subtitle": "Energía segura y confiable para sistemas ferroviarios y de metro",
         "description": "Nuestras soluciones de barras colectoras flexibles proporcionan distribución de energía segura y confiable para sistemas ferroviarios y de metro. Diseñadas para sistemas de metro, estaciones ferroviarias y sistemas de señalización, ofrecen seguridad y rendimiento mejorados en entornos de tránsito.",
-        "image": "/images/solutions/rail-transit.webp",
+        "image": "/images/solutions/charging-station.webp",
         "highlights": [
           "Seguridad mejorada para entornos de pasajeros",
           "Diseño resistente a vibraciones",
@@ -863,7 +863,7 @@
         ]
       },
       {
-        "id": "metallurgy-chemical",
+        "id": "metallurgy",
         "title": "Soluciones de Metalurgia y Química",
         "subtitle": "Soluciones de energía de servicio pesado para entornos industriales hostiles",
         "description": "Entregue energía confiable en los entornos industriales más hostiles con nuestras soluciones de metalurgia y química. Diseñadas para acerías, plantas químicas y refinerías, proporcionan durabilidad y rendimiento excepcionales en condiciones extremas.",
@@ -920,11 +920,11 @@
         ]
       },
       {
-        "id": "marine-shipping",
+        "id": "wind-farm",
         "title": "Soluciones Marinas y de Transporte",
         "subtitle": "Soluciones de energía resistentes a la corrosión para aplicaciones marinas",
         "description": "Nuestras soluciones marinas y de transporte proporcionan distribución de energía confiable y resistente a la corrosión para aplicaciones marítimas. Diseñadas para puertos, barcos y plataformas marinas, aseguran entrega de energía segura y eficiente en entornos marinos desafiantes.",
-        "image": "/images/solutions/marine.webp",
+        "image": "/images/solutions/wind-farm.webp",
         "highlights": [
           "Resistencia a la corrosión por agua salada",
           "Certificaciones de seguridad marina",

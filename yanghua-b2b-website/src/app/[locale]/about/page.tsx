@@ -319,13 +319,13 @@ export default function AboutPage() {
               {/* Team member 4 */}
             <div className="text-center">
               <div className="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-32 mx-auto mb-4 flex items-center justify-center text-gray-500">
-                  <img src={`/images/about/Li.jpg`} alt="Mr Li Xiaohua" className="w-full h-auto object-contain" />
+                  <img src={`/images/about/peng.webp`} alt="Mr Peng" className="w-full h-auto object-contain" />
 
               </div>
-              <h3 className="text-xl font-bold text-[#212529] mb-1">Mr Li Xiaohua</h3>
-              <p className="text-[#fdb827] mb-2">{t('team.positions.engineer')}</p>
+              <h3 className="text-xl font-bold text-[#212529] mb-1">Mr Peng Qian</h3>
+              <p className="text-[#fdb827] mb-2">{t('team.positions.qa')}</p>
               <p className="text-[#6c757d] text-sm">
-                {t('team.experience.engineer')}
+                {t('team.experience.qa')}
               </p>
             </div>
           

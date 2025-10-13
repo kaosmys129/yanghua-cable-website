@@ -50,7 +50,8 @@
     "remark-gfm": "^4.0.1",
     "strapi-sdk-js": "^3.0.0",
     "tailwind-merge": "^3.3.1",
-    "web-vitals": "^5.1.0"
+    "web-vitals": "^5.1.0",
+    "yet-another-react-lightbox": "^3.25.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

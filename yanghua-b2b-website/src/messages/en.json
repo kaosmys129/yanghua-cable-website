@@ -104,8 +104,8 @@
         "description": "High-performance cables for data centers and IT infrastructure."
       },
       "railTransit": {
-        "name": "Rail Transit",
-        "description": "Specialized cables for railway and urban transit systems."
+        "name": "charging station",
+        "description": "Specialized cables for EV cars charging station."
       },
       "metallurgyChemical": {
         "name": "Metallurgy & Chemical",
@@ -138,8 +138,8 @@
         "description": "High-performance cables for data centers and IT infrastructure."
       },
       "railway": {
-        "title": "Rail Transit",
-        "description": "Specialized cables for railway and urban transit systems."
+        "title": "Charging Station",
+        "description": "Specialized cables for EV cars charging station."
       },
       "chemical": {
         "title": "Metallurgy & Chemical",
@@ -807,11 +807,11 @@
         ]
       },
       {
-        "id": "rail-transit",
-        "title": "Rail Transit Solutions",
-        "subtitle": "Safe and reliable power for railway and metro systems",
+        "id": "charging-station",
+        "title": "Charging Station Solutions",
+        "subtitle": "Safe and reliable power for EV charging station",
         "description": "Our flexible busbar solutions provide safe, reliable power distribution for railway and metro systems. Engineered for metro systems, railway stations, and signaling systems, they offer enhanced safety and performance in transit environments.",
-        "image": "/images/solutions/rail-transit.webp",
+        "image": "/images/solutions/charging-station.webp",
         "highlights": [
           "Enhanced safety for passenger environments",
           "Vibration-resistant design",
@@ -819,10 +819,9 @@
           "Compliance with transit safety standards"
         ],
         "applications": [
-          "Metro systems",
-          "Railway stations",
-          "Signaling systems",
-          "Maintenance facilities"
+          "Commercial EV charging station",
+          "Truck EV charging station",
+          "EV golfcar charging station"
         ],
         "advantages": [
           {
@@ -864,7 +863,7 @@
         ]
       },
       {
-        "id": "metallurgy-chemical",
+        "id": "metallurgy",
         "title": "Metallurgy & Chemical Solutions",
         "subtitle": "Heavy-duty power solutions for harsh industrial environments",
         "description": "Deliver reliable power in the harshest industrial environments with our metallurgy and chemical solutions. Designed for steel mills, chemical plants, and refineries, they provide exceptional durability and performance in extreme conditions.",
@@ -921,11 +920,11 @@
         ]
       },
       {
-        "id": "marine-shipping",
-        "title": "Marine & Shipping Solutions",
-        "subtitle": "Corrosion-resistant power solutions for marine applications",
+        "id": "wind-farm",
+        "title": "Wind Farm Solutions",
+        "subtitle": "Corrosion-resistant power solutions for wind farm applications",
         "description": "Our marine and shipping solutions provide reliable, corrosion-resistant power distribution for maritime applications. Designed for ports, ships, and offshore platforms, they ensure safe, efficient power delivery in challenging marine environments.",
-        "image": "/images/solutions/marine.webp",
+        "image": "/images/solutions/wind-farm.webp",
         "highlights": [
           "Saltwater corrosion resistance",
           "Marine safety certifications",

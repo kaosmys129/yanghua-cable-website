@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import LightboxImage from '@/components/LightboxImage';
 
 type Solution = {
   id: string;
@@ -41,13 +42,6 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
     notFound();
   }
 
-  const galleryImages = [
-    { src: "/no-image-available-copy.webp", text: "Detailed view of the busbar system." },
-    { src: "/no-image-available-copy.webp", text: "Installation in a solar power facility." },
-    { src: "/no-image-available-copy.webp", text: "Close-up of the flexible connector." },
-    { src: "/no-image-available-copy.webp", text: "Application in a wind turbine." },
-  ];
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -85,14 +79,10 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
                     </div>
                 </div>
             </div>
-            <div className="relative h-64 w-full rounded-lg overflow-hidden">
-                <Image
-                    src="/no-image-available-copy.webp"
-                    alt="Solution illustration"
-                    layout="fill"
-                    objectFit="cover"
-                />
-            </div>
+            <LightboxImage 
+                src={`/images/solutions/solution-details/${solution.id}-detail.webp`}
+                alt={solution.title}
+            />
           </div>
 
           <div>
@@ -126,25 +116,6 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
                   ))}
                 </tbody>
               </table>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Image Gallery</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {galleryImages.map((image, index) => (
-                    <div key={index} className="text-center">
-                        <div className="relative h-48 w-full mb-3 rounded-lg overflow-hidden shadow-md">
-                            <Image
-                                src={image.src}
-                                alt={image.text}
-                                layout="fill"
-                                objectFit="cover"
-                            />
-                        </div>
-                        <p className="text-sm text-gray-600">{image.text}</p>
-                    </div>
-                ))}
             </div>
           </div>
 
