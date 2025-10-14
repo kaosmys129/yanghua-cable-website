@@ -306,6 +306,9 @@
       "name": "Nombre Completo",
       "email": "Dirección de Correo Electrónico",
       "company": "Nombre de la Empresa",
+      "country": "País",
+      "phone": "Número de Teléfono",
+      "subject": "Asunto",
       "productInterest": "Interés en Productos",
       "message": "Detalles del Proyecto"
     },
@@ -313,8 +316,18 @@
       "name": "Ingrese su nombre completo",
       "email": "Ingrese su dirección de correo electrónico",
       "company": "Ingrese el nombre de su empresa",
+      "country": "Ingrese su país",
+      "phone": "Ingrese su número de teléfono",
       "selectCategory": "Seleccione una categoría de producto",
       "message": "Describa los requisitos de su proyecto, capacidad actual, cronograma y cualquier necesidad técnica específica..."
+    },
+    "subjects": {
+      "selectSubject": "Seleccione un asunto",
+      "productInquiry": "Consulta de Producto",
+      "technicalSupport": "Soporte Técnico",
+      "partnership": "Asociación",
+      "customSolution": "Solución Personalizada",
+      "other": "Otro"
     },
     "options": {
       "flexibleBusbar": "Barra Flexible",
@@ -325,6 +338,7 @@
     "buttons": {
       "submit": "Enviar Consulta",
       "submitting": "Enviando...",
+      "sending": "Enviando...",
       "sendAnother": "Enviar Otra Consulta"
     },
     "success": {
@@ -332,7 +346,8 @@
       "description": "Gracias por su interés. Nuestro equipo técnico revisará sus requisitos y se pondrá en contacto con usted dentro de 24 horas."
     },
     "errors": {
-      "submitFailed": "Error al enviar la consulta. Por favor, inténtelo de nuevo."
+      "submitFailed": "Error al enviar la consulta. Por favor, inténtelo de nuevo.",
+      "networkError": "Error de red. Por favor, verifique su conexión e inténtelo de nuevo."
     },
     "privacyNote": "Su información es segura y solo se utilizará para responder a su consulta."
   },

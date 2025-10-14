@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
+import QuickInquiry from '@/components/features/QuickInquiry';
+import { getCsrfTokenAsync } from '@/lib/security/csrf';
 
 interface Project {
   id: string;
@@ -86,6 +88,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const { id, locale } = await params;
   const t = await getTranslations({ locale, namespace: 'projects' });
   const project = await getProject(id, t);
+  const csrfToken = await getCsrfTokenAsync();
 
   // Placeholder image component
   const PlaceholderImage = ({ className }: { className?: string }) => (
@@ -315,34 +318,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* Quick inquiry */}
         <div className="bg-yellow-500 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('detailPage.quickInquiry')}</h3>
-          <form className="space-y-4">
-            <input
-              type="text"
-              placeholder={t('form.name')}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <input
-              type="email"
-              placeholder={t('form.email')}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <input
-              type="text"
-              placeholder={t('form.company')}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <textarea
-              placeholder={t('form.message')}
-              rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <button
-              type="submit"
-              className="w-full bg-gray-900 text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors"
-            >
-              {t('form.submit')}
-            </button>
-          </form>
+          <QuickInquiry projectId={id} projectTitle={project.title} csrfToken={csrfToken} />
         </div>
     
         {/* Related projects */}

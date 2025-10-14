@@ -82,16 +82,16 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center">
                 <Phone size={16} className="mr-2 text-[#fdb827]" />
-                <span className="text-sm">+86 138 0013 8000</span>
+                <span className="text-sm">+86 193 5995 3105</span>
               </div>
               <div className="flex items-center">
                 <Mail size={16} className="mr-2 text-[#fdb827]" />
-                <span className="text-sm">info@yanghuasti.com</span>
+                <span className="text-sm">info@yhflexiblebusbar.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={16} className="mr-2 text-[#fdb827]" />
                 <span className="text-sm">
-                  {t('footer.company.address', { defaultValue: 'Dongguan, Guangdong, China' })}
+                  {t('footer.company.address', { defaultValue: 'Shenzhen, Guangdong, China' })}
                 </span>
               </div>
             </div>

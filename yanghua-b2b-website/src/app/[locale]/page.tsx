@@ -6,9 +6,11 @@ import Partners from '@/components/business/Partners';
 import InquiryForm from '@/components/features/InquiryForm';
 import ProjectGallery from '@/components/business/ProjectGallery';
 import { getFeaturedProjects } from '@/lib/projects';
+import { getCsrfToken } from '@/lib/security/csrf';
 
-export default function Home() {
+export default async function Home() {
   const featuredProjects = getFeaturedProjects(4);
+  const csrfToken = getCsrfToken();
   return (
     <div className="min-h-screen">
       <Hero />
@@ -17,7 +19,7 @@ export default function Home() {
       <ApplicationAreas />
       <ProjectGallery projects={featuredProjects} />
       <Partners />
-      <InquiryForm />
+      <InquiryForm csrfToken={csrfToken} />
     </div>
   );
 }

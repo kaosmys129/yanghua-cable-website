@@ -306,6 +306,9 @@
       "name": "Full Name",
       "email": "Email Address",
       "company": "Company Name",
+      "country": "Country",
+      "phone": "Phone Number",
+      "subject": "Subject",
       "productInterest": "Product Interest",
       "message": "Project Details"
     },
@@ -313,8 +316,18 @@
       "name": "Enter your full name",
       "email": "Enter your email address",
       "company": "Enter your company name",
+      "country": "Enter your country",
+      "phone": "Enter your phone number",
       "selectCategory": "Select a product category",
       "message": "Describe your project requirements, current capacity, timeline, and any specific technical needs..."
+    },
+    "subjects": {
+      "selectSubject": "Select a subject",
+      "productInquiry": "Product Inquiry",
+      "technicalSupport": "Technical Support",
+      "partnership": "Partnership",
+      "customSolution": "Custom Solution",
+      "other": "Other"
     },
     "options": {
       "flexibleBusbar": "Flexible Busbar",
@@ -325,6 +338,7 @@
     "buttons": {
       "submit": "Send Inquiry",
       "submitting": "Sending...",
+      "sending": "Sending...",
       "sendAnother": "Send Another Inquiry"
     },
     "success": {
@@ -332,7 +346,8 @@
       "description": "Thank you for your interest. Our technical team will review your requirements and get back to you within 24 hours."
     },
     "errors": {
-      "submitFailed": "Failed to send inquiry. Please try again."
+      "submitFailed": "Failed to send inquiry. Please try again.",
+      "networkError": "Network error occurred. Please check your connection and try again."
     },
     "privacyNote": "Your information is secure and will only be used to respond to your inquiry."
   },
@@ -989,17 +1004,17 @@
     "info": {
       "phone": {
         "title": "Phone",
-        "content": "+86-755-8888-8888",
+        "content": "+86-19359963105",
         "description": "Call us during business hours"
       },
       "email": {
         "title": "Email",
-        "content": "info@yanghuasti.com",
+        "content": "info@yhflexiblebusbar.com",
         "description": "Send us an email anytime"
       },
       "address": {
         "title": "Address",
-        "content": "Dongguan, Guangdong, China",
+        "content": "Shenzhen, Guangdong, China",
         "description": "Visit our manufacturing facility"
       },
       "hours": {
