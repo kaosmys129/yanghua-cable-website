@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from 'next';
 import { ArrowLeft, AlertTriangle } from "lucide-react";
 import { formatDate, getStrapiURL } from "@/lib/utils";
-import { StrapiImage } from "@/components/custom/StrapiImage";
+import { StrapiImage, getStrapiMedia } from "@/components/custom/StrapiImage";
 import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
@@ -111,7 +111,7 @@ export default async function ArticlePage({ params }: PageProps) {
     datePublished: article.publishedAt,
     dateModified: article.updatedAt || article.publishedAt,
     author: article.author?.name ? { '@type': 'Person', name: article.author.name } : undefined,
-    image: article.cover?.url ? `${getStrapiURL()}${article.cover.url}` : undefined,
+    image: article.cover?.url ? getStrapiMedia(article.cover.url) || undefined : undefined,
     mainEntityOfPage: articleUrl,
   };
 
