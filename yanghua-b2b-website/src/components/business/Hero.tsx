@@ -6,6 +6,8 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { slides } from './slides';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 export interface SlideData {
   id: number;
@@ -15,7 +17,7 @@ export interface SlideData {
 
 export default function Hero() {
   const t = useTranslations('hero');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -124,7 +126,7 @@ export default function Hero() {
           {currentSlideData.showContent && (
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
               <Link
-                href={`/${locale}/contact`}
+                href={buildLocalizedUrl('contact', locale)}
                 className="btn-primary inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 Get Quote Now
@@ -132,7 +134,7 @@ export default function Hero() {
               </Link>
               
               <Link
-                href={`/${locale}/products`}
+                href={buildLocalizedUrl('products', locale)}
                 className="btn-secondary inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 {t('cta')}

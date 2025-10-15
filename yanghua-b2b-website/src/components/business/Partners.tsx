@@ -1,14 +1,16 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
-import { InfiniteSlider } from '@/components/ui/InfiniteSlider';
+import { InfiniteSlider } from '../ui/InfiniteSlider';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 export default function Partners() {
   const t = useTranslations('partners');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   const partners = [
     { name: 'BYD', logo: '/images/partners/byd.webp' },
@@ -58,7 +60,7 @@ export default function Partners() {
           </InfiniteSlider>
         </div>
         <div className="mt-12 text-center">
-          <Link href={`/${locale}/partners`} className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium transition-colors duration-200">
+          <Link href={buildLocalizedUrl('partners', locale)} className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium transition-colors duration-200">
             {t('ctaAllPartners')} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>

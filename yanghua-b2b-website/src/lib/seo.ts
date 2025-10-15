@@ -1,18 +1,172 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Locale } from './i18n';
+import { 
+  buildLocalizedUrl, 
+  translateUrl, 
+  LOCALIZED_PATHS,
+  getLocalizedPath,
+  getPageKeyFromPath 
+} from './url-localization';
 
 // 基础SEO配置
 export const SEO_CONFIG = {
   siteName: 'Yanghua Cable',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://yanghua-cable-website.vercel.app',
-  defaultTitle: 'Yanghua Cable - Professional Cable Solutions',
-  defaultDescription: 'Leading manufacturer of high-quality cables and electrical solutions for industrial and commercial applications.',
-  defaultKeywords: ['cable', 'electrical', 'industrial', 'manufacturing', 'yanghua'],
+  defaultTitle: 'Flexible Busbar Solutions | High Current Power Distribution | Yanghua',
+  defaultDescription: 'Leading manufacturer of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, 6400A capacity for data centers, EV charging, and industrial applications.',
+  defaultKeywords: [
+    // 英语主要关键词
+    'flexible busbar', 'copper busbar', 'high current busbar', 'busbar systems', 'power distribution',
+    // 英语长尾关键词
+    'flexible copper busbar systems', 'high current power distribution solutions', 'IP68 waterproof busbar',
+    'data center power distribution', 'EV charging infrastructure cables', 'industrial power transmission',
+    // 品牌和通用关键词
+    'yanghua', 'electrical components', 'cable management solutions', 'power transmission efficiency'
+  ],
+  // 西班牙语关键词配置
+  spanishKeywords: [
+    // 西班牙语主要关键词
+    'barra colectora flexible', 'barra de cobre', 'distribución de energía', 'sistemas de barras colectoras', 'cables de alta corriente',
+    // 西班牙语长尾关键词
+    'sistemas de barras colectoras flexibles', 'distribución de energía de alta corriente', 'barras colectoras impermeables IP68',
+    'distribución de energía para centros de datos', 'infraestructura de carga para vehículos eléctricos', 'transmisión de energía industrial',
+    // 品牌和通用关键词
+    'yanghua', 'componentes eléctricos', 'soluciones de gestión de cables', 'eficiencia en transmisión de energía'
+  ],
   twitterHandle: '@yanghuacable',
   defaultImage: '/images/og-default.jpg',
   defaultLocale: 'en',
   supportedLocales: ['en', 'es']
 };
+
+/**
+ * 生成hreflang替代链接
+ * @param currentPath 当前页面路径（不包含语言前缀）
+ * @param currentLocale 当前语言
+ * @param baseUrl 网站基础URL
+ * @returns hreflang链接数组
+ */
+export function generateHreflangAlternates(
+  currentPath: string,
+  currentLocale: Locale,
+  baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || 'https://yanghua-cable.com'
+): Array<{ hreflang: string; href: string }> {
+  const alternates: Array<{ hreflang: string; href: string }> = [];
+  
+  // 支持的语言映射
+  const localeMap: Record<Locale, string> = {
+    en: 'en',
+    es: 'es'
+  };
+
+  // 获取页面键名
+  const pageKey = getPageKeyFromPath(currentPath, currentLocale);
+  
+  // 为每种语言生成hreflang链接
+  Object.entries(localeMap).forEach(([locale, hreflang]) => {
+    const targetLocale = locale as Locale;
+    
+    let localizedUrl: string;
+    if (pageKey) {
+      // 使用页面键名生成本地化URL
+      localizedUrl = buildLocalizedUrl(pageKey, targetLocale, undefined, baseUrl);
+    } else {
+      // 回退到简单的路径替换
+      localizedUrl = `${baseUrl}/${targetLocale}${currentPath}`;
+    }
+    
+    alternates.push({
+      hreflang,
+      href: localizedUrl
+    });
+  });
+
+  // 添加x-default（默认为英语）
+  let defaultUrl: string;
+  if (pageKey) {
+    defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
+  } else {
+    defaultUrl = `${baseUrl}/en${currentPath}`;
+  }
+  
+  alternates.push({
+    hreflang: 'x-default',
+    href: defaultUrl
+  });
+
+  return alternates;
+}
+
+/**
+ * 为Next.js Metadata生成hreflang替代链接
+ * @param currentPath 当前页面路径
+ * @param currentLocale 当前语言
+ * @returns 符合Next.js Metadata格式的语言映射
+ */
+export function generateHreflangAlternatesForMetadata(
+  currentPath: string,
+  currentLocale: Locale
+): Record<string, string> {
+  const alternates: Record<string, string> = {};
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yanghua-cable.com';
+  
+  // 支持的语言映射
+  const localeMap: Record<Locale, string> = {
+    en: 'en',
+    es: 'es'
+  };
+
+  // 获取页面键名
+  const pageKey = getPageKeyFromPath(currentPath, currentLocale);
+
+  // 为每种语言生成hreflang链接
+  Object.entries(localeMap).forEach(([locale, hreflang]) => {
+    const targetLocale = locale as Locale;
+    
+    let localizedUrl: string;
+    if (pageKey) {
+      localizedUrl = buildLocalizedUrl(pageKey, targetLocale, undefined, baseUrl);
+    } else {
+      localizedUrl = `${baseUrl}/${targetLocale}${currentPath}`;
+    }
+    
+    alternates[hreflang] = localizedUrl;
+  });
+
+  // 添加x-default（默认为英语）
+  let defaultUrl: string;
+  if (pageKey) {
+    defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
+  } else {
+    defaultUrl = `${baseUrl}/en${currentPath}`;
+  }
+  
+  alternates['x-default'] = defaultUrl;
+
+  return alternates;
+}
+
+/**
+ * 生成canonical URL
+ * @param currentPath 当前页面路径
+ * @param currentLocale 当前语言
+ * @param baseUrl 网站基础URL
+ * @returns canonical URL
+ */
+export function generateCanonicalUrl(
+  currentPath: string,
+  currentLocale: Locale,
+  baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || 'https://yanghua-cable.com'
+): string {
+  const pageKey = getPageKeyFromPath(currentPath, currentLocale);
+  
+  if (pageKey) {
+    return buildLocalizedUrl(pageKey, currentLocale, undefined, baseUrl);
+  } else {
+    return `${baseUrl}/${currentLocale}${currentPath}`;
+  }
+}
 
 // 页面类型定义
 export type PageType = 'website' | 'article' | 'product' | 'organization';
@@ -47,18 +201,12 @@ export async function generateMetadata(
   const image = seoData.image ? `${SEO_CONFIG.siteUrl}${seoData.image}` : `${SEO_CONFIG.siteUrl}${SEO_CONFIG.defaultImage}`;
 
   // 构建关键词
-  const keywords = [
-    ...(seoData.keywords || []),
-    ...SEO_CONFIG.defaultKeywords
-  ].join(', ');
+  const keywords = locale === 'es' 
+    ? [...(seoData.keywords || []), ...SEO_CONFIG.spanishKeywords].join(', ')
+    : [...(seoData.keywords || []), ...SEO_CONFIG.defaultKeywords].join(', ');
 
   // 构建alternate语言链接
-  const alternates: Record<string, string> = {};
-  SEO_CONFIG.supportedLocales.forEach(loc => {
-    if (loc !== locale) {
-      alternates[loc] = url.replace(`/${locale}/`, `/${loc}/`);
-    }
-  });
+  const alternates = generateHreflangAlternatesForMetadata(seoData.url || '', locale as Locale);
 
   const metadata: Metadata = {
     title,

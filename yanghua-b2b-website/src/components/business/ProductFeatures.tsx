@@ -4,10 +4,12 @@ import { Shield, Zap, TrendingUp, DollarSign, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 export default function ProductFeatures() {
   const t = useTranslations('productFeatures');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   const features = [
     {
@@ -103,7 +105,7 @@ export default function ProductFeatures() {
         
         <div className="mt-12 text-center">
           <Link 
-            href={`/${locale}/products`} 
+            href={buildLocalizedUrl('products', locale)} 
             className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium"
           >
             {t('ctaExplore')} <ArrowRight className="ml-2 h-4 w-4" />

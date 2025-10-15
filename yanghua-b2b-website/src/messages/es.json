@@ -1542,5 +1542,31 @@
       "privacy": "Política de Privacidad",
       "terms": "Términos de Servicio"
     }
+  },
+  "seo": {
+    "defaultTitle": "Soluciones de Barras Colectoras Flexibles | Distribución de Alta Corriente | Yanghua",
+    "defaultDescription": "Fabricante líder de sistemas de barras colectoras de cobre flexibles y soluciones de distribución de energía de alta corriente. Impermeables IP68, capacidad 6400A para centros de datos, carga EV y aplicaciones industriales.",
+    "pages": {
+      "home": {
+        "title": "Soluciones de Barras Colectoras Flexibles | Distribución de Alta Corriente | Yanghua",
+        "description": "La única barra colectora flexible de alta corriente del mundo con protección IP68. Capacidad 6400A, instalación flexible para centros de datos, infraestructura de carga EV y distribución de energía industrial."
+      },
+      "products": {
+        "title": "Sistemas de Barras Colectoras de Cobre Flexibles | Soluciones de Alta Corriente | Yanghua",
+        "description": "Gama completa de sistemas de barras colectoras de cobre flexibles y soluciones de distribución de energía de alta corriente. Impermeables IP68, diseños personalizables para aplicaciones industriales."
+      },
+      "about": {
+        "title": "Acerca de Yanghua | Fabricante Líder de Barras Colectoras Flexibles",
+        "description": "Conozca la experiencia de Yanghua en fabricación de barras colectoras flexibles. I+D avanzado, garantía de calidad y servicio global para soluciones de distribución de energía de alta corriente."
+      },
+      "contact": {
+        "title": "Contactar Yanghua | Consulta de Soluciones de Barras Colectoras Flexibles",
+        "description": "Póngase en contacto con Yanghua para soluciones de barras colectoras flexibles. Consultoría experta para distribución de energía de alta corriente, infraestructura de centros de datos y sistemas de carga EV."
+      },
+      "solutions": {
+        "title": "Soluciones de Distribución de Energía | Centros de Datos y Carga EV | Yanghua",
+        "description": "Soluciones integrales de distribución de energía para centros de datos, infraestructura de carga EV y aplicaciones industriales. Sistemas de barras colectoras flexibles con protección IP68."
+      }
+    }
   }
 }

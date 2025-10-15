@@ -1512,5 +1512,31 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     }
+  },
+  "seo": {
+    "defaultTitle": "Flexible Busbar Solutions | High Current Power Distribution | Yanghua",
+    "defaultDescription": "Leading manufacturer of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, 6400A capacity for data centers, EV charging, and industrial applications.",
+    "pages": {
+      "home": {
+        "title": "Flexible Busbar Solutions | High Current Power Distribution | Yanghua",
+        "description": "World's only flexible high-current busbar with IP68 protection. 6400A capacity, flexible installation for data centers, EV charging infrastructure, and industrial power distribution."
+      },
+      "products": {
+        "title": "Flexible Copper Busbar Systems | High Current Solutions | Yanghua",
+        "description": "Comprehensive range of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, customizable designs for industrial applications."
+      },
+      "about": {
+        "title": "About Yanghua | Leading Flexible Busbar Manufacturer",
+        "description": "Learn about Yanghua's expertise in flexible busbar manufacturing. Advanced R&D, quality assurance, and global service for high current power distribution solutions."
+      },
+      "contact": {
+        "title": "Contact Yanghua | Flexible Busbar Solutions Inquiry",
+        "description": "Get in touch with Yanghua for flexible busbar solutions. Expert consultation for high current power distribution, data center infrastructure, and EV charging systems."
+      },
+      "solutions": {
+        "title": "Power Distribution Solutions | Data Center & EV Charging | Yanghua",
+        "description": "Comprehensive power distribution solutions for data centers, EV charging infrastructure, and industrial applications. Flexible busbar systems with IP68 protection."
+      }
+    }
   }
 }

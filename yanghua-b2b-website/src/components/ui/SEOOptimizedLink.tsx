@@ -5,6 +5,8 @@
 
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 interface SEOOptimizedLinkProps {
   href: string;
@@ -60,18 +62,18 @@ export default function SEOOptimizedLink({
  */
 export function ProductLink({
   productId,
-  locale = 'zh',
+  locale = 'en',
   className,
   children,
   context = 'content'
 }: {
   productId: string;
-  locale?: string;
+  locale?: Locale;
   className?: string;
   children?: ReactNode;
   context?: 'navigation' | 'content' | 'footer' | 'sidebar';
 }) {
-  const href = `/${locale}/products/${productId}`;
+  const href = buildLocalizedUrl(`products/${productId}`, locale);
   
   return (
     <SEOOptimizedLink
@@ -91,18 +93,18 @@ export function ProductLink({
  */
 export function SolutionLink({
   solutionId,
-  locale = 'zh',
+  locale = 'en',
   className,
   children,
   context = 'content'
 }: {
   solutionId: string;
-  locale?: string;
+  locale?: Locale;
   className?: string;
   children?: ReactNode;
   context?: 'navigation' | 'content' | 'footer' | 'sidebar';
 }) {
-  const href = `/${locale}/solutions/${solutionId}`;
+  const href = buildLocalizedUrl(`solutions/${solutionId}`, locale);
   
   // 根据解决方案ID选择合适的锚文本策略
   let targetPage = 'industrial-automation';
@@ -129,17 +131,17 @@ export function SolutionLink({
  * 专门用于联系我们链接的组件
  */
 export function ContactLink({
-  locale = 'zh',
+  locale = 'en',
   className,
   children,
   context = 'content'
 }: {
-  locale?: string;
+  locale?: Locale;
   className?: string;
   children?: ReactNode;
   context?: 'navigation' | 'content' | 'footer' | 'sidebar';
 }) {
-  const href = `/${locale}/contact`;
+  const href = buildLocalizedUrl('contact', locale);
   
   return (
     <SEOOptimizedLink

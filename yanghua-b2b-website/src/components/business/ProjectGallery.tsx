@@ -4,6 +4,8 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 interface Project {
   id: string;
@@ -25,7 +27,7 @@ interface ProjectGalleryProps {
 
 export default function ProjectGallery({ projects }: ProjectGalleryProps) {
   const t = useTranslations('projectGallery');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   // Get first 4 projects
   const featuredProjects = projects.slice(0, 4);
@@ -99,7 +101,7 @@ export default function ProjectGallery({ projects }: ProjectGalleryProps) {
         {/* View All Projects CTA */}
         <div className="mt-12 text-center">
           <Link 
-            href={`/${locale}/projects`} 
+            href={buildLocalizedUrl('projects', locale)} 
             className="inline-flex items-center bg-[#fdb827] hover:bg-[#e0a020] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             {t('viewAllProjects')} 

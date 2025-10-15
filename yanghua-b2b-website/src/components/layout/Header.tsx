@@ -5,23 +5,25 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = useTranslations('navigation');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   const navigation = [
-    { name: t('home'), href: `/${locale}` },
-    { name: 'About', href: `/${locale}/about` },
-    { name: t('products'), href: `/${locale}/products` },
-    { name: t('solutions'), href: `/${locale}/solutions` },
-    { name: 'Projects', href: `/${locale}/projects` },
-    { name: t('news'), href: `/${locale}/articles` },
-    { name: 'Services', href: `/${locale}/services` },
-    { name: t('contact'), href: `/${locale}/contact` },
+    { name: t('home'), href: buildLocalizedUrl('home', locale) },
+    { name: 'About', href: buildLocalizedUrl('about', locale) },
+    { name: t('products'), href: buildLocalizedUrl('products', locale) },
+    { name: t('solutions'), href: buildLocalizedUrl('solutions', locale) },
+    { name: 'Projects', href: buildLocalizedUrl('projects', locale) },
+    { name: t('news'), href: buildLocalizedUrl('articles', locale) },
+    { name: 'Services', href: buildLocalizedUrl('services', locale) },
+    { name: t('contact'), href: buildLocalizedUrl('contact', locale) },
   ];
 
   return (
@@ -30,7 +32,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href={`/${locale}`} className="text-2xl font-bold text-[#212529]">
+            <Link href={buildLocalizedUrl('home', locale)} className="text-2xl font-bold text-[#212529]">
               Yanghua<span className="text-[#fdb827]">STI</span>
             </Link>
           </div>
@@ -52,7 +54,7 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
             <Link
-              href={`/${locale}/contact`}
+              href={buildLocalizedUrl('contact', locale)}
               className="btn-primary text-sm"
             >
               Get Quote
@@ -91,7 +93,7 @@ export default function Header() {
                   <LanguageSwitcher />
                 </div>
                 <Link
-                  href={`/${locale}/contact`}
+                  href={buildLocalizedUrl('contact', locale)}
                   className="btn-primary w-full text-center block"
                   onClick={() => setIsMenuOpen(false)}
                 >

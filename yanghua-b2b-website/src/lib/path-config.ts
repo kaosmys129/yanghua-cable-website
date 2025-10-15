@@ -4,6 +4,13 @@
  */
 
 import path from 'path';
+import { Locale } from './i18n';
+import { 
+  getLocalizedPath, 
+  buildLocalizedUrl, 
+  translateUrl,
+  LOCALIZED_PATHS 
+} from './url-localization';
 
 // 路径别名配置
 export const PATH_ALIASES = {
@@ -84,15 +91,65 @@ export function buildApiUrl(endpoint: keyof typeof API_PATHS, path?: string): st
 }
 
 /**
- * 构建页面URL
+ * 构建本地化页面URL
+ * @param page 页面键名
+ * @param locale 语言代码
+ * @param params 动态参数
+ * @param baseUrl 基础URL
+ * @returns 本地化的完整URL
+ */
+export function buildLocalizedPageUrl(
+  page: string, 
+  locale: Locale, 
+  params?: Record<string, string>,
+  baseUrl?: string
+): string {
+  return buildLocalizedUrl(page, locale, params, baseUrl);
+}
+
+/**
+ * 构建页面URL（兼容旧版本）
  */
 export function buildPageUrl(page: keyof typeof PAGE_PATHS, locale?: string): string {
   const basePath = PAGE_PATHS[page];
+  
   if (locale && locale !== 'en') {
-    const localePrefix = LOCALE_PREFIXES[locale as keyof typeof LOCALE_PREFIXES];
-    return localePrefix ? `${localePrefix}${basePath}` : basePath;
+    // 使用新的本地化路径生成
+    const localizedPath = getLocalizedPath(page, locale as Locale);
+    return `/${locale}${localizedPath === '/' ? '' : localizedPath}`;
   }
-  return basePath;
+  
+  return locale ? `/${locale}${basePath}` : basePath;
+}
+
+/**
+ * 获取本地化路径（新增）
+ * @param pageKey 页面键名
+ * @param locale 语言代码
+ * @param params 动态参数
+ * @returns 本地化路径
+ */
+export function getPageLocalizedPath(
+  pageKey: string, 
+  locale: Locale, 
+  params?: Record<string, string>
+): string {
+  return getLocalizedPath(pageKey, locale, params);
+}
+
+/**
+ * 转换URL到不同语言版本（新增）
+ * @param currentUrl 当前URL
+ * @param currentLocale 当前语言
+ * @param targetLocale 目标语言
+ * @returns 目标语言的URL
+ */
+export function convertUrlToLocale(
+  currentUrl: string,
+  currentLocale: Locale,
+  targetLocale: Locale
+): string {
+  return translateUrl(currentUrl, currentLocale, targetLocale);
 }
 
 /**
@@ -305,9 +362,25 @@ export function validateAssetPaths(): { valid: string[]; invalid: string[] } {
  */
 export function generatePathReport(): string {
   const { valid, invalid } = validateAssetPaths();
+  const totalAliases = Object.keys(PATH_ALIASES).length;
+  const totalAssetPaths = Object.keys(ASSET_PATHS).length;
+  const totalApiPaths = Object.keys(API_PATHS).length;
+  const totalPagePaths = Object.keys(PAGE_PATHS).length;
+  const totalLocalizedPaths = Object.keys(LOCALIZED_PATHS).length;
   
   let report = '\n=== 路径配置检查报告 ===\n';
   report += `检查时间: ${new Date().toISOString()}\n\n`;
+  
+  report += '## 配置概览\n';
+  report += `- 路径别名数量: ${totalAliases}\n`;
+  report += `- 静态资源路径数量: ${totalAssetPaths}\n`;
+  report += `- API路径数量: ${totalApiPaths}\n`;
+  report += `- 页面路径数量: ${totalPagePaths}\n`;
+  report += `- 本地化路径数量: ${totalLocalizedPaths}\n\n`;
+  
+  report += '## 多语言支持\n';
+  report += '- 支持语言: en, es\n';
+  report += `- 本地化页面: ${totalLocalizedPaths}\n\n`;
   
   if (valid.length > 0) {
     report += '✅ 有效路径:\n';
@@ -325,8 +398,14 @@ export function generatePathReport(): string {
     report += '\n';
   }
   
-  report += `总计: ${valid.length + invalid.length} 个路径检查完成\n`;
-  report += `有效: ${valid.length}, 无效: ${invalid.length}\n`;
+  report += '## 本地化路径映射\n';
+  Object.entries(LOCALIZED_PATHS).forEach(([key, paths]) => {
+    report += `### ${key}\n`;
+    Object.entries(paths).forEach(([locale, path]) => {
+      report += `- ${locale}: ${path}\n`;
+    });
+    report += '\n';
+  });
   
   return report;
 }

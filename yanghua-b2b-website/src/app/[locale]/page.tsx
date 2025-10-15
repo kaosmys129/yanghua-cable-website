@@ -7,58 +7,67 @@ import InquiryForm from '@/components/features/InquiryForm';
 import ProjectGallery from '@/components/business/ProjectGallery';
 import { getFeaturedProjects } from '@/lib/projects';
 import { getCsrfToken } from '@/lib/security/csrf';
-import StructuredDataScript from '@/components/seo/StructuredDataScript';
+import { MultipleStructuredDataScript } from '@/components/seo/StructuredDataScript';
 import { generateOrganizationSchema, generateWebsiteSchema } from '@/lib/structured-data';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { generateHreflangAlternatesForMetadata } from '@/lib/seo';
 
 export default async function Home() {
-  const featuredProjects = getFeaturedProjects(4);
-  const csrfToken = getCsrfToken();
-  
-  // 生成结构化数据
+  const projects = await getFeaturedProjects();
+  const csrfToken = await getCsrfToken();
+
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebsiteSchema();
-  
+
   return (
     <>
-      <StructuredDataScript schema={organizationSchema} />
-      <StructuredDataScript schema={websiteSchema} />
-      <div className="min-h-screen">
-        <Hero />
-        <CompanyStrength />
-        <ProductComparison />
-        <ApplicationAreas />
-        <ProjectGallery projects={featuredProjects} />
-        <Partners />
-        <InquiryForm csrfToken={csrfToken} />
-      </div>
+      <MultipleStructuredDataScript schemas={[organizationSchema, websiteSchema]} />
+      <Hero />
+      <CompanyStrength />
+      <ApplicationAreas />
+      <ProductComparison />
+      <Partners />
+      <ProjectGallery projects={projects} />
+      <InquiryForm csrfToken={csrfToken} />
     </>
   );
 }
-import type { Metadata } from 'next';
 
 const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = params?.locale || 'en';
-  const titles: Record<string, string> = {
-    en: 'Flexible Busbar Solutions | Yanghua',
-    es: 'Soluciones de Barra Colectora Flexible | Yanghua',
-  };
-  const descriptions: Record<string, string> = {
-    en: 'Leading flexible copper busbar systems for industrial power distribution. High-current, low-loss, reliable solutions for data centers, EV, and industrial applications.',
-    es: 'Sistemas de barra colectora flexible para distribución de energía industrial. Alta corriente, baja pérdida y soluciones fiables para centros de datos, EV e industria.',
-  };
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: 'seo' });
 
-  const url = `${BASE_URL}/${locale}`;
+  const title = t('pages.home.title');
+  const description = t('pages.home.description');
+  const currentUrl = `${BASE_URL}/${locale}`;
+
   return {
-    title: titles[locale] || titles.en,
-    description: descriptions[locale] || descriptions.en,
+    title,
+    description,
+    keywords: locale === 'es' 
+      ? 'barra colectora flexible, sistemas de distribución de energía, cables de alta corriente, yanghua'
+      : 'flexible busbar, power distribution systems, high current cables, yanghua',
+    openGraph: {
+      title,
+      description,
+      url: currentUrl,
+      siteName: 'Yanghua Cable',
+      images: [`${BASE_URL}/images/og-home.jpg`],
+      locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${BASE_URL}/images/og-home.jpg`],
+    },
     alternates: {
-      canonical: url,
-      languages: {
-        en: `${BASE_URL}/en`,
-        es: `${BASE_URL}/es`,
-      },
+      canonical: currentUrl,
+      languages: generateHreflangAlternatesForMetadata('/', locale as 'en' | 'es'),
     },
   };
 }

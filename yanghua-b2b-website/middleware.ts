@@ -3,6 +3,11 @@ import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './src/lib/i18n';
 import { authMiddleware } from './src/lib/auth-middleware';
 import { generateCSPHeader } from './src/lib/security';
+import { 
+  getPageKeyFromPath, 
+  getLocalizedPath, 
+  LOCALIZED_PATHS 
+} from './src/lib/url-localization';
 
 const intlMiddleware = createMiddleware({
   locales: ['en', 'es'],
@@ -42,13 +47,20 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // URL本地化处理
+  const urlRewriteResponse = handleUrlLocalization(request);
+  if (urlRewriteResponse) {
+    return urlRewriteResponse;
+  }
+
   // 调用 next-intl 中间件
   console.log('Processing with intl middleware:', pathname);
   const response = intlMiddleware(request as any);
 
   // 添加安全头部
   if (response instanceof NextResponse) {
-    response.headers.set('Content-Security-Policy', generateCSPHeader());
+    const cspHeader = generateCSPHeader();
+    response.headers.set('Content-Security-Policy', cspHeader);
     response.headers.set('X-Frame-Options', 'DENY');
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -65,6 +77,38 @@ export default async function middleware(request: NextRequest) {
   }
 
   return response;
+}
+
+/**
+ * 处理URL本地化重写
+ */
+function handleUrlLocalization(request: NextRequest): NextResponse | null {
+  const pathname = request.nextUrl.pathname;
+  
+  // 提取语言代码和路径
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length === 0) return null;
+  
+  const potentialLocale = segments[0];
+  if (!locales.includes(potentialLocale as any)) return null;
+  
+  const locale = potentialLocale as typeof locales[number];
+  const localizedPath = '/' + segments.slice(1).join('/');
+  
+  // 检查是否需要重写URL
+  const pageKey = getPageKeyFromPath(pathname, locale);
+  if (!pageKey) return null;
+  
+  // 获取标准路径
+  const standardPath = LOCALIZED_PATHS[pageKey]?.en;
+  if (!standardPath || standardPath === localizedPath) return null;
+  
+  // 执行URL重写
+  const url = request.nextUrl.clone();
+  url.pathname = `/${locale}${standardPath}`;
+  
+  console.log(`URL rewrite: ${pathname} -> ${url.pathname}`);
+  return NextResponse.rewrite(url);
 }
 
 export const config = {

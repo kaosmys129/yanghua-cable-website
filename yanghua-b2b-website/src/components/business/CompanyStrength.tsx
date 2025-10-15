@@ -4,10 +4,12 @@ import { Award, Factory, Beaker, FileText, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Locale } from '@/lib/i18n';
 
 export default function CompanyStrength() {
   const t = useTranslations('companyStrength');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
 
   const stats = [
     {
@@ -79,7 +81,7 @@ export default function CompanyStrength() {
 
         <div className="mt-12 text-center">
           <Link 
-            href={`/${locale}/about`} 
+            href={buildLocalizedUrl('about', locale)} 
             className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium"
           >
             {t('ctaLearnMore')} <ArrowRight className="ml-2 h-4 w-4" />
