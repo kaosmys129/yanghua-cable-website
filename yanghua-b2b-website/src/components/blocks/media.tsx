@@ -16,6 +16,7 @@ export default function Media({ data }: { data: MediaBlock }) {
           src={data.file.url || "/placeholder.svg?height=600&width=1200&query=media"}
           alt={data.file.alternativeText || "Media"}
           fill
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
         />
       </div>

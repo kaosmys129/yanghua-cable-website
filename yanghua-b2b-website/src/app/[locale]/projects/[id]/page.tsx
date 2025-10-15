@@ -98,12 +98,14 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   );
 
   // Loadable image component
-  const LoadableImage = ({ src, alt, className, fill = true }: { src: string; alt: string; className?: string; fill?: boolean; }) => {
+  const LoadableImage = ({ src, alt, className, fill = true, priority = false, sizes = '100vw' }: { src: string; alt: string; className?: string; fill?: boolean; priority?: boolean; sizes?: string }) => {
     return (
       <Image
         src={src}
         alt={alt}
         fill={fill}
+        priority={priority}
+        sizes={sizes}
         className={className}
       />
     );
@@ -134,6 +136,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               src={project.images[0]}
               alt={project.title}
               className="object-cover opacity-50"
+              priority
+              sizes="(max-width: 768px) 100vw, 100vw"
             />
           ) : (
             <PlaceholderImage className="w-full h-full opacity-50" />
@@ -268,6 +272,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     src={image}
                     alt={`Project image ${index + 1}`}
                     fill={true}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 33vw"
                     className="transition-transform duration-300 hover:scale-105"
                   />
                 ) : (
