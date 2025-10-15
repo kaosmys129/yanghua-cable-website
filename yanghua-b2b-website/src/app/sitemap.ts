@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.yhflexiblebusbar.com';
@@ -53,6 +54,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
+      });
+    }
+  }
+
+  // Articles detail pages (fetch from Strapi if available)
+  const strapiBase = 'https://fruitful-presence-02d7be759c.strapiapp.com';
+  async function fetchArticleSlugs(locale: string): Promise<string[]> {
+    try {
+      const url = `${strapiBase}/api/articles?fields[0]=slug&locale=${locale}`;
+      const headers: Record<string, string> = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      };
+      if (process.env.STRAPI_API_TOKEN) {
+        headers.Authorization = `Bearer ${process.env.STRAPI_API_TOKEN}`;
+      }
+      const res = await fetch(url, { headers, next: { revalidate: 60 * 60 } });
+      if (!res.ok) return [];
+      const json = await res.json();
+      const data = Array.isArray(json?.data) ? json.data : [];
+      return data.map((a: any) => a.slug).filter(Boolean);
+    } catch (e) {
+      console.error('Sitemap: failed to fetch article slugs', locale, e);
+      return [];
+    }
+  }
+
+  for (const locale of locales) {
+    const slugs = await fetchArticleSlugs(locale);
+    for (const slug of slugs) {
+      items.push({
+        url: `${baseUrl}/${locale}/articles/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.6,
       });
     }
   }
