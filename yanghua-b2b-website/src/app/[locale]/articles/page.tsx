@@ -23,7 +23,8 @@ function EmptyState() {
 }
 
 function ArticlesList() {
-  const { locale } = useParams<{ locale: string }>();
+  const params = useParams() as Record<string, string | undefined>;
+  const locale = (params?.locale ?? 'en') as string;
   const { data: articles, isLoading, isError, error, refetch, isFetching } = useArticles(locale);
 
   // Temporarily disabled network debugging to fix console errors
