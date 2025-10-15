@@ -1,17 +1,16 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Building2, TrendingUp } from 'lucide-react';
+import type { Metadata } from 'next';
 
 // 获取项目数据的函数
 function getProjects(t: any) {
   return t.raw('list') as any[];
 }
 
-export default function ProjectsPage({ params }: { params: { locale: string } }) {
-  const t = useTranslations('projects');
+export default async function ProjectsPage({ params }: { params: { locale: string } }) {
+  const t = await getTranslations('projects');
   const projects = getProjects(t);
   const locale = params?.locale || 'en';
   
@@ -136,6 +135,37 @@ export default function ProjectsPage({ params }: { params: { locale: string } })
       </div>
     </div>
   );
+}
+
+// 生成页面元数据
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params?.locale || 'en';
+  const t = await getTranslations('projects');
+  
+  const titles: Record<string, string> = {
+    en: 'Project Cases | Yanghua Cable',
+    es: 'Casos de Proyectos | Yanghua Cable',
+  };
+  
+  const descriptions: Record<string, string> = {
+    en: 'Explore our successful flexible busbar projects across data centers, new energy, and industrial applications.',
+    es: 'Explora nuestros exitosos proyectos de barras flexibles en centros de datos, nueva energía y aplicaciones industriales.',
+  };
+
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const url = `${baseUrl}/${locale}/projects`;
+  
+  return {
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${baseUrl}/en/projects`,
+        es: `${baseUrl}/es/projects`,
+      },
+    },
+  };
 }
 
 // Page-level metadata moved to route layout: src/app/[locale]/projects/layout.tsx

@@ -79,14 +79,14 @@ async function getArticle(slug: string, locale: string): Promise<Article | null>
 
 
 interface PageProps {
-  params: Promise<{
+  params: {
     slug: string;
     locale: string;
-  }>;
+  };
 }
 
 export default async function ArticlePage({ params }: PageProps) {
-  const { slug, locale } = await params;
+  const { slug, locale } = params;
   
   // Fetch article data
   const article = await getArticle(slug, locale);

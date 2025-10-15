@@ -16,12 +16,11 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const resolvedParams = await params;
-  const { locale } = resolvedParams;
+  const { locale } = params;
   // Debug log
-  console.log('[LocaleLayout] params:', resolvedParams);
+  console.log('[LocaleLayout] params:', params);
   
   // Load network debugging script in development
   const isDevelopment = process.env.NODE_ENV === 'development';
