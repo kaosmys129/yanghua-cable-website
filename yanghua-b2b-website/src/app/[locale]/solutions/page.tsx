@@ -20,8 +20,8 @@ function getSolutions(t: any) {
 export default function SolutionsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const t = useTranslations('solutions');
-  const params = useParams();
-  const locale = params.locale;
+  const params = useParams() as Record<string, string | undefined>;
+  const locale = (params?.locale ?? 'en') as string;
   
   const solutions = getSolutions(t);
   

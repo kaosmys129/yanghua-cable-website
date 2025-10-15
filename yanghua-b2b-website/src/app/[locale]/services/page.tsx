@@ -19,8 +19,8 @@ function getServices(t: any) {
 
 export default function ServicesPage() {
   const t = useTranslations('services');
-  const params = useParams();
-  const locale = params.locale as string;
+  const params = useParams() as Record<string, string | undefined>;
+  const locale = (params?.locale ?? 'en') as string;
   const services = getServices(t);
 
   // Icon mapping
