@@ -89,6 +89,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // SEO: Product structured data (JSON-LD)
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    brand: { '@type': 'Brand', name: 'Yanghua' },
+    sku: product.id,
+    image: product.images?.length
+      ? product.images.map((src) => `${baseUrl}${src}`)
+      : undefined,
+  };
+
   // Placeholder image component
   const PlaceholderImage = ({ className }: { className?: string }) => (
     <div className={`bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center ${className}`}>
@@ -109,7 +123,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <div className="min-h-screen bg-white">
       {/* Product header */}
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">
         <div className="absolute inset-0">
@@ -424,6 +443,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
