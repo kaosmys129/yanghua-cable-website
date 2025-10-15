@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import StructuredDataScript from '@/components/seo/StructuredDataScript';
+import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
 
 interface Product {
   id: string;
@@ -83,36 +85,41 @@ interface PageProps {
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
-  const { id } = params;
+  const { id, locale } = params;
   const product = await getProduct(id);
 
   if (!product) {
     notFound();
   }
 
-  // SEO: Product structured data (JSON-LD)
-  const baseUrl = 'https://www.yhflexiblebusbar.com';
-  const productJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
+  // 生成结构化数据
+  const productSchema = generateProductSchema({
     name: product.name,
     description: product.description,
-    brand: { '@type': 'Brand', name: 'Yanghua' },
+    image: product.images?.[0] || '/images/products/default.jpg',
     sku: product.id,
-    image: product.images?.length
-      ? product.images.map((src) => `${baseUrl}${src}`)
-      : undefined,
-  };
+    brand: 'Yanghua Cable',
+    category: 'Flexible Busbar',
+    specifications: {
+      'Voltage Rating': product.technicalSpecs.voltage,
+      'Current Rating': product.technicalSpecs.current,
+      'Material': product.technicalSpecs.material,
+      'Temperature Range': product.technicalSpecs.temperature,
+      'Insulation': product.technicalSpecs.insulation,
+      'Standards': product.technicalSpecs.standards
+    },
+    url: `/${locale}/products/${id}`,
+    currentRating: product.technicalSpecs.current,
+    voltage: product.technicalSpecs.voltage,
+    material: product.technicalSpecs.material,
+    applications: product.applications
+  });
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: params.locale === 'es' ? 'Inicio' : 'Home', item: `${baseUrl}/${params.locale}` },
-      { '@type': 'ListItem', position: 2, name: params.locale === 'es' ? 'Productos' : 'Products', item: `${baseUrl}/${params.locale}/products` },
-      { '@type': 'ListItem', position: 3, name: product.name, item: `${baseUrl}/${params.locale}/products/${params.id}` },
-    ],
-  };
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: locale === 'es' ? 'Inicio' : 'Home', url: `/${locale}` },
+    { name: locale === 'es' ? 'Productos' : 'Products', url: `/${locale}/products` },
+    { name: product.name, url: `/${locale}/products/${id}` }
+  ]);
 
   // Placeholder image component
   const PlaceholderImage = ({ className }: { className?: string }) => (
@@ -137,14 +144,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <StructuredDataScript schema={productSchema} />
+      <StructuredDataScript schema={breadcrumbSchema} />
       <div className="min-h-screen bg-white">
       {/* Product header */}
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">

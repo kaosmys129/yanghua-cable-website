@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
 import QuickInquiry from '@/components/features/QuickInquiry';
 import { getCsrfTokenAsync } from '@/lib/security/csrf';
+import StructuredDataScript from '@/components/seo/StructuredDataScript';
+import { generateCaseStudySchema, generateBreadcrumbSchema } from '@/lib/structured-data';
 
 interface Project {
   id: string;
@@ -127,24 +129,33 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     );
   }
 
+  // 生成结构化数据
+  const caseStudySchema = generateCaseStudySchema({
+    title: project.title,
+    description: project.challenge,
+    client: project.client,
+    industry: project.industry,
+    completionDate: project.completionDate,
+    image: project.images?.[0] || '/images/projects/default.jpg',
+    url: `/${locale}/projects/${id}`,
+    results: project.results,
+    location: project.location,
+    duration: project.duration,
+    projectScale: project.projectScale
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: locale === 'es' ? 'Inicio' : 'Home', url: `/${locale}` },
+    { name: locale === 'es' ? 'Proyectos' : 'Projects', url: `/${locale}/projects` },
+    { name: project.title, url: `/${locale}/projects/${id}` }
+  ]);
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* JSON-LD: Breadcrumbs for project detail */}
-      {(() => {
-        const baseUrl = 'https://www.yhflexiblebusbar.com';
-        const projectUrl = `${baseUrl}/${locale}/projects/${id}`;
-        const breadcrumbJsonLd = {
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: locale === 'es' ? 'Inicio' : 'Home', item: `${baseUrl}/${locale}` },
-            { '@type': 'ListItem', position: 2, name: locale === 'es' ? 'Proyectos' : 'Projects', item: `${baseUrl}/${locale}/projects` },
-            { '@type': 'ListItem', position: 3, name: project.title, item: projectUrl },
-          ],
-        };
-        return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />;
-      })()}
-      {/* Project header */}
+    <>
+      <StructuredDataScript schema={caseStudySchema} />
+      <StructuredDataScript schema={breadcrumbSchema} />
+      <div className="min-h-screen bg-white">
+        {/* Project header */}
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">
         <div className="absolute inset-0">
           {project.images[0] ? (
@@ -364,6 +375,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

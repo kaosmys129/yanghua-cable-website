@@ -21,7 +21,10 @@
     "project:status": "node check-project-status.js",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
-    "error-analysis": "npm run test:error-collection && npm run test:report && npm run test:summary"
+    "error-analysis": "npm run test:error-collection && npm run test:report && npm run test:summary",
+    "validate-seo": "node scripts/validate-structured-data.js",
+    "migrate:projects": "node scripts/migrate-projects.js",
+    "migrate:news": "node scripts/migrate-news.js"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

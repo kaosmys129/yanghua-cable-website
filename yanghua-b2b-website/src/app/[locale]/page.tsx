@@ -7,20 +7,31 @@ import InquiryForm from '@/components/features/InquiryForm';
 import ProjectGallery from '@/components/business/ProjectGallery';
 import { getFeaturedProjects } from '@/lib/projects';
 import { getCsrfToken } from '@/lib/security/csrf';
+import StructuredDataScript from '@/components/seo/StructuredDataScript';
+import { generateOrganizationSchema, generateWebsiteSchema } from '@/lib/structured-data';
 
 export default async function Home() {
   const featuredProjects = getFeaturedProjects(4);
   const csrfToken = getCsrfToken();
+  
+  // 生成结构化数据
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+  
   return (
-    <div className="min-h-screen">
-      <Hero />
-      <CompanyStrength />
-      <ProductComparison />
-      <ApplicationAreas />
-      <ProjectGallery projects={featuredProjects} />
-      <Partners />
-      <InquiryForm csrfToken={csrfToken} />
-    </div>
+    <>
+      <StructuredDataScript schema={organizationSchema} />
+      <StructuredDataScript schema={websiteSchema} />
+      <div className="min-h-screen">
+        <Hero />
+        <CompanyStrength />
+        <ProductComparison />
+        <ApplicationAreas />
+        <ProjectGallery projects={featuredProjects} />
+        <Partners />
+        <InquiryForm csrfToken={csrfToken} />
+      </div>
+    </>
   );
 }
 import type { Metadata } from 'next';
