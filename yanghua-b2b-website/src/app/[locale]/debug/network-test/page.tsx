@@ -29,7 +29,8 @@ interface ScenarioComparison {
 }
 
 export default function NetworkTestPage() {
-  const { locale } = useParams<{ locale: string }>();
+  const params = useParams() as Record<string, string | undefined>;
+  const locale = (params?.locale ?? 'en') as string;
   const router = useRouter();
   const [isTesting, setIsTesting] = useState(false);
   const [testResults, setTestResults] = useState<{
