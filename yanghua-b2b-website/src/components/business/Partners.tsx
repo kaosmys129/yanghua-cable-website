@@ -49,7 +49,8 @@ export default function Partners() {
                     fill
                     className="object-contain transition-all duration-300"
                     sizes="9rem"
-                    priority={idx < 4}
+                    loading="lazy"
+                    priority={false}
                   />
                 </div>
               </div>

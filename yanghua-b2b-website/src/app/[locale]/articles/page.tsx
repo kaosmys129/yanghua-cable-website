@@ -182,3 +182,5 @@ export default function ArticlesPage({ params }: { params: { locale: string } })
     </main>
   );
 }
+
+// Page-level metadata moved to route layout: src/app/[locale]/articles/layout.tsx

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 interface Product {
   id: string;
@@ -450,4 +451,32 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </div>
     </>
   );
+}
+
+const BASE_URL = 'https://www.yhflexiblebusbar.com';
+
+export async function generateMetadata({ params }: { params: { locale: string; id: string } }): Promise<Metadata> {
+  const { locale, id } = params;
+  const product = await getProduct(id);
+  const name = product?.name || id;
+  const titles: Record<string, string> = {
+    en: `${name} | High Current & Reliable | Yanghua`,
+    es: `${name} | Fiable y Eficiente | Yanghua`,
+  };
+  const descriptions: Record<string, string> = {
+    en: product?.description || 'Flexible busbar product detail and specifications.',
+    es: product?.description || 'Detalle y especificaciones del producto de barra colectora flexible.',
+  };
+  const url = `${BASE_URL}/${locale}/products/${id}`;
+  return {
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${BASE_URL}/en/products/${id}`,
+        es: `${BASE_URL}/es/products/${id}`,
+      },
+    },
+  };
 }

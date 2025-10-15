@@ -170,6 +170,7 @@ export default function ProductComparison() {
                     fill
                     sizes="256px"
                     className="object-cover"
+                    loading="lazy"
                     priority={false}
                   />
                 </div>
@@ -215,6 +216,7 @@ export default function ProductComparison() {
                     fill
                     sizes="256px"
                     className="object-cover"
+                    loading="lazy"
                     priority={false}
                   />
                   {/* 推荐标识覆盖层 */}

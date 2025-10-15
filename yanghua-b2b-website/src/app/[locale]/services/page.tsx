@@ -93,3 +93,5 @@ export default function ServicesPage() {
     </div>
   );
 }
+
+// Page-level metadata moved to route layout: src/app/[locale]/services/layout.tsx

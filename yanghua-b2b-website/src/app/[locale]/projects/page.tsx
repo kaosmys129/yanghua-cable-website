@@ -124,3 +124,5 @@ export default function ProjectsPage({ params }: { params: { locale: string } })
     </div>
   );
 }
+
+// Page-level metadata moved to route layout: src/app/[locale]/projects/layout.tsx

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 interface ProductCategory {
   name: string;
@@ -620,4 +621,33 @@ export default async function ProductCategoryPage({ params }: PageProps) {
       </div>
     </div>
   );
+}
+
+const BASE_URL = 'https://www.yhflexiblebusbar.com';
+
+export async function generateMetadata({ params }: { params: { locale: string; name: string } }): Promise<Metadata> {
+  const { locale, name } = params;
+  const decodedName = decodeURIComponent(name);
+  const category = await getProductCategoryData(decodedName);
+  const categoryName = category?.name || decodedName;
+  const titles: Record<string, string> = {
+    en: `${categoryName} | Flexible Busbar Category | Yanghua`,
+    es: `${categoryName} | Categoría de Barra Colectora Flexible | Yanghua`,
+  };
+  const descriptions: Record<string, string> = {
+    en: `Discover ${categoryName} flexible busbar models, structure and specifications for diverse applications.`,
+    es: `Descubra modelos, estructura y especificaciones de ${categoryName} en barras colectoras flexibles para diversas aplicaciones.`,
+  };
+  const url = `${BASE_URL}/${locale}/products/category/${decodedName}`;
+  return {
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${BASE_URL}/en/products/category/${decodedName}`,
+        es: `${BASE_URL}/es/products/category/${decodedName}`,
+      },
+    },
+  };
 }

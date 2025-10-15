@@ -190,3 +190,5 @@ export default function SolutionsPage() {
     </div>
   );
 }
+
+// Page-level metadata moved to route layout: src/app/[locale]/solutions/layout.tsx
