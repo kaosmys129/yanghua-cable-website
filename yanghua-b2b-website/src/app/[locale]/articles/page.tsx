@@ -172,6 +172,19 @@ export default function ArticlesPage({ params }: { params: { locale: string } })
   // 移除双重useArticles调用，让ArticlesList组件处理数据获取
   return (
     <main className="container mx-auto px-4 py-12">
+      {/* JSON-LD: CollectionPage for Articles */}
+      {(() => {
+        const baseUrl = 'https://www.yhflexiblebusbar.com';
+        const locale = params?.locale || 'en';
+        const collectionJsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Articles',
+          description: 'Latest insights, industry news, and expert perspectives from Yanghua',
+          url: `${baseUrl}/${locale}/articles`,
+        };
+        return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />;
+      })()}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#212529]">Latest Articles</h1>
         <p className="text-lg text-[#6c757d] max-w-2xl mx-auto">Stay updated with our latest insights, industry news, and expert perspectives</p>

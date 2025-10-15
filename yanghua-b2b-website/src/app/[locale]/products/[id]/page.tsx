@@ -104,6 +104,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
       : undefined,
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: params.locale === 'es' ? 'Inicio' : 'Home', item: `${baseUrl}/${params.locale}` },
+      { '@type': 'ListItem', position: 2, name: params.locale === 'es' ? 'Productos' : 'Products', item: `${baseUrl}/${params.locale}/products` },
+      { '@type': 'ListItem', position: 3, name: product.name, item: `${baseUrl}/${params.locale}/products/${params.id}` },
+    ],
+  };
+
   // Placeholder image component
   const PlaceholderImage = ({ className }: { className?: string }) => (
     <div className={`bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center ${className}`}>
@@ -130,6 +140,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <div className="min-h-screen bg-white">
       {/* Product header */}

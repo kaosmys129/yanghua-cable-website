@@ -36,6 +36,24 @@ export default function RootLayout({
               gtag('js', new Date());
               gtag('config', '${GA_ID}', { page_path: window.location.pathname });
             `}</Script>
+            {/* Web Vitals reporting to GA4 */}
+            <Script src="https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js" strategy="afterInteractive" />
+            <Script id="ga4-web-vitals" strategy="afterInteractive">{`
+              (function(){
+                if (!window.webVitals || typeof window.gtag !== 'function') return;
+                function sendToGoogleAnalytics({name, delta, id}) {
+                  window.gtag('event', name, {
+                    value: Math.round(name === 'CLS' ? delta * 1000 : delta),
+                    event_category: 'Web Vitals',
+                    event_label: id,
+                    non_interaction: true,
+                  });
+                }
+                webVitals.onLCP(sendToGoogleAnalytics);
+                webVitals.onCLS(sendToGoogleAnalytics);
+                webVitals.onINP(sendToGoogleAnalytics);
+              })();
+            `}</Script>
           </>
         ) : null}
       </head>

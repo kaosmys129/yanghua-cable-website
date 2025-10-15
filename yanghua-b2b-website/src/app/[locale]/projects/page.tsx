@@ -13,9 +13,22 @@ function getProjects(t: any) {
 export default function ProjectsPage({ params }: { params: { locale: string } }) {
   const t = useTranslations('projects');
   const projects = getProjects(t);
+  const locale = params?.locale || 'en';
   
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD: CollectionPage for Projects */}
+      {(() => {
+        const baseUrl = 'https://www.yhflexiblebusbar.com';
+        const collectionJsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: t('page.title'),
+          description: t('page.description'),
+          url: `${baseUrl}/${locale}/projects`,
+        };
+        return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />;
+      })()}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-[#212529] mb-4">

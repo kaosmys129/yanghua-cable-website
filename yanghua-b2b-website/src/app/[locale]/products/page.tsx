@@ -52,6 +52,18 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD: CollectionPage for Products */}
+      {(() => {
+        const baseUrl = 'https://www.yhflexiblebusbar.com';
+        const collectionJsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: t('hero.title'),
+          description: t('hero.subtitle'),
+          url: `${baseUrl}/${locale}/products`,
+        };
+        return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />;
+      })()}
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-[#212529] to-gray-700 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

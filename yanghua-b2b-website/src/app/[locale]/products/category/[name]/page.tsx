@@ -444,6 +444,20 @@ export default async function ProductCategoryPage({ params }: PageProps) {
 
   return (
      <div className="min-h-screen bg-white">
+      {/* JSON-LD: Breadcrumbs for product category */}
+      {(() => {
+        const baseUrl = 'https://www.yhflexiblebusbar.com';
+        const breadcrumbJsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/en` },
+            { '@type': 'ListItem', position: 2, name: 'Products', item: `${baseUrl}/en/products` },
+            { '@type': 'ListItem', position: 3, name: categoryData?.name || name, item: `${baseUrl}/en/products/category/${name}` },
+          ],
+        };
+        return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />;
+      })()}
       {/* Product category header */}
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>

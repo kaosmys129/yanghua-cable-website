@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from 'next';
 import { ArrowLeft, AlertTriangle } from "lucide-react";
 import { formatDate, getStrapiURL } from "@/lib/utils";
 import { StrapiImage } from "@/components/custom/StrapiImage";
@@ -99,8 +100,35 @@ export default async function ArticlePage({ params }: PageProps) {
   
   console.log('Article found:', article.title);
 
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const articleUrl = `${baseUrl}/${locale}/articles/${slug}`;
+
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.description || undefined,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt || article.publishedAt,
+    author: article.author?.name ? { '@type': 'Person', name: article.author.name } : undefined,
+    image: article.cover?.url ? `${getStrapiURL()}${article.cover.url}` : undefined,
+    mainEntityOfPage: articleUrl,
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'es' ? 'Inicio' : 'Home', item: `${baseUrl}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'es' ? 'Artículos' : 'Articles', item: `${baseUrl}/${locale}/articles` },
+      { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
+    ],
+  };
+
   return (
     <main className="container mx-auto px-4 py-12 max-w-4xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {draft.isEnabled && (
         <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6">
           <div className="flex items-center">
@@ -156,4 +184,24 @@ export default async function ArticlePage({ params }: PageProps) {
       </div>
     </main>
   );
+}
+
+export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
+  const { slug, locale } = params;
+  const article = await getArticle(slug, locale);
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const url = `${baseUrl}/${locale}/articles/${slug}`;
+  const title = article?.title ? `${article.title} | Yanghua` : 'Article | Yanghua';
+  const description = article?.description || 'Technical insights and resources from Yanghua on flexible busbar systems and applications.';
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${baseUrl}/en/articles/${slug}`,
+        es: `${baseUrl}/es/articles/${slug}`,
+      },
+    },
+  };
 }

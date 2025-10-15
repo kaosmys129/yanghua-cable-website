@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
@@ -128,6 +129,21 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD: Breadcrumbs for project detail */}
+      {(() => {
+        const baseUrl = 'https://www.yhflexiblebusbar.com';
+        const projectUrl = `${baseUrl}/${locale}/projects/${id}`;
+        const breadcrumbJsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: locale === 'es' ? 'Inicio' : 'Home', item: `${baseUrl}/${locale}` },
+            { '@type': 'ListItem', position: 2, name: locale === 'es' ? 'Proyectos' : 'Projects', item: `${baseUrl}/${locale}/projects` },
+            { '@type': 'ListItem', position: 3, name: project.title, item: projectUrl },
+          ],
+        };
+        return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />;
+      })()}
       {/* Project header */}
       <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700">
         <div className="absolute inset-0">
@@ -349,4 +365,39 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: { id: string; locale: string } }): Promise<Metadata> {
+  const { id, locale } = params;
+  const t = await getTranslations({ locale, namespace: 'projects' });
+  const project = await (async () => {
+    try {
+      const projects = t.raw('list') as any[];
+      return projects.find(p => p.id === id) || null;
+    } catch {
+      return null;
+    }
+  })();
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const url = `${baseUrl}/${locale}/projects/${id}`;
+  const titleBase = project?.title || 'Project Case';
+  const titles: Record<string, string> = {
+    en: `${titleBase} | Flexible Busbar Case Study | Yanghua`,
+    es: `${titleBase} | Estudio de Caso de Barras Colectoras | Yanghua`,
+  };
+  const descriptions: Record<string, string> = {
+    en: project?.description || `Case study in ${project?.industry || 'Industry'}: location ${project?.location || ''}, client ${project?.client || ''}.`,
+    es: project?.description || `Estudio de caso en ${project?.industry || 'Industria'}: ubicación ${project?.location || ''}, cliente ${project?.client || ''}.`,
+  };
+  return {
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `${baseUrl}/en/projects/${id}`,
+        es: `${baseUrl}/es/projects/${id}`,
+      },
+    },
+  };
 }
