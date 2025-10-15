@@ -25,6 +25,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Preconnect to Strapi for faster initial connections on pages that request CMS data */}
+        <link rel="preconnect" href="https://fruitful-presence-02d7be759c.strapiapp.com" crossOrigin="anonymous" />
         {GA_ID ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />

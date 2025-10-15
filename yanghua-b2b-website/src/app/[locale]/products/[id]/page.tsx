@@ -111,12 +111,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
   );
 
   // Simple image component for server rendering
-  const ProductImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
+  const ProductImage = ({ src, alt, className, priority = false, sizes = '100vw' }: { src: string; alt: string; className?: string; priority?: boolean; sizes?: string }) => {
     return (
       <Image
         src={src}
         alt={alt}
         fill
+        priority={priority}
+        sizes={sizes}
         className={`object-cover ${className}`}
       />
     );
@@ -137,6 +139,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
               src={product.images[0]}
               alt={product.name}
               className="opacity-50"
+              priority
+              sizes="(max-width: 768px) 100vw, 100vw"
             />
           ) : (
             <PlaceholderImage className="w-full h-full opacity-50" />
