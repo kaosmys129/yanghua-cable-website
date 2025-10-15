@@ -7,7 +7,7 @@ import { generateCSPHeader } from './src/lib/security';
 const intlMiddleware = createMiddleware({
   locales: ['en', 'es'],
   defaultLocale: 'en',
-  localePrefix: 'always'
+  localePrefix: 'as-needed'
 });
 
 export default async function middleware(request: NextRequest) {

@@ -26,29 +26,26 @@ function ArticlesList() {
   const { locale } = useParams<{ locale: string }>();
   const { data: articles, isLoading, isError, error, refetch, isFetching } = useArticles(locale);
 
-  // Start network debugging on component mount
+  // Temporarily disabled network debugging to fix console errors
   useEffect(() => {
-    startNetworkDebugging();
-    console.log('[NetworkDebug] Started debugging for ArticlesList component');
-    console.log('[NetworkDebug] Current locale:', locale);
-    console.log('[NetworkDebug] Navigation type:', window.performance?.navigation?.type);
-    console.log('[NetworkDebug] Referrer:', document.referrer);
-    console.log('[NetworkDebug] Current URL:', window.location.href);
+    // startNetworkDebugging(); // Disabled temporarily
+    console.log('[ArticlesList] Component mounted for locale:', locale);
+    console.log('[ArticlesList] Current URL:', window.location.href);
 
-    // Log requests after a delay to capture the initial load
-    const timer = setTimeout(() => {
-      const requests = getNetworkRequests();
-      console.log('[NetworkDebug] Captured requests after initial load:', requests);
-      
-      if (requests.length > 0) {
-        const comparison = compareNetworkScenarios();
-        console.log('[NetworkDebug] Scenario comparison:', comparison);
-      }
-    }, 3000);
+    // // Log requests after a delay to capture the initial load
+    // const timer = setTimeout(() => {
+    //   const requests = getNetworkRequests();
+    //   console.log('[NetworkDebug] Captured requests after initial load:', requests);
+    //   
+    //   if (requests.length > 0) {
+    //     const comparison = compareNetworkScenarios();
+    //     console.log('[NetworkDebug] Scenario comparison:', comparison);
+    //   }
+    // }, 3000);
 
-    return () => {
-      clearTimeout(timer);
-    };
+    // return () => {
+    //   clearTimeout(timer);
+    // };
   }, [locale]);
 
   if (isLoading) {
@@ -73,11 +70,11 @@ function ArticlesList() {
   if (isError) {
     console.error('Error loading articles:', error);
     
-    // Log network requests when error occurs
-    const requests = getNetworkRequests();
-    const comparison = compareNetworkScenarios();
-    console.error('[NetworkDebug] Error occurred, captured requests:', requests);
-    console.error('[NetworkDebug] Scenario comparison at error time:', comparison);
+    // // Log network requests when error occurs - disabled temporarily
+    // const requests = getNetworkRequests();
+    // const comparison = compareNetworkScenarios();
+    // console.error('[NetworkDebug] Error occurred, captured requests:', requests);
+    // console.error('[NetworkDebug] Scenario comparison at error time:', comparison);
     
     return (
       <div className="container mx-auto px-4 py-8">
