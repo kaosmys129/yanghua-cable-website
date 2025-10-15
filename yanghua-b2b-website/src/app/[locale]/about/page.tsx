@@ -9,8 +9,8 @@ import DownloadButton from '@/components/ui/DownloadButton';
 
 export default function AboutPage() {
   const t = useTranslations('about');
-  const params = useParams();
-  const locale = params.locale as string;
+  const params = useParams() as Record<string, string | undefined>;
+  const locale = (params?.locale ?? 'en') as string;
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

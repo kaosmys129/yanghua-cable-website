@@ -1,13 +1,5 @@
-'use client';
-
-import { useEffect } from 'react';
-
 export default function NotFound() {
-  useEffect(() => {
-    // Log the 404 error to an error reporting service
-    console.error('Page not found');
-  }, []);
-
+  // 纯服务端组件，避免在构建阶段预渲染时引入客户端 Hook
   return (
     <div>
       <h2>404 - Page Not Found</h2>

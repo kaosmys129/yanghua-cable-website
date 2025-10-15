@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+// 强制此 API 为动态，避免构建期尝试静态预渲染
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { EmailService, createEmailService } from '@/lib/email/EmailService';
 import { EmailStorage, defaultEmailStorage } from '@/lib/email/EmailStorage';
 import { renderContactFormEmail, renderInquiryFormEmail } from '@/lib/email/EmailTemplates';
