@@ -20,6 +20,39 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      // 西班牙语URL重写规则
+      {
+        source: '/es/productos/:path*',
+        destination: '/es/products/:path*',
+      },
+      {
+        source: '/es/soluciones/:path*',
+        destination: '/es/solutions/:path*',
+      },
+      {
+        source: '/es/servicios/:path*',
+        destination: '/es/services/:path*',
+      },
+      {
+        source: '/es/proyectos/:path*',
+        destination: '/es/projects/:path*',
+      },
+      {
+        source: '/es/contacto',
+        destination: '/es/contact',
+      },
+      {
+        source: '/es/acerca-de',
+        destination: '/es/about',
+      },
+      {
+        source: '/es/articulos/:path*',
+        destination: '/es/articles/:path*',
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

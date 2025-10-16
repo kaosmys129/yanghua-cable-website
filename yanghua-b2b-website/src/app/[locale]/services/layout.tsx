@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       canonical: url,
       languages: {
         en: `${BASE_URL}/en/services`,
-        es: `${BASE_URL}/es/services`,
+        es: `${BASE_URL}/es/servicios`,
       },
     },
   };
