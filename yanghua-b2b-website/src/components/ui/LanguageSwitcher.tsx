@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { locales, type Locale } from '../../lib/i18n';
+import { translateUrl } from '../../lib/url-localization';
 
 const languageNames: Record<Locale, string> = {
   en: 'English',
@@ -23,12 +24,31 @@ export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
 
   const switchLanguage = (newLocale: Locale) => {
-    // Remove the current locale from the pathname
-    const pathWithoutLocale = (pathname?.replace(`/${locale}`, '') ?? '/') as string;
-    // Navigate to the new locale
-    const newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`;
-    router.push(newPath);
-    setIsOpen(false);
+    try {
+      // 使用 translateUrl 函数正确处理路径映射
+      const currentUrl = `${window.location.origin}${pathname}`;
+      const newUrl = translateUrl(currentUrl, locale, newLocale);
+      
+      // 提取新的路径（移除域名部分）
+      const newPath = newUrl.replace(window.location.origin, '');
+      
+      console.log('Language switch:', {
+        from: locale,
+        to: newLocale,
+        currentPath: pathname,
+        newPath: newPath
+      });
+      
+      router.push(newPath);
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Language switch error:', error);
+      // 回退到简单的路径替换
+      const pathWithoutLocale = (pathname?.replace(`/${locale}`, '') ?? '/') as string;
+      const newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`;
+      router.push(newPath);
+      setIsOpen(false);
+    }
   };
 
   return (
