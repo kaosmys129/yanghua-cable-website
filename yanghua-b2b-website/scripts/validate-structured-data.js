@@ -14,9 +14,9 @@ const VALIDATION_CONFIG = {
     { path: '/en', name: 'Homepage (EN)' },
     { path: '/es', name: 'Homepage (ES)' },
     { path: '/en/products/flexible-busbar-2000a', name: 'Product Detail (EN)' },
-    { path: '/es/products/flexible-busbar-2000a', name: 'Product Detail (ES)' },
+    { path: '/es/productos/flexible-busbar-2000a', name: 'Product Detail (ES)' },
     { path: '/en/projects/1', name: 'Project Detail (EN)' },
-    { path: '/es/projects/1', name: 'Project Detail (ES)' }
+    { path: '/es/proyectos/1', name: 'Project Detail (ES)' }
   ],
   outputFile: 'structured-data-validation-report.json'
 };

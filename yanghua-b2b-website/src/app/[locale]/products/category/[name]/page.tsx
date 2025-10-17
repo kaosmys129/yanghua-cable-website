@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { generateCanonicalUrl } from '@/lib/seo';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 
 interface ProductCategory {
@@ -652,15 +654,16 @@ export async function generateMetadata({ params }: { params: { locale: string; n
     en: `Discover ${categoryName} flexible busbar models, structure and specifications for diverse applications.`,
     es: `Descubra modelos, estructura y especificaciones de ${categoryName} en barras colectoras flexibles para diversas aplicaciones.`,
   };
-  const url = `${BASE_URL}/${locale}/products/category/${decodedName}`;
+  // 使用本地化URL生成器，确保西语分类页使用翻译段
+  const canonical = generateCanonicalUrl(`/products/category/${decodedName}`, locale as any, BASE_URL);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: `${BASE_URL}/en/products/category/${decodedName}`,
-        es: `${BASE_URL}/es/products/category/${decodedName}`,
+        en: buildLocalizedUrl('products-category', 'en', { name: decodedName }, BASE_URL),
+        es: buildLocalizedUrl('products-category', 'es', { name: decodedName }, BASE_URL),
       },
     },
   };

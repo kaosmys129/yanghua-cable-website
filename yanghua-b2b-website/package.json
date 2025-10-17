@@ -23,6 +23,7 @@
     "test:debug": "playwright test --debug",
     "error-analysis": "npm run test:error-collection && npm run test:report && npm run test:summary",
     "validate-seo": "node scripts/validate-structured-data.js",
+    "check:urls": "node scripts/check-localized-urls.js",
     "migrate:projects": "node scripts/migrate-projects.js",
     "migrate:news": "node scripts/migrate-news.js"
   },

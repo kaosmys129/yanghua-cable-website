@@ -2,6 +2,8 @@ import './globals.css';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { MonitoringProvider } from '@/components/providers/MonitoringProvider';
 import Script from 'next/script';
+import { getLocale } from 'next-intl/server';
+import { headers, cookies } from 'next/headers';
 
 export const metadata = {
   title: 'Yanghua Cable - Professional Cable Solutions',
@@ -16,14 +18,21 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // 从 middleware 传递的自定义请求头、cookie 以及 next-intl 获取 locale，确保 SSR 输出稳定
+  const hdrs = headers();
+  const headerLocale = hdrs.get('x-locale') || undefined;
+  const cookieStore = cookies();
+  const cookieLocale = cookieStore.get('NEXT_LOCALE')?.value;
+  const intlLocale = await getLocale();
+  const activeLocale = (headerLocale || cookieLocale || intlLocale || 'en').toLowerCase();
   const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={activeLocale} suppressHydrationWarning>
       <head>
         {/* Preconnect to Strapi for faster initial connections on pages that request CMS data */}
         <link rel="preconnect" href="https://fruitful-presence-02d7be759c.strapiapp.com" crossOrigin="anonymous" />

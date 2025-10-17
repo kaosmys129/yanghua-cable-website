@@ -16,7 +16,24 @@ import { monitoring } from './lib/monitoring';
 const intlMiddleware = createIntlMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'as-needed',
+  // 始终使用语言前缀，与 app/[locale] 路由结构一致，避免默认语言无前缀导致的循环
+  localePrefix: 'always',
+  // 显式配置本地化路径名映射，确保 /es/productos 映射到路由 /[locale]/products
+  pathnames: {
+    '/': '/',
+    '/about': { en: '/about', es: '/acerca-de' },
+    '/products': { en: '/products', es: '/productos' },
+    '/products/[id]': { en: '/products/[id]', es: '/productos/[id]' },
+    '/solutions': { en: '/solutions', es: '/soluciones' },
+    '/solutions/[id]': { en: '/solutions/[id]', es: '/soluciones/[id]' },
+    '/services': { en: '/services', es: '/servicios' },
+    '/projects': { en: '/projects', es: '/proyectos' },
+    '/projects/[id]': { en: '/projects/[id]', es: '/proyectos/[id]' },
+    '/contact': { en: '/contact', es: '/contacto' },
+    '/articles': { en: '/articles', es: '/articulos' },
+    '/articles/[slug]': { en: '/articles/[slug]', es: '/articulos/[slug]' },
+    '/products/category': { en: '/products/category', es: '/productos/categoria' }
+  }
 });
 
 export default async function middleware(request: NextRequest) {
@@ -24,6 +41,7 @@ export default async function middleware(request: NextRequest) {
   const clientIP = getClientIP(request);
   const userAgent = request.headers.get('user-agent') || '';
   const pathname = request.nextUrl.pathname;
+  console.log('[Middleware] invoked for path:', pathname);
 
   // Skip middleware for static assets and API routes that don't need security
   if (
@@ -126,7 +144,51 @@ export default async function middleware(request: NextRequest) {
       }
     }
 
-    // 5. Security headers and internationalization
+    // 5. 301 重定向：将旧的西语本地化路径统一到英文段规范路径
+    // 例：/es/productos -> /es/products；/es/soluciones -> /es/solutions 等
+    const legacyEsMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
+      // 将英文段在西语站的路径统一到西语翻译段（规范）
+      { from: /^\/es\/products(\/.*)?$/i, to: (m) => `/es/productos${m[1] || ''}` },
+      { from: /^\/es\/solutions(\/.*)?$/i, to: (m) => `/es/soluciones${m[1] || ''}` },
+      { from: /^\/es\/services(\/.*)?$/i, to: (m) => `/es/servicios${m[1] || ''}` },
+      { from: /^\/es\/projects(\/.*)?$/i, to: (m) => `/es/proyectos${m[1] || ''}` },
+      { from: /^\/es\/contact(\/.*)?$/i, to: (m) => `/es/contacto${m[1] || ''}` },
+      { from: /^\/es\/about(\/.*)?$/i, to: (m) => `/es/acerca-de${m[1] || ''}` },
+      { from: /^\/es\/articles(\/.*)?$/i, to: (m) => `/es/articulos${m[1] || ''}` },
+      // 分类与细分路径
+      { from: /^\/es\/products\/category(\/.*)?$/i, to: (m) => `/es/productos/categoria${m[1] || ''}` },
+    ];
+
+    for (const rule of legacyEsMappings) {
+      const match = pathname.match(rule.from);
+      if (match) {
+        console.log('[Middleware] 301 redirect legacy ES path:', pathname);
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = rule.to(match);
+        return applySecurityHeaders(NextResponse.redirect(redirectUrl, 301));
+      }
+    }
+
+    // 6. 西语翻译段动态路径 -> 路由内部英文段的 rewrite（不改变URL，避免30x，保证页面可访问）
+    const esRewriteMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
+      { from: /^\/es\/productos\/categoria(\/.*)?$/i, to: (m) => `/es/products/category${m[1] || ''}` },
+      { from: /^\/es\/productos\/(.+)$/i, to: (m) => `/es/products/${m[1]}` },
+      { from: /^\/es\/soluciones\/(.+)$/i, to: (m) => `/es/solutions/${m[1]}` },
+      { from: /^\/es\/proyectos\/(.+)$/i, to: (m) => `/es/projects/${m[1]}` },
+      { from: /^\/es\/articulos\/(.+)$/i, to: (m) => `/es/articles/${m[1]}` }
+    ];
+
+    for (const rule of esRewriteMappings) {
+      const match = pathname.match(rule.from);
+      if (match) {
+        const rewriteUrl = request.nextUrl.clone();
+        rewriteUrl.pathname = rule.to(match);
+        console.log('[Middleware] rewrite ES translated path -> internal route:', pathname, '=>', rewriteUrl.pathname);
+        return applySecurityHeaders(NextResponse.rewrite(rewriteUrl));
+      }
+    }
+
+    // 7. Security headers and internationalization
     let response: NextResponse;
 
     // Apply internationalization middleware
@@ -138,20 +200,20 @@ export default async function middleware(request: NextRequest) {
       response = intlMiddleware(request);
     }
 
-    // 6. Apply security headers
+    // 8. Apply security headers
     response = applySecurityHeaders(response);
 
-    // 7. Add CSRF token for GET requests
+    // 9. Add CSRF token for GET requests
     if (request.method === 'GET' && !pathname.startsWith('/api/')) {
       response = CSRFProtection.addTokenToResponse(response);
     }
 
-    // 8. Add performance and security headers
+    // 10. Add performance and security headers
     const processingTime = Date.now() - startTime;
     response.headers.set('X-Response-Time', `${processingTime}ms`);
     response.headers.set('X-Request-ID', Math.random().toString(36).substring(2, 15));
 
-    // 9. Log request for monitoring
+    // 11. Log request for monitoring
     monitoring.logger.info('Request processed', {
       method: request.method,
       pathname,
@@ -191,15 +253,7 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all request paths except for the ones starting with:
-    // - api (API routes)
-    // - _next/static (static files)
-    // - _next/image (image optimization files)
-    // - favicon.ico (favicon file)
-    // - images, videos, data directories
-    // - files with extensions
-    '/((?!api|_next/static|_next/image|favicon.ico|images|videos|data|.*\.).*)',
-    // Also match API routes for security
-    '/api/(.*)',
+    // 拦截所有路径（交给函数内自行跳过静态资源与API）
+    '/:path*',
   ],
 };

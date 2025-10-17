@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { generateCanonicalUrl } from '@/lib/seo';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 
 const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
@@ -16,15 +18,16 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'Technical articles and resources on flexible busbar design, materials, standards, installation, and comparisons with traditional solutions.',
     es: 'Artículos y recursos técnicos sobre diseño de barras colectoras flexibles, materiales, normas, instalación y comparativas con soluciones tradicionales.',
   };
-  const url = `${BASE_URL}/${locale}/articles`;
+  // 使用本地化URL生成，确保西语翻译段作为规范路径
+  const canonical = generateCanonicalUrl('/articles', locale as any, BASE_URL);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: `${BASE_URL}/en/articles`,
-        es: `${BASE_URL}/es/articles`,
+        en: buildLocalizedUrl('articles', 'en', undefined, BASE_URL),
+        es: buildLocalizedUrl('articles', 'es', undefined, BASE_URL),
       },
     },
   };

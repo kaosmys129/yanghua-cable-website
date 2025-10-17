@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 
 const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
@@ -16,15 +17,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'From engineering design to testing and maintenance, Yanghua provides end-to-end services to ensure reliable flexible busbar performance.',
     es: 'Desde el diseño de ingeniería hasta pruebas y mantenimiento, Yanghua ofrece servicios integrales para garantizar el rendimiento fiable de las barras colectoras flexibles.',
   };
-  const url = `${BASE_URL}/${locale}/services`;
+  const url = buildLocalizedUrl('services', locale as 'en' | 'es', undefined, BASE_URL);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical: url,
       languages: {
-        en: `${BASE_URL}/en/services`,
-        es: `${BASE_URL}/es/servicios`,
+        en: buildLocalizedUrl('services', 'en', undefined, BASE_URL),
+        es: buildLocalizedUrl('services', 'es', undefined, BASE_URL),
       },
     },
   };

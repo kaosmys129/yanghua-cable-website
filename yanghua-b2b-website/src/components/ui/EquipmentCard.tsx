@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -22,14 +22,7 @@ export function EquipmentCard({ name, image, description, className }: Equipment
   const [imageError, setImageError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const t = useTranslations('common');
-  // 使用useEffect确保只在客户端执行locale检测
-  const [locale, setLocale] = useState<'en' | 'es'>('en');
-  
-  useEffect(() => {
-    // 客户端检测URL路径确定语言
-    const isEsPath = window.location.pathname.includes('/es/');
-    setLocale(isEsPath ? 'es' : 'en');
-  }, []);
+  const locale = (useLocale() as 'en' | 'es') || 'en';
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -59,8 +52,8 @@ export function EquipmentCard({ name, image, description, className }: Equipment
         )}
       </div>
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">{name[locale]}</h3>
-        <p className="text-sm text-gray-600 line-clamp-3">{description[locale]}</p>
+        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">{name[locale] || name.en}</h3>
+        <p className="text-sm text-gray-600 line-clamp-3">{description[locale] || description.en}</p>
       </div>
     </div>
   );

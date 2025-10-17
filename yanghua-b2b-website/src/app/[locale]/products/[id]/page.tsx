@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { generateCanonicalUrl } from '@/lib/seo';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 import StructuredDataScript from '@/components/seo/StructuredDataScript';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
 
@@ -482,15 +484,16 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     en: product?.description || 'Flexible busbar product detail and specifications.',
     es: product?.description || 'Detalle y especificaciones del producto de barra colectora flexible.',
   };
-  const url = `${BASE_URL}/${locale}/products/${id}`;
+  // 使用本地化URL生成规范地址，确保西语翻译段
+  const canonical = generateCanonicalUrl(`/products/${id}`, locale as any, BASE_URL);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: `${BASE_URL}/en/products/${id}`,
-        es: `${BASE_URL}/es/products/${id}`,
+        en: buildLocalizedUrl('products-detail', 'en', { id }, BASE_URL),
+        es: buildLocalizedUrl('products-detail', 'es', { id }, BASE_URL),
       },
     },
   };

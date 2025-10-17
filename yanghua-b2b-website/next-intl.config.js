@@ -6,6 +6,8 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
 const config = {
   locales: ['en', 'es'],
   defaultLocale: 'en',
+  localePrefix: 'always',
+  // 使用 pathnames 将路由层保持英文段，但对外URL在西语使用翻译段
   pathnames: {
     '/': '/',
     '/about': {
@@ -35,7 +37,18 @@ const config = {
     '/articles': {
       en: '/articles',
       es: '/articulos'
-    }
+    },
+    // 分类页
+    '/products/category': {
+      en: '/products/category',
+      es: '/productos/categoria'
+    },
+    // 动态路由映射
+    '/products/[id]': { en: '/products/[id]', es: '/productos/[id]' },
+    '/solutions/[id]': { en: '/solutions/[id]', es: '/soluciones/[id]' },
+    '/projects/[id]': { en: '/projects/[id]', es: '/proyectos/[id]' },
+    '/articles/[slug]': { en: '/articles/[slug]', es: '/articulos/[slug]' },
+    '/products/category/[name]': { en: '/products/category/[name]', es: '/productos/categoria/[name]' }
   }
 };
 

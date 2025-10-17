@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 
 const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
@@ -16,15 +17,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'Reliable flexible busbar solutions for demanding applications: data centers, EV power modules, and industrial automation with high safety and low loss.',
     es: 'Soluciones fiables de barras colectoras flexibles para aplicaciones exigentes: centros de datos, módulos EV y automatización industrial con alta seguridad y baja pérdida.',
   };
-  const url = `${BASE_URL}/${locale}/solutions`;
+  const url = buildLocalizedUrl('solutions', locale as 'en' | 'es', undefined, BASE_URL);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical: url,
       languages: {
-        en: `${BASE_URL}/en/solutions`,
-        es: `${BASE_URL}/es/soluciones`,
+        en: buildLocalizedUrl('solutions', 'en', undefined, BASE_URL),
+        es: buildLocalizedUrl('solutions', 'es', undefined, BASE_URL),
       },
     },
   };

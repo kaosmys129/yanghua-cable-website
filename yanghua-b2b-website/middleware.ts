@@ -7,42 +7,31 @@ import { generateCSPHeader } from './src/lib/security';
 const intlMiddleware = createMiddleware({
   locales: ['en', 'es'],
   defaultLocale: 'en',
-  localePrefix: 'as-needed',
+  // 强制使用子路径前缀，与 app/[locale] 结构一致，避免默认语言无前缀导致的循环
+  localePrefix: 'always',
+  // 显式配置本地化路径名映射，确保 /es/productos 映射到路由 /[locale]/products
   pathnames: {
     '/': '/',
-    '/about': {
-      en: '/about',
-      es: '/acerca-de'
-    },
-    '/products': {
-      en: '/products', 
-      es: '/productos'
-    },
-    '/solutions': {
-      en: '/solutions',
-      es: '/soluciones'
-    },
-    '/services': {
-      en: '/services',
-      es: '/servicios'
-    },
-    '/projects': {
-      en: '/projects',
-      es: '/proyectos'
-    },
-    '/contact': {
-      en: '/contact',
-      es: '/contacto'
-    },
-    '/articles': {
-      en: '/articles',
-      es: '/articulos'
-    }
+    '/about': { en: '/about', es: '/acerca-de' },
+    '/products': { en: '/products', es: '/productos' },
+    '/products/[id]': { en: '/products/[id]', es: '/productos/[id]' },
+    '/solutions': { en: '/solutions', es: '/soluciones' },
+    '/solutions/[id]': { en: '/solutions/[id]', es: '/soluciones/[id]' },
+    '/services': { en: '/services', es: '/servicios' },
+    '/projects': { en: '/projects', es: '/proyectos' },
+    '/projects/[id]': { en: '/projects/[id]', es: '/proyectos/[id]' },
+    '/contact': { en: '/contact', es: '/contacto' },
+    '/articles': { en: '/articles', es: '/articulos' },
+    '/articles/[slug]': { en: '/articles/[slug]', es: '/articulos/[slug]' },
+    '/products/category': { en: '/products/category', es: '/productos/categoria' }
   }
 });
 
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const pathParts = pathname.split('/').filter(Boolean);
+  const pathLocale = (pathParts[0] || '').toLowerCase();
+  const activeLocale = locales.includes(pathLocale as any) ? (pathLocale as typeof locales[number]) : defaultLocale;
   
   // 添加调试日志
   console.log('Middleware called for:', pathname);
@@ -66,11 +55,62 @@ export default async function middleware(request: NextRequest) {
     return authResponse;
   }
 
-  // Handle root '/' redirect
+  // 301 重定向：西语站下的英文段旧路径统一到西语翻译段（规范）
+  // 例：/es/products -> /es/productos；/es/solutions -> /es/soluciones 等
+  const legacyEsMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
+    // 一级路由（英文段 -> 西语翻译段）
+    { from: /^\/es\/products(\/.*)?$/i, to: (m) => `/es/productos${m[1] || ''}` },
+    { from: /^\/es\/solutions(\/.*)?$/i, to: (m) => `/es/soluciones${m[1] || ''}` },
+    { from: /^\/es\/services(\/.*)?$/i, to: (m) => `/es/servicios${m[1] || ''}` },
+    { from: /^\/es\/projects(\/.*)?$/i, to: (m) => `/es/proyectos${m[1] || ''}` },
+    { from: /^\/es\/contact(\/.*)?$/i, to: (m) => `/es/contacto${m[1] || ''}` },
+    { from: /^\/es\/about(\/.*)?$/i, to: (m) => `/es/acerca-de${m[1] || ''}` },
+    { from: /^\/es\/articles(\/.*)?$/i, to: (m) => `/es/articulos${m[1] || ''}` },
+    // 分类与细分路径
+    { from: /^\/es\/products\/category(\/.*)?$/i, to: (m) => `/es/productos/categoria${m[1] || ''}` },
+  ];
+
+  for (const rule of legacyEsMappings) {
+    const match = pathname.match(rule.from);
+    if (match) {
+      const url = request.nextUrl.clone();
+      url.pathname = rule.to(match);
+      // 使用 301 永久重定向，向搜索引擎明确规范 URL
+      const res = NextResponse.redirect(url, 301);
+      // 将活动语言写入 Cookie，确保 SSR 读取
+      res.cookies.set('NEXT_LOCALE', 'es', { path: '/' });
+      return res;
+    }
+  }
+
+  // 西语翻译段动态路径 -> 路由内部英文段的 rewrite（不改变URL，避免30x，保证页面可访问）
+  const esRewriteMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
+    { from: /^\/es\/productos\/categoria(\/.*)?$/i, to: (m) => `/es/products/category${m[1] || ''}` },
+    { from: /^\/es\/productos\/(.+)$/i, to: (m) => `/es/products/${m[1]}` },
+    { from: /^\/es\/soluciones\/(.+)$/i, to: (m) => `/es/solutions/${m[1]}` },
+    { from: /^\/es\/proyectos\/(.+)$/i, to: (m) => `/es/projects/${m[1]}` },
+    { from: /^\/es\/articulos\/(.+)$/i, to: (m) => `/es/articles/${m[1]}` },
+  ];
+
+  for (const rule of esRewriteMappings) {
+    const match = pathname.match(rule.from);
+    if (match) {
+      const url = request.nextUrl.clone();
+      url.pathname = rule.to(match);
+      console.log('Rewrite ES translated path -> internal route:', pathname, '=>', url.pathname);
+      const res = NextResponse.rewrite(url);
+      res.cookies.set('NEXT_LOCALE', 'es', { path: '/' });
+      return res;
+    }
+  }
+
+  // 根路径：使用 rewrite 到默认语言，避免产生 30x
   if (pathname === '/' || pathname === '') {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
-    return NextResponse.redirect(url);
+    const res = NextResponse.rewrite(url);
+    res.cookies.set('NEXT_LOCALE', defaultLocale, { path: '/' });
+    return res;
   }
 
   // 调用 next-intl 中间件（现在包含pathnames配置）
@@ -79,6 +119,8 @@ export default async function middleware(request: NextRequest) {
 
   // 添加安全头部
   if (response instanceof NextResponse) {
+    // 将当前活动语言写入 Cookie，提供给 SSR 根布局作为可靠来源
+    response.cookies.set('NEXT_LOCALE', activeLocale, { path: '/' });
     const cspHeader = generateCSPHeader();
     response.headers.set('Content-Security-Policy', cspHeader);
     response.headers.set('X-Frame-Options', 'DENY');

@@ -20,39 +20,7 @@ const nextConfig = {
       },
     ],
   },
-  async rewrites() {
-    return [
-      // 西班牙语URL重写规则
-      {
-        source: '/es/productos/:path*',
-        destination: '/es/products/:path*',
-      },
-      {
-        source: '/es/soluciones/:path*',
-        destination: '/es/solutions/:path*',
-      },
-      {
-        source: '/es/servicios/:path*',
-        destination: '/es/services/:path*',
-      },
-      {
-        source: '/es/proyectos/:path*',
-        destination: '/es/projects/:path*',
-      },
-      {
-        source: '/es/contacto',
-        destination: '/es/contact',
-      },
-      {
-        source: '/es/acerca-de',
-        destination: '/es/about',
-      },
-      {
-        source: '/es/articulos/:path*',
-        destination: '/es/articles/:path*',
-      },
-    ];
-  },
+  // 不再使用 rewrites 来处理旧西语路径，统一由 middleware 返回 301 永久重定向
 };
 
 export default withNextIntl(nextConfig);

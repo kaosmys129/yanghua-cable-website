@@ -1,4 +1,6 @@
 import { getTranslations } from 'next-intl/server';
+import { generateCanonicalUrl } from '@/lib/seo';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -391,7 +393,8 @@ export async function generateMetadata({ params }: { params: { id: string; local
     }
   })();
   const baseUrl = 'https://www.yhflexiblebusbar.com';
-  const url = `${baseUrl}/${locale}/projects/${id}`;
+  // 使用本地化URL生成规范地址
+  const canonical = generateCanonicalUrl(`/projects/${id}`, locale as any, baseUrl);
   const titleBase = project?.title || 'Project Case';
   const titles: Record<string, string> = {
     en: `${titleBase} | Flexible Busbar Case Study | Yanghua`,
@@ -405,10 +408,10 @@ export async function generateMetadata({ params }: { params: { id: string; local
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: `${baseUrl}/en/projects/${id}`,
-        es: `${baseUrl}/es/projects/${id}`,
+        en: buildLocalizedUrl('projects-detail', 'en', { id }, baseUrl),
+        es: buildLocalizedUrl('projects-detail', 'es', { id }, baseUrl),
       },
     },
   };

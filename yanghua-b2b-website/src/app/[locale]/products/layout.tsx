@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildLocalizedUrl } from '@/lib/url-localization';
 
 const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
@@ -16,15 +17,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'Explore Yanghua’s flexible busbar portfolio: 200–6300A, ≤3kV, XLPE/PVC insulation, high protection level for industrial and outdoor environments.',
     es: 'Descubra el portafolio de barras colectoras flexibles de Yanghua: 200–6300A, ≤3kV, aislamiento XLPE/PVC y alta protección para aplicaciones industriales y exteriores.',
   };
-  const url = `${BASE_URL}/${locale}/products`;
+  const url = buildLocalizedUrl('products', locale as 'en' | 'es', undefined, BASE_URL);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical: url,
       languages: {
-        en: `${BASE_URL}/en/products`,
-        es: `${BASE_URL}/es/productos`,
+        en: buildLocalizedUrl('products', 'en', undefined, BASE_URL),
+        es: buildLocalizedUrl('products', 'es', undefined, BASE_URL),
       },
     },
   };

@@ -1,30 +1,33 @@
 import type { MetadataRoute } from 'next';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+
 export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.yhflexiblebusbar.com';
-  const locales = ['en', 'es'];
-  const staticPaths = ['', 'articles', 'projects', 'products', 'solutions', 'services'];
+  const locales = ['en', 'es'] as const;
+  const staticPageKeys = ['home', 'articles', 'projects', 'products', 'solutions', 'services'] as const;
 
   const items: MetadataRoute.Sitemap = [];
 
+  // 静态页面：使用统一的本地化URL生成确保西语输出翻译段
   for (const locale of locales) {
-    for (const path of staticPaths) {
+    for (const key of staticPageKeys) {
       items.push({
-        url: `${baseUrl}/${locale}${path ? `/${path}` : ''}`,
+        url: buildLocalizedUrl(key, locale, undefined, baseUrl),
         lastModified: new Date(),
         changeFrequency: 'weekly',
-        priority: path ? 0.7 : 1.0,
+        priority: key === 'home' ? 1.0 : 0.7,
       });
     }
   }
 
-  // Known product detail pages (can be extended from CMS later)
+  // 已知产品详情页（后续可从CMS扩展）
   const productIds = ['flexible-busbar-2000a', 'flexible-busbar-1500a', 'flexible-busbar-2500a', 'insulation-accessories'];
   for (const locale of locales) {
     for (const id of productIds) {
       items.push({
-        url: `${baseUrl}/${locale}/products/${id}`,
+        url: buildLocalizedUrl('products', locale, { id }, baseUrl),
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -32,12 +35,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Product categories
+  // 产品分类
   const categories = ['general', 'fire-resistant', 'halogen-free', 'low-smoke', 'special-purpose'];
   for (const locale of locales) {
     for (const name of categories) {
       items.push({
-        url: `${baseUrl}/${locale}/products/category/${name}`,
+        url: buildLocalizedUrl('products-category', locale, { name }, baseUrl),
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
@@ -45,12 +48,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Projects detail pages
+  // 项目详情页
   const projectIds = ['1', '2', '3', '4', '5', '6', '7'];
   for (const locale of locales) {
     for (const id of projectIds) {
       items.push({
-        url: `${baseUrl}/${locale}/projects/${id}`,
+        url: buildLocalizedUrl('projects-detail', locale, { id }, baseUrl),
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
@@ -58,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Articles detail pages (fetch from Strapi if available)
+  // 文章详情页（从 Strapi 获取）
   const strapiBase = 'https://fruitful-presence-02d7be759c.strapiapp.com';
   async function fetchArticleSlugs(locale: string): Promise<string[]> {
     try {
@@ -85,7 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const slugs = await fetchArticleSlugs(locale);
     for (const slug of slugs) {
       items.push({
-        url: `${baseUrl}/${locale}/articles/${slug}`,
+        url: buildLocalizedUrl('articles-detail', locale, { slug }, baseUrl),
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.6,
