@@ -7,7 +7,7 @@ import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
 import { draftMode } from 'next/headers';
-import { getArticleBySlug } from "@/lib/strapi-client";
+import { getArticleBySlugWithMetrics } from "@/lib/strapi-client";
 import { generateCanonicalUrl } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 
@@ -66,11 +66,12 @@ export async function generateStaticParams() {
 // Fetch article data using native fetch
 async function getArticle(slug: string, locale: string): Promise<Article | null> {
   try {
-    const article = await getArticleBySlug(slug, locale as any);
+    const { article, metrics } = await getArticleBySlugWithMetrics(slug, locale as any);
     if (!article) {
       console.log(`No article found with slug: ${slug}`);
       return null;
     }
+    console.log(`[DataUsage] Article visit payload size: ${metrics.bytes} bytes`);
     console.log(`Article found: ${article.title}`);
     return article;
   } catch (error) {

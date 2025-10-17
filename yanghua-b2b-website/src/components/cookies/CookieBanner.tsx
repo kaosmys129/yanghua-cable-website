@@ -79,6 +79,12 @@ export default function CookieBanner() {
     const value = JSON.stringify({ ...prefs, essential: true, ts: Date.now() });
     Cookies.set(COOKIE_KEY, value, { expires: COOKIE_EXPIRES_DAYS, sameSite: 'Lax' });
     setConsent(prefs);
+    // 将最新偏好同步给 AnalyticsProvider（Consent Mode）
+    if (typeof window !== 'undefined' && typeof (window as any).updateAnalyticsConsent === 'function') {
+      try {
+        (window as any).updateAnalyticsConsent(prefs);
+      } catch {}
+    }
   }
 
   function handleAcceptAll() {

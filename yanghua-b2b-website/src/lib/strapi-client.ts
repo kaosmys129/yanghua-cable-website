@@ -224,6 +224,25 @@ const debugError = (error: any, context: string) => {
   console.groupEnd();
 };
 
+// Compute approximate payload size in bytes for logging/metrics
+function computePayloadSize(obj: any): number {
+  try {
+    const str = JSON.stringify(obj);
+    // Prefer Node Buffer when available (server-side)
+    if (typeof Buffer !== 'undefined' && typeof Buffer.byteLength === 'function') {
+      return Buffer.byteLength(str, 'utf8');
+    }
+    // Fallback to TextEncoder in browsers
+    if (typeof TextEncoder !== 'undefined') {
+      return new TextEncoder().encode(str).length;
+    }
+    // Last resort: string length (approx)
+    return str.length;
+  } catch {
+    return 0;
+  }
+}
+
 export async function getAllArticles(locale?: StrapiLocale): Promise<{ data: Article[] }> {
   return withRetry(async () => {
     // Log detailed request information for debugging
@@ -313,6 +332,46 @@ export async function getArticleBySlug(slug: string, locale?: StrapiLocale): Pro
        return normalized.data;
     } catch (error) {
       handleStrapiError(error, `getArticleBySlug(${slug})`);
+      throw error;
+    }
+  });
+}
+
+// New: get article by slug and also return payload size metrics
+export async function getArticleBySlugWithMetrics(slug: string, locale?: StrapiLocale): Promise<{ article: Article | null; metrics: { bytes: number } }> {
+  return withRetry(async () => {
+    try {
+      console.log(`Fetching article by slug (with metrics): ${slug}`);
+      const articles = await strapi.find("articles", {
+        filters: { slug: { $eq: slug } },
+        populate: {
+          cover: { populate: "*" },
+          author: {
+            populate: {
+              avatar: { populate: "*" },
+            },
+          },
+          blocks: {
+            populate: "*",
+          },
+        },
+        locale: locale,
+      } as any);
+
+      const bytes = computePayloadSize(articles);
+      console.log(`[DataUsage] Strapi API payload size for slug=${slug}, locale=${locale}: ${bytes} bytes`);
+
+      const normalized = normalizeApiResponse(articles, (data) => {
+        const articleArray = Array.isArray(data) ? data : [data];
+        const transformed = transformArticles(articleArray);
+        return transformed[0] || null;
+      });
+      if (normalized.error) {
+        throw new Error(normalized.error);
+      }
+      return { article: normalized.data, metrics: { bytes } };
+    } catch (error) {
+      handleStrapiError(error, `getArticleBySlugWithMetrics(${slug})`);
       throw error;
     }
   });
