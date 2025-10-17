@@ -4,6 +4,7 @@ import { MonitoringProvider } from '@/components/providers/MonitoringProvider';
 import Script from 'next/script';
 import { getLocale } from 'next-intl/server';
 import { headers, cookies } from 'next/headers';
+import FloatingWhatsAppButton from '@/components/FloatingWhatsAppButton';
 
 export const metadata = {
   title: 'Yanghua Cable - Professional Cable Solutions',
@@ -70,6 +71,8 @@ export default async function RootLayout({
         <QueryProvider>
           <MonitoringProvider>
             {children}
+            {/* Global floating WhatsApp chat button */}
+            <FloatingWhatsAppButton />
           </MonitoringProvider>
         </QueryProvider>
       </body>
