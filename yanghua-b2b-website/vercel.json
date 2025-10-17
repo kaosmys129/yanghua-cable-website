@@ -33,7 +33,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: https://fruitful-presence-02d7be759c.strapiapp.com;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https: https://images.unsplash.com https://res.cloudinary.com https://yanghua-strapi-cms.onrender.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https: https://fruitful-presence-02d7be759c.strapiapp.com https://yanghua-strapi-cms.onrender.com https://www.google-analytics.com https://vitals.vercel-analytics.com wss://ws.vercel.live; frame-src 'self' https://www.youtube.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
         }
       ]
     },

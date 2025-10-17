@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import React, { useEffect, useMemo, useState } from "react";
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -97,6 +98,32 @@ export default function AnalyticsProvider() {
     window.gtag("event", "page_view", { page_path, page_location });
   }, [gaReady, measurementId, allowed]);
 
+  // 脚本加载完成并且用户已同意后，启用 Web Vitals 并上报到 GA4（使用本地依赖而非 CDN）
+  useEffect(() => {
+    if (!gaReady || !allowed) return;
+
+    let mounted = true;
+    import('web-vitals')
+      .then(({ onCLS, onLCP, onINP }) => {
+        const sendToGA = ({ name, delta, id }: any) => {
+          if (typeof window.gtag !== 'function') return;
+          window.gtag('event', name, {
+            value: Math.round(name === 'CLS' ? delta * 1000 : delta),
+            event_category: 'Web Vitals',
+            event_label: id,
+            non_interaction: true,
+          });
+        };
+        if (!mounted) return;
+        onLCP(sendToGA);
+        onCLS(sendToGA);
+        onINP(sendToGA);
+      })
+      .catch(() => {/* ignore */});
+
+    return () => { mounted = false; };
+  }, [gaReady, allowed]);
+
   if (!measurementId) {
     // 未配置 GA4 测量 ID，不渲染任何脚本
     return null;
@@ -122,25 +149,7 @@ export default function AnalyticsProvider() {
             gtag('consent', 'update', { analytics_storage: 'granted' });
           `}</Script>
 
-          {/* Web Vitals 仅在同意后启用并上报到 GA4 */}
-          <Script src="https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js" strategy="afterInteractive" />
-          <Script id="ga-web-vitals" strategy="afterInteractive">{`
-            (function(){
-              if (!window.webVitals) return;
-              function sendToGA({name, delta, id}) {
-                if (typeof window.gtag !== 'function') return;
-                window.gtag('event', name, {
-                  value: Math.round(name === 'CLS' ? delta * 1000 : delta),
-                  event_category: 'Web Vitals',
-                  event_label: id,
-                  non_interaction: true,
-                });
-              }
-              webVitals.onLCP(sendToGA);
-              webVitals.onCLS(sendToGA);
-              webVitals.onINP(sendToGA);
-            })();
-          `}</Script>
+          {/* Web Vitals 已通过上方 useEffect 动态加载并上报，无需在 JSX 中引入脚本 */}
         </>
       )}
     </>
