@@ -1,0 +1,163 @@
+/* Cookie Consent styles following PRD visual design spec */
+
+/* Remove global :root to keep CSS module selectors pure */
+
+.banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #FFFFFF; /* 主背景 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10); /* 卡片阴影 */
+  border-top: 1px solid #E9ECEF; /* 分隔线 */
+  border-top-left-radius: 8px; /* 圆角（上边） */
+  border-top-right-radius: 8px;
+  z-index: 1000; /* 高层级，低于其他全局浮层 */
+}
+
+.bannerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px; /* 8px网格倍数 */
+  padding: 16px 24px; /* 组件内边距 */
+}
+
+.bannerText {
+  color: #212529; /* 主要文本色 */
+  font-size: 14px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  border-radius: 6px; /* 按钮圆角 */
+  padding: 10px 16px;
+  font-weight: 600; /* 按钮字重 500-600 */
+  cursor: pointer;
+  transition: filter 160ms ease-in-out, background-color 160ms ease-in-out, color 160ms ease-in-out;
+}
+
+.primary {
+  background: #FDB827; /* 品牌主色 */
+  color: #212529; /* 文字深色 */
+  border: none;
+}
+.primary:hover {
+  filter: brightness(0.9); /* 悬停加深约10% */
+}
+
+.secondary {
+  background: transparent; /* 轮廓按钮 */
+  color: #FDB827; /* 文字使用品牌黄 */
+  border: 1px solid #FDB827; /* 边框品牌黄 */
+}
+.secondary:hover {
+  background: #FDB827; /* 悬停填充黄 */
+  color: #212529; /* 文字转深色 */
+}
+
+.linkBtn {
+  background: transparent;
+  color: #6C757D; /* 次要文本色 */
+  border: none;
+  text-decoration: underline;
+}
+.linkBtn:hover {
+  color: #212529;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(33, 37, 41, 0.40); /* 深色半透明遮罩 */
+  z-index: 1001;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92vw;
+  max-width: 640px;
+  background: #FFFFFF;
+  border-radius: 8px; /* 卡片圆角 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 24px; /* 组件内边距 */
+  z-index: 1002;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modalTitle {
+  color: #212529;
+  font-weight: 700; /* 标题字重 */
+  font-size: 18px;
+}
+
+.modalClose {
+  background: transparent;
+  color: #6C757D;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.modalClose:hover { color: #212529; }
+
+.group {
+  border: 1px solid #E9ECEF; /* 分组卡片边框 */
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.groupTitle {
+  color: #212529;
+  font-weight: 600; /* 小标题 */
+  margin-bottom: 6px;
+}
+.groupDesc {
+  color: #6C757D; /* 次要文本 */
+  font-size: 13px;
+}
+
+.toggleLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.settingsButton {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  background: #FFFFFF;
+  color: #6C757D;
+  border: 1px solid #E9ECEF;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 999; /* 低于 Banner 与 Modal */
+  cursor: pointer;
+}
+.settingsButton:hover { color: #212529; }

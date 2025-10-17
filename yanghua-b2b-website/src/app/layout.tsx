@@ -5,6 +5,7 @@ import Script from 'next/script';
 import { getLocale } from 'next-intl/server';
 import { headers, cookies } from 'next/headers';
 import FloatingWhatsAppButton from '@/components/FloatingWhatsAppButton';
+import CookieBanner from '@/components/cookies/CookieBanner';
 
 export const metadata = {
   title: 'Yanghua Cable - Professional Cable Solutions',
@@ -73,6 +74,8 @@ export default async function RootLayout({
             {children}
             {/* Global floating WhatsApp chat button */}
             <FloatingWhatsAppButton />
+            {/* Global cookie consent banner */}
+            <CookieBanner />
           </MonitoringProvider>
         </QueryProvider>
       </body>
