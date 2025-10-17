@@ -17,6 +17,14 @@
 7. [维护与更新流程](#7-维护与更新流程)
 8. [实施时间表](#8-实施时间表)
 9. [风险评估与应对策略](#9-风险评估与应对策略)
+10. [附录](#10-附录)
+11. [法语与葡萄牙语快速实施清单](#11-法语与葡萄牙语快速实施清单)
+12. [开发ToDo清单（可执行）](#12-开发todo清单可执行)
+13. [国际化框架优化与SEO最佳实践](#13-国际化框架优化与seo最佳实践)
+14. [URL路由策略优化与冲突避免](#14-url路由策略优化与冲突避免)
+15. [多语言内容管理系统配置指南](#15-多语言内容管理系统配置指南)
+16. [多语言SEO元数据管理方案](#16-多语言seo元数据管理方案)
+17. [质量保证与测试方案（多语言版本）](#17-质量保证与测试方案多语言版本)
 
 ---
 
@@ -640,6 +648,257 @@ const productSchema = {
 - **语言包管理**: 使用命名空间组织翻译键
 - **组件设计**: 保持组件的语言无关性
 - **性能优化**: 实施适当的缓存和懒加载策略
+
+---
+
+## 11. 法语与葡萄牙语快速实施清单
+
+### 11.1 技术配置（Next.js + next-intl）
+- 路由与语言配置
+  - 更新 next-intl.config.js：
+    ```typescript
+    import { defineRouting } from 'next-intl/routing';
+    export const routing = defineRouting({
+      locales: ['en', 'es', 'fr', 'pt'],
+      defaultLocale: 'en'
+    });
+    ```
+  - 更新 middleware.ts（或沿用已有 createMiddleware），确保识别并设置 `NEXT_LOCALE` Cookie：
+    ```typescript
+    import { NextResponse } from 'next/server';
+    import type { NextRequest } from 'next/server';
+    const SUPPORTED = new Set(['en', 'es', 'fr', 'pt']);
+    export function middleware(req: NextRequest) {
+      const { pathname } = req.nextUrl;
+      const seg = pathname.split('/')[1];
+      const active = SUPPORTED.has(seg) ? seg : 'en';
+      const res = NextResponse.next();
+      res.cookies.set('NEXT_LOCALE', active, { path: '/' });
+      return res;
+    }
+    export const config = { matcher: ['/((?!_next|static|assets).*)'] };
+    ```
+- 目录结构与页面
+  - 确保 `src/app/[locale]/` 下的核心页面在 `fr` 与 `pt` 环境均可生成。
+  - 使用 `generateStaticParams()` 生成静态参数：
+    ```typescript
+    export function generateStaticParams() {
+      return ['en','es','fr','pt'].map((locale) => ({ locale }));
+    }
+    ```
+- 语言包
+  - 创建并初始化：
+    ```bash
+    mkdir -p src/messages
+    cp src/messages/en.json src/messages/fr.json
+    cp src/messages/en.json src/messages/pt.json
+    ```
+  - 补充 `navigation`、`metadata`、页面文案等必要命名空间键。
+- 根布局与 SSR `html[lang]`
+  - 在 `src/app/layout.tsx` 或 `src/app/[locale]/layout.tsx` 中，服务端稳定设置 `<html lang={locale}>`，确保从 Cookie/header/next-intl 多源读取。
+- 语言切换器
+  - 更新语言列表：`en / es / fr / pt`，并确保切换逻辑替换路径前缀。
+
+### 11.2 SEO 与站点地图
+- `hreflang` 实施：每个页面输出 `link[rel="alternate"]`，语言集合：`en, es, fr, pt, x-default`。
+- `canonical`：以当前语言 URL 为准，避免跨语言互指造成重复收录。
+- 站点地图（sitemap.xml）：为每个 URL 输出跨语言 `xhtml:link`。
+
+### 11.3 CMS（Strapi）准备
+- 启用 i18n 插件并添加 `fr` 与 `pt` locales。
+- 内容类型开启 localizations；为每个条目维护各语言 slug、一致的跨语言关系。
+- 建立翻译工作流：草稿 → 翻译 → 语言审核 → 技术审核 → 发布。
+- Webhook/CI 集成：内容发布触发静态再生成或预热缓存。
+
+### 11.4 测试与发布
+- Playwright：将 `fr` 与 `pt` 纳入现有多语言 E2E 套件（`html[lang]`、`hreflang`、`canonical`、导航一致性）。
+- 性能与可用性：Lighthouse 对比各语言指数；移动端与桌面端。
+- 预发布检查清单：参照 4.3.1，扩展到 `fr/pt`。
+
+---
+
+## 12. 开发ToDo清单（可执行）
+
+### 12.1 路由与中间件
+- [ ] 更新 `next-intl.config.js` locales：加入 `fr`、`pt`。
+- [ ] 中间件识别并设置 `NEXT_LOCALE`，与 SSR 根布局对齐。
+- [ ] 完善 `matcher`，避免静态资源误匹配。
+
+### 12.2 布局与 SSR 稳定性
+- [ ] 根布局读取 locale 的多源回退（Cookie/header/next-intl）。
+- [ ] 所有语言页面 SSR 输出 `<html lang>` 正确。
+- [ ] 客户端语言切换器与 SSR 输出一致。
+
+### 12.3 文案与语言包
+- [ ] 初始化 `fr.json` 与 `pt.json`，覆盖 `navigation`、`metadata`、核心页面命名空间。
+- [ ] 建立术语表与风格指南，确保专业一致性。
+
+### 12.4 页面与 URL
+- [ ] 为 `fr/pt` 核心页面实现路由与页面组件。
+- [ ] 统一 slug 规范：小写、连字符、语言内语义一致，跨语言 1:1 对齐。
+- [ ] 基于 locale 输出 `canonical` 与 `alternates`。
+
+### 12.5 CMS 与工作流
+- [ ] Strapi 启用 `fr/pt` locales；为涉及页面绑定多语言内容。
+- [ ] 配置预览与发布 Webhook；内容发布驱动增量再生成。
+- [ ] 建立翻译审批流程与质量基线。
+
+### 12.6 SEO 与元数据
+- [ ] 在 `generateMetadata` 中统一输出 `title/description/keywords`、`canonical`、`hreflang`。
+- [ ] 输出语言化 Open Graph、Twitter Card 与结构化数据。
+- [ ] 生成多语言 sitemap 与 robots 规则校验。
+
+### 12.7 测试与CI
+- [ ] 扩展 Playwright 套件纳入 `fr/pt`，加入 `lang/hreflang/canonical` 校验。
+- [ ] 在 CI 中配置 `PLAYWRIGHT_BASE_URL`，生成报告归档到 `test-results/`。
+- [ ] 设定失败门槛与质量门禁（PR 必须通过多语言校验）。
+
+---
+
+## 13. 国际化框架优化与SEO最佳实践
+
+### 13.1 `html[lang]` SSR 稳定输出
+- 根布局服务端设置 `<html lang>`，从 `NEXT_LOCALE` Cookie、`x-locale` header 与 `next-intl` 获取，保证三重回退。
+- 禁止客户端二次覆盖 `lang`，避免闪烁与不一致。
+
+### 13.2 `hreflang` 策略
+- 每个页面输出全量 `alternate`：`en`、`es`、`fr`、`pt`、`x-default`。
+- 链接指向对应语言的规范化 URL，确保 1:1 对齐与互指完整性。
+
+### 13.3 `canonical` 策略
+- 每个语言页面的 canonical 指向该语言自身 URL，避免互相 canonical 导致重复内容判定。
+- 对无语言前缀访问（如 `/products`）统一 301 跳转到默认语言（`/en/products`）。
+
+### 13.4 结构化数据与社交元数据
+- JSON-LD：输出语言化 `name/description`，与页面文案一致。
+- Open Graph/Twitter：
+  - `og:locale`: `en_US/es_ES/fr_FR/pt_PT`（或按目标市场调整）。
+  - `og:title/og:description`：按语言包生成。
+
+### 13.5 抓取与索引控制
+- 统一处理尾随斜杠与大小写，避免重复路径。
+- 对含追踪参数的 URL 输出 `canonical` 指向干净路径；或利用 `robots` 限制不重要参数页面索引。
+
+---
+
+## 14. URL 路由策略优化与冲突避免
+
+### 14.1 前缀与保留路径
+- 强制语言前缀：`/en|/es|/fr|/pt`。
+- 保留路径避免与语言代码冲突（如 `/api`、`/_next`、`/assets`）。
+
+### 14.2 slug 规范
+- 语言内：小写、短横线分隔、语义明确；
+- 跨语言：建立 slug 映射表（CMS 管理），保持 1:1 对齐。
+
+### 14.3 重写/重定向
+- `next.config.mjs`：
+  ```javascript
+  export default {
+    redirects: async () => ([
+      { source: '/products', destination: '/en/products', permanent: true },
+    ]),
+    // 按需配置 rewrites 保持内部路由整洁
+  };
+  ```
+
+### 14.4 生成参数与构建
+- 在所有动态页面提供 `generateStaticParams()` 返回 `['en','es','fr','pt']`；
+- 确保构建时生成四语版本并正确预渲染。
+
+---
+
+## 15. 多语言内容管理系统配置指南（Strapi）
+
+### 15.1 启用与语言设置
+- 启用 i18n 插件，新增 `fr`、`pt`（并确认默认语言为 `en`）。
+- 为目标内容类型（产品、解决方案、项目、文章）开启 localizations。
+
+### 15.2 字段与关系
+- 为每种语言维护独立 `title/description/content/slug`；
+- 通过 `localizations` 关联同一实体的不同语言版本；
+- 统一媒体资产（如 PDF/图片）按语言目录组织。
+
+### 15.3 工作流与权限
+- 角色：作者→翻译→语言审核→技术审核→发布；
+- 建立提交规范与检查清单，确保一致性与质量基线。
+
+### 15.4 预览与发布
+- 预览 URL：`/api/preview?locale=fr|pt&slug=...`；
+- Webhook：内容发布触发 Next.js 再生成或缓存失效；
+- 版本管理：在 CMS 保留语言版本对照与变更记录。
+
+---
+
+## 16. 多语言 SEO 元数据管理方案
+
+### 16.1 元数据结构设计
+- 在语言包（`src/messages/*`）或专用配置中维护：
+  ```json
+  {
+    "metadata": {
+      "home": {
+        "title": "Accueil | Yanghua",
+        "description": "Solutions de câbles professionnels...",
+        "keywords": "câbles, barre flexible"
+      }
+    }
+  }
+  ```
+
+### 16.2 `generateMetadata` 实现示例
+```typescript
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+  const base = `https://yanghua.com/${locale}`;
+  return {
+    title: t('page.title'),
+    description: t('page.description'),
+    alternates: {
+      canonical: base,
+      languages: {
+        en: `https://yanghua.com/en`,
+        es: `https://yanghua.com/es`,
+        fr: `https://yanghua.com/fr`,
+        pt: `https://yanghua.com/pt`,
+        'x-default': `https://yanghua.com/en`
+      }
+    },
+    openGraph: {
+      locale: locale === 'en' ? 'en_US' : locale === 'es' ? 'es_ES' : locale === 'fr' ? 'fr_FR' : 'pt_PT',
+      title: t('page.title'),
+      description: t('page.description')
+    }
+  };
+}
+```
+
+### 16.3 站点地图与 robots
+- 生成多语言 sitemap，输出 `xhtml:link` 互指；
+- 在 robots 中避免索引不必要参数页；
+- 持续监控 Search Console 的跨语言覆盖情况与提示。
+
+---
+
+## 17. 质量保证与测试方案（多语言版本）
+
+### 17.1 测试范围
+- 语言识别与切换：URL 前缀、Cookie 与 SSR 一致性；
+- 页面验证：`html[lang]`、`hreflang`、`canonical`、OG 与结构化数据；
+- 内容完整性：核心页面文案在 `en/es/fr/pt` 的覆盖与一致性；
+- 导航一致性与路由跳转；
+- 站点地图与 robots；
+- 性能指标：Lighthouse（移动/桌面）。
+
+### 17.2 自动化实现
+- Playwright：扩展现有套件，加入 `fr/pt` 的 URL 集合；
+- 报告：JSON/HTML 输出至 `test-results/`，在 CI 中归档与门禁；
+- 阈值：关键校验项（`lang/hreflang/canonical`）全量通过方可合入。
+
+### 17.3 测试数据与维护
+- 维护页面清单（核心路径）与跨语言对照表；
+- 当新增页面或语言时，更新清单并回归执行；
+- 结合错误收集与分析报告（如 `ERROR_COLLECTION_README.md`）持续优化。
 
 ---
 
