@@ -207,30 +207,59 @@ export async function POST(request: NextRequest) {
     }
 
 
-    // 根据错误类型返回不同的响应
+    // 根据错误类型返回不同的响应（尽量避免 500）
+    const nativeError = error as any;
+    const rawMessage = (nativeError?.message || '').toString();
+    const errMsg = rawMessage.toLowerCase();
+    const errName = (nativeError?.name || '').toString();
+    const errCode = (nativeError?.code || (nativeError?.cause && nativeError.cause.code) || '');
+
     let errorMessage = 'Internal server error';
     let statusCode = 500;
+    let responseCode = 'INTERNAL_ERROR';
     
     if (error instanceof SyntaxError) {
       errorMessage = 'Invalid JSON format in request';
       statusCode = 400;
-    } else if ((error as Error).message.includes('SMTP')) {
+      responseCode = 'INVALID_JSON';
+    } else if (
+      errMsg.includes('email service connection failed') ||
+      (errMsg.includes('connection') && (errMsg.includes('failed') || errMsg.includes('refused') || errMsg.includes('timeout'))) ||
+      ['ECONNREFUSED','ENOTFOUND','ETIMEDOUT','EAI_AGAIN','ESOCKET'].includes(String(errCode))
+    ) {
+      errorMessage = 'Email service connection failed';
+      statusCode = 503;
+      responseCode = 'SMTP_CONNECTION_FAILED';
+    } else if (
+      errMsg.includes('auth') || errMsg.includes('authentication') || errMsg.includes('invalid login')
+    ) {
+      errorMessage = 'Email service authentication failed';
+      statusCode = 503;
+      responseCode = 'SMTP_AUTH_FAILED';
+    } else if (errMsg.includes('smtp')) {
       errorMessage = 'Email service configuration error';
       statusCode = 503;
-    } else if ((error as Error).message.includes('validation')) {
+      responseCode = 'SMTP_CONFIG_ERROR';
+    } else if (errMsg.includes('no recipients') || errMsg.includes('recipient')) {
+      errorMessage = 'Invalid recipient';
+      statusCode = 400;
+      responseCode = 'INVALID_RECIPIENT';
+    } else if (errMsg.includes('validation')) {
       errorMessage = 'Data validation error';
       statusCode = 400;
+      responseCode = 'VALIDATION_FAILED';
     }
 
     return NextResponse.json(
       { 
         success: false, 
         error: errorMessage,
-        code: 'INTERNAL_ERROR',
+        code: responseCode,
         processingTime: Date.now() - startTime,
         debug: process.env.NODE_ENV === 'development' ? {
-          originalError: (error as Error).message,
-          errorType: (error as Error).name
+          originalError: rawMessage,
+          errorType: errName,
+          errorCode: errCode
         } : undefined
       },
       { status: statusCode }

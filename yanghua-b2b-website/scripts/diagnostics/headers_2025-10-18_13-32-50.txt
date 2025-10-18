@@ -1,0 +1,13 @@
+HTTP/2 429 
+cache-control: public, max-age=0, must-revalidate
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: https://fruitful-presence-02d7be759c.strapiapp.com;
+content-type: text/plain;charset=UTF-8
+date: Sat, 18 Oct 2025 05:33:00 GMT
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-vercel-id: sin1::l6qj7-1760765580702-550d14b79626
+x-xss-protection: 1; mode=block
+

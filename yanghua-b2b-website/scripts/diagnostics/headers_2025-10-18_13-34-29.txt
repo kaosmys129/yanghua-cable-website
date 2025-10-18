@@ -1,0 +1,47 @@
+HTTP/2 307 
+cache-control: public, max-age=0, must-revalidate
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://vitals.vercel-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https: https://images.unsplash.com https://res.cloudinary.com https://yanghua-strapi-cms.onrender.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://api.strapi.io https://yanghua-strapi-cms.onrender.com https://fruitful-presence-02d7be759c.strapiapp.com https://www.google-analytics.com https://vitals.vercel-analytics.com wss://ws.vercel.live; frame-src 'self' https://www.youtube.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+content-type: text/html
+cross-origin-embedder-policy: credentialless
+cross-origin-opener-policy: same-origin
+cross-origin-resource-policy: cross-origin
+date: Sat, 18 Oct 2025 05:34:30 GMT
+location: /en
+permissions-policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+set-cookie: csrf-token=MTc2MDc2NTY3MDIyMDpjc2pqZTlpajE1bjphLXZlcnktc2VjcmV0LWFuZC1yYW5kb20tc3RyaW5nLWZvci1sb2NhbC1kZXY%3D; Path=/; Expires=Sat, 18 Oct 2025 06:34:30 GMT; Max-Age=3600; Secure; HttpOnly; SameSite=strict
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-request-id: zio0unpkau
+x-response-time: 15ms
+x-vercel-id: sin1::2sj8v-1760765670148-e7a9e020480d
+x-xss-protection: 1; mode=block
+
+HTTP/2 200 
+age: 0
+cache-control: private, no-cache, no-store, max-age=0, must-revalidate
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://vitals.vercel-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https: https://images.unsplash.com https://res.cloudinary.com https://yanghua-strapi-cms.onrender.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://api.strapi.io https://yanghua-strapi-cms.onrender.com https://fruitful-presence-02d7be759c.strapiapp.com https://www.google-analytics.com https://vitals.vercel-analytics.com wss://ws.vercel.live; frame-src 'self' https://www.youtube.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+content-type: text/html; charset=utf-8
+cross-origin-embedder-policy: credentialless
+cross-origin-opener-policy: same-origin
+cross-origin-resource-policy: cross-origin
+date: Sat, 18 Oct 2025 05:34:31 GMT
+link: <https://www.yhflexiblebusbar.com/en>; rel="alternate"; hreflang="en", <https://www.yhflexiblebusbar.com/es>; rel="alternate"; hreflang="es", <https://www.yhflexiblebusbar.com/>; rel="alternate"; hreflang="x-default"
+permissions-policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+set-cookie: csrf-token=MTc2MDc2NTY3MTMzNzpjNmVjdDNlYTVzOmEtdmVyeS1zZWNyZXQtYW5kLXJhbmRvbS1zdHJpbmctZm9yLWxvY2FsLWRldg%3D%3D; Path=/; Expires=Sat, 18 Oct 2025 06:34:31 GMT; Max-Age=3600; Secure; HttpOnly; SameSite=strict
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-matched-path: /[locale]
+x-powered-by: Next.js
+x-request-id: 6xga5i1ft62
+x-response-time: 5ms
+x-vercel-cache: MISS
+x-vercel-id: sin1::iad1::qdhgz-1760765671301-66621b77fbb1
+x-xss-protection: 1; mode=block
+
