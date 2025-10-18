@@ -23,7 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // 已知产品详情页（后续可从CMS扩展）
-  const productIds = ['flexible-busbar-2000a', 'flexible-busbar-1500a', 'flexible-busbar-2500a', 'insulation-accessories'];
+  // 方案B：暂时仅保留已实现的数据的产品，避免 404 影响抓取
+  const productIds = ['flexible-busbar-2000a'];
   for (const locale of locales) {
     for (const id of productIds) {
       items.push({
@@ -35,8 +36,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 产品分类
-  const categories = ['general', 'fire-resistant', 'halogen-free', 'low-smoke', 'special-purpose'];
+  // 产品分类（与实际路由实现保持一致）
+  const categories = ['general', 'fire-resistant', 'flame-retardant', 'low-smoke-halogen-free'];
   for (const locale of locales) {
     for (const name of categories) {
       items.push({

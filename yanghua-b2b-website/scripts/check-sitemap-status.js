@@ -9,8 +9,8 @@
  *   timeout: 7000 ms
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 const argv = process.argv.slice(2);
 function getArg(name, def) {
@@ -45,7 +45,7 @@ async function fetchText(url, options = {}) {
   }
 }
 
-async function headUrl(url) {
+async function headUrl(url, options = {}) {
   const start = performance.now();
   try {
     const controller = new AbortController();
@@ -55,8 +55,11 @@ async function headUrl(url) {
       redirect: 'follow',
       signal: controller.signal,
       headers: {
-        'User-Agent': 'SitemapStatusChecker/1.0',
-        'Accept': '*/*',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://www.yhflexiblebusbar.com/',
+        ...(options.headers || {}),
       },
     });
     clearTimeout(id);
@@ -74,9 +77,11 @@ async function headUrl(url) {
         redirect: 'follow',
         signal: controller.signal,
         headers: {
-          'User-Agent': 'SitemapStatusChecker/1.0',
-          'Accept': 'text/html,*/*',
-          'Range': 'bytes=0-0',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': '*/*',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Referer': 'https://www.yhflexiblebusbar.com/',
+          ...(options.headers || {}),
         },
       });
       clearTimeout(id);
