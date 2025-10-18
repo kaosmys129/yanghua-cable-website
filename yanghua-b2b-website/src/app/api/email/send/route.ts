@@ -108,25 +108,30 @@ export async function POST(request: NextRequest) {
     };
 
     // 保存邮件记录到数据库
-    const emailRecordId = await defaultEmailStorage.saveEmail({
-      type: formType as 'contact' | 'inquiry',
-      from: body.email,
-      to: emailOptions.to,
-      subject: emailOptions.subject,
-      htmlContent: emailOptions.html,
-      textContent: emailOptions.text,
-      status: 'pending',
-      locale,
-      templateData: JSON.stringify(body),
-      retryCount: 0,
-      priority: emailOptions.priority,
-      metadata: JSON.stringify({
-        clientIP,
-        userAgent: request.headers.get('user-agent'),
-        riskScore: validationResult.riskScore,
-        warnings: validationResult.warnings,
-      }),
-    });
+    let emailRecordId: string | null = null;
+    try {
+      emailRecordId = await defaultEmailStorage.saveEmail({
+        type: formType as 'contact' | 'inquiry',
+        from: body.email,
+        to: emailOptions.to,
+        subject: emailOptions.subject,
+        htmlContent: emailOptions.html,
+        textContent: emailOptions.text,
+        status: 'pending',
+        locale,
+        templateData: JSON.stringify(body),
+        retryCount: 0,
+        priority: emailOptions.priority,
+        metadata: JSON.stringify({
+          clientIP,
+          userAgent: request.headers.get('user-agent'),
+          riskScore: validationResult.riskScore,
+          warnings: validationResult.warnings,
+        }),
+      });
+    } catch (saveError) {
+      console.warn('Failed to persist email record, continuing without DB:', (saveError as Error).message);
+    }
 
     // 发送邮件
     console.log("Sending email with options:", JSON.stringify(emailOptions, null, 2));
@@ -134,17 +139,23 @@ export async function POST(request: NextRequest) {
     console.log("Email send result:", JSON.stringify(sendResult, null, 2));
 
     // 更新邮件记录状态
-    if (sendResult.success) {
-      await defaultEmailStorage.updateEmail(emailRecordId, {
-        status: 'sent',
-        messageId: sendResult.messageId,
-        sentAt: new Date(),
-      });
-    } else {
-      await defaultEmailStorage.updateEmail(emailRecordId, {
-        status: 'failed',
-        errorMessage: sendResult.error,
-      });
+    try {
+      if (emailRecordId) {
+        if (sendResult.success) {
+          await defaultEmailStorage.updateEmail(emailRecordId, {
+            status: 'sent',
+            messageId: sendResult.messageId,
+            sentAt: new Date(),
+          });
+        } else {
+          await defaultEmailStorage.updateEmail(emailRecordId, {
+            status: 'failed',
+            errorMessage: sendResult.error,
+          });
+        }
+      }
+    } catch (updateError) {
+      console.warn('Failed to update email record status:', (updateError as Error).message);
     }
 
     // 返回结果
@@ -194,6 +205,7 @@ export async function POST(request: NextRequest) {
     } catch (dbError) {
       console.error('Failed to log error to database:', dbError);
     }
+
 
     // 根据错误类型返回不同的响应
     let errorMessage = 'Internal server error';

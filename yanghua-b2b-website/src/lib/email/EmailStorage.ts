@@ -90,8 +90,14 @@ export class EmailStorage {
   private dbPath: string;
 
   constructor(dbPath?: string) {
-    this.dbPath = dbPath || path.join(process.cwd(), 'data', 'emails.db');
-    // 确保数据库所在的目录存在
+    const isProd = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
+    const defaultDbPath = process.env.EMAIL_DB_PATH || (isProd
+      ? path.join('/tmp', 'emails.db')
+      : path.join(process.cwd(), 'data', 'emails.db')
+    );
+    this.dbPath = dbPath || defaultDbPath;
+    
+    // 确保数据库所在的目录存在（/tmp 通常已存在）
     const dir = path.dirname(this.dbPath);
     try {
       if (!fs.existsSync(dir)) {
@@ -99,12 +105,22 @@ export class EmailStorage {
         console.log(`[EmailStorage] Created database directory: ${dir}`);
       }
     } catch (dirError) {
-      console.error('[EmailStorage] Failed to ensure database directory exists:', dirError);
+      console.warn('[EmailStorage] Failed to ensure database directory exists:', dirError);
       // 继续尝试初始化数据库，但记录错误以便诊断
     }
-
-    this.db = new Database(this.dbPath);
-    this.initializeDatabase();
+    
+    // 打开数据库，如失败则退回内存数据库，避免在无写权限环境（如 Vercel）导致 500
+    try {
+      this.db = new Database(this.dbPath);
+    } catch (openErr) {
+      console.error(`[EmailStorage] Failed to open database at ${this.dbPath}, falling back to in-memory:`, openErr);
+      this.db = new Database(':memory:');
+    }
+    try {
+      this.initializeDatabase();
+    } catch (initErr) {
+      console.error('[EmailStorage] Failed to initialize database:', initErr);
+    }
   }
 
   /**
