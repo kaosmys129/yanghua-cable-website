@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LightboxImage from '@/components/LightboxImage';
 import SolutionDownloadButton from '@/components/ui/SolutionDownloadButton';
+import SolutionsHeroImage from '@/components/SolutionsHeroImage';
+import SolutionsGallery from '@/components/SolutionsGallery';
+import fs from 'node:fs';
+import path from 'node:path';
 
 type Solution = {
   id: string;
@@ -15,6 +19,7 @@ type Solution = {
   applications: string[];
   advantages: { title: string; description: string }[];
   technicalSpecs: { parameter: string; value: string }[];
+  galleryCaptions?: { title: string; description: string }[];
 };
 
 // Generate static params for all available solutions
@@ -43,17 +48,27 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
     notFound();
   }
 
+  // 自动/配置生成 Gallery 数量：优先使用 captions 长度，否则根据目录文件数量自动计算，最后回退为 4
+  let galleryCount = (solution.galleryCaptions && solution.galleryCaptions.length) ? solution.galleryCaptions.length : 0;
+  try {
+    const galleryDir = path.join(process.cwd(), 'public', 'images', 'solutions', solution.id, 'gallery');
+    const exists = fs.existsSync(galleryDir);
+    const files = exists ? fs.readdirSync(galleryDir) : [];
+    const imageFiles = files.filter((f) => /\.(webp|png|jpg|jpeg)$/i.test(f));
+    if (!galleryCount) {
+      galleryCount = imageFiles.length;
+    }
+  } catch (e) {
+    // ignore fs errors and fallback later
+  }
+  if (!galleryCount) {
+    galleryCount = 4;
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="relative h-64 md:h-96 w-full">
-          <Image
-            src={solution.image}
-            alt={solution.title}
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
+        <SolutionsHeroImage src={solution.image} alt={solution.title} />
         <div className="p-6 md:p-8">
           <h1 className="text-4xl font-extrabold text-gray-900 mb-2">{solution.title}</h1>
           <p className="text-xl text-gray-600 mb-6">{solution.subtitle}</p>
@@ -81,7 +96,7 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
                 </div>
             </div>
             <LightboxImage 
-                src={`/images/solutions/solution-details/${solution.id}-detail.webp`}
+                src={`/images/solutions/${solution.id}/detail.webp`}
                 alt={solution.title}
             />
           </div>
@@ -98,6 +113,12 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
             </div>
           </div>
 
+          {/* Gallery Section */}
+          <div className="mt-12">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Gallery</h2>
+            
+            <SolutionsGallery solutionId={solution.id} solutionTitle={solution.title} count={galleryCount} captions={solution.galleryCaptions} />
+          </div>
           <div className="mt-12">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Technical Specifications</h2>
             <div className="overflow-x-auto">
@@ -137,11 +158,10 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
             Download PDF
           </SolutionDownloadButton>
           <Link href="/contact" className="btn-primary px-8 py-3">
-            Get in Touch
+            Contact Us
           </Link>
         </div>
       </div>
-
     </div>
   );
 }

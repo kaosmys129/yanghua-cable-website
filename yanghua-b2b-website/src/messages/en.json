@@ -594,7 +594,7 @@
         "title": "New Energy Solutions",
         "subtitle": "Advanced power transmission for solar, wind, and energy storage systems",
         "description": "Yanghua STI provides specialized flexible busbar solutions for the new energy sector, addressing the unique power transmission challenges in solar, wind, and energy storage applications. Our solutions ensure reliable, efficient power delivery even in demanding environments.",
-        "image": "/images/solutions/new-energy.webp",
+        "image": "/images/solutions/new-energy/cover.webp",
         "highlights": [
           "High current capacity for large-scale installations",
           "Weather-resistant designs for outdoor applications",
@@ -606,6 +606,12 @@
           "Wind farms",
           "Battery storage",
           "EV charging"
+        ],
+        "galleryCaptions": [
+          { "title": "High-efficiency PV busbar", "description": "Optimized for solar arrays, enabling low-loss power delivery." },
+          { "title": "Weather-resistant connectors", "description": "Designed for long-term outdoor reliability in wind farms." },
+          { "title": "Energy storage interconnect", "description": "Flexible links for modular battery rack systems." },
+          { "title": "EV charging feeder", "description": "Stable high-current transfer for fast-charging cabinets." }
         ],
         "advantages": [
           {
@@ -655,7 +661,7 @@
         "title": "Power System Solutions",
         "subtitle": "Reliable grid infrastructure and power distribution solutions",
         "description": "Our flexible busbar solutions enhance the reliability and efficiency of power transmission and distribution systems. Designed for substations, switchgear, and grid modernization projects, they offer superior performance compared to traditional conductors.",
-        "image": "/images/solutions/power-systems.webp",
+        "image": "/images/solutions/power-system/cover.webp",
         "highlights": [
           "Grid modernization compatible",
           "Reduced maintenance requirements",
@@ -667,6 +673,12 @@
           "Switchgear",
           "Power plants",
           "Grid modernization"
+        ],
+        "galleryCaptions": [
+          { "title": "Substation busbar upgrade", "description": "Retrofit flexible busbar to simplify complex bay connections." },
+          { "title": "Switchgear interconnect", "description": "Compact routing between cubicles with enhanced safety." },
+          { "title": "Power plant feeder", "description": "High-current links with improved thermal performance." },
+          { "title": "Grid modernization module", "description": "Modular connections for rapid deployment." }
         ],
         "advantages": [
           {
@@ -712,7 +724,7 @@
         "title": "Manufacturing Solutions",
         "subtitle": "Flexible power distribution for modern manufacturing facilities",
         "description": "Optimize your manufacturing operations with our flexible busbar solutions designed for modern production facilities. Our systems provide reliable power distribution that adapts to changing production layouts and equipment configurations.",
-        "image": "/images/solutions/manufacturing.webp",
+        "image": "/images/solutions/manufacturing/cover.webp",
         "highlights": [
           "Adaptable to changing production layouts",
           "Reduced installation complexity",
@@ -724,6 +736,12 @@
           "Robotic systems",
           "CNC machines",
           "Conveyor systems"
+        ],
+        "galleryCaptions": [
+          { "title": "Flexible routing over conveyors", "description": "Easily bypass mechanical structures without custom bends." },
+          { "title": "Robot cell power link", "description": "Compact interconnects for high-density automation." },
+          { "title": "CNC busbar connection", "description": "Stable supply for precision machinery." },
+          { "title": "Production line expansion", "description": "Modular extensions for rapid reconfiguration." }
         ],
         "advantages": [
           {
@@ -769,7 +787,7 @@
         "title": "Data Center Solutions",
         "subtitle": "High-density power solutions for critical IT infrastructure",
         "description": "Ensure uninterrupted power delivery to your critical IT infrastructure with our specialized data center solutions. Designed for high-density server farms, cloud facilities, and colocation centers, they provide reliable power with enhanced safety features.",
-        "image": "/images/solutions/data-center.webp",
+        "image": "/images/solutions/data-center/cover.webp",
         "highlights": [
           "High-density power distribution",
           "Enhanced safety for IT personnel",
@@ -781,6 +799,12 @@
           "Cloud facilities",
           "Colocation centers",
           "Edge computing"
+        ],
+        "galleryCaptions": [
+          { "title": "High-density busway", "description": "Compact power distribution above server aisles." },
+          { "title": "UPS interconnect", "description": "Flexible links between UPS and distribution cabinets." },
+          { "title": "Colocation feed", "description": "Modular connections for tenant power upgrades." },
+          { "title": "Edge rack power", "description": "Reliable supply for distributed edge nodes." }
         ],
         "advantages": [
           {
@@ -826,7 +850,7 @@
         "title": "Charging Station Solutions",
         "subtitle": "Safe and reliable power for EV charging station",
         "description": "Our flexible busbar solutions provide safe, reliable power distribution for railway and metro systems. Engineered for metro systems, railway stations, and signaling systems, they offer enhanced safety and performance in transit environments.",
-        "image": "/images/solutions/charging-station.webp",
+        "image": "/images/solutions/charging-station/cover.webp",
         "highlights": [
           "Enhanced safety for passenger environments",
           "Vibration-resistant design",
@@ -837,6 +861,11 @@
           "Commercial EV charging station",
           "Truck EV charging station",
           "EV golfcar charging station"
+        ],
+        "galleryCaptions": [
+          { "title": "Fast-charging cabinet link", "description": "High-current flexible connection for DC chargers." },
+          { "title": "Outdoor EV station feed", "description": "Weather-resistant routes for charging islands." },
+          { "title": "Heavy-duty truck charging", "description": "Robust interconnects for high-capacity systems." }
         ],
         "advantages": [
           {
@@ -882,7 +911,7 @@
         "title": "Metallurgy & Chemical Solutions",
         "subtitle": "Heavy-duty power solutions for harsh industrial environments",
         "description": "Deliver reliable power in the harshest industrial environments with our metallurgy and chemical solutions. Designed for steel mills, chemical plants, and refineries, they provide exceptional durability and performance in extreme conditions.",
-        "image": "/images/solutions/metallurgy.webp",
+        "image": "/images/solutions/metallurgy/cover.webp",
         "highlights": [
           "Corrosion-resistant materials",
           "High-temperature performance",
@@ -894,6 +923,11 @@
           "Chemical plants",
           "Refineries",
           "Smelting operations"
+        ],
+        "galleryCaptions": [
+          { "title": "High-temperature busbar", "description": "Reliable power delivery in extreme heat conditions." },
+          { "title": "Corrosion-resistant links", "description": "Durable interconnects for chemical exposure environments." },
+          { "title": "Explosion-proof routing", "description": "Engineered options for hazardous industrial zones." }
         ],
         "advantages": [
           {
@@ -939,7 +973,7 @@
         "title": "Wind Farm Solutions",
         "subtitle": "Corrosion-resistant power solutions for wind farm applications",
         "description": "Our marine and shipping solutions provide reliable, corrosion-resistant power distribution for maritime applications. Designed for ports, ships, and offshore platforms, they ensure safe, efficient power delivery in challenging marine environments.",
-        "image": "/images/solutions/wind-farm.webp",
+        "image": "/images/solutions/wind-farm/cover.webp",
         "highlights": [
           "Saltwater corrosion resistance",
           "Marine safety certifications",
@@ -951,6 +985,12 @@
           "Ships",
           "Offshore platforms",
           "Coastal facilities"
+        ],
+        "galleryCaptions": [
+          { "title": "Offshore platform link", "description": "Corrosion-resistant connections for marine environments." },
+          { "title": "Port distribution", "description": "Reliable power routing across port facilities." },
+          { "title": "Shipboard interconnect", "description": "Flexible installation accommodating vessel movement." },
+          { "title": "Coastal operations", "description": "Durable power delivery for coastal applications." }
         ],
         "advantages": [
           {

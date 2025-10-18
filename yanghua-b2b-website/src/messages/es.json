@@ -593,7 +593,7 @@
         "title": "Soluciones de Nueva Energía",
         "subtitle": "Transmisión de energía avanzada para sistemas solares, eólicos y de almacenamiento de energía",
         "description": "Yanghua STI proporciona soluciones especializadas de barras colectoras flexibles para el sector de nueva energía, abordando los desafíos únicos de transmisión de energía en aplicaciones solares, eólicas y de almacenamiento de energía. Nuestras soluciones aseguran una entrega de energía confiable y eficiente incluso en entornos exigentes.",
-        "image": "/images/solutions/new-energy.webp",
+        "image": "/images/solutions/new-energy/cover.webp",
         "highlights": [
           "Alta capacidad de corriente para instalaciones a gran escala",
           "Diseños resistentes a la intemperie para aplicaciones exteriores",
@@ -605,6 +605,12 @@
           "Parques eólicos",
           "Almacenamiento de baterías",
           "Carga de vehículos eléctricos"
+        ],
+        "galleryCaptions": [
+          { "title": "Barra colectora para PV de alta eficiencia", "description": "Optimizada para matrices solares, con entrega de energía de baja pérdida." },
+          { "title": "Conectores resistentes a la intemperie", "description": "Diseñados para fiabilidad a largo plazo en parques eólicos." },
+          { "title": "Interconexión para almacenamiento de energía", "description": "Enlaces flexibles para sistemas modulares de racks de baterías." },
+          { "title": "Alimentador para carga de EV", "description": "Transferencia estable de alta corriente para gabinetes de carga rápida." }
         ],
         "advantages": [
           {
@@ -654,7 +660,7 @@
         "title": "Soluciones de Sistemas de Energía",
         "subtitle": "Infraestructura de red confiable y soluciones de distribución de energía",
         "description": "Nuestras soluciones de barras colectoras flexibles mejoran la confiabilidad y eficiencia de los sistemas de transmisión y distribución de energía. Diseñadas para subestaciones, equipos de conmutación y proyectos de modernización de red, ofrecen rendimiento superior comparado con conductores tradicionales.",
-        "image": "/images/solutions/power-systems.webp",
+        "image": "/images/solutions/power-system/cover.webp",
         "highlights": [
           "Compatible con modernización de red",
           "Requisitos de mantenimiento reducidos",
@@ -666,6 +672,12 @@
           "Equipos de conmutación",
           "Plantas de energía",
           "Modernización de red"
+        ],
+        "galleryCaptions": [
+          { "title": "Actualización de barra en subestación", "description": "Retrofit de barra flexible para simplificar conexiones complejas." },
+          { "title": "Interconexión de equipos de conmutación", "description": "Enrutamiento compacto entre celdas con seguridad mejorada." },
+          { "title": "Alimentador de planta de energía", "description": "Enlaces de alta corriente con mejor desempeño térmico." },
+          { "title": "Módulo de modernización de red", "description": "Conexiones modulares para despliegue rápido." }
         ],
         "advantages": [
           {
@@ -711,7 +723,7 @@
         "title": "Soluciones de Manufactura",
         "subtitle": "Distribución de energía flexible para instalaciones de manufactura modernas",
         "description": "Optimice sus operaciones de manufactura con nuestras soluciones de barras colectoras flexibles diseñadas para instalaciones de producción modernas. Nuestros sistemas proporcionan distribución de energía confiable que se adapta a diseños de producción cambiantes y configuraciones de equipos.",
-        "image": "/images/solutions/manufacturing.webp",
+        "image": "/images/solutions/manufacturing/cover.webp",
         "highlights": [
           "Adaptable a diseños de producción cambiantes",
           "Complejidad de instalación reducida",
@@ -723,6 +735,12 @@
           "Sistemas robóticos",
           "Máquinas CNC",
           "Sistemas de transporte"
+        ],
+        "galleryCaptions": [
+          { "title": "Enrutamiento flexible sobre transportadores", "description": "Evite estructuras mecánicas sin curvaturas personalizadas." },
+          { "title": "Enlace de potencia en celda robótica", "description": "Interconexiones compactas para automatización de alta densidad." },
+          { "title": "Conexión de barra para CNC", "description": "Suministro estable para maquinaria de precisión." },
+          { "title": "Expansión de línea de producción", "description": "Extensiones modulares para reconfiguración rápida." }
         ],
         "advantages": [
           {
@@ -768,7 +786,7 @@
         "title": "Soluciones para Centros de Datos",
         "subtitle": "Soluciones de energía de alta densidad para infraestructura de TI crítica",
         "description": "Asegure la entrega ininterrumpida de energía a su infraestructura de TI crítica con nuestras soluciones especializadas para centros de datos. Diseñadas para granjas de servidores de alta densidad, instalaciones en la nube y centros de colocación, proporcionan energía confiable con características de seguridad mejoradas.",
-        "image": "/images/solutions/data-center.webp",
+        "image": "/images/solutions/data-center/cover.webp",
         "highlights": [
           "Distribución de energía de alta densidad",
           "Seguridad mejorada para personal de TI",
@@ -780,6 +798,12 @@
           "Instalaciones en la nube",
           "Centros de colocación",
           "Computación en el borde"
+        ],
+        "galleryCaptions": [
+          { "title": "Sistema de busway de alta densidad", "description": "Distribución compacta de energía sobre pasillos de servidores." },
+          { "title": "Interconexión de UPS", "description": "Enlaces flexibles entre UPS y gabinetes de distribución." },
+          { "title": "Alimentación para colocación", "description": "Conexiones modulares para ampliaciones de energía de clientes." },
+          { "title": "Energía para racks en el borde", "description": "Suministro confiable para nodos distribuidos de borde." }
         ],
         "advantages": [
           {
@@ -825,7 +849,7 @@
         "title": "Soluciones de EV charging",
         "subtitle": "Energía segura y confiable para sistemas ferroviarios y de metro",
         "description": "Nuestras soluciones de barras colectoras flexibles proporcionan distribución de energía segura y confiable para sistemas ferroviarios y de metro. Diseñadas para sistemas de metro, estaciones ferroviarias y sistemas de señalización, ofrecen seguridad y rendimiento mejorados en entornos de tránsito.",
-        "image": "/images/solutions/charging-station.webp",
+        "image": "/images/solutions/charging-station/cover.webp",
         "highlights": [
           "Seguridad mejorada para entornos de pasajeros",
           "Diseño resistente a vibraciones",
@@ -837,6 +861,11 @@
           "Estaciones ferroviarias",
           "Sistemas de señalización",
           "Instalaciones de mantenimiento"
+        ],
+        "galleryCaptions": [
+          { "title": "Enlace de gabinete de carga rápida", "description": "Conexión flexible de alta corriente para cargadores DC." },
+          { "title": "Alimentación de estación EV exterior", "description": "Rutas resistentes a la intemperie para islas de carga." },
+          { "title": "Carga para camiones pesados", "description": "Interconexiones robustas para sistemas de alta capacidad." }
         ],
         "advantages": [
           {
@@ -882,7 +911,7 @@
         "title": "Soluciones de Metalurgia y Química",
         "subtitle": "Soluciones de energía de servicio pesado para entornos industriales hostiles",
         "description": "Entregue energía confiable en los entornos industriales más hostiles con nuestras soluciones de metalurgia y química. Diseñadas para acerías, plantas químicas y refinerías, proporcionan durabilidad y rendimiento excepcionales en condiciones extremas.",
-        "image": "/images/solutions/metallurgy.webp",
+        "image": "/images/solutions/metallurgy/cover.webp",
         "highlights": [
           "Materiales resistentes a la corrosión",
           "Rendimiento a alta temperatura",
@@ -894,6 +923,11 @@
           "Plantas químicas",
           "Refinerías",
           "Operaciones de fundición"
+        ],
+        "galleryCaptions": [
+          { "title": "Barra de alta temperatura", "description": "Entrega confiable de energía en condiciones de calor extremo." },
+          { "title": "Enlaces resistentes a la corrosión", "description": "Interconexiones duraderas para exposición química." },
+          { "title": "Enrutamiento a prueba de explosión", "description": "Opciones diseñadas para zonas industriales peligrosas." }
         ],
         "advantages": [
           {
@@ -939,7 +973,7 @@
         "title": "Soluciones Marinas y de Transporte",
         "subtitle": "Soluciones de energía resistentes a la corrosión para aplicaciones marinas",
         "description": "Nuestras soluciones marinas y de transporte proporcionan distribución de energía confiable y resistente a la corrosión para aplicaciones marítimas. Diseñadas para puertos, barcos y plataformas marinas, aseguran entrega de energía segura y eficiente en entornos marinos desafiantes.",
-        "image": "/images/solutions/wind-farm.webp",
+        "image": "/images/solutions/wind-farm/cover.webp",
         "highlights": [
           "Resistencia a la corrosión por agua salada",
           "Certificaciones de seguridad marina",
@@ -951,6 +985,12 @@
           "Barcos",
           "Plataformas marinas",
           "Instalaciones costeras"
+        ],
+        "galleryCaptions": [
+          { "title": "Enlace de plataforma marina", "description": "Conexiones resistentes a la corrosión para entornos marinos." },
+          { "title": "Distribución en puerto", "description": "Enrutamiento confiable de energía en instalaciones portuarias." },
+          { "title": "Interconexión a bordo", "description": "Instalación flexible que acomoda el movimiento del buque." },
+          { "title": "Operaciones costeras", "description": "Entrega de energía duradera para aplicaciones costeras." }
         ],
         "advantages": [
           {

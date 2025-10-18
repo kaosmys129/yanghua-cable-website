@@ -13,22 +13,30 @@ interface LightboxImageProps {
 
 export default function LightboxImage({ src, alt }: LightboxImageProps) {
   const [open, setOpen] = useState(false);
+  const [imgSrc, setImgSrc] = useState(src);
+
+  const handleError = () => {
+    if (imgSrc !== '/images/placeholder-image.png') {
+      setImgSrc('/images/placeholder-image.png');
+    }
+  };
 
   return (
     <>
       <div className="relative h-64 w-full rounded-lg overflow-hidden cursor-pointer" onClick={() => setOpen(true)}>
         <Image
-          src={src}
+          src={imgSrc}
           alt={alt}
           layout="fill"
           objectFit="cover"
+          onError={handleError}
         />
       </div>
 
       <Lightbox
         open={open}
         close={() => setOpen(false)}
-        slides={[{ src }]}
+        slides={[{ src: imgSrc }]}
         plugins={[Zoom]}
       />
     </>
