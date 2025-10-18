@@ -30,17 +30,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        // 为加速清理重复，在生产环境禁止抓取西语下的英文段旧路径（规范是西语翻译段）
         disallow: [
-          '/api/',
-          '/es/products',
-          '/es/solutions',
-          '/es/services',
-          '/es/projects',
-          '/es/contact',
-          '/es/about',
-          '/es/articles',
-          '/es/products/category'
+          '/api/'
         ]
       },
     ],

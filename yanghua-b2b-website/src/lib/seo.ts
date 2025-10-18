@@ -50,7 +50,7 @@ export const SEO_CONFIG = {
 export function generateHreflangAlternates(
   currentPath: string,
   currentLocale: Locale,
-  baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || 'https://yanghua-cable.com'
+  baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.yhflexiblebusbar.com'
 ): Array<{ hreflang: string; href: string }> {
   const alternates: Array<{ hreflang: string; href: string }> = [];
   
@@ -157,7 +157,7 @@ export function generateHreflangAlternatesForMetadata(
 export function generateCanonicalUrl(
   currentPath: string,
   currentLocale: Locale,
-  baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || 'https://yanghua-cable.com'
+  baseUrl: string = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.yhflexiblebusbar.com'
 ): string {
   const pageKey = getPageKeyFromPath(currentPath, currentLocale);
   

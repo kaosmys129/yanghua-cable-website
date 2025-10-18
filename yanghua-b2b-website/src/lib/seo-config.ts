@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   name: 'Yanghua Cable',
   title: 'Yanghua Cable - Professional Cable Solutions',
   description: 'Leading manufacturer of high-quality cables and wire solutions for industrial, commercial, and residential applications.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://yanghua-cable.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com',
   ogImage: '/images/og-image.jpg',
   keywords: [
     'cable manufacturer',
