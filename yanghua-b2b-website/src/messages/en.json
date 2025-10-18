@@ -1578,5 +1578,14 @@
         "description": "Comprehensive power distribution solutions for data centers, EV charging infrastructure, and industrial applications. Flexible busbar systems with IP68 protection."
       }
     }
+  },
+  "email": {
+    "templates": {
+      "contact": {
+        "subject": "New Contact Form Submission - {subject} - {company}",
+        "html": "Contact form email template HTML content",
+        "text": "Contact form email template text content"
+      }
+    }
   }
 }

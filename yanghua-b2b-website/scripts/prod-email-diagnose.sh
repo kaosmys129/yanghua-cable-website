@@ -97,6 +97,10 @@ post_with_opts() {
     # 从 cookie jar 直接读取最新 csrf-token，确保与 Cookie 中一致
     local CSRF_HDR
     CSRF_HDR=$(awk '$6=="csrf-token"{print $7}' "$COOKIE_JAR" | tail -n 1)
+    # URL 解码 CSRF token（处理 %3D 等编码字符）
+    if command -v python3 >/dev/null 2>&1; then
+      CSRF_HDR=$(python3 -c "import urllib.parse; print(urllib.parse.unquote('$CSRF_HDR'))")
+    fi
     HTTP_CODE=$(curl -s -o "$OUT_FILE" -w "%{http_code}" -b "$COOKIE_JAR" \
       -H "X-CSRF-Token: $CSRF_HDR" \
       -H "Origin: $ORIGIN" -H "Referer: $REFERER" \

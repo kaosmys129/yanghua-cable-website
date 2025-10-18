@@ -1608,5 +1608,14 @@
         "description": "Soluciones integrales de distribución de energía para centros de datos, infraestructura de carga EV y aplicaciones industriales. Sistemas de barras colectoras flexibles con protección IP68."
       }
     }
+  },
+  "email": {
+    "templates": {
+      "contact": {
+        "subject": "Nueva Consulta de Contacto - {subject} - {company}",
+        "html": "Contenido HTML de plantilla de correo de formulario de contacto",
+        "text": "Contenido de texto de plantilla de correo de formulario de contacto"
+      }
+    }
   }
 }
