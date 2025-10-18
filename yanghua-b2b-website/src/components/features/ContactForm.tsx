@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Send, Check, AlertCircle } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { sendForm } from '@/lib/network/FormRequest';
@@ -9,6 +9,22 @@ export default function ContactForm({ csrfToken }: { csrfToken?: string }) {
   const t = useTranslations('inquiry');
   const locale = useLocale();
   
+  // 若没有服务端传入的 CSRF token，则在挂载时请求 /api/csrf 以设置 HttpOnly cookie
+  useEffect(() => {
+    async function ensureCsrfCookie() {
+      try {
+        if (!csrfToken) {
+          await fetch('/api/csrf', { method: 'GET', credentials: 'include' });
+        }
+      } catch (err) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error('[ContactForm] Failed to initialize CSRF cookie:', err);
+        }
+      }
+    }
+    ensureCsrfCookie();
+  }, [csrfToken]);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

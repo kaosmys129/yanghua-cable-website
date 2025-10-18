@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Send, Check, AlertCircle } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { sendForm } from '@/lib/network/FormRequest';
@@ -14,6 +14,24 @@ interface QuickInquiryProps {
 export default function QuickInquiry({ projectId, projectTitle, csrfToken }: QuickInquiryProps) {
   const t = useTranslations('inquiry');
   const locale = useLocale();
+
+  // 在组件挂载时，如果没有来自服务端的 CSRF token，则主动调用 /api/csrf 以设置 HttpOnly cookie
+  useEffect(() => {
+    let cancelled = false;
+    async function ensureCsrfCookie() {
+      try {
+        if (!csrfToken) {
+          await fetch('/api/csrf', { method: 'GET', credentials: 'include' });
+        }
+      } catch (err) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error('[QuickInquiry] Failed to initialize CSRF cookie:', err);
+        }
+      }
+    }
+    ensureCsrfCookie();
+    return () => { cancelled = true; };
+  }, [csrfToken]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -251,8 +269,6 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
           </>
         )}
       </button>
-
-      <p className="text-sm text-gray-800 mt-2">{t('privacyNote')}</p>
     </form>
   );
 }

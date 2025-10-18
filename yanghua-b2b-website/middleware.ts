@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './src/lib/i18n';
 import { authMiddleware } from './src/lib/auth-middleware';
-import { generateCSPHeader } from './src/lib/security';
+import { generateCSPHeader, CSRFProtection } from './src/lib/security';
 
 const intlMiddleware = createMiddleware({
   locales: ['en', 'es'],
@@ -115,7 +115,7 @@ export default async function middleware(request: NextRequest) {
 
   // 调用 next-intl 中间件（现在包含pathnames配置）
   console.log('Processing with intl middleware:', pathname);
-  const response = intlMiddleware(request as any);
+  let response = intlMiddleware(request as any);
 
   // 添加安全头部
   if (response instanceof NextResponse) {
@@ -135,6 +135,11 @@ export default async function middleware(request: NextRequest) {
       response.headers.set('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGINS || '*');
       response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
       response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
+
+    // 为页面 GET 请求设置 CSRF cookie，便于后续 POST 通过校验
+    if (request.method === 'GET' && !pathname.startsWith('/api/')) {
+      response = CSRFProtection.addTokenToResponse(response);
     }
   }
 

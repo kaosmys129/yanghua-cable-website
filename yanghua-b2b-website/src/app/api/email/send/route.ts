@@ -6,6 +6,7 @@ import { EmailService, createEmailService } from '@/lib/email/EmailService';
 import { EmailStorage, defaultEmailStorage } from '@/lib/email/EmailStorage';
 import { renderContactFormEmail, renderInquiryFormEmail } from '@/lib/email/EmailTemplates';
 import { defaultEmailSecurity, getClientIP, createValidationSchemas } from '@/lib/email/EmailSecurity';
+import { CSRFProtection } from '@/lib/security';
 
 /**
  * 邮件发送API - POST /api/email/send
@@ -16,6 +17,13 @@ export async function POST(request: NextRequest) {
   let body: any = null;
   
   try {
+    // CSRF 保护校验（仅接受来自本站页面或已获取 CSRF token 的客户端）
+    if (!CSRFProtection.validateRequest(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid CSRF token', code: 'CSRF_VALIDATION_FAILED' },
+        { status: 403 }
+      );
+    }
     body = await request.json();
     console.log("Received email request body:", JSON.stringify(body, null, 2));
     const clientIP = getClientIP(request);

@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://vitals.vercel-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https: https://images.unsplash.com https://res.cloudinary.com https://yanghua-strapi-cms.onrender.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://api.strapi.io https://yanghua-strapi-cms.onrender.com https://fruitful-presence-02d7be759c.strapiapp.com https://www.google-analytics.com https://vitals.vercel-analytics.com wss://ws.vercel.live; frame-src 'self' https://www.youtube.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+cross-origin-embedder-policy: credentialless
+cross-origin-opener-policy: same-origin
+cross-origin-resource-policy: cross-origin
+link: <http://localhost:3001/en/contact>; rel="alternate"; hreflang="en", <http://localhost:3001/es/contacto>; rel="alternate"; hreflang="es", <http://localhost:3001/contact>; rel="alternate"; hreflang="x-default"
+permissions-policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()
+referrer-policy: strict-origin-when-cross-origin
+set-cookie: NEXT_LOCALE=en; Path=/; SameSite=lax
+set-cookie: csrf-token=MTc2MDc2MjA5NTY1NzpqdnI5emZ6cnppYzphLXZlcnktc2VjcmV0LWFuZC1yYW5kb20tc3RyaW5nLWZvci1sb2NhbC1kZXY%3D; Path=/; Expires=Sat, 18 Oct 2025 05:34:55 GMT; Max-Age=3600; HttpOnly; SameSite=strict
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-middleware-set-cookie: NEXT_LOCALE=en; Path=/; SameSite=lax,csrf-token=MTc2MDc2MjA5NTY1NzpqdnI5emZ6cnppYzphLXZlcnktc2VjcmV0LWFuZC1yYW5kb20tc3RyaW5nLWZvci1sb2NhbC1kZXY%3D; Path=/; Expires=Sat, 18 Oct 2025 05:34:55 GMT; Max-Age=3600; HttpOnly; SameSite=strict
+x-request-id: 5rynrasjx7w
+x-response-time: 3ms
+x-xss-protection: 1; mode=block
+x-middleware-rewrite: /en/contact
+Vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+Cache-Control: no-store, must-revalidate
+X-Powered-By: Next.js
+Content-Type: text/html; charset=utf-8
+Date: Sat, 18 Oct 2025 04:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
