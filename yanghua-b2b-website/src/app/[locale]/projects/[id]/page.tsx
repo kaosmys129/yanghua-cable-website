@@ -227,7 +227,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       {/* Project details content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{project.title}</h1>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{project.title}</h2>
           <div className="flex flex-wrap justify-center gap-6 text-lg text-gray-600">
             <span>{t('labels.client')}: {project.client}</span>
             <span>{t('labels.industry')}: {project.industry}</span>

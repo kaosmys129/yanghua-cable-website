@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-10-20T03:16:06.007Z",
+  "version": "1.0.0",
+  "metrics": {
+    "totalPages": 13,
+    "totalWarnings": 22,
+    "totalErrors": 0,
+    "keywordIssues": {
+      "copper busbar": {
+        "density": 0.08,
+        "target": 2
+      },
+      "electrical busbar": {
+        "density": 0,
+        "target": 1.8
+      },
+      "yanghua": {
+        "density": 0.48,
+        "target": 1.5
+      },
+      "yanghua cable": {
+        "density": 0.08,
+        "target": 1.2
+      }
+    },
+    "technicalIssues": {
+      "titleTooLong": 5,
+      "metaDescriptionTooLong": 2,
+      "metaDescriptionTooShort": 7,
+      "multipleH1Tags": 4
+    },
+    "pagePerformance": {
+      "averageWordCount": 2847,
+      "imageAltCoverage": 100,
+      "averageInternalLinks": 25
+    }
+  },
+  "affectedPages": {
+    "titleIssues": [
+      "https://www.yhflexiblebusbar.com",
+      "https://www.yhflexiblebusbar.com/en",
+      "https://www.yhflexiblebusbar.com/en/services",
+      "https://www.yhflexiblebusbar.com/en/solutions",
+      "https://www.yhflexiblebusbar.com/en/projects/1"
+    ],
+    "metaDescriptionIssues": [
+      "https://www.yhflexiblebusbar.com",
+      "https://www.yhflexiblebusbar.com/en"
+    ],
+    "h1Issues": [
+      "https://www.yhflexiblebusbar.com/en/projects/1",
+      "https://www.yhflexiblebusbar.com/en/projects/2",
+      "https://www.yhflexiblebusbar.com/en/projects/3"
+    ]
+  }
+}

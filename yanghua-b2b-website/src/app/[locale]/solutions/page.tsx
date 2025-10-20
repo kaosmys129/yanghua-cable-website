@@ -40,7 +40,7 @@ export default function SolutionsPage() {
           </div>
           <div className="text-center">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              {t('common.noSolutionsAvailable', { defaultValue: 'No solutions available at the moment' })}
+              {t('common.noSolutionsAvailable') || 'No solutions available at the moment'}
             </h2>
             <p className="text-gray-600">
               {t('common.solutionsLoadingError', { defaultValue: 'We are experiencing technical difficulties. Please try again later.' })}

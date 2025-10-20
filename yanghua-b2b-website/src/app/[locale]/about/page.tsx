@@ -85,9 +85,9 @@ export default function AboutPage() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                {t('common.timelineLoadingError', { defaultValue: 'Timeline data is currently unavailable' })}
-              </h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              {t('common.timelineLoadingError', { defaultValue: 'Timeline data is currently unavailable' })}
+            </h2>
               <p className="text-gray-600">
                 {t('common.timelineLoadingDescription', { defaultValue: 'We are experiencing technical difficulties loading our company timeline. Please try again later.' })}
               </p>
