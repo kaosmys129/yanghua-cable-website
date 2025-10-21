@@ -12,6 +12,10 @@ export default [
         'https://yanghuasti.oss-cn-shenzhen.aliyuncs.com',
         /\.yanghuasti\.com$/,
         /\.aliyuncs\.com$/,
+        // 添加生产域名支持
+        'https://www.yhflexiblebusbar.com',
+        'http://www.yhflexiblebusbar.com',
+        /\.yhflexiblebusbar\.com$/,
         // 添加本地开发环境支持
         'http://localhost:3000',
         'http://127.0.0.1:3000',
