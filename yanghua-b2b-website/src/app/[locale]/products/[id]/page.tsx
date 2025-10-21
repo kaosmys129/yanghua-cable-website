@@ -58,6 +58,96 @@ async function getProduct(id: string): Promise<Product | null> {
           },
           images: ['/images/no-image-available.webp', '/images/no-image-available.webp', '/images/no-image-available.webp'],
           relatedProducts: ['flexible-busbar-1500a', 'flexible-busbar-2500a', 'insulation-accessories']
+        },
+        'flexible-busbar-1500a': {
+          id: 'flexible-busbar-1500a',
+          name: '1500A Flexible Busbar System',
+          description: 'Medium-current flexible busbar system for versatile power distribution',
+          detailedDescription: 'Our 1500A flexible busbar system offers excellent performance for medium-power applications. Designed for reliability and efficiency in various industrial and commercial environments.',
+          applications: [
+            'Commercial Buildings',
+            'Industrial Facilities',
+            'Power Distribution Centers',
+            'Renewable Energy Systems'
+          ],
+          features: [
+            'Medium Current Capacity: 1500A rated current for versatile applications',
+            'Flexible Installation: Easy routing through complex pathways',
+            'Cost-Effective: Optimal balance of performance and cost',
+            'Reliable Connection: Secure and stable electrical connections',
+            'Compact Design: Space-saving solution for tight installations',
+            'Weather Resistant: Suitable for various environmental conditions'
+          ],
+          technicalSpecs: {
+            voltage: '1000V AC/1500V DC',
+            current: '1500A',
+            material: 'High-purity Copper + Insulation Sheath',
+            temperature: '-40°C to +105°C',
+            insulation: 'Cross-linked Polyethylene (XLPE)',
+            standards: 'IEC 60228, IEC 60454'
+          },
+          images: ['/images/no-image-available.webp', '/images/no-image-available.webp', '/images/no-image-available.webp'],
+          relatedProducts: ['flexible-busbar-2000a', 'flexible-busbar-2500a', 'insulation-accessories']
+        },
+        'flexible-busbar-2500a': {
+          id: 'flexible-busbar-2500a',
+          name: '2500A Flexible Busbar System',
+          description: 'High-capacity flexible busbar system for heavy-duty power transmission',
+          detailedDescription: 'Our 2500A flexible busbar system is engineered for high-capacity power transmission in demanding industrial applications. Perfect for heavy-duty operations requiring maximum reliability.',
+          applications: [
+            'Heavy Industrial Plants',
+            'Large Data Centers',
+            'Power Generation Facilities',
+            'Mining Operations'
+          ],
+          features: [
+            'High Capacity: 2500A rated current for heavy-duty applications',
+            'Superior Durability: Built to withstand harsh industrial environments',
+            'Advanced Insulation: Enhanced protection for high-power operations',
+            'Modular System: Scalable design for future expansion',
+            'Low Maintenance: Designed for long-term reliable operation',
+            'Safety Certified: Meets international safety standards'
+          ],
+          technicalSpecs: {
+            voltage: '1000V AC/1500V DC',
+            current: '2500A',
+            material: 'High-purity Copper + Enhanced Insulation Sheath',
+            temperature: '-40°C to +105°C',
+            insulation: 'Cross-linked Polyethylene (XLPE)',
+            standards: 'IEC 60228, IEC 60454'
+          },
+          images: ['/images/no-image-available.webp', '/images/no-image-available.webp', '/images/no-image-available.webp'],
+          relatedProducts: ['flexible-busbar-2000a', 'flexible-busbar-1500a', 'insulation-accessories']
+        },
+        'insulation-accessories': {
+          id: 'insulation-accessories',
+          name: 'Insulation Accessories & Components',
+          description: 'Complete range of insulation accessories for flexible busbar systems',
+          detailedDescription: 'Our comprehensive collection of insulation accessories and components ensures optimal performance and safety for flexible busbar installations. Essential components for professional installations.',
+          applications: [
+            'Busbar System Installation',
+            'Electrical Connection Points',
+            'System Integration Support',
+            'Maintenance Operations'
+          ],
+          features: [
+            'Complete Accessory Range: All necessary components for installation',
+            'High-Quality Materials: Premium insulation materials for safety',
+            'Easy Installation: User-friendly design for quick setup',
+            'Compatibility: Works with all flexible busbar systems',
+            'Safety Compliance: Meets all relevant safety standards',
+            'Long Service Life: Durable materials for extended operation'
+          ],
+          technicalSpecs: {
+            voltage: 'Up to 1500V DC',
+            current: 'Compatible with all current ratings',
+            material: 'Various insulation materials',
+            temperature: '-40°C to +105°C',
+            insulation: 'Multiple insulation types available',
+            standards: 'IEC 60228, IEC 60454, UL Standards'
+          },
+          images: ['/images/no-image-available.webp', '/images/no-image-available.webp', '/images/no-image-available.webp'],
+          relatedProducts: ['flexible-busbar-2000a', 'flexible-busbar-1500a', 'flexible-busbar-2500a']
         }
       };
       
