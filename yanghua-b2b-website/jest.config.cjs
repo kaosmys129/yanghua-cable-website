@@ -13,8 +13,8 @@ const customJestConfig = {
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
   moduleDirectories: ['node_modules', '<rootDir>/'],
   
-  // Handle module aliases
-  moduleNameMapping: {
+  // Handle module aliases and static assets
+  moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
@@ -23,6 +23,8 @@ const customJestConfig = {
     '^@/types/(.*)$': '<rootDir>/src/types/$1',
     '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
     '^@/public/(.*)$': '<rootDir>/public/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/fileMock.js',
   },
   
   // Test environment
@@ -64,12 +66,7 @@ const customJestConfig = {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
   
-  // Mock static assets
-  moduleNameMapping: {
-    ...require('next/jest').createJestConfig({})().moduleNameMapping,
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/fileMock.js',
-  },
+  // Mock static assets mapping moved to moduleNameMapper above
   
   // Setup files
   setupFiles: ['<rootDir>/jest.polyfills.js'],
