@@ -416,7 +416,16 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
 
 // Generate static params for all available categories
 export async function generateStaticParams() {
-  const categories = ['general', 'fire-resistant', 'halogen-free', 'low-smoke', 'special-purpose'];
+  const categories = [
+    'general', 
+    'fire-resistant', 
+    'halogen-free', 
+    'low-smoke', 
+    'special-purpose',
+    'low-smoke-halogen-free-cables',
+    'fire-resistant-cables',
+    'general-purpose-cables'
+  ];
   const locales = ['en', 'es'];
   
   const params = [];

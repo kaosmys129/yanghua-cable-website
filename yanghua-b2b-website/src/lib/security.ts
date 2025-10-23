@@ -341,6 +341,30 @@ export function isBot(userAgent: string): boolean {
   return botPatterns.some(pattern => pattern.test(userAgent));
 }
 
+export function isSEOTool(userAgent: string): boolean {
+  const seoToolPatterns = [
+    /screaming frog/i,
+    /screamingfrog/i,
+    /googlebot/i,
+    /bingbot/i,
+    /slurp/i,
+    /duckduckbot/i,
+    /baiduspider/i,
+    /yandexbot/i,
+    /facebookexternalhit/i,
+    /twitterbot/i,
+    /linkedinbot/i,
+    /whatsapp/i,
+    /telegrambot/i,
+    /semrushbot/i,
+    /ahrefsbot/i,
+    /mj12bot/i,
+    /dotbot/i,
+  ];
+  
+  return seoToolPatterns.some(pattern => pattern.test(userAgent));
+}
+
 // Security audit logging
 export interface SecurityEvent {
   type: 'rate_limit' | 'csrf_violation' | 'xss_attempt' | 'sql_injection' | 'suspicious_request';
@@ -423,4 +447,5 @@ export const security = {
   generateCSPHeader,
   getClientIP,
   isBot,
+  isSEOTool,
 };

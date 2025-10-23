@@ -40,6 +40,10 @@ export const LOCALIZED_PATHS: Record<string, Record<Locale, string>> = {
     en: '/articles',
     es: '/articulos'
   },
+  partners: {
+    en: '/partners',
+    es: '/socios'
+  },
   
   // 产品相关页面
   'products-category': {

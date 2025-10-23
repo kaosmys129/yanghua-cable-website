@@ -8,6 +8,7 @@ import {
   SecurityAuditor, 
   getClientIP, 
   isBot,
+  isSEOTool,
   InputValidator 
 } from './lib/security';
 import { monitoring } from './lib/monitoring';
@@ -85,10 +86,25 @@ export default async function middleware(request: NextRequest) {
         pathname,
       });
 
-      // Allow legitimate bots but with stricter rate limiting
-      const botRateLimitKey = `bot:${clientIP}`;
-      if (RateLimiter.isRateLimited(botRateLimitKey, 10)) { // 10 requests per window for bots
-        return new NextResponse('Bot Rate Limited', { status: 429 });
+      // Check if it's a legitimate SEO tool
+      if (isSEOTool(userAgent)) {
+        monitoring.logger.info('SEO tool detected', {
+          ip: clientIP,
+          userAgent,
+          pathname,
+        });
+
+        // Allow SEO tools with more generous rate limiting
+        const seoRateLimitKey = `seo:${clientIP}`;
+        if (RateLimiter.isRateLimited(seoRateLimitKey, 500)) { // 500 requests per window for SEO tools
+          return new NextResponse('SEO Tool Rate Limited', { status: 429 });
+        }
+      } else {
+        // Apply stricter rate limiting for other bots
+        const botRateLimitKey = `bot:${clientIP}`;
+        if (RateLimiter.isRateLimited(botRateLimitKey, 10)) { // 10 requests per window for other bots
+          return new NextResponse('Bot Rate Limited', { status: 429 });
+        }
       }
     }
 
