@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-10-22T14:23:59.146Z",
+  "wordpressUrl": "http://localhost:8080",
+  "apiUrl": "http://localhost:8080/wp-json/wp/v2",
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "results": [
+    {
+      "test": "测试 WordPress 服务器连接",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "dataLength": 0
+    },
+    {
+      "test": "测试 REST API 根端点",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "application/json; charset=UTF-8",
+      "dataLength": 178382
+    },
+    {
+      "test": "测试文章端点",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "application/json; charset=UTF-8",
+      "dataLength": 133678,
+      "itemCount": 10
+    },
+    {
+      "test": "测试页面端点",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "application/json; charset=UTF-8",
+      "dataLength": 7944,
+      "itemCount": 1
+    },
+    {
+      "test": "测试分类端点",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "application/json; charset=UTF-8",
+      "dataLength": 5179,
+      "itemCount": 1
+    },
+    {
+      "test": "测试标签端点",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "application/json; charset=UTF-8",
+      "dataLength": 2,
+      "itemCount": 0
+    },
+    {
+      "test": "测试媒体端点",
+      "status": "PASS",
+      "statusCode": 200,
+      "contentType": "application/json; charset=UTF-8",
+      "dataLength": 20927,
+      "itemCount": 7
+    },
+    {
+      "test": "获取特定文章",
+      "status": "PASS",
+      "postId": 174,
+      "postTitle": "Welcome to Yanghua B2B"
+    }
+  ]
+}

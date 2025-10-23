@@ -7,50 +7,34 @@ import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
 import { draftMode } from 'next/headers';
-import { getArticleBySlugWithMetrics } from "@/lib/strapi-client";
+import { getCMSClient } from "@/lib/cms-client-factory";
 import { generateCanonicalUrl } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 
 // Generate static params for all articles
 export async function generateStaticParams() {
   try {
-    const baseUrl = "https://fruitful-presence-02d7be759c.strapiapp.com";
     const locales = ['en', 'es'];
     const params = [];
     
     for (const locale of locales) {
-      const url = `${baseUrl}/api/articles?fields[0]=slug&locale=${locale}`;
-      console.log(`Fetching articles for locale ${locale} from: ${url}`);
+      console.log(`Fetching articles for locale ${locale} using CMS client`);
       
-      const headers: Record<string, string> = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      };
-      
-      // Add authentication if token is available
-      if (process.env.STRAPI_API_TOKEN) {
-        headers['Authorization'] = `Bearer ${process.env.STRAPI_API_TOKEN}`;
-      }
-      
-      const response = await fetch(url, {
-        method: 'GET',
-        headers,
-      });
-      
-      if (!response.ok) {
-        console.error(`Failed to fetch articles for locale ${locale}: ${response.status}`);
-        continue;
-      }
-      
-      const result = await response.json();
-      console.log(`Found ${result.data?.length || 0} articles for locale ${locale}`);
-      
-      if (result.data && Array.isArray(result.data)) {
-        for (const article of result.data) {
-          if (article.slug) {
-            params.push({ locale, slug: article.slug });
+      try {
+        const cmsClient = await getCMSClient();
+        const result = await cmsClient.getAllArticles(locale);
+        console.log(`Found ${result.data?.length || 0} articles for locale ${locale}`);
+        
+        if (result.data && Array.isArray(result.data)) {
+          for (const article of result.data) {
+            if (article.slug) {
+              params.push({ locale, slug: article.slug });
+            }
           }
         }
+      } catch (error) {
+        console.error(`Failed to fetch articles for locale ${locale}:`, error);
+        continue;
       }
     }
     
@@ -63,10 +47,11 @@ export async function generateStaticParams() {
   }
 }
 
-// Fetch article data using native fetch
+// Fetch article data using CMS client
 async function getArticle(slug: string, locale: string): Promise<Article | null> {
   try {
-    const { article, metrics } = await getArticleBySlugWithMetrics(slug, locale as any);
+    const cmsClient = await getCMSClient();
+    const { article, metrics } = await cmsClient.getArticleBySlugWithMetrics(slug, locale);
     if (!article) {
       console.log(`No article found with slug: ${slug}`);
       return null;

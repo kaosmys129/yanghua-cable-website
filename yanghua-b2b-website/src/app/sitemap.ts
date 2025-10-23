@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { buildLocalizedUrl } from '@/lib/url-localization';
+import { getCMSClient } from '@/lib/cms-client-factory';
 
 export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 
@@ -62,23 +63,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 文章详情页（从 Strapi 获取）
-  const strapiBase = 'https://fruitful-presence-02d7be759c.strapiapp.com';
+  // 文章详情页（从 CMS 获取）
   async function fetchArticleSlugs(locale: string): Promise<string[]> {
     try {
-      const url = `${strapiBase}/api/articles?fields[0]=slug&locale=${locale}`;
-      const headers: Record<string, string> = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      };
-      if (process.env.STRAPI_API_TOKEN) {
-        headers.Authorization = `Bearer ${process.env.STRAPI_API_TOKEN}`;
-      }
-      const res = await fetch(url, { headers, next: { revalidate: 60 * 60 } });
-      if (!res.ok) return [];
-      const json = await res.json();
-      const data = Array.isArray(json?.data) ? json.data : [];
-      return data.map((a: any) => a.slug).filter(Boolean);
+      const cmsClient = await getCMSClient();
+      const result = await cmsClient.getAllArticles(locale);
+      const articles = Array.isArray(result?.data) ? result.data : [];
+      return articles.map((article: any) => article.slug).filter(Boolean);
     } catch (e) {
       console.error('Sitemap: failed to fetch article slugs', locale, e);
       return [];

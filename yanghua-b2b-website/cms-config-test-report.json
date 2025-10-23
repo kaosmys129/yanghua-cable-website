@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-10-22T14:26:35.640Z",
+  "currentConfig": {
+    "currentCMS": "wordpress",
+    "wordpressEnabled": true,
+    "strapiEnabled": false,
+    "wordpressConfigured": true,
+    "strapiConfigured": false
+  },
+  "environmentVariables": {
+    "CMS_TYPE": "wordpress",
+    "NEXT_PUBLIC_CMS_TYPE": "wordpress",
+    "ENABLE_WORDPRESS": "true",
+    "WORDPRESS_BASE_URL": "http://localhost:8080",
+    "NEXT_PUBLIC_WORDPRESS_BASE_URL": "http://localhost:8080",
+    "NEXT_PUBLIC_WORDPRESS_API_URL": "http://localhost:8080/wp-json/wp/v2",
+    "STRAPI_BASE_URL": "https://fruitful-presence-02d7be759c.strapiapp.com",
+    "STRAPI_API_TOKEN": "***已设置***"
+  },
+  "validationResults": [
+    {
+      "test": "WordPress 配置验证",
+      "status": "PASS",
+      "message": "WordPress 配置完整且已启用"
+    },
+    {
+      "test": "CMS 类型一致性",
+      "status": "PASS",
+      "message": "CMS_TYPE 和 NEXT_PUBLIC_CMS_TYPE 一致"
+    },
+    {
+      "test": "WordPress URL 一致性",
+      "status": "PASS",
+      "message": "WordPress URL 配置一致"
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  }
+}

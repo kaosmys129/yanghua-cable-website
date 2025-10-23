@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getAllArticles, getArticleBySlug, getAllArticlesWithDrafts, getArticleBySlugWithDrafts, checkStrapiHealth } from './strapi-client';
+import { getCMSClient, checkCMSHealth } from './cms-client-factory';
 import { Article } from './types';
 import { generateCacheKey } from './data-transformer';
 import { logError } from './error-logger';
@@ -8,7 +8,7 @@ import { logError } from './error-logger';
 export const queryKeys = {
   articles: ['articles'] as const,
   article: (slug: string) => ['article', slug] as const,
-  health: ['strapi-health'] as const,
+  health: ['cms-health'] as const,
 } as const;
 
 // Cache configuration
@@ -27,7 +27,8 @@ export function useArticles(locale?: string) {
     queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
     queryFn: async () => {
       try {
-        const result = await getAllArticles(locale as any);
+        const cmsClient = await getCMSClient();
+        const result = await cmsClient.getAllArticles(locale);
         return result.data;
       } catch (error) {
         logError('Failed to fetch articles', error instanceof Error ? error : new Error(String(error)));
@@ -66,7 +67,8 @@ export function useArticle(slug: string, locale?: string, enabled: boolean = tru
     queryKey: locale ? [queryKeys.article(slug)[0], slug, locale] : [queryKeys.article(slug)[0], slug],
     queryFn: async () => {
       try {
-        const result = await getArticleBySlug(slug, locale as any);
+        const cmsClient = await getCMSClient();
+        const result = await cmsClient.getArticleBySlug(slug, locale);
         if (!result) {
           throw new Error(`Article with slug '${slug}' not found`);
         }
@@ -91,17 +93,18 @@ export function useArticle(slug: string, locale?: string, enabled: boolean = tru
 }
 
 /**
- * Hook for checking Strapi health with caching
+ * Hook for checking CMS health status
  */
-export function useStrapiHealth() {
+export function useCMSHealth() {
   return useQuery({
     queryKey: queryKeys.health,
-    queryFn: checkStrapiHealth,
-    staleTime: 2 * 60 * 1000, // 2 minutes
-    gcTime: 5 * 60 * 1000, // 5 minutes
-    retry: 1,
-    refetchOnWindowFocus: false,
-    refetchInterval: 5 * 60 * 1000, // Check every 5 minutes
+    queryFn: async () => {
+      return await checkCMSHealth();
+    },
+    staleTime: 30 * 1000, // 30 seconds
+    gcTime: 60 * 1000, // 1 minute
+    retry: 2,
+    retryDelay: 1000,
   });
 }
 
@@ -116,7 +119,8 @@ export function usePrefetchArticles() {
       queryClient.prefetchQuery({
         queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
         queryFn: async () => {
-          const result = await getAllArticles(locale as any);
+          const cmsClient = await getCMSClient();
+          const result = await cmsClient.getAllArticles(locale);
           return result.data;
         },
         staleTime: CACHE_CONFIG.staleTime,
@@ -126,7 +130,8 @@ export function usePrefetchArticles() {
       queryClient.prefetchQuery({
         queryKey: queryKeys.article(slug),
         queryFn: async () => {
-          const result = await getArticleBySlug(slug);
+          const cmsClient = await getCMSClient();
+          const result = await cmsClient.getArticleBySlug(slug);
           return result;
         },
         staleTime: CACHE_CONFIG.staleTime,
@@ -236,7 +241,8 @@ export function useArticlesWithDrafts(locale?: string) {
     queryKey: locale ? [queryKeys.articles[0], 'drafts', locale] : [queryKeys.articles[0], 'drafts'],
     queryFn: async () => {
       try {
-        const result = await getAllArticlesWithDrafts(locale as any);
+        const cmsClient = await getCMSClient();
+        const result = await cmsClient.getAllArticlesWithDrafts(locale);
         return result.data;
       } catch (error) {
         logError('Failed to fetch articles with drafts', error instanceof Error ? error : new Error(String(error)));
@@ -264,7 +270,8 @@ export function useArticleWithDrafts(slug: string, locale?: string, enabled: boo
     queryKey: locale ? [queryKeys.article(slug)[0], slug, 'drafts', locale] : [queryKeys.article(slug)[0], slug, 'drafts'],
     queryFn: async () => {
       try {
-        const result = await getArticleBySlugWithDrafts(slug, locale as any);
+        const cmsClient = await getCMSClient();
+        const result = await cmsClient.getArticleBySlugWithDrafts(slug, locale);
         if (!result) {
           throw new Error(`Article with slug '${slug}' not found`);
         }

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { draftMode } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { getCMSClient } from '@/lib/cms-client-factory';
 
-// Preview API route for Strapi Cloud integration
+// Preview API route for CMS integration
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   
@@ -22,25 +23,11 @@ export async function GET(request: NextRequest) {
   }
   
   try {
-    // Verify that the article exists in Strapi (including drafts)
-    const strapiUrl = process.env.STRAPI_BASE_URL || 'https://fruitful-presence-02d7be759c.strapiapp.com';
-    const response = await fetch(
-      `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&locale=${locale}&publicationState=preview&populate=*`,
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    // Verify that the article exists in CMS (including drafts)
+    const cmsClient = await getCMSClient();
+    const article = await cmsClient.getArticleBySlugWithDrafts(slug, locale);
     
-    if (!response.ok) {
-      return NextResponse.json({ message: 'Article not found' }, { status: 404 });
-    }
-    
-    const data = await response.json();
-    
-    if (!data.data || data.data.length === 0) {
+    if (!article) {
       return NextResponse.json({ message: 'Article not found' }, { status: 404 });
     }
     
