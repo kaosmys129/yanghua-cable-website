@@ -503,64 +503,81 @@
     },
     "categories": [
       {
-        "name": "High Current Flexible Busbar Systems",
+        "name": "General Purpose Cables",
         "productIndex": 0,
-        "models": ["YH-FB-2000A", "YH-FB-3200A", "YH-FB-4000A", "YH-FB-6400A"],
-        "applications": [
-          "Data center flexible busbar power distribution",
-          "Industrial manufacturing electrical busbar facilities",
-          "New energy flexible copper busbar power plants",
-          "Commercial building high current busbar systems"
-        ],
-        "description": "Our flagship high current flexible busbar systems provide superior electrical busbar power distribution performance. These flexible copper busbar solutions offer exceptional current carrying capacity and installation flexibility for demanding industrial busbar applications with custom busbar design capabilities."
+        "models": ["TMRVV", "TMRVSV"],
+        "applications": ["Indoor installations", "Outdoor installations"],
+        "description": "Standard cables for general electrical installations and power transmission applications."
       },
       {
-        "name": "Flexible Copper Busbar Systems",
+  
+        "name": "Fire Resistant Cables",
         "productIndex": 1,
-        "models": ["YH-CB-Standard", "YH-CB-Heavy-Duty", "YH-CB-Marine"],
+        "models": ["Z(A,B,C)N-TMRVV", "Z(A,B,C)N-TMRYY", "Z(A,B,C)N-TMRYSY"],
         "applications": [
-          "Power generation electrical busbar facilities",
-          "Electrical switchgear flexible busbar systems",
-          "Marine and offshore high current busbar applications",
-          "Heavy industrial flexible copper busbar equipment"
+            "High-rise buildings",
+          "Shopping malls",
+          "Schools and universities",
+          "Subway systems",
+          "Airports",
+          "Sports stadiums",
+          "Exhibition centers",
+          "Hospitals"
         ],
-        "description": "Premium flexible copper busbar systems engineered for reliable electrical busbar performance. Our copper busbar solutions deliver excellent conductivity and durability for critical power distribution infrastructure with industrial busbar applications."
+        "description": "Cables designed to resist flame propagation and reduce fire hazards in critical installations."
+
       },
       {
-        "name": "Custom Busbar Design Solutions",
+  
+        "name": "Fire Resistant Cables",
         "productIndex": 2,
-        "models": ["YH-Custom-Design", "YH-Engineered-Solutions", "YH-Bespoke-Systems"],
+        "models": ["Z(A,B,C)N-TMRVV", "Z(A,B,C)N-TMRYY", "Z(A,B,C)N-TMRYSY"],
+        "applications": [
+          "Emergency systems",
+          "Fire safety equipment",
+          "Critical infrastructure"
+
+        ],
+         "description": "Cables that maintain circuit integrity during fire conditions for emergency and safety systems."
+      },
+      {
+         "name": "Low Smoke & Halogen-Free Cables",
+        "productIndex": 3,
+        "models": ["WDZ(A,B,C)-TMRYY", "WDZ(A,B,C)N-TMRYY", "B1(60,90,α1)-WDZ(A,B,C)-TMRYY"],
         "applications": [
           "Specialized industrial busbar applications",
           "Unique flexible busbar installation requirements",
           "Complex electrical busbar power distribution layouts",
           "OEM high current busbar equipment integration"
         ],
-        "description": "Tailored custom busbar design services for unique power distribution challenges. Our engineering team develops flexible copper busbar systems specifically designed for your industrial busbar applications requirements with electrical busbar technology."
+         "description": "Environmentally friendly cables that produce minimal smoke and toxic gases when exposed to fire."
+      
       },
       {
-        "name": "IP68 Waterproof Busbar Systems",
-        "productIndex": 3,
-        "models": ["YH-WP-Standard", "YH-WP-Marine", "YH-WP-Underground"],
+         "name": "Low Smoke & Halogen-Free Cables",
+
+        "productIndex":  3,
+         "models": ["WDZ(A,B,C)-TMRYY", "WDZ(A,B,C)N-TMRYY", "B1(60,90,α1)-WDZ(A,B,C)-TMRYY"],
         "applications": [
-          "Outdoor electrical busbar installations",
-          "Underground flexible busbar power systems",
-          "Marine high current busbar environments",
-          "Harsh weather flexible copper busbar conditions"
+          "Clean rooms",
+          "Data centers",
+          "Healthcare facilities",
+          "Educational institutions"
+
+
         ],
-        "description": "Advanced IP68 waterproof busbar systems for extreme environmental conditions. These electrical busbar solutions provide maximum protection while maintaining excellent flexible busbar power distribution performance with industrial busbar applications."
-      },
+        "description": "Environmentally friendly cables that produce minimal smoke and toxic gases when exposed to fire."
+             },
       {
         "name": "Flexible Busbar Systems & Accessories",
         "productIndex": 4,
-        "models": ["YH-Connectors", "YH-Junction-Boxes", "YH-Support-Systems"],
+        "models": ["Converse Case", "Connector"],
         "applications": [
-          "Flexible busbar system installation",
-          "Electrical busbar connection points",
-          "High current busbar system integration support",
-          "Flexible copper busbar maintenance and service operations"
+          "Installation support",
+          "System integration",
+          "Maintenance operations"
         ],
-        "description": "Complete range of flexible busbar systems accessories and components for flexible copper busbar installations. Essential components for high current busbar solution implementation and maintenance with custom busbar design support for industrial busbar applications."
+        "description": "Essential accessories and components for complete cable installation and maintenance solutions."
       }
     ]
   },
