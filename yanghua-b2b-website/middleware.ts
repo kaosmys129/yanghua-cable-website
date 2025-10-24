@@ -9,6 +9,8 @@ const intlMiddleware = createMiddleware({
   defaultLocale: 'en',
   // 强制使用子路径前缀，与 app/[locale] 结构一致，避免默认语言无前缀导致的循环
   localePrefix: 'always',
+  // 禁用HTTP头部的hreflang生成，避免与HTML中的hreflang重复
+  alternateLinks: false,
   // 显式配置本地化路径名映射，确保 /es/productos 映射到路由 /[locale]/products
   pathnames: {
     '/': '/',

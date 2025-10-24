@@ -648,10 +648,9 @@ export default async function ProductCategoryPage({ params }: PageProps) {
   );
 }
 
-const BASE_URL = 'https://www.yhflexiblebusbar.com';
-
 export async function generateMetadata({ params }: { params: { locale: string; name: string } }): Promise<Metadata> {
   const { locale, name } = params;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
   const decodedName = decodeURIComponent(name);
   const category = await getProductCategoryData(decodedName);
   const categoryName = category?.name || decodedName;
@@ -664,15 +663,15 @@ export async function generateMetadata({ params }: { params: { locale: string; n
     es: `Descubra modelos, estructura y especificaciones de ${categoryName} en barras colectoras flexibles para diversas aplicaciones.`,
   };
   // 使用本地化URL生成器，确保西语分类页使用翻译段
-  const canonical = generateCanonicalUrl(`/products/category/${decodedName}`, locale as any, BASE_URL);
+  const canonical = generateCanonicalUrl(`/products/category/${decodedName}`, locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
       languages: {
-        en: buildLocalizedUrl('products-category', 'en', { name: decodedName }, BASE_URL),
-        es: buildLocalizedUrl('products-category', 'es', { name: decodedName }, BASE_URL),
+        en: buildLocalizedUrl('products-category', 'en', { name: decodedName }, baseUrl),
+        es: buildLocalizedUrl('products-category', 'es', { name: decodedName }, baseUrl),
       },
     },
   };

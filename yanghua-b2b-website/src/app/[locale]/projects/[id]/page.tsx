@@ -9,6 +9,7 @@ import QuickInquiry from '@/components/features/QuickInquiry';
 import { getCsrfTokenAsync } from '@/lib/security/csrf';
 import StructuredDataScript from '@/components/seo/StructuredDataScript';
 import { generateCaseStudySchema, generateBreadcrumbSchema } from '@/lib/structured-data';
+import { notFound } from 'next/navigation';
 
 interface Project {
   id: string;
@@ -117,18 +118,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   };
 
   if (!project) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">🔍</div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('detailPage.projectNotFound')}</h1>
-          <p className="text-gray-600 mb-4">{t('detailPage.projectNotFoundDesc')}</p>
-          <Link href={`/${locale}/projects`} className="btn-primary">
-            {t('labels.backToProjects')}
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   // 生成结构化数据

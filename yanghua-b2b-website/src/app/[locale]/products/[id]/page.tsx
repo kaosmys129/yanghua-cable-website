@@ -560,10 +560,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
   );
 }
 
-const BASE_URL = 'https://www.yhflexiblebusbar.com';
-
 export async function generateMetadata({ params }: { params: { locale: string; id: string } }): Promise<Metadata> {
   const { locale, id } = params;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
   const product = await getProduct(id);
   const name = product?.name || id;
   const titles: Record<string, string> = {
@@ -575,15 +574,16 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     es: product?.description || 'Detalle y especificaciones del producto de barra colectora flexible.',
   };
   // 使用本地化URL生成规范地址，确保西语翻译段
-  const canonical = generateCanonicalUrl(`/products/${id}`, locale as any, BASE_URL);
+  const localizedProductsPath = locale === 'es' ? '/productos' : '/products';
+  const canonical = `${baseUrl}/${locale}${localizedProductsPath}/${id}`;
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
       languages: {
-        en: buildLocalizedUrl('products-detail', 'en', { id }, BASE_URL),
-        es: buildLocalizedUrl('products-detail', 'es', { id }, BASE_URL),
+        en: `${baseUrl}/en/products/${id}`,
+        es: `${baseUrl}/es/productos/${id}`,
       },
     },
   };

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
+import { generateCanonicalUrl } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
-
-const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
 export default function SolutionsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -9,6 +8,7 @@ export default function SolutionsLayout({ children }: { children: React.ReactNod
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
   const titles: Record<string, string> = {
     en: 'Flexible Busbar Solutions for Data Centers, EV & Industry | Yanghua',
     es: 'Soluciones de Barras Colectoras para Centros de Datos, EV e Industria | Yanghua',
@@ -17,15 +17,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'Reliable flexible busbar solutions for demanding applications: data centers, EV power modules, and industrial automation with high safety and low loss.',
     es: 'Soluciones fiables de barras colectoras flexibles para aplicaciones exigentes: centros de datos, módulos EV y automatización industrial con alta seguridad y baja pérdida.',
   };
-  const url = buildLocalizedUrl('solutions', locale as 'en' | 'es', undefined, BASE_URL);
+  const canonical = generateCanonicalUrl('/solutions', locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: buildLocalizedUrl('solutions', 'en', undefined, BASE_URL),
-        es: buildLocalizedUrl('solutions', 'es', undefined, BASE_URL),
+        en: buildLocalizedUrl('solutions', 'en', undefined, baseUrl),
+        es: buildLocalizedUrl('solutions', 'es', undefined, baseUrl),
       },
     },
   };

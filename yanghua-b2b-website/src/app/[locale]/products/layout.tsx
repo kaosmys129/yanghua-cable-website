@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
+import { generateCanonicalUrl } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
-
-const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
 export default function ProductsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -9,6 +8,8 @@ export default function ProductsLayout({ children }: { children: React.ReactNode
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  
   const titles: Record<string, string> = {
     en: 'Flexible Copper Busbar Products | Yanghua',
     es: 'Productos de Barra Colectora de Cobre Flexible | Yanghua',
@@ -17,15 +18,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'Explore Yanghua’s flexible busbar portfolio: 200–6300A, ≤3kV, XLPE/PVC insulation, high protection level for industrial and outdoor environments.',
     es: 'Descubra el portafolio de barras colectoras flexibles de Yanghua: 200–6300A, ≤3kV, aislamiento XLPE/PVC y alta protección para aplicaciones industriales y exteriores.',
   };
-  const url = buildLocalizedUrl('products', locale as 'en' | 'es', undefined, BASE_URL);
+  const canonical = generateCanonicalUrl('/products', locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: buildLocalizedUrl('products', 'en', undefined, BASE_URL),
-        es: buildLocalizedUrl('products', 'es', undefined, BASE_URL),
+        en: buildLocalizedUrl('products', 'en', undefined, baseUrl),
+        es: buildLocalizedUrl('products', 'es', undefined, baseUrl),
       },
     },
   };

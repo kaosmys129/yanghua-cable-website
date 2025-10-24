@@ -23,8 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // 已知产品详情页（后续可从CMS扩展）
-  // 方案B：暂时仅保留已实现的数据的产品，避免 404 影响抓取
-  const productIds = ['flexible-busbar-2000a'];
+  // 包含所有可用的产品ID
+  const productIds = ['flexible-busbar-2000a', 'flexible-busbar-1500a', 'flexible-busbar-2500a', 'insulation-accessories'];
   for (const locale of locales) {
     for (const id of productIds) {
       items.push({

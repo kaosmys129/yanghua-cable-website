@@ -63,6 +63,9 @@ export async function generateStaticParams() {
   }
 }
 
+// 禁用动态参数，只允许静态生成的参数
+export const dynamicParams = false;
+
 // Fetch article data using native fetch
 async function getArticle(slug: string, locale: string): Promise<Article | null> {
   try {

@@ -50,6 +50,10 @@ export const LOCALIZED_PATHS: Record<string, Record<Locale, string>> = {
     en: '/products/category',
     es: '/productos/categoria'
   },
+  'products-detail': {
+    en: '/products',
+    es: '/productos'
+  },
   
   // 解决方案相关页面
   'solutions-detail': {

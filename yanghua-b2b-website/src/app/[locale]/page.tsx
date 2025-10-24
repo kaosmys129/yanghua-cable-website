@@ -34,15 +34,14 @@ export default async function Home() {
   );
 }
 
-const BASE_URL = 'https://www.yhflexiblebusbar.com';
-
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'seo' });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
 
   const title = t('pages.home.title');
   const description = t('pages.home.description');
-  const currentUrl = `${BASE_URL}/${locale}`;
+  const currentUrl = `${baseUrl}/${locale}`;
 
   return {
     title,
@@ -55,7 +54,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       description,
       url: currentUrl,
       siteName: 'Yanghua Cable',
-      images: [`${BASE_URL}/images/og-home.jpg`],
+      images: [`${baseUrl}/images/og-home.jpg`],
       locale,
       type: 'website',
     },
@@ -63,7 +62,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       card: 'summary_large_image',
       title,
       description,
-      images: [`${BASE_URL}/images/og-home.jpg`],
+      images: [`${baseUrl}/images/og-home.jpg`],
     },
     alternates: {
       canonical: currentUrl,

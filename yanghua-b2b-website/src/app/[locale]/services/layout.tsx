@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
+import { generateCanonicalUrl } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
-
-const BASE_URL = 'https://www.yhflexiblebusbar.com';
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -9,6 +8,8 @@ export default function ServicesLayout({ children }: { children: React.ReactNode
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  
   const titles: Record<string, string> = {
     en: 'Custom Busbar Manufacturing, Testing & Maintenance Services | Yanghua',
     es: 'Servicios de Fabricación, Pruebas y Mantenimiento de Barras Colectoras | Yanghua',
@@ -17,15 +18,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'From engineering design to testing and maintenance, Yanghua provides end-to-end services to ensure reliable flexible busbar performance.',
     es: 'Desde el diseño de ingeniería hasta pruebas y mantenimiento, Yanghua ofrece servicios integrales para garantizar el rendimiento fiable de las barras colectoras flexibles.',
   };
-  const url = buildLocalizedUrl('services', locale as 'en' | 'es', undefined, BASE_URL);
+  const canonical = generateCanonicalUrl('/services', locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
-      canonical: url,
+      canonical,
       languages: {
-        en: buildLocalizedUrl('services', 'en', undefined, BASE_URL),
-        es: buildLocalizedUrl('services', 'es', undefined, BASE_URL),
+        en: buildLocalizedUrl('services', 'en', undefined, baseUrl),
+        es: buildLocalizedUrl('services', 'es', undefined, baseUrl),
       },
     },
   };
