@@ -45,6 +45,16 @@ export const LOCALIZED_PATHS: Record<string, Record<Locale, string>> = {
     es: '/socios'
   },
   
+  // 法律页面
+  terms: {
+    en: '/terms',
+    es: '/terminos'
+  },
+  privacy: {
+    en: '/privacy',
+    es: '/privacidad'
+  },
+  
   // 产品相关页面
   'products-category': {
     en: '/products/category',
@@ -157,7 +167,13 @@ export function buildLocalizedUrl(
   const localizedPath = getLocalizedPath(pageKey, locale, params);
   const fullPath = `/${locale}${localizedPath === '/' ? '' : localizedPath}`;
   
-  return baseUrl ? `${baseUrl}${fullPath}` : fullPath;
+  if (!baseUrl) {
+    return fullPath;
+  }
+  
+  // 确保baseUrl不以斜杠结尾，避免双斜杠问题
+  const cleanBaseUrl = baseUrl.replace(/\/+$/, '');
+  return `${cleanBaseUrl}${fullPath}`;
 }
 
 /**

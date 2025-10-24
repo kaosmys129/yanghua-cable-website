@@ -562,7 +562,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }: { params: { locale: string; id: string } }): Promise<Metadata> {
   const { locale, id } = params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const product = await getProduct(id);
   const name = product?.name || id;
   const titles: Record<string, string> = {
@@ -573,7 +573,7 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     en: product?.description || 'Flexible busbar product detail and specifications.',
     es: product?.description || 'Detalle y especificaciones del producto de barra colectora flexible.',
   };
-  // 使用本地化URL生成规范地址，确保西语翻译段
+  // 直接构建canonical URL，确保包含产品ID
   const localizedProductsPath = locale === 'es' ? '/productos' : '/products';
   const canonical = `${baseUrl}/${locale}${localizedProductsPath}/${id}`;
   return {

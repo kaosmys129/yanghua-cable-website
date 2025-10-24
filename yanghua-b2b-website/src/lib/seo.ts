@@ -12,7 +12,7 @@ import {
 // 基础SEO配置
 export const SEO_CONFIG = {
   siteName: 'Yanghua Cable',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://yanghua-cable-website.vercel.app',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com',
   defaultTitle: 'Flexible Busbar Solutions | High Current Power Distribution | Yanghua',
   defaultDescription: 'Leading manufacturer of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, 6400A capacity for data centers, EV charging, and industrial applications.',
   defaultKeywords: [
@@ -50,7 +50,7 @@ export const SEO_CONFIG = {
 export function generateHreflangAlternates(
   currentPath: string,
   currentLocale: Locale,
-  baseUrl: string = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com'
+  baseUrl: string = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com'
 ): Array<{ hreflang: string; href: string }> {
   const alternates: Array<{ hreflang: string; href: string }> = [];
   
@@ -82,12 +82,17 @@ export function generateHreflangAlternates(
     });
   });
 
-  // 添加x-default（默认为英语）
+  // 添加x-default（默认为英语，但需要确保URL正确）
   let defaultUrl: string;
   if (pageKey) {
     defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
   } else {
-    defaultUrl = `${baseUrl}/en${currentPath}`;
+    // 对于产品页面，确保x-default指向正确的英文版本
+    if (currentPath.includes('/products/')) {
+      defaultUrl = `${baseUrl}/en${currentPath}`;
+    } else {
+      defaultUrl = `${baseUrl}/en${currentPath}`;
+    }
   }
   
   alternates.push({
@@ -109,7 +114,19 @@ export function generateHreflangAlternatesForMetadata(
   currentLocale: Locale
 ): Record<string, string> {
   const alternates: Record<string, string> = {};
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  
+  // 确保与canonical使用相同的域名逻辑
+  let baseUrl: string;
+  if (typeof window !== 'undefined') {
+    // 客户端环境
+    baseUrl = window.location.origin;
+  } else if (process.env.NODE_ENV === 'development') {
+    // 开发环境服务端
+    baseUrl = 'http://localhost:3000';
+  } else {
+    // 生产环境服务端
+    baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+  }
   
   // 支持的语言映射
   const localeMap: Record<Locale, string> = {
@@ -152,19 +169,36 @@ export function generateHreflangAlternatesForMetadata(
  * @param currentPath 当前页面路径
  * @param currentLocale 当前语言
  * @param baseUrl 网站基础URL
- * @returns canonical URL
+ * @returns canonical URL - 始终返回英语版本的URL作为canonical
  */
 export function generateCanonicalUrl(
   currentPath: string,
   currentLocale: Locale,
-  baseUrl: string = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com'
+  baseUrl?: string
 ): string {
+  // 确保在开发环境下使用localhost，在生产环境下使用生产域名
+  // 这样可以保证canonical和hreflang使用相同的域名
+  if (!baseUrl) {
+    if (typeof window !== 'undefined') {
+      // 客户端环境
+      baseUrl = window.location.origin;
+    } else if (process.env.NODE_ENV === 'development') {
+      // 开发环境服务端
+      baseUrl = 'http://localhost:3000';
+    } else {
+      // 生产环境服务端
+      baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+    }
+  }
+  
   const pageKey = getPageKeyFromPath(currentPath, currentLocale);
   
+  // 始终返回英语版本的URL作为canonical，这是SEO最佳实践
+  // 现在确保canonical和hreflang使用相同的域名
   if (pageKey) {
-    return buildLocalizedUrl(pageKey, currentLocale, undefined, baseUrl);
+    return buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
   } else {
-    return `${baseUrl}/${currentLocale}${currentPath}`;
+    return `${baseUrl}/en${currentPath}`;
   }
 }
 

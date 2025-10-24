@@ -8,7 +8,7 @@ export default function ArticlesLayout({ children }: { children: React.ReactNode
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const titles: Record<string, string> = {
     en: 'Flexible Busbar Blog & Resources | Design, Comparisons & FAQs | Yanghua',
     es: 'Blog y Recursos de Barras Colectoras Flexibles | Diseño, Comparativas y FAQs | Yanghua',

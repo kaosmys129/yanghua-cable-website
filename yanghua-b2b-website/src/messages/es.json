@@ -1617,5 +1617,12 @@
         "text": "Contenido de texto de plantilla de correo de formulario de contacto"
       }
     }
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "description": "La página que buscas no se pudo encontrar.",
+    "backToHome": "Volver al Inicio",
+    "contactMessage": "Si crees que esto es un error, por favor",
+    "contactUs": "contáctanos"
   }
 }

@@ -1607,5 +1607,12 @@
         "text": "Contact form email template text content"
       }
     }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for could not be found.",
+    "backToHome": "Back to Home",
+    "contactMessage": "If you believe this is an error, please",
+    "contactUs": "contact us"
   }
 }

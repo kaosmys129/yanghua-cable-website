@@ -11,7 +11,7 @@ import { MultipleStructuredDataScript } from '@/components/seo/StructuredDataScr
 import { generateOrganizationSchema, generateWebsiteSchema } from '@/lib/structured-data';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { generateHreflangAlternatesForMetadata, generateCanonicalUrl } from '@/lib/seo';
 
 export default async function Home() {
   const projects = await getFeaturedProjects();
@@ -37,11 +37,25 @@ export default async function Home() {
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'seo' });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  
+  // 确保与canonical使用相同的域名逻辑
+  let baseUrl: string;
+  if (typeof window !== 'undefined') {
+    // 客户端环境
+    baseUrl = window.location.origin;
+  } else if (process.env.NODE_ENV === 'development') {
+    // 开发环境服务端
+    baseUrl = 'http://localhost:3000';
+  } else {
+    // 生产环境服务端
+    baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+  }
 
   const title = t('pages.home.title');
   const description = t('pages.home.description');
   const currentUrl = `${baseUrl}/${locale}`;
+  // 使用generateCanonicalUrl生成canonical链接，始终指向英语版本
+  const canonicalUrl = generateCanonicalUrl('/', locale as 'en' | 'es', baseUrl);
 
   return {
     title,
@@ -65,7 +79,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       images: [`${baseUrl}/images/og-home.jpg`],
     },
     alternates: {
-      canonical: currentUrl,
+      canonical: canonicalUrl,
       languages: generateHreflangAlternatesForMetadata('/', locale as 'en' | 'es'),
     },
   };

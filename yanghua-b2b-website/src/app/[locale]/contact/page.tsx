@@ -1,5 +1,8 @@
 'use client';
 
+import { generateCanonicalUrl } from '@/lib/seo';
+import { buildLocalizedUrl } from '@/lib/url-localization';
+import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import ContactForm from '@/components/features/ContactForm';

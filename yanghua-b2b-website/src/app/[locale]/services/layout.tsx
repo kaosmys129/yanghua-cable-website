@@ -8,7 +8,7 @@ export default function ServicesLayout({ children }: { children: React.ReactNode
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   
   const titles: Record<string, string> = {
     en: 'Custom Busbar Manufacturing, Testing & Maintenance Services | Yanghua',

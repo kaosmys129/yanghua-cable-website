@@ -103,8 +103,8 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">{t('navigation.products')}</h4>
             <ul className="space-y-2">
-              {footerLinks.products.map((link) => (
-                <li key={link.name}>
+              {footerLinks.products.map((link, index) => (
+                <li key={`${link.name}-${index}`}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-[#fdb827] text-sm flex items-center"
@@ -121,8 +121,8 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">{t('navigation.solutions')}</h4>
             <ul className="space-y-2">
-              {footerLinks.solutions.map((link) => (
-                <li key={link.name}>
+              {footerLinks.solutions.map((link, index) => (
+                <li key={`${link.name}-${index}`}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-[#fdb827] text-sm flex items-center"
@@ -139,8 +139,8 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">{t('footer.support.title', { defaultValue: 'Support' })}</h4>
             <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
+              {footerLinks.support.map((link, index) => (
+                <li key={`${link.name}-${index}`}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-[#fdb827] text-sm flex items-center"

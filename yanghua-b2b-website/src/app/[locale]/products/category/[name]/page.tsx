@@ -417,14 +417,16 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
 // Generate static params for all available categories
 export async function generateStaticParams() {
   const categories = [
+    'flexible-busbar-systems-access',
     'general', 
     'fire-resistant', 
     'halogen-free', 
     'low-smoke', 
-    'special-purpose',
-    'low-smoke-halogen-free-cables',
-    'fire-resistant-cables',
-    'general-purpose-cables'
+    'special-purpose'
+    // 移除不存在的产品页面引用
+    // 'low-smoke-halogen-free-cables',
+    // 'fire-resistant-cables',
+    // 'general-purpose-cables'
   ];
   const locales = ['en', 'es'];
   
@@ -650,7 +652,7 @@ export default async function ProductCategoryPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }: { params: { locale: string; name: string } }): Promise<Metadata> {
   const { locale, name } = params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yhflexiblebusbar.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const decodedName = decodeURIComponent(name);
   const category = await getProductCategoryData(decodedName);
   const categoryName = category?.name || decodedName;
