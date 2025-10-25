@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { generateCanonicalUrl } from '@/lib/seo';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 
@@ -111,6 +111,7 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
         "3+2: A,B,C equal cross section, N and PE 50% cross section"
       ]
     },
+
     'fire-resistant': {
       name: "Fire-resistant", 
       models: ["Z(A,B,C)N-TMRVV", "Z(A,B,C)N-TMRYY", "Z(A,B,C)N-TMRYSY"],
@@ -138,6 +139,7 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
         "3+2: A,B,C equal cross section, N and PE 50% cross section"
       ]
     },
+
     'low-smoke-halogen-free': {
       name: "Low smoke & halogen-free",
       models: ["WDZ(A,B,C)-TMRYY", "WDZ(A,B,C)N-TMRYY", "B1(60,90,α1)-WDZ(A,B,C)-TMRYY"],
@@ -165,6 +167,7 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
         "3+2: A,B,C equal cross section, N and PE 50% cross section"
       ]
     },
+
     // Spanish category mappings
     'cables-de-propósito-general': {
       name: "Cables de Propósito General",
@@ -410,23 +413,26 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
       ]
     }
   };
-  
+
   return categoryData[decodedName] || null;
 }
 
 // Generate static params for all available categories
 export async function generateStaticParams() {
+  // 只包含实际在categoryData中存在的分类
   const categories = [
-    'flexible-busbar-systems-access',
-    'general', 
+    'general',
+    'general-purpose-cables', 
+    'flame-retardant',
+    'flame-retardant-cables',
     'fire-resistant', 
-    'halogen-free', 
-    'low-smoke', 
-    'special-purpose'
-    // 移除不存在的产品页面引用
-    // 'low-smoke-halogen-free-cables',
-    // 'fire-resistant-cables',
-    // 'general-purpose-cables'
+    'fire-resistant-cables',
+    'low-smoke-halogen-free',
+    'low-smoke-halogen-free-cables',
+    'cables-de-propósito-general',
+    'cables-retardantes-de-llama',
+    'cables-resistentes-al-fuego',
+    'cables-libres-de-humo-y-halógenos'
   ];
   const locales = ['en', 'es'];
   
@@ -454,7 +460,7 @@ export default async function ProductCategoryPage({ params }: PageProps) {
   if (!categoryData) {
     notFound();
   }
-
+  
   return (
      <div className="min-h-screen bg-white">
       {/* JSON-LD: Breadcrumbs for product category */}
@@ -655,6 +661,7 @@ export async function generateMetadata({ params }: { params: { locale: string; n
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const decodedName = decodeURIComponent(name);
   const category = await getProductCategoryData(decodedName);
+  
   const categoryName = category?.name || decodedName;
   const titles: Record<string, string> = {
     en: `${categoryName} | Flexible Busbar Category | Yanghua`,
@@ -664,17 +671,14 @@ export async function generateMetadata({ params }: { params: { locale: string; n
     en: `Discover ${categoryName} flexible busbar models, structure and specifications for diverse applications.`,
     es: `Descubra modelos, estructura y especificaciones de ${categoryName} en barras colectoras flexibles para diversas aplicaciones.`,
   };
-  // 使用本地化URL生成器，确保西语分类页使用翻译段
-  const canonical = generateCanonicalUrl(`/products/category/${decodedName}`, locale as any, baseUrl);
+  // 使用本地化URL生成器确保canonical和hreflang URL保持一致
+  const canonical = buildLocalizedUrl('products-category', locale as any, { name: decodedName }, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: {
-        en: buildLocalizedUrl('products-category', 'en', { name: decodedName }, baseUrl),
-        es: buildLocalizedUrl('products-category', 'es', { name: decodedName }, baseUrl),
-      },
+      languages: generateHreflangAlternatesForMetadata(`/products/category/${decodedName}`, locale as any),
     },
   };
 }

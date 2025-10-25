@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { generateCanonicalUrl } from '@/lib/seo';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
@@ -27,10 +27,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: {
-        en: buildLocalizedUrl('about', 'en', undefined, baseUrl),
-        es: buildLocalizedUrl('about', 'es', undefined, baseUrl),
-      },
+      languages: generateHreflangAlternatesForMetadata('/about', locale as any),
     },
   };
 }

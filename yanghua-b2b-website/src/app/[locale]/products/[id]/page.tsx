@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { generateCanonicalUrl } from '@/lib/seo';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 import StructuredDataScript from '@/components/seo/StructuredDataScript';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
@@ -581,10 +581,7 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: {
-        en: `${baseUrl}/en/products/${id}`,
-        es: `${baseUrl}/es/productos/${id}`,
-      },
+      languages: generateHreflangAlternatesForMetadata(`/products/${id}`, locale as any),
     },
   };
 }

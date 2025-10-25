@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { generateCanonicalUrl } from '@/lib/seo';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -36,7 +36,10 @@ interface Project {
 async function getProject(id: string, t: any): Promise<Project | null> {
   try {
     const projects = t.raw('list') as any[];
+    console.log("Debug: Project ID:", id, "Projects found:", projects?.length);
+    console.log("Debug: Available project IDs:", projects?.map(p => p.id));
     const project = projects.find(p => p.id === id);
+    console.log("Debug: Found project:", !!project, project?.title);
     
     if (!project) {
       return null;
@@ -383,8 +386,8 @@ export async function generateMetadata({ params }: { params: { id: string; local
     }
   })();
   const baseUrl = 'https://www.yhflexiblebusbar.com';
-  // 使用本地化URL生成规范地址
-  const canonical = generateCanonicalUrl(`/projects/${id}`, locale as any, baseUrl);
+  // 使用本地化URL生成器确保canonical和hreflang URL保持一致
+  const canonical = buildLocalizedUrl('projects-detail', locale as any, { id }, baseUrl);
   const titleBase = project?.title || 'Project Case';
   const titles: Record<string, string> = {
     en: `${titleBase} | Flexible Busbar Case Study | Yanghua`,
@@ -399,10 +402,7 @@ export async function generateMetadata({ params }: { params: { id: string; local
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: {
-        en: buildLocalizedUrl('projects-detail', 'en', { id }, baseUrl),
-        es: buildLocalizedUrl('projects-detail', 'es', { id }, baseUrl),
-      },
+      languages: generateHreflangAlternatesForMetadata(`/projects/${id}`, locale as any),
     },
   };
 }

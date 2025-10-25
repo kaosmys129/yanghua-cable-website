@@ -30,6 +30,7 @@ const intlMiddleware = createIntlMiddleware({
     '/services': { en: '/services', es: '/servicios' },
     '/projects': { en: '/projects', es: '/proyectos' },
     '/projects/[id]': { en: '/projects/[id]', es: '/proyectos/[id]' },
+    '/partners': { en: '/partners', es: '/socios' },
     '/contact': { en: '/contact', es: '/contacto' },
     '/articles': { en: '/articles', es: '/articulos' },
     '/articles/[slug]': { en: '/articles/[slug]', es: '/articulos/[slug]' },
@@ -100,9 +101,9 @@ export default async function middleware(request: NextRequest) {
           return new NextResponse('SEO Tool Rate Limited', { status: 429 });
         }
       } else {
-        // Apply stricter rate limiting for other bots
+        // Apply stricter rate limiting for other bots, but allow some requests for testing
         const botRateLimitKey = `bot:${clientIP}`;
-        if (RateLimiter.isRateLimited(botRateLimitKey, 10)) { // 10 requests per window for other bots
+        if (RateLimiter.isRateLimited(botRateLimitKey, 50)) { // Increased from 10 to 50 requests per window for other bots
           return new NextResponse('Bot Rate Limited', { status: 429 });
         }
       }

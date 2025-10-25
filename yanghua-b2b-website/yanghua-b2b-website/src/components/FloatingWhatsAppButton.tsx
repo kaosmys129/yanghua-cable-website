@@ -34,6 +34,9 @@ const FALLBACK_MESSAGES: Record<string, { ariaLabel: string; tooltip: string; pr
 };
 
 export default function FloatingWhatsAppButton({ productName, position }: Props) {
+  // 临时禁用WhatsApp按钮集成以测试canonical问题
+  return null;
+  
   const locale = useLocale() || 'en';
   const fallback = FALLBACK_MESSAGES[locale] || FALLBACK_MESSAGES['en'];
 

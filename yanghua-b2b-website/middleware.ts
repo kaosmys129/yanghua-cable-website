@@ -17,6 +17,7 @@ const intlMiddleware = createMiddleware({
     '/about': { en: '/about', es: '/acerca-de' },
     '/products': { en: '/products', es: '/productos' },
     '/products/[id]': { en: '/products/[id]', es: '/productos/[id]' },
+    '/products/category/[name]': { en: '/products/category/[name]', es: '/productos/categoria/[name]' },
     '/solutions': { en: '/solutions', es: '/soluciones' },
     '/solutions/[id]': { en: '/solutions/[id]', es: '/soluciones/[id]' },
     '/services': { en: '/services', es: '/servicios' },
