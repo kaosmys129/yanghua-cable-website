@@ -11,13 +11,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   
   const titles: Record<string, string> = {
-    en: 'About Yanghua Cable | Leading Flexible Busbar Manufacturer',
-    es: 'Acerca de Yanghua Cable | Fabricante Líder de Barras Colectoras Flexibles',
+    en: 'About Yanghua | Busbar Manufacturer',
+    es: 'Acerca de Yanghua | Fabricante Barras',
   };
   
   const descriptions: Record<string, string> = {
-    en: 'Learn about Yanghua Cable\'s 28+ years of expertise in flexible busbar manufacturing, our mission, values, and commitment to innovation in power distribution solutions.',
-    es: 'Conozca los más de 28 años de experiencia de Yanghua Cable en la fabricación de barras colectoras flexibles, nuestra misión, valores y compromiso con la innovación en soluciones de distribución de energía.',
+    en: 'Learn about Yanghua Cable\'s 28+ years of expertise in flexible busbar manufacturing, our mission, values, and commitment to innovation.',
+    es: 'Conozca los más de 28 años de experiencia de Yanghua Cable en la fabricación de barras colectoras flexibles, nuestra misión y valores.',
   };
 
   const canonical = generateCanonicalUrl('/about', locale as any, baseUrl);

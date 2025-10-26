@@ -11,12 +11,12 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   
   const titles: Record<string, string> = {
-    en: 'Custom Busbar Manufacturing, Testing & Maintenance Services | Yanghua',
-    es: 'Servicios de Fabricación, Pruebas y Mantenimiento de Barras Colectoras | Yanghua',
+    en: 'Busbar Manufacturing & Testing | Yanghua',
+    es: 'Servicios de Fabricación y Pruebas | Yanghua',
   };
   const descriptions: Record<string, string> = {
     en: 'From engineering design to testing and maintenance, Yanghua provides end-to-end services to ensure reliable flexible busbar performance.',
-    es: 'Desde el diseño de ingeniería hasta pruebas y mantenimiento, Yanghua ofrece servicios integrales para garantizar el rendimiento fiable de las barras colectoras flexibles.',
+    es: 'Desde diseño hasta pruebas y mantenimiento, Yanghua ofrece servicios integrales para garantizar el rendimiento de barras colectoras flexibles.',
   };
   const canonical = generateCanonicalUrl('/services', locale as any, baseUrl);
   return {

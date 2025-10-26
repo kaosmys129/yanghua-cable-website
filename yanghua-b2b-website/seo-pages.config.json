@@ -1,0 +1,214 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "description": "阳华B2B网站SEO分析页面配置 - 支持英语和西班牙语",
+  "lastUpdated": "2025-01-17",
+  "languages": ["en", "es"],
+  "defaultLanguage": "en",
+  
+  "pages": [
+    {
+      "path": "/en",
+      "name": "English Homepage",
+      "priority": "high",
+      "category": "core",
+      "description": "英语主页",
+      "expectedElements": ["title", "meta[name='description']", "h1", "img[alt]"]
+    },
+    {
+      "path": "/es",
+      "name": "Spanish Homepage", 
+      "priority": "high",
+      "category": "core",
+      "description": "西班牙语主页",
+      "expectedElements": ["title", "meta[name='description']", "h1", "img[alt]"]
+    },
+    
+    {
+      "path": "/en/about",
+      "name": "About Us (EN)",
+      "priority": "medium",
+      "category": "company",
+      "description": "英语关于我们页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    {
+      "path": "/es/acerca-de",
+      "name": "About Us (ES)",
+      "priority": "medium", 
+      "category": "company",
+      "description": "西班牙语关于我们页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    
+    {
+      "path": "/en/products",
+      "name": "Products (EN)",
+      "priority": "high",
+      "category": "business",
+      "description": "英语产品页面",
+      "expectedElements": ["title", "meta[name='description']", "h1", "img[alt]"]
+    },
+    {
+      "path": "/es/productos", 
+      "name": "Products (ES)",
+      "priority": "high",
+      "category": "business",
+      "description": "西班牙语产品页面",
+      "expectedElements": ["title", "meta[name='description']", "h1", "img[alt]"]
+    },
+    
+    {
+      "path": "/en/solutions",
+      "name": "Solutions (EN)",
+      "priority": "high",
+      "category": "business",
+      "description": "英语解决方案页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    {
+      "path": "/es/soluciones",
+      "name": "Solutions (ES)", 
+      "priority": "high",
+      "category": "business",
+      "description": "西班牙语解决方案页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    
+    {
+      "path": "/en/services",
+      "name": "Services (EN)",
+      "priority": "medium",
+      "category": "business",
+      "description": "英语服务页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    {
+      "path": "/es/servicios",
+      "name": "Services (ES)",
+      "priority": "medium",
+      "category": "business", 
+      "description": "西班牙语服务页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    
+    {
+      "path": "/en/projects",
+      "name": "Projects (EN)",
+      "priority": "medium",
+      "category": "showcase",
+      "description": "英语项目页面",
+      "expectedElements": ["title", "meta[name='description']", "h1", "img[alt]"]
+    },
+    {
+      "path": "/es/proyectos",
+      "name": "Projects (ES)",
+      "priority": "medium",
+      "category": "showcase",
+      "description": "西班牙语项目页面", 
+      "expectedElements": ["title", "meta[name='description']", "h1", "img[alt]"]
+    },
+    
+    {
+      "path": "/en/contact",
+      "name": "Contact (EN)",
+      "priority": "medium",
+      "category": "contact",
+      "description": "英语联系我们页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    {
+      "path": "/es/contacto",
+      "name": "Contact (ES)",
+      "priority": "medium",
+      "category": "contact",
+      "description": "西班牙语联系我们页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    
+    {
+      "path": "/en/articles",
+      "name": "Articles (EN)",
+      "priority": "low",
+      "category": "content",
+      "description": "英语文章页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    },
+    {
+      "path": "/es/articulos",
+      "name": "Articles (ES)",
+      "priority": "low",
+      "category": "content",
+      "description": "西班牙语文章页面",
+      "expectedElements": ["title", "meta[name='description']", "h1"]
+    }
+  ],
+  
+  "excludePatterns": [
+    "/api/*",
+    "/admin/*", 
+    "/_next/*",
+    "/favicon.ico",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/sitemap-*.xml",
+    "/*.json",
+    "/*.js",
+    "/*.css"
+  ],
+  
+  "seoChecks": {
+    "critical": [
+      "title-exists",
+      "title-length",
+      "meta-description-exists", 
+      "meta-description-length",
+      "h1-exists",
+      "h1-unique",
+      "lang-attribute",
+      "img-alt-attributes"
+    ],
+    "important": [
+      "heading-structure",
+      "meta-viewport",
+      "meta-charset",
+      "canonical-url",
+      "hreflang-tags",
+      "open-graph-basic"
+    ],
+    "recommended": [
+      "meta-robots",
+      "structured-data",
+      "internal-links",
+      "external-links-nofollow",
+      "page-load-speed",
+      "mobile-friendly"
+    ]
+  },
+  
+  "performance": {
+    "maxConcurrency": 2,
+    "requestDelay": 1000,
+    "timeout": 30000,
+    "retries": 3,
+    "userAgent": "SEO-Analyzer/3.2.0 (Yanghua B2B Website)"
+  },
+  
+  "reporting": {
+    "formats": ["json", "html", "csv"],
+    "includeScreenshots": false,
+    "detailedAnalysis": true,
+    "generateSummary": true,
+    "alertThresholds": {
+      "criticalIssues": 0,
+      "errorIssues": 5,
+      "overallScore": 70
+    }
+  },
+  
+  "multilingual": {
+    "checkHreflangTags": true,
+    "validateLanguageAttributes": true,
+    "checkTranslationCompleteness": true,
+    "verifyLocalizedUrls": true
+  }
+}

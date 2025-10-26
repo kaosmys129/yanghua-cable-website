@@ -1,0 +1,367 @@
+{
+  "metadata": {
+    "timestamp": "2025-10-26T03:02:20.107Z",
+    "baseUrl": "http://localhost:3000",
+    "totalPages": 16,
+    "successfulPages": 0,
+    "failedPages": 16,
+    "analysisVersion": "1.0.0"
+  },
+  "summary": {
+    "issueStats": {
+      "critical": 0,
+      "error": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "overallScore": {
+      "score": 100,
+      "grade": "A",
+      "totalIssues": 0
+    },
+    "recommendations": []
+  },
+  "results": [
+    {
+      "url": "http://localhost:3000/en",
+      "name": "English Homepage",
+      "timestamp": "2025-10-26T03:02:04.077Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es",
+      "name": "Spanish Homepage",
+      "timestamp": "2025-10-26T03:02:05.078Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/products",
+      "name": "Products (EN)",
+      "timestamp": "2025-10-26T03:02:06.080Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/productos",
+      "name": "Products (ES)",
+      "timestamp": "2025-10-26T03:02:07.082Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/solutions",
+      "name": "Solutions (EN)",
+      "timestamp": "2025-10-26T03:02:08.083Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/soluciones",
+      "name": "Solutions (ES)",
+      "timestamp": "2025-10-26T03:02:09.085Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/about",
+      "name": "About Us (EN)",
+      "timestamp": "2025-10-26T03:02:10.087Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/acerca-de",
+      "name": "About Us (ES)",
+      "timestamp": "2025-10-26T03:02:11.090Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/services",
+      "name": "Services (EN)",
+      "timestamp": "2025-10-26T03:02:12.092Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/servicios",
+      "name": "Services (ES)",
+      "timestamp": "2025-10-26T03:02:13.094Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/projects",
+      "name": "Projects (EN)",
+      "timestamp": "2025-10-26T03:02:14.096Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/proyectos",
+      "name": "Projects (ES)",
+      "timestamp": "2025-10-26T03:02:15.098Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/contact",
+      "name": "Contact (EN)",
+      "timestamp": "2025-10-26T03:02:16.099Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/contacto",
+      "name": "Contact (ES)",
+      "timestamp": "2025-10-26T03:02:17.102Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/articles",
+      "name": "Articles (EN)",
+      "timestamp": "2025-10-26T03:02:18.104Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/articulos",
+      "name": "Articles (ES)",
+      "timestamp": "2025-10-26T03:02:19.106Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    }
+  ],
+  "errors": [
+    {
+      "url": "http://localhost:3000/en",
+      "name": "English Homepage",
+      "timestamp": "2025-10-26T03:02:04.077Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es",
+      "name": "Spanish Homepage",
+      "timestamp": "2025-10-26T03:02:05.078Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/products",
+      "name": "Products (EN)",
+      "timestamp": "2025-10-26T03:02:06.080Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/productos",
+      "name": "Products (ES)",
+      "timestamp": "2025-10-26T03:02:07.082Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/solutions",
+      "name": "Solutions (EN)",
+      "timestamp": "2025-10-26T03:02:08.083Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/soluciones",
+      "name": "Solutions (ES)",
+      "timestamp": "2025-10-26T03:02:09.085Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/about",
+      "name": "About Us (EN)",
+      "timestamp": "2025-10-26T03:02:10.087Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/acerca-de",
+      "name": "About Us (ES)",
+      "timestamp": "2025-10-26T03:02:11.090Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/services",
+      "name": "Services (EN)",
+      "timestamp": "2025-10-26T03:02:12.092Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/servicios",
+      "name": "Services (ES)",
+      "timestamp": "2025-10-26T03:02:13.094Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/projects",
+      "name": "Projects (EN)",
+      "timestamp": "2025-10-26T03:02:14.096Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/proyectos",
+      "name": "Projects (ES)",
+      "timestamp": "2025-10-26T03:02:15.098Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/contact",
+      "name": "Contact (EN)",
+      "timestamp": "2025-10-26T03:02:16.099Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/contacto",
+      "name": "Contact (ES)",
+      "timestamp": "2025-10-26T03:02:17.102Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/en/articles",
+      "name": "Articles (EN)",
+      "timestamp": "2025-10-26T03:02:18.104Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "url": "http://localhost:3000/es/articulos",
+      "name": "Articles (ES)",
+      "timestamp": "2025-10-26T03:02:19.106Z",
+      "success": false,
+      "error": "Cannot call a class as a function"
+    }
+  ],
+  "issues": [],
+  "detailedAnalysis": [
+    {
+      "page": "English Homepage",
+      "url": "http://localhost:3000/en",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Spanish Homepage",
+      "url": "http://localhost:3000/es",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Products (EN)",
+      "url": "http://localhost:3000/en/products",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Products (ES)",
+      "url": "http://localhost:3000/es/productos",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Solutions (EN)",
+      "url": "http://localhost:3000/en/solutions",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Solutions (ES)",
+      "url": "http://localhost:3000/es/soluciones",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "About Us (EN)",
+      "url": "http://localhost:3000/en/about",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "About Us (ES)",
+      "url": "http://localhost:3000/es/acerca-de",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Services (EN)",
+      "url": "http://localhost:3000/en/services",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Services (ES)",
+      "url": "http://localhost:3000/es/servicios",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Projects (EN)",
+      "url": "http://localhost:3000/en/projects",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Projects (ES)",
+      "url": "http://localhost:3000/es/proyectos",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Contact (EN)",
+      "url": "http://localhost:3000/en/contact",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Contact (ES)",
+      "url": "http://localhost:3000/es/contacto",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Articles (EN)",
+      "url": "http://localhost:3000/en/articles",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    },
+    {
+      "page": "Articles (ES)",
+      "url": "http://localhost:3000/es/articulos",
+      "success": false,
+      "summary": null,
+      "error": "Cannot call a class as a function"
+    }
+  ]
+}

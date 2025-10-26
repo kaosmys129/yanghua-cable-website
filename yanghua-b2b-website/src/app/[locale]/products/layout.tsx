@@ -12,11 +12,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   
   const titles: Record<string, string> = {
     en: 'Flexible Copper Busbar Products | Yanghua',
-    es: 'Productos de Barra Colectora de Cobre Flexible | Yanghua',
+    es: 'Productos Barras Flexibles | Yanghua',
   };
   const descriptions: Record<string, string> = {
-    en: 'Explore Yanghua’s flexible busbar portfolio: 200–6300A, ≤3kV, XLPE/PVC insulation, high protection level for industrial and outdoor environments.',
-    es: 'Descubra el portafolio de barras colectoras flexibles de Yanghua: 200–6300A, ≤3kV, aislamiento XLPE/PVC y alta protección para aplicaciones industriales y exteriores.',
+    en: 'Explore Yanghua\'s flexible busbar portfolio: 200-6300A, ≤3kV, XLPE/PVC insulation, high protection level for industrial and outdoor environments.',
+    es: 'Barras flexibles Yanghua: 200-6300A, ≤3kV, aislamiento XLPE/PVC, alta protección para aplicaciones industriales y exteriores.',
   };
   const canonical = generateCanonicalUrl('/products', locale as any, baseUrl);
   return {

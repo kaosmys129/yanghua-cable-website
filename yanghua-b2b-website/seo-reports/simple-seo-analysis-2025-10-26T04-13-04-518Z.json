@@ -1,0 +1,1382 @@
+{
+  "timestamp": "2025-10-26T04:18:10.262Z",
+  "totalPages": 17,
+  "successfulPages": 17,
+  "failedPages": 0,
+  "averageScores": {
+    "seo": 98,
+    "performance": 91,
+    "accessibility": 89,
+    "bestPractices": 100
+  },
+  "totalIssues": 4,
+  "issuesByType": {
+    "canonical": {
+      "count": 4,
+      "title": "Document does not have a valid `rel=canonical`",
+      "severity": "error",
+      "pages": [
+        "/es",
+        "/es/proyectos",
+        "/en/contact",
+        "/es/contacto"
+      ]
+    }
+  },
+  "pages": [
+    {
+      "url": "https://www.yhflexiblebusbar.com/",
+      "path": "/",
+      "success": true,
+      "timestamp": "2025-10-26T04:13:23.869Z",
+      "scores": {
+        "seo": 100,
+        "performance": 79,
+        "accessibility": 87,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 2196.2619999999997,
+        "largestContentfulPaint": 2862.2619999999997,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 457
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en",
+      "path": "/en",
+      "success": true,
+      "timestamp": "2025-10-26T04:13:41.412Z",
+      "scores": {
+        "seo": 100,
+        "performance": 93,
+        "accessibility": 87,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1264.851,
+        "largestContentfulPaint": 3064.851,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 66
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es",
+      "path": "/es",
+      "success": true,
+      "timestamp": "2025-10-26T04:13:59.878Z",
+      "scores": {
+        "seo": 92,
+        "performance": 86,
+        "accessibility": 87,
+        "bestPractices": 100
+      },
+      "seoScore": 92,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 0,
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [
+        {
+          "type": "canonical",
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/).",
+          "severity": "error"
+        }
+      ],
+      "metrics": {
+        "firstContentfulPaint": 1588.146,
+        "largestContentfulPaint": 3163.1459999999997,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 262
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/products",
+      "path": "/en/products",
+      "success": true,
+      "timestamp": "2025-10-26T04:14:15.607Z",
+      "scores": {
+        "seo": 100,
+        "performance": 100,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1162.865,
+        "largestContentfulPaint": 1459.865,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 34.5
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/productos",
+      "path": "/es/productos",
+      "success": true,
+      "timestamp": "2025-10-26T04:14:31.327Z",
+      "scores": {
+        "seo": 100,
+        "performance": 99,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1241.6245,
+        "largestContentfulPaint": 2033.6245,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 31
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/solutions",
+      "path": "/en/solutions",
+      "success": true,
+      "timestamp": "2025-10-26T04:14:46.859Z",
+      "scores": {
+        "seo": 100,
+        "performance": 100,
+        "accessibility": 89,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1014,
+        "largestContentfulPaint": 1155,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 22
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "path": "/es/soluciones",
+      "success": true,
+      "timestamp": "2025-10-26T04:15:02.642Z",
+      "scores": {
+        "seo": 100,
+        "performance": 94,
+        "accessibility": 89,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1325.4,
+        "largestContentfulPaint": 2945.9,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 28
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/about",
+      "path": "/en/about",
+      "success": true,
+      "timestamp": "2025-10-26T04:15:20.251Z",
+      "scores": {
+        "seo": 100,
+        "performance": 75,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1393.6235000000001,
+        "largestContentfulPaint": 6809.6235,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 48.5
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/acerca-de",
+      "path": "/es/acerca-de",
+      "success": true,
+      "timestamp": "2025-10-26T04:15:38.626Z",
+      "scores": {
+        "seo": 100,
+        "performance": 76,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1718.6165,
+        "largestContentfulPaint": 6230.6165,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 5.5
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/services",
+      "path": "/en/services",
+      "success": true,
+      "timestamp": "2025-10-26T04:15:53.844Z",
+      "scores": {
+        "seo": 100,
+        "performance": 99,
+        "accessibility": 87,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": null,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 978,
+        "largestContentfulPaint": 1830,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 99
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/servicios",
+      "path": "/es/servicios",
+      "success": true,
+      "timestamp": "2025-10-26T04:16:09.083Z",
+      "scores": {
+        "seo": 100,
+        "performance": 98,
+        "accessibility": 87,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": null,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1330.047,
+        "largestContentfulPaint": 2155.047,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 67
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/projects",
+      "path": "/en/projects",
+      "success": true,
+      "timestamp": "2025-10-26T04:16:25.624Z",
+      "scores": {
+        "seo": 100,
+        "performance": 100,
+        "accessibility": 89,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1269.116,
+        "largestContentfulPaint": 1381.116,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 41
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/proyectos",
+      "path": "/es/proyectos",
+      "success": true,
+      "timestamp": "2025-10-26T04:16:41.266Z",
+      "scores": {
+        "seo": 92,
+        "performance": 100,
+        "accessibility": 89,
+        "bestPractices": 100
+      },
+      "seoScore": 92,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 0,
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [
+        {
+          "type": "canonical",
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/).",
+          "severity": "error"
+        }
+      ],
+      "metrics": {
+        "firstContentfulPaint": 991.9915,
+        "largestContentfulPaint": 1612.9915,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 3
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/contact",
+      "path": "/en/contact",
+      "success": true,
+      "timestamp": "2025-10-26T04:16:57.842Z",
+      "scores": {
+        "seo": 92,
+        "performance": 100,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 92,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": null,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 0,
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [
+        {
+          "type": "canonical",
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/).",
+          "severity": "error"
+        }
+      ],
+      "metrics": {
+        "firstContentfulPaint": 1057.4025000000001,
+        "largestContentfulPaint": 1057.4025000000001,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 0
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/contacto",
+      "path": "/es/contacto",
+      "success": true,
+      "timestamp": "2025-10-26T04:17:13.697Z",
+      "scores": {
+        "seo": 92,
+        "performance": 100,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 92,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": null,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 0,
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [
+        {
+          "type": "canonical",
+          "title": "Document does not have a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/).",
+          "severity": "error"
+        }
+      ],
+      "metrics": {
+        "firstContentfulPaint": 1071.317,
+        "largestContentfulPaint": 1764.317,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 14
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/articles",
+      "path": "/en/articles",
+      "success": true,
+      "timestamp": "2025-10-26T04:17:36.899Z",
+      "scores": {
+        "seo": 100,
+        "performance": 71,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1858.1000000000004,
+        "largestContentfulPaint": 7850.013,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 6
+      }
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/articulos",
+      "path": "/es/articulos",
+      "success": true,
+      "timestamp": "2025-10-26T04:18:08.253Z",
+      "scores": {
+        "seo": 100,
+        "performance": 70,
+        "accessibility": 90,
+        "bestPractices": 100
+      },
+      "seoScore": 100,
+      "seoAudits": {
+        "document-title": {
+          "score": 1,
+          "title": "Document has a `<title>` element",
+          "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.10/document-title)."
+        },
+        "meta-description": {
+          "score": 1,
+          "title": "Document has a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/)."
+        },
+        "image-alt": {
+          "score": 1,
+          "title": "Image elements have `[alt]` attributes",
+          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.10/image-alt)."
+        },
+        "link-text": {
+          "score": 1,
+          "title": "Links have descriptive text",
+          "description": "Descriptive link text helps search engines understand your content. [Learn how to make links more accessible](https://developer.chrome.com/docs/lighthouse/seo/link-text/)."
+        },
+        "canonical": {
+          "score": 1,
+          "title": "Document has a valid `rel=canonical`",
+          "description": "Canonical links suggest which URL to show in search results. [Learn more about canonical links](https://developer.chrome.com/docs/lighthouse/seo/canonical/)."
+        },
+        "hreflang": {
+          "score": 1,
+          "title": "Document has a valid `hreflang`",
+          "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more about `hreflang`](https://developer.chrome.com/docs/lighthouse/seo/hreflang/)."
+        },
+        "structured-data": {
+          "score": null,
+          "title": "Structured data is valid",
+          "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more about Structured Data](https://developer.chrome.com/docs/lighthouse/seo/structured-data/)."
+        },
+        "robots-txt": {
+          "score": 1,
+          "title": "robots.txt is valid",
+          "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more about robots.txt](https://developer.chrome.com/docs/lighthouse/seo/invalid-robots-txt/)."
+        },
+        "viewport": {
+          "score": 1,
+          "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
+          "description": "A `<meta name=\"viewport\">` not only optimizes your app for mobile screen sizes, but also prevents [a 300 millisecond delay to user input](https://developer.chrome.com/blog/300ms-tap-delay-gone-away/). [Learn more about using the viewport meta tag](https://developer.chrome.com/docs/lighthouse/pwa/viewport/)."
+        },
+        "font-size": {
+          "score": 1,
+          "title": "Document uses legible font sizes",
+          "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more about legible font sizes](https://developer.chrome.com/docs/lighthouse/seo/font-size/).",
+          "displayValue": "100% legible text"
+        },
+        "crawlable-anchors": {
+          "score": 1,
+          "title": "Links are crawlable",
+          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)"
+        }
+      },
+      "seoIssues": [],
+      "metrics": {
+        "firstContentfulPaint": 1604.3555000000001,
+        "largestContentfulPaint": 7265.415500000001,
+        "cumulativeLayoutShift": 0,
+        "totalBlockingTime": 105
+      }
+    }
+  ]
+}

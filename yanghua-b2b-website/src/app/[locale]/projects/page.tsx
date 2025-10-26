@@ -150,8 +150,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
   
   const descriptions: Record<string, string> = {
-    en: 'Explore our successful flexible busbar projects across data centers, new energy, and industrial applications.',
-    es: 'Explora nuestros exitosos proyectos de barras flexibles en centros de datos, nueva energía y aplicaciones industriales.',
+    en: 'Explore our successful flexible busbar projects across data centers, new energy, and industrial applications. Real-world case studies.',
+    es: 'Explora nuestros exitosos proyectos de barras flexibles en centros de datos, nueva energía y aplicaciones industriales. Casos de estudio reales y ejemplos.',
   };
 
   const baseUrl = 'https://www.yhflexiblebusbar.com';

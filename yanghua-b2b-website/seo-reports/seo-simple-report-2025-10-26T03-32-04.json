@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "timestamp": "2025-10-26T03:32:04.290Z",
+    "baseUrl": "http://localhost:3000",
+    "totalPages": 16,
+    "successfulPages": 16,
+    "failedPages": 0,
+    "analysisVersion": "1.0.0-simple"
+  },
+  "summary": {
+    "issueStats": {
+      "critical": 0,
+      "error": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "overallScore": {
+      "score": 100,
+      "grade": "A",
+      "totalIssues": 0
+    },
+    "recommendations": []
+  },
+  "results": [
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "English Homepage",
+      "url": "http://localhost:3000/en",
+      "timestamp": "2025-10-26T03:31:42.106Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Spanish Homepage",
+      "url": "http://localhost:3000/es",
+      "timestamp": "2025-10-26T03:31:43.240Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/products",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Products (EN)",
+      "url": "http://localhost:3000/en/products",
+      "timestamp": "2025-10-26T03:31:45.026Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/productos",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Products (ES)",
+      "url": "http://localhost:3000/es/productos",
+      "timestamp": "2025-10-26T03:31:46.131Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/solutions",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Solutions (EN)",
+      "url": "http://localhost:3000/en/solutions",
+      "timestamp": "2025-10-26T03:31:47.674Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/soluciones",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Solutions (ES)",
+      "url": "http://localhost:3000/es/soluciones",
+      "timestamp": "2025-10-26T03:31:48.745Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/about",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "About Us (EN)",
+      "url": "http://localhost:3000/en/about",
+      "timestamp": "2025-10-26T03:31:50.428Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/acerca-de",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "About Us (ES)",
+      "url": "http://localhost:3000/es/acerca-de",
+      "timestamp": "2025-10-26T03:31:51.466Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/services",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Services (EN)",
+      "url": "http://localhost:3000/en/services",
+      "timestamp": "2025-10-26T03:31:52.987Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/servicios",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Services (ES)",
+      "url": "http://localhost:3000/es/servicios",
+      "timestamp": "2025-10-26T03:31:54.024Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/projects",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Projects (EN)",
+      "url": "http://localhost:3000/en/projects",
+      "timestamp": "2025-10-26T03:31:56.196Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/proyectos",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Projects (ES)",
+      "url": "http://localhost:3000/es/proyectos",
+      "timestamp": "2025-10-26T03:31:57.278Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/contact",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Contact (EN)",
+      "url": "http://localhost:3000/en/contact",
+      "timestamp": "2025-10-26T03:31:58.929Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/contacto",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Contact (ES)",
+      "url": "http://localhost:3000/es/contacto",
+      "timestamp": "2025-10-26T03:32:00.097Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/articles",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Articles (EN)",
+      "url": "http://localhost:3000/en/articles",
+      "timestamp": "2025-10-26T03:32:02.180Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/articulos",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Articles (ES)",
+      "url": "http://localhost:3000/es/articulos",
+      "timestamp": "2025-10-26T03:32:03.288Z"
+    }
+  ],
+  "errors": [],
+  "issues": []
+}

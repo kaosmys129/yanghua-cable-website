@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生产环境SEO分析报告 - 2025/10/26</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #2d3748; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; text-align: center; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; }
+        .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem; background: #f8fafc; }
+        .metric { background: white; padding: 1.5rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 4px solid #3182ce; }
+        .metric h3 { color: #4a5568; margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric .value { font-size: 2.5rem; font-weight: 700; color: #2d3748; }
+        .metric.critical .value { color: #e53e3e; }
+        .metric.warning .value { color: #d69e2e; }
+        .metric.good .value { color: #38a169; }
+        .section { padding: 2rem; }
+        .section h2 { color: #2d3748; margin-bottom: 1.5rem; font-size: 1.8rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .issues-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .issue-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #e2e8f0; }
+        .issue-card.critical { border-left-color: #e53e3e; background: #fef5f5; }
+        .issue-card.error { border-left-color: #dd6b20; background: #fffaf0; }
+        .issue-card.warning { border-left-color: #d69e2e; background: #fffff0; }
+        .issue-card.info { border-left-color: #3182ce; background: #f7fafc; }
+        .issue-card h4 { margin-bottom: 0.75rem; color: #2d3748; font-size: 1.1rem; }
+        .issue-card .count { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .issue-card .pages { font-size: 0.9rem; color: #718096; }
+        .pages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+        .page-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .page-card h4 { color: #2d3748; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .page-card .url { color: #718096; font-size: 0.9rem; margin-bottom: 1rem; word-break: break-all; }
+        .page-card .meta { color: #4a5568; font-size: 0.9rem; margin-bottom: 1rem; }
+        .score { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 600; font-size: 0.9rem; }
+        .score.excellent { background: #c6f6d5; color: #22543d; }
+        .score.good { background: #bee3f8; color: #2a4365; }
+        .score.fair { background: #faf089; color: #744210; }
+        .score.poor { background: #fed7d7; color: #742a2a; }
+        .issue-summary { display: flex; gap: 1rem; margin-top: 1rem; }
+        .issue-count { background: #f7fafc; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; }
+        .issue-count.critical { background: #fed7d7; color: #742a2a; }
+        .issue-count.error { background: #feebc8; color: #7b341e; }
+        .issue-count.warning { background: #faf089; color: #744210; }
+        .issue-count.info { background: #bee3f8; color: #2a4365; }
+        .footer { background: #2d3748; color: white; text-align: center; padding: 2rem; }
+        .recommendations { background: #e6fffa; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #38b2ac; }
+        .recommendations h3 { color: #234e52; margin-bottom: 1rem; }
+        .recommendation { background: white; border-radius: 8px; padding: 1rem; margin: 0.75rem 0; }
+        .recommendation h4 { color: #2d3748; margin-bottom: 0.5rem; }
+        .recommendation p { color: #4a5568; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .summary { grid-template-columns: repeat(2, 1fr); padding: 1rem; }
+            .section { padding: 1rem; }
+            .issues-grid, .pages-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 生产环境SEO分析报告</h1>
+            <p>网站: https://www.yhflexiblebusbar.com | 分析时间: 2025/10/26 11:41:38</p>
+        </div>
+
+        <div class="summary">
+            <div class="metric">
+                <h3>总页面数</h3>
+                <div class="value">17</div>
+            </div>
+            <div class="metric">
+                <h3>平均SEO评分</h3>
+                <div class="value good">100</div>
+            </div>
+            <div class="metric critical">
+                <h3>严重问题</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="metric">
+                <h3>错误</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="metric warning">
+                <h3>警告</h3>
+                <div class="value">0</div>
+            </div>
+            <div class="metric">
+                <h3>建议</h3>
+                <div class="value">0</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 常见问题分析</h2>
+            <div class="issues-grid">
+                
+            </div>
+        </div>
+
+        
+
+        <div class="section">
+            <h2>📄 页面详细分析</h2>
+            <div class="pages-grid">
+                
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/products</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/productos</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/solutions</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/soluciones</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/about</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/acerca-de</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/services</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/servicios</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/projects</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/proyectos</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/contact</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/contacto</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/en/articles</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="page-card">
+                            <h4>无标题</h4>
+                            <div class="url">https://www.yhflexiblebusbar.com/es/articulos</div>
+                            <div class="meta">
+                                <strong>Meta描述:</strong> 无描述...
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="score excellent">SEO评分: 100</span>
+                                <span style="color: #718096; font-size: 0.9rem;">加载时间: 0ms</span>
+                            </div>
+                            <div class="issue-summary">
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>报告生成时间: 2025/10/26 11:41:38 | Yanghua B2B Website SEO Analyzer v1.0</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">基于 seo-analyzer 包生成 | 生产环境分析</p>
+        </div>
+    </div>
+</body>
+</html>
+    

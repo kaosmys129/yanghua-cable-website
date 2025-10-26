@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "timestamp": "2025-10-26T03:56:03.915Z",
+    "baseUrl": "https://www.yhflexiblebusbar.com",
+    "totalPages": 17,
+    "analysisVersion": "1.0.0-production"
+  },
+  "summary": {
+    "totalIssues": 0,
+    "issueBreakdown": {
+      "critical": 0,
+      "errors": 0,
+      "warnings": 0,
+      "info": 0
+    },
+    "pageScores": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "commonIssues": [],
+    "averageScore": 100
+  },
+  "pages": [
+    {
+      "url": "https://www.yhflexiblebusbar.com/",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/products",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/productos",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/solutions",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/about",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/acerca-de",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/services",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/servicios",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/projects",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/proyectos",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/contact",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/contacto",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/articles",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/articulos",
+      "title": "无标题",
+      "metaDescription": "无描述",
+      "issues": [],
+      "seoScore": 100,
+      "loadTime": 0,
+      "wordCount": 0
+    }
+  ]
+}

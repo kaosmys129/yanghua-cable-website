@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const locale = params?.locale || 'en';
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const titles: Record<string, string> = {
-    en: 'Flexible Busbar Blog & Resources | Design, Comparisons & FAQs | Yanghua',
-    es: 'Blog y Recursos de Barras Colectoras Flexibles | Diseño, Comparativas y FAQs | Yanghua',
+    en: 'Busbar Blog & Resources | Yanghua',
+    es: 'Blog Barras Colectoras Flexibles | Yanghua',
   };
   const descriptions: Record<string, string> = {
     en: 'Technical articles and resources on flexible busbar design, materials, standards, installation, and comparisons with traditional solutions.',

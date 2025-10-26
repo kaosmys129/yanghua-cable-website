@@ -25,7 +25,9 @@
     "validate-seo": "node scripts/validate-structured-data.js",
     "check:urls": "node scripts/check-localized-urls.js",
     "migrate:projects": "node scripts/migrate-projects.js",
-    "migrate:news": "node scripts/migrate-news.js"
+    "migrate:news": "node scripts/migrate-news.js",
+    "seo:diagnosis": "node seo-diagnosis.cjs",
+    "seo:check": "npm run seo:diagnosis && echo 'SEO诊断完成，请查看报告'"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -79,6 +81,10 @@
     "dotenv": "^17.2.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.18",
+    "lighthouse": "^12.8.2",
+    "node-html-parser": "^7.0.1",
+    "seo-analyzer": "^3.2.0",
+    "sitemap-checker": "^1.0.2",
     "tailwindcss": "^4",
     "tsx": "^4.20.5",
     "tw-animate-css": "^1.3.7",

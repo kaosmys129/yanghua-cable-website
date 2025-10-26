@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-10-26T02:51:44.839Z",
+  "site": "https://www.yhflexiblebusbar.com",
+  "languages": [
+    "en",
+    "es"
+  ],
+  "checks": {
+    "robotsTxt": {
+      "status": "pending",
+      "issues": [],
+      "warnings": [
+        "使用动态robots.ts，需要运行构建来验证输出"
+      ],
+      "suggestions": []
+    },
+    "sitemap": {
+      "status": "pass",
+      "issues": [],
+      "warnings": [
+        "⚠️  使用动态sitemap，需要构建后验证输出"
+      ],
+      "suggestions": []
+    },
+    "metadata": {
+      "status": "pass",
+      "issues": [],
+      "warnings": [
+        "⚠️  title太长 (建议10-60字符)",
+        "⚠️  缺少 og:title",
+        "⚠️  缺少 og:description",
+        "⚠️  缺少 og:image",
+        "⚠️  缺少 og:url",
+        "⚠️  description太长 (建议120-160字符)",
+        "⚠️  缺少 og:title",
+        "⚠️  缺少 og:description",
+        "⚠️  缺少 og:image",
+        "⚠️  缺少 og:url"
+      ],
+      "suggestions": []
+    },
+    "hreflang": {
+      "status": "pass",
+      "issues": [],
+      "warnings": [],
+      "suggestions": []
+    },
+    "structuredData": {
+      "status": "pass",
+      "issues": [],
+      "warnings": [],
+      "suggestions": []
+    }
+  },
+  "summary": {
+    "critical": 0,
+    "warnings": 12,
+    "suggestions": 0
+  }
+}

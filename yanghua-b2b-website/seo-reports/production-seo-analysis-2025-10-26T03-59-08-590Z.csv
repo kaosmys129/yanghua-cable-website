@@ -1,0 +1,12 @@
+URL,Path,Score,Issues Count,Status
+options,options,NaN,,Success
+logger,logger,NaN,,Success
+input,input,NaN,,Success
+output,output,NaN,,Success
+inputDataList,inputDataList,100,0,Success
+defaultRulesList,defaultRulesList,NaN,,Success
+rules,rules,100,0,Success
+ignoreFoldersList,ignoreFoldersList,100,0,Success
+ignoreFilesList,ignoreFilesList,100,0,Success
+ignoreUrlsList,ignoreUrlsList,100,0,Success
+operations,operations,80,2,Success

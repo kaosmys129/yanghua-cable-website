@@ -9,6 +9,7 @@ import ErrorBoundary from '../../components/ui/ErrorBoundary';
 import DebugPanel from '../../components/ui/DebugPanel';
 import { generateHreflangAlternatesForMetadata, generateCanonicalUrl } from '../../lib/seo';
 import { Locale } from '../../lib/i18n';
+import { DEFAULT_METADATA, SITE_CONFIG } from '../../lib/seo-config';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -25,10 +26,69 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   // 生成canonical URL
   const canonical = generateCanonicalUrl(currentPath, locale as Locale);
   
+  // 根据语言设置标题和描述
+  const title = locale === 'es' 
+    ? 'Yanghua Cable - Soluciones de Cables'
+    : 'Yanghua Cable - Cable Solutions';
+    
+  const description = locale === 'es'
+    ? 'Fabricante líder de cables de alta calidad para aplicaciones industriales, comerciales y residenciales.'
+    : 'Leading manufacturer of high-quality cables for industrial, commercial, and residential applications.';
+  
   return {
+    title: {
+      default: title,
+      template: `%s | Yanghua Cable`
+    },
+    description,
+    keywords: locale === 'es' 
+      ? ['fabricante de cables', 'soluciones de alambre', 'cables industriales', 'cables eléctricos', 'yanghua cable', 'proveedor de cables']
+      : ['cable manufacturer', 'wire solutions', 'industrial cables', 'electrical cables', 'yanghua cable', 'cable supplier'],
+    authors: [{ name: 'Yanghua Cable Co., Ltd.' }],
+    creator: 'Yanghua Cable Co., Ltd.',
+    publisher: 'Yanghua Cable Co., Ltd.',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    openGraph: {
+      type: 'website',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      url: canonical,
+      title,
+      description,
+      siteName: 'Yanghua Cable',
+      images: [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/images/og-image.jpg'],
+    },
     alternates: {
       canonical,
-      languages: hreflangAlternates.languages,
+      languages: hreflangAlternates,
+    },
+    viewport: 'width=device-width, initial-scale=1',
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
     },
   };
 }

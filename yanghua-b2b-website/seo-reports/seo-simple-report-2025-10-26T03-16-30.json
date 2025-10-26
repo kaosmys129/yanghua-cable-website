@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "timestamp": "2025-10-26T03:16:30.656Z",
+    "baseUrl": "http://localhost:3000",
+    "totalPages": 16,
+    "successfulPages": 16,
+    "failedPages": 0,
+    "analysisVersion": "1.0.0-simple"
+  },
+  "summary": {
+    "issueStats": {
+      "critical": 0,
+      "error": 0,
+      "warning": 13,
+      "info": 0
+    },
+    "overallScore": {
+      "score": 98,
+      "grade": "A",
+      "totalIssues": 13
+    },
+    "recommendations": [
+      {
+        "priority": "medium",
+        "message": "发现 13 个警告，建议尽快修复"
+      },
+      {
+        "priority": "medium",
+        "message": "title-too-long 问题出现 8 次，建议统一处理"
+      },
+      {
+        "priority": "medium",
+        "message": "meta-description-too-long 问题出现 5 次，建议统一处理"
+      }
+    ]
+  },
+  "results": [
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "English Homepage",
+      "url": "http://localhost:3000/en",
+      "timestamp": "2025-10-26T03:16:08.266Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Spanish Homepage",
+      "url": "http://localhost:3000/es",
+      "timestamp": "2025-10-26T03:16:09.430Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/products",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Products (EN)",
+      "url": "http://localhost:3000/en/products",
+      "timestamp": "2025-10-26T03:16:11.154Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/productos",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (72字符)，建议不超过60字符"
+          },
+          {
+            "type": "warning",
+            "rule": "meta-description-too-long",
+            "message": "meta description过长 (166字符)，建议120-160字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 2,
+          "errors": 0,
+          "warnings": 2,
+          "suggestions": 0
+        }
+      },
+      "name": "Products (ES)",
+      "url": "http://localhost:3000/es/productos",
+      "timestamp": "2025-10-26T03:16:12.268Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/solutions",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (87字符)，建议不超过60字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 1,
+          "errors": 0,
+          "warnings": 1,
+          "suggestions": 0
+        }
+      },
+      "name": "Solutions (EN)",
+      "url": "http://localhost:3000/en/solutions",
+      "timestamp": "2025-10-26T03:16:13.809Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/soluciones",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (95字符)，建议不超过60字符"
+          },
+          {
+            "type": "warning",
+            "rule": "meta-description-too-long",
+            "message": "meta description过长 (170字符)，建议120-160字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 2,
+          "errors": 0,
+          "warnings": 2,
+          "suggestions": 0
+        }
+      },
+      "name": "Solutions (ES)",
+      "url": "http://localhost:3000/es/soluciones",
+      "timestamp": "2025-10-26T03:16:14.846Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/about",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (74字符)，建议不超过60字符"
+          },
+          {
+            "type": "warning",
+            "rule": "meta-description-too-long",
+            "message": "meta description过长 (172字符)，建议120-160字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 2,
+          "errors": 0,
+          "warnings": 2,
+          "suggestions": 0
+        }
+      },
+      "name": "About Us (EN)",
+      "url": "http://localhost:3000/en/about",
+      "timestamp": "2025-10-26T03:16:16.511Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/acerca-de",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (89字符)，建议不超过60字符"
+          },
+          {
+            "type": "warning",
+            "rule": "meta-description-too-long",
+            "message": "meta description过长 (205字符)，建议120-160字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 2,
+          "errors": 0,
+          "warnings": 2,
+          "suggestions": 0
+        }
+      },
+      "name": "About Us (ES)",
+      "url": "http://localhost:3000/es/acerca-de",
+      "timestamp": "2025-10-26T03:16:17.562Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/services",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (69字符)，建议不超过60字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 1,
+          "errors": 0,
+          "warnings": 1,
+          "suggestions": 0
+        }
+      },
+      "name": "Services (EN)",
+      "url": "http://localhost:3000/en/services",
+      "timestamp": "2025-10-26T03:16:19.435Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/servicios",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Services (ES)",
+      "url": "http://localhost:3000/es/servicios",
+      "timestamp": "2025-10-26T03:16:20.485Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/projects",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "meta-description-too-long",
+            "message": "meta description过长 (162字符)，建议120-160字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 1,
+          "errors": 0,
+          "warnings": 1,
+          "suggestions": 0
+        }
+      },
+      "name": "Projects (EN)",
+      "url": "http://localhost:3000/en/projects",
+      "timestamp": "2025-10-26T03:16:22.755Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/proyectos",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Projects (ES)",
+      "url": "http://localhost:3000/es/proyectos",
+      "timestamp": "2025-10-26T03:16:23.805Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/contact",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Contact (EN)",
+      "url": "http://localhost:3000/en/contact",
+      "timestamp": "2025-10-26T03:16:25.450Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/contacto",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (63字符)，建议不超过60字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 1,
+          "errors": 0,
+          "warnings": 1,
+          "suggestions": 0
+        }
+      },
+      "name": "Contact (ES)",
+      "url": "http://localhost:3000/es/contacto",
+      "timestamp": "2025-10-26T03:16:26.542Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/en/articles",
+        "issues": [
+          {
+            "type": "warning",
+            "rule": "title-too-long",
+            "message": "title标签过长 (62字符)，建议不超过60字符"
+          }
+        ],
+        "summary": {
+          "totalIssues": 1,
+          "errors": 0,
+          "warnings": 1,
+          "suggestions": 0
+        }
+      },
+      "name": "Articles (EN)",
+      "url": "http://localhost:3000/en/articles",
+      "timestamp": "2025-10-26T03:16:28.586Z"
+    },
+    {
+      "success": true,
+      "result": {
+        "url": "http://localhost:3000/es/articulos",
+        "issues": [],
+        "summary": {
+          "totalIssues": 0,
+          "errors": 0,
+          "warnings": 0,
+          "suggestions": 0
+        }
+      },
+      "name": "Articles (ES)",
+      "url": "http://localhost:3000/es/articulos",
+      "timestamp": "2025-10-26T03:16:29.653Z"
+    }
+  ],
+  "errors": [],
+  "issues": [
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (72字符)，建议不超过60字符",
+      "page": "Products (ES)",
+      "url": "http://localhost:3000/es/productos"
+    },
+    {
+      "type": "warning",
+      "rule": "meta-description-too-long",
+      "message": "meta description过长 (166字符)，建议120-160字符",
+      "page": "Products (ES)",
+      "url": "http://localhost:3000/es/productos"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (87字符)，建议不超过60字符",
+      "page": "Solutions (EN)",
+      "url": "http://localhost:3000/en/solutions"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (95字符)，建议不超过60字符",
+      "page": "Solutions (ES)",
+      "url": "http://localhost:3000/es/soluciones"
+    },
+    {
+      "type": "warning",
+      "rule": "meta-description-too-long",
+      "message": "meta description过长 (170字符)，建议120-160字符",
+      "page": "Solutions (ES)",
+      "url": "http://localhost:3000/es/soluciones"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (74字符)，建议不超过60字符",
+      "page": "About Us (EN)",
+      "url": "http://localhost:3000/en/about"
+    },
+    {
+      "type": "warning",
+      "rule": "meta-description-too-long",
+      "message": "meta description过长 (172字符)，建议120-160字符",
+      "page": "About Us (EN)",
+      "url": "http://localhost:3000/en/about"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (89字符)，建议不超过60字符",
+      "page": "About Us (ES)",
+      "url": "http://localhost:3000/es/acerca-de"
+    },
+    {
+      "type": "warning",
+      "rule": "meta-description-too-long",
+      "message": "meta description过长 (205字符)，建议120-160字符",
+      "page": "About Us (ES)",
+      "url": "http://localhost:3000/es/acerca-de"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (69字符)，建议不超过60字符",
+      "page": "Services (EN)",
+      "url": "http://localhost:3000/en/services"
+    },
+    {
+      "type": "warning",
+      "rule": "meta-description-too-long",
+      "message": "meta description过长 (162字符)，建议120-160字符",
+      "page": "Projects (EN)",
+      "url": "http://localhost:3000/en/projects"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (63字符)，建议不超过60字符",
+      "page": "Contact (ES)",
+      "url": "http://localhost:3000/es/contacto"
+    },
+    {
+      "type": "warning",
+      "rule": "title-too-long",
+      "message": "title标签过长 (62字符)，建议不超过60字符",
+      "page": "Articles (EN)",
+      "url": "http://localhost:3000/en/articles"
+    }
+  ]
+}

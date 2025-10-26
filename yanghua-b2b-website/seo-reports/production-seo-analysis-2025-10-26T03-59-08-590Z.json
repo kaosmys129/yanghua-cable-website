@@ -1,0 +1,521 @@
+{
+  "timestamp": "2025-10-26T03:59:08.592Z",
+  "totalPages": 17,
+  "successfulPages": 11,
+  "failedPages": 0,
+  "totalIssues": 2,
+  "criticalIssues": 0,
+  "errors": 0,
+  "warnings": 0,
+  "suggestions": 0,
+  "averageScore": 100,
+  "pages": [
+    {
+      "url": "options",
+      "path": "options",
+      "success": true,
+      "issues": {
+        "verbose": true
+      },
+      "score": null
+    },
+    {
+      "url": "logger",
+      "path": "logger",
+      "success": true,
+      "issues": {
+        "level": 2
+      },
+      "score": null
+    },
+    {
+      "url": "input",
+      "path": "input",
+      "success": true,
+      "issues": {
+        "logger": {
+          "level": 2
+        },
+        "scraper": {
+          "logger": {
+            "level": 2
+          },
+          "consoleProgressBar": {
+            "_events": {},
+            "_eventsCount": 0,
+            "options": {
+              "throttleTime": 100,
+              "stream": {
+                "connecting": false,
+                "_hadError": false,
+                "_parent": null,
+                "_host": null,
+                "_closeAfterHandlingError": false,
+                "_events": {},
+                "_readableState": {
+                  "highWaterMark": 0,
+                  "buffer": [],
+                  "bufferIndex": 0,
+                  "length": 0,
+                  "pipes": [],
+                  "awaitDrainWriters": null
+                },
+                "_writableState": {
+                  "highWaterMark": 65536,
+                  "length": 0,
+                  "corked": 0,
+                  "writelen": 0,
+                  "bufferedIndex": 0,
+                  "pendingcb": 0
+                },
+                "allowHalfOpen": false,
+                "_eventsCount": 1,
+                "_sockname": null,
+                "_pendingData": null,
+                "_pendingEncoding": "",
+                "server": null,
+                "_server": null,
+                "columns": 106,
+                "rows": 27,
+                "_type": "tty",
+                "fd": 2,
+                "_isStdio": true
+              },
+              "terminal": null,
+              "clearOnComplete": false,
+              "stopOnComplete": false,
+              "barsize": 40,
+              "align": "left",
+              "hideCursor": true,
+              "linewrap": false,
+              "barGlue": "",
+              "barCompleteChar": "█",
+              "barIncompleteChar": "░",
+              "format": "Processing... |\u001b[32m{bar}\u001b[39m| {percentage}% || {value}/{total} Pages",
+              "formatTime": null,
+              "formatValue": null,
+              "formatBar": null,
+              "etaBufferLength": 10,
+              "etaAsynchronousUpdate": false,
+              "progressCalculationRelative": false,
+              "synchronousUpdate": true,
+              "noTTYOutput": false,
+              "notTTYSchedule": 2000,
+              "emptyOnZero": false,
+              "forceRedraw": false,
+              "autopadding": false,
+              "gracefulExit": false,
+              "barCompleteString": "█████████████████████████████████████████",
+              "barIncompleteString": "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░",
+              "autopaddingChar": ""
+            },
+            "terminal": {
+              "stream": {
+                "connecting": false,
+                "_hadError": false,
+                "_parent": null,
+                "_host": null,
+                "_closeAfterHandlingError": false,
+                "_events": {},
+                "_readableState": {
+                  "highWaterMark": 0,
+                  "buffer": [],
+                  "bufferIndex": 0,
+                  "length": 0,
+                  "pipes": [],
+                  "awaitDrainWriters": null
+                },
+                "_writableState": {
+                  "highWaterMark": 65536,
+                  "length": 0,
+                  "corked": 0,
+                  "writelen": 0,
+                  "bufferedIndex": 0,
+                  "pendingcb": 0
+                },
+                "allowHalfOpen": false,
+                "_eventsCount": 1,
+                "_sockname": null,
+                "_pendingData": null,
+                "_pendingEncoding": "",
+                "server": null,
+                "_server": null,
+                "columns": 106,
+                "rows": 27,
+                "_type": "tty",
+                "fd": 2,
+                "_isStdio": true
+              },
+              "linewrap": true,
+              "dy": 0
+            },
+            "value": 0,
+            "startValue": 0,
+            "total": 100,
+            "lastDrawnString": null,
+            "startTime": null,
+            "stopTime": null,
+            "lastRedraw": 1761451148591,
+            "eta": {
+              "etaBufferLength": 10,
+              "valueBuffer": [
+                0
+              ],
+              "timeBuffer": [
+                0
+              ],
+              "eta": "0"
+            },
+            "payload": {},
+            "isActive": false,
+            "timer": null,
+            "schedulingRate": 100,
+            "sigintCallback": null
+          },
+          "inputUrl": "",
+          "ignoreUrls": []
+        },
+        "consoleProgressBar": {
+          "_events": {},
+          "_eventsCount": 0,
+          "options": {
+            "throttleTime": 100,
+            "stream": {
+              "connecting": false,
+              "_hadError": false,
+              "_parent": null,
+              "_host": null,
+              "_closeAfterHandlingError": false,
+              "_events": {},
+              "_readableState": {
+                "highWaterMark": 0,
+                "buffer": [],
+                "bufferIndex": 0,
+                "length": 0,
+                "pipes": [],
+                "awaitDrainWriters": null
+              },
+              "_writableState": {
+                "highWaterMark": 65536,
+                "length": 0,
+                "corked": 0,
+                "writelen": 0,
+                "bufferedIndex": 0,
+                "pendingcb": 0
+              },
+              "allowHalfOpen": false,
+              "_eventsCount": 1,
+              "_sockname": null,
+              "_pendingData": null,
+              "_pendingEncoding": "",
+              "server": null,
+              "_server": null,
+              "columns": 106,
+              "rows": 27,
+              "_type": "tty",
+              "fd": 2,
+              "_isStdio": true
+            },
+            "terminal": null,
+            "clearOnComplete": false,
+            "stopOnComplete": false,
+            "barsize": 40,
+            "align": "left",
+            "hideCursor": true,
+            "linewrap": false,
+            "barGlue": "",
+            "barCompleteChar": "█",
+            "barIncompleteChar": "░",
+            "format": "Processing... |\u001b[32m{bar}\u001b[39m| {percentage}% || {value}/{total} Folders",
+            "formatTime": null,
+            "formatValue": null,
+            "formatBar": null,
+            "etaBufferLength": 10,
+            "etaAsynchronousUpdate": false,
+            "progressCalculationRelative": false,
+            "synchronousUpdate": true,
+            "noTTYOutput": false,
+            "notTTYSchedule": 2000,
+            "emptyOnZero": false,
+            "forceRedraw": false,
+            "autopadding": false,
+            "gracefulExit": false,
+            "barCompleteString": "█████████████████████████████████████████",
+            "barIncompleteString": "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░",
+            "autopaddingChar": ""
+          },
+          "terminal": {
+            "stream": {
+              "connecting": false,
+              "_hadError": false,
+              "_parent": null,
+              "_host": null,
+              "_closeAfterHandlingError": false,
+              "_events": {},
+              "_readableState": {
+                "highWaterMark": 0,
+                "buffer": [],
+                "bufferIndex": 0,
+                "length": 0,
+                "pipes": [],
+                "awaitDrainWriters": null
+              },
+              "_writableState": {
+                "highWaterMark": 65536,
+                "length": 0,
+                "corked": 0,
+                "writelen": 0,
+                "bufferedIndex": 0,
+                "pendingcb": 0
+              },
+              "allowHalfOpen": false,
+              "_eventsCount": 1,
+              "_sockname": null,
+              "_pendingData": null,
+              "_pendingEncoding": "",
+              "server": null,
+              "_server": null,
+              "columns": 106,
+              "rows": 27,
+              "_type": "tty",
+              "fd": 2,
+              "_isStdio": true
+            },
+            "linewrap": true,
+            "dy": 0
+          },
+          "value": 0,
+          "startValue": 0,
+          "total": 100,
+          "lastDrawnString": null,
+          "startTime": null,
+          "stopTime": null,
+          "lastRedraw": 1761451148591,
+          "eta": {
+            "etaBufferLength": 10,
+            "valueBuffer": [
+              0
+            ],
+            "timeBuffer": [
+              0
+            ],
+            "eta": "0"
+          },
+          "payload": {},
+          "isActive": false,
+          "timer": null,
+          "schedulingRate": 100,
+          "sigintCallback": null
+        },
+        "ignoreFolders": [],
+        "ignoreFiles": []
+      },
+      "score": null
+    },
+    {
+      "url": "output",
+      "path": "output",
+      "success": true,
+      "issues": {
+        "analyzer": {
+          "logger": {
+            "level": 2
+          },
+          "consoleProgressBar": {
+            "_events": {},
+            "_eventsCount": 0,
+            "options": {
+              "throttleTime": 100,
+              "stream": {
+                "connecting": false,
+                "_hadError": false,
+                "_parent": null,
+                "_host": null,
+                "_closeAfterHandlingError": false,
+                "_events": {},
+                "_readableState": {
+                  "highWaterMark": 0,
+                  "buffer": [],
+                  "bufferIndex": 0,
+                  "length": 0,
+                  "pipes": [],
+                  "awaitDrainWriters": null
+                },
+                "_writableState": {
+                  "highWaterMark": 65536,
+                  "length": 0,
+                  "corked": 0,
+                  "writelen": 0,
+                  "bufferedIndex": 0,
+                  "pendingcb": 0
+                },
+                "allowHalfOpen": false,
+                "_eventsCount": 1,
+                "_sockname": null,
+                "_pendingData": null,
+                "_pendingEncoding": "",
+                "server": null,
+                "_server": null,
+                "columns": 106,
+                "rows": 27,
+                "_type": "tty",
+                "fd": 2,
+                "_isStdio": true
+              },
+              "terminal": null,
+              "clearOnComplete": false,
+              "stopOnComplete": false,
+              "barsize": 40,
+              "align": "left",
+              "hideCursor": true,
+              "linewrap": false,
+              "barGlue": "",
+              "barCompleteChar": "█",
+              "barIncompleteChar": "░",
+              "format": "Running rules |\u001b[32m{bar}\u001b[39m| {percentage}% || {value}/{total} Rules",
+              "formatTime": null,
+              "formatValue": null,
+              "formatBar": null,
+              "etaBufferLength": 10,
+              "etaAsynchronousUpdate": false,
+              "progressCalculationRelative": false,
+              "synchronousUpdate": true,
+              "noTTYOutput": false,
+              "notTTYSchedule": 2000,
+              "emptyOnZero": false,
+              "forceRedraw": false,
+              "autopadding": false,
+              "gracefulExit": false,
+              "barCompleteString": "█████████████████████████████████████████",
+              "barIncompleteString": "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░",
+              "autopaddingChar": ""
+            },
+            "terminal": {
+              "stream": {
+                "connecting": false,
+                "_hadError": false,
+                "_parent": null,
+                "_host": null,
+                "_closeAfterHandlingError": false,
+                "_events": {},
+                "_readableState": {
+                  "highWaterMark": 0,
+                  "buffer": [],
+                  "bufferIndex": 0,
+                  "length": 0,
+                  "pipes": [],
+                  "awaitDrainWriters": null
+                },
+                "_writableState": {
+                  "highWaterMark": 65536,
+                  "length": 0,
+                  "corked": 0,
+                  "writelen": 0,
+                  "bufferedIndex": 0,
+                  "pendingcb": 0
+                },
+                "allowHalfOpen": false,
+                "_eventsCount": 1,
+                "_sockname": null,
+                "_pendingData": null,
+                "_pendingEncoding": "",
+                "server": null,
+                "_server": null,
+                "columns": 106,
+                "rows": 27,
+                "_type": "tty",
+                "fd": 2,
+                "_isStdio": true
+              },
+              "linewrap": true,
+              "dy": 0
+            },
+            "value": 0,
+            "startValue": 0,
+            "total": 100,
+            "lastDrawnString": null,
+            "startTime": null,
+            "stopTime": null,
+            "lastRedraw": 1761451148591,
+            "eta": {
+              "etaBufferLength": 10,
+              "valueBuffer": [
+                0
+              ],
+              "timeBuffer": [
+                0
+              ],
+              "eta": "0"
+            },
+            "payload": {},
+            "isActive": false,
+            "timer": null,
+            "schedulingRate": 100,
+            "sigintCallback": null
+          }
+        }
+      },
+      "score": null
+    },
+    {
+      "url": "inputDataList",
+      "path": "inputDataList",
+      "success": true,
+      "issues": [],
+      "score": 100
+    },
+    {
+      "url": "defaultRulesList",
+      "path": "defaultRulesList",
+      "success": true,
+      "issues": {},
+      "score": null
+    },
+    {
+      "url": "rules",
+      "path": "rules",
+      "success": true,
+      "issues": [],
+      "score": 100
+    },
+    {
+      "url": "ignoreFoldersList",
+      "path": "ignoreFoldersList",
+      "success": true,
+      "issues": [],
+      "score": 100
+    },
+    {
+      "url": "ignoreFilesList",
+      "path": "ignoreFilesList",
+      "success": true,
+      "issues": [],
+      "score": 100
+    },
+    {
+      "url": "ignoreUrlsList",
+      "path": "ignoreUrlsList",
+      "success": true,
+      "issues": [],
+      "score": 100
+    },
+    {
+      "url": "operations",
+      "path": "operations",
+      "success": true,
+      "issues": [
+        null,
+        null
+      ],
+      "score": 80
+    }
+  ],
+  "summary": {
+    "imgAltIssues": 0,
+    "titleIssues": 0,
+    "metaDescriptionIssues": 0,
+    "headingStructureIssues": 0,
+    "canonicalIssues": 0,
+    "socialTagIssues": 0
+  }
+}

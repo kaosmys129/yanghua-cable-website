@@ -1,0 +1,118 @@
+{
+  "timestamp": "2025-10-26T04:06:05.808Z",
+  "totalPages": 17,
+  "successfulPages": 0,
+  "failedPages": 17,
+  "averageScores": {
+    "seo": 0,
+    "performance": 0,
+    "accessibility": 0,
+    "bestPractices": 0
+  },
+  "totalIssues": 0,
+  "issuesByType": {},
+  "pages": [
+    {
+      "url": "https://www.yhflexiblebusbar.com/",
+      "path": "/",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en",
+      "path": "/en",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es",
+      "path": "/es",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/products",
+      "path": "/en/products",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/productos",
+      "path": "/es/productos",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/solutions",
+      "path": "/en/solutions",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "path": "/es/soluciones",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/about",
+      "path": "/en/about",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/acerca-de",
+      "path": "/es/acerca-de",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/services",
+      "path": "/en/services",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/servicios",
+      "path": "/es/servicios",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/projects",
+      "path": "/en/projects",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/proyectos",
+      "path": "/es/proyectos",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/contact",
+      "path": "/en/contact",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/contacto",
+      "path": "/es/contacto",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/en/articles",
+      "path": "/en/articles",
+      "success": false,
+      "error": "lighthouse is not a function"
+    },
+    {
+      "url": "https://www.yhflexiblebusbar.com/es/articulos",
+      "path": "/es/articulos",
+      "success": false,
+      "error": "lighthouse is not a function"
+    }
+  ]
+}

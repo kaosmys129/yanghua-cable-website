@@ -11,13 +11,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   
   const titles: Record<string, string> = {
-    en: 'Contact Yanghua Cable | Get Quote for Flexible Busbar Solutions',
-    es: 'Contactar Yanghua Cable | Obtener Cotización para Soluciones de Barras Colectoras',
+    en: 'Contact Yanghua | Flexible Busbar Quote',
+    es: 'Contactar Yanghua | Cotización Barras',
   };
   
   const descriptions: Record<string, string> = {
     en: 'Contact Yanghua Cable for custom flexible busbar solutions, technical support, and project consultations. Get expert advice for your power distribution needs.',
-    es: 'Contacte a Yanghua Cable para soluciones personalizadas de barras colectoras flexibles, soporte técnico y consultas de proyectos. Obtenga asesoramiento experto para sus necesidades de distribución de energía.',
+    es: 'Contacte a Yanghua Cable para soluciones de barras colectoras flexibles, soporte técnico y consultas de proyectos. Asesoramiento experto.',
   };
 
   const canonical = generateCanonicalUrl('/contact', locale as any, baseUrl);

@@ -10,12 +10,12 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const locale = params?.locale || 'en';
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const titles: Record<string, string> = {
-    en: 'Flexible Busbar Solutions for Data Centers, EV & Industry | Yanghua',
-    es: 'Soluciones de Barras Colectoras para Centros de Datos, EV e Industria | Yanghua',
+    en: 'Flexible Busbar Solutions | Data Centers',
+    es: 'Soluciones Barras Flexibles | Centros Datos',
   };
   const descriptions: Record<string, string> = {
-    en: 'Reliable flexible busbar solutions for demanding applications: data centers, EV power modules, and industrial automation with high safety and low loss.',
-    es: 'Soluciones fiables de barras colectoras flexibles para aplicaciones exigentes: centros de datos, módulos EV y automatización industrial con alta seguridad y baja pérdida.',
+    en: 'Reliable flexible busbar solutions for data centers, EV power modules, and industrial automation with high safety, performance and durability.',
+    es: 'Soluciones fiables de barras colectoras flexibles para centros de datos, módulos EV y automatización industrial con alta seguridad y rendimiento.',
   };
   const canonical = generateCanonicalUrl('/solutions', locale as any, baseUrl);
   return {
