@@ -72,11 +72,21 @@ export function generateHreflangAlternates(
     
     let localizedUrl: string;
     if (pageKey) {
-      // 使用页面键名生成本地化URL（内部已清理baseUrl尾部斜杠）
-      localizedUrl = buildLocalizedUrl(pageKey, targetLocale, undefined, cleanBaseUrl);
+      // 使用 LOCALIZED_PATHS 直接组装，确保英文（默认语言）不带 /en 前缀
+      const targetBase = LOCALIZED_PATHS[pageKey]?.[targetLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
+      if (targetLocale === 'en') {
+        // 英文版作为默认语言：根路径不带语言前缀
+        localizedUrl = `${cleanBaseUrl}${targetBase === '/' ? '' : targetBase}`;
+      } else {
+        localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase === '/' ? '' : targetBase}`;
+      }
     } else {
-      // 回退到简单的路径替换
-      localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
+      // 无明确 pageKey 时的回退逻辑
+      if (targetLocale === 'en') {
+        localizedUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
+      } else {
+        localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
+      }
     }
     
     alternates.push({
@@ -88,10 +98,10 @@ export function generateHreflangAlternates(
   // 添加x-default（默认为英语，但需要确保URL正确）
   let defaultUrl: string;
   if (pageKey) {
-    defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, cleanBaseUrl);
+    const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
+    defaultUrl = `${cleanBaseUrl}${targetBaseEn === '/' ? '' : targetBaseEn}`;
   } else {
-    // 对于产品页面，确保x-default指向正确的英文版本
-    defaultUrl = `${cleanBaseUrl}/en${currentPath}`;
+    defaultUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
   }
   
   alternates.push({
@@ -133,13 +143,29 @@ export function generateHreflangAlternatesForMetadata(
     es: 'es'
   };
 
-  const pageKey = getPageKeyFromPath(currentPath, currentLocale);
+  // 更稳健的页面键解析：在所有语言映射中查找匹配的基路径
+  let pageKey: string | null = null;
   let remainder = '';
-  if (pageKey) {
-    const basePathForCurrent = LOCALIZED_PATHS[pageKey]?.[currentLocale] || '';
-    if (basePathForCurrent && currentPath.startsWith(basePathForCurrent)) {
-      remainder = currentPath.slice(basePathForCurrent.length);
+  for (const [key, paths] of Object.entries(LOCALIZED_PATHS)) {
+    const baseEn = paths.en || '';
+    const baseEs = paths.es || '';
+    if (currentPath === baseEn || (baseEn && currentPath.startsWith(baseEn + '/'))) {
+      pageKey = key;
+      remainder = currentPath.slice(baseEn.length);
+      break;
     }
+    if (currentPath === baseEs || (baseEs && currentPath.startsWith(baseEs + '/'))) {
+      pageKey = key;
+      remainder = currentPath.slice(baseEs.length);
+      break;
+    }
+  }
+  // 若未解析到，回退旧逻辑尝试当前语言/英文/西语解析
+  if (!pageKey) {
+    pageKey = getPageKeyFromPath(currentPath, currentLocale) 
+      || getPageKeyFromPath(currentPath, 'en' as Locale) 
+      || getPageKeyFromPath(currentPath, 'es' as Locale) 
+      || null;
   }
 
   Object.entries(localeMap).forEach(([locale, hreflang]) => {
@@ -147,9 +173,17 @@ export function generateHreflangAlternatesForMetadata(
     let localizedUrl: string;
     if (pageKey) {
       const targetBase = LOCALIZED_PATHS[pageKey]?.[targetLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
-      localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase}${remainder}`;
+      if (targetLocale === 'en') {
+        localizedUrl = `${cleanBaseUrl}${targetBase === '/' && !remainder ? '' : `${targetBase}${remainder}`}`;
+      } else {
+        localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase}${remainder}`;
+      }
     } else {
-      localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
+      if (targetLocale === 'en') {
+        localizedUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
+      } else {
+        localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
+      }
     }
     alternates[hreflang] = localizedUrl;
   });
@@ -157,9 +191,9 @@ export function generateHreflangAlternatesForMetadata(
   let defaultUrl: string;
   if (pageKey) {
     const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
-    defaultUrl = `${cleanBaseUrl}/en${targetBaseEn}${remainder}`;
+    defaultUrl = `${cleanBaseUrl}${targetBaseEn === '/' && !remainder ? '' : `${targetBaseEn}${remainder}`}`;
   } else {
-    defaultUrl = `${cleanBaseUrl}/en${currentPath}`;
+    defaultUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
   }
   
   alternates['x-default'] = defaultUrl;
@@ -204,12 +238,26 @@ export function generateCanonicalUrl(
     }
   }
   
+  // 自引用 canonical：当前语言页面的规范URL（英文不带 /en；其他语言带语言前缀）
+  let final: string;
   if (pageKey) {
-    const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
-    return `${cleanBaseUrl}/en${targetBaseEn}${remainder}`;
+    const targetBaseForLocale = LOCALIZED_PATHS[pageKey]?.[currentLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
+    if (currentLocale === 'en') {
+      final = `${cleanBaseUrl}${targetBaseForLocale === '/' && !remainder ? '' : `${targetBaseForLocale}${remainder}`}`;
+    } else {
+      final = `${cleanBaseUrl}/${currentLocale}${targetBaseForLocale === '/' && !remainder ? '' : `${targetBaseForLocale}${remainder}`}`;
+    }
   } else {
-    return `${cleanBaseUrl}/en${currentPath}`;
+    if (currentLocale === 'en') {
+      final = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
+    } else {
+      final = `${cleanBaseUrl}/${currentLocale}${currentPath}`;
+    }
   }
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[generateCanonicalUrl]', { currentPath, currentLocale, baseUrl: cleanBaseUrl, final });
+  }
+  return final;
 }
 
 // 页面类型定义

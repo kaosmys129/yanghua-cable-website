@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
 
 export default function ProductsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -23,14 +24,15 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     es: 'Barras flexibles Yanghua: 200-6300A, ≤3kV, aislamiento XLPE/PVC, alta protección para aplicaciones industriales y exteriores.',
   };
 
-  const canonical = generateCanonicalUrl('/products', locale as any, baseUrl);
+  const localizedPath = getLocalizedPath('products', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
 
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: generateHreflangAlternatesForMetadata('/products', locale as any),
+      languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),
     },
   };
 }

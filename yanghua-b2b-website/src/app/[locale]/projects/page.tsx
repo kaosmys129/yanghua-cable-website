@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { generateCanonicalUrl } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Building2, TrendingUp } from 'lucide-react';
@@ -156,7 +156,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
   const baseUrl = 'https://www.yhflexiblebusbar.com';
   // 使用本地化URL生成，确保西语翻译段作为规范路径
-  const canonical = generateCanonicalUrl('/projects', locale as any, baseUrl);
+  const localizedPath = getLocalizedPath('projects', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
   
   return {
     title: titles[locale] || titles.en,

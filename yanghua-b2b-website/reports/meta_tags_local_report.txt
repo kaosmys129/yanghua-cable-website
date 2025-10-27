@@ -1,0 +1,473 @@
+====================
+URL: http://localhost:3000/
+HEAD: 200 OK
+canonical: http://localhost:3000
+hreflang(en): https://www.yhflexiblebusbar.com
+hreflang(es): https://www.yhflexiblebusbar.com/es/
+hreflang(x-default): https://www.yhflexiblebusbar.com
+og:url: http://localhost:3000
+og:locale: en
+====================
+URL: http://localhost:3000/es
+HEAD: 200 OK
+canonical: http://localhost:3000/es
+hreflang(en): https://www.yhflexiblebusbar.com
+hreflang(es): https://www.yhflexiblebusbar.com/es/
+hreflang(x-default): https://www.yhflexiblebusbar.com
+og:url: http://localhost:3000/es
+og:locale: es
+====================
+URL: http://localhost:3000/about
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/about
+hreflang(en): https://www.yhflexiblebusbar.com/about
+hreflang(es): https://www.yhflexiblebusbar.com/es/acerca-de
+hreflang(x-default): https://www.yhflexiblebusbar.com/about
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/acerca-de
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/acerca-de
+hreflang(en): https://www.yhflexiblebusbar.com/about
+hreflang(es): https://www.yhflexiblebusbar.com/es/acerca-de
+hreflang(x-default): https://www.yhflexiblebusbar.com/about
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/services
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/services
+hreflang(en): https://www.yhflexiblebusbar.com/services
+hreflang(es): https://www.yhflexiblebusbar.com/es/servicios
+hreflang(x-default): https://www.yhflexiblebusbar.com/services
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/servicios
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/servicios
+hreflang(en): https://www.yhflexiblebusbar.com/services
+hreflang(es): https://www.yhflexiblebusbar.com/es/servicios
+hreflang(x-default): https://www.yhflexiblebusbar.com/services
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/contact
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/contact
+hreflang(en): https://www.yhflexiblebusbar.com/contact
+hreflang(es): https://www.yhflexiblebusbar.com/es/contacto
+hreflang(x-default): https://www.yhflexiblebusbar.com/contact
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/contacto
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/contacto
+hreflang(en): https://www.yhflexiblebusbar.com/contact
+hreflang(es): https://www.yhflexiblebusbar.com/es/contacto
+hreflang(x-default): https://www.yhflexiblebusbar.com/contact
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/privacy
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/privacy
+hreflang(en): https://www.yhflexiblebusbar.com/privacy
+hreflang(es): https://www.yhflexiblebusbar.com/es/privacidad
+hreflang(x-default): https://www.yhflexiblebusbar.com/privacy
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/privacidad
+HEAD: 404 Not Found
+canonical: https://www.yhflexiblebusbar.com
+hreflang(en): https://www.yhflexiblebusbar.com/en
+hreflang(es): https://www.yhflexiblebusbar.com/es
+hreflang(x-default): N/A
+og:url: N/A
+og:locale: N/A
+====================
+URL: http://localhost:3000/terms
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/terms
+hreflang(en): https://www.yhflexiblebusbar.com/terms
+hreflang(es): https://www.yhflexiblebusbar.com/es/terminos
+hreflang(x-default): https://www.yhflexiblebusbar.com/terms
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/terminos
+HEAD: 404 Not Found
+canonical: https://www.yhflexiblebusbar.com
+hreflang(en): https://www.yhflexiblebusbar.com/en
+hreflang(es): https://www.yhflexiblebusbar.com/es
+hreflang(x-default): N/A
+og:url: N/A
+og:locale: N/A
+====================
+URL: http://localhost:3000/solutions
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/solutions
+hreflang(en): https://www.yhflexiblebusbar.com/solutions
+hreflang(es): https://www.yhflexiblebusbar.com/es/soluciones
+hreflang(x-default): https://www.yhflexiblebusbar.com/solutions
+og:url: https://www.yhflexiblebusbar.com/solutions
+og:locale: en
+====================
+URL: http://localhost:3000/es/soluciones
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/soluciones
+hreflang(en): https://www.yhflexiblebusbar.com/solutions
+hreflang(es): https://www.yhflexiblebusbar.com/es/soluciones
+hreflang(x-default): https://www.yhflexiblebusbar.com/solutions
+og:url: https://www.yhflexiblebusbar.com/es/soluciones
+og:locale: es
+====================
+URL: http://localhost:3000/solutions/new-energy
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/solutions/new-energy
+hreflang(en): https://www.yhflexiblebusbar.com/solutions/new-energy
+hreflang(es): https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+hreflang(x-default): https://www.yhflexiblebusbar.com/solutions/new-energy
+og:url: https://www.yhflexiblebusbar.com/solutions/new-energy
+og:locale: en
+====================
+URL: http://localhost:3000/es/soluciones/new-energy
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+hreflang(en): https://www.yhflexiblebusbar.com/solutions/new-energy
+hreflang(es): https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+hreflang(x-default): https://www.yhflexiblebusbar.com/solutions/new-energy
+og:url: https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+og:locale: es
+====================
+URL: http://localhost:3000/products
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products
+hreflang(en): https://www.yhflexiblebusbar.com/products
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos
+hreflang(x-default): https://www.yhflexiblebusbar.com/products
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/productos
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos
+hreflang(en): https://www.yhflexiblebusbar.com/products
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos
+hreflang(x-default): https://www.yhflexiblebusbar.com/products
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/products/category/general
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products/category/general
+hreflang(en): https://www.yhflexiblebusbar.com/products/category/general
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/category/general
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/category/general
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/productos/categoria/general
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos/categoria/general
+hreflang(en): https://www.yhflexiblebusbar.com/products/categoria/general
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/categoria/general
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/categoria/general
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/products/flexible-busbar-2000a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/productos/flexible-busbar-2000a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/projects
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/projects
+hreflang(en): https://www.yhflexiblebusbar.com/en/projects
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/proyectos
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/proyectos
+hreflang(en): https://www.yhflexiblebusbar.com/en/projects
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/projects/1
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/projects/1
+hreflang(en): https://www.yhflexiblebusbar.com/projects/1
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/1
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/1
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/proyectos/1
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/proyectos/1
+hreflang(en): https://www.yhflexiblebusbar.com/projects/1
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/1
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/1
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/articles
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/articles
+hreflang(en): https://www.yhflexiblebusbar.com/articles
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos
+hreflang(x-default): https://www.yhflexiblebusbar.com/articles
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/articulos
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/articulos
+hreflang(en): https://www.yhflexiblebusbar.com/articles
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos
+hreflang(x-default): https://www.yhflexiblebusbar.com/articles
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/articles/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/articles/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/articles/yanghuasti-2024-annual-review
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/articles/yanghuasti-2024-annual-review
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/yanghuasti-2024-annual-review
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/yanghuasti-2024-annual-review
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/articles/work-resumes-with-good-fortune-everything-is-promising
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/articles/work-resumes-with-good-fortune-everything-is-promising
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/work-resumes-with-good-fortune-everything-is-promising
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/work-resumes-with-good-fortune-everything-is-promising
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/articles/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/articles/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/articulos/this-shrimp-is-awesome-es
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/articulos/this-shrimp-is-awesome-es
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/this-shrimp-is-awesome-es
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/this-shrimp-is-awesome-es
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/articulos/beautiful-picture-es
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/articulos/beautiful-picture-es
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/beautiful-picture-es
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/beautiful-picture-es
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/articulos/the-internet-s-own-boy-es
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/articulos/the-internet-s-own-boy-es
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/the-internet-s-own-boy-es
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/the-internet-s-own-boy-es
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/articulos/what-s-inside-a-black-hole-es
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/articulos/what-s-inside-a-black-hole-es
+hreflang(en): https://www.yhflexiblebusbar.com/en/articles/what-s-inside-a-black-hole-es
+hreflang(es): https://www.yhflexiblebusbar.com/es/articulos/what-s-inside-a-black-hole-es
+hreflang(x-default): N/A
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/products/flexible-busbar-2000a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/products/flexible-busbar-1500a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products/flexible-busbar-1500a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-1500a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-1500a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-1500a
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/products/flexible-busbar-2500a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products/flexible-busbar-2500a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-2500a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2500a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-2500a
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/products/insulation-accessories
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/products/insulation-accessories
+hreflang(en): https://www.yhflexiblebusbar.com/products/insulation-accessories
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/insulation-accessories
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/insulation-accessories
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/productos/flexible-busbar-2000a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/productos/flexible-busbar-1500a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-1500a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-1500a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-1500a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-1500a
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/productos/flexible-busbar-2500a
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2500a
+hreflang(en): https://www.yhflexiblebusbar.com/products/flexible-busbar-2500a
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2500a
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/flexible-busbar-2500a
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/productos/insulation-accessories
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/productos/insulation-accessories
+hreflang(en): https://www.yhflexiblebusbar.com/products/insulation-accessories
+hreflang(es): https://www.yhflexiblebusbar.com/es/productos/insulation-accessories
+hreflang(x-default): https://www.yhflexiblebusbar.com/products/insulation-accessories
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/projects/1
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/projects/1
+hreflang(en): https://www.yhflexiblebusbar.com/projects/1
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/1
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/1
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/projects/2
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/projects/2
+hreflang(en): https://www.yhflexiblebusbar.com/projects/2
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/2
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/2
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/projects/3
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/projects/3
+hreflang(en): https://www.yhflexiblebusbar.com/projects/3
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/3
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/3
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/projects/4
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/projects/4
+hreflang(en): https://www.yhflexiblebusbar.com/projects/4
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/4
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/4
+og:url: https://www.yhflexiblebusbar.com
+og:locale: en_US
+====================
+URL: http://localhost:3000/es/proyectos/1
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/proyectos/1
+hreflang(en): https://www.yhflexiblebusbar.com/projects/1
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/1
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/1
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/proyectos/2
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/proyectos/2
+hreflang(en): https://www.yhflexiblebusbar.com/projects/2
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/2
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/2
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/proyectos/3
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/proyectos/3
+hreflang(en): https://www.yhflexiblebusbar.com/projects/3
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/3
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/3
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+====================
+URL: http://localhost:3000/es/proyectos/4
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/es/proyectos/4
+hreflang(en): https://www.yhflexiblebusbar.com/projects/4
+hreflang(es): https://www.yhflexiblebusbar.com/es/proyectos/4
+hreflang(x-default): https://www.yhflexiblebusbar.com/projects/4
+og:url: https://www.yhflexiblebusbar.com/es
+og:locale: es_ES
+
+Sitemap check:
+sitemap HEAD: 200 OK
+local sitemap occurrences with /en: 0
+local sitemap total URL count: 87

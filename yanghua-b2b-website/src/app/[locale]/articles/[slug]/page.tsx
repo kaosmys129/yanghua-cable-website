@@ -9,7 +9,7 @@ import { Article } from '@/lib/types';
 import { draftMode } from 'next/headers';
 import { getArticleBySlugWithMetrics } from "@/lib/strapi-client";
 import { generateCanonicalUrl } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 
 // Generate static params for all articles
 export async function generateStaticParams() {
@@ -200,7 +200,8 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
   const description = article?.description || 'Technical insights and resources from Yanghua on flexible busbar systems and applications.';
 
   // 使用本地化URL生成器，确保西语翻译段作为规范路径
-  const canonical = generateCanonicalUrl(`/articles/${slug}`, locale as any, baseUrl);
+  const localizedPath = getLocalizedPath('articles-detail', locale as any, { slug });
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
 
   return {
     title,

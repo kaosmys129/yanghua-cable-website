@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 
 export default function SolutionsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -21,13 +21,25 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     en: 'Reliable flexible busbar solutions for data centers, EV power modules, and industrial automation with high safety, performance and durability.',
     es: 'Soluciones fiables de barras colectoras flexibles para centros de datos, módulos EV y automatización industrial con alta seguridad y rendimiento.',
   };
-  const canonical = generateCanonicalUrl('/solutions', locale as any, baseUrl);
+  const canonical = generateCanonicalUrl(getLocalizedPath('solutions', locale as any), locale as any, baseUrl);
+  const currentUrl = locale === 'es' 
+    ? `${baseUrl}/es/soluciones`
+    : `${baseUrl}/solutions`;
+  const currentPathForLocale = getLocalizedPath('solutions', locale as any);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
+    openGraph: {
+      title: titles[locale] || titles.en,
+      description: descriptions[locale] || descriptions.en,
+      url: currentUrl,
+      siteName: 'Yanghua Cable',
+      type: 'website',
+      locale,
+    },
     alternates: {
       canonical,
-      languages: generateHreflangAlternatesForMetadata('/solutions', locale as any),
+      languages: generateHreflangAlternatesForMetadata(currentPathForLocale, locale as any),
     },
   };
 }

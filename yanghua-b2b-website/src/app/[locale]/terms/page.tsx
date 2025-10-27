@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -16,8 +17,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     es: 'Términos de Servicio para sistemas de barras colectoras flexibles y soluciones de distribución de energía de Yanghua Cable.',
   };
 
-  const canonical = generateCanonicalUrl('/terms', locale as any, baseUrl);
-  const languages = generateHreflangAlternatesForMetadata('/terms', locale as any);
+  const localizedPath = getLocalizedPath('terms', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
+  const languages = generateHreflangAlternatesForMetadata(localizedPath, locale as any);
 
   return {
     title: titles[locale] || titles.en,

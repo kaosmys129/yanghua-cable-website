@@ -53,9 +53,10 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
   const title = t('pages.home.title');
   const description = t('pages.home.description');
-  const currentUrl = `${baseUrl}/${locale}`;
   // 使用generateCanonicalUrl生成canonical链接，始终指向英语版本
   const canonicalUrl = generateCanonicalUrl('/', locale as 'en' | 'es', baseUrl);
+  // 将 Open Graph 的 url 与 canonical 保持一致，避免英文出现 /en 前缀和双斜杠
+  const ogUrl = canonicalUrl;
 
   return {
     title,
@@ -66,7 +67,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       title,
       description,
-      url: currentUrl,
+      url: ogUrl,
       siteName: 'Yanghua Cable',
       images: [`${baseUrl}/images/og-home.jpg`],
       locale,

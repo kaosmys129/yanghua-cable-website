@@ -1,0 +1,28 @@
+URL | Status | FinalURL
+---------------------------------------------
+https://www.yhflexiblebusbar.com/ | 307 | https://www.yhflexiblebusbar.com/en
+https://www.yhflexiblebusbar.com/es | 200 | https://www.yhflexiblebusbar.com/es
+https://www.yhflexiblebusbar.com/about | 307 | https://www.yhflexiblebusbar.com/en/about
+https://www.yhflexiblebusbar.com/es/acerca-de | 200 | https://www.yhflexiblebusbar.com/es/acerca-de
+https://www.yhflexiblebusbar.com/solutions | 307 | https://www.yhflexiblebusbar.com/en/solutions
+https://www.yhflexiblebusbar.com/es/soluciones | 200 | https://www.yhflexiblebusbar.com/es/soluciones
+https://www.yhflexiblebusbar.com/services | 307 | https://www.yhflexiblebusbar.com/en/services
+https://www.yhflexiblebusbar.com/es/servicios | 200 | https://www.yhflexiblebusbar.com/es/servicios
+https://www.yhflexiblebusbar.com/articles | 307 | https://www.yhflexiblebusbar.com/en/articles
+https://www.yhflexiblebusbar.com/es/articulos | 200 | https://www.yhflexiblebusbar.com/es/articulos
+https://www.yhflexiblebusbar.com/solutions/new-energy | 307 | https://www.yhflexiblebusbar.com/en/solutions/new-energy
+https://www.yhflexiblebusbar.com/es/soluciones/new-energy | 200 | https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+https://www.yhflexiblebusbar.com/products | 307 | https://www.yhflexiblebusbar.com/en/products
+https://www.yhflexiblebusbar.com/es/productos | 200 | https://www.yhflexiblebusbar.com/es/productos
+https://www.yhflexiblebusbar.com/products/category/general | 307 | https://www.yhflexiblebusbar.com/en/products/category/general
+https://www.yhflexiblebusbar.com/es/productos/categoria/general | 200 | https://www.yhflexiblebusbar.com/es/productos/categoria/general
+https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a | 307 | https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a
+https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a | 200 | https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a
+https://www.yhflexiblebusbar.com/projects | 307 | https://www.yhflexiblebusbar.com/en/projects
+https://www.yhflexiblebusbar.com/es/proyectos | 200 | https://www.yhflexiblebusbar.com/es/proyectos
+https://www.yhflexiblebusbar.com/projects/1 | 307 | https://www.yhflexiblebusbar.com/en/projects/1
+https://www.yhflexiblebusbar.com/es/proyectos/1 | 200 | https://www.yhflexiblebusbar.com/es/proyectos/1
+https://www.yhflexiblebusbar.com/contact | 307 | https://www.yhflexiblebusbar.com/en/contact
+https://www.yhflexiblebusbar.com/es/contacto | 200 | https://www.yhflexiblebusbar.com/es/contacto
+https://www.yhflexiblebusbar.com/sitemap.xml | 200 | https://www.yhflexiblebusbar.com/sitemap.xml
+\nSaved: scripts/../reports/head_status_report.txt

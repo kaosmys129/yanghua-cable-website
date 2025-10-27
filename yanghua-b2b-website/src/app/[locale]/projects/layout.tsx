@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -18,7 +18,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     en: 'Explore real-world case studies of flexible busbar deployments across industrial and data center environments with measurable performance gains.',
     es: 'Explore casos reales de implementación de barras colectoras flexibles en entornos industriales y centros de datos con resultados medibles.',
   };
-  const canonical = generateCanonicalUrl('/projects', locale as any, baseUrl);
+  const localizedPath = getLocalizedPath('projects', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,

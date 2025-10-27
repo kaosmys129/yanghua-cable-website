@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -20,14 +20,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     es: 'Contacte a Yanghua Cable para soluciones de barras colectoras flexibles, soporte técnico y consultas de proyectos. Asesoramiento experto.',
   };
 
-  const canonical = generateCanonicalUrl('/contact', locale as any, baseUrl);
+  const localizedPath = getLocalizedPath('contact', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
 
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: generateHreflangAlternatesForMetadata('/contact', locale as any),
+      languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),
     },
   };
 }

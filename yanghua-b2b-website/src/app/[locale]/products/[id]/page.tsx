@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 import StructuredDataScript from '@/components/seo/StructuredDataScript';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
 
@@ -573,14 +573,15 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     en: product?.description || 'Flexible busbar product detail and specifications.',
     es: product?.description || 'Detalle y especificaciones del producto de barra colectora flexible.',
   };
-  // canonical 始终指向英文版，并保留动态段 /products/:id
-  const canonical = generateCanonicalUrl(`/products/${id}`, locale as any, baseUrl);
+  // 自引用 canonical：当前语言版本的规范URL（英文不带 /en，西语带 /es）
+  const localizedPath = getLocalizedPath('products-detail', locale as any, { id });
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: generateHreflangAlternatesForMetadata(`/products/${id}`, locale as any),
+      languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),
     },
   };
 }

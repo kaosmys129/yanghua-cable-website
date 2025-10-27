@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { getLocalizedPath } from '@/lib/url-localization';
 
 export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 
@@ -10,11 +10,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const items: MetadataRoute.Sitemap = [];
 
+  // 统一构建 sitemap URL：英文默认不带 /en 前缀，西语带 /es 前缀
+  const buildSitemapUrl = (
+    pageKey: (typeof staticPageKeys)[number] | 'products-category' | 'products-detail' | 'projects-detail' | 'articles-detail',
+    locale: (typeof locales)[number],
+    params?: Record<string, string>
+  ): string => {
+    const cleanBaseUrl = baseUrl.replace(/\/+$/, '');
+    const localizedPath = getLocalizedPath(pageKey as any, locale as any, params);
+    // 英文作为默认语言：不带 /en 前缀
+    if (locale === 'en') {
+      return `${cleanBaseUrl}${localizedPath === '/' ? '' : localizedPath}`;
+    }
+    // 其他语言保留语言前缀
+    return `${cleanBaseUrl}/${locale}${localizedPath === '/' ? '' : localizedPath}`;
+  };
+
   // 静态页面：使用统一的本地化URL生成确保西语输出翻译段
   for (const locale of locales) {
     for (const key of staticPageKeys) {
       items.push({
-        url: buildLocalizedUrl(key, locale, undefined, baseUrl),
+        url: buildSitemapUrl(key, locale, undefined),
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: key === 'home' ? 1.0 : 0.7,
@@ -28,7 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     for (const id of productIds) {
       items.push({
-        url: buildLocalizedUrl('products', locale, { id }, baseUrl),
+        url: buildSitemapUrl('products-detail', locale, { id }),
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -41,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     for (const name of categories) {
       items.push({
-        url: buildLocalizedUrl('products-category', locale, { name }, baseUrl),
+        url: buildSitemapUrl('products-category', locale, { name }),
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
@@ -54,7 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     for (const id of projectIds) {
       items.push({
-        url: buildLocalizedUrl('projects-detail', locale, { id }, baseUrl),
+        url: buildSitemapUrl('projects-detail', locale, { id }),
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
@@ -89,7 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const slugs = await fetchArticleSlugs(locale);
     for (const slug of slugs) {
       items.push({
-        url: buildLocalizedUrl('articles-detail', locale, { slug }, baseUrl),
+        url: buildSitemapUrl('articles-detail', locale, { slug }),
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.6,

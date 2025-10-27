@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
 
 type Solution = {
   id: string;
@@ -183,13 +184,26 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     en: solution?.description || 'Flexible busbar solution details and specifications.',
     es: solution?.description || 'Detalles y especificaciones de la solución de barras colectoras flexibles.',
   };
-  const canonical = generateCanonicalUrl(`/solutions/${id}`, locale as any);
+  const canonical = generateCanonicalUrl(getLocalizedPath('solutions-detail', locale as any, { id }), locale as any);
+  const currentPathForLocale = getLocalizedPath('solutions-detail', locale as any, { id });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+  const currentUrl = locale === 'es' 
+    ? `${baseUrl}/es/soluciones/${id}`
+    : `${baseUrl}/solutions/${id}`;
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
+    openGraph: {
+      title: titles[locale] || titles.en,
+      description: descriptions[locale] || descriptions.en,
+      url: currentUrl,
+      siteName: 'Yanghua Cable',
+      type: 'article',
+      locale,
+    },
     alternates: {
       canonical,
-      languages: generateHreflangAlternatesForMetadata(`/solutions/${id}`, locale as any),
+      languages: generateHreflangAlternatesForMetadata(currentPathForLocale, locale as any),
     },
   };
 }

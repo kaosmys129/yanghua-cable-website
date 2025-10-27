@@ -1,0 +1,64 @@
+====================
+URL: https://www.yhflexiblebusbar.com/
+HEAD: 307 Temporary Redirect
+canonical: https://www.yhflexiblebusbar.com/en/
+hreflang(en): https://www.yhflexiblebusbar.com/en/
+hreflang(es): https://www.yhflexiblebusbar.com/es/
+hreflang(x-default): https://www.yhflexiblebusbar.com/en/
+og:url: https://www.yhflexiblebusbar.com//en
+og:locale: en
+FinalURL: https://www.yhflexiblebusbar.com/en
+====================
+URL: https://www.yhflexiblebusbar.com/es
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/
+hreflang(en): https://www.yhflexiblebusbar.com/en/
+hreflang(es): https://www.yhflexiblebusbar.com/es/
+hreflang(x-default): https://www.yhflexiblebusbar.com/en/
+og:url: https://www.yhflexiblebusbar.com//es
+og:locale: es
+FinalURL: https://www.yhflexiblebusbar.com/es
+====================
+URL: https://www.yhflexiblebusbar.com/solutions
+HEAD: 307 Temporary Redirect
+canonical: https://www.yhflexiblebusbar.com/en/solutions
+hreflang(en): https://www.yhflexiblebusbar.com/en/solutions
+hreflang(es): https://www.yhflexiblebusbar.com/es/soluciones
+hreflang(x-default): https://www.yhflexiblebusbar.com/en/solutions
+og:url: https://www.yhflexiblebusbar.com/en/
+og:locale: en_US
+FinalURL: https://www.yhflexiblebusbar.com/en/solutions
+====================
+URL: https://www.yhflexiblebusbar.com/es/soluciones
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/solutions
+hreflang(en): https://www.yhflexiblebusbar.com/en/solutions
+hreflang(es): https://www.yhflexiblebusbar.com/es/solutions
+hreflang(x-default): https://www.yhflexiblebusbar.com/en/solutions
+og:url: https://www.yhflexiblebusbar.com/en/
+og:locale: es_ES
+FinalURL: https://www.yhflexiblebusbar.com/es/soluciones
+====================
+URL: https://www.yhflexiblebusbar.com/solutions/new-energy
+HEAD: 307 Temporary Redirect
+canonical: https://www.yhflexiblebusbar.com/en/solutions/new-energy
+hreflang(en): https://www.yhflexiblebusbar.com/en/solutions/new-energy
+hreflang(es): https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+hreflang(x-default): https://www.yhflexiblebusbar.com/en/solutions/new-energy
+og:url: https://www.yhflexiblebusbar.com/en/
+og:locale: en_US
+FinalURL: https://www.yhflexiblebusbar.com/en/solutions/new-energy
+====================
+URL: https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+HEAD: 200 OK
+canonical: https://www.yhflexiblebusbar.com/en/solutions/new-energy
+hreflang(en): https://www.yhflexiblebusbar.com/en/solutions/new-energy
+hreflang(es): https://www.yhflexiblebusbar.com/es/solutions/new-energy
+hreflang(x-default): https://www.yhflexiblebusbar.com/en/solutions/new-energy
+og:url: https://www.yhflexiblebusbar.com/en/
+og:locale: es_ES
+FinalURL: https://www.yhflexiblebusbar.com/es/soluciones/new-energy
+
+Sitemap check:
+sitemap HEAD: 200 OK
+sitemap occurrences with /en: 42

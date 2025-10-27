@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -16,8 +17,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     es: 'Política de Privacidad para el sitio web de Yanghua Cable y servicios de sistemas de barras colectoras flexibles.',
   };
 
-  const canonical = generateCanonicalUrl('/privacy', locale as any, baseUrl);
-  const languages = generateHreflangAlternatesForMetadata('/privacy', locale as any);
+  const localizedPath = getLocalizedPath('privacy', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
+  const languages = generateHreflangAlternatesForMetadata(localizedPath, locale as any);
 
   return {
     title: titles[locale] || titles.en,

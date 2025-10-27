@@ -42,13 +42,9 @@ export const DEFAULT_METADATA: Metadata = {
     telephone: false
   },
   metadataBase: new URL(SITE_CONFIG.url),
-  alternates: {
-    canonical: '/'
-  },
   openGraph: {
     type: 'website',
     locale: SITE_CONFIG.locale,
-    url: SITE_CONFIG.url,
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
