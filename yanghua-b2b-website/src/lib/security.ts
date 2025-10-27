@@ -105,10 +105,35 @@ export const SECURITY_HEADERS = {
 };
 
 // Apply security headers to response
+// 清理 Link 响应头中包含 hreflang 的 rel="alternate" 条目，避免从HTTP头输出hreflang
+function cleanHreflangLinkHeader(value: string): string | null {
+  // 将多个 Link 条目按逗号拆分（Link 头通常以逗号分隔多个链接）
+  const segments = value.split(',');
+  const kept = segments.filter((seg) => {
+    const lower = seg.toLowerCase();
+    const hasAlternate = lower.includes('rel="alternate"') || lower.includes('rel=alternate');
+    const hasHreflang = lower.includes('hreflang="') || lower.includes('hreflang=');
+    // 只有当同时包含 rel=alternate 和 hreflang 时才移除该片段
+    return !(hasAlternate && hasHreflang);
+  });
+  const result = kept.map((s) => s.trim()).filter(Boolean).join(', ');
+  return result.length ? result : null;
+}
 export function applySecurityHeaders(response: NextResponse): NextResponse {
   Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
     response.headers.set(key, value);
   });
+  
+  // 在应用完其它安全头后，最后清理可能出现的 Link hreflang 片段
+  const linkHeader = response.headers.get('Link') || response.headers.get('link');
+  if (linkHeader) {
+    const cleaned = cleanHreflangLinkHeader(linkHeader);
+    if (cleaned) {
+      response.headers.set('Link', cleaned);
+    } else {
+      response.headers.delete('Link');
+    }
+  }
   
   return response;
 }

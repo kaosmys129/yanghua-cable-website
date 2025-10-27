@@ -8,6 +8,8 @@ import SolutionsHeroImage from '@/components/SolutionsHeroImage';
 import SolutionsGallery from '@/components/SolutionsGallery';
 import fs from 'node:fs';
 import path from 'node:path';
+import type { Metadata } from 'next';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 
 type Solution = {
   id: string;
@@ -164,4 +166,30 @@ export default async function SolutionDetailPage({ params: { id, locale } }: Pag
       </div>
     </div>
   );
+}
+
+// 页面级别元数据：为 /solutions/[id] 生成正确的 canonical 与 hreflang（包含动态段）
+export async function generateMetadata({ params }: { params: { locale: string; id: string } }): Promise<Metadata> {
+  const { locale, id } = params;
+  const t = await getTranslations({ locale, namespace: 'solutions' });
+  const solutions = t.raw('solutions') as Solution[];
+  const solution = solutions.find((s) => s.id === id);
+  const titleBase = solution?.title || id;
+  const titles: Record<string, string> = {
+    en: `${titleBase} | Flexible Busbar Solutions | Yanghua`,
+    es: `${titleBase} | Soluciones de Barras Flexibles | Yanghua`,
+  };
+  const descriptions: Record<string, string> = {
+    en: solution?.description || 'Flexible busbar solution details and specifications.',
+    es: solution?.description || 'Detalles y especificaciones de la solución de barras colectoras flexibles.',
+  };
+  const canonical = generateCanonicalUrl(`/solutions/${id}`, locale as any);
+  return {
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    alternates: {
+      canonical,
+      languages: generateHreflangAlternatesForMetadata(`/solutions/${id}`, locale as any),
+    },
+  };
 }

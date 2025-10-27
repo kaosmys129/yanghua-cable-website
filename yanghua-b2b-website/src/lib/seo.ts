@@ -54,6 +54,9 @@ export function generateHreflangAlternates(
 ): Array<{ hreflang: string; href: string }> {
   const alternates: Array<{ hreflang: string; href: string }> = [];
   
+  // 规范化 baseUrl，去除尾部斜杠，避免双斜杠
+  const cleanBaseUrl = (baseUrl || '').replace(/\/+$/, '');
+  
   // 支持的语言映射
   const localeMap: Record<Locale, string> = {
     en: 'en',
@@ -69,11 +72,11 @@ export function generateHreflangAlternates(
     
     let localizedUrl: string;
     if (pageKey) {
-      // 使用页面键名生成本地化URL
-      localizedUrl = buildLocalizedUrl(pageKey, targetLocale, undefined, baseUrl);
+      // 使用页面键名生成本地化URL（内部已清理baseUrl尾部斜杠）
+      localizedUrl = buildLocalizedUrl(pageKey, targetLocale, undefined, cleanBaseUrl);
     } else {
       // 回退到简单的路径替换
-      localizedUrl = `${baseUrl}/${targetLocale}${currentPath}`;
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
     }
     
     alternates.push({
@@ -85,14 +88,10 @@ export function generateHreflangAlternates(
   // 添加x-default（默认为英语，但需要确保URL正确）
   let defaultUrl: string;
   if (pageKey) {
-    defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
+    defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, cleanBaseUrl);
   } else {
     // 对于产品页面，确保x-default指向正确的英文版本
-    if (currentPath.includes('/products/')) {
-      defaultUrl = `${baseUrl}/en${currentPath}`;
-    } else {
-      defaultUrl = `${baseUrl}/en${currentPath}`;
-    }
+    defaultUrl = `${cleanBaseUrl}/en${currentPath}`;
   }
   
   alternates.push({
@@ -115,48 +114,52 @@ export function generateHreflangAlternatesForMetadata(
 ): Record<string, string> {
   const alternates: Record<string, string> = {};
   
-  // 确保与canonical使用相同的域名逻辑
+  // 优先使用环境变量，以便在开发环境下完全避免生产域名
   let baseUrl: string;
-  if (typeof window !== 'undefined') {
-    // 客户端环境
+  const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (envSiteUrl) {
+    baseUrl = envSiteUrl;
+  } else if (typeof window !== 'undefined') {
     baseUrl = window.location.origin;
   } else if (process.env.NODE_ENV === 'development') {
-    // 开发环境服务端
     baseUrl = 'http://localhost:3000';
   } else {
-    // 生产环境服务端
-    baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+    baseUrl = 'https://www.yhflexiblebusbar.com';
   }
+  const cleanBaseUrl = (baseUrl || '').replace(/\/+$/, '');
   
-  // 支持的语言映射
   const localeMap: Record<Locale, string> = {
     en: 'en',
     es: 'es'
   };
 
-  // 获取页面键名
   const pageKey = getPageKeyFromPath(currentPath, currentLocale);
+  let remainder = '';
+  if (pageKey) {
+    const basePathForCurrent = LOCALIZED_PATHS[pageKey]?.[currentLocale] || '';
+    if (basePathForCurrent && currentPath.startsWith(basePathForCurrent)) {
+      remainder = currentPath.slice(basePathForCurrent.length);
+    }
+  }
 
-  // 为每种语言生成hreflang链接
   Object.entries(localeMap).forEach(([locale, hreflang]) => {
     const targetLocale = locale as Locale;
-    
     let localizedUrl: string;
     if (pageKey) {
-      localizedUrl = buildLocalizedUrl(pageKey, targetLocale, undefined, baseUrl);
+      const targetBase = LOCALIZED_PATHS[pageKey]?.[targetLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase}${remainder}`;
     } else {
-      localizedUrl = `${baseUrl}/${targetLocale}${currentPath}`;
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
     }
-    
     alternates[hreflang] = localizedUrl;
   });
 
-  // 添加x-default（默认为英语）
   let defaultUrl: string;
   if (pageKey) {
-    defaultUrl = buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
+    const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
+    defaultUrl = `${cleanBaseUrl}/en${targetBaseEn}${remainder}`;
   } else {
-    defaultUrl = `${baseUrl}/en${currentPath}`;
+    defaultUrl = `${cleanBaseUrl}/en${currentPath}`;
   }
   
   alternates['x-default'] = defaultUrl;
@@ -176,29 +179,36 @@ export function generateCanonicalUrl(
   currentLocale: Locale,
   baseUrl?: string
 ): string {
-  // 确保在开发环境下使用localhost，在生产环境下使用生产域名
-  // 这样可以保证canonical和hreflang使用相同的域名
+  // 优先使用环境变量，以便在开发环境下完全避免生产域名
   if (!baseUrl) {
-    if (typeof window !== 'undefined') {
-      // 客户端环境
+    const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    if (envSiteUrl) {
+      baseUrl = envSiteUrl;
+    } else if (typeof window !== 'undefined') {
       baseUrl = window.location.origin;
     } else if (process.env.NODE_ENV === 'development') {
-      // 开发环境服务端
       baseUrl = 'http://localhost:3000';
     } else {
-      // 生产环境服务端
-      baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+      baseUrl = 'https://www.yhflexiblebusbar.com';
+    }
+  }
+  // 统一清理 baseUrl 尾部斜杠，避免 //
+  const cleanBaseUrl = (baseUrl || '').replace(/\/+$/, '');
+  
+  const pageKey = getPageKeyFromPath(currentPath, currentLocale);
+  let remainder = '';
+  if (pageKey) {
+    const basePathForCurrent = LOCALIZED_PATHS[pageKey]?.[currentLocale] || '';
+    if (basePathForCurrent && currentPath.startsWith(basePathForCurrent)) {
+      remainder = currentPath.slice(basePathForCurrent.length);
     }
   }
   
-  const pageKey = getPageKeyFromPath(currentPath, currentLocale);
-  
-  // 始终返回英语版本的URL作为canonical，这是SEO最佳实践
-  // 现在确保canonical和hreflang使用相同的域名
   if (pageKey) {
-    return buildLocalizedUrl(pageKey, 'en', undefined, baseUrl);
+    const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
+    return `${cleanBaseUrl}/en${targetBaseEn}${remainder}`;
   } else {
-    return `${baseUrl}/en${currentPath}`;
+    return `${cleanBaseUrl}/en${currentPath}`;
   }
 }
 

@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { generateCanonicalUrl } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -18,16 +17,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 
   const canonical = generateCanonicalUrl('/privacy', locale as any, baseUrl);
+  const languages = generateHreflangAlternatesForMetadata('/privacy', locale as any);
 
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: {
-        en: buildLocalizedUrl('privacy', 'en', undefined, baseUrl),
-        es: buildLocalizedUrl('privacy', 'es', undefined, baseUrl),
-      },
+      languages,
     },
   };
 }

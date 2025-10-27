@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Metadata } from 'next';
 
 interface ProductCategory {
@@ -671,8 +670,10 @@ export async function generateMetadata({ params }: { params: { locale: string; n
     en: `Discover ${categoryName} flexible busbar models, structure and specifications for diverse applications.`,
     es: `Descubra modelos, estructura y especificaciones de ${categoryName} en barras colectoras flexibles para diversas aplicaciones.`,
   };
-  // 使用本地化URL生成器确保canonical和hreflang URL保持一致
-  const canonical = buildLocalizedUrl('products-category', locale as any, { name: decodedName }, baseUrl);
+  
+  // canonical 始终指向英文版，并保留动态段 /products/category/:name
+  const canonical = generateCanonicalUrl(`/products/category/${decodedName}`, locale as any, baseUrl);
+
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,

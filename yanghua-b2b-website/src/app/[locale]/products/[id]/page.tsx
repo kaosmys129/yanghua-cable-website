@@ -573,9 +573,8 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     en: product?.description || 'Flexible busbar product detail and specifications.',
     es: product?.description || 'Detalle y especificaciones del producto de barra colectora flexible.',
   };
-  // 直接构建canonical URL，确保包含产品ID
-  const localizedProductsPath = locale === 'es' ? '/productos' : '/products';
-  const canonical = `${baseUrl}/${locale}${localizedProductsPath}/${id}`;
+  // canonical 始终指向英文版，并保留动态段 /products/:id
+  const canonical = generateCanonicalUrl(`/products/${id}`, locale as any, baseUrl);
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,

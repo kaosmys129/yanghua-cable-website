@@ -1,0 +1,427 @@
+[
+  {
+    "url": "https://www.yhflexiblebusbar.com/en",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en",
+      "es": "https://www.yhflexiblebusbar.com/es",
+      "x-default": "https://www.yhflexiblebusbar.com/en"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en",
+      "es": "https://www.yhflexiblebusbar.com/es",
+      "x-default": "https://www.yhflexiblebusbar.com/"
+    },
+    "issues": [
+      "Duplicate hreflang in HTML and HTTP for en",
+      "Duplicate hreflang in HTML and HTTP for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en",
+      "es": "https://www.yhflexiblebusbar.com/es",
+      "x-default": "https://www.yhflexiblebusbar.com/en"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en",
+      "es": "https://www.yhflexiblebusbar.com/es",
+      "x-default": "https://www.yhflexiblebusbar.com/"
+    },
+    "issues": [
+      "Duplicate hreflang in HTML and HTTP for en",
+      "Duplicate hreflang in HTML and HTTP for es",
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/products",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/products",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products",
+      "es": "https://www.yhflexiblebusbar.com/es/productos",
+      "x-default": "https://www.yhflexiblebusbar.com/en/products"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products",
+      "es": "https://www.yhflexiblebusbar.com/es/productos",
+      "x-default": "https://www.yhflexiblebusbar.com/products"
+    },
+    "issues": [
+      "Duplicate hreflang in HTML and HTTP for en",
+      "Duplicate hreflang in HTML and HTTP for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/productos",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/products",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/products",
+      "es": "https://www.yhflexiblebusbar.com//es/products",
+      "x-default": "https://www.yhflexiblebusbar.com//en/products"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products",
+      "es": "https://www.yhflexiblebusbar.com/es/productos",
+      "x-default": "https://www.yhflexiblebusbar.com/products"
+    },
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/solutions",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/en/solutions"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/solutions"
+    },
+    "issues": [
+      "Duplicate hreflang in HTML and HTTP for en",
+      "Duplicate hreflang in HTML and HTTP for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/soluciones",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/solutions",
+      "es": "https://www.yhflexiblebusbar.com//es/solutions",
+      "x-default": "https://www.yhflexiblebusbar.com//en/solutions"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/solutions"
+    },
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/terms",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/terms",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/terms",
+      "es": "https://www.yhflexiblebusbar.com/es/terminos"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/terms",
+      "es": "https://www.yhflexiblebusbar.com/es/terms",
+      "x-default": "https://www.yhflexiblebusbar.com/terms"
+    },
+    "issues": [
+      "Missing HTML hreflang: x-default",
+      "Duplicate hreflang in HTML and HTTP for en"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/terminos",
+    "status": 404,
+    "canonical": "https://www.yhflexiblebusbar.com",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en",
+      "es": "https://www.yhflexiblebusbar.com/es"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/terminos",
+      "es": "https://www.yhflexiblebusbar.com/es/terminos",
+      "x-default": "https://www.yhflexiblebusbar.com/terminos"
+    },
+    "issues": [
+      "Missing HTML hreflang: x-default",
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/privacy",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/privacy",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/privacy",
+      "es": "https://www.yhflexiblebusbar.com/es/privacidad"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/privacy",
+      "es": "https://www.yhflexiblebusbar.com/es/privacy",
+      "x-default": "https://www.yhflexiblebusbar.com/privacy"
+    },
+    "issues": [
+      "Missing HTML hreflang: x-default",
+      "Duplicate hreflang in HTML and HTTP for en"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/privacidad",
+    "status": 404,
+    "canonical": "https://www.yhflexiblebusbar.com",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en",
+      "es": "https://www.yhflexiblebusbar.com/es"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/privacidad",
+      "es": "https://www.yhflexiblebusbar.com/es/privacidad",
+      "x-default": "https://www.yhflexiblebusbar.com/privacidad"
+    },
+    "issues": [
+      "Missing HTML hreflang: x-default",
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/products/flexible-busbar-2000a",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products",
+      "es": "https://www.yhflexiblebusbar.com/es/productos",
+      "x-default": "https://www.yhflexiblebusbar.com/en/products"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a",
+      "es": "https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a",
+      "x-default": "https://www.yhflexiblebusbar.com/products/flexible-busbar-2000a"
+    },
+    "issues": [
+      "Canonical mismatch for en"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//es/productos/flexible-busbar-2000a",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/products/flexible-busbar-2000a",
+      "es": "https://www.yhflexiblebusbar.com//es/products/flexible-busbar-2000a",
+      "x-default": "https://www.yhflexiblebusbar.com//en/products/flexible-busbar-2000a"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/products/category/general-purpose-cables",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/products/category/general-purpose-cables",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products",
+      "es": "https://www.yhflexiblebusbar.com/es/productos",
+      "x-default": "https://www.yhflexiblebusbar.com/en/products"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products/category/general-purpose-cables",
+      "es": "https://www.yhflexiblebusbar.com/es/products/category/general-purpose-cables",
+      "x-default": "https://www.yhflexiblebusbar.com/products/category/general-purpose-cables"
+    },
+    "issues": [
+      "Canonical mismatch for en"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/productos/categoria/general-purpose-cables",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/es/productos/categoria/general-purpose-cables",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/products/category/general-purpose-cables",
+      "es": "https://www.yhflexiblebusbar.com//es/products/category/general-purpose-cables",
+      "x-default": "https://www.yhflexiblebusbar.com//en/products/category/general-purpose-cables"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/products/category/fire-resistant-cables",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/products/category/fire-resistant-cables",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products",
+      "es": "https://www.yhflexiblebusbar.com/es/productos",
+      "x-default": "https://www.yhflexiblebusbar.com/en/products"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products/category/fire-resistant-cables",
+      "es": "https://www.yhflexiblebusbar.com/es/products/category/fire-resistant-cables",
+      "x-default": "https://www.yhflexiblebusbar.com/products/category/fire-resistant-cables"
+    },
+    "issues": [
+      "Canonical mismatch for en"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/productos/categoria/fire-resistant-cables",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/es/productos/categoria/fire-resistant-cables",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/products/category/fire-resistant-cables",
+      "es": "https://www.yhflexiblebusbar.com//es/products/category/fire-resistant-cables",
+      "x-default": "https://www.yhflexiblebusbar.com//en/products/category/fire-resistant-cables"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/solutions/data-center",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/en/solutions"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions/data-center",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones/data-center",
+      "x-default": "https://www.yhflexiblebusbar.com/solutions/data-center"
+    },
+    "issues": [],
+    "success": true
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/soluciones/data-center",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/solutions",
+      "es": "https://www.yhflexiblebusbar.com//es/solutions",
+      "x-default": "https://www.yhflexiblebusbar.com//en/solutions"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/solutions/new-energy",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/en/solutions"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions/new-energy",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones/new-energy",
+      "x-default": "https://www.yhflexiblebusbar.com/solutions/new-energy"
+    },
+    "issues": [],
+    "success": true
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/soluciones/new-energy",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/solutions",
+      "es": "https://www.yhflexiblebusbar.com//es/solutions",
+      "x-default": "https://www.yhflexiblebusbar.com//en/solutions"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/solutions/manufacturing",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/en/solutions"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions/manufacturing",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones/manufacturing",
+      "x-default": "https://www.yhflexiblebusbar.com/solutions/manufacturing"
+    },
+    "issues": [],
+    "success": true
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/soluciones/manufacturing",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/solutions",
+      "es": "https://www.yhflexiblebusbar.com//es/solutions",
+      "x-default": "https://www.yhflexiblebusbar.com//en/solutions"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/en/solutions/power-system",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "x-default": "https://www.yhflexiblebusbar.com/en/solutions"
+    },
+    "httpAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/solutions/power-system",
+      "es": "https://www.yhflexiblebusbar.com/es/soluciones/power-system",
+      "x-default": "https://www.yhflexiblebusbar.com/solutions/power-system"
+    },
+    "issues": [],
+    "success": true
+  },
+  {
+    "url": "https://www.yhflexiblebusbar.com/es/soluciones/power-system",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com//en/solutions",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com//en/solutions",
+      "es": "https://www.yhflexiblebusbar.com//es/solutions",
+      "x-default": "https://www.yhflexiblebusbar.com//en/solutions"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch for es"
+    ],
+    "success": false
+  }
+]

@@ -27,7 +27,8 @@
     "migrate:projects": "node scripts/migrate-projects.js",
     "migrate:news": "node scripts/migrate-news.js",
     "seo:diagnosis": "node seo-diagnosis.cjs",
-    "seo:check": "npm run seo:diagnosis && echo 'SEO诊断完成，请查看报告'"
+    "seo:check": "npm run seo:diagnosis && echo 'SEO诊断完成，请查看报告'",
+    "audit:hreflang": "tsx scripts/hreflang-audit.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

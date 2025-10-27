@@ -6,8 +6,12 @@ export default function SolutionsLayout({ children }: { children: React.ReactNod
   return children;
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { locale: string; id?: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
+  // 当存在子页面参数时（/solutions/[id]），跳过在布局层生成 alternates，避免对子页面输出固定 '/solutions'
+  if (params?.id) {
+    return {};
+  }
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
   const titles: Record<string, string> = {
     en: 'Flexible Busbar Solutions | Data Centers',
