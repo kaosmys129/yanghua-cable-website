@@ -1,0 +1,102 @@
+[
+  {
+    "url": "http://localhost:3003/en",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/es",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/en/terms",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/es/terminos",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/en/privacy",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/es/privacidad",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/en/products",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/es/productos",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/en/solutions",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3003/es/soluciones",
+    "status": 0,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "fetch failed"
+    ],
+    "success": false
+  }
+]

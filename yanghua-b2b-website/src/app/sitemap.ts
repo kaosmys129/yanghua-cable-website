@@ -1,16 +1,17 @@
 import type { MetadataRoute } from 'next';
 import { getLocalizedPath } from '@/lib/url-localization';
+import { getSiteUrl } from '@/lib/site-url';
 
 export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const baseUrl = getSiteUrl();
   const locales = ['en', 'es'] as const;
   const staticPageKeys = ['home', 'articles', 'projects', 'products', 'solutions', 'services'] as const;
 
   const items: MetadataRoute.Sitemap = [];
 
-  // 统一构建 sitemap URL：英文默认不带 /en 前缀，西语带 /es 前缀
+  // 统一构建 sitemap URL：所有语言统一带语言前缀（包括英文 /en），以符合新的规范化策略
   const buildSitemapUrl = (
     pageKey: (typeof staticPageKeys)[number] | 'products-category' | 'products-detail' | 'projects-detail' | 'articles-detail',
     locale: (typeof locales)[number],
@@ -18,11 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ): string => {
     const cleanBaseUrl = baseUrl.replace(/\/+$/, '');
     const localizedPath = getLocalizedPath(pageKey as any, locale as any, params);
-    // 英文作为默认语言：不带 /en 前缀
-    if (locale === 'en') {
-      return `${cleanBaseUrl}${localizedPath === '/' ? '' : localizedPath}`;
-    }
-    // 其他语言保留语言前缀
+    // 所有语言均带上语言前缀
     return `${cleanBaseUrl}/${locale}${localizedPath === '/' ? '' : localizedPath}`;
   };
 

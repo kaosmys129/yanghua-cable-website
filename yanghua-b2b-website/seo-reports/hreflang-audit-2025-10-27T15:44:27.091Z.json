@@ -1,0 +1,122 @@
+[
+  {
+    "url": "http://localhost:3000/en",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/es",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/en/terms",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/es/terminos",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/en/privacy",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/es/privacidad",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/en/products",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/es/productos",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/en/solutions",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/es/soluciones",
+    "status": 404,
+    "htmlAlternates": {},
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: en",
+      "Missing HTML hreflang: es",
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  }
+]

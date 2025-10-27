@@ -1,11 +1,12 @@
 import { getTranslations } from 'next-intl/server';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { getLocalizedPath } from '@/lib/url-localization';
+import { getSiteUrl } from '@/lib/site-url';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+  const baseUrl = getSiteUrl();
   
   const titles: Record<string, string> = {
     en: 'Privacy Policy | Yanghua Cable',

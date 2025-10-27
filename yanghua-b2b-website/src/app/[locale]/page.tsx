@@ -12,6 +12,7 @@ import { generateOrganizationSchema, generateWebsiteSchema } from '@/lib/structu
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { generateHreflangAlternatesForMetadata, generateCanonicalUrl } from '@/lib/seo';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default async function Home() {
   const projects = await getFeaturedProjects();
@@ -38,18 +39,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'seo' });
   
-  // 确保与canonical使用相同的域名逻辑
-  let baseUrl: string;
-  if (typeof window !== 'undefined') {
-    // 客户端环境
-    baseUrl = window.location.origin;
-  } else if (process.env.NODE_ENV === 'development') {
-    // 开发环境服务端
-    baseUrl = 'http://localhost:3000';
-  } else {
-    // 生产环境服务端
-    baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
-  }
+  // 统一的站点URL解析
+  const baseUrl = getSiteUrl();
 
   const title = t('pages.home.title');
   const description = t('pages.home.description');

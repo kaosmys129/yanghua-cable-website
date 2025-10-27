@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin('./i18n.ts');
 const config = {
   locales: ['en', 'es'],
   defaultLocale: 'en',
+  // 使用 always：默认语言(en)也带前缀 /en，避免 / 与 /en 并存导致 canonical 冲突，并满足统一前缀策略
   localePrefix: 'always',
   // 使用 pathnames 将路由层保持英文段，但对外URL在西语使用翻译段
   pathnames: {

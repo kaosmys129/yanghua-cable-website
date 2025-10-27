@@ -186,10 +186,7 @@ export async function generateMetadata({ params }: { params: { locale: string; i
   };
   const canonical = generateCanonicalUrl(getLocalizedPath('solutions-detail', locale as any, { id }), locale as any);
   const currentPathForLocale = getLocalizedPath('solutions-detail', locale as any, { id });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
-  const currentUrl = locale === 'es' 
-    ? `${baseUrl}/es/soluciones/${id}`
-    : `${baseUrl}/solutions/${id}`;
+  const currentUrl = canonical;
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,

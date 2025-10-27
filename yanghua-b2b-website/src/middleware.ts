@@ -17,7 +17,7 @@ import { monitoring } from './lib/monitoring';
 const intlMiddleware = createIntlMiddleware({
   locales,
   defaultLocale,
-  // 始终使用语言前缀，与 app/[locale] 路由结构一致，避免默认语言无前缀导致的循环
+  // 使用 always：包括英文在内的所有语言都使用前缀（/en、/es），避免 / 与 /en 并存
   localePrefix: 'always',
   // 显式配置本地化路径名映射，确保 /es/productos 映射到路由 /[locale]/products
   pathnames: {
@@ -186,7 +186,31 @@ export default async function middleware(request: NextRequest) {
       }
     }
 
-    // 5. 301 重定向：将旧的西语本地化路径统一到英文段规范路径
+    // 5. 当访问未带语言前缀的英文路由段（/solutions 等）时，统一重定向到 /en/*
+    if (!pathname.startsWith('/en/') && !pathname.startsWith('/es/') && pathname !== '/') {
+      const englishRootPatterns: RegExp[] = [
+        /^\/about(\/.*)?$/i,
+        /^\/products(\/.*)?$/i,
+        /^\/solutions(\/.*)?$/i,
+        /^\/services(\/.*)?$/i,
+        /^\/projects(\/.*)?$/i,
+        /^\/partners(\/.*)?$/i,
+        /^\/contact(\/.*)?$/i,
+        /^\/articles(\/.*)?$/i,
+        /^\/privacy(\/.*)?$/i,
+        /^\/terms(\/.*)?$/i,
+        /^\/products\/category(\/.*)?$/i
+      ];
+      if (englishRootPatterns.some(re => re.test(pathname))) {
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = `/en${pathname}`;
+        // 移除可能存在的语言偏好影响，固定跳转到英文
+        redirectUrl.searchParams.delete('hl');
+        return applySecurityHeaders(NextResponse.redirect(redirectUrl, 308));
+      }
+    }
+
+    // 6. 301 重定向：将旧的西语本地化路径统一到西语翻译段规范路径
     // 例：/es/productos -> /es/products；/es/soluciones -> /es/solutions 等
     const legacyEsMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
       // 将英文段在西语站的路径统一到西语翻译段（规范）
@@ -211,7 +235,7 @@ export default async function middleware(request: NextRequest) {
       }
     }
 
-    // 6. 西语翻译段动态路径 -> 路由内部英文段的 rewrite（不改变URL，避免30x，保证页面可访问）
+    // 7. 西语翻译段动态路径 -> 路由内部英文段的 rewrite（不改变URL，避免30x，保证页面可访问）
     const esRewriteMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
       { from: /^\/es\/productos\/categoria(\/.*)?$/i, to: (m) => `/es/products/category${m[1] || ''}` },
       { from: /^\/es\/productos\/(.+)$/i, to: (m) => `/es/products/${m[1]}` },
@@ -230,7 +254,7 @@ export default async function middleware(request: NextRequest) {
       }
     }
 
-    // 7. Security headers and internationalization
+    // 8. Security headers and internationalization
     let response: NextResponse;
 
     // Apply internationalization middleware
@@ -242,20 +266,20 @@ export default async function middleware(request: NextRequest) {
       response = intlMiddleware(request);
     }
 
-    // 8. Apply security headers
+    // 9. Apply security headers
     response = applySecurityHeaders(response);
 
-    // 9. Add CSRF token for GET requests
+    // 10. Add CSRF token for GET requests
     if (request.method === 'GET' && !pathname.startsWith('/api/')) {
       response = CSRFProtection.addTokenToResponse(response);
     }
 
-    // 10. Add performance and security headers
+    // 11. Add performance and security headers
     const processingTime = Date.now() - startTime;
     response.headers.set('X-Response-Time', `${processingTime}ms`);
     response.headers.set('X-Request-ID', Math.random().toString(36).substring(2, 15));
 
-    // 11. Log request for monitoring
+    // 12. Log request for monitoring
     monitoring.logger.info('Request processed', {
       method: request.method,
       pathname,

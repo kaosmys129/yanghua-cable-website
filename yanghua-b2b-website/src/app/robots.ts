@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site-url';
 
 /**
  * Environment-aware robots configuration
@@ -11,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
   const isPreview = process.env.VERCEL_ENV === 'preview';
   const isDevelopment = process.env.NODE_ENV !== 'production';
 
-  const PRODUCTION_SITE = 'https://www.yhflexiblebusbar.com';
+  const siteUrl = getSiteUrl();
 
   // In preview, block indexing entirely to avoid accidental indexing of preview URLs
   if (isPreview) {
@@ -19,8 +20,8 @@ export default function robots(): MetadataRoute.Robots {
       rules: [
         { userAgent: '*', disallow: '/' },
       ],
-      sitemap: `${PRODUCTION_SITE}/sitemap.xml`,
-      host: PRODUCTION_SITE,
+      sitemap: `${siteUrl}/sitemap.xml`,
+      host: siteUrl,
     };
   }
 
@@ -37,8 +38,8 @@ export default function robots(): MetadataRoute.Robots {
           ]
         },
       ],
-      sitemap: `${PRODUCTION_SITE}/sitemap.xml`,
-      host: PRODUCTION_SITE,
+      sitemap: `${siteUrl}/sitemap.xml`,
+      host: siteUrl,
     };
   }
 
@@ -53,7 +54,7 @@ export default function robots(): MetadataRoute.Robots {
         ]
       },
     ],
-    sitemap: `${PRODUCTION_SITE}/sitemap.xml`,
-    host: PRODUCTION_SITE,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

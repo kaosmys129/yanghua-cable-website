@@ -6,16 +6,20 @@ import { headers, cookies } from 'next/headers';
 import FloatingWhatsAppButton from '@/components/FloatingWhatsAppButton';
 import CookieBanner from '@/components/cookies/CookieBanner';
 import AnalyticsProvider from '@/components/providers/AnalyticsProvider';
+import { getSiteUrl } from '@/lib/site-url';
+
+const siteUrl = getSiteUrl();
 
 export const metadata = {
   title: 'Yanghua Cable - Professional Cable Solutions',
   description: 'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
-  metadataBase: new URL('https://www.yhflexiblebusbar.com'),
+  metadataBase: new URL(siteUrl),
   alternates: {
-    canonical: 'https://www.yhflexiblebusbar.com',
+    canonical: siteUrl,
+    // 新规范：默认语言(en)也带 /en 前缀
     languages: {
-      en: 'https://www.yhflexiblebusbar.com/en',
-      es: 'https://www.yhflexiblebusbar.com/es',
+      en: `${siteUrl}/en`,
+      es: `${siteUrl}/es`,
     },
   },
 };

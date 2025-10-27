@@ -8,11 +8,12 @@ import {
   getLocalizedPath,
   getPageKeyFromPath 
 } from './url-localization';
+import { getSiteUrl } from './site-url';
 
 // 基础SEO配置
 export const SEO_CONFIG = {
   siteName: 'Yanghua Cable',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com',
+  siteUrl: getSiteUrl(),
   defaultTitle: 'Flexible Busbar Solutions | High Current Power Distribution | Yanghua',
   defaultDescription: 'Leading manufacturer of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, 6400A capacity for data centers, EV charging, and industrial applications.',
   defaultKeywords: [
@@ -50,7 +51,7 @@ export const SEO_CONFIG = {
 export function generateHreflangAlternates(
   currentPath: string,
   currentLocale: Locale,
-  baseUrl: string = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com'
+  baseUrl: string = getSiteUrl()
 ): Array<{ hreflang: string; href: string }> {
   const alternates: Array<{ hreflang: string; href: string }> = [];
   
@@ -74,19 +75,12 @@ export function generateHreflangAlternates(
     if (pageKey) {
       // 使用 LOCALIZED_PATHS 直接组装，确保英文（默认语言）不带 /en 前缀
       const targetBase = LOCALIZED_PATHS[pageKey]?.[targetLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
-      if (targetLocale === 'en') {
-        // 英文版作为默认语言：根路径不带语言前缀
-        localizedUrl = `${cleanBaseUrl}${targetBase === '/' ? '' : targetBase}`;
-      } else {
-        localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase === '/' ? '' : targetBase}`;
-      }
+      // 新策略：所有语言均带前缀，包括英文 /en
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase === '/' ? '' : targetBase}`;
     } else {
       // 无明确 pageKey 时的回退逻辑
-      if (targetLocale === 'en') {
-        localizedUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
-      } else {
-        localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
-      }
+      // 所有语言均带前缀（未知路径也遵循该规则）
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath === '/' ? '' : currentPath}`;
     }
     
     alternates.push({
@@ -99,9 +93,9 @@ export function generateHreflangAlternates(
   let defaultUrl: string;
   if (pageKey) {
     const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
-    defaultUrl = `${cleanBaseUrl}${targetBaseEn === '/' ? '' : targetBaseEn}`;
+    defaultUrl = `${cleanBaseUrl}/en${targetBaseEn === '/' ? '' : targetBaseEn}`;
   } else {
-    defaultUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
+    defaultUrl = `${cleanBaseUrl}/en${currentPath === '/' ? '' : currentPath}`;
   }
   
   alternates.push({
@@ -124,18 +118,8 @@ export function generateHreflangAlternatesForMetadata(
 ): Record<string, string> {
   const alternates: Record<string, string> = {};
   
-  // 优先使用环境变量，以便在开发环境下完全避免生产域名
-  let baseUrl: string;
-  const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  if (envSiteUrl) {
-    baseUrl = envSiteUrl;
-  } else if (typeof window !== 'undefined') {
-    baseUrl = window.location.origin;
-  } else if (process.env.NODE_ENV === 'development') {
-    baseUrl = 'http://localhost:3000';
-  } else {
-    baseUrl = 'https://www.yhflexiblebusbar.com';
-  }
+  // 统一使用集中化的站点 URL 解析逻辑
+  const baseUrl: string = getSiteUrl();
   const cleanBaseUrl = (baseUrl || '').replace(/\/+$/, '');
   
   const localeMap: Record<Locale, string> = {
@@ -173,17 +157,10 @@ export function generateHreflangAlternatesForMetadata(
     let localizedUrl: string;
     if (pageKey) {
       const targetBase = LOCALIZED_PATHS[pageKey]?.[targetLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
-      if (targetLocale === 'en') {
-        localizedUrl = `${cleanBaseUrl}${targetBase === '/' && !remainder ? '' : `${targetBase}${remainder}`}`;
-      } else {
-        localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase}${remainder}`;
-      }
+      // 新策略：所有语言均带前缀（包括英文）
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${targetBase}${remainder}`;
     } else {
-      if (targetLocale === 'en') {
-        localizedUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
-      } else {
-        localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath}`;
-      }
+      localizedUrl = `${cleanBaseUrl}/${targetLocale}${currentPath === '/' ? '' : currentPath}`;
     }
     alternates[hreflang] = localizedUrl;
   });
@@ -191,9 +168,9 @@ export function generateHreflangAlternatesForMetadata(
   let defaultUrl: string;
   if (pageKey) {
     const targetBaseEn = LOCALIZED_PATHS[pageKey]?.en || currentPath;
-    defaultUrl = `${cleanBaseUrl}${targetBaseEn === '/' && !remainder ? '' : `${targetBaseEn}${remainder}`}`;
+    defaultUrl = `${cleanBaseUrl}/en${targetBaseEn === '/' && !remainder ? '' : `${targetBaseEn}${remainder}`}`;
   } else {
-    defaultUrl = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
+    defaultUrl = `${cleanBaseUrl}/en${currentPath === '/' ? '' : currentPath}`;
   }
   
   alternates['x-default'] = defaultUrl;
@@ -213,18 +190,9 @@ export function generateCanonicalUrl(
   currentLocale: Locale,
   baseUrl?: string
 ): string {
-  // 优先使用环境变量，以便在开发环境下完全避免生产域名
+  // 统一使用集中化的站点 URL 解析逻辑
   if (!baseUrl) {
-    const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-    if (envSiteUrl) {
-      baseUrl = envSiteUrl;
-    } else if (typeof window !== 'undefined') {
-      baseUrl = window.location.origin;
-    } else if (process.env.NODE_ENV === 'development') {
-      baseUrl = 'http://localhost:3000';
-    } else {
-      baseUrl = 'https://www.yhflexiblebusbar.com';
-    }
+    baseUrl = getSiteUrl();
   }
   // 统一清理 baseUrl 尾部斜杠，避免 //
   const cleanBaseUrl = (baseUrl || '').replace(/\/+$/, '');
@@ -238,21 +206,13 @@ export function generateCanonicalUrl(
     }
   }
   
-  // 自引用 canonical：当前语言页面的规范URL（英文不带 /en；其他语言带语言前缀）
+  // 自引用 canonical：当前语言页面的规范URL（所有语言都带语言前缀，包括英文 /en）
   let final: string;
   if (pageKey) {
     const targetBaseForLocale = LOCALIZED_PATHS[pageKey]?.[currentLocale] || LOCALIZED_PATHS[pageKey]?.en || currentPath;
-    if (currentLocale === 'en') {
-      final = `${cleanBaseUrl}${targetBaseForLocale === '/' && !remainder ? '' : `${targetBaseForLocale}${remainder}`}`;
-    } else {
-      final = `${cleanBaseUrl}/${currentLocale}${targetBaseForLocale === '/' && !remainder ? '' : `${targetBaseForLocale}${remainder}`}`;
-    }
+    final = `${cleanBaseUrl}/${currentLocale}${targetBaseForLocale === '/' && !remainder ? '' : `${targetBaseForLocale}${remainder}`}`;
   } else {
-    if (currentLocale === 'en') {
-      final = `${cleanBaseUrl}${currentPath === '/' ? '' : currentPath}`;
-    } else {
-      final = `${cleanBaseUrl}/${currentLocale}${currentPath}`;
-    }
+    final = `${cleanBaseUrl}/${currentLocale}${currentPath === '/' ? '' : currentPath}`;
   }
   if (process.env.NODE_ENV === 'development') {
     console.log('[generateCanonicalUrl]', { currentPath, currentLocale, baseUrl: cleanBaseUrl, final });

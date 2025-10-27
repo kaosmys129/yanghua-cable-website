@@ -1,15 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from 'next';
 import { ArrowLeft, AlertTriangle } from "lucide-react";
-import { formatDate, getStrapiURL } from "@/lib/utils";
 import { StrapiImage, getStrapiMedia } from "@/components/custom/StrapiImage";
 import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
 import { draftMode } from 'next/headers';
 import { getArticleBySlugWithMetrics } from "@/lib/strapi-client";
-import { generateCanonicalUrl } from '@/lib/seo';
-import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
 
 // Generate static params for all articles
 export async function generateStaticParams() {
@@ -105,9 +104,12 @@ export default async function ArticlePage({ params }: PageProps) {
   }
   
   console.log('Article found:', article.title);
-
-  const baseUrl = 'https://www.yhflexiblebusbar.com';
-  const articleUrl = `${baseUrl}/${locale}/articles/${slug}`;
+  const articlePath = getLocalizedPath('articles-detail', locale as any, { slug });
+  const articleUrl = generateCanonicalUrl(articlePath, locale as any);
+  const homePath = getLocalizedPath('home', locale as any);
+  const homeUrl = generateCanonicalUrl(homePath, locale as any);
+  const listPath = getLocalizedPath('articles', locale as any);
+  const listUrl = generateCanonicalUrl(listPath, locale as any);
 
   const blogJsonLd = {
     '@context': 'https://schema.org',
@@ -125,8 +127,8 @@ export default async function ArticlePage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: locale === 'es' ? 'Inicio' : 'Home', item: `${baseUrl}/${locale}` },
-      { '@type': 'ListItem', position: 2, name: locale === 'es' ? 'Artículos' : 'Articles', item: `${baseUrl}/${locale}/articles` },
+      { '@type': 'ListItem', position: 1, name: locale === 'es' ? 'Inicio' : 'Home', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: locale === 'es' ? 'Artículos' : 'Articles', item: listUrl },
       { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
     ],
   };
@@ -146,7 +148,7 @@ export default async function ArticlePage({ params }: PageProps) {
       )}
       <div className="container py-8">
         <Link
-          href={`/${locale}/articles`}
+          href={`/${locale}${listPath === '/' ? '' : listPath}`}
           className="inline-flex items-center mb-8 text-gray-500 hover:text-gray-900"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -195,23 +197,21 @@ export default async function ArticlePage({ params }: PageProps) {
 export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
   const { slug, locale } = params;
   const article = await getArticle(slug, locale);
-  const baseUrl = 'https://www.yhflexiblebusbar.com';
   const title = article?.title ? `${article.title} | Yanghua` : 'Article | Yanghua';
   const description = article?.description || 'Technical insights and resources from Yanghua on flexible busbar systems and applications.';
 
   // 使用本地化URL生成器，确保西语翻译段作为规范路径
   const localizedPath = getLocalizedPath('articles-detail', locale as any, { slug });
-  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
+  // 统一 canonical 生成逻辑：不强制生产域名，在开发环境/本地审计时优先使用本地域名或环境变量
+  const canonical = generateCanonicalUrl(localizedPath, locale as any);
 
   return {
     title,
     description,
     alternates: {
       canonical,
-      languages: {
-        en: buildLocalizedUrl('articles-detail', 'en', { slug }, baseUrl),
-        es: buildLocalizedUrl('articles-detail', 'es', { slug }, baseUrl),
-      },
+      // 使用通用工具生成 hreflang，自动包含 en/es/x-default，并对 baseUrl 进行去尾斜杠与本地优先处理
+      languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),
     },
   };
 }

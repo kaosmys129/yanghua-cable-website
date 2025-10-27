@@ -43,9 +43,9 @@ export default function LanguageSwitcher() {
       setIsOpen(false);
     } catch (error) {
       console.error('Language switch error:', error);
-      // 回退到简单的路径替换
+      // 回退到简单的路径替换（统一为带语言前缀，包括英文 /en）
       const pathWithoutLocale = (pathname?.replace(`/${locale}`, '') ?? '/') as string;
-      const newPath = newLocale === 'en' ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`;
+      const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
       router.push(newPath);
       setIsOpen(false);
     }

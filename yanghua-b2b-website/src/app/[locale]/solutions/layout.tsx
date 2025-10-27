@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
+import { getLocalizedPath } from '@/lib/url-localization';
 
 export default function SolutionsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -22,9 +22,7 @@ export async function generateMetadata({ params }: { params: { locale: string; i
     es: 'Soluciones fiables de barras colectoras flexibles para centros de datos, módulos EV y automatización industrial con alta seguridad y rendimiento.',
   };
   const canonical = generateCanonicalUrl(getLocalizedPath('solutions', locale as any), locale as any, baseUrl);
-  const currentUrl = locale === 'es' 
-    ? `${baseUrl}/es/soluciones`
-    : `${baseUrl}/solutions`;
+  const currentUrl = canonical;
   const currentPathForLocale = getLocalizedPath('solutions', locale as any);
   return {
     title: titles[locale] || titles.en,

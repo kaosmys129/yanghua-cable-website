@@ -1,0 +1,87 @@
+[
+  {
+    "url": "http://localhost:3000/en/products/flexible-busbar-2000a",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a",
+      "es": "https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a",
+      "x-default": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a"
+    },
+    "httpAlternates": {},
+    "issues": [],
+    "success": true
+  },
+  {
+    "url": "http://localhost:3000/es/productos/flexible-busbar-2000a",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a",
+      "es": "https://www.yhflexiblebusbar.com/es/productos/flexible-busbar-2000a",
+      "x-default": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch with EN"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/en/projects/1",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/projects/1",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/projects/1",
+      "es": "https://www.yhflexiblebusbar.com/es/proyectos/1",
+      "x-default": "https://www.yhflexiblebusbar.com/en/projects/1"
+    },
+    "httpAlternates": {},
+    "issues": [],
+    "success": true
+  },
+  {
+    "url": "http://localhost:3000/es/proyectos/1",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/es/proyectos/1",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/projects/1",
+      "es": "https://www.yhflexiblebusbar.com/es/proyectos/1",
+      "x-default": "https://www.yhflexiblebusbar.com/en/projects/1"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Canonical mismatch with EN"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/en/articles/yanghuasti-2024-annual-review",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/en/articles/yanghuasti-2024-annual-review",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/articles/yanghuasti-2024-annual-review",
+      "es": "https://www.yhflexiblebusbar.com/es/articulos/yanghuasti-2024-annual-review"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: x-default"
+    ],
+    "success": false
+  },
+  {
+    "url": "http://localhost:3000/es/articulos/beautiful-picture-es",
+    "status": 200,
+    "canonical": "https://www.yhflexiblebusbar.com/es/articulos/beautiful-picture-es",
+    "htmlAlternates": {
+      "en": "https://www.yhflexiblebusbar.com/en/articles/beautiful-picture-es",
+      "es": "https://www.yhflexiblebusbar.com/es/articulos/beautiful-picture-es"
+    },
+    "httpAlternates": {},
+    "issues": [
+      "Missing HTML hreflang: x-default",
+      "Canonical mismatch with EN"
+    ],
+    "success": false
+  }
+]

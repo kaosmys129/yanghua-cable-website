@@ -10,7 +10,10 @@
 import fs from 'fs';
 import path from 'path';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://www.yhflexiblebusbar.com');
+// Canonical policy: 'self' (each locale uses self-referential canonical) or 'en' (all locales canonicalize to English)
+// Default to 'self' which is the recommended practice for distinct localized content.
+const CANONICAL_POLICY = (process.env.HREFLANG_CANONICAL_POLICY || 'self').toLowerCase();
 
 // 修正默认路径的西语段，加入 products/solutions/terms/privacy 的正确西语映射
 const DEFAULT_PATHS = [
@@ -106,10 +109,28 @@ function validate(result: AuditResult): AuditResult {
     }
   }
 
-  // Canonical alignment: must align with English (or x-default as fallback)
-  const expectedCanonical = htmlAlternates['en'] || htmlAlternates['x-default'];
-  if (canonical && expectedCanonical && canonical !== expectedCanonical) {
-    issues.push(`Canonical mismatch with EN`);
+  // Canonical alignment policy
+  // 'self': canonical should equal the current page locale's alternate URL
+  // 'en'  : canonical should equal English (or x-default as fallback)
+  try {
+    const urlObj = new URL(result.url);
+    const pathname = urlObj.pathname || '/';
+    const currentLang = pathname.startsWith('/es') || pathname === '/es' ? 'es' : 'en';
+    let expectedCanonical: string | undefined;
+    if (CANONICAL_POLICY === 'en') {
+      expectedCanonical = htmlAlternates['en'] || htmlAlternates['x-default'];
+      if (canonical && expectedCanonical && canonical !== expectedCanonical) {
+        issues.push(`Canonical mismatch with EN`);
+      }
+    } else {
+      // self canonical policy
+      expectedCanonical = htmlAlternates[currentLang] || htmlAlternates['en'] || htmlAlternates['x-default'];
+      if (canonical && expectedCanonical && canonical !== expectedCanonical) {
+        issues.push(`Canonical mismatch with SELF (${currentLang})`);
+      }
+    }
+  } catch (e) {
+    // ignore URL parsing errors
   }
 
   return { ...result, issues, success: issues.length === 0 };
