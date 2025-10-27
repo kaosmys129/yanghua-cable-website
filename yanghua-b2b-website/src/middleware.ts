@@ -60,6 +60,31 @@ export default async function middleware(request: NextRequest) {
   }
 
   try {
+    // A. 方案B：对指定的旧URL返回 410 Gone（永久移除）
+    // 列表来源：用户提供的7个 /en 前缀URL（当前均为404），明确标记为已删除
+    const goneUrlPatterns: RegExp[] = [
+      /^\/en\/products\/low-smoke-halogen-free-cables\/?$/i,
+      /^\/en\/products\/fire-resistant-cables\/?$/i,
+      /^\/en\/products\/general-purpose-cables\/?$/i,
+      /^\/en\/projects\/data-center-power-distribution-system\/?$/i,
+      /^\/en\/projects\/30mw-wind-power-project\/?$/i,
+      /^\/en\/projects\/industrial-plant-renovation-project\/?$/i,
+      /^\/en\/products\/category\/flexible-busbar-systems-accessories\/?$/i,
+    ];
+
+    if (goneUrlPatterns.some((re) => re.test(pathname))) {
+      console.log('[Middleware] 410 Gone for removed URL:', pathname);
+      const res = new NextResponse(
+        '410 Gone - This URL has been permanently removed. Please visit our Products, Projects, or Home page for current content.',
+        { status: 410 }
+      );
+      // 保持语言上下文为英文
+      res.cookies.set('NEXT_LOCALE', 'en', { path: '/' });
+      // 缓存一段时间，减少重复抓取（可按需调整）
+      res.headers.set('Cache-Control', 'public, max-age=86400');
+      return applySecurityHeaders(res);
+    }
+
     // 1. Rate limiting
     const rateLimitKey = `${clientIP}:${pathname}`;
     const isRateLimited = RateLimiter.isRateLimited(rateLimitKey);
