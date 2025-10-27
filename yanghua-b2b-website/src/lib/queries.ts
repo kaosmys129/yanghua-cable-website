@@ -27,8 +27,21 @@ export function useArticles(locale?: string) {
     queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
     queryFn: async () => {
       try {
-        const result = await getAllArticles(locale as any);
-        return result.data;
+        // Fetch via Next.js API proxy to avoid browser CORS issues
+        const loc = (locale || 'en') as string;
+        const res = await fetch(`/api/articles?locale=${encodeURIComponent(loc)}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          cache: 'no-store',
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Failed to fetch articles via proxy: ${res.status} ${res.statusText} - ${text}`);
+        }
+        const payload = await res.json();
+        return payload.data;
       } catch (error) {
         logError('Failed to fetch articles', error instanceof Error ? error : new Error(String(error)));
         throw error;
@@ -116,8 +129,20 @@ export function usePrefetchArticles() {
       queryClient.prefetchQuery({
         queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
         queryFn: async () => {
-          const result = await getAllArticles(locale as any);
-          return result.data;
+          const loc = (locale || 'en') as string;
+        const res = await fetch(`/api/articles?locale=${encodeURIComponent(loc)}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          cache: 'no-store',
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Failed to fetch articles via proxy: ${res.status} ${res.statusText} - ${text}`);
+        }
+        const payload = await res.json();
+        return payload.data;
         },
         staleTime: CACHE_CONFIG.staleTime,
       });
