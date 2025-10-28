@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { generateCanonicalUrl } from '@/lib/seo';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -159,15 +159,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const localizedPath = getLocalizedPath('projects', locale as any);
   const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
   
+  // 使用 generateHreflangAlternatesForMetadata 自动生成包含 x-default 的 hreflang 配置
+  const hreflangAlternates = generateHreflangAlternatesForMetadata(localizedPath, locale as any);
+  
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     alternates: {
       canonical,
-      languages: {
-        en: buildLocalizedUrl('projects', 'en', undefined, baseUrl),
-        es: buildLocalizedUrl('projects', 'es', undefined, baseUrl),
-      },
+      languages: hreflangAlternates,
     },
   };
 }
