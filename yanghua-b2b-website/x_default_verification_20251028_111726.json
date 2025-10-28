@@ -1,0 +1,281 @@
+{
+  "summary": {
+    "total_pages": 10,
+    "pages_with_x_default": 10,
+    "pages_x_default_correct": 10,
+    "pages_missing_x_default": 0,
+    "timestamp": "2025-10-28T11:16:49.949272"
+  },
+  "results": [
+    {
+      "page": "Homepage (EN)",
+      "url": "https://www.yhflexiblebusbar.com/en",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en"
+        }
+      ]
+    },
+    {
+      "page": "Homepage (ES)",
+      "url": "https://www.yhflexiblebusbar.com/es",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en"
+        }
+      ]
+    },
+    {
+      "page": "Projects (EN)",
+      "url": "https://www.yhflexiblebusbar.com/en/projects",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/projects"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/proyectos"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/projects"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/projects"
+        }
+      ]
+    },
+    {
+      "page": "Projects (ES)",
+      "url": "https://www.yhflexiblebusbar.com/es/proyectos",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/projects"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/proyectos"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/projects"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/projects"
+        }
+      ]
+    },
+    {
+      "page": "Solutions (EN)",
+      "url": "https://www.yhflexiblebusbar.com/en/solutions",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/solutions"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/soluciones"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/solutions"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/solutions"
+        }
+      ]
+    },
+    {
+      "page": "Solutions (ES)",
+      "url": "https://www.yhflexiblebusbar.com/es/soluciones",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/solutions"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/soluciones"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/solutions"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/solutions"
+        }
+      ]
+    },
+    {
+      "page": "Services (EN)",
+      "url": "https://www.yhflexiblebusbar.com/en/services",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/services"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/servicios"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/services"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/services"
+        }
+      ]
+    },
+    {
+      "page": "Services (ES)",
+      "url": "https://www.yhflexiblebusbar.com/es/servicios",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/services"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/servicios"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/services"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/services"
+        }
+      ]
+    },
+    {
+      "page": "Contact (EN)",
+      "url": "https://www.yhflexiblebusbar.com/en/contact",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/contact"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/contacto"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/contact"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/contact"
+        }
+      ]
+    },
+    {
+      "page": "Contact (ES)",
+      "url": "https://www.yhflexiblebusbar.com/es/contacto",
+      "status": "success",
+      "hreflang_tags": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/contact"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/contacto"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/contact"
+        }
+      ],
+      "x_default_found": true,
+      "x_default_correct": true,
+      "x_default_tags": [
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/contact"
+        }
+      ]
+    }
+  ]
+}
