@@ -1,0 +1,62 @@
+{
+  "/en": {
+    "page_name": "英文首页",
+    "differences": [],
+    "similarities": [
+      "canonical URL 一致",
+      "页面标题一致",
+      "Meta 描述一致"
+    ],
+    "issues": []
+  },
+  "/es": {
+    "page_name": "西班牙语首页",
+    "differences": [],
+    "similarities": [
+      "canonical URL 一致",
+      "页面标题一致",
+      "Meta 描述一致"
+    ],
+    "issues": []
+  },
+  "/en/products": {
+    "page_name": "英文产品页",
+    "differences": [],
+    "similarities": [
+      "canonical URL 一致",
+      "页面标题一致",
+      "Meta 描述一致"
+    ],
+    "issues": []
+  },
+  "/es/productos": {
+    "page_name": "西班牙语产品页",
+    "differences": [],
+    "similarities": [
+      "canonical URL 一致",
+      "页面标题一致",
+      "Meta 描述一致"
+    ],
+    "issues": []
+  },
+  "/en/about": {
+    "page_name": "英文关于页",
+    "differences": [],
+    "similarities": [
+      "canonical URL 一致",
+      "页面标题一致",
+      "Meta 描述一致"
+    ],
+    "issues": []
+  },
+  "/es/acerca-de": {
+    "page_name": "西班牙语关于页",
+    "differences": [],
+    "similarities": [
+      "canonical URL 一致",
+      "页面标题一致",
+      "Meta 描述一致"
+    ],
+    "issues": []
+  }
+}

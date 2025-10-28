@@ -1,0 +1,146 @@
+{
+  "/en": {
+    "name": "英文首页",
+    "seo_data": {
+      "canonical": "https://www.yhflexiblebusbar.com/en",
+      "hreflang": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en"
+        }
+      ],
+      "title": "Flexible Busbar Solutions | High Current Power | Yanghua",
+      "description": "World's only flexible high-current busbar with IP68 protection. 6400A capacity for data centers, EV charging and industrial power distribution.",
+      "og_url": "https://www.yhflexiblebusbar.com/en"
+    },
+    "status": "success"
+  },
+  "/es": {
+    "name": "西班牙语首页",
+    "seo_data": {
+      "canonical": "https://www.yhflexiblebusbar.com/es",
+      "hreflang": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en"
+        }
+      ],
+      "title": "Barras Colectoras Flexibles | Alta Corriente | Yanghua",
+      "description": "La única barra colectora flexible de alta corriente del mundo con protección IP68. Capacidad 6400A para centros de datos, carga EV y distribución industrial.",
+      "og_url": "https://www.yhflexiblebusbar.com/es"
+    },
+    "status": "success"
+  },
+  "/en/products": {
+    "name": "英文产品页",
+    "seo_data": {
+      "canonical": "https://www.yhflexiblebusbar.com/en/products",
+      "hreflang": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/products"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/productos"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/products"
+        }
+      ],
+      "title": "Flexible Copper Busbar Products | Yanghua | Yanghua Cable",
+      "description": "Explore Yanghua's flexible busbar portfolio: 200-6300A, ≤3kV, XLPE/PVC insulation, high protection level for industrial and outdoor environments.",
+      "og_url": "https://www.yhflexiblebusbar.com/en"
+    },
+    "status": "success"
+  },
+  "/es/productos": {
+    "name": "西班牙语产品页",
+    "seo_data": {
+      "canonical": "https://www.yhflexiblebusbar.com/es/productos",
+      "hreflang": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/products"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/productos"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/products"
+        }
+      ],
+      "title": "Productos Barras Flexibles | Yanghua | Yanghua Cable",
+      "description": "Barras flexibles Yanghua: 200-6300A, ≤3kV, aislamiento XLPE/PVC, alta protección para aplicaciones industriales y exteriores.",
+      "og_url": "https://www.yhflexiblebusbar.com/es"
+    },
+    "status": "success"
+  },
+  "/en/about": {
+    "name": "英文关于页",
+    "seo_data": {
+      "canonical": "https://www.yhflexiblebusbar.com/en/about",
+      "hreflang": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/about"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/acerca-de"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/about"
+        }
+      ],
+      "title": "About Yanghua | Busbar Manufacturer | Yanghua Cable",
+      "description": "Learn about Yanghua Cable's 28+ years of expertise in flexible busbar manufacturing, our mission, values, and commitment to innovation.",
+      "og_url": "https://www.yhflexiblebusbar.com/en"
+    },
+    "status": "success"
+  },
+  "/es/acerca-de": {
+    "name": "西班牙语关于页",
+    "seo_data": {
+      "canonical": "https://www.yhflexiblebusbar.com/es/acerca-de",
+      "hreflang": [
+        {
+          "hreflang": "en",
+          "href": "https://www.yhflexiblebusbar.com/en/about"
+        },
+        {
+          "hreflang": "es",
+          "href": "https://www.yhflexiblebusbar.com/es/acerca-de"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://www.yhflexiblebusbar.com/en/about"
+        }
+      ],
+      "title": "Acerca de Yanghua | Fabricante Barras | Yanghua Cable",
+      "description": "Conozca los más de 28 años de experiencia de Yanghua Cable en la fabricación de barras colectoras flexibles, nuestra misión y valores.",
+      "og_url": "https://www.yhflexiblebusbar.com/es"
+    },
+    "status": "success"
+  }
+}
