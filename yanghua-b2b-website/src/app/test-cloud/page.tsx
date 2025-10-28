@@ -2,6 +2,7 @@
 
 import { useArticles } from '@/lib/queries';
 import { getStrapiURL } from '@/lib/utils';
+import type { Article } from '@/lib/types';
 
 export default function TestCloudPage() {
   const { data: articles, isLoading, error, isError } = useArticles();
@@ -51,7 +52,7 @@ export default function TestCloudPage() {
         <div>
           <h2 className="text-xl font-semibold mb-4">Articles from Strapi Cloud</h2>
           <div className="grid gap-4">
-            {articles.slice(0, 3).map((article) => (
+            {articles.slice(0, 3).map((article: Article) => (
               <div key={article.id} className="p-4 border rounded-lg">
                 <h3 className="text-lg font-semibold">{article.title}</h3>
                 <p className="text-gray-600 mt-2">
