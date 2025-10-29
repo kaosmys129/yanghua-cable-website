@@ -9,16 +9,21 @@ import { EmailServiceDebugger } from '@/lib/email/EmailServiceDebug';
  */
 export async function GET(request: NextRequest) {
   try {
-    // 只在开发环境允许访问
-    if (process.env.NODE_ENV !== 'development') {
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Debug endpoint only available in development mode',
-          code: 'NOT_ALLOWED'
-        },
-        { status: 403 }
-      );
+    // 安全检查：开发环境直接允许，生产环境需要授权token
+    const authHeader = request.headers.get('authorization');
+    const debugToken = process.env.EMAIL_DEBUG_TOKEN;
+    
+    if (process.env.NODE_ENV === 'production') {
+      if (!debugToken || !authHeader || authHeader !== `Bearer ${debugToken}`) {
+        return NextResponse.json(
+          { 
+            success: false, 
+            error: 'Unauthorized access to debug endpoint',
+            code: 'UNAUTHORIZED'
+          },
+          { status: 401 }
+        );
+      }
     }
 
     const { searchParams } = new URL(request.url);
@@ -77,6 +82,68 @@ export async function GET(request: NextRequest) {
       { 
         success: false, 
         error: 'Debug operation failed',
+        code: 'DEBUG_ERROR',
+        details: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
+      },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * 邮件连接测试端点 - POST /api/email/debug
+ */
+export async function POST(request: NextRequest) {
+  try {
+    // 安全检查
+    const authHeader = request.headers.get('authorization');
+    const debugToken = process.env.EMAIL_DEBUG_TOKEN;
+    
+    if (process.env.NODE_ENV === 'production') {
+      if (!debugToken || !authHeader || authHeader !== `Bearer ${debugToken}`) {
+        return NextResponse.json(
+          { 
+            success: false, 
+            error: 'Unauthorized access to debug endpoint',
+            code: 'UNAUTHORIZED'
+          },
+          { status: 401 }
+        );
+      }
+    }
+
+    const body = await request.json();
+    const { test_email, test_type = 'connection' } = body;
+
+    if (test_type === 'send' && test_email) {
+      // 发送测试邮件
+      const testResult = await EmailServiceDebugger.testEmailSend(test_email);
+      
+      return NextResponse.json({
+        success: true,
+        test_type: 'send',
+        data: testResult,
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      // 仅测试连接
+      const diagnosis = await EmailServiceDebugger.diagnose();
+      
+      return NextResponse.json({
+        success: true,
+        test_type: 'connection',
+        data: diagnosis,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+  } catch (error) {
+    console.error('Email debug test error:', error);
+    
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: 'Debug test failed',
         code: 'DEBUG_ERROR',
         details: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
       },

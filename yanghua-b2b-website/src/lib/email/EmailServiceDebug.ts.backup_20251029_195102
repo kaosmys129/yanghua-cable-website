@@ -244,12 +244,11 @@ ${diagnosis.recommendations.length > 0
 - 确认邮件内容不包含垃圾邮件特征
 - 验证发送方邮箱域名配置
 
-### 4. Zoho Enterprise Email 配置
-- SMTP_HOST: smtppro.zoho.com
-- SMTP_PORT: 465 (SSL/TLS) 或 587 (STARTTLS)
-- SMTP_SECURE: true (端口465) 或 false (端口587)
-- 确保在 Zoho 控制面板中启用了 SMTP 服务
-- 验证邮箱账户和密码正确
+### 4. Namecheap 企业邮箱配置
+- SMTP_HOST: mail.privateemail.com
+- SMTP_PORT: 587 (推荐) 或 465
+- SMTP_SECURE: false (端口587) 或 true (端口465)
+- 确保在 Namecheap 控制面板中启用了 SMTP
 `;
 
     return report.trim();

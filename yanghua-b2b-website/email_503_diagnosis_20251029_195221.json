@@ -1,0 +1,58 @@
+{
+  "timestamp": "2025-10-29T19:52:11.327708",
+  "api_tests": {
+    "get_request": {
+      "status_code": 400,
+      "success": false,
+      "response_time": 1.495094
+    },
+    "csrf": {
+      "status_code": 200,
+      "success": true,
+      "has_cookie": true
+    },
+    "post_request": {
+      "status_code": 503,
+      "success": false,
+      "response_time": 2.872235,
+      "response_text": "{\"success\":false,\"error\":\"Email service connection failed\",\"code\":\"SMTP_CONNECTION_FAILED\",\"processingTime\":2373}",
+      "response_data": {
+        "success": false,
+        "error": "Email service connection failed",
+        "code": "SMTP_CONNECTION_FAILED",
+        "processingTime": 2373
+      }
+    }
+  },
+  "smtp_tests": {
+    "Zoho SMTP": {
+      "can_connect": false,
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1123)",
+      "error_type": "SSL/TLS证书问题",
+      "host": "smtppro.zoho.com",
+      "port": 465
+    },
+    "Namecheap Private Email": {
+      "can_connect": true,
+      "host": "mail.privateemail.com",
+      "port": 587,
+      "connection_type": "STARTTLS"
+    },
+    "Namecheap Private Email (SSL)": {
+      "can_connect": false,
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1123)",
+      "error_type": "SSL/TLS证书问题",
+      "host": "mail.privateemail.com",
+      "port": 465
+    }
+  },
+  "recommendations": [
+    "邮件服务返回503错误，可能是SMTP连接问题",
+    "确认问题：邮件API返回503错误",
+    "可用的SMTP配置: Namecheap Private Email",
+    "Zoho SMTP 失败: SSL/TLS证书问题",
+    "Namecheap Private Email (SSL) 失败: SSL/TLS证书问题",
+    "建议使用Namecheap Private Email配置替换当前的Zoho配置",
+    "更新环境变量: SMTP_HOST=mail.privateemail.com"
+  ]
+}

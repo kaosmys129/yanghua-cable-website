@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-10-29T19:57:53.919050",
+  "api_tests": {
+    "get_request": {
+      "status_code": 400,
+      "success": false,
+      "response_time": 1.109186
+    },
+    "csrf": {
+      "status_code": 200,
+      "success": true,
+      "has_cookie": true
+    },
+    "post_request": {
+      "status_code": 403,
+      "success": true,
+      "response_time": 0.371227,
+      "response_text": "CSRF Token Invalid"
+    }
+  },
+  "smtp_tests": {
+    "Zoho SMTP": {
+      "can_connect": false,
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1123)",
+      "error_type": "SSL/TLS证书问题",
+      "host": "smtppro.zoho.com",
+      "port": 465
+    },
+    "Namecheap Private Email": {
+      "can_connect": true,
+      "host": "mail.privateemail.com",
+      "port": 587,
+      "connection_type": "STARTTLS"
+    },
+    "Namecheap Private Email (SSL)": {
+      "can_connect": false,
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1123)",
+      "error_type": "SSL/TLS证书问题",
+      "host": "mail.privateemail.com",
+      "port": 465
+    }
+  },
+  "recommendations": [
+    "403错误：检查CSRF token验证或API权限配置"
+  ]
+}

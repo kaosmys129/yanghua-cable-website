@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-10-29T19:51:02.302888",
+  "changes": {
+    "smtp_host": {
+      "old": "smtppro.zoho.com",
+      "new": "mail.privateemail.com"
+    },
+    "smtp_port": {
+      "old": "465",
+      "new": "587"
+    },
+    "smtp_secure": {
+      "old": "true",
+      "new": "false"
+    }
+  },
+  "deployment_steps": [
+    "1. 在生产环境中更新以下环境变量:",
+    "   SMTP_HOST=mail.privateemail.com",
+    "   SMTP_PORT=587",
+    "   SMTP_SECURE=false",
+    "",
+    "2. 重新部署应用程序",
+    "",
+    "3. 运行邮件测试验证配置是否正确",
+    "",
+    "4. 监控邮件发送日志确保没有错误"
+  ],
+  "verification_command": "python diagnose_email_503.py",
+  "rollback_config": {
+    "host": "smtppro.zoho.com",
+    "port": "465",
+    "secure": "true"
+  }
+}
