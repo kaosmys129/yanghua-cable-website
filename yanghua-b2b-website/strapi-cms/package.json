@@ -46,11 +46,11 @@
     "installId": "68fd211cd9f5659bdbd66f0753c90042589ac84571af9fc163807915e0f21430"
   },
   "resolutions": {
-    "@swc/core": "1.3.107",
-    "@swc/core-linux-x64-gnu": "1.3.107",
-    "@swc/core-linux-x64-musl": "1.3.107"
+    "@swc/core": "1.7.36",
+    "@swc/core-linux-x64-gnu": "1.7.36",
+    "@swc/core-linux-x64-musl": "1.7.36"
   },
   "overrides": {
-    "@swc/core": "1.3.107"
+    "@swc/core": "1.7.36"
   }
 }
