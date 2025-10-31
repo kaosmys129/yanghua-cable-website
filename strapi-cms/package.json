@@ -25,6 +25,7 @@
     "dotenv": "^17.2.2",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
+    "prismjs": "^1.29.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
