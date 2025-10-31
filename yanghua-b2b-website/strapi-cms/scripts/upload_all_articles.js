@@ -100,7 +100,7 @@ async function uploadAllArticles() {
     // 2. Read processed article data
     console.log('🔄 Reading local article data...');
     const articlesData = JSON.parse(
-      await fs.readFile('/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms/data/transformed_articles.json', 'utf8')
+      await fs.readFile('/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms/data/transformed_articles.json', 'utf8')
     );
 
     if (!articlesData || articlesData.length === 0) {
@@ -238,7 +238,7 @@ async function uploadAllArticles() {
     };
     
     await fs.writeFile(
-      '/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms/data/upload_all_articles_report.json',
+      '/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms/data/upload_all_articles_report.json',
       JSON.stringify(uploadReport, null, 2)
     );
     

@@ -2,7 +2,7 @@
   "name": "yanghua-b2b-monorepo",
   "private": true,
   "workspaces": [
-    "strapi-cms",
+    "yanghua-b2b-website/strapi-cms",
     "yanghua-b2b-website"
   ],
   "dependencies": {

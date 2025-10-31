@@ -20,7 +20,7 @@ async function downloadImage(url, filepath) {
 
 async function testCreateArticleWithImages() {
     try {
-        const articles = JSON.parse(fs.readFileSync('/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms/data/transformed_articles.json', 'utf8'));
+        const articles = JSON.parse(fs.readFileSync('/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms/data/transformed_articles.json', 'utf8'));
         const articleToCreate = articles[0];
 
         if (articleToCreate.cover) {

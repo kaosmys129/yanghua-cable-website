@@ -110,7 +110,7 @@ async function testFirstArticleImages() {
     // 2. 读取处理后的文章数据
     console.log('🔄 读取本地文章数据...');
     const articlesData = JSON.parse(
-      await fs.readFile('/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms/data/transformed_articles.json', 'utf8')
+      await fs.readFile('/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms/data/transformed_articles.json', 'utf8')
     );
     const articleToCreate = articlesData[0]; // 使用第一篇文章
 
@@ -301,7 +301,7 @@ async function testFirstArticleImages() {
     };
     
     await fs.writeFile(
-      '/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms/data/test_first_article_report.json',
+      '/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms/data/test_first_article_report.json',
       JSON.stringify(testReport, null, 2)
     );
     

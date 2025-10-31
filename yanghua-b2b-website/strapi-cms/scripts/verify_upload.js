@@ -31,7 +31,7 @@ async function verifyUpload() {
 
     // 1. Read the upload report
     console.log('📄 Reading upload report...');
-    const reportPath = '/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms/data/upload_all_articles_report.json';
+    const reportPath = '/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms/data/upload_all_articles_report.json';
     const reportData = JSON.parse(await fs.readFile(reportPath, 'utf8'));
     const reportSummary = reportData.summary;
 
