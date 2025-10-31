@@ -14,7 +14,8 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "postinstall": "node scripts/force-swc-version.js"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.30.0",
@@ -51,6 +52,12 @@
     "@swc/core-linux-x64-musl": "1.7.36"
   },
   "overrides": {
-    "@swc/core": "1.7.36"
+    "@swc/core": "1.7.36",
+    "@vitejs/plugin-react-swc": {
+      "@swc/core": "1.7.36"
+    },
+    "@strapi/strapi": {
+      "@swc/core": "1.7.36"
+    }
   }
 }

@@ -91,10 +91,23 @@
     "tw-animate-css": "^1.3.7",
     "typescript": "^5"
   },
+  "workspaces": [
+    "strapi-cms"
+  ],
+  "resolutions": {
+    "@swc/core": "1.7.36"
+  },
   "overrides": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "@types/react": "18.3.24",
-    "@types/react-dom": "18.3.7"
+    "@types/react-dom": "18.3.7",
+    "@swc/core": "1.7.36",
+    "@vitejs/plugin-react-swc": {
+      "@swc/core": "1.7.36"
+    },
+    "@strapi/strapi": {
+      "@swc/core": "1.7.36"
+    }
   }
 }
