@@ -5,7 +5,7 @@ export default ({ env }) => ({
   preview: {
     enabled: true,
     config: {
-      allowedOrigins: env('CLIENT_URL'),
+      allowedOrigins: env('CLIENT_URL') || env('FRONTEND_URL'),
       async handler(uid, { documentId, locale, status }) {
         const document = await strapi.documents(uid).findOne({ 
           documentId,
@@ -16,11 +16,13 @@ export default ({ env }) => ({
         const urlSearchParams = new URLSearchParams({
           secret: env('PREVIEW_SECRET'),
           slug,
+          locale: locale ?? 'en',
           uid,
           status,
         });
         
-        return `${env('CLIENT_URL')}/api/preview?${urlSearchParams}`;
+         const baseUrl = env('CLIENT_URL') || env('FRONTEND_URL');
+         return `${baseUrl}/api/preview?${urlSearchParams}`;
       },
     },
   },

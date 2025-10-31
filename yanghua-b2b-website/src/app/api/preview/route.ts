@@ -11,8 +11,9 @@ export async function GET(request: NextRequest) {
   const slug = searchParams.get('slug');
   const locale = searchParams.get('locale') || 'en';
   
-  // Check the secret token
-  if (secret !== process.env.STRAPI_PREVIEW_SECRET) {
+  // Check the secret token (support both STRAPI_PREVIEW_SECRET and PREVIEW_SECRET for compatibility)
+  const expectedSecret = process.env.STRAPI_PREVIEW_SECRET || process.env.PREVIEW_SECRET;
+  if (secret !== expectedSecret) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }
   
@@ -28,7 +29,8 @@ export async function GET(request: NextRequest) {
       `${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&locale=${locale}&publicationState=preview&populate=*`,
       {
         headers: {
-          'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
+          // API token is required to access draft content in Strapi Cloud
+          ...(process.env.STRAPI_API_TOKEN ? { 'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}` } : {}),
           'Content-Type': 'application/json',
         },
       }
