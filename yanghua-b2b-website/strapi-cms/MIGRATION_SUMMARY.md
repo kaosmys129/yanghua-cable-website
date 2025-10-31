@@ -67,7 +67,7 @@ export STRAPI_TOKEN="your-api-token-here"
 
 ### 2. 测试连接
 ```bash
-cd /Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms
+cd /Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms
 node scripts/test_connection.js
 ```
 

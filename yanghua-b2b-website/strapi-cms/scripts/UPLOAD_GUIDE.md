@@ -38,13 +38,13 @@ export BATCH_SIZE=10
 
 ### 基本用法
 ```bash
-cd /Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms
+cd /Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms
 node scripts/upload_to_strapi.js
 ```
 
 ### 使用环境变量运行
 ```bash
-cd /Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/strapi-cms
+cd /Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website/yanghua-b2b-website/strapi-cms
 STRAPI_URL="https://your-instance.com" STRAPI_TOKEN="your-token" node scripts/upload_to_strapi.js
 ```
 
