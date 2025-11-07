@@ -7,13 +7,13 @@ export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
   const locales = ['en', 'es'] as const;
-  const staticPageKeys = ['home', 'articles', 'projects', 'products', 'solutions', 'services'] as const;
+  const staticPageKeys = ['home', 'articles', 'projects', 'products', 'solutions', 'services', 'articles-hub'] as const;
 
   const items: MetadataRoute.Sitemap = [];
 
   // 统一构建 sitemap URL：所有语言统一带语言前缀（包括英文 /en），以符合新的规范化策略
   const buildSitemapUrl = (
-    pageKey: (typeof staticPageKeys)[number] | 'products-category' | 'products-detail' | 'projects-detail' | 'articles-detail',
+    pageKey: (typeof staticPageKeys)[number] | 'products-category' | 'products-detail' | 'projects-detail' | 'articles-detail' | 'articles-hub-detail',
     locale: (typeof locales)[number],
     params?: Record<string, string>
   ): string => {
@@ -98,6 +98,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // 枢纽页（Hub）详情：从 Strapi 获取
+  async function fetchHubSlugs(locale: string): Promise<string[]> {
+    try {
+      const url = `${strapiBase}/api/hubs?fields[0]=slug&locale=${locale}`;
+      const headers: Record<string, string> = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      };
+      if (process.env.STRAPI_API_TOKEN) {
+        headers.Authorization = `Bearer ${process.env.STRAPI_API_TOKEN}`;
+      }
+      const res = await fetch(url, { headers, next: { revalidate: 60 * 60 } });
+      if (!res.ok) return [];
+      const json = await res.json();
+      const data = Array.isArray(json?.data) ? json.data : [];
+      return data.map((a: any) => a.slug).filter(Boolean);
+    } catch (e) {
+      console.error('Sitemap: failed to fetch hub slugs', locale, e);
+      return [];
+    }
+  }
+
   for (const locale of locales) {
     const slugs = await fetchArticleSlugs(locale);
     for (const slug of slugs) {
@@ -106,6 +128,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.6,
+      });
+    }
+    // 加入枢纽页详情
+    const hubSlugs = await fetchHubSlugs(locale);
+    for (const slug of hubSlugs) {
+      items.push({
+        url: buildSitemapUrl('articles-hub-detail', locale, { slug }),
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.65,
       });
     }
   }

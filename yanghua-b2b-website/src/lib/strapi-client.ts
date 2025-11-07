@@ -318,6 +318,9 @@ export async function getArticleBySlug(slug: string, locale?: StrapiLocale): Pro
           blocks: {
             populate: "*",
           },
+          category: { populate: "*" },
+          // Strapi i18n: fetch cross-locale slugs for hreflang mapping
+          localizations: { fields: ["slug", "locale", "documentId"] },
         },
         locale: locale,
       } as any);
@@ -354,6 +357,8 @@ export async function getArticleBySlugWithMetrics(slug: string, locale?: StrapiL
           blocks: {
             populate: "*",
           },
+          category: { populate: "*" },
+          localizations: { fields: ["slug", "locale", "documentId"] },
         },
         locale: locale,
       } as any);
@@ -393,6 +398,8 @@ export async function getAllArticlesWithDrafts(locale?: StrapiLocale): Promise<{
           blocks: {
             populate: "*",
           },
+          category: { populate: "*" },
+          localizations: { fields: ["slug", "locale", "documentId"] },
         },
         locale,
         publicationState: 'preview', // Include both published and draft articles
@@ -426,6 +433,8 @@ export async function getArticleBySlugWithDrafts(slug: string, locale?: StrapiLo
           blocks: {
             populate: "*",
           },
+          category: { populate: "*" },
+          localizations: { fields: ["slug", "locale", "documentId"] },
         },
         locale: locale,
         publicationState: 'preview', // Include both published and draft articles
@@ -470,4 +479,91 @@ export async function checkStrapiHealth(): Promise<boolean> {
     logError('Strapi health check failed', error instanceof Error ? error : new Error(String(error)), { originalError: error });
     return false;
   }
+}
+
+// --- Hub APIs ---
+import type { Hub } from './types';
+
+export async function getHubBySlug(slug: string, locale?: StrapiLocale): Promise<Hub | null> {
+  return withRetry(async () => {
+    try {
+      console.log(`Fetching hub by slug: ${slug}`);
+      const hubs = await strapi.find("hubs", {
+        filters: { slug: { $eq: slug } },
+        populate: {
+          cover: { populate: '*' },
+          featured_articles: {
+            populate: {
+              cover: { populate: '*' },
+              category: { populate: '*' }
+            }
+          }
+        },
+        locale: locale,
+      } as any);
+      const normalized = normalizeApiResponse(hubs, (data) => {
+        const arr = Array.isArray(data) ? data : [data];
+        const h = arr[0] || null;
+        if (!h) return null;
+        return {
+          id: h.id,
+          documentId: h.documentId,
+          title: h.title,
+          slug: h.slug,
+          intro: h.intro,
+          locale: h.locale,
+          cover: h.cover,
+          featured_articles: Array.isArray(h.featured_articles) ? h.featured_articles.map((a: any) => ({
+            id: a.id,
+            documentId: a.documentId,
+            title: a.title,
+            slug: a.slug,
+            locale: a.locale,
+            cover: a.cover,
+            category: a.category,
+          })) : []
+        } as Hub;
+      });
+      if (normalized.error) {
+        throw new Error(normalized.error);
+      }
+      return normalized.data;
+    } catch (error) {
+      handleStrapiError(error, `getHubBySlug(${slug})`);
+      throw error;
+    }
+  });
+}
+
+export async function getAllHubs(locale?: StrapiLocale): Promise<{ data: Hub[] }> {
+  return withRetry(async () => {
+    try {
+      console.log('Fetching hubs from Strapi Cloud:', getStrapiURL());
+      const hubs = await strapi.find("hubs", {
+        populate: {
+          cover: { populate: '*' },
+        },
+        locale,
+      } as any);
+      const normalized = normalizeApiResponse(hubs, (data) => {
+        const arr = Array.isArray(data) ? data : [data];
+        return arr.map((h: any) => ({
+          id: h.id,
+          documentId: h.documentId,
+          title: h.title,
+          slug: h.slug,
+          intro: h.intro,
+          locale: h.locale,
+          cover: h.cover,
+        }));
+      });
+      if (normalized.error) {
+        throw new Error(normalized.error);
+      }
+      return { data: normalized.data || [] };
+    } catch (error) {
+      handleStrapiError(error, 'getAllHubs');
+      throw error;
+    }
+  });
 }

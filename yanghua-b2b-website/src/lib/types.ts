@@ -21,6 +21,17 @@ export interface Article {
     name: string
     slug: string
   }
+  // Optional: cross-locale mappings from Strapi i18n
+  localizations?: {
+    id: number
+    locale: string
+    slug: string
+    documentId?: string
+  }[]
+  // Optional: related articles (to be added in Strapi)
+  related_articles?: ArticleSummary[]
+  // Optional: tags (if present in Strapi)
+  tags?: Tag[]
   author: {
     id: number
     documentId: string
@@ -39,6 +50,49 @@ export interface Article {
     }
   }
   blocks: Block[]
+}
+
+export interface ArticleSummary {
+  id: number
+  documentId: string
+  title: string
+  slug: string
+  locale: string
+  cover?: {
+    id: number
+    documentId: string
+    url: string
+    alternativeText?: string
+  }
+  category?: {
+    id: number
+    documentId: string
+    name: string
+    slug: string
+  }
+}
+
+export interface Tag {
+  id: number
+  documentId: string
+  name: string
+  slug: string
+}
+
+export interface Hub {
+  id: number
+  documentId?: string
+  title: string
+  slug: string
+  intro?: string
+  locale: string
+  cover?: {
+    id: number
+    documentId?: string
+    url: string
+    alternativeText?: string
+  }
+  featured_articles?: ArticleSummary[]
 }
 
 export type Block = RichTextBlock | QuoteBlock | MediaBlock | SliderBlock

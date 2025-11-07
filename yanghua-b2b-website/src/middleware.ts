@@ -34,6 +34,8 @@ const intlMiddleware = createIntlMiddleware({
     '/contact': { en: '/contact', es: '/contacto' },
     '/articles': { en: '/articles', es: '/articulos' },
     '/articles/[slug]': { en: '/articles/[slug]', es: '/articulos/[slug]' },
+    '/articles/hub': { en: '/articles/hub', es: '/articulos/hub' },
+    '/articles/hub/[slug]': { en: '/articles/hub/[slug]', es: '/articulos/hub/[slug]' },
     '/products/category': { en: '/products/category', es: '/productos/categoria' }
   }
 });
@@ -252,6 +254,17 @@ export default async function middleware(request: NextRequest) {
         console.log('[Middleware] rewrite ES translated path -> internal route:', pathname, '=>', rewriteUrl.pathname);
         return applySecurityHeaders(NextResponse.rewrite(rewriteUrl));
       }
+    }
+
+    // 8.1 301 重定向：将英文站点下带 -es 的西语文章路径统一到西语规范路径
+    // 例如：/en/articles/foo-es -> /es/articulos/foo-es
+    const enEsArticleMatch = pathname.match(/^\/en\/articles\/(.+-es)\/?$/i);
+    if (enEsArticleMatch) {
+      const slugEs = enEsArticleMatch[1];
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = `/es/articulos/${slugEs}`;
+      console.log('[Middleware] 301 redirect EN -es article to ES canonical:', pathname, '=>', redirectUrl.pathname);
+      return applySecurityHeaders(NextResponse.redirect(redirectUrl, 301));
     }
 
     // 8. Security headers and internationalization

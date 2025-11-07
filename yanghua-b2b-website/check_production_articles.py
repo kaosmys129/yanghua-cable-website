@@ -9,27 +9,71 @@ from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 import sys
+import argparse
 
 # 生产环境配置
 PRODUCTION_BASE_URL = "https://www.yhflexiblebusbar.com"
 
-def get_articles_list():
-    """获取文章列表"""
+def get_articles_from_sitemap(max_count: int = 50):
+    """从 sitemap.xml 获取文章链接（可设置最大数量）"""
     try:
-        # 先获取英文文章列表页面
+        sitemap_url = f"{PRODUCTION_BASE_URL}/sitemap.xml"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        res = requests.get(sitemap_url, headers=headers, timeout=30)
+        res.raise_for_status()
+        soup = BeautifulSoup(res.text, 'xml')
+        locs = soup.find_all('loc')
+        urls = []
+        for loc in locs:
+            u = (loc.get_text() or '').strip()
+            if '/articles/' in u:
+                urls.append(u)
+        unique = list(dict.fromkeys(urls))[:max_count]
+        if unique:
+            print(f"通过 sitemap.xml 获取到 {len(unique)} 篇文章链接")
+        return unique
+    except Exception as e:
+        print(f"⚠️ 从 sitemap.xml 获取文章失败: {e}")
+        return []
+
+def get_articles_from_local_data(max_count: int = 50):
+    """从本地导出的 article_data.json 获取文章链接（作为兜底，可设置最大数量）"""
+    try:
+        path = 'yanghua-b2b-website/yanghua-b2b-website/article_data.json'
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        items = data.get('data') or []
+        urls = []
+        for item in items:
+            slug = item.get('slug')
+            locale = item.get('locale') or 'en'
+            if slug:
+                urls.append(f"{PRODUCTION_BASE_URL}/{locale}/articles/{slug}")
+        unique = list(dict.fromkeys(urls))[:max_count]
+        if unique:
+            print(f"通过本地 article_data.json 获取到 {len(unique)} 篇文章链接")
+        return unique
+    except Exception as e:
+        print(f"⚠️ 从本地文章数据获取失败: {e}")
+        return []
+
+def get_articles_list(max_count: int = 50):
+    """获取文章列表（多来源兜底，可设置最大数量）"""
+    # 先尝试从英文文章列表页抓取
+    try:
         url = f"{PRODUCTION_BASE_URL}/en/articles"
         headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
         response = requests.get(url, headers=headers, timeout=30)
         response.raise_for_status()
-        
+
         soup = BeautifulSoup(response.text, 'html.parser')
-        
+
         # 查找文章链接
         article_links = []
-        
-        # 查找所有可能的文章链接
         links = soup.find_all('a', href=True)
         for link in links:
             href = link.get('href')
@@ -37,22 +81,32 @@ def get_articles_list():
                 if href.startswith('/'):
                     href = PRODUCTION_BASE_URL + href
                 article_links.append(href)
-        
-        # 去重并限制数量
-        unique_links = list(set(article_links))[:5]  # 只检查前5篇文章
-        
-        print(f"找到 {len(unique_links)} 篇文章进行检查")
-        return unique_links
-        
-    except Exception as e:
-        print(f"❌ 获取文章列表失败: {e}")
-        # 如果无法获取文章列表，使用一些常见的文章路径
-        return [
-            f"{PRODUCTION_BASE_URL}/en/articles/flexible-busbar-technology",
-            f"{PRODUCTION_BASE_URL}/en/articles/data-center-power-solutions",
-            f"{PRODUCTION_BASE_URL}/en/articles/ev-charging-infrastructure"
-        ]
 
+        unique_links = list(dict.fromkeys(article_links))[:max_count]
+        if unique_links:
+            print(f"通过列表页找到 {len(unique_links)} 篇文章进行检查")
+            return unique_links
+    except Exception as e:
+        print(f"⚠️ 列表页获取失败: {e}")
+
+    # 列表页未获取到，尝试 sitemap
+    sitemap_articles = get_articles_from_sitemap(max_count)
+    if sitemap_articles:
+        return sitemap_articles
+
+    # 仍为空，尝试本地导出的文章数据
+    local_articles = get_articles_from_local_data(max_count)
+    if local_articles:
+        return local_articles
+
+    # 最后兜底：使用一些常见的文章路径
+    print("❌ 未从页面、sitemap 或本地数据获取到文章，使用内置兜底列表")
+    return [
+        f"{PRODUCTION_BASE_URL}/en/articles/flexible-busbar-technology",
+        f"{PRODUCTION_BASE_URL}/en/articles/data-center-power-solutions",
+        f"{PRODUCTION_BASE_URL}/en/articles/ev-charging-infrastructure"
+    ]
+    
 def get_page_content(url):
     """获取页面内容"""
     try:
@@ -175,9 +229,28 @@ def main():
     print("🚀 开始检查生产环境文章页面 SEO 标签配置")
     print(f"🌐 生产环境: {PRODUCTION_BASE_URL}")
     print(f"⏰ 检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    
-    # 获取文章列表
-    article_urls = get_articles_list()
+
+    # 命令行参数
+    parser = argparse.ArgumentParser(description='生产文章 SEO 标签检查')
+    parser.add_argument('urls', nargs='*', help='要检查的文章 URL 列表（可选）')
+    parser.add_argument('--limit', type=int, default=10, help='最多检查的文章数量（默认 10）')
+    parser.add_argument('--source', choices=['auto', 'sitemap', 'list', 'local'], default='auto', help='文章来源（默认自动）')
+    args = parser.parse_args()
+
+    # 如果提供了命令行 URL，优先使用
+    if args.urls:
+        print(f"🧪 使用命令行提供的 {len(args.urls)} 个 URL 进行检查")
+        article_urls = args.urls
+    else:
+        # 根据来源选择策略获取文章列表
+        if args.source == 'sitemap':
+            article_urls = get_articles_from_sitemap(args.limit)
+        elif args.source == 'list':
+            article_urls = get_articles_list(args.limit)
+        elif args.source == 'local':
+            article_urls = get_articles_from_local_data(args.limit)
+        else:
+            article_urls = get_articles_list(args.limit)
     
     if not article_urls:
         print("❌ 无法获取文章列表")

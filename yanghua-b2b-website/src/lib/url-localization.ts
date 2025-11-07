@@ -40,6 +40,15 @@ export const LOCALIZED_PATHS: Record<string, Record<Locale, string>> = {
     en: '/articles',
     es: '/articulos'
   },
+  // 文章枢纽（Hub）列表与详情
+  'articles-hub': {
+    en: '/articles/hub',
+    es: '/articulos/hub'
+  },
+  'articles-hub-detail': {
+    en: '/articles/hub',
+    es: '/articulos/hub'
+  },
   partners: {
     en: '/partners',
     es: '/socios'

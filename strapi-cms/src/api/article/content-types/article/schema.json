@@ -78,6 +78,11 @@
         "shared.slider",
         "shared.seo"
       ]
+    },
+    "related_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article"
     }
   }
 }

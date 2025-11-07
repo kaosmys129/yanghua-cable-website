@@ -9,6 +9,9 @@ import { draftMode } from 'next/headers';
 import { getArticleBySlugWithMetrics } from "@/lib/strapi-client";
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { getLocalizedPath } from '@/lib/url-localization';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import RelatedArticles from '@/components/RelatedArticles';
+import ReadNext from '@/components/ReadNext';
 
 // Generate static params for all articles
 export async function generateStaticParams() {
@@ -147,6 +150,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </div>
       )}
       <div className="container py-8">
+        <Breadcrumbs locale={locale} currentTitle={article.title} currentSlug={slug} />
         <Link
           href={`/${locale}${listPath === '/' ? '' : listPath}`}
           className="inline-flex items-center mb-8 text-gray-500 hover:text-gray-900"
@@ -189,6 +193,13 @@ export default async function ArticlePage({ params }: PageProps) {
             <BlockRenderer key={block.id} block={block} />
           ))}
         </div>
+
+        {/* Internal linking components */}
+        {/* Related Articles */}
+        <RelatedArticles locale={locale} currentArticle={article} />
+
+        {/* Read Next (previous/next within category) */}
+        <ReadNext locale={locale} currentArticle={article} />
       </div>
     </main>
   );
@@ -205,13 +216,34 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
   // 统一 canonical 生成逻辑：不强制生产域名，在开发环境/本地审计时优先使用本地域名或环境变量
   const canonical = generateCanonicalUrl(localizedPath, locale as any);
 
+  // 优先基于 Strapi localizations 构造跨语言 hreflang，确保不同语言的 slug 正确对应
+  let languages: Record<string, string> | undefined = undefined;
+  if (article?.localizations && Array.isArray(article.localizations)) {
+    const locales = ['en', 'es'];
+    languages = {};
+    for (const l of locales) {
+      const loc = l === article.locale
+        ? { locale: article.locale, slug: article.slug }
+        : article.localizations.find(x => x.locale === l);
+      if (loc?.slug) {
+        const path = getLocalizedPath('articles-detail', l as any, { slug: loc.slug });
+        languages[l] = generateCanonicalUrl(path, l as any);
+      }
+    }
+    // x-default 指向英文
+    const enLoc = article.locale === 'en'
+      ? { slug: article.slug, locale: 'en' }
+      : article.localizations.find(x => x.locale === 'en');
+    const enPath = getLocalizedPath('articles-detail', 'en' as any, { slug: (enLoc?.slug || slug) });
+    languages['x-default'] = generateCanonicalUrl(enPath, 'en' as any);
+  }
+
   return {
     title,
     description,
     alternates: {
       canonical,
-      // 使用通用工具生成 hreflang，自动包含 en/es/x-default，并对 baseUrl 进行去尾斜杠与本地优先处理
-      languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),
+      languages: languages || generateHreflangAlternatesForMetadata(localizedPath, locale as any),
     },
   };
 }
