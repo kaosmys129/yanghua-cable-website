@@ -140,6 +140,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.65,
       });
     }
+
+    // 预定义的3个专题落地页（静态路由），确保纳入站点地图
+    const predefinedHubSlugs = ['retrofit-fast-installation', 'high-current-safer-distribution', 'custom-busbar-systems'];
+    for (const slug of predefinedHubSlugs) {
+      items.push({
+        url: buildSitemapUrl('articles-hub-detail', locale, { slug }),
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.66,
+      });
+    }
   }
 
   return items;

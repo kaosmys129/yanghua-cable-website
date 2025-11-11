@@ -8,7 +8,7 @@ import { InfiniteSlider } from '../ui/InfiniteSlider';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Locale } from '@/lib/i18n';
 
-export default function Partners() {
+export default function Partners({ onScrollToQuote }: { onScrollToQuote?: () => void }) {
   const t = useTranslations('partners');
   const locale = useLocale() as Locale;
 
@@ -60,7 +60,16 @@ export default function Partners() {
           </InfiniteSlider>
         </div>
         <div className="mt-12 text-center">
-          <Link href={buildLocalizedUrl('partners', locale)} className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium transition-colors duration-200">
+          <Link 
+            href={buildLocalizedUrl('partners', locale)} 
+            className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium transition-colors duration-200"
+            onClick={(e) => {
+              if (onScrollToQuote) {
+                e.preventDefault();
+                onScrollToQuote();
+              }
+            }}
+          >
             {t('ctaAllPartners')} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>

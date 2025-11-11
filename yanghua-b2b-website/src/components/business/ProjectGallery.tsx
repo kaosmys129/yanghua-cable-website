@@ -23,9 +23,10 @@ interface Project {
 
 interface ProjectGalleryProps {
   projects: Project[];
+  onScrollToQuote?: () => void;
 }
 
-export default function ProjectGallery({ projects }: ProjectGalleryProps) {
+export default function ProjectGallery({ projects, onScrollToQuote }: ProjectGalleryProps) {
   const t = useTranslations('projectGallery');
   const locale = useLocale() as Locale;
 
@@ -89,6 +90,12 @@ export default function ProjectGallery({ projects }: ProjectGalleryProps) {
                 <Link 
                   href={`/${locale}/projects/${project.id}`}
                   className="inline-flex items-center bg-transparent text-white hover:bg-white hover:text-black px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 w-fit"
+                  onClick={(e) => {
+                    if (onScrollToQuote) {
+                      e.preventDefault();
+                      onScrollToQuote();
+                    }
+                  }}
                 >
                   {t('viewDetails')} 
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -103,6 +110,12 @@ export default function ProjectGallery({ projects }: ProjectGalleryProps) {
           <Link 
             href={buildLocalizedUrl('projects', locale)} 
             className="inline-flex items-center bg-[#fdb827] hover:bg-[#e0a020] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            onClick={(e) => {
+              if (onScrollToQuote) {
+                e.preventDefault();
+                onScrollToQuote();
+              }
+            }}
           >
             {t('viewAllProjects')} 
             <ArrowRight className="ml-2 h-5 w-5" />

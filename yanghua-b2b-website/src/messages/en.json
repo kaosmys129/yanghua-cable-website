@@ -160,7 +160,7 @@
     "title": "Our Partners",
     "subtitle": "Trusted by leading companies worldwide",
     "viewAll": "View All Partners",
-    "ctaAllPartners": "View All Partners"
+    "ctaAllPartners": "Get Quote"
   },
   "contact": {
     "title": "Contact Us for Copper Busbar Solutions",
@@ -1614,5 +1614,14 @@
     "backToHome": "Back to Home",
     "contactMessage": "If you believe this is an error, please",
     "contactUs": "contact us"
+  }
+  ,
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Quality and compliance"
+  },
+  "caseDetails": {
+    "title": "Engineering Case Studies",
+    "subtitle": "Projects with key parameters and real testimonials"
   }
 }

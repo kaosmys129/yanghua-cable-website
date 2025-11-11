@@ -160,7 +160,7 @@
     "title": "Nuestros Socios",
     "subtitle": "Confiado por empresas líderes en todo el mundo",
     "viewAll": "Ver Todos los Socios",
-    "ctaAllPartners": "Ver Todos los Socios"
+    "ctaAllPartners": "Solicitar Cotización"
   },
   "contact": {
     "title": "Contáctanos",
@@ -1624,5 +1624,14 @@
     "backToHome": "Volver al Inicio",
     "contactMessage": "Si crees que esto es un error, por favor",
     "contactUs": "contáctanos"
+  }
+  ,
+  "certifications": {
+    "title": "Certificaciones",
+    "subtitle": "Calidad y cumplimiento"
+  },
+  "caseDetails": {
+    "title": "Casos de Ingeniería",
+    "subtitle": "Proyectos con parámetros clave y testimonios reales"
   }
 }

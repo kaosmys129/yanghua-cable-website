@@ -15,7 +15,7 @@ export interface SlideData {
   showContent: boolean;
 }
 
-export default function Hero() {
+export default function Hero({ onScrollToQuote }: { onScrollToQuote?: () => void }) {
   const t = useTranslations('hero');
   const locale = useLocale() as Locale;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -128,6 +128,12 @@ export default function Hero() {
               <Link
                 href={buildLocalizedUrl('contact', locale)}
                 className="btn-primary inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                onClick={(e) => {
+                  if (onScrollToQuote) {
+                    e.preventDefault();
+                    onScrollToQuote();
+                  }
+                }}
               >
                 Get Quote Now
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
@@ -136,6 +142,12 @@ export default function Hero() {
               <Link
                 href={buildLocalizedUrl('products', locale)}
                 className="btn-secondary inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                onClick={(e) => {
+                  if (onScrollToQuote) {
+                    e.preventDefault();
+                    onScrollToQuote();
+                  }
+                }}
               >
                 {t('cta')}
               </Link>
