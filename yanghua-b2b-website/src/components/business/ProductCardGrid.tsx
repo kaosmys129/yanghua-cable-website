@@ -20,7 +20,8 @@ interface ProductCardGridProps {
  */
 export default function ProductCardGrid({ locale: propLocale, className, onQuoteOpen }: ProductCardGridProps) {
   const t = useTranslations('products');
-  const currentLocale = (propLocale || useLocale()) as Locale;
+  const localeFromHook = useLocale();
+  const currentLocale = (propLocale || localeFromHook) as Locale;
 
   // Map category index to route slug keys used by products/category/[name]
   const indexToSlug: Record<number, string> = {

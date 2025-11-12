@@ -64,7 +64,7 @@ export default function CustomBusbarHubClient({ projects, csrfToken }: Props) {
 
   return (
     <>
-      <Hero onScrollToQuote={scrollToQuote} />
+      <Hero onQuoteOpen={scrollToQuote} />
       <main className="container mx-auto px-4 py-12 max-w-5xl">
         <Breadcrumbs locale={locale} currentTitle={pageTitle} currentSlug="custom-busbar-systems" />
 
@@ -105,16 +105,16 @@ export default function CustomBusbarHubClient({ projects, csrfToken }: Props) {
         <ProductComparison />
 
         {/* Products Grid: show top 4 products from product list */}
-        <ProductCardGrid locale={locale} onScrollToQuote={scrollToQuote} />
+        <ProductCardGrid locale={locale} onQuoteOpen={scrollToQuote} />
 
         {/* Certifications Gallery (kept) */}
         <CertificationsGallery locale={locale} />
 
         {/* Replace Engineering Case Studies with Home Featured Projects */}
-        <ProjectGallery projects={projects} onScrollToQuote={scrollToQuote} />
+        <ProjectGallery projects={projects} onQuoteOpen={scrollToQuote} />
 
         {/* Partners section (added below Featured Projects) */}
-        <Partners onScrollToQuote={scrollToQuote} />
+        <Partners onQuoteOpen={scrollToQuote} />
 
         {/* Quote 组件作为滚动目标（在询价表单之前） */}
         <section id="quote-section" className="mt-12">

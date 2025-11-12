@@ -298,12 +298,12 @@ export class CSRFProtection {
   static generateToken(): string {
     const timestamp = Date.now().toString();
     const random = Math.random().toString(36).substring(2);
-    return Buffer.from(`${timestamp}:${random}:${this.SECRET}`).toString('base64');
+    return base64Encode(`${timestamp}:${random}:${this.SECRET}`);
   }
 
   static validateToken(token: string, maxAge = 3600000): boolean { // 1 hour default
     try {
-      const decoded = Buffer.from(token, 'base64').toString();
+      const decoded = base64Decode(token);
       const [timestamp, random, secret] = decoded.split(':');
       
       if (secret !== this.SECRET) return false;
@@ -333,6 +333,22 @@ export class CSRFProtection {
     if (!token) return false;
     return this.validateToken(token);
   }
+}
+
+function base64Encode(input: string): string {
+  const hasBuffer = typeof (globalThis as any).Buffer !== 'undefined';
+  if (hasBuffer) {
+    return (globalThis as any).Buffer.from(input).toString('base64');
+  }
+  return btoa(input);
+}
+
+function base64Decode(input: string): string {
+  const hasBuffer = typeof (globalThis as any).Buffer !== 'undefined';
+  if (hasBuffer) {
+    return (globalThis as any).Buffer.from(input, 'base64').toString();
+  }
+  return atob(input);
 }
 
 // Security middleware utilities
