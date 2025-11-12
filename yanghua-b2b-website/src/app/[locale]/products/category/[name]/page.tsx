@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { getLocalizedPath } from '@/lib/url-localization';
 import type { Metadata } from 'next';
+import TechSpecsTable from '@/components/products/TechSpecsTable';
+import CTAButtons from '@/components/products/CTAButtons';
+import ProductComparison from '@/components/products/ProductComparison';
 
 interface ProductCategory {
   name: string;
@@ -170,6 +173,33 @@ async function getProductCategoryData(name: string): Promise<ProductCategory | n
 
     // Spanish category mappings
     'cables-de-propósito-general': {
+      name: "Cables de Propósito General",
+      models: ["TMRVV", "TMRVSV"],
+      applications: ["Instalaciones interiores", "Instalaciones exteriores"],
+      description: ["Cables estándar para instalaciones eléctricas generales y aplicaciones de transmisión de energía."],
+      structure: [
+        "Conductores de alambre de cobre",
+        "Capas de bobinado", 
+        "Capas de aislamiento",
+        "Capas de armadura metálica",
+        "Capas de vaina"
+      ],
+      specifications: {
+        ratedCurrent: "200-6300A",
+        ratedVoltage: "≤3kV",
+        ratedFrequency: "50Hz",
+        protectionLevel: "IP68",
+        maxOperatingTemp: "105℃"
+      },
+      coreConfigurations: [
+        "4-núcleos: A,B,C,N sección transversal igual",
+        "5-núcleos: A,B,C,N,PE sección transversal igual", 
+        "3+1: A,B,C sección transversal igual, N 50% sección transversal (sin PE)",
+        "4+1: A,B,C,N sección transversal igual, PE 50%",
+        "3+2: A,B,C sección transversal igual, N y PE 50% sección transversal"
+      ]
+    },
+    'cables-de-uso-general': {
       name: "Cables de Propósito General",
       models: ["TMRVV", "TMRVSV"],
       applications: ["Instalaciones interiores", "Instalaciones exteriores"],
@@ -430,6 +460,7 @@ export async function generateStaticParams() {
     'low-smoke-halogen-free',
     'low-smoke-halogen-free-cables',
     'cables-de-propósito-general',
+    'cables-de-uso-general',
     'cables-retardantes-de-llama',
     'cables-resistentes-al-fuego',
     'cables-libres-de-humo-y-halógenos'
@@ -540,33 +571,15 @@ export default async function ProductCategoryPage({ params }: PageProps) {
             {/* Technical specifications */}
             <section className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden mb-6">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rated Current</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{categoryData.specifications.ratedCurrent}</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rated Voltage</td>
-      
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{categoryData.specifications.ratedVoltage}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rated Frequency</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{categoryData.specifications.ratedFrequency}</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Protection Level</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{categoryData.specifications.protectionLevel}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Max Operating Temperature</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{categoryData.specifications.maxOperatingTemp}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <TechSpecsTable
+                items={[
+                  { label: 'Rated Current', value: categoryData.specifications.ratedCurrent },
+                  { label: 'Rated Voltage', value: categoryData.specifications.ratedVoltage },
+                  { label: 'Rated Frequency', value: categoryData.specifications.ratedFrequency },
+                  { label: 'Protection Level', value: categoryData.specifications.protectionLevel },
+                  { label: 'Max Operating Temperature', value: categoryData.specifications.maxOperatingTemp },
+                ]}
+              />
             </section>
 
             {/* Core configuration */}
@@ -598,6 +611,8 @@ export default async function ProductCategoryPage({ params }: PageProps) {
                 ))}
               </div>
             </section>
+
+            <ProductComparison locale={params.locale as any} />
 
             {/* Product comparison section can be added here */}
 
@@ -648,6 +663,9 @@ export default async function ProductCategoryPage({ params }: PageProps) {
                   Back to Product List
                 </button>
               </Link>
+              <div className="mt-4">
+                <CTAButtons locale={params.locale as any} />
+              </div>
             </div>
           </div>
         </div>
@@ -673,7 +691,10 @@ export async function generateMetadata({ params }: { params: { locale: string; n
   };
   
   // 自引用 canonical：当前语言版本的规范URL（英文不带 /en，西语带 /es）
-  const localizedPath = getLocalizedPath('products-category', locale as any, { name: decodedName });
+  const canonicalName = locale === 'es' && decodedName === 'cables-de-uso-general'
+    ? 'cables-de-propósito-general'
+    : decodedName;
+  const localizedPath = getLocalizedPath('products-category', locale as any, { name: canonicalName });
   const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
 
   return {

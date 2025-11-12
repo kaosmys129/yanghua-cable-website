@@ -241,6 +241,19 @@ export default async function middleware(request: NextRequest) {
 
     // 7. 西语翻译段动态路径 -> 路由内部英文段的 rewrite（不改变URL，避免30x，保证页面可访问）
     const esRewriteMappings: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
+      // Top-level Spanish segments -> internal English route segments (rewrite, no URL change)
+      { from: /^\/es\/productos\/?$/i, to: () => `/es/products` },
+      { from: /^\/es\/soluciones\/?$/i, to: () => `/es/solutions` },
+      { from: /^\/es\/servicios\/?$/i, to: () => `/es/services` },
+      { from: /^\/es\/proyectos\/?$/i, to: () => `/es/projects` },
+      { from: /^\/es\/contacto\/?$/i, to: () => `/es/contact` },
+      { from: /^\/es\/acerca-de\/?$/i, to: () => `/es/about` },
+      { from: /^\/es\/articulos\/?$/i, to: () => `/es/articles` },
+      { from: /^\/es\/socios\/?$/i, to: () => `/es/partners` },
+      { from: /^\/es\/privacidad\/?$/i, to: () => `/es/privacy` },
+      { from: /^\/es\/terminos\/?$/i, to: () => `/es/terms` },
+
+      // Nested segments
       { from: /^\/es\/productos\/categoria(\/.*)?$/i, to: (m) => `/es/products/category${m[1] || ''}` },
       { from: /^\/es\/productos\/(.+)$/i, to: (m) => `/es/products/${m[1]}` },
       { from: /^\/es\/soluciones\/(.+)$/i, to: (m) => `/es/solutions/${m[1]}` },

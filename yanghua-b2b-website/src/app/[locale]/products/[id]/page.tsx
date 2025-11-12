@@ -5,6 +5,7 @@ import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/l
 import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
 import StructuredDataScript from '@/components/seo/StructuredDataScript';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
+import ProductDetailLayout from '@/components/products/ProductDetailLayout';
 
 interface Product {
   id: string;
@@ -233,6 +234,33 @@ export default async function ProductDetailPage({ params }: PageProps) {
       />
     );
   };
+
+  const useV2 = process.env.NEXT_PUBLIC_PRODUCTS_LAYOUT_V2 === 'true';
+  const specsItems = [
+    { label: 'Voltage', value: product.technicalSpecs.voltage },
+    { label: 'Current', value: product.technicalSpecs.current },
+    { label: 'Material', value: product.technicalSpecs.material },
+    { label: 'Temperature', value: product.technicalSpecs.temperature },
+    { label: 'Insulation', value: product.technicalSpecs.insulation },
+    { label: 'Standards', value: product.technicalSpecs.standards },
+  ];
+
+  if (useV2) {
+    return (
+      <>
+        <StructuredDataScript schema={productSchema} />
+        <StructuredDataScript schema={breadcrumbSchema} />
+        <ProductDetailLayout
+          title={product.name}
+          description={product.description}
+          features={product.features}
+          specs={specsItems}
+          images={product.images}
+          locale={params.locale as any}
+        />
+      </>
+    );
+  }
 
   return (
     <>

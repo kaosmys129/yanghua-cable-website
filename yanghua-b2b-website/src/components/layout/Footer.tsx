@@ -56,7 +56,7 @@ export default function Footer() {
   const footerLinks = {
     products: productCategories.map(category => ({
       name: category.name,
-      href: buildLocalizedUrl('products', locale, { category: category.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-') })
+      href: buildLocalizedUrl('products-category', locale, { name: category.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-') })
     })),
     solutions: solutions.map(solution => ({
       name: solution.title,
