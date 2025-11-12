@@ -107,20 +107,22 @@ export default async function middleware(request: NextRequest) {
     }
 
     // 2. Bot detection and handling
-    if (isBot(userAgent)) {
-      monitoring.logger.info('Bot detected', {
+  if (isBot(userAgent)) {
+    monitoring.logger.info('Bot detected', {
+      ip: clientIP,
+      userAgent,
+      pathname,
+    });
+    monitoring.crawl.record({ ip: clientIP, userAgent, pathname, isSeoTool: isSEOTool(userAgent) });
+
+      // Check if it's a legitimate SEO tool
+    if (isSEOTool(userAgent)) {
+      monitoring.logger.info('SEO tool detected', {
         ip: clientIP,
         userAgent,
         pathname,
       });
-
-      // Check if it's a legitimate SEO tool
-      if (isSEOTool(userAgent)) {
-        monitoring.logger.info('SEO tool detected', {
-          ip: clientIP,
-          userAgent,
-          pathname,
-        });
+      monitoring.crawl.record({ ip: clientIP, userAgent, pathname, isSeoTool: true });
 
         // Allow SEO tools with more generous rate limiting
         const seoRateLimitKey = `seo:${clientIP}`;
@@ -137,7 +139,7 @@ export default async function middleware(request: NextRequest) {
     }
 
     // 3. CSRF protection for POST requests
-    if (request.method === 'POST' && pathname.startsWith('/api/')) {
+    if (request.method === 'POST' && pathname.startsWith('/api/') && !pathname.startsWith('/api/monitoring/errors')) {
       if (!CSRFProtection.validateRequest(request)) {
         SecurityAuditor.logEvent({
           type: 'csrf_violation',

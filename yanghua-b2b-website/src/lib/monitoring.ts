@@ -30,6 +30,59 @@ export interface LogEntry {
   sessionId?: string;
 }
 
+export interface CrawlEvent {
+  ip: string;
+  userAgent: string;
+  pathname: string;
+  isSeoTool: boolean;
+  timestamp: number;
+}
+
+export class CrawlMonitor {
+  private static instance: CrawlMonitor;
+  private events: CrawlEvent[] = [];
+  private byAgent: Map<string, number> = new Map();
+  private byPath: Map<string, number> = new Map();
+  private byIp: Map<string, number> = new Map();
+  private maxEvents = 2000;
+
+  static getInstance(): CrawlMonitor {
+    if (!CrawlMonitor.instance) {
+      CrawlMonitor.instance = new CrawlMonitor();
+    }
+    return CrawlMonitor.instance;
+  }
+
+  record(event: Omit<CrawlEvent, 'timestamp'>): void {
+    const e: CrawlEvent = { ...event, timestamp: Date.now() };
+    this.events.push(e);
+    if (this.events.length > this.maxEvents) {
+      this.events = this.events.slice(-this.maxEvents);
+    }
+    this.byAgent.set(e.userAgent, (this.byAgent.get(e.userAgent) || 0) + 1);
+    this.byPath.set(e.pathname, (this.byPath.get(e.pathname) || 0) + 1);
+    this.byIp.set(e.ip, (this.byIp.get(e.ip) || 0) + 1);
+  }
+
+  getSummary(lastMs = 24 * 60 * 60 * 1000): {
+    total: number;
+    recent: CrawlEvent[];
+    byAgent: Array<{ userAgent: string; count: number }>;
+    byPath: Array<{ pathname: string; count: number }>;
+    byIp: Array<{ ip: string; count: number }>;
+  } {
+    const cutoff = Date.now() - lastMs;
+    const recent = this.events.filter(e => e.timestamp >= cutoff);
+    const agentArr = Array.from(this.byAgent.entries()).map(([userAgent, count]) => ({ userAgent, count }))
+      .sort((a, b) => b.count - a.count).slice(0, 20);
+    const pathArr = Array.from(this.byPath.entries()).map(([pathname, count]) => ({ pathname, count }))
+      .sort((a, b) => b.count - a.count).slice(0, 50);
+    const ipArr = Array.from(this.byIp.entries()).map(([ip, count]) => ({ ip, count }))
+      .sort((a, b) => b.count - a.count).slice(0, 20);
+    return { total: this.events.length, recent, byAgent: agentArr, byPath: pathArr, byIp: ipArr };
+  }
+}
+
 // Performance monitoring
 export class PerformanceMonitor {
   private static instance: PerformanceMonitor;
@@ -430,6 +483,7 @@ export const monitoring = {
   performance: PerformanceMonitor.getInstance(),
   error: ErrorMonitor.getInstance(),
   logger: Logger.getInstance(),
+  crawl: CrawlMonitor.getInstance(),
   health: HealthMonitor.getInstance(),
 };
 

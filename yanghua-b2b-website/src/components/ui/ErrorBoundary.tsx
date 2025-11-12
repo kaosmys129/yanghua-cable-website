@@ -19,12 +19,21 @@ async function reportError(error: Error, errorInfo?: ErrorInfo) {
         userId: localStorage.getItem('userId') || 'anonymous',
       };
 
-      await fetch('/api/error-report', {
+      await fetch('/api/monitoring/errors', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(errorReport),
+        credentials: 'same-origin',
+        body: JSON.stringify({
+          message: errorReport.message,
+          stack: errorReport.stack,
+          url: errorReport.url,
+          userAgent: errorReport.userAgent,
+          userId: errorReport.userId,
+          severity: 'medium',
+          context: { componentStack: errorReport.componentStack, timestamp: errorReport.timestamp },
+        }),
       });
     } catch (reportingError) {
       console.error('Failed to report error:', reportingError);

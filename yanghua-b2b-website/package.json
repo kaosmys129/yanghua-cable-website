@@ -33,7 +33,6 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-toast": "^1.2.15",
-    "@strapi/client": "^1.4.0",
     "@tanstack/react-query": "5.89.0",
     "@tanstack/react-query-devtools": "5.89.0",
     "@types/better-sqlite3": "^7.6.13",
@@ -48,7 +47,6 @@
     "js-cookie": "^3.0.5",
     "jsdom": "^27.0.1",
     "lucide-react": "0.532.0",
-    "markdown-to-jsx": "^7.7.13",
     "mysql2": "^3.14.4",
     "next": "14.2.18",
     "next-intl": "4.3.5",
@@ -60,7 +58,6 @@
     "react-intersection-observer": "^9.16.0",
     "react-markdown": "^10.1.0",
     "react-use-measure": "^2.1.7",
-    "recharts": "^3.1.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "strapi-sdk-js": "^3.0.0",

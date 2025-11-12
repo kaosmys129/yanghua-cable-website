@@ -9,7 +9,7 @@ import type { Locale } from '@/lib/i18n';
 interface ProductCardGridProps {
   locale?: 'en' | 'es';
   className?: string;
-  onScrollToQuote?: () => void;
+  onQuoteOpen?: () => void;
 }
 
 /**
@@ -18,7 +18,7 @@ interface ProductCardGridProps {
  * - Data source: messages -> products.categories (first 4 items)
  * - Links: /[locale]/products/category/[name] using url-localization helper
  */
-export default function ProductCardGrid({ locale: propLocale, className, onScrollToQuote }: ProductCardGridProps) {
+export default function ProductCardGrid({ locale: propLocale, className, onQuoteOpen }: ProductCardGridProps) {
   const t = useTranslations('products');
   const currentLocale = (propLocale || useLocale()) as Locale;
 
@@ -78,7 +78,7 @@ export default function ProductCardGrid({ locale: propLocale, className, onScrol
                         // Prevent navigating the parent Link when CTA is clicked
                         e.preventDefault();
                         e.stopPropagation();
-                        onScrollToQuote?.();
+                        onQuoteOpen?.();
                       }}
                     >
                       Get Quote
