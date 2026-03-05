@@ -62,6 +62,10 @@ export default async function middleware(request: NextRequest) {
   }
 
   try {
+    if (pathname.startsWith('/_next/data/')) {
+      return NextResponse.next();
+    }
+
     // A. 方案B：对指定的旧URL返回 410 Gone（永久移除）
     // 列表来源：用户提供的7个 /en 前缀URL（当前均为404），明确标记为已删除
     const goneUrlPatterns: RegExp[] = [
@@ -191,7 +195,12 @@ export default async function middleware(request: NextRequest) {
     }
 
     // 5. 当访问未带语言前缀的英文路由段（/solutions 等）时，统一重定向到 /en/*
-    if (!pathname.startsWith('/en/') && !pathname.startsWith('/es/') && pathname !== '/') {
+    if (
+      !pathname.startsWith('/en/') &&
+      !pathname.startsWith('/es/') &&
+      pathname !== '/' &&
+      !pathname.startsWith('/_next/')
+    ) {
       const englishRootPatterns: RegExp[] = [
         /^\/about(\/.*)?$/i,
         /^\/products(\/.*)?$/i,
@@ -347,7 +356,6 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // 拦截所有路径（交给函数内自行跳过静态资源与API）
-    '/:path*',
+    '/((?!_next|.*\\..*).*)',
   ],
 };

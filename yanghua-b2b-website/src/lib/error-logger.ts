@@ -15,6 +15,7 @@ export interface ErrorLogEntry {
 class ErrorLogger {
   private logs: ErrorLogEntry[] = [];
   private maxLogs = 100; // Keep last 100 logs in memory
+  private isBrowser = typeof window !== 'undefined';
 
   private generateId(): string {
     return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -93,15 +94,19 @@ class ErrorLogger {
     }
 
     // Send to external service in production
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production' && this.isBrowser) {
       this.sendToExternalService(entry);
     }
   }
 
   private async sendToExternalService(entry: ErrorLogEntry) {
+    if (!this.isBrowser) {
+      return;
+    }
+
     try {
-      // Send to our error logging API
-      await fetch('/api/logs/errors', {
+      const endpoint = `${window.location.origin}/api/logs/errors`;
+      await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,6 +123,10 @@ class ErrorLogger {
   }
 
   private storeFailedLog(entry: ErrorLogEntry) {
+    if (!this.isBrowser) {
+      return;
+    }
+
     try {
       const failedLogs = JSON.parse(localStorage.getItem('failedErrorLogs') || '[]');
       failedLogs.push(entry);
@@ -133,11 +142,16 @@ class ErrorLogger {
 
   // Retry failed logs
   public async retryFailedLogs() {
+    if (!this.isBrowser) {
+      return;
+    }
+
     try {
       const failedLogs = JSON.parse(localStorage.getItem('failedErrorLogs') || '[]');
       if (failedLogs.length === 0) return;
 
-      const response = await fetch('/api/logs/errors', {
+      const endpoint = `${window.location.origin}/api/logs/errors`;
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
