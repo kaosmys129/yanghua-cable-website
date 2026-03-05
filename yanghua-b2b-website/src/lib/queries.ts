@@ -22,7 +22,7 @@ const CACHE_CONFIG = {
 /**
  * Hook for fetching all articles with caching
  */
-export function useArticles(locale?: string) {
+export function useArticles(locale?: string, initialData?: Article[]) {
   return useQuery({
     queryKey: locale ? [queryKeys.articles[0], locale] : queryKeys.articles,
     queryFn: async () => {
@@ -68,6 +68,7 @@ export function useArticles(locale?: string) {
     refetchInterval: (query) => query.state.status === 'error' ? 5000 : false,
     // Network mode to handle offline scenarios
     networkMode: 'online',
+    initialData,
   });
 }
 

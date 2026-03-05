@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import type { Metadata } from 'next';
 import { ArrowLeft, AlertTriangle } from "lucide-react";
@@ -6,12 +7,14 @@ import BlockRenderer from "@/components/BlockRenderer";
 import { notFound } from 'next/navigation';
 import { Article } from '@/lib/types';
 import { draftMode } from 'next/headers';
-import { getArticleBySlugWithMetrics } from "@/lib/strapi-client";
+import { getCachedArticleBySlug } from "@/lib/cached-api";
+import { getArticleBySlugWithDrafts } from "@/lib/strapi-client";
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { getLocalizedPath } from '@/lib/url-localization';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import RelatedArticles from '@/components/RelatedArticles';
 import ReadNext from '@/components/ReadNext';
+import { StrapiLocale } from "strapi-sdk-js";
 
 // Generate static params for all articles
 export async function generateStaticParams() {
@@ -68,17 +71,13 @@ export async function generateStaticParams() {
 // 禁用动态参数，只允许静态生成的参数
 export const dynamicParams = false;
 
-// Fetch article data using native fetch
-async function getArticle(slug: string, locale: string): Promise<Article | null> {
+// Fetch article data using cached API or draft API
+async function getArticle(slug: string, locale: string, isDraftMode: boolean): Promise<Article | null> {
   try {
-    const { article, metrics } = await getArticleBySlugWithMetrics(slug, locale as any);
-    if (!article) {
-      console.log(`No article found with slug: ${slug}`);
-      return null;
+    if (isDraftMode) {
+      return await getArticleBySlugWithDrafts(slug, locale as StrapiLocale);
     }
-    console.log(`[DataUsage] Article visit payload size: ${metrics.bytes} bytes`);
-    console.log(`Article found: ${article.title}`);
-    return article;
+    return await getCachedArticleBySlug(slug, locale as StrapiLocale);
   } catch (error) {
     console.error('Error fetching article:', error);
     return null;
@@ -95,10 +94,10 @@ interface PageProps {
 
 export default async function ArticlePage({ params }: PageProps) {
   const { slug, locale } = params;
+  const draft = await draftMode();
   
   // Fetch article data
-  const article = await getArticle(slug, locale);
-  const draft = await draftMode();
+  const article = await getArticle(slug, locale, draft.isEnabled);
   
   if (!article) {
     console.log('Article not found, calling notFound()');
@@ -207,7 +206,8 @@ export default async function ArticlePage({ params }: PageProps) {
 
 export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
   const { slug, locale } = params;
-  const article = await getArticle(slug, locale);
+  const draft = await draftMode();
+  const article = await getArticle(slug, locale, draft.isEnabled);
   const title = article?.title ? `${article.title} | Yanghua` : 'Article | Yanghua';
   const description = article?.description || 'Technical insights and resources from Yanghua on flexible busbar systems and applications.';
 
@@ -222,20 +222,32 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
     const locales = ['en', 'es'];
     languages = {};
     for (const l of locales) {
-      const loc = l === article.locale
-        ? { locale: article.locale, slug: article.slug }
-        : article.localizations.find(x => x.locale === l);
-      if (loc?.slug) {
-        const path = getLocalizedPath('articles-detail', l as any, { slug: loc.slug });
-        languages[l] = generateCanonicalUrl(path, l as any);
+      // Find the localization entry for this locale
+      let locSlug = slug;
+      if (l === article.locale) {
+        locSlug = article.slug;
+      } else {
+        const found = article.localizations.find(x => x.locale === l);
+        if (found?.slug) {
+          locSlug = found.slug;
+        } else {
+          // If not found, skip this locale or handle gracefully
+          continue;
+        }
       }
+      
+      const path = getLocalizedPath('articles-detail', l as any, { slug: locSlug });
+      languages[l] = generateCanonicalUrl(path, l as any);
     }
     // x-default 指向英文
     const enLoc = article.locale === 'en'
       ? { slug: article.slug, locale: 'en' }
       : article.localizations.find(x => x.locale === 'en');
-    const enPath = getLocalizedPath('articles-detail', 'en' as any, { slug: (enLoc?.slug || slug) });
-    languages['x-default'] = generateCanonicalUrl(enPath, 'en' as any);
+    
+    if (enLoc?.slug) {
+      const enPath = getLocalizedPath('articles-detail', 'en' as any, { slug: enLoc.slug });
+      languages['x-default'] = generateCanonicalUrl(enPath, 'en' as any);
+    }
   }
 
   return {
