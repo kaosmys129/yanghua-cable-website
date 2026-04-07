@@ -1,0 +1,111 @@
+{
+  "translationKey": "about",
+  "locale": "en",
+  "content": {
+    "hero": {
+      "title": "About Yanghua Cable - Flexible Copper Busbar Manufacturer",
+      "subtitle": "Leading the future of electrical power distribution system technology with innovation, quality, and reliability since 2013.",
+      "cta": {
+        "explore": "Explore Our Solutions",
+        "download": "Download Company Profile"
+      }
+    },
+    "overview": {
+      "title": "Leading High Current Busbar Solution Excellence",
+      "description": "With over a decade of experience, we are committed to delivering high-quality custom busbar design solutions that meet the most demanding industry standards. Our state-of-the-art facilities and expert team ensure reliable industrial busbar applications for every project.",
+      "stats": {
+        "patents": "50+ Patents",
+        "productionlines": "8 Production Lines",
+        "laboratories": "3 Testing Labs",
+        "enterprisestandards": "15 Enterprise Standards"
+      }
+    },
+    "mission": {
+      "title": "Mission & Values",
+      "subtitle": "Driving innovation and excellence in cable manufacturing",
+      "missionTitle": "Our Mission",
+      "missionContent": "To provide innovative, reliable, and sustainable cable solutions that power the world's most critical infrastructure and enable technological advancement.",
+      "missionDescription": "We are committed to excellence in every aspect of our business, from research and development to manufacturing and customer service.",
+      "valuesTitle": "Our Values",
+      "values": {
+        "innovation": "Innovation - Continuously pushing the boundaries of cable technology",
+        "responsibility": "Responsibility - Committed to environmental sustainability and social responsibility",
+        "cooperation": "Cooperation - Building strong partnerships with customers and suppliers",
+        "sustainability": "Sustainability - Developing eco-friendly solutions for a better future"
+      }
+    },
+    "journey": {
+      "title": "Our Journey",
+      "subtitle": "From a small startup to an industry leader, our journey reflects our commitment to excellence and innovation."
+    },
+    "timeline": {
+      "title": "Our Development Journey",
+      "subtitle": "Key milestones in our growth and innovation",
+      "milestones": [
+        {
+          "year": "2010",
+          "event": "Company founded with a vision to revolutionize cable manufacturing"
+        },
+        {
+          "year": "2015",
+          "event": "Achieved ISO 9001 certification and expanded production capacity"
+        },
+        {
+          "year": "2018",
+          "event": "Launched innovative fire-resistant cable series for critical applications"
+        },
+        {
+          "year": "2021",
+          "event": "Established international partnerships and entered global markets"
+        },
+        {
+          "year": "2023",
+          "event": "Reached 1 million meters of cable production milestone"
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Quality & Certifications",
+      "subtitle": "Our commitment to quality is validated by international certifications and rigorous testing standards.",
+      "description": "All our products undergo rigorous testing and quality control processes to ensure they meet or exceed international standards for safety, performance, and reliability.",
+      "cta": "View All Certifications"
+    },
+    "team": {
+      "title": "Our Leadership Team",
+      "subtitle": "Meet the experienced professionals driving our company's vision and growth.",
+      "positions": {
+        "ceo": "Chief Executive Officer",
+        "cto": "Chief Technology Officer",
+        "engineer": "Senior Engineer",
+        "qa": "Quality Assurance Director"
+      },
+      "experience": {
+        "ceo": "15+ years in electrical engineering and business leadership",
+        "cto": "20+ years in cable technology research and development",
+        "engineer": "12+ years in product design and manufacturing optimization",
+        "qa": "18+ years in quality management and international standards"
+      }
+    },
+    "cta": {
+      "title": "Ready to Partner with Us?",
+      "subtitle": "Let's discuss how our innovative cable solutions can meet your specific requirements and help you achieve your project goals.",
+      "description": "Let's discuss how our innovative cable solutions can meet your specific requirements and drive your project's success.",
+      "buttons": {
+        "contact": "Get in Touch",
+        "quote": "Request a Quote"
+      }
+    },
+    "video": {
+      "playButton": "Play Video",
+      "companyIntro": "Company Introduction Video",
+      "watchVideo": "Watch Our Story",
+      "loading": "Loading video...",
+      "error": "Unable to load video"
+    },
+    "equipment": {
+      "title": "Testing Equipment",
+      "subtitle": "Our state-of-the-art testing equipment ensures the highest quality and reliability of our products",
+      "badge": "Advanced Technology"
+    }
+  }
+}

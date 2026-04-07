@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from 'next';
-import { getAllHubs } from '@/lib/strapi-client';
+import { getAllHubs } from '@/lib/content-api';
 import { getLocalizedPath } from '@/lib/url-localization';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 

@@ -5,9 +5,9 @@ import {
   getArticleBySlug, 
   getAllHubs, 
   getHubBySlug 
-} from './strapi-client';
-import { StrapiLocale } from 'strapi-sdk-js';
+} from './content-api';
 import { Article, Hub } from './types';
+import type { ContentApiLocale } from './content-api';
 
 // Cache configuration
 export const CACHE_TAGS = {
@@ -21,7 +21,7 @@ export const REVALIDATE_TIME = 3600; // 1 hour
  * Cached version of getAllArticles
  */
 export const getCachedAllArticles = unstable_cache(
-  async (locale?: StrapiLocale) => {
+  async (locale?: ContentApiLocale) => {
     return getAllArticles(locale);
   },
   ['articles-list'],
@@ -35,7 +35,7 @@ export const getCachedAllArticles = unstable_cache(
  * Cached version of getArticleBySlug
  */
 export const getCachedArticleBySlug = unstable_cache(
-  async (slug: string, locale?: StrapiLocale) => {
+  async (slug: string, locale?: ContentApiLocale) => {
     return getArticleBySlug(slug, locale);
   },
   ['article-detail'],
@@ -49,7 +49,7 @@ export const getCachedArticleBySlug = unstable_cache(
  * Cached version of getAllHubs
  */
 export const getCachedAllHubs = unstable_cache(
-  async (locale?: StrapiLocale) => {
+  async (locale?: ContentApiLocale) => {
     return getAllHubs(locale);
   },
   ['hubs-list'],
@@ -63,7 +63,7 @@ export const getCachedAllHubs = unstable_cache(
  * Cached version of getHubBySlug
  */
 export const getCachedHubBySlug = unstable_cache(
-  async (slug: string, locale?: StrapiLocale) => {
+  async (slug: string, locale?: ContentApiLocale) => {
     return getHubBySlug(slug, locale);
   },
   ['hub-detail'],

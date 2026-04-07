@@ -1,0 +1,85 @@
+{
+  "translationKey": "services",
+  "locale": "es",
+  "content": {
+    "page": {
+      "title": "Servicio y Soporte",
+      "description": "Soporte integral durante todo el ciclo de vida de su proyecto, desde el diseño inicial hasta el mantenimiento a largo plazo."
+    },
+    "services": [
+      {
+        "number": "01",
+        "title": "Soporte Técnico",
+        "description": "Orientación experta desde la consulta inicial hasta la puesta en servicio del sistema",
+        "features": [
+          "Consulta técnica 24/7",
+          "Asistencia en diseño de sistemas",
+          "Supervisión de instalación",
+          "Optimización de rendimiento"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Guía de Instalación",
+        "description": "Soporte integral de instalación con documentación detallada y capacitación",
+        "features": [
+          "Manuales de instalación detallados",
+          "Tutoriales en video",
+          "Capacitación en sitio",
+          "Asistencia remota"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Servicio Postventa",
+        "description": "Soporte y mantenimiento a largo plazo para garantizar el rendimiento óptimo del sistema",
+        "features": [
+          "Mantenimiento preventivo",
+          "Servicio de garantía",
+          "Suministro de repuestos",
+          "Actualizaciones del sistema"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Centro de Descargas",
+        "description": "Acceso a documentos técnicos, certificaciones y recursos las 24 horas",
+        "features": [
+          "Especificaciones de productos",
+          "Dibujos CAD",
+          "Documentos de certificación",
+          "Casos de estudio"
+        ]
+      }
+    ],
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "q1": {
+        "question": "¿Cuáles son las principales ventajas de los sistemas de barras colectoras flexibles sobre los sistemas de cables tradicionales?",
+        "answer": "Los sistemas de barras colectoras flexibles ofrecen una capacidad superior de transporte de corriente, mejor disipación de calor, tiempo de instalación reducido y menores requisitos de mantenimiento en comparación con los sistemas de cables tradicionales. También proporcionan mejor utilización del espacio y características de seguridad mejoradas."
+      },
+      "q2": {
+        "question": "¿Cómo determino la clasificación de corriente adecuada para mi aplicación?",
+        "answer": "La clasificación de corriente depende de sus requisitos de carga, temperatura ambiente, método de instalación y factores de seguridad. Nuestro equipo técnico puede ayudarle a calcular la clasificación óptima basada en sus requisitos específicos de aplicación y códigos eléctricos locales."
+      },
+      "q3": {
+        "question": "¿Qué certificaciones tienen sus productos?",
+        "answer": "Nuestros productos están certificados según estándares internacionales incluyendo IEC, UL, CE y CCC. También tenemos certificación de gestión de calidad ISO 9001 y certificación de gestión ambiental ISO 14001. Las certificaciones específicas varían según la línea de productos."
+      },
+      "q4": {
+        "question": "¿Proporcionan soporte de instalación y capacitación?",
+        "answer": "Sí, proporcionamos soporte integral de instalación incluyendo manuales detallados, tutoriales en video, capacitación en sitio y asistencia remota. Nuestro equipo técnico también puede supervisar instalaciones críticas para garantizar un rendimiento óptimo."
+      },
+      "q5": {
+        "question": "¿Cuál es el tiempo de entrega típico para pedidos personalizados?",
+        "answer": "Los tiempos de entrega varían dependiendo de la complejidad y cantidad del pedido. Los productos estándar típicamente se envían dentro de 2-3 semanas, mientras que las soluciones personalizadas pueden requerir 4-8 semanas. Proporcionaremos cronogramas de entrega precisos durante el proceso de cotización."
+      }
+    },
+    "cta": {
+      "title": "¿Necesita Soporte Técnico?",
+      "description": "Nuestro equipo técnico está listo para ayudar con sus requisitos específicos.",
+      "contactSupport": "Contactar Soporte Técnico",
+      "downloadResources": "Descargar Recursos"
+    }
+  }
+}

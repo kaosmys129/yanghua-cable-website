@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getLocalizedPath } from '@/lib/url-localization';
 import { getSiteUrl } from '@/lib/site-url';
+import { contentRepository } from '@/lib/content-repository';
 
 export const revalidate = 60 * 60 * 24 * 7; // Revalidate sitemap weekly
 
@@ -75,47 +76,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 文章详情页（从 Strapi 获取）
-  const strapiBase = 'https://fruitful-presence-02d7be759c.strapiapp.com';
   async function fetchArticleSlugs(locale: string): Promise<string[]> {
     try {
-      const url = `${strapiBase}/api/articles?fields[0]=slug&locale=${locale}`;
-      const headers: Record<string, string> = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      };
-      if (process.env.STRAPI_API_TOKEN) {
-        headers.Authorization = `Bearer ${process.env.STRAPI_API_TOKEN}`;
-      }
-      const res = await fetch(url, { headers, next: { revalidate: 60 * 60 } });
-      if (!res.ok) return [];
-      const json = await res.json();
-      const data = Array.isArray(json?.data) ? json.data : [];
-      return data.map((a: any) => a.slug).filter(Boolean);
+      const data = await contentRepository.getAllArticles(locale as 'en' | 'es');
+      return data.map((article) => article.slug).filter(Boolean);
     } catch (e) {
-      console.error('Sitemap: failed to fetch article slugs', locale, e);
+      console.error('Sitemap: failed to load article slugs', locale, e);
       return [];
     }
   }
 
-  // 枢纽页（Hub）详情：从 Strapi 获取
   async function fetchHubSlugs(locale: string): Promise<string[]> {
     try {
-      const url = `${strapiBase}/api/hubs?fields[0]=slug&locale=${locale}`;
-      const headers: Record<string, string> = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      };
-      if (process.env.STRAPI_API_TOKEN) {
-        headers.Authorization = `Bearer ${process.env.STRAPI_API_TOKEN}`;
-      }
-      const res = await fetch(url, { headers, next: { revalidate: 60 * 60 } });
-      if (!res.ok) return [];
-      const json = await res.json();
-      const data = Array.isArray(json?.data) ? json.data : [];
-      return data.map((a: any) => a.slug).filter(Boolean);
+      const data = await contentRepository.getAllHubs(locale as 'en' | 'es');
+      return data.map((hub) => hub.slug).filter(Boolean);
     } catch (e) {
-      console.error('Sitemap: failed to fetch hub slugs', locale, e);
+      console.error('Sitemap: failed to load hub slugs', locale, e);
       return [];
     }
   }

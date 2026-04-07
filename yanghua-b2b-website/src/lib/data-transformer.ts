@@ -1,10 +1,10 @@
 import { Article, Block } from './types';
 import { logError } from './error-logger';
 
-// Data transformation utilities for Strapi Cloud responses
+// Data transformation utilities for normalized content payloads
 
 /**
- * Transforms and validates article data from Strapi Cloud
+ * Transforms and validates article data from the content layer
  */
 export function transformArticle(rawArticle: any): Article | null {
   try {
@@ -226,7 +226,7 @@ export function transformArticles(rawArticles: any[]): Article[] {
 }
 
 /**
- * Validates and normalizes Strapi Cloud API response
+ * Validates and normalizes content API responses
  */
 export function normalizeApiResponse<T>(response: any, transformer: (data: any) => T): {
   data: T | null;
@@ -234,7 +234,7 @@ export function normalizeApiResponse<T>(response: any, transformer: (data: any) 
   error?: string;
 } {
   try {
-    // Handle different response formats from Strapi Cloud
+    // Handle different response formats from the content layer
     if (response?.data) {
       return {
         data: transformer(response.data),
@@ -264,9 +264,6 @@ export function normalizeApiResponse<T>(response: any, transformer: (data: any) 
   }
 }
 
-/**
- * URL transformation utilities for Strapi Cloud
- */
 export function transformImageUrl(url: string, baseUrl?: string): string {
   if (!url) return '';
   
@@ -277,12 +274,12 @@ export function transformImageUrl(url: string, baseUrl?: string): string {
   
   // If URL starts with /, prepend base URL
   if (url.startsWith('/')) {
-    const base = baseUrl || process.env.STRAPI_BASE_URL || 'https://fruitful-presence-02d7be759c.strapiapp.com';
+    const base = baseUrl || '';
     return `${base}${url}`;
   }
   
   // Otherwise, assume it's a relative path
-  const base = baseUrl || process.env.STRAPI_BASE_URL || 'https://fruitful-presence-02d7be759c.strapiapp.com';
+  const base = baseUrl || '';
   return `${base}/${url}`;
 }
 

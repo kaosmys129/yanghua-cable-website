@@ -1,0 +1,10 @@
+{
+  "translationKey": "partners",
+  "locale": "es",
+  "content": {
+    "title": "Nuestros Socios",
+    "subtitle": "Confiado por empresas líderes en todo el mundo",
+    "viewAll": "Ver Todos los Socios",
+    "ctaAllPartners": "Solicitar Cotización"
+  }
+}

@@ -335,7 +335,6 @@ test.describe('错误收集和性能监控', () => {
       '/api/health',
       '/api/projects',
       '/api/articles',
-      '/api/strapi-health',
     ];
 
     const apiErrors: Array<{

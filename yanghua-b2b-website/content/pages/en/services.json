@@ -1,0 +1,85 @@
+{
+  "translationKey": "services",
+  "locale": "en",
+  "content": {
+    "page": {
+      "title": "Service & Support",
+      "description": "Comprehensive support throughout your project lifecycle, from initial design to long-term maintenance."
+    },
+    "services": [
+      {
+        "number": "01",
+        "title": "Technical Support",
+        "description": "Expert guidance from initial consultation through system commissioning",
+        "features": [
+          "24/7 technical consultation",
+          "System design assistance",
+          "Installation supervision",
+          "Performance optimization"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Installation Guide",
+        "description": "Comprehensive installation support with detailed documentation and training",
+        "features": [
+          "Detailed installation manuals",
+          "Video tutorials",
+          "On-site training",
+          "Remote assistance"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "After-sales Service",
+        "description": "Long-term support and maintenance to ensure optimal system performance",
+        "features": [
+          "Preventive maintenance",
+          "Warranty service",
+          "Spare parts supply",
+          "System upgrades"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Download Center",
+        "description": "Access technical documents, certifications, and resources 24/7",
+        "features": [
+          "Product specifications",
+          "CAD drawings",
+          "Certification documents",
+          "Case studies"
+        ]
+      }
+    ],
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "What are the main advantages of flexible busbar systems over traditional cable systems?",
+        "answer": "Flexible busbar systems offer superior current carrying capacity, better heat dissipation, reduced installation time, and lower maintenance requirements compared to traditional cable systems. They also provide better space utilization and improved safety features."
+      },
+      "q2": {
+        "question": "How do I determine the right current rating for my application?",
+        "answer": "The current rating depends on your load requirements, ambient temperature, installation method, and safety factors. Our technical team can help you calculate the optimal rating based on your specific application requirements and local electrical codes."
+      },
+      "q3": {
+        "question": "What certifications do your products have?",
+        "answer": "Our products are certified to international standards including IEC, UL, CE, and CCC. We also have ISO 9001 quality management certification and ISO 14001 environmental management certification. Specific certifications vary by product line."
+      },
+      "q4": {
+        "question": "Do you provide installation support and training?",
+        "answer": "Yes, we provide comprehensive installation support including detailed manuals, video tutorials, on-site training, and remote assistance. Our technical team can also supervise critical installations to ensure optimal performance."
+      },
+      "q5": {
+        "question": "What is the typical lead time for custom orders?",
+        "answer": "Lead times vary depending on the complexity and quantity of the order. Standard products typically ship within 2-3 weeks, while custom solutions may require 4-8 weeks. We'll provide accurate delivery schedules during the quotation process."
+      }
+    },
+    "cta": {
+      "title": "Need Technical Support?",
+      "description": "Our technical team is ready to assist with your specific requirements.",
+      "contactSupport": "Contact Technical Support",
+      "downloadResources": "Download Resources"
+    }
+  }
+}

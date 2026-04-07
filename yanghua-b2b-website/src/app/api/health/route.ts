@@ -2,13 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { checkAllServicesHealth, getOverallHealthStatus } from '@/lib/api-health-check';
 import { monitoring, createRequestLogger } from '@/lib/monitoring';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // 健康检查结果类型
 interface HealthStatus {
   status: 'healthy' | 'unhealthy' | 'degraded';
   timestamp: string;
   services: {
     database: string;
-    strapi: string;
+    content: string;
     [key: string]: string;
   };
   uptime: number;
@@ -43,7 +46,7 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString(),
       services: {
         database: 'not_configured',
-        strapi: 'not_configured'
+        content: 'not_configured'
       },
       uptime: process.uptime(),
       version: process.env.npm_package_version || '1.0.0',
@@ -56,8 +59,8 @@ export async function GET(request: NextRequest) {
     
     // 更新服务状态
     healthStatus.services.forEach(service => {
-      if (service.service.includes('strapi')) {
-        results.services.strapi = service.status;
+      if (service.service.includes('content')) {
+        results.services.content = service.status;
       }
     });
     

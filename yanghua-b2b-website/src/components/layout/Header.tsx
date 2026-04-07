@@ -2,29 +2,31 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
-import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Locale } from '@/lib/i18n';
 
+type HeaderContent = {
+  logo?: {
+    textPrimary?: string;
+    textAccent?: string;
+  };
+  navigation?: {
+    items: Array<{ label: string; href: string }>;
+    ctaLabel?: string;
+  };
+};
 
-
-export default function Header() {
+export default function Header({ content }: { content?: HeaderContent }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const t = useTranslations('navigation');
   const locale = useLocale() as Locale;
-
-  const navigation = [
-    { name: t('home'), href: buildLocalizedUrl('home', locale) },
-    { name: 'About', href: buildLocalizedUrl('about', locale) },
-    { name: t('products'), href: buildLocalizedUrl('products', locale) },
-    { name: t('solutions'), href: buildLocalizedUrl('solutions', locale) },
-    { name: 'Projects', href: buildLocalizedUrl('projects', locale) },
-    { name: t('news'), href: buildLocalizedUrl('articles', locale) },
-    { name: 'Services', href: buildLocalizedUrl('services', locale) },
-    { name: t('contact'), href: buildLocalizedUrl('contact', locale) },
-  ];
+  const navigation = content?.navigation?.items || [];
+  const ctaLabel = content?.navigation?.ctaLabel || (locale === 'es' ? 'Solicitar Cotización' : 'Get Quote');
+  const logoPrimary = content?.logo?.textPrimary || 'Yanghua';
+  const logoAccent = content?.logo?.textAccent || 'STI';
+  const homeHref = locale === 'es' ? '/es' : '/en';
+  const contactHref = locale === 'es' ? '/es/contacto' : '/en/contact';
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -32,8 +34,8 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href={buildLocalizedUrl('home', locale)} className="text-2xl font-bold text-[#212529]">
-              Yanghua<span className="text-[#fdb827]">STI</span>
+            <Link href={homeHref} className="text-2xl font-bold text-[#212529]">
+              {logoPrimary}<span className="text-[#fdb827]">{logoAccent}</span>
             </Link>
           </div>
 
@@ -41,11 +43,11 @@ export default function Header() {
           <nav className="hidden md:flex space-x-8">
             {navigation.map((item) => (
               <Link
-                key={item.name}
+                key={item.label}
                 href={item.href}
                 className="text-[#212529] hover:text-[#fdb827] px-3 py-2 text-sm font-medium transition-colors"
               >
-                {item.name}
+                {item.label}
               </Link>
             ))}
           </nav>
@@ -54,10 +56,10 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
             <Link
-              href={buildLocalizedUrl('contact', locale)}
+              href={contactHref}
               className="btn-primary text-sm"
             >
-              Get Quote
+              {ctaLabel}
             </Link>
           </div>
 
@@ -78,12 +80,12 @@ export default function Header() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.label}
                   href={item.href}
                   className="text-[#212529] hover:text-[#fdb827] block px-3 py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.name}
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -93,11 +95,11 @@ export default function Header() {
                   <LanguageSwitcher />
                 </div>
                 <Link
-                  href={buildLocalizedUrl('contact', locale)}
+                  href={contactHref}
                   className="btn-primary w-full text-center block"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Get Quote
+                  {ctaLabel}
                 </Link>
               </div>
             </div>

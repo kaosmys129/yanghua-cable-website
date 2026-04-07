@@ -167,3 +167,138 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-rich-text {
+  color: #334155;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+}
+
+.article-rich-text > :first-child {
+  margin-top: 0;
+}
+
+.article-rich-text > :last-child {
+  margin-bottom: 0;
+}
+
+.article-rich-text h1,
+.article-rich-text h2,
+.article-rich-text h3,
+.article-rich-text h4 {
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.article-rich-text h1 {
+  font-size: 2.25rem;
+}
+
+.article-rich-text h2 {
+  font-size: 1.75rem;
+}
+
+.article-rich-text h3 {
+  font-size: 1.375rem;
+}
+
+.article-rich-text p,
+.article-rich-text ul,
+.article-rich-text ol {
+  margin: 1rem 0;
+  max-width: 68ch;
+}
+
+.article-rich-text > p:first-of-type {
+  font-size: 1.125rem;
+  line-height: 1.95;
+  color: #1e293b;
+}
+
+.article-rich-text > p:first-of-type::first-letter {
+  float: left;
+  margin-right: 0.45rem;
+  margin-top: 0.2rem;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.article-rich-text ul,
+.article-rich-text ol {
+  padding-left: 1.5rem;
+}
+
+.article-rich-text li + li {
+  margin-top: 0.5rem;
+}
+
+.article-rich-text strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.article-rich-text a {
+  color: #d97706;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.article-rich-text blockquote {
+  margin: 2rem 0;
+  border-left: 4px solid #f59e0b;
+  background: #fff8eb;
+  color: #78350f;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.article-rich-text img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 1.5rem;
+}
+
+.article-rich-text hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+.article-rich-text figure,
+.article-rich-text blockquote {
+  max-width: none;
+}
+
+.article-body > * + * {
+  margin-top: 2rem;
+}
+
+.article-card {
+  position: relative;
+}
+
+.article-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}

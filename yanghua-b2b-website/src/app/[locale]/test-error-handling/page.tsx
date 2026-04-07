@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import errorLogger from '@/lib/error-logger';
-import { getStrapiURL } from '@/lib/utils';
+import { getContentBaseUrl } from '@/lib/utils';
 
 interface ErrorDetails {
   message: string;
@@ -55,7 +55,7 @@ export default function TestErrorHandlingPage() {
   useEffect(() => {
     const simulateFirstLoad = async () => {
       try {
-        const url = getStrapiURL() + '/api/articles?populate[cover][populate]=*&populate[author][populate][avatar][populate]=*&populate[blocks][populate]=*';
+        const url = getContentBaseUrl() + '/api/articles?locale=en';
         const response = await fetch(url, {
           cache: 'no-store',
           method: 'GET',
@@ -82,7 +82,7 @@ export default function TestErrorHandlingPage() {
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-2">错误处理测试页面</h1>
         <p className="text-muted-foreground">
-          此页面用于测试和调试 Strapi Cloud 接口的错误处理改进
+          此页面用于测试和调试内容仓库接口的错误处理改进
         </p>
       </div>
 

@@ -1,0 +1,83 @@
+{
+  "translationKey": "home",
+  "locale": "es",
+  "hero": {
+    "title": "Innovador en distribución de energía de bajo voltaje y alta corriente",
+    "subtitle": "La única barra colectora flexible de alta corriente del mundo, en la que puedes confiar",
+    "description": "Grado de protección IP68, capacidad máxima de corriente individual 6400A, flexible y fácil de instalar",
+    "cta": "Explorar Productos",
+    "learnMore": "Saber Más"
+  },
+  "companyStrength": {
+    "title": "Nuestra Fortaleza Empresarial",
+    "subtitle": "Nuestro compromiso con la innovación y la calidad está respaldado por amplias capacidades de I+D, sistemas integrales de garantía de calidad y un historial comprobado con empresas Fortune 500.",
+    "stats": {
+      "certifications": {
+        "value": "40+",
+        "label": "Patentes y Certificaciones",
+        "description": "Liderazgo tecnológico impulsado por la innovación"
+      },
+      "capacity": {
+        "value": "2",
+        "label": "Líneas de Producción",
+        "description": "Instalaciones de fabricación de última generación"
+      },
+      "testing": {
+        "value": "3",
+        "label": "Laboratorios de Pruebas",
+        "description": "Garantía de calidad integral"
+      },
+      "documentation": {
+        "value": "11",
+        "label": "Estándares Empresariales",
+        "description": "Especificaciones líderes en la industria"
+      }
+    },
+    "ctaLearnMore": "Conoce Más Sobre Nosotros"
+  },
+  "applicationAreas": {
+    "title": "Áreas de Aplicación",
+    "subtitle": "Sirviendo a diversas industrias con soluciones especializadas de cables",
+    "areas": {
+      "energy": {
+        "title": "Energía Nueva",
+        "description": "Soluciones avanzadas de cables para sistemas solares, eólicos y de almacenamiento de energía."
+      },
+      "building": {
+        "title": "Sistemas de Energía",
+        "description": "Cables confiables de transmisión y distribución de energía para servicios públicos."
+      },
+      "industry": {
+        "title": "Industrial",
+        "description": "Cables de uso pesado para aplicaciones de fabricación e industriales."
+      },
+      "dataCenter": {
+        "title": "Centro de Datos",
+        "description": "Cables de alto rendimiento para centros de datos e infraestructura de TI."
+      },
+      "railway": {
+        "title": "Transporte Ferroviario",
+        "description": "Cables especializados para sistemas ferroviarios y de tránsito urbano."
+      },
+      "chemical": {
+        "title": "Metalurgia y Química",
+        "description": "Cables resistentes a la corrosión para entornos industriales agresivos."
+      },
+      "marine": {
+        "title": "Marítimo y Naval",
+        "description": "Cables de grado marino para aplicaciones offshore y construcción naval."
+      }
+    },
+    "ctaViewSolution": "Ver Solución",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
+  },
+  "partners": {
+    "title": "Nuestros Socios",
+    "subtitle": "Confiado por empresas líderes en todo el mundo",
+    "viewAll": "Ver Todos los Socios",
+    "ctaAllPartners": "Solicitar Cotización"
+  }
+}

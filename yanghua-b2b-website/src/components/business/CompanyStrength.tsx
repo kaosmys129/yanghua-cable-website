@@ -7,34 +7,47 @@ import { useTranslations, useLocale } from 'next-intl';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Locale } from '@/lib/i18n';
 
-export default function CompanyStrength() {
+type CompanyStrengthContent = {
+  title: string;
+  subtitle: string;
+  ctaLearnMore: string;
+  stats: {
+    certifications: { value: string; label: string; description: string };
+    capacity: { value: string; label: string; description: string };
+    testing: { value: string; label: string; description: string };
+    documentation: { value: string; label: string; description: string };
+  };
+};
+
+export default function CompanyStrength({ content }: { content?: CompanyStrengthContent }) {
   const t = useTranslations('companyStrength');
   const locale = useLocale() as Locale;
+  const statsContent = content?.stats;
 
   const stats = [
     {
       icon: Award,
-      value: t('stats.certifications.value'),
-      label: t('stats.certifications.label'),
-      description: t('stats.certifications.description'),
+      value: statsContent?.certifications.value ?? t('stats.certifications.value'),
+      label: statsContent?.certifications.label ?? t('stats.certifications.label'),
+      description: statsContent?.certifications.description ?? t('stats.certifications.description'),
     },
     {
       icon: Factory,
-      value: t('stats.capacity.value'),
-      label: t('stats.capacity.label'),
-      description: t('stats.capacity.description'),
+      value: statsContent?.capacity.value ?? t('stats.capacity.value'),
+      label: statsContent?.capacity.label ?? t('stats.capacity.label'),
+      description: statsContent?.capacity.description ?? t('stats.capacity.description'),
     },
     {
       icon: Beaker,
-      value: t('stats.testing.value'),
-      label: t('stats.testing.label'),
-      description: t('stats.testing.description'),
+      value: statsContent?.testing.value ?? t('stats.testing.value'),
+      label: statsContent?.testing.label ?? t('stats.testing.label'),
+      description: statsContent?.testing.description ?? t('stats.testing.description'),
     },
     {
       icon: FileText,
-      value: t('stats.documentation.value'),
-      label: t('stats.documentation.label'),
-      description: t('stats.documentation.description'),
+      value: statsContent?.documentation.value ?? t('stats.documentation.value'),
+      label: statsContent?.documentation.label ?? t('stats.documentation.label'),
+      description: statsContent?.documentation.description ?? t('stats.documentation.description'),
     },
   ];
 
@@ -43,10 +56,10 @@ export default function CompanyStrength() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#212529] mb-4">
-            {t('title')}
+            {content?.title ?? t('title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {t('subtitle')}
+            {content?.subtitle ?? t('subtitle')}
           </p>
         </div>
 
@@ -84,7 +97,7 @@ export default function CompanyStrength() {
             href={buildLocalizedUrl('about', locale)} 
             className="inline-flex items-center text-[#fdb827] hover:text-[#e0a020] font-medium"
           >
-            {t('ctaLearnMore')} <ArrowRight className="ml-2 h-4 w-4" />
+            {content?.ctaLearnMore ?? t('ctaLearnMore')} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>
       </div>

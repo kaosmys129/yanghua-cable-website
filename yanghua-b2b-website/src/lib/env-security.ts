@@ -18,12 +18,10 @@ const SENSITIVE_PATTERNS = [
 // 必需的环境变量
 const REQUIRED_ENV_VARS = {
   development: [
-    'NEXT_PUBLIC_SITE_URL',
-    'NEXT_PUBLIC_STRAPI_URL'
+    'NEXT_PUBLIC_SITE_URL'
   ],
   production: [
     'NEXT_PUBLIC_SITE_URL',
-    'NEXT_PUBLIC_STRAPI_URL',
     'JWT_SECRET',
     'DATABASE_URL'
   ]
@@ -41,10 +39,6 @@ const ENV_VALIDATION_RULES: Record<string, ValidationRule> = {
   'NEXT_PUBLIC_SITE_URL': {
     pattern: /^https?:\/\/.+/,
     message: 'SITE_URL 必须是有效的HTTP/HTTPS URL'
-  },
-  'NEXT_PUBLIC_STRAPI_URL': {
-    pattern: /^https?:\/\/.+/,
-    message: 'STRAPI_URL 必须是有效的HTTP/HTTPS URL'
   },
   'JWT_SECRET': {
     minLength: 32,

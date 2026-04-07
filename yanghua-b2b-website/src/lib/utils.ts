@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { getSiteUrl } from "./site-url";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -18,8 +19,8 @@ export function combineClasses(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-export function getStrapiURL() {
-  return process.env.STRAPI_BASE_URL ?? "https://fruitful-presence-02d7be759c.strapiapp.com";
+export function getContentBaseUrl() {
+  return getSiteUrl();
 }
 
 // PDF下载配置接口

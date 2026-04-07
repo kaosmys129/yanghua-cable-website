@@ -8,11 +8,24 @@ import { InfiniteSlider } from '../ui/InfiniteSlider';
 import { buildLocalizedUrl } from '@/lib/url-localization';
 import type { Locale } from '@/lib/i18n';
 
-export default function Partners({ onQuoteOpen }: { onQuoteOpen?: () => void }) {
+type PartnersContent = {
+  title: string;
+  subtitle: string;
+  ctaAllPartners: string;
+  items?: Array<{ name: string; logo: string }>;
+};
+
+export default function Partners({
+  onQuoteOpen,
+  content,
+}: {
+  onQuoteOpen?: () => void;
+  content?: PartnersContent;
+}) {
   const t = useTranslations('partners');
   const locale = useLocale() as Locale;
 
-  const partners = [
+  const fallbackPartners = [
     { name: 'BYD', logo: '/images/partners/byd.webp' },
     { name: 'CATL', logo: '/images/partners/catl.webp' },
     { name: 'Huawei', logo: '/images/partners/huawei.webp' },
@@ -22,13 +35,14 @@ export default function Partners({ onQuoteOpen }: { onQuoteOpen?: () => void }) 
     { name: 'PetroChina', logo: '/images/partners/oil china.webp' },
     { name: 'Sinopec', logo: '/images/partners/sinopec.webp' },
   ];
+  const partners = content?.items?.length ? content.items : fallbackPartners;
 
   return (
     <section className="py-16 lg:py-24 bg-[#f8f9fa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#212529] mb-4">{t('title')}</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t('subtitle')}</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#212529] mb-4">{content?.title ?? t('title')}</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">{content?.subtitle ?? t('subtitle')}</p>
         </div>
 
         <div className="relative overflow-hidden">
@@ -70,7 +84,7 @@ export default function Partners({ onQuoteOpen }: { onQuoteOpen?: () => void }) 
               }
             }}
           >
-            {t('ctaAllPartners')} <ArrowRight className="ml-2 h-4 w-4" />
+            {content?.ctaAllPartners ?? t('ctaAllPartners')} <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>
       </div>

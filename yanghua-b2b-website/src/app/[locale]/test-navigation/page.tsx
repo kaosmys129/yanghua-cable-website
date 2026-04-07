@@ -24,9 +24,9 @@ export default function TestNavigationPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-medium mb-2">动态页面（Strapi数据）</h3>
+              <h3 className="text-lg font-medium mb-2">动态页面（内容仓库数据）</h3>
               <p className="text-gray-600 mb-3">
-                从Strapi CMS获取数据的动态文章详情页。
+                从本地内容仓库获取数据的动态文章详情页。
               </p>
               <Link 
                 href="/en/articles/a-bug-is-becoming-a-meme-on-the-internet" 
@@ -42,7 +42,7 @@ export default function TestNavigationPage() {
           <h2 className="text-2xl font-semibold mb-4 text-[#212529]">测试说明</h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>静态测试页面使用 <code className="bg-gray-200 px-1 rounded">/lib/data.ts</code> 中的模拟数据</li>
-            <li>动态页面从Strapi CMS获取实时数据</li>
+            <li>动态页面从 Tina 内容仓库获取实时数据</li>
             <li>两个页面使用相同的组件和样式，确保一致性</li>
             <li>静态页面包含调试信息，显示数据来源和文章详情</li>
           </ul>

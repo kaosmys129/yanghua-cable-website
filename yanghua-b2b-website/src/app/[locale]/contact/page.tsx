@@ -1,39 +1,57 @@
-'use client';
-
-import { generateCanonicalUrl } from '@/lib/seo';
-import { buildLocalizedUrl } from '@/lib/url-localization';
-import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import ContactForm from '@/components/features/ContactForm';
+import { contentRepository } from '@/lib/content-repository';
 
-export default function ContactPage() {
-  const t = useTranslations('contact');
-  
+type ContactPageContent = {
+  content: {
+    page: { title: string; description: string };
+    sections: { getInTouch: string };
+    info: {
+      phone: { title: string; content: string; description: string };
+      email: { title: string; content: string; description: string };
+      address: { title: string; content: string; description: string };
+      hours: { title: string; content: string; description: string };
+    };
+    globalSupport: {
+      title: string;
+      description: string;
+      regions: {
+        northAmerica: string;
+        europe: string;
+        asiaPacific: string;
+      };
+    };
+  };
+};
+
+export default async function ContactPage({ params }: { params: { locale: string } }) {
+  const locale = (params.locale || 'en') as 'en' | 'es';
+  const pageContent = contentRepository.getPageContent<ContactPageContent>('contact', locale)?.content;
+
   const contactInfo = [
     {
       icon: Phone,
-      title: t('info.phone.title'),
-      content: t('info.phone.content'),
-      description: t('info.phone.description'),
+      title: pageContent?.info.phone.title,
+      content: pageContent?.info.phone.content,
+      description: pageContent?.info.phone.description,
     },
     {
       icon: Mail,
-      title: t('info.email.title'),
-      content: t('info.email.content'),
-      description: t('info.email.description'),
+      title: pageContent?.info.email.title,
+      content: pageContent?.info.email.content,
+      description: pageContent?.info.email.description,
     },
     {
       icon: MapPin,
-      title: t('info.address.title'),
-      content: t('info.address.content'),
-      description: t('info.address.description'),
+      title: pageContent?.info.address.title,
+      content: pageContent?.info.address.content,
+      description: pageContent?.info.address.description,
     },
     {
       icon: Clock,
-      title: t('info.hours.title'),
-      content: t('info.hours.content'),
-      description: t('info.hours.description'),
+      title: pageContent?.info.hours.title,
+      content: pageContent?.info.hours.content,
+      description: pageContent?.info.hours.description,
     },
   ];
 
@@ -41,21 +59,14 @@ export default function ContactPage() {
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-[#212529] mb-4">
-            {t('page.title')}
-          </h1>
-          <p className="text-xl text-[#6c757d] max-w-3xl mx-auto">
-            {t('page.description')}
-          </p>
+          <h1 className="text-4xl font-bold text-[#212529] mb-4">{pageContent?.page.title}</h1>
+          <p className="text-xl text-[#6c757d] max-w-3xl mx-auto">{pageContent?.page.description}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-bold text-[#212529] mb-6">
-              {t('sections.getInTouch')}
-            </h2>
-            
+            <h2 className="text-2xl font-bold text-[#212529] mb-6">{pageContent?.sections.getInTouch}</h2>
+
             <div className="space-y-6">
               {contactInfo.map((info) => (
                 <div key={info.title} className="flex items-start">
@@ -72,21 +83,16 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-8 p-6 bg-[#f8f9fa] rounded-lg">
-              <h3 className="font-semibold text-[#212529] mb-2">
-                {t('globalSupport.title')}
-              </h3>
-              <p className="text-sm text-[#6c757d] mb-4">
-                {t('globalSupport.description')}
-              </p>
+              <h3 className="font-semibold text-[#212529] mb-2">{pageContent?.globalSupport.title}</h3>
+              <p className="text-sm text-[#6c757d] mb-4">{pageContent?.globalSupport.description}</p>
               <ul className="text-sm text-[#6c757d] space-y-1">
-                <li>• {t('globalSupport.regions.northAmerica')}</li>
-                <li>• {t('globalSupport.regions.europe')}</li>
-                <li>• {t('globalSupport.regions.asiaPacific')}</li>
+                <li>• {pageContent?.globalSupport.regions.northAmerica}</li>
+                <li>• {pageContent?.globalSupport.regions.europe}</li>
+                <li>• {pageContent?.globalSupport.regions.asiaPacific}</li>
               </ul>
             </div>
           </div>
 
-          {/* Contact Form */}
           <div>
             <ContactForm />
           </div>

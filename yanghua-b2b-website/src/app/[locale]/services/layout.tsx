@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
+import { getLocalizedPath } from '@/lib/url-localization';
+import { contentRepository } from '@/lib/content-repository';
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -9,20 +10,15 @@ export default function ServicesLayout({ children }: { children: React.ReactNode
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
-  
-  const titles: Record<string, string> = {
-    en: 'Busbar Manufacturing & Testing | Yanghua',
-    es: 'Servicios de Fabricación y Pruebas | Yanghua',
-  };
-  const descriptions: Record<string, string> = {
-    en: 'From engineering design to testing and maintenance, Yanghua provides end-to-end services to ensure reliable flexible busbar performance.',
-    es: 'Desde diseño hasta pruebas y mantenimiento, Yanghua ofrece servicios integrales para garantizar el rendimiento de barras colectoras flexibles.',
-  };
+  const page = contentRepository.getPageContent<{ metadata?: { title?: string; description?: string } }>(
+    'services',
+    locale as 'en' | 'es'
+  );
   const localizedPath = getLocalizedPath('services', locale as any);
   const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
   return {
-    title: titles[locale] || titles.en,
-    description: descriptions[locale] || descriptions.en,
+    title: page?.metadata?.title,
+    description: page?.metadata?.description,
     alternates: {
       canonical,
       languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),

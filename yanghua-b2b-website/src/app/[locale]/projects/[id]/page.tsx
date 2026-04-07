@@ -36,10 +36,7 @@ interface Project {
 async function getProject(id: string, t: any): Promise<Project | null> {
   try {
     const projects = t.raw('list') as any[];
-    console.log("Debug: Project ID:", id, "Projects found:", projects?.length);
-    console.log("Debug: Available project IDs:", projects?.map(p => p.id));
     const project = projects.find(p => p.id === id);
-    console.log("Debug: Found project:", !!project, project?.title);
     
     if (!project) {
       return null;

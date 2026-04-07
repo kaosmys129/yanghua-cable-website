@@ -13,8 +13,8 @@
 1. [项目概述](#1-项目概述)
 2. [后端代码审查报告](#2-后端代码审查报告)
 3. [数据模型专项检查](#3-数据模型专项检查)
-4. [Stripe CMS集成准备方案](#4-stripe-cms集成准备方案)
-5. [WordPress CMS迁移记录](#5-wordpress-cms迁移记录)
+4. [内容架构迁移说明](#4-内容架构迁移说明)
+5. [历史迁移记录](#5-历史迁移记录)
 6. [版本控制信息](#6-版本控制信息)
 7. [修改记录](#7-修改记录)
 
@@ -25,9 +25,9 @@
 ### 1.1 项目基本信息
 
 - **项目名称**: 阳华STI B2B网站
-- **技术栈**: Next.js 15.4.4 + React 19.1.0 + TypeScript + Tailwind CSS
+- **技术栈**: Next.js 14 + React + TypeScript + Tailwind CSS
 - **部署环境**: Vercel
-- **开发模式**: Turbopack (开发环境)
+- **开发模式**: Next.js App Router
 - **国际化**: next-intl (支持英语、西班牙语)
 
 ### 1.2 项目架构
@@ -38,7 +38,6 @@ yanghua-b2b-website/
 │   ├── app/                 # Next.js App Router
 │   │   ├── [locale]/        # 国际化路由
 │   │   ├── admin/           # 管理后台
-│   │   ├── test-cloud/      # Strapi Cloud测试页面
 │   │   └── api/             # API路由
 │   ├── components/          # React组件
 │   │   ├── admin/           # 管理组件
@@ -48,7 +47,8 @@ yanghua-b2b-website/
 │   │   ├── providers/       # React Query等Provider
 │   │   └── ui/              # UI组件
 │   ├── lib/                 # 工具库
-│   │   ├── strapi-client.ts # Strapi Cloud客户端
+│   │   ├── content-api.ts   # 内容接口兼容层
+│   │   ├── content-repository.ts # 文件内容仓库
 │   │   ├── queries.ts       # React Query配置
 │   │   └── utils.ts         # 工具函数
 │   ├── messages/            # 国际化文件
@@ -60,23 +60,19 @@ yanghua-b2b-website/
 └── 配置文件
 ```
 
-### 1.3 Strapi Cloud集成
+### 1.3 文件内容仓库与 Tina CMS
 
-项目已集成Strapi Cloud作为内容管理系统：
+项目当前使用仓库内文件作为内容源，并通过 Tina CMS 提供本地编辑能力：
 
-- **Strapi Cloud URL**: `https://fruitful-presence-02d7be759c.strapiapp.com`
-- **数据获取**: 使用React Query进行数据缓存和状态管理
-- **错误处理**: 针对云服务优化的错误处理和重试机制
-- **性能优化**: 扩展缓存时间和智能重试策略
-- **测试页面**: `/test-cloud` 用于验证连接状态
+- **内容目录**: `content/articles`、`content/hubs`、`content/pages`、`content/settings`
+- **数据获取**: 服务端通过 `content-repository.ts` 读取文件内容，客户端通过 `/api/articles` 获取文章列表
+- **错误处理**: 保留 React Query 与统一错误日志能力
+- **性能优化**: 通过 Next.js 缓存和预生成减少运行时开销
+- **编辑工作流**: 开发环境使用 Tina，本地文件提交后发布
 
 #### 环境变量配置
 
 ```bash
-# Strapi Cloud Configuration
-STRAPI_BASE_URL=https://fruitful-presence-02d7be759c.strapiapp.com
-# STRAPI_API_TOKEN=your_api_token_here   # 公开文章端点无需API Token
-
 # Next.js Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_ENVIRONMENT=development

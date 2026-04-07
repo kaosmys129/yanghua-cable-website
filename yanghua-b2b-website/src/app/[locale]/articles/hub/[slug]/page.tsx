@@ -1,10 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getHubBySlug } from '@/lib/strapi-client';
+import { getHubBySlug } from '@/lib/content-api';
 import { getLocalizedPath } from '@/lib/url-localization';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { StrapiImage } from '@/components/custom/StrapiImage';
+import { CmsImage } from '@/components/custom/CmsImage';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface PageProps {
   params: { slug: string; locale: string }
@@ -40,11 +42,13 @@ export default async function HubPage({ params }: PageProps) {
       <h1 className="text-4xl font-bold mb-4">{hub.title}</h1>
       {hub.cover?.url && (
         <div className="w-full h-72 relative rounded-lg overflow-hidden mb-6">
-          <StrapiImage src={hub.cover.url} alt={hub.cover.alternativeText || hub.title} fill className="object-cover" />
+          <CmsImage src={hub.cover.url} alt={hub.cover.alternativeText || hub.title} fill className="object-cover" />
         </div>
       )}
       {hub.intro && (
-        <div className="prose max-w-none mb-8" dangerouslySetInnerHTML={{ __html: hub.intro }} />
+        <div className="prose max-w-none mb-8">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{hub.intro}</ReactMarkdown>
+        </div>
       )}
 
       <section className="mt-8">
@@ -56,7 +60,7 @@ export default async function HubPage({ params }: PageProps) {
               <article key={a.id} className="border rounded-lg overflow-hidden">
                 <Link href={`/${locale}${aDetailPath === '/' ? '' : aDetailPath}`} className="block">
                   <div className="relative h-40 w-full">
-                    <StrapiImage
+                    <CmsImage
                       src={a.cover?.url || "/placeholder.svg?height=160&width=320&query=cover"}
                       alt={a.cover?.alternativeText || a.title}
                       fill
@@ -80,7 +84,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug, locale } = params;
   const hub = await getHubBySlug(slug, locale as any);
   const title = hub?.title ? `${hub.title} | Yanghua` : 'Topic Hub | Yanghua';
-  const description = hub?.intro ? stripHtml(hub.intro).slice(0, 160) : 'Curated topic hub with featured articles.';
+  const description = hub?.intro ? stripMarkdown(hub.intro).slice(0, 160) : 'Curated topic hub with featured articles.';
 
   const localizedPath = getLocalizedPath('articles-hub-detail', locale as any, { slug });
   const canonical = generateCanonicalUrl(localizedPath, locale as any);
@@ -95,8 +99,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+function stripMarkdown(markdown: string): string {
+  return markdown
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
+    .replace(/\[[^\]]+\]\([^)]+\)/g, ' ')
+    .replace(/[#>*_`-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export const dynamicParams = false;

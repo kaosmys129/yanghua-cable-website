@@ -1,3 +1,4 @@
+
 {
   "collectionName": "components_shared_rich_texts",
   "info": {
@@ -9,6 +10,9 @@
   "attributes": {
     "body": {
       "type": "richtext"
+    },
+    "body_blocks": {
+      "type": "blocks"
     }
   }
 }

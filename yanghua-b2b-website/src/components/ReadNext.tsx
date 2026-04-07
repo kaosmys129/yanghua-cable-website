@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Article } from "@/lib/types";
-import { getAllArticlesWithDrafts } from "@/lib/strapi-client";
+import { getAllArticlesWithDrafts } from "@/lib/content-api";
 import { getLocalizedPath } from "@/lib/url-localization";
 
 interface ReadNextProps {
@@ -25,7 +25,7 @@ export default async function ReadNext({ locale, currentArticle }: ReadNextProps
     : { prev: 'Previous Article', next: 'Next Article' };
 
   return (
-    <nav className="mt-12 flex items-center justify-between gap-4 border-t pt-6">
+    <nav className="grid gap-4 md:grid-cols-2">
       <div className="flex-1">
         {prev && (
           <ReadNextLink locale={locale} article={prev} label={labels.prev} align="left" />
@@ -43,11 +43,12 @@ export default async function ReadNext({ locale, currentArticle }: ReadNextProps
 function ReadNextLink({ locale, article, label, align }: { locale: string; article: Article; label: string; align: 'left' | 'right' }) {
   const detailPath = getLocalizedPath('articles-detail', locale as any, { slug: article.slug });
   return (
-    <div className={align === 'right' ? 'inline-block text-right' : 'inline-block text-left'}>
-      <p className="text-sm text-gray-500">{label}</p>
-      <Link href={`/${locale}${detailPath === '/' ? '' : detailPath}`} className="hover:underline font-medium">
-        {article.title}
-      </Link>
-    </div>
+    <Link
+      href={`/${locale}${detailPath === '/' ? '' : detailPath}`}
+      className={`block rounded-[24px] border border-slate-200 bg-white px-5 py-5 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-[0_24px_70px_-40px_rgba(217,119,6,0.4)] ${align === 'right' ? 'text-right' : 'text-left'}`}
+    >
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">{label}</p>
+      <p className="mt-3 text-lg font-semibold leading-snug text-slate-900">{article.title}</p>
+    </Link>
   );
 }

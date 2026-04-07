@@ -1,0 +1,83 @@
+{
+  "translationKey": "contact",
+  "locale": "en",
+  "content": {
+    "page": {
+      "title": "Contact Us",
+      "description": "Get in touch with our team for quotes, technical support, or any questions about our flexible busbar solutions."
+    },
+    "sections": {
+      "getInTouch": "Get in Touch"
+    },
+    "info": {
+      "phone": {
+        "title": "Phone",
+        "content": "+86-19359963105",
+        "description": "Call us during business hours"
+      },
+      "email": {
+        "title": "Email",
+        "content": "info@yhflexiblebusbar.com",
+        "description": "Send us an email anytime"
+      },
+      "address": {
+        "title": "Address",
+        "content": "Shenzhen, Guangdong, China",
+        "description": "Visit our manufacturing facility"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "content": "Mon-Fri: 8:00 AM - 6:00 PM (CST)",
+        "description": "We are here to help"
+      }
+    },
+    "globalSupport": {
+      "title": "Global Support",
+      "description": "We provide worldwide support and service for all our products.",
+      "regions": {
+        "northAmerica": "North America",
+        "europe": "Europe",
+        "asiaPacific": "Asia Pacific"
+      }
+    },
+    "form": {
+      "labels": {
+        "name": "Name",
+        "email": "Email",
+        "company": "Company",
+        "country": "Country",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Enter your full name",
+        "email": "Enter your email address",
+        "company": "Enter your company name",
+        "country": "Enter your country",
+        "phone": "Enter your phone number",
+        "subject": "Select a subject",
+        "message": "Enter your message"
+      },
+      "subjects": {
+        "selectSubject": "Select a subject",
+        "productInquiry": "Product Inquiry",
+        "technicalSupport": "Technical Support",
+        "partnership": "Partnership",
+        "customSolution": "Custom Solution",
+        "other": "Other"
+      },
+      "buttons": {
+        "submit": "Send Message",
+        "sending": "Sending..."
+      },
+      "messages": {
+        "success": "Thank you for your message! We will get back to you soon.",
+        "error": "Error sending message. Please try again."
+      },
+      "validation": {
+        "required": "This field is required"
+      }
+    }
+  }
+}

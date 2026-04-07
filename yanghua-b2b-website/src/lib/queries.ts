@@ -1,14 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getAllArticles, getArticleBySlug, getAllArticlesWithDrafts, getArticleBySlugWithDrafts, checkStrapiHealth } from './strapi-client';
 import { Article } from './types';
-import { generateCacheKey } from './data-transformer';
 import { logError } from './error-logger';
 
 // Query keys for consistent caching
 export const queryKeys = {
   articles: ['articles'] as const,
   article: (slug: string) => ['article', slug] as const,
-  health: ['strapi-health'] as const,
+  health: ['content-health'] as const,
 } as const;
 
 // Cache configuration
@@ -47,7 +45,7 @@ export function useArticles(locale?: string, initialData?: Article[]) {
         throw error;
       }
     },
-    staleTime: 10 * 60 * 1000, // 10 minutes - longer for cloud service
+    staleTime: 10 * 60 * 1000, // 10 minutes - longer for content repository data
     gcTime: 30 * 60 * 1000, // 30 minutes - extended garbage collection
     retry: (failureCount, error: any) => {
       // Custom retry logic for cloud services
@@ -56,7 +54,7 @@ export function useArticles(locale?: string, initialData?: Article[]) {
       return failureCount < 5;
     },
     retryDelay: (attemptIndex) => {
-      // Progressive delay for Strapi Cloud cold start
+      // Progressive delay for transient fetch failures
       const baseDelay = 1000;
       const maxDelay = 10000;
       return Math.min(baseDelay * Math.pow(2, attemptIndex), maxDelay);
@@ -80,7 +78,20 @@ export function useArticle(slug: string, locale?: string, enabled: boolean = tru
     queryKey: locale ? [queryKeys.article(slug)[0], slug, locale] : [queryKeys.article(slug)[0], slug],
     queryFn: async () => {
       try {
-        const result = await getArticleBySlug(slug, locale as any);
+        const loc = (locale || 'en') as string;
+        const res = await fetch(`/api/articles?locale=${encodeURIComponent(loc)}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          cache: 'no-store',
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Failed to fetch article via proxy: ${res.status} ${res.statusText} - ${text}`);
+        }
+        const payload = await res.json();
+        const result = (payload.data as Article[]).find((article) => article.slug === slug) || null;
         if (!result) {
           throw new Error(`Article with slug '${slug}' not found`);
         }
@@ -105,12 +116,15 @@ export function useArticle(slug: string, locale?: string, enabled: boolean = tru
 }
 
 /**
- * Hook for checking Strapi health with caching
+ * Hook for checking content API health with caching
  */
-export function useStrapiHealth() {
+export function useContentHealth() {
   return useQuery({
     queryKey: queryKeys.health,
-    queryFn: checkStrapiHealth,
+    queryFn: async () => {
+      const res = await fetch('/api/health', { cache: 'no-store' });
+      return res.ok;
+    },
     staleTime: 2 * 60 * 1000, // 2 minutes
     gcTime: 5 * 60 * 1000, // 5 minutes
     retry: 1,
@@ -152,7 +166,19 @@ export function usePrefetchArticles() {
       queryClient.prefetchQuery({
         queryKey: queryKeys.article(slug),
         queryFn: async () => {
-          const result = await getArticleBySlug(slug);
+          const res = await fetch('/api/articles?locale=en', {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            cache: 'no-store',
+          });
+          if (!res.ok) {
+            const text = await res.text();
+            throw new Error(`Failed to fetch article via proxy: ${res.status} ${res.statusText} - ${text}`);
+          }
+          const payload = await res.json();
+          const result = (payload.data as Article[]).find((article) => article.slug === slug) || null;
           return result;
         },
         staleTime: CACHE_CONFIG.staleTime,
@@ -262,8 +288,20 @@ export function useArticlesWithDrafts(locale?: string) {
     queryKey: locale ? [queryKeys.articles[0], 'drafts', locale] : [queryKeys.articles[0], 'drafts'],
     queryFn: async () => {
       try {
-        const result = await getAllArticlesWithDrafts(locale as any);
-        return result.data;
+        const loc = (locale || 'en') as string;
+        const res = await fetch(`/api/articles?locale=${encodeURIComponent(loc)}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          cache: 'no-store',
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Failed to fetch draft articles via proxy: ${res.status} ${res.statusText} - ${text}`);
+        }
+        const payload = await res.json();
+        return payload.data;
       } catch (error) {
         logError('Failed to fetch articles with drafts', error instanceof Error ? error : new Error(String(error)));
         throw error;
@@ -290,7 +328,20 @@ export function useArticleWithDrafts(slug: string, locale?: string, enabled: boo
     queryKey: locale ? [queryKeys.article(slug)[0], slug, 'drafts', locale] : [queryKeys.article(slug)[0], slug, 'drafts'],
     queryFn: async () => {
       try {
-        const result = await getArticleBySlugWithDrafts(slug, locale as any);
+        const loc = (locale || 'en') as string;
+        const res = await fetch(`/api/articles?locale=${encodeURIComponent(loc)}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          cache: 'no-store',
+        });
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Failed to fetch draft article via proxy: ${res.status} ${res.statusText} - ${text}`);
+        }
+        const payload = await res.json();
+        const result = (payload.data as Article[]).find((article) => article.slug === slug) || null;
         if (!result) {
           throw new Error(`Article with slug '${slug}' not found`);
         }

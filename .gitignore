@@ -74,6 +74,7 @@ typings/
 
 # Next.js build output
 .next/
+.next-dev/
 out/
 
 # Next.js build outputs
@@ -83,6 +84,9 @@ out
 # Other
 .DS_Store
 *.pem
+playwright-report-smoke/
+test-results/
+output/
 
 # WordPress
 /yanghua-b2b-website/wordpress-install/phpmyadmin/

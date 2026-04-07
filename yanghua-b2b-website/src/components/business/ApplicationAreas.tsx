@@ -5,46 +5,57 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
 
-export default function ApplicationAreas() {
+type ApplicationAreasContent = {
+  title: string;
+  subtitle: string;
+  pagination?: {
+    previous?: string;
+    next?: string;
+  };
+  areas: Record<string, { title: string; description: string }>;
+};
+
+export default function ApplicationAreas({ content }: { content?: ApplicationAreasContent }) {
   const t = useTranslations('applicationAreas');
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 6;
+  const areaContent = content?.areas;
 
   const areas = [
     {
       icon: Zap,
-      title: t('areas.energy.title'),
-      description: t('areas.energy.description'),
+      title: areaContent?.energy?.title ?? t('areas.energy.title'),
+      description: areaContent?.energy?.description ?? t('areas.energy.description'),
     },
     {
       icon: Building,
-      title: t('areas.building.title'),
-      description: t('areas.building.description'),
+      title: areaContent?.building?.title ?? t('areas.building.title'),
+      description: areaContent?.building?.description ?? t('areas.building.description'),
     },
     {
       icon: Factory,
-      title: t('areas.industry.title'),
-      description: t('areas.industry.description'),
+      title: areaContent?.industry?.title ?? t('areas.industry.title'),
+      description: areaContent?.industry?.description ?? t('areas.industry.description'),
     },
     {
       icon: Database,
-      title: t('areas.dataCenter.title'),
-      description: t('areas.dataCenter.description'),
+      title: areaContent?.dataCenter?.title ?? t('areas.dataCenter.title'),
+      description: areaContent?.dataCenter?.description ?? t('areas.dataCenter.description'),
     },
     {
       icon: Train,
-      title: t('areas.railway.title'),
-      description: t('areas.railway.description'),
+      title: areaContent?.railway?.title ?? t('areas.railway.title'),
+      description: areaContent?.railway?.description ?? t('areas.railway.description'),
     },
     {
       icon: FlaskConical,
-      title: t('areas.chemical.title'),
-      description: t('areas.chemical.description'),
+      title: areaContent?.chemical?.title ?? t('areas.chemical.title'),
+      description: areaContent?.chemical?.description ?? t('areas.chemical.description'),
     },
     {
       icon: Ship,
-      title: t('areas.marine.title'),
-      description: t('areas.marine.description'),
+      title: areaContent?.marine?.title ?? t('areas.marine.title'),
+      description: areaContent?.marine?.description ?? t('areas.marine.description'),
     },
   ];
 
@@ -70,8 +81,8 @@ export default function ApplicationAreas() {
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#212529] mb-4">{t('title')}</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t('subtitle')}</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#212529] mb-4">{content?.title ?? t('title')}</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">{content?.subtitle ?? t('subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[600px]">
@@ -104,7 +115,7 @@ export default function ApplicationAreas() {
               className="flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
-              {t('pagination.previous')}
+              {content?.pagination?.previous ?? t('pagination.previous')}
             </button>
             
             <div className="flex space-x-2">
@@ -128,7 +139,7 @@ export default function ApplicationAreas() {
               disabled={currentPage === totalPages - 1}
               className="flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {t('pagination.next')}
+              {content?.pagination?.next ?? t('pagination.next')}
               <ChevronRight className="w-4 h-4 ml-1" />
             </button>
           </div>

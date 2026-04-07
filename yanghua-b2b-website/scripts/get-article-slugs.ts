@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { getAllArticles } from '../src/lib/strapi-client';
+import { getAllArticles } from '../src/lib/content-api';
 
 async function getSlugs() {
   try {

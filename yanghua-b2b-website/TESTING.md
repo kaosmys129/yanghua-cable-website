@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines how to test the article data fetching implementation using React Query.
+This document outlines how to test the article data fetching implementation using React Query and the file-based content repository.
 
 ## Manual Testing
 
@@ -19,7 +19,7 @@ This document outlines how to test the article data fetching implementation usin
 
 **Expected Behavior:**
 - Page should show loading skeletons initially
-- If Strapi is not connected, error boundary should display
+- If the content API is unavailable, error boundary should display
 - Articles should display with cover images, author info, and metadata
 - Clicking on articles should navigate to detail pages
 
@@ -77,7 +77,7 @@ This document outlines how to test the article data fetching implementation usin
 4. Verify cache invalidation and refetching
 
 ### Network Tab
-1. Monitor API calls to Strapi
+1. Monitor API calls to `/api/articles`
 2. Verify proper request parameters
 3. Check response data structure
 4. Confirm caching behavior (no duplicate requests)
@@ -89,10 +89,10 @@ This document outlines how to test the article data fetching implementation usin
 
 ## Integration Testing Checklist
 
-### Strapi Connection
-- [ ] Verify Strapi server is running
-- [ ] Check API endpoints are accessible
-- [ ] Confirm authentication tokens are valid
+### Content API Connection
+- [ ] Verify the Next.js dev server is running
+- [ ] Check `/api/articles` and `/api/health` are accessible
+- [ ] Confirm generated content files are present
 - [ ] Test with different data scenarios
 
 ### Data Flow
@@ -130,11 +130,11 @@ This document outlines how to test the article data fetching implementation usin
 ### Issue: React Query not working
 **Solution:** Verify QueryProvider is wrapped around the app in layout.tsx
 
-### Issue: Strapi connection fails
-**Solution:** Check environment variables and Strapi server status
+### Issue: Content API connection fails
+**Solution:** Check `npm run dev`, `/api/articles`, and generated content files
 
 ### Issue: Images not loading
-**Solution:** Verify image URLs and StrapiImage component configuration
+**Solution:** Verify image URLs and CmsImage component configuration
 
 ### Issue: Error boundaries not catching errors
 **Solution:** Ensure error boundaries are properly placed and configured

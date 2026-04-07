@@ -36,22 +36,22 @@ const DEFAULT_CONFIG: HealthCheckConfig = {
 // 服务端点列表
 const SERVICE_ENDPOINTS: ServiceEndpoint[] = [
   {
-    name: 'strapi-api',
-    url: process.env.NEXT_PUBLIC_STRAPI_API_URL + '/api/health' || 'http://localhost:1337/api/health',
+    name: 'content-health',
+    url: process.env.NEXT_PUBLIC_SITE_URL + '/api/health' || 'http://localhost:3000/api/health',
     method: 'GET',
     expectedStatus: [200, 204],
     timeout: 3000
   },
   {
-    name: 'strapi-articles',
-    url: process.env.NEXT_PUBLIC_STRAPI_API_URL + '/api/articles' || 'http://localhost:1337/api/articles',
-    method: 'HEAD',
-    expectedStatus: [200, 404], // 404也算正常，说明API可访问
+    name: 'content-articles',
+    url: process.env.NEXT_PUBLIC_SITE_URL + '/api/articles' || 'http://localhost:3000/api/articles',
+    method: 'GET',
+    expectedStatus: [200],
     timeout: 3000
   },
   {
-    name: 'strapi-projects',
-    url: process.env.NEXT_PUBLIC_STRAPI_API_URL + '/api/projects' || 'http://localhost:1337/api/projects',
+    name: 'content-sitemap',
+    url: process.env.NEXT_PUBLIC_SITE_URL + '/sitemap.xml' || 'http://localhost:3000/sitemap.xml',
     method: 'HEAD',
     expectedStatus: [200, 404],
     timeout: 3000

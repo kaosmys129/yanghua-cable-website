@@ -182,7 +182,6 @@ export class EmailStorage {
       CREATE INDEX IF NOT EXISTS idx_templates_type_locale ON email_templates(type, locale);
     `);
 
-    console.log('Email database initialized successfully');
   }
 
   /**

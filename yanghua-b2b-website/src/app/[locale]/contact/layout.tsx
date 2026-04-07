@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
-import { buildLocalizedUrl, getLocalizedPath } from '@/lib/url-localization';
+import { getLocalizedPath } from '@/lib/url-localization';
+import { contentRepository } from '@/lib/content-repository';
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -9,23 +10,17 @@ export default function ContactLayout({ children }: { children: React.ReactNode 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params?.locale || 'en';
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
-  
-  const titles: Record<string, string> = {
-    en: 'Contact Yanghua | Flexible Busbar Quote',
-    es: 'Contactar Yanghua | Cotización Barras',
-  };
-  
-  const descriptions: Record<string, string> = {
-    en: 'Contact Yanghua Cable for custom flexible busbar solutions, technical support, and project consultations. Get expert advice for your power distribution needs.',
-    es: 'Contacte a Yanghua Cable para soluciones de barras colectoras flexibles, soporte técnico y consultas de proyectos. Asesoramiento experto.',
-  };
+  const page = contentRepository.getPageContent<{ metadata?: { title?: string; description?: string } }>(
+    'contact',
+    locale as 'en' | 'es'
+  );
 
   const localizedPath = getLocalizedPath('contact', locale as any);
   const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
 
   return {
-    title: titles[locale] || titles.en,
-    description: descriptions[locale] || descriptions.en,
+    title: page?.metadata?.title,
+    description: page?.metadata?.description,
     alternates: {
       canonical,
       languages: generateHreflangAlternatesForMetadata(localizedPath, locale as any),

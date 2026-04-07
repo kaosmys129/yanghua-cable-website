@@ -164,13 +164,13 @@
     return types[window.performance.navigation.type] || 'unknown';
   }
   
-  function analyzeStrapiRequests() {
-    const strapiRequests = capturedRequests.filter(req => 
-      req.url && (req.url.includes('strapi') || req.url.includes('articles'))
+  function analyzeContentRequests() {
+    const contentRequests = capturedRequests.filter(req =>
+      req.url && (req.url.includes('/api/articles') || req.url.includes('/api/health'))
     );
-    
-    console.log(DEBUG_PREFIX, 'Strapi-related requests:', strapiRequests);
-    return strapiRequests;
+
+    console.log(DEBUG_PREFIX, 'Content-related requests:', contentRequests);
+    return contentRequests;
   }
   
   function compareRequests(clientRequests, serverRequests) {
@@ -252,7 +252,7 @@
         referrer: document.referrer
       },
       allRequests: capturedRequests,
-      strapiRequests: analyzeStrapiRequests(),
+      contentRequests: analyzeContentRequests(),
       performanceEntries: getPerformanceEntries()
     };
     
@@ -276,7 +276,7 @@
     
     const entries = window.performance.getEntries();
     return entries
-      .filter(entry => entry.name && (entry.name.includes('strapi') || entry.name.includes('articles')))
+      .filter(entry => entry.name && (entry.name.includes('/api/articles') || entry.name.includes('/api/health')))
       .map(entry => ({
         name: entry.name,
         entryType: entry.entryType,
@@ -298,7 +298,7 @@ Available Commands:
 1. startCapture() - Start capturing network requests
 2. stopCapture() - Stop capturing network requests  
 3. showCaptured() - Display all captured requests
-4. analyzeStrapi() - Analyze Strapi-related requests
+4. analyzeContent() - Analyze content-related requests
 5. exportResults() - Export all captured data as JSON
 6. compareScenarios(clientData, serverData) - Compare client vs server scenarios
 7. showHelp() - Show this help message
@@ -327,7 +327,7 @@ Tips:
 -----
 - Check browser console for real-time request logs
 - Look for differences in URLs, headers, timing, and status codes
-- Pay attention to Strapi Cloud cold-start delays
+- Pay attention to slow content API responses or repeated article fetches
 - Monitor for any authentication or CORS issues
     `);
   }
@@ -344,7 +344,7 @@ Tips:
       console.log(DEBUG_PREFIX, 'All captured requests:', capturedRequests);
       return capturedRequests;
     },
-    analyzeStrapi: analyzeStrapiRequests,
+    analyzeContent: analyzeContentRequests,
     exportResults: exportResults,
     compareScenarios: compareRequests,
     showHelp: showHelp,

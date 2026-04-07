@@ -1,0 +1,123 @@
+{
+  "brandName": "Yanghua Cable",
+  "siteName": "Yanghua Cable",
+  "defaultLocale": "en",
+  "locales": [
+    "en",
+    "es"
+  ],
+  "logo": {
+    "textPrimary": "Yanghua",
+    "textAccent": "STI"
+  },
+  "navigation": {
+    "en": {
+      "items": [
+        { "label": "Home", "href": "/en" },
+        { "label": "Products", "href": "/en/products" },
+        { "label": "Solutions", "href": "/en/solutions" },
+        { "label": "Projects", "href": "/en/projects" },
+        { "label": "Articles", "href": "/en/articles" },
+        { "label": "About", "href": "/en/about" },
+        { "label": "Contact", "href": "/en/contact" }
+      ],
+      "ctaLabel": "Get Quote"
+    },
+    "es": {
+      "items": [
+        { "label": "Inicio", "href": "/es" },
+        { "label": "Productos", "href": "/es/productos" },
+        { "label": "Soluciones", "href": "/es/soluciones" },
+        { "label": "Proyectos", "href": "/es/proyectos" },
+        { "label": "Artículos", "href": "/es/articulos" },
+        { "label": "Nosotros", "href": "/es/acerca-de" },
+        { "label": "Contacto", "href": "/es/contacto" }
+      ],
+      "ctaLabel": "Solicitar cotización"
+    }
+  },
+  "contact": {
+    "email": "info@yhflexiblebusbar.com",
+    "phone": "+86-769-3893-9888",
+    "whatsapp": "+86-138-2698-2553",
+    "address": {
+      "en": "Dongguan, Guangdong, China",
+      "es": "Dongguan, Guangdong, China"
+    }
+  },
+  "footer": {
+    "en": {
+      "description": "Flexible busbar and cable solutions for industrial electrification, energy storage, photovoltaics, and power distribution projects.",
+      "copyright": "© {year} Yanghua Cable. All rights reserved.",
+      "links": {
+        "privacy": { "label": "Privacy Policy", "href": "/en/privacy" },
+        "terms": { "label": "Terms of Service", "href": "/en/terms" }
+      },
+      "sections": {
+        "products": {
+          "title": "Products",
+          "items": [
+            { "label": "Flexible Busbar", "href": "/en/products" },
+            { "label": "Accessories", "href": "/en/products/category/accessories" },
+            { "label": "Downloads", "href": "/en/solutions" }
+          ]
+        },
+        "solutions": {
+          "title": "Solutions",
+          "items": [
+            { "label": "Energy Storage", "href": "/en/solutions" },
+            { "label": "Solar PV", "href": "/en/solutions" },
+            { "label": "Industrial Power", "href": "/en/projects" }
+          ]
+        },
+        "support": {
+          "title": "Support",
+          "items": [
+            { "label": "Articles", "href": "/en/articles" },
+            { "label": "About Us", "href": "/en/about" },
+            { "label": "Contact", "href": "/en/contact" }
+          ]
+        }
+      }
+    },
+    "es": {
+      "description": "Soluciones de busbar flexible y cableado para electrificación industrial, almacenamiento de energía, fotovoltaica y distribución de potencia.",
+      "copyright": "© {year} Yanghua Cable. Todos los derechos reservados.",
+      "links": {
+        "privacy": { "label": "Política de privacidad", "href": "/es/privacidad" },
+        "terms": { "label": "Términos del servicio", "href": "/es/terminos" }
+      },
+      "sections": {
+        "products": {
+          "title": "Productos",
+          "items": [
+            { "label": "Busbar flexible", "href": "/es/productos" },
+            { "label": "Accesorios", "href": "/es/productos/categoria/accessories" },
+            { "label": "Descargas", "href": "/es/soluciones" }
+          ]
+        },
+        "solutions": {
+          "title": "Soluciones",
+          "items": [
+            { "label": "Almacenamiento de energía", "href": "/es/soluciones" },
+            { "label": "Solar fotovoltaica", "href": "/es/soluciones" },
+            { "label": "Potencia industrial", "href": "/es/proyectos" }
+          ]
+        },
+        "support": {
+          "title": "Soporte",
+          "items": [
+            { "label": "Artículos", "href": "/es/articulos" },
+            { "label": "Sobre nosotros", "href": "/es/acerca-de" },
+            { "label": "Contacto", "href": "/es/contacto" }
+          ]
+        }
+      }
+    }
+  },
+  "seo": {
+    "defaultTitle": "Yanghua Cable - Professional Cable Solutions",
+    "defaultDescription": "Leading manufacturer of flexible busbars and cable solutions for industrial applications.",
+    "defaultOgImage": "/images/og-home.jpg"
+  }
+}

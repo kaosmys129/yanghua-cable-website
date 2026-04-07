@@ -1,4 +1,5 @@
-// PDF资源配置
+import { getStaticSiteSettings } from './site-settings';
+
 export interface PDFResource {
   id: string;
   category: string;
@@ -17,58 +18,10 @@ export interface PDFResource {
   featured?: boolean;
 }
 
-// 下载资源配置
-export const downloadResources: PDFResource[] = [
-  {
-    id: 'company-profile',
-    category: 'company-profile',
-    baseName: 'yanghua_company_profile',
-    title: {
-      en: 'Company Profile',
-      es: 'Perfil de la Empresa'
-    },
-    description: {
-      en: 'Comprehensive overview of Yanghua Cable Company',
-      es: 'Descripción completa de Yanghua Cable Company'
-    },
-    fileSize: '3.2 MB',
-    languages: ['en', 'es'],
-    version: 'v2.0',
-    featured: true
-  },
-  {
-    id: 'flexible-busbar-solution',
-    category: 'solutions',
-    baseName: 'flexible_busbar_specification',
-    title: {
-      en: 'Flexible Busbar Solution Specification',
-      es: 'Especificación de Solución de Barra Flexible'
-    },
-    description: {
-      en: 'Technical specifications for flexible busbar solutions',
-      es: 'Especificaciones técnicas para soluciones de barras flexibles'
-    },
-    fileSize: '2.1 MB',
-    languages: ['en', 'es'],
-    version: 'v1.5'
-  },
-  {
-    id: 'service-resources',
-    category: 'services',
-    baseName: 'service_resources_package',
-    title: {
-      en: 'Service Resources Package',
-      es: 'Paquete de Recursos de Servicio'
-    },
-    description: {
-      en: 'Installation guides, technical manuals, and support documentation',
-      es: 'Guías de instalación, manuales técnicos y documentación de soporte'
-    },
-    fileSize: '8.5 MB',
-    languages: ['en', 'es'],
-    version: 'v1.0'
-  }
-];
+const siteSettings = getStaticSiteSettings();
+
+export const downloadResources: PDFResource[] =
+  (siteSettings.downloads?.resources as PDFResource[] | undefined) ?? [];
 
 // 获取下载资源
 export function getDownloadResource(id: string): PDFResource | undefined {

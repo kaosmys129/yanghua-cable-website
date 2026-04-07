@@ -1,0 +1,110 @@
+{
+  "translationKey": "about",
+  "locale": "es",
+  "content": {
+    "hero": {
+      "title": "Acerca de Yanghua Cable",
+      "subtitle": "Liderando el futuro de la tecnología de cables con innovación, calidad y confiabilidad desde 2013.",
+      "cta": {
+        "explore": "Explorar Nuestras Soluciones",
+        "download": "Descargar Perfil de la Empresa"
+      }
+    },
+    "overview": {
+      "title": "Excelencia Líder en Fabricación de Cables",
+      "description": "Con más de una década de experiencia, estamos comprometidos a entregar cables de alta calidad que cumplan con los estándares industriales más exigentes. Nuestras instalaciones de vanguardia y equipo experto aseguran soluciones confiables para cada aplicación.",
+      "stats": {
+        "patents": "50+ Patentes",
+        "productionlines": "8 Líneas de Producción",
+        "laboratories": "3 Laboratorios de Pruebas",
+        "enterprisestandards": "15 Estándares Empresariales"
+      }
+    },
+    "mission": {
+      "title": "Misión y Valores",
+      "subtitle": "Impulsando la innovación y la excelencia en la fabricación de cables",
+      "missionTitle": "Nuestra Misión",
+      "missionContent": "Proporcionar soluciones de cables innovadoras, confiables y sostenibles que alimenten la infraestructura más crítica del mundo y permitan el avance tecnológico.",
+      "missionDescription": "Estamos comprometidos con la excelencia en todos los aspectos de nuestro negocio, desde la investigación y desarrollo hasta la fabricación y el servicio al cliente.",
+      "valuesTitle": "Nuestros Valores",
+      "values": {
+        "innovation": "Innovación - Empujando continuamente los límites de la tecnología de cables",
+        "responsibility": "Responsabilidad - Comprometidos con la sostenibilidad ambiental y la responsabilidad social",
+        "cooperation": "Cooperación - Construyendo asociaciones sólidas con clientes y proveedores",
+        "sustainability": "Sostenibilidad - Desarrollando soluciones ecológicas para un futuro mejor"
+      }
+    },
+    "journey": {
+      "title": "Nuestro Viaje",
+      "subtitle": "De una pequeña startup a líder de la industria, nuestro viaje refleja nuestro compromiso con la excelencia e innovación."
+    },
+    "timeline": {
+      "title": "Nuestro Viaje de Desarrollo",
+      "subtitle": "Hitos clave en nuestro crecimiento e innovación",
+      "milestones": [
+        {
+          "year": "2010",
+          "event": "Fundación de la empresa con la visión de revolucionar la fabricación de cables"
+        },
+        {
+          "year": "2015",
+          "event": "Obtención de la certificación ISO 9001 y expansión de la capacidad de producción"
+        },
+        {
+          "year": "2018",
+          "event": "Lanzamiento de la serie innovadora de cables resistentes al fuego para aplicaciones críticas"
+        },
+        {
+          "year": "2021",
+          "event": "Establecimiento de asociaciones internacionales e ingreso a mercados globales"
+        },
+        {
+          "year": "2023",
+          "event": "Alcanzamos el hito de 1 millón de metros de producción de cables"
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Calidad y Certificaciones",
+      "subtitle": "Nuestro compromiso con la calidad está validado por certificaciones internacionales y estándares de prueba rigurosos.",
+      "description": "Todos nuestros productos se someten a procesos rigurosos de prueba y control de calidad para asegurar que cumplan o superen los estándares internacionales de seguridad, rendimiento y confiabilidad.",
+      "cta": "Ver Todas las Certificaciones"
+    },
+    "team": {
+      "title": "Nuestro Equipo de Liderazgo",
+      "subtitle": "Conozca a los profesionales experimentados que impulsan la visión y el crecimiento de nuestra empresa.",
+      "positions": {
+        "ceo": "Director Ejecutivo",
+        "cto": "Director de Tecnología",
+        "engineer": "Ingeniero Senior",
+        "qa": "Director de Aseguramiento de Calidad"
+      },
+      "experience": {
+        "ceo": "15+ años en ingeniería eléctrica y liderazgo empresarial",
+        "cto": "20+ años en investigación y desarrollo de tecnología de cables",
+        "engineer": "12+ años en diseño de productos y optimización de manufactura",
+        "qa": "18+ años en gestión de calidad y estándares internacionales"
+      }
+    },
+    "equipment": {
+      "title": "Equipo de Pruebas",
+      "subtitle": "Nuestro equipo de pruebas de última generación asegura la más alta calidad y confiabilidad de nuestros productos"
+    },
+    "cta": {
+      "title": "¿Listo para Asociarse con Nosotros?",
+      "subtitle": "Discutamos cómo nuestras soluciones innovadoras de cables pueden satisfacer sus requisitos específicos y ayudarle a lograr sus objetivos de proyecto.",
+      "description": "Discutamos cómo nuestras soluciones innovadoras de cables pueden satisfacer sus requisitos específicos e impulsar el éxito de su proyecto.",
+      "buttons": {
+        "contact": "Ponerse en Contacto",
+        "quote": "Solicitar Cotización"
+      }
+    },
+    "video": {
+      "playButton": "Reproducir Video",
+      "companyIntro": "Vídeo de introducción de la empresa",
+      "watchVideo": "Ver Nuestra Historia",
+      "loading": "Cargando video...",
+      "error": "No se puede cargar el video"
+    }
+  }
+}

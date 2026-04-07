@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { StrapiImage } from '@/components/custom/StrapiImage';
+import { CmsImage } from '@/components/custom/CmsImage';
 import { getLocalizedPath } from '@/lib/url-localization';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import ProductComparison from '@/components/ui/FlexibleBusbarComparison';

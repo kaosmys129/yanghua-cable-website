@@ -13,10 +13,51 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { generateHreflangAlternatesForMetadata, generateCanonicalUrl } from '@/lib/seo';
 import { getSiteUrl } from '@/lib/site-url';
+import { contentRepository } from '@/lib/content-repository';
 
-export default async function Home() {
+type HomePageContent = {
+  hero?: {
+    title: string;
+    subtitle: string;
+    description: string;
+    cta: string;
+  };
+  companyStrength?: {
+    title: string;
+    subtitle: string;
+    ctaLearnMore: string;
+    stats: {
+      certifications: { value: string; label: string; description: string };
+      capacity: { value: string; label: string; description: string };
+      testing: { value: string; label: string; description: string };
+      documentation: { value: string; label: string; description: string };
+    };
+  };
+  applicationAreas?: {
+    title: string;
+    subtitle: string;
+    pagination?: { previous?: string; next?: string };
+    areas: Record<string, { title: string; description: string }>;
+  };
+  partners?: {
+    title: string;
+    subtitle: string;
+    ctaAllPartners: string;
+    items?: Array<{ name: string; logo: string }>;
+  };
+  projectGallery?: {
+    title?: string;
+    subtitle?: string;
+    viewDetails?: string;
+    viewAllProjects?: string;
+  };
+};
+
+export default async function Home({ params }: { params: { locale: string } }) {
+  const locale = (params.locale || 'en') as 'en' | 'es';
   const projects = await getFeaturedProjects();
   const csrfToken = await getCsrfToken();
+  const pageContent = contentRepository.getPageContent<HomePageContent>('home', locale);
 
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebsiteSchema();
@@ -24,12 +65,12 @@ export default async function Home() {
   return (
     <>
       <MultipleStructuredDataScript schemas={[organizationSchema, websiteSchema]} />
-      <Hero />
-      <CompanyStrength />
-      <ApplicationAreas />
+      <Hero content={pageContent?.hero} />
+      <CompanyStrength content={pageContent?.companyStrength} />
+      <ApplicationAreas content={pageContent?.applicationAreas} />
       <ProductComparison />
-      <Partners />
-      <ProjectGallery projects={projects} />
+      <Partners content={pageContent?.partners} />
+      <ProjectGallery projects={projects} content={pageContent?.projectGallery} />
       <InquiryForm csrfToken={csrfToken} />
     </>
   );
@@ -38,27 +79,24 @@ export default async function Home() {
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'seo' });
-  
-  // 统一的站点URL解析
+  const pageContent = contentRepository.getPageContent<HomePageContent>('home', locale as 'en' | 'es');
   const baseUrl = getSiteUrl();
 
-  const title = t('pages.home.title');
-  const description = t('pages.home.description');
-  // 使用generateCanonicalUrl生成canonical链接，始终指向英语版本
+  const title = pageContent?.hero?.title ?? t('pages.home.title');
+  const description = pageContent?.hero?.description ?? t('pages.home.description');
   const canonicalUrl = generateCanonicalUrl('/', locale as 'en' | 'es', baseUrl);
-  // 将 Open Graph 的 url 与 canonical 保持一致，避免英文出现 /en 前缀和双斜杠
-  const ogUrl = canonicalUrl;
 
   return {
     title,
     description,
-    keywords: locale === 'es' 
-      ? 'barra colectora flexible, sistemas de distribución de energía, cables de alta corriente, yanghua'
-      : 'flexible busbar, power distribution systems, high current cables, yanghua',
+    keywords:
+      locale === 'es'
+        ? 'barra colectora flexible, sistemas de distribución de energía, cables de alta corriente, yanghua'
+        : 'flexible busbar, power distribution systems, high current cables, yanghua',
     openGraph: {
       title,
       description,
-      url: ogUrl,
+      url: canonicalUrl,
       siteName: 'Yanghua Cable',
       images: [`${baseUrl}/images/og-home.jpg`],
       locale,

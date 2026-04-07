@@ -24,9 +24,15 @@ interface Project {
 interface ProjectGalleryProps {
   projects: Project[];
   onQuoteOpen?: () => void;
+  content?: {
+    title?: string;
+    subtitle?: string;
+    viewDetails?: string;
+    viewAllProjects?: string;
+  };
 }
 
-export default function ProjectGallery({ projects, onQuoteOpen }: ProjectGalleryProps) {
+export default function ProjectGallery({ projects, onQuoteOpen, content }: ProjectGalleryProps) {
   const t = useTranslations('projectGallery');
   const locale = useLocale() as Locale;
 
@@ -48,10 +54,10 @@ export default function ProjectGallery({ projects, onQuoteOpen }: ProjectGallery
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#212529] mb-4">
-            {t('title')}
+            {content?.title ?? t('title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {t('subtitle')}
+            {content?.subtitle ?? t('subtitle')}
           </p>
         </div>
 
@@ -97,7 +103,7 @@ export default function ProjectGallery({ projects, onQuoteOpen }: ProjectGallery
                     }
                   }}
                 >
-                  {t('viewDetails')} 
+                  {content?.viewDetails ?? t('viewDetails')} 
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
@@ -117,7 +123,7 @@ export default function ProjectGallery({ projects, onQuoteOpen }: ProjectGallery
               }
             }}
           >
-            {t('viewAllProjects')} 
+            {content?.viewAllProjects ?? t('viewAllProjects')} 
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>

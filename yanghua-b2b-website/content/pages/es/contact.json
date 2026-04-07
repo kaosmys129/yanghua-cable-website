@@ -1,0 +1,83 @@
+{
+  "translationKey": "contact",
+  "locale": "es",
+  "content": {
+    "page": {
+      "title": "Contáctanos",
+      "description": "Ponte en contacto con nuestro equipo para cotizaciones, soporte técnico o cualquier pregunta sobre nuestras soluciones de barras flexibles."
+    },
+    "sections": {
+      "getInTouch": "Ponte en Contacto"
+    },
+    "info": {
+      "phone": {
+        "title": "Teléfono",
+        "content": "+86-755-8888-8888",
+        "description": "Llámanos durante el horario comercial"
+      },
+      "email": {
+        "title": "Correo Electrónico",
+        "content": "info@yanghuasti.com",
+        "description": "Envíanos un correo en cualquier momento"
+      },
+      "address": {
+        "title": "Dirección",
+        "content": "Dongguan, Guangdong, China",
+        "description": "Visita nuestra instalación de fabricación"
+      },
+      "hours": {
+        "title": "Horario Comercial",
+        "content": "Lun-Vie: 8:00 AM - 6:00 PM (CST)",
+        "description": "Estamos aquí para ayudarte"
+      }
+    },
+    "globalSupport": {
+      "title": "Soporte Global",
+      "description": "Proporcionamos soporte y servicio mundial para todos nuestros productos.",
+      "regions": {
+        "northAmerica": "América del Norte",
+        "europe": "Europa",
+        "asiaPacific": "Asia Pacífico"
+      }
+    },
+    "form": {
+      "labels": {
+        "name": "Nombre",
+        "email": "Correo Electrónico",
+        "company": "Empresa",
+        "country": "País",
+        "phone": "Teléfono",
+        "subject": "Asunto",
+        "message": "Mensaje"
+      },
+      "placeholders": {
+        "name": "Ingrese su nombre completo",
+        "email": "Ingrese su dirección de correo electrónico",
+        "company": "Ingrese el nombre de su empresa",
+        "country": "Ingrese su país",
+        "phone": "Ingrese su número de teléfono",
+        "subject": "Seleccione un asunto",
+        "message": "Ingrese su mensaje"
+      },
+      "subjects": {
+        "selectSubject": "Seleccione un asunto",
+        "productInquiry": "Consulta de Producto",
+        "technicalSupport": "Soporte Técnico",
+        "partnership": "Asociación",
+        "customSolution": "Solución Personalizada",
+        "other": "Otro"
+      },
+      "buttons": {
+        "submit": "Enviar Mensaje",
+        "sending": "Enviando..."
+      },
+      "messages": {
+        "success": "¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.",
+        "error": "Error al enviar el mensaje. Por favor, inténtelo de nuevo."
+      },
+      "validation": {
+        "required": "Este campo es obligatorio"
+      }
+    }
+  }
+}

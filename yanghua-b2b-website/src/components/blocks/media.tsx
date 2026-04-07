@@ -1,6 +1,5 @@
-import Image from "next/image"
 import type { MediaBlock } from "@/lib/types"
-import { StrapiImage } from "../custom/StrapiImage"
+import { CmsImage } from "../custom/CmsImage"
 
 export default function Media({ data }: { data: MediaBlock }) {
   // Check if file exists
@@ -10,9 +9,9 @@ export default function Media({ data }: { data: MediaBlock }) {
   }
 
   return (
-    <div className="my-8">
-      <div className="relative w-full h-96 rounded-lg overflow-hidden">
-        <StrapiImage
+    <figure className="my-10">
+      <div className="relative h-64 w-full overflow-hidden rounded-[24px] bg-slate-100 shadow-[0_24px_70px_-45px_rgba(15,23,42,0.35)] sm:h-80 lg:h-96">
+        <CmsImage
           src={data.file.url || "/placeholder.svg?height=600&width=1200&query=media"}
           alt={data.file.alternativeText || "Media"}
           fill
@@ -21,8 +20,8 @@ export default function Media({ data }: { data: MediaBlock }) {
         />
       </div>
       {data.file.alternativeText && (
-        <p className="text-center text-sm text-gray-500 mt-2">{data.file.alternativeText}</p>
+        <figcaption className="mx-auto mt-3 max-w-2xl text-center text-sm leading-6 text-slate-500">{data.file.alternativeText}</figcaption>
       )}
-    </div>
+    </figure>
   )
 }

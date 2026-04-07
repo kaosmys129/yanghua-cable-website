@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import fs from 'fs';
+import path from 'path';
 import { Locale } from './i18n';
 import { 
   buildLocalizedUrl, 
@@ -10,34 +12,51 @@ import {
 } from './url-localization';
 import { getSiteUrl } from './site-url';
 
+function getSiteSettings() {
+  try {
+    const filePath = path.join(process.cwd(), 'content', 'settings', 'site.json');
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+const siteSettings = getSiteSettings();
+const seoSettings = siteSettings?.seo || {};
+const defaultSeoLocale = seoSettings?.locales?.[siteSettings?.defaultLocale || 'en'] || seoSettings?.locales?.en || {};
+
 // 基础SEO配置
 export const SEO_CONFIG = {
-  siteName: 'Yanghua Cable',
+  siteName: siteSettings?.siteName || 'Yanghua Cable',
   siteUrl: getSiteUrl(),
-  defaultTitle: 'Flexible Busbar Solutions | High Current Power Distribution | Yanghua',
-  defaultDescription: 'Leading manufacturer of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, 6400A capacity for data centers, EV charging, and industrial applications.',
-  defaultKeywords: [
-    // 英语主要关键词
-    'flexible busbar', 'copper busbar', 'high current busbar', 'busbar systems', 'power distribution',
-    // 英语长尾关键词
-    'flexible copper busbar systems', 'high current power distribution solutions', 'IP68 waterproof busbar',
-    'data center power distribution', 'EV charging infrastructure cables', 'industrial power transmission',
-    // 品牌和通用关键词
-    'yanghua', 'electrical components', 'cable management solutions', 'power transmission efficiency'
+  defaultTitle: defaultSeoLocale.defaultTitle || 'Flexible Busbar Solutions | High Current Power Distribution | Yanghua',
+  defaultDescription:
+    defaultSeoLocale.defaultDescription ||
+    'Leading manufacturer of flexible copper busbar systems and high current power distribution solutions. IP68 waterproof, 6400A capacity for data centers, EV charging, and industrial applications.',
+  defaultKeywords: defaultSeoLocale.keywords || seoSettings.defaultKeywords || [
+    'flexible busbar',
+    'copper busbar',
+    'high current busbar',
+    'busbar systems',
+    'power distribution',
+    'yanghua'
   ],
   // 西班牙语关键词配置
-  spanishKeywords: [
-    // 西班牙语主要关键词
-    'barra colectora flexible', 'barra de cobre', 'distribución de energía', 'sistemas de barras colectoras', 'cables de alta corriente',
-    // 西班牙语长尾关键词
-    'sistemas de barras colectoras flexibles', 'distribución de energía de alta corriente', 'barras colectoras impermeables IP68',
-    'distribución de energía para centros de datos', 'infraestructura de carga para vehículos eléctricos', 'transmisión de energía industrial',
-    // 品牌和通用关键词
-    'yanghua', 'componentes eléctricos', 'soluciones de gestión de cables', 'eficiencia en transmisión de energía'
+  spanishKeywords: seoSettings?.locales?.es?.keywords || [
+    'barra colectora flexible',
+    'barra de cobre',
+    'distribución de energía',
+    'sistemas de barras colectoras',
+    'cables de alta corriente',
+    'yanghua'
   ],
-  twitterHandle: '@yanghuacable',
-  defaultImage: '/images/og-default.jpg',
-  defaultLocale: 'en',
+  twitterHandle: seoSettings.twitterHandle || '@yanghuacable',
+  defaultImage: seoSettings.defaultOgImage || '/images/og-default.jpg',
+  defaultLocale: siteSettings?.defaultLocale || 'en',
   supportedLocales: ['en', 'es']
 };
 

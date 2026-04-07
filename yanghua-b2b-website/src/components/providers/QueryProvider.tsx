@@ -5,16 +5,16 @@ import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/reac
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { logError } from '@/lib/error-logger';
 
-// Create a client with optimized settings for Strapi Cloud
+// Create a client with optimized settings for repository-backed content APIs
 function createQueryClient() {
   return new QueryClient({
     defaultOptions: {
       queries: {
-        // Optimized for Strapi Cloud service
-        staleTime: 10 * 60 * 1000, // 10 minutes - longer for cloud service
+        // Optimized for repository-backed content APIs
+        staleTime: 10 * 60 * 1000, // 10 minutes - longer cache for content data
         gcTime: 30 * 60 * 1000, // 30 minutes - extended garbage collection
         retry: (failureCount, error: any) => {
-          // Enhanced retry logic for cloud services
+          // Enhanced retry logic for transient content API failures
           if (error?.originalError?.response?.status === 404) return false;
           if (error?.response?.status === 404) return false;
           if (error?.response?.status >= 400 && error?.response?.status < 500) return false;
@@ -23,7 +23,7 @@ function createQueryClient() {
         },
         retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
         refetchOnWindowFocus: false, // Reduce unnecessary requests
-        refetchOnReconnect: true, // Important for cloud services
+        refetchOnReconnect: true, // Important after connection recovery
         refetchOnMount: true,
         networkMode: 'online', // Only run queries when online
       },

@@ -19,6 +19,7 @@ const intlMiddleware = createIntlMiddleware({
   defaultLocale,
   // 使用 always：包括英文在内的所有语言都使用前缀（/en、/es），避免 / 与 /en 并存
   localePrefix: 'always',
+  localeDetection: false,
   // 显式配置本地化路径名映射，确保 /es/productos 映射到路由 /[locale]/products
   pathnames: {
     '/': '/',
@@ -53,6 +54,7 @@ export default async function middleware(request: NextRequest) {
     pathname.startsWith('/favicon.ico') ||
     pathname.startsWith('/robots.txt') ||
     pathname.startsWith('/sitemap.xml') ||
+    pathname.startsWith('/api/tina') ||
     pathname.startsWith('/images/') ||
     pathname.startsWith('/videos/') ||
     pathname.startsWith('/data/') ||
@@ -61,10 +63,40 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname.startsWith('/cms')) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-cms-route', 'true');
+    return NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+  }
+
   try {
     if (pathname.startsWith('/_next/data/')) {
       return NextResponse.next();
     }
+
+    const spanishLocalizedPathPatterns: RegExp[] = [
+      /^\/es\/acerca-de\/?$/i,
+      /^\/es\/contacto\/?$/i,
+      /^\/es\/servicios\/?$/i,
+      /^\/es\/privacidad\/?$/i,
+      /^\/es\/terminos\/?$/i,
+      /^\/es\/socios\/?$/i,
+      /^\/es\/articulos\/?$/i,
+      /^\/es\/articulos\/[^/]+\/?$/i,
+      /^\/es\/productos\/?$/i,
+      /^\/es\/productos\/categoria(\/.*)?$/i,
+      /^\/es\/productos\/[^/]+\/?$/i,
+      /^\/es\/soluciones\/?$/i,
+      /^\/es\/soluciones\/[^/]+\/?$/i,
+      /^\/es\/proyectos\/?$/i,
+      /^\/es\/proyectos\/[^/]+\/?$/i,
+    ];
+    const isSpanishLocalizedPublicPath = spanishLocalizedPathPatterns.some((pattern) => pattern.test(pathname));
+    let spanishRewriteTargetPath: string | null = null;
 
     // A. 方案B：对指定的旧URL返回 410 Gone（永久移除）
     // 列表来源：用户提供的7个 /en 前缀URL（当前均为404），明确标记为已删除
@@ -233,7 +265,6 @@ export default async function middleware(request: NextRequest) {
       { from: /^\/es\/projects(\/.*)?$/i, to: (m) => `/es/proyectos${m[1] || ''}` },
       { from: /^\/es\/contact(\/.*)?$/i, to: (m) => `/es/contacto${m[1] || ''}` },
       { from: /^\/es\/about(\/.*)?$/i, to: (m) => `/es/acerca-de${m[1] || ''}` },
-      { from: /^\/es\/articles(\/.*)?$/i, to: (m) => `/es/articulos${m[1] || ''}` },
       // 分类与细分路径
       { from: /^\/es\/products\/category(\/.*)?$/i, to: (m) => `/es/productos/categoria${m[1] || ''}` },
     ];
@@ -257,8 +288,6 @@ export default async function middleware(request: NextRequest) {
       { from: /^\/es\/proyectos\/?$/i, to: () => `/es/projects` },
       { from: /^\/es\/contacto\/?$/i, to: () => `/es/contact` },
       { from: /^\/es\/acerca-de\/?$/i, to: () => `/es/about` },
-      { from: /^\/es\/articulos\/?$/i, to: () => `/es/articles` },
-      { from: /^\/es\/socios\/?$/i, to: () => `/es/partners` },
       { from: /^\/es\/privacidad\/?$/i, to: () => `/es/privacy` },
       { from: /^\/es\/terminos\/?$/i, to: () => `/es/terms` },
 
@@ -267,16 +296,14 @@ export default async function middleware(request: NextRequest) {
       { from: /^\/es\/productos\/(.+)$/i, to: (m) => `/es/products/${m[1]}` },
       { from: /^\/es\/soluciones\/(.+)$/i, to: (m) => `/es/solutions/${m[1]}` },
       { from: /^\/es\/proyectos\/(.+)$/i, to: (m) => `/es/projects/${m[1]}` },
-      { from: /^\/es\/articulos\/(.+)$/i, to: (m) => `/es/articles/${m[1]}` }
     ];
 
     for (const rule of esRewriteMappings) {
       const match = pathname.match(rule.from);
       if (match) {
-        const rewriteUrl = request.nextUrl.clone();
-        rewriteUrl.pathname = rule.to(match);
-        console.log('[Middleware] rewrite ES translated path -> internal route:', pathname, '=>', rewriteUrl.pathname);
-        return applySecurityHeaders(NextResponse.rewrite(rewriteUrl));
+        spanishRewriteTargetPath = rule.to(match);
+        console.log('[Middleware] rewrite ES translated path -> internal route:', pathname, '=>', spanishRewriteTargetPath);
+        break;
       }
     }
 
@@ -298,6 +325,25 @@ export default async function middleware(request: NextRequest) {
     if (pathname.startsWith('/api/')) {
       // For API routes, just create a basic response
       response = NextResponse.next();
+    } else if (isSpanishLocalizedPublicPath) {
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set('x-locale', 'es');
+      if (spanishRewriteTargetPath) {
+        const rewriteUrl = request.nextUrl.clone();
+        rewriteUrl.pathname = spanishRewriteTargetPath;
+        response = NextResponse.rewrite(rewriteUrl, {
+          request: {
+            headers: requestHeaders,
+          },
+        });
+      } else {
+        response = NextResponse.next({
+          request: {
+            headers: requestHeaders,
+          },
+        });
+      }
+      response.cookies.set('NEXT_LOCALE', 'es', { path: '/' });
     } else {
       // For pages, apply internationalization
       response = intlMiddleware(request);
@@ -356,6 +402,7 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next|.*\\..*).*)',
+    '/((?!_next|.*\\..*|api/articles|api/health|api/tina|cms).*)',
+    '/cms/:path*',
   ],
 };

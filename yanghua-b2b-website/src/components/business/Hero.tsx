@@ -15,11 +15,34 @@ export interface SlideData {
   showContent: boolean;
 }
 
-export default function Hero({ onQuoteOpen }: { onQuoteOpen?: () => void }) {
+type HeroContent = {
+  title: string;
+  subtitle: string;
+  description: string;
+  cta: string;
+  quoteCta?: string;
+  trustLine?: string;
+};
+
+export default function Hero({
+  onQuoteOpen,
+  content,
+}: {
+  onQuoteOpen?: () => void;
+  content?: HeroContent;
+}) {
   const t = useTranslations('hero');
   const locale = useLocale() as Locale;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const heroContent = {
+    title: content?.title ?? t('title'),
+    subtitle: content?.subtitle ?? t('subtitle'),
+    description: content?.description ?? t('description'),
+    cta: content?.cta ?? t('cta'),
+    quoteCta: content?.quoteCta ?? 'Get Quote Now',
+    trustLine: content?.trustLine ?? 'Trusted by 500+ companies worldwide',
+  };
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -92,16 +115,16 @@ export default function Hero({ onQuoteOpen }: { onQuoteOpen?: () => void }) {
             <>
               {/* Attention: Strong headline to grab attention */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6 transition-all duration-500">
-                {t('title')}
+                {heroContent.title}
               </h1>
               
               {/* Interest: Key value propositions */}
               <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-3 sm:mb-4 transition-all duration-500">
-                {t('subtitle')}
+                {heroContent.subtitle}
               </p>
               
               <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 transition-all duration-500 leading-relaxed">
-                {t('description')}
+                {heroContent.description}
               </p>
               
               {/* Desire: Social proof */}
@@ -112,7 +135,7 @@ export default function Hero({ onQuoteOpen }: { onQuoteOpen?: () => void }) {
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#fdb827] flex items-center justify-center text-xs font-bold text-[#212529]">C</div>
                 </div>
                 <p className="sm:ml-3 text-xs sm:text-sm text-gray-300 text-center sm:text-left">
-                  Trusted by 500+ companies worldwide
+                  {heroContent.trustLine}
                 </p>
               </div>
             </>
@@ -135,7 +158,7 @@ export default function Hero({ onQuoteOpen }: { onQuoteOpen?: () => void }) {
                   }
                 }}
               >
-                Get Quote Now
+                {heroContent.quoteCta}
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
               
@@ -149,7 +172,7 @@ export default function Hero({ onQuoteOpen }: { onQuoteOpen?: () => void }) {
                   }
                 }}
               >
-                {t('cta')}
+                {heroContent.cta}
               </Link>
             </div>
           )}

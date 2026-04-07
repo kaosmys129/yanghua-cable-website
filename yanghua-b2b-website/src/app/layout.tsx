@@ -31,17 +31,25 @@ export default async function RootLayout({
 }) {
   // 从 middleware 传递的自定义请求头、cookie 以及 next-intl 获取 locale，确保 SSR 输出稳定
   const hdrs = headers();
+  const isCmsRoute = hdrs.get('x-cms-route') === 'true';
   const headerLocale = hdrs.get('x-locale') || undefined;
   const cookieStore = cookies();
   const cookieLocale = cookieStore.get('NEXT_LOCALE')?.value;
   const intlLocale = await getLocale();
   const activeLocale = (headerLocale || cookieLocale || intlLocale || 'en').toLowerCase();
+
+  if (isCmsRoute) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body data-cms-route="true">{children}</body>
+      </html>
+    );
+  }
+
   return (
     <html lang={activeLocale} suppressHydrationWarning>
-      <head>
-        {/* Preconnect to Strapi for faster initial connections on pages that request CMS data */}
-        <link rel="preconnect" href="https://fruitful-presence-02d7be759c.strapiapp.com" crossOrigin="anonymous" />
-      </head>
+      <head />
       <body>
         <QueryProvider>
           <MonitoringProvider>

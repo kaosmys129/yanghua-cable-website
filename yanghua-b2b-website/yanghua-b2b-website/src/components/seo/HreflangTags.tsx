@@ -10,7 +10,7 @@ import { Locale } from '@/lib/i18n';
  * 用于在页面头部生成正确的hreflang标签，告诉搜索引擎不同语言版本页面的关系
  */
 export default function HreflangTags() {
-  const pathname = usePathname();
+  const pathname = usePathname() || '/';
   const locale = useLocale() as Locale;
   
   // 移除语言前缀，获取纯路径

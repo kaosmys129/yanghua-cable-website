@@ -1,0 +1,39 @@
+fragment ArticlesParts on Articles {
+  __typename
+  sourceId
+  translationKey
+  locale
+  slug
+  title
+  description
+  createdAt
+  updatedAt
+  publishedAt
+  sourceUrl
+  cover {
+    __typename
+    src
+    alt
+  }
+  category {
+    __typename
+    name
+    slug
+  }
+  author {
+    __typename
+    name
+    email
+    avatar {
+      __typename
+      src
+      alt
+      width
+      height
+    }
+  }
+  relatedSlugs
+  fallbackLocale
+  bodySource
+  body
+}

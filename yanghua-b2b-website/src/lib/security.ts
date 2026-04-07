@@ -24,7 +24,6 @@ export const CSP_DIRECTIVES = {
     'https:',
     'https://images.unsplash.com',
     'https://res.cloudinary.com',
-    'https://yanghua-strapi-cms.onrender.com',
   ],
   'font-src': [
     "'self'",
@@ -33,9 +32,6 @@ export const CSP_DIRECTIVES = {
   ],
   'connect-src': [
     "'self'",
-    'https://api.strapi.io',
-    'https://yanghua-strapi-cms.onrender.com',
-    'https://fruitful-presence-02d7be759c.strapiapp.com',
     'https://www.google-analytics.com',
     'https://vitals.vercel-analytics.com',
     'wss://ws.vercel.live',

@@ -2,7 +2,7 @@ import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 import BlockRenderer from "@/components/BlockRenderer"
 import { ArrowLeft } from "lucide-react"
-import { StrapiImage } from "@/components/custom/StrapiImage"
+import { CmsImage } from "@/components/custom/CmsImage"
 import { articles } from "@/lib/data"
 
 export default function StaticTestArticlePage() {
@@ -21,7 +21,7 @@ export default function StaticTestArticlePage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#212529] leading-tight">{article.title}</h1>
           <div className="flex items-center mb-8">
             <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
-              <StrapiImage
+              <CmsImage
                 src={article.author?.avatar?.url || "/placeholder.svg?height=50&width=50&query=avatar"}
                 alt={article.author?.name || "Author"}
                 fill
@@ -41,7 +41,7 @@ export default function StaticTestArticlePage() {
         </div>
 
         <div className="relative w-full h-96 mb-12 rounded-xl overflow-hidden shadow-lg">
-          <StrapiImage
+          <CmsImage
             src={article.cover?.url || "/placeholder.svg?height=600&width=1200&query=article cover"}
             alt={article.cover?.alternativeText || article.title}
             fill

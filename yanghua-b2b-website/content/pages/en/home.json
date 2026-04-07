@@ -1,0 +1,83 @@
+{
+  "translationKey": "home",
+  "locale": "en",
+  "hero": {
+    "title": "Yanghua Cable - Innovator in low-voltage, high-current copper busbar distribution",
+    "subtitle": "The world's only flexible high-current electrical busbar from Yanghua, you can trust it",
+    "description": "Yanghua Cable delivers IP68 protection grade, maximum single current carrying capacity 6400A, flexible copper busbar easy to lay",
+    "cta": "Explore Yanghua Products",
+    "learnMore": "Learn More About Yanghua"
+  },
+  "companyStrength": {
+    "title": "Yanghua Cable Company Strength",
+    "subtitle": "Yanghua's commitment to innovation and quality in electrical busbar manufacturing is backed by extensive R&D capabilities, comprehensive quality assurance systems, and proven track records with Fortune 500 companies.",
+    "stats": {
+      "certifications": {
+        "value": "40+",
+        "label": "Yanghua Patents & Certifications",
+        "description": "Yanghua Cable innovation-driven copper busbar technology leadership"
+      },
+      "capacity": {
+        "value": "2",
+        "label": "Yanghua Production Lines",
+        "description": "Yanghua state-of-the-art electrical busbar manufacturing facilities"
+      },
+      "testing": {
+        "value": "3",
+        "label": "Yanghua Testing Laboratories",
+        "description": "Yanghua Cable comprehensive copper busbar quality assurance"
+      },
+      "documentation": {
+        "value": "11",
+        "label": "Yanghua Enterprise Standards",
+        "description": "Yanghua industry-leading electrical busbar specifications"
+      }
+    },
+    "ctaLearnMore": "Learn More About Yanghua Cable"
+  },
+  "applicationAreas": {
+    "title": "Application Areas",
+    "subtitle": "Serving diverse industries with specialized cable solutions",
+    "areas": {
+      "energy": {
+        "title": "New Energy",
+        "description": "Advanced cable solutions for solar, wind, and energy storage systems."
+      },
+      "building": {
+        "title": "Power Systems",
+        "description": "Reliable power transmission and distribution cables for utilities."
+      },
+      "industry": {
+        "title": "Industrial",
+        "description": "Heavy-duty cables for manufacturing and industrial applications."
+      },
+      "dataCenter": {
+        "title": "Data Center",
+        "description": "High-performance cables for data centers and IT infrastructure."
+      },
+      "railway": {
+        "title": "Charging Station",
+        "description": "Specialized cables for EV cars charging station."
+      },
+      "chemical": {
+        "title": "Metallurgy & Chemical",
+        "description": "Corrosion-resistant cables for harsh industrial environments."
+      },
+      "marine": {
+        "title": "Marine & Shipping",
+        "description": "Marine-grade cables for offshore and shipbuilding applications."
+      }
+    },
+    "ctaViewSolution": "View Solution",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "Trusted by leading companies worldwide",
+    "viewAll": "View All Partners",
+    "ctaAllPartners": "Get Quote"
+  }
+}

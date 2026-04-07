@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { SliderBlock } from "@/lib/types"
-import { StrapiImage } from "../custom/StrapiImage"
+import { CmsImage } from "../custom/CmsImage"
 
 export default function Slider({ data }: { data: SliderBlock }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -29,7 +29,7 @@ export default function Slider({ data }: { data: SliderBlock }) {
   return (
     <div className="my-8 relative">
       <div className="relative w-full h-96 rounded-lg overflow-hidden">
-        <StrapiImage
+        <CmsImage
           src={files[currentIndex].url || "/placeholder.svg?height=600&width=1200&query=slider"}
           alt={files[currentIndex].alternativeText || `Slide ${currentIndex + 1}`}
           fill
