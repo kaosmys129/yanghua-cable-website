@@ -1594,9 +1594,17 @@
         "description": "Get in touch with Yanghua for flexible busbar solutions. Expert consultation for high current power distribution, data center infrastructure, and EV charging systems."
       },
       "solutions": {
-        "title": "Power Distribution Solutions | Data Center EV | Yanghua",
-        "description": "Comprehensive power distribution solutions for data centers, EV charging infrastructure, and industrial applications. Flexible busbar systems with IP68 protection."
-      }
+      "title": "Power Distribution Solutions | Data Center EV | Yanghua",
+      "description": "Comprehensive power distribution solutions for data centers, EV charging infrastructure, and industrial applications. Flexible busbar systems with IP68 protection."
+    },
+    "partners": {
+      "title": "Global Partners | Flexible Busbar Solutions | Yanghua",
+      "description": "Join Yanghua's global partner network. We collaborate with industry leaders to deliver high-quality flexible busbar and power distribution solutions worldwide."
+    },
+    "services": {
+      "title": "Customer Services & Support | Yanghua",
+      "description": "Comprehensive services and technical support for your flexible busbar projects. From custom design to installation guidance and after-sales care."
+    }
     }
   },
   "email": {
