@@ -1,7 +1,10 @@
-'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
+import type { Metadata } from 'next';
 
 export default function ProductsPage() {
   const t = useTranslations('products');
@@ -176,4 +179,23 @@ export default function ProductsPage() {
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params?.locale || 'en';
+  const t = await getTranslations({ locale, namespace: 'seo.pages.products' });
+  
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const localizedPath = getLocalizedPath('products', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
+  const hreflangAlternates = generateHreflangAlternatesForMetadata(localizedPath, locale as any);
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: canonical,
+      languages: hreflangAlternates,
+    },
+  };
 }

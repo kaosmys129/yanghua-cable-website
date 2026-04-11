@@ -1,6 +1,10 @@
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import ContactForm from '@/components/features/ContactForm';
 import { contentRepository } from '@/lib/content-repository';
+import { getTranslations } from 'next-intl/server';
+import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
+import { getLocalizedPath } from '@/lib/url-localization';
+import type { Metadata } from 'next';
 
 type ContactPageContent = {
   content: {
@@ -100,4 +104,23 @@ export default async function ContactPage({ params }: { params: { locale: string
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params?.locale || 'en';
+  const t = await getTranslations({ locale, namespace: 'seo.pages.contact' });
+  
+  const baseUrl = 'https://www.yhflexiblebusbar.com';
+  const localizedPath = getLocalizedPath('contact', locale as any);
+  const canonical = generateCanonicalUrl(localizedPath, locale as any, baseUrl);
+  const hreflangAlternates = generateHreflangAlternatesForMetadata(localizedPath, locale as any);
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: canonical,
+      languages: hreflangAlternates,
+    },
+  };
 }

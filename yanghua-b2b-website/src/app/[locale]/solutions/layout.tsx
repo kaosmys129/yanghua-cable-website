@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/lib/seo';
 import { getLocalizedPath } from '@/lib/url-localization';
+import { getTranslations } from 'next-intl/server';
 
 export default function SolutionsLayout({ children }: { children: React.ReactNode }) {
   return children;
@@ -12,24 +13,19 @@ export async function generateMetadata({ params }: { params: { locale: string; i
   if (params?.id) {
     return {};
   }
+  const t = await getTranslations({ locale, namespace: 'seo.pages.solutions' });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yhflexiblebusbar.com';
-  const titles: Record<string, string> = {
-    en: 'Flexible Busbar Solutions | Data Centers',
-    es: 'Soluciones Barras Flexibles | Centros Datos',
-  };
-  const descriptions: Record<string, string> = {
-    en: 'Reliable flexible busbar solutions for data centers, EV power modules, and industrial automation with high safety, performance and durability.',
-    es: 'Soluciones fiables de barras colectoras flexibles para centros de datos, módulos EV y automatización industrial con alta seguridad y rendimiento.',
-  };
+  
   const canonical = generateCanonicalUrl(getLocalizedPath('solutions', locale as any), locale as any, baseUrl);
   const currentUrl = canonical;
   const currentPathForLocale = getLocalizedPath('solutions', locale as any);
+  
   return {
-    title: titles[locale] || titles.en,
-    description: descriptions[locale] || descriptions.en,
+    title: t('title'),
+    description: t('description'),
     openGraph: {
-      title: titles[locale] || titles.en,
-      description: descriptions[locale] || descriptions.en,
+      title: t('title'),
+      description: t('description'),
       url: currentUrl,
       siteName: 'Yanghua Cable',
       type: 'website',
