@@ -5,7 +5,7 @@
  * Single file to edit when adapting the theme for a new client.
  *
  * Colors flow into  → src/styles/theme.css  (CSS custom properties)
- * Fonts flow into   → astro.config.mjs      (Astro 6 built-in font optimizer)
+ * Fonts flow into   → src/layouts/BaseLayout.astro (stylesheet link)
  * Meta flows into   → src/layouts/BaseLayout.astro
  *
  * Color format: use hex (#1a1a2e) or CSS color values.
@@ -22,8 +22,8 @@ export const brand = {
   locale: 'en_US',
 
   // ── Fonts ──────────────────────────────────────────────────────────────────
-  // To swap fonts: change the `name` values here AND update astro.config.mjs
-  // to match (both must stay in sync so Astro can optimise the correct files).
+  // To swap fonts: change the `name` values here AND update BaseLayout's
+  // stylesheet link to match.
   fonts: {
     body: 'Inter',
     display: 'Oswald',

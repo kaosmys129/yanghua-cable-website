@@ -4,28 +4,48 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
 import CTA from '../../../components/CTA.astro';
+import PartnersGrid from '../../../components/PartnersGrid.astro';
 import { loadPageJson } from '../../../lib/yanghua/loaders';
 import { route } from '../../../lib/yanghua/routes';
 
 const page = await loadPageJson<any>('en', 'partners');
 const content = page?.content ?? {};
+
+const partners = [
+  { name: 'BYD', logo: '/images/partners/byd.webp' },
+  { name: 'CATL', logo: '/images/partners/catl.webp' },
+  { name: 'Huawei', logo: '/images/partners/huawei.webp' },
+  { name: 'CRCC', logo: '/images/partners/crcc.png' },
+  { name: 'State Grid', logo: '/images/partners/state grid.webp' },
+  { name: 'Southern Power Grid', logo: '/images/partners/southern power grid.webp' },
+  { name: 'Power China', logo: '/images/partners/power china.png' },
+  { name: 'Sinopec', logo: '/images/partners/sinopec.webp' },
+  { name: 'Oil China', logo: '/images/partners/oil china.webp' },
+  { name: 'Energy China', logo: '/images/partners/energy china .webp' },
+  { name: 'CEDC', logo: '/images/partners/cedc.png' },
+];
+
+const benefits = [
+  {
+    title: 'Strategic Cooperation',
+    description: 'A partner network focused on flexible copper busbar systems, high current power distribution, and project delivery support.',
+  },
+  {
+    title: 'Proven Industrial Adoption',
+    description: 'Logo references include energy, grid, transportation, manufacturing, and infrastructure organizations served by Yanghua solutions.',
+  },
+  {
+    title: 'Reliable Project Support',
+    description: 'Partnership inquiries connect directly to the same quote workflow used for products, projects, and technical requirements.',
+  },
+];
 ---
 
 <BaseLayout title={content?.title ?? 'Partners'} description={content?.subtitle ?? ''}>
   <Header slot="header" locale="en" />
   <Banner title={content?.title ?? 'Partners'} locale="en" />
 
-  <section class="py-section">
-    <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">{content?.title}</h2>
-        <p class="mt-3 text-text-muted leading-relaxed">{content?.subtitle}</p>
-      </div>
-      <div class="mt-10 rounded-lg border border-border bg-surface p-8 text-center text-text-muted">
-        Partner list assets will be connected next (reusing existing brand images).
-      </div>
-    </div>
-  </section>
+  <PartnersGrid title={content?.title} subtitle={content?.subtitle} partners={partners} benefits={benefits} />
 
   <CTA
     title={content?.title ?? 'Our Partners'}
@@ -36,4 +56,3 @@ const content = page?.content ?? {};
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>
-

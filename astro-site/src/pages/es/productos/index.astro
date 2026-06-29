@@ -5,6 +5,8 @@ import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
 import Services from '../../../components/Services.astro';
 import CTA from '../../../components/CTA.astro';
+import ProductCategories from '../../../components/ProductCategories.astro';
+import TechnicalSpecs from '../../../components/TechnicalSpecs.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { route } from '../../../lib/yanghua/routes';
 import { t, tRaw } from '../../../lib/yanghua/t';
@@ -19,19 +21,27 @@ const services = Object.values(areas).map((a: any) => ({
 }));
 
 const featureCards = tRaw<Record<string, any>>(messages, 'productFeatures.cards', {});
+const categories = tRaw<any[]>(messages, 'products.categories', []);
+const productLabels = tRaw<Record<string, string>>(messages, 'products.common', {});
+const specifications = tRaw<Record<string, any>>(messages, 'products.specifications', {});
 ---
 
-<BaseLayout title={t(messages, 'products.title')} description={t(messages, 'products.subtitle')}>
+<BaseLayout title={t(messages, 'products.hero.title', 'Nuestros Productos')} description={t(messages, 'products.hero.subtitle', '')}>
   <Header slot="header" locale="es" />
-  <Banner title={t(messages, 'products.title')} locale="es" />
+  <Banner title={t(messages, 'products.hero.title', 'Productos')} locale="es" />
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mx-auto max-w-3xl text-center">
-        <p class="text-text-muted">{t(messages, 'products.subtitle')}</p>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{t(messages, 'products.overview.title', 'Descripción de Productos')}</h2>
+        <p class="mt-3 text-text-muted">{t(messages, 'products.overview.subtitle', t(messages, 'products.hero.subtitle', ''))}</p>
       </div>
     </div>
   </section>
+
+  <ProductCategories categories={categories} labels={productLabels} locale="es" />
+
+  <TechnicalSpecs specs={specifications} />
 
   <section class="bg-surface py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
@@ -78,4 +88,3 @@ const featureCards = tRaw<Record<string, any>>(messages, 'productFeatures.cards'
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>
-

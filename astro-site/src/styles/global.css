@@ -19,15 +19,12 @@
     color: var(--color-text);
   }
 
-  .dark body,
-  body.dark-mode {
+  .dark body {
     background-color: var(--color-dark);
     color: var(--color-surface);
   }
 
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
-  body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
-  body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
     color: var(--color-surface);
   }
 

@@ -3,10 +3,8 @@
  * Base layout — wraps every page.
  *
  * Astro 6 features used:
- *  • <Font />         — built-in font optimizer from astro.config.mjs fonts array
  *  • <ClientRouter /> — client-side navigation with CSS transition animations
  */
-import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { brand } from '../config/brand';
@@ -63,7 +61,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
     <meta property="og:title"       content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image"       content={image} />
-    <meta property="og:locale"      content={brand.locale} />
+    <meta property="og:locale"      content={locale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card"        content="summary_large_image" />
@@ -75,24 +73,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Fonts -->
-    <Font cssVariable="--font-display" preload />
-    <Font cssVariable="--font-body"    preload />
+    <!-- Fonts: use a plain stylesheet to avoid Astro's build-time font HTTP server in restricted environments. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- JSON-LD Structured Data -->
     {schema && (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
-
-    <!-- FOUC prevention for dark mode -->
-    <script is:inline>
-      (function(){
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark-mode');
-        }
-      })();
-    </script>
 
     <!--
       设计 token 单源覆盖：

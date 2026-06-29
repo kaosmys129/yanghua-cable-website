@@ -1,0 +1,118 @@
+---
+import type { Locale } from '../lib/yanghua/loaders';
+import type { ProductCategory } from '../lib/yanghua/products';
+import { categoryLabels } from '../lib/yanghua/products';
+import { route } from '../lib/yanghua/routes';
+
+const { category, locale = 'en' } = Astro.props as { category: ProductCategory; locale: Locale };
+const labels = categoryLabels[locale];
+const productHref = route('products', locale);
+const contactHref = route('contact', locale);
+const specLabels =
+  locale === 'es'
+    ? {
+        ratedCurrent: 'Corriente Nominal',
+        ratedVoltage: 'Voltaje Nominal',
+        ratedFrequency: 'Frecuencia Nominal',
+        protectionLevel: 'Nivel de Protección',
+        maxOperatingTemp: 'Temperatura Máxima de Operación',
+      }
+    : {
+        ratedCurrent: 'Rated Current',
+        ratedVoltage: 'Rated Voltage',
+        ratedFrequency: 'Rated Frequency',
+        protectionLevel: 'Protection Level',
+        maxOperatingTemp: 'Max Operating Temperature',
+      };
+---
+
+<section class="py-section">
+  <div class="mx-auto grid max-w-site grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
+    <div class="space-y-12">
+      <section class="grid grid-cols-1 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div class="overflow-hidden rounded-lg border border-border bg-surface">
+          <img src={category.image} alt={category.name} class="h-full min-h-72 w-full object-cover" loading="eager" />
+        </div>
+        <div>
+          <span class="text-topper font-bold uppercase tracking-widest text-accent">{labels.productCategory}</span>
+          <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{labels.overview}</h2>
+          <p class="mt-4 text-lg leading-relaxed text-text-muted">{category.description}</p>
+          <div class="mt-6">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-text">{labels.models}</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {category.models.map((model) => (
+                <span class="rounded-md border border-border bg-surface px-3 py-1 text-sm font-medium text-text">{model}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.applications}</h2>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {category.applications.map((item) => (
+            <span class="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-fg">{item}</span>
+          ))}
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.structure}</h2>
+          <ul class="mt-5 space-y-3">
+            {category.structure.map((item) => (
+              <li class="flex items-start gap-3 rounded-lg border border-border bg-surface p-4">
+                <span class="mt-1 inline-block size-2 shrink-0 rounded-full bg-accent"></span>
+                <span class="text-sm leading-relaxed text-text-muted">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.coreConfigurations}</h2>
+          <ol class="mt-5 space-y-3">
+            {category.coreConfigurations.map((item, index) => (
+              <li class="flex items-start gap-3 rounded-lg border border-border bg-surface p-4">
+                <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-fg">{index + 1}</span>
+                <span class="text-sm leading-relaxed text-text-muted">{item}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.specifications}</h2>
+        <div class="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
+          <table class="w-full text-left text-sm">
+            <tbody class="divide-y divide-border">
+              {Object.entries(category.specifications).map(([key, value]) => (
+                <tr>
+                  <th class="w-1/2 bg-background px-4 py-4 font-semibold text-text">{specLabels[key as keyof typeof specLabels] ?? key}</th>
+                  <td class="px-4 py-4 text-text-muted">{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start">
+      <div class="rounded-lg border border-border bg-accent p-6 text-accent-fg shadow-sm">
+        <h2 class="font-heading text-lg font-semibold">{labels.inquiry}</h2>
+        <p class="mt-2 text-sm leading-relaxed opacity-85">{category.name}</p>
+        <a href={contactHref} class="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-fg">
+          {locale === 'es' ? 'Solicitar Cotización' : 'Submit Inquiry'}
+        </a>
+      </div>
+      <div class="rounded-lg border border-border bg-surface p-6 shadow-sm">
+        <h2 class="font-heading text-lg font-semibold text-text">{labels.browse}</h2>
+        <a href={productHref} class="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-md border-2 border-primary px-5 py-3 text-sm font-bold text-primary">
+          {labels.back}
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>

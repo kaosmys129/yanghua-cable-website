@@ -1,0 +1,105 @@
+---
+import type { Locale } from '../lib/yanghua/loaders';
+import type { ProductDetail } from '../lib/yanghua/products';
+import { productLabels } from '../lib/yanghua/products';
+import { route } from '../lib/yanghua/routes';
+
+const { product, locale = 'en', related = [] } = Astro.props as {
+  product: ProductDetail;
+  locale: Locale;
+  related?: ProductDetail[];
+};
+const labels = productLabels[locale];
+const contactHref = route('contact', locale);
+---
+
+<section class="py-section">
+  <div class="mx-auto grid max-w-site grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
+    <div class="space-y-12">
+      <section class="grid grid-cols-1 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div class="overflow-hidden rounded-lg border border-border bg-surface">
+          <img src={product.images[0]} alt={product.name} class="h-full min-h-80 w-full object-cover" loading="eager" />
+        </div>
+        <div>
+          <span class="text-topper font-bold uppercase tracking-widest text-accent">{labels.productType}</span>
+          <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{labels.overview}</h2>
+          <p class="mt-4 text-lg leading-relaxed text-text-muted">{product.detailedDescription}</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.features}</h2>
+        <div class="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {product.features.map((feature) => (
+            <div class="rounded-lg border border-border bg-surface p-5">
+              <p class="text-sm leading-relaxed text-text-muted">{feature}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.specifications}</h2>
+        <div class="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
+          <table class="w-full text-left text-sm">
+            <tbody class="divide-y divide-border">
+              {Object.entries(product.technicalSpecs).map(([key, value]) => (
+                <tr>
+                  <th class="w-1/2 bg-background px-4 py-4 font-semibold text-text">{key}</th>
+                  <td class="px-4 py-4 text-text-muted">{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.applications}</h2>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {product.applications.map((item) => (
+            <span class="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-fg">{item}</span>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{labels.gallery}</h2>
+        <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {product.images.map((image, index) => (
+            <div class="overflow-hidden rounded-lg border border-border bg-surface">
+              <img src={image} alt={`${product.name} ${index + 1}`} class="h-56 w-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start">
+      <div class="rounded-lg border border-border bg-accent p-6 text-accent-fg shadow-sm">
+        <h2 class="font-heading text-lg font-semibold">{labels.inquiry}</h2>
+        <p class="mt-2 text-sm leading-relaxed opacity-85">{product.description}</p>
+        <a href={contactHref} class="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-fg">
+          {locale === 'es' ? 'Solicitar Cotización' : 'Submit Inquiry'}
+        </a>
+      </div>
+
+      {related.length > 0 && (
+        <div class="rounded-lg border border-border bg-surface p-6 shadow-sm">
+          <h2 class="font-heading text-lg font-semibold text-text">{labels.related}</h2>
+          <div class="mt-4 space-y-3">
+            {related.map((item) => (
+              <a href={`${locale === 'es' ? '/es/productos' : '/en/products'}/${item.id}`} class="flex gap-3 rounded-md border border-border bg-background p-3 transition-colors hover:border-primary">
+                <img src={item.images[0]} alt={item.name} class="size-14 shrink-0 rounded-md object-cover" loading="lazy" />
+                <span>
+                  <span class="block text-sm font-semibold text-text">{item.name}</span>
+                  <span class="mt-1 block text-xs leading-relaxed text-text-muted">{item.description}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </aside>
+  </div>
+</section>

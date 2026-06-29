@@ -84,6 +84,22 @@ function pickLocaleText(map: Record<string, any> | undefined, locale: Locale): s
   return String(map[locale] ?? map.en ?? map.es ?? '');
 }
 
+/**
+ * 将 site.json 中可能引用的旧 Next.js 路由映射为 Astro 站点中实际存在的路径，
+ * 避免因 site.json 残留已删除路由而产生死链。
+ */
+function normalizeLegacyHref(raw: string): string {
+  // /en/products/category/* → /en/products
+  let h = raw.replace(/^(\/(en|es))\/products\/category\/.*$/i, '$1/products');
+  // /es/productos/categoria/* → /es/productos
+  h = h.replace(/^(\/(en|es))\/productos\/categoria\/.*$/i, '$1/productos');
+  return h;
+}
+
+function normalizeNavItems(items: Array<{ label: string; href: string }>): Array<{ label: string; href: string }> {
+  return items.map((x) => ({ label: x.label, href: normalizeLegacyHref(x.href) }));
+}
+
 export async function loadAndNormalizeSiteSettings(locale: Locale): Promise<NormalizedSiteSettings> {
   const raw = (await loadSiteSettings<LegacySiteSettings>()) || {};
 
@@ -91,7 +107,7 @@ export async function loadAndNormalizeSiteSettings(locale: Locale): Promise<Norm
   const siteName = String(raw.siteName || raw.brandName || brandName);
 
   const nav = raw.navigation?.[locale] ?? raw.navigation?.[raw.defaultLocale || 'en'];
-  const navItems = (nav?.items || []).filter((x) => x?.label && x?.href) as NormalizedNavItem[];
+  const navItems = normalizeNavItems((nav?.items || []).filter((x) => x?.label && x?.href) as NormalizedNavItem[]);
   const ctaLabel = String(nav?.ctaLabel || (locale === 'es' ? 'Solicitar cotización' : 'Get Quote'));
 
   const email = String(raw.contact?.email || '');
@@ -115,7 +131,7 @@ export async function loadAndNormalizeSiteSettings(locale: Locale): Promise<Norm
     .filter((s) => s?.title)
     .map((s) => ({
       title: String(s?.title || ''),
-      items: (s?.items || []).filter((x) => x?.label && x?.href) as NormalizedNavItem[],
+      items: normalizeNavItems((s?.items || []).filter((x) => x?.label && x?.href) as NormalizedNavItem[]),
     }));
 
   const defaultTitle = String(raw.seo?.defaultTitle || brandName);

@@ -1,13 +1,23 @@
 import { defineMiddleware } from 'astro:middleware';
 
 const GONE_URL_PATTERNS: RegExp[] = [
-  /^\/en\/products\/low-smoke-halogen-free-cables\/?$/i,
-  /^\/en\/products\/fire-resistant-cables\/?$/i,
-  /^\/en\/products\/general-purpose-cables\/?$/i,
   /^\/en\/projects\/data-center-power-distribution-system\/?$/i,
   /^\/en\/projects\/30mw-wind-power-project\/?$/i,
   /^\/en\/projects\/industrial-plant-renovation-project\/?$/i,
-  /^\/en\/products\/category\/flexible-busbar-systems-accessories\/?$/i,
+];
+
+const LEGACY_PRODUCT_CATEGORY_REDIRECTS: Array<{ from: RegExp; to: string }> = [
+  { from: /^\/en\/products\/general-purpose-cables\/?$/i, to: '/en/products/category/general-purpose-cables' },
+  { from: /^\/en\/products\/fire-resistant-cables\/?$/i, to: '/en/products/category/fire-resistant-cables' },
+  { from: /^\/en\/products\/low-smoke-halogen-free-cables\/?$/i, to: '/en/products/category/low-smoke-halogen-free-cables' },
+  {
+    from: /^\/es\/productos\/categoria\/cables-de-prop%C3%B3sito-general\/?$/i,
+    to: '/es/productos/categoria/cables-de-proposito-general',
+  },
+  {
+    from: /^\/es\/productos\/categoria\/cables-libres-de-humo-y-hal%C3%B3genos\/?$/i,
+    to: '/es/productos/categoria/cables-libres-de-humo-y-halogenos',
+  },
 ];
 
 const ENGLISH_ROOT_PATTERNS: RegExp[] = [
@@ -67,6 +77,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return context.redirect('/en', 308);
   }
 
+  for (const rule of LEGACY_PRODUCT_CATEGORY_REDIRECTS) {
+    if (rule.from.test(pathname)) {
+      return context.redirect(rule.to, 301);
+    }
+  }
+
   // 3) 无语言前缀的英文段 → /en 前缀（308）
   if (!pathname.startsWith('/en') && !pathname.startsWith('/es')) {
     if (ENGLISH_ROOT_PATTERNS.some((re) => re.test(pathname))) {
@@ -90,4 +106,3 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   return next();
 });
-

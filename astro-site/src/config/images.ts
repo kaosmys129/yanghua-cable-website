@@ -50,7 +50,7 @@ export const heroImage: ImageMetadata | undefined = heroImageFile;
 //   3. Replace the aboutImage export at the bottom of this section
 //
 // import aboutImage from '../assets/images/about/team.jpg';
-import aboutImageFile from '../assets/images/about/yanghua-about.webp';
+import aboutImageFile from '../assets/images/about/yanghua-about.jpg';
 export const aboutImage: ImageMetadata | undefined = aboutImageFile;
 
 // ── Gallery — auto-discovered ─────────────────────────────────────────────────

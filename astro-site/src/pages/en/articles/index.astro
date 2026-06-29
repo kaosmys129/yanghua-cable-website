@@ -21,7 +21,7 @@ const articles = Object.entries(modules)
       title: fm.metaTitle ?? fm.title ?? slug,
       summary: fm.summary ?? fm.metaDescription ?? '',
       publishedAt: fm.publishedAt ?? '',
-      coverImage: fm.coverImage ?? '',
+      coverImage: fm.cover?.src ?? fm.coverImage ?? '',
     };
   })
   .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)));
@@ -42,7 +42,7 @@ const articles = Object.entries(modules)
           <a href={`/en/articles/${a.slug}`} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
             <div class="h-44 overflow-hidden bg-background">
               {a.coverImage ? (
-                <img src={a.coverImage} alt={a.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                <img src={a.coverImage} alt={a.title} referrerpolicy="no-referrer" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none'" />
               ) : (
                 <div class="flex h-full items-center justify-center text-sm text-text-muted">No image</div>
               )}

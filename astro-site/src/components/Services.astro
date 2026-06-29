@@ -3,6 +3,8 @@ interface ServiceItem {
   title: string;
   description: string;
   href?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 interface Props {
@@ -50,14 +52,25 @@ const {
           <a
             href={service.href || '/services'}
             aria-label={`Learn more about ${service.title}`}
-            class="group flex h-full cursor-pointer flex-col rounded-lg border border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
+            class="group relative flex min-h-64 cursor-pointer flex-col overflow-hidden rounded-lg border border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
           >
-            <div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-fg">
+            {service.image && (
+              <>
+                <img
+                  src={service.image}
+                  alt={service.imageAlt || service.title}
+                  class="absolute inset-0 h-full w-full object-cover opacity-[0.22] saturate-90 transition duration-300 group-hover:scale-105 group-hover:opacity-[0.3]"
+                  loading="lazy"
+                />
+                <span class="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background/70"></span>
+              </>
+            )}
+            <div class="relative mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-fg">
               <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" set:html={icons[i % icons.length]} />
             </div>
-            <h3 class="font-heading text-h3 font-semibold text-text">{service.title}</h3>
-            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{service.description}</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+            <h3 class="relative font-heading text-h3 font-semibold text-text">{service.title}</h3>
+            <p class="relative mt-2 flex-1 text-sm leading-relaxed text-text-muted">{service.description}</p>
+            <span class="relative mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
               Learn more
               <span class="sr-only"> about {service.title}</span>
               <svg class="size-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

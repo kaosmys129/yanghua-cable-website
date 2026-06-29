@@ -1,0 +1,22 @@
+---
+const { specs = {} } = Astro.props;
+const cards = [specs.currentRange, specs.ratedVoltage, specs.protectionLevel].filter(Boolean);
+const values = ['200-6300A', '≤3kV', 'IP68'];
+---
+
+<section class="bg-surface py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
+      <h2 class="font-heading text-h2 font-bold uppercase text-text">{specs.title}</h2>
+    </div>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {cards.map((card: any, i: number) => (
+        <article class="rounded-lg border border-border bg-background p-6 text-center shadow-sm">
+          <div class="mx-auto flex size-20 items-center justify-center rounded-lg bg-accent text-lg font-bold text-accent-fg">{values[i]}</div>
+          <h3 class="mt-5 font-heading text-lg font-semibold text-text">{card.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-text-muted">{card.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

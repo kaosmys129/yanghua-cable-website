@@ -60,6 +60,13 @@ const faqItems = Object.values(content?.faq ?? {})
     buttonHref={route('contact', 'en')}
   />
 
+  <section class="pb-section">
+    <div class="mx-auto max-w-site px-4 text-center sm:px-6">
+      <a href={route('products', 'en')} class="inline-flex min-h-[44px] items-center justify-center rounded-md border-2 border-primary px-6 py-3 font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg">
+        {content?.cta?.downloadResources ?? 'Download Resources'}
+      </a>
+    </div>
+  </section>
+
   <Footer slot="footer" locale="en" />
 </BaseLayout>
-

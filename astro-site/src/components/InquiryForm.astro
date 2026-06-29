@@ -1,0 +1,50 @@
+---
+const { content = {}, locale = 'en' } = Astro.props;
+const form = content.form ?? {};
+const placeholders = content.placeholders ?? {};
+const options = Object.values(content.options ?? {});
+---
+
+<section class="bg-surface py-section">
+  <div class="mx-auto grid max-w-site grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-5">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">Inquiry</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{content.title}</h2>
+      <p class="mt-4 text-text-muted leading-relaxed">{content.subtitle}</p>
+      <p class="mt-6 rounded-lg border border-border bg-background p-4 text-sm text-text-muted">{content.privacyNote}</p>
+    </div>
+
+    <form class="grid gap-5 rounded-lg border border-border bg-background p-6 shadow-sm lg:col-span-7" method="post" action="/api/email/send">
+      <input type="hidden" name="type" value="inquiry" />
+      <input type="hidden" name="locale" value={locale} />
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">{form.name}</span>
+          <input name="name" required placeholder={placeholders.name} class="rounded-md border border-border bg-surface px-4 py-2.5 text-text" />
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">{form.email}</span>
+          <input name="email" type="email" required placeholder={placeholders.email} class="rounded-md border border-border bg-surface px-4 py-2.5 text-text" />
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">{form.company}</span>
+          <input name="company" placeholder={placeholders.company} class="rounded-md border border-border bg-surface px-4 py-2.5 text-text" />
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-medium text-text">{form.productInterest}</span>
+          <select name="productInterest" class="rounded-md border border-border bg-surface px-4 py-2.5 text-text">
+            <option value="">{placeholders.selectCategory}</option>
+            {options.map((option: any) => <option value={option}>{option}</option>)}
+          </select>
+        </label>
+      </div>
+      <label class="flex flex-col gap-1.5">
+        <span class="text-sm font-medium text-text">{form.message}</span>
+        <textarea name="message" required rows="6" placeholder={placeholders.message} class="min-h-[150px] rounded-md border border-border bg-surface px-4 py-2.5 text-text"></textarea>
+      </label>
+      <button type="submit" class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-6 py-3 font-bold text-accent-fg">
+        {content.buttons?.submit}
+      </button>
+    </form>
+  </div>
+</section>

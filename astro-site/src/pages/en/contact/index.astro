@@ -105,6 +105,20 @@ const subjects = form?.subjects ?? {};
           <p class="mt-1 text-text-muted">{content?.info?.hours?.content}</p>
           <p class="mt-1 text-sm text-text-muted">{content?.info?.hours?.description}</p>
         </div>
+        {content?.globalSupport && (
+          <div class="rounded-lg border border-border bg-surface p-6">
+            <h3 class="font-heading text-lg font-semibold text-text">{content.globalSupport.title}</h3>
+            <p class="mt-2 text-sm text-text-muted">{content.globalSupport.description}</p>
+            <ul class="mt-4 space-y-2 text-sm text-text-muted">
+              {Object.values(content.globalSupport.regions ?? {}).map((region: any) => (
+                <li class="flex items-center gap-2">
+                  <span class="size-1.5 rounded-full bg-accent"></span>
+                  <span>{region}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </aside>
     </div>
   </section>

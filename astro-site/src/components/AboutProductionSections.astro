@@ -1,0 +1,110 @@
+---
+const { content = {}, locale = 'en' } = Astro.props;
+const milestones = content.timeline?.milestones ?? [];
+const team = [
+  ['Du', 'Dr Du Jingbiao', 'ceo', 'jpg'],
+  ['Hu', 'Mr Hu Runyi', 'cto', 'jpg'],
+  ['Li', 'Mr Li Xiaohua', 'engineer', 'jpg'],
+  ['peng', 'Mr Peng Qian', 'qa', 'webp'],
+];
+---
+
+<section class="py-section">
+  <div class="mx-auto grid max-w-site grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
+    <div>
+      <h2 class="font-heading text-h2 font-bold uppercase text-text">{content.overview?.title}</h2>
+      <p class="mt-4 text-text-muted leading-relaxed">{content.overview?.description}</p>
+      <div class="mt-8 grid grid-cols-2 gap-4">
+        {Object.values(content.overview?.stats ?? {}).map((value: any) => (
+          <div class="rounded-lg border border-border bg-surface p-4 text-center">
+            <div class="font-heading text-lg font-bold text-primary">{value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="overflow-hidden rounded-lg border border-border bg-surface shadow-sm">
+      <img src="/images/company-intro.webp" alt={content.video?.companyIntro} class="aspect-video w-full object-cover" loading="lazy" />
+      <div class="p-5">
+        <h3 class="font-heading text-lg font-semibold text-text">{content.video?.companyIntro}</h3>
+        <p class="mt-2 text-sm text-text-muted">{content.video?.watchVideo}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-surface py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <h2 class="font-heading text-h2 font-bold uppercase text-text">{content.mission?.title}</h2>
+      <p class="mt-3 text-text-muted">{content.mission?.subtitle}</p>
+    </div>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <article class="rounded-lg border border-border bg-background p-6 shadow-sm">
+        <h3 class="font-heading text-xl font-semibold text-text">{content.mission?.missionTitle}</h3>
+        <p class="mt-3 text-text-muted">{content.mission?.missionContent}</p>
+        <p class="mt-3 text-text-muted">{content.mission?.missionDescription}</p>
+      </article>
+      <article class="rounded-lg border border-border bg-background p-6 shadow-sm">
+        <h3 class="font-heading text-xl font-semibold text-text">{content.mission?.valuesTitle}</h3>
+        <ul class="mt-4 space-y-3">
+          {Object.values(content.mission?.values ?? {}).map((value: any) => (
+            <li class="flex gap-3 text-text-muted"><span class="mt-2 size-2 shrink-0 rounded-full bg-accent"></span>{value}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <h2 class="font-heading text-h2 font-bold uppercase text-text">{content.timeline?.title}</h2>
+      <p class="mt-3 text-text-muted">{content.timeline?.subtitle}</p>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-5">
+      {milestones.map((item: any) => (
+        <article class="rounded-lg border border-border bg-surface p-5 shadow-sm">
+          <div class="font-heading text-xl font-bold text-accent">{item.year}</div>
+          <p class="mt-2 text-sm text-text-muted">{item.event}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary py-section text-primary-fg">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <h2 class="font-heading text-h2 font-bold uppercase">{content.certifications?.title}</h2>
+      <p class="mt-3 text-primary-fg/75">{content.certifications?.subtitle}</p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      {[1,2,3,4,5,6,7,8,9,10,11].map((i) => (
+        <div class="flex min-h-32 items-center justify-center rounded-lg bg-primary-fg/10 p-4">
+          <img src={`/images/certifications/cert${i}.webp`} alt={`Certification ${i}`} class="max-h-24 object-contain" loading="lazy" />
+        </div>
+      ))}
+    </div>
+    <p class="mx-auto mt-8 max-w-3xl text-center text-primary-fg/75">{content.certifications?.description}</p>
+  </div>
+</section>
+
+<section class="py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <h2 class="font-heading text-h2 font-bold uppercase text-text">{content.team?.title}</h2>
+      <p class="mt-3 text-text-muted">{content.team?.subtitle}</p>
+    </div>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {team.map(([image, name, key, ext]) => (
+        <article class="rounded-lg border border-border bg-surface p-6 text-center shadow-sm">
+          <img src={`/images/about/${image}.${ext}`} alt={name} class="mx-auto size-32 rounded-lg object-cover" loading="lazy" />
+          <h3 class="mt-4 font-heading text-lg font-semibold text-text">{name}</h3>
+          <p class="mt-1 text-sm font-semibold text-accent">{content.team?.positions?.[key]}</p>
+          <p class="mt-2 text-sm text-text-muted">{content.team?.experience?.[key]}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

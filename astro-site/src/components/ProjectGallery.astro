@@ -1,0 +1,40 @@
+---
+import { publicAsset } from '../lib/yanghua/assets';
+
+const { content = {}, projects = [], locale = 'en' } = Astro.props;
+const basePath = locale === 'es' ? '/es/proyectos' : '/en/projects';
+---
+
+<section class="py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">Yanghua</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{content.title}</h2>
+      <p class="mt-3 text-text-muted leading-relaxed">{content.subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {projects.slice(0, 4).map((project: any) => (
+        <a href={`${basePath}/${project.id}`} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
+          <div class="h-44 overflow-hidden bg-background">
+            <img src={publicAsset(project.images?.[0])} alt={project.title} class="size-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading text-lg font-semibold text-text">{project.title}</h3>
+            <p class="mt-2 line-clamp-3 text-sm text-text-muted">{project.description}</p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+              {content.viewDetails}
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href={basePath} class="inline-flex min-h-[44px] items-center justify-center rounded-md border-2 border-primary px-6 py-3 text-base font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg">
+        {content.viewAllProjects}
+      </a>
+    </div>
+  </div>
+</section>

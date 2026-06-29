@@ -7,23 +7,72 @@ import TrustBar from '../../components/TrustBar.astro';
 import Services from '../../components/Services.astro';
 import About from '../../components/About.astro';
 import CTA from '../../components/CTA.astro';
+import ProductComparison from '../../components/ProductComparison.astro';
+import PartnersGrid from '../../components/PartnersGrid.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
+import InquiryForm from '../../components/InquiryForm.astro';
 import { brand } from '../../config/brand';
 import { client } from '../../data/client';
-import { loadPageJson } from '../../lib/yanghua/loaders';
+import { loadMessages, loadPageJson } from '../../lib/yanghua/loaders';
 import { route } from '../../lib/yanghua/routes';
+import { tRaw } from '../../lib/yanghua/t';
 
 const page = await loadPageJson<any>('es', 'home');
+const messages = await loadMessages('es');
 
 const trustItems = Object.values(page?.companyStrength?.stats ?? {}).map((s: any) => ({
   value: s?.value,
   label: s?.label ?? '',
 }));
 
-const services = Object.values(page?.applicationAreas?.areas ?? {}).map((a: any) => ({
+const applicationAreaImages: Record<string, { image: string; imageAlt: string }> = {
+  energy: {
+    image: '/images/projects/50mw-solar-farm-power-distribution.webp',
+    imageAlt: 'Planta solar con infraestructura de distribución eléctrica',
+  },
+  building: {
+    image: '/images/projects/metro-line-14.webp',
+    imageAlt: 'Gabinetes exteriores de distribución eléctrica en sitio de proyecto',
+  },
+  industry: {
+    image: '/images/projects/midea-industrial-complex.webp',
+    imageAlt: 'Complejo industrial con infraestructura eléctrica',
+  },
+  dataCenter: {
+    image: '/images/projects/huawei-data-center-expansion.webp',
+    imageAlt: 'Proyecto de expansión de centro de datos con infraestructura eléctrica',
+  },
+  railway: {
+    image: '/images/projects/metro-line-14.webp',
+    imageAlt: 'Gabinetes de distribución eléctrica para infraestructura ferroviaria',
+  },
+  chemical: {
+    image: '/images/projects/steel-mill-modernization.webp',
+    imageAlt: 'Sitio industrial pesado con distribución eléctrica',
+  },
+  marine: {
+    image: '/images/projects/steel-mill-modernization.webp',
+    imageAlt: 'Entorno industrial exterior de distribución eléctrica',
+  },
+};
+
+const services = Object.entries(page?.applicationAreas?.areas ?? {}).map(([key, a]: [string, any]) => ({
   title: a?.title ?? '',
   description: a?.description ?? '',
   href: route('solutions', 'es'),
+  ...applicationAreaImages[key],
 }));
+
+const partners = [
+  { name: 'BYD', logo: '/images/partners/byd.webp' },
+  { name: 'CATL', logo: '/images/partners/catl.webp' },
+  { name: 'Huawei', logo: '/images/partners/huawei.webp' },
+  { name: 'State Grid', logo: '/images/partners/state grid.webp' },
+  { name: 'Southern Power Grid', logo: '/images/partners/southern power grid.webp' },
+  { name: 'Power China', logo: '/images/partners/powerchina.webp' },
+];
+
+const projects = tRaw<any[]>(messages, 'projects.list', []);
 ---
 
 <BaseLayout
@@ -68,6 +117,11 @@ const services = Object.values(page?.applicationAreas?.areas ?? {}).map((a: any)
     ctaHref={route('about', 'es')}
   />
 
+  <ProductComparison content={tRaw(messages, 'flexibleBusbarComparison', {})} locale="es" />
+  <PartnersGrid title={page?.partners?.title} subtitle={page?.partners?.subtitle} partners={partners} />
+  <ProjectGallery content={tRaw(messages, 'projectGallery', {})} projects={projects} locale="es" />
+  <InquiryForm content={tRaw(messages, 'inquiry', {})} locale="es" />
+
   <CTA
     title="¿Listo para empezar?"
     description="Contáctanos para selección de productos, soporte técnico y cotizaciones."
@@ -77,4 +131,3 @@ const services = Object.values(page?.applicationAreas?.areas ?? {}).map((a: any)
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>
-

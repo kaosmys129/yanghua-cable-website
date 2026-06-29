@@ -5,8 +5,7 @@
  * The @theme block registers Tailwind v4 design tokens as CSS custom
  * properties. 下面的 hex 仅作为默认值；最终会在 BaseLayout 中由 brand.ts 覆盖。
  *
- * Fonts are injected by Astro 6's built-in font optimizer (astro.config.mjs).
- * The --font-body and --font-display variables are available here automatically.
+ * Fonts are loaded in BaseLayout via a regular stylesheet link.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
@@ -51,10 +50,9 @@
 
 /*
  * ── Font wiring ─────────────────────────────────────────────────────────────
- * Astro injects --font-body and --font-display at runtime via the Fonts API.
- * @theme inline emits var() references without trying to resolve at build time.
+ * @theme inline emits font-family references used by Tailwind utilities.
  */
 @theme inline {
-  --font-heading: var(--font-display), 'Oswald', ui-sans-serif, system-ui, sans-serif;
-  --font-body:    var(--font-body), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    'Inter', ui-sans-serif, system-ui, sans-serif;
 }

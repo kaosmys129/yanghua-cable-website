@@ -19,14 +19,28 @@ const Content = mod.default;
 const fm = mod.frontmatter ?? {};
 const title = fm.metaTitle ?? fm.title ?? Astro.params.slug;
 const description = fm.metaDescription ?? fm.summary ?? '';
+const coverImage = fm.cover?.src ?? '';
+const coverAlt = fm.cover?.alt ?? title;
+const date = fm.publishedAt ?? '';
 ---
 
 <BaseLayout title={title} description={description}>
   <Header slot="header" locale="en" />
   <Banner title={title} locale="en" />
 
+  {coverImage && (
+    <div class="mx-auto max-w-site px-4 sm:px-6 -mt-4">
+      <img
+        src={coverImage}
+        alt={coverAlt}
+        class="w-full rounded-lg object-cover max-h-[480px] shadow-md"
+      />
+    </div>
+  )}
+
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
+      {date && <p class="text-sm text-text-muted mb-6">{date}</p>}
       <article class="prose prose-slate max-w-none">
         <Content />
       </article>

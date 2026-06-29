@@ -1,0 +1,40 @@
+---
+import { productImageFromIndex } from '../lib/yanghua/assets';
+import { slugifyProductCategoryName } from '../lib/yanghua/products';
+
+const { categories = [], labels = {}, locale = 'en' } = Astro.props;
+const basePath = locale === 'es' ? '/es/productos' : '/en/products';
+const categoryBasePath = locale === 'es' ? '/es/productos/categoria' : '/en/products/category';
+---
+
+<section class="py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      {categories.map((category: any) => (
+        <article class="overflow-hidden rounded-lg border border-border bg-surface shadow-sm">
+          <img src={productImageFromIndex(category.productIndex)} alt={category.name} class="h-56 w-full object-cover" loading="lazy" />
+          <div class="p-6">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h2 class="font-heading text-h3 font-semibold text-text">{category.name}</h2>
+                <p class="mt-2 text-sm leading-relaxed text-text-muted">{category.description}</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-fg">
+                {category.models?.length ?? 0} {labels.models}
+              </span>
+            </div>
+            <h3 class="mt-5 text-sm font-semibold text-text">{labels.availableModels}</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {(category.models ?? []).map((model: string) => (
+                <span class="rounded-md border border-border bg-background px-3 py-1 text-sm text-text-muted">{model}</span>
+              ))}
+            </div>
+            <a href={slugifyProductCategoryName(category.name) ? `${categoryBasePath}/${slugifyProductCategoryName(category.name)}` : basePath} class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-fg">
+              {(labels.exploreProducts ?? 'Explore Products').replace('{categoryName}', category.name)}
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

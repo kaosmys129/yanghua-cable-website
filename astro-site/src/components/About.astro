@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import { aboutImage as localAboutImage } from '../config/images';
 
 // Fallback Unsplash URL used until a local image is added to
@@ -42,13 +40,12 @@ const {
 
     <!-- Image -->
     <div class="overflow-hidden rounded-lg shadow-lg">
-      <Image
-        src={imageSrc}
+      <img
+        src={typeof imageSrc === 'string' ? imageSrc : '/images/about/img-strength.jpg'}
         alt={imageAlt}
-        width={700}
-        height={525}
-        loading="lazy"
-        decoding="async"
+        width="700"
+        height="525"
+        loading="eager"
         class="size-full object-cover"
       />
     </div>

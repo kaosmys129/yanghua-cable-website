@@ -1,0 +1,62 @@
+---
+const { content = {}, locale = 'en' } = Astro.props;
+
+const competitors = [content.traditional, content.compact].filter(Boolean);
+const flexible = content.flexibleBusbar ?? {};
+const flexibleFeatures = Object.values(flexible.features ?? {});
+---
+
+<section class="py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">{content.recommended ?? 'Recommended'}</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{content.title}</h2>
+      <p class="mt-3 text-text-muted leading-relaxed">{content.subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div class="lg:col-span-2 rounded-lg border border-border bg-surface p-6 shadow-sm">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {competitors.map((item: any) => (
+            <article class="rounded-lg border border-border bg-background p-5">
+              <h3 class="font-heading text-lg font-semibold text-text">{item.name}</h3>
+              <p class="mt-2 text-sm text-text-muted">{item.description}</p>
+              <ul class="mt-5 space-y-3">
+                {Object.values(item.features ?? {}).slice(0, 5).map((feature: any) => (
+                  <li class="border-t border-border pt-3 first:border-0 first:pt-0">
+                    <span class="block text-sm font-semibold text-text">{feature.name}</span>
+                    <span class="mt-1 block text-sm text-text-muted">{feature.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <article class="relative overflow-hidden rounded-lg border border-accent/40 bg-primary p-6 text-primary-fg shadow-lg">
+        <div class="absolute right-4 top-4 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-fg">
+          {content.recommended}
+        </div>
+        <h3 class="pr-24 font-heading text-h3 font-bold uppercase">{flexible.name}</h3>
+        <p class="mt-3 text-primary-fg/80">{flexible.description}</p>
+        <ul class="mt-6 space-y-3">
+          {flexibleFeatures.map((feature: any) => (
+            <li class="rounded-md bg-primary-fg/10 p-3">
+              <span class="block text-sm font-semibold">{feature.name}</span>
+              <span class="mt-1 block text-sm text-primary-fg/75">{feature.description}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
+          <a href={locale === 'es' ? '/es/contacto' : '/en/contact'} class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold text-accent-fg">
+            {content.getQuote}
+          </a>
+          <a href={locale === 'es' ? '/es/productos' : '/en/products'} class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-primary-fg/40 px-5 py-3 text-sm font-bold text-primary-fg">
+            {content.learnMore}
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
