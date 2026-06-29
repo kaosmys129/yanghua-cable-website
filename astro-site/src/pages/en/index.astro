@@ -119,7 +119,14 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     ctaHref={route('about', 'en')}
   />
 
-  <ProductComparisonSection content={tRaw(messages, 'flexibleBusbarComparison', {})} locale="en" />
+  <ProductComparisonSection
+    content={tRaw(messages, 'flexibleBusbarComparison', {})}
+    locale="en"
+    traditionalImage="/images/homepage/ArmouredCable.webp"
+    traditionalImageAlt="Traditional armored cable cross-section"
+    rigidBusbarImage="/images/homepage/contract-busbar-1756864022556-rvsop0-original.webp"
+    rigidBusbarImageAlt="Rigid busbar trunking system"
+  />
 
   <PartnersSection title={page?.partners?.title} subtitle={page?.partners?.subtitle} partners={partners} />
 
