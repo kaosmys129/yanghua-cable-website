@@ -70,52 +70,52 @@ export default function ProductComparisonSection({
           <p className="mt-3 text-text-muted leading-relaxed">{subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Competitor Cards */}
-          <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {competitors.map((item: any, index) => (
-                <Card key={index} className="border-border bg-background p-5">
-                  <CardContent className="p-0">
-                    <h3 className="font-heading text-lg font-semibold text-text">
-                      {item.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-text-muted">{item.description}</p>
-                    <ul className="mt-5 space-y-3">
-                      {Object.values(item.features ?? {})
-                        .slice(0, 5)
-                        .map((feature: any, fi: number) => (
-                          <li
-                            key={fi}
-                            className="border-t border-border pt-3 first:border-0 first:pt-0"
-                          >
-                            <span className="block text-sm font-semibold text-text">
-                              {feature.name}
-                            </span>
-                            <span className="mt-1 block text-sm text-text-muted">
-                              {feature.description}
-                            </span>
-                          </li>
-                        ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+          {competitors.map((item: any, index) => (
+            <Card key={index} className="flex h-full flex-col border-border bg-background shadow-sm">
+              <CardContent className="flex flex-1 flex-col p-5">
+                <div>
+                  <h3 className="font-heading text-lg font-semibold text-text">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{item.description}</p>
+                </div>
+                <ul className="mt-5 flex-1 space-y-3">
+                  {Object.values(item.features ?? {})
+                    .slice(0, 5)
+                    .map((feature: any, fi: number) => (
+                      <li
+                        key={fi}
+                        className="border-t border-border pt-3 first:border-0 first:pt-0"
+                      >
+                        <span className="block text-sm font-semibold text-text">
+                          {feature.name}
+                        </span>
+                        <span className="mt-1 block text-sm leading-relaxed text-text-muted">
+                          {feature.description}
+                        </span>
+                      </li>
+                    ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
 
           {/* Highlighted Flexible Busbar Card */}
           {flexible.name && (
-            <Card className="relative overflow-hidden border-[hsl(var(--accent-shadcn))/0.4] bg-primary text-primary-foreground shadow-lg">
-              <CardContent className="p-6 pt-6">
-                <Badge className="absolute right-4 top-4 bg-[hsl(var(--accent-shadcn))] text-[hsl(var(--accent-shadcn-foreground))] hover:bg-[hsl(var(--accent-shadcn))]/90">
-                  {recommended}
-                </Badge>
-                <h3 className="pr-24 font-heading text-h3 font-bold uppercase">
-                  {flexible.name}
-                </h3>
-                <p className="mt-3 text-primary-foreground/80">{flexible.description}</p>
-                <ul className="mt-6 space-y-3">
+            <Card className="flex h-full flex-col relative overflow-hidden border-[hsl(var(--accent-shadcn))/0.4] bg-primary text-primary-foreground shadow-lg">
+              <CardContent className="flex flex-1 flex-col p-6">
+                <div>
+                  <Badge className="absolute right-4 top-4 bg-[hsl(var(--accent-shadcn))] text-[hsl(var(--accent-shadcn-foreground))] hover:bg-[hsl(var(--accent-shadcn))]/90">
+                    {recommended}
+                  </Badge>
+                  <h3 className="pr-24 font-heading text-h3 font-bold uppercase">
+                    {flexible.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/80">{flexible.description}</p>
+                </div>
+                <ul className="mt-5 flex-1 space-y-3">
                   {flexibleFeatures.map((feature: any, i: number) => (
                     <li
                       key={i}
@@ -124,14 +124,14 @@ export default function ProductComparisonSection({
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--accent-shadcn))]" />
                       <div>
                         <span className="block text-sm font-semibold">{feature.name}</span>
-                        <span className="mt-1 block text-sm text-primary-foreground/75">
+                        <span className="mt-1 block text-sm leading-relaxed text-primary-foreground/75">
                           {feature.description}
                         </span>
                       </div>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <div className="mt-auto pt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <Button
                     asChild
                     size="lg"

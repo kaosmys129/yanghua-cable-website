@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import type { Locale } from '@/lib/i18n';
 
 export default function CTAButtons({
@@ -17,9 +17,9 @@ export default function CTAButtons({
   return (
     <>
       <Button
-        variant="default"
+        variant="brand"
         size="lg"
-        className="bg-[#fdb827] text-[#212529] hover:bg-[#e5a61e] font-semibold shadow-md hover:shadow-lg transition-all"
+        className="shadow-md hover:shadow-lg transition-all"
         onClick={() => onQuoteOpen?.()}
       >
         {isEs ? 'Solicitar Cotización' : 'Get Quote Now'}

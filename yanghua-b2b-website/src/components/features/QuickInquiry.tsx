@@ -1,9 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Send, Check, AlertCircle } from 'lucide-react';
+import { Send, Check, AlertCircle, Loader2 } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { sendForm } from '@/lib/network/FormRequest';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 
 interface QuickInquiryProps {
   projectId: string;
@@ -15,7 +19,6 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
   const t = useTranslations('inquiry');
   const locale = useLocale();
 
-  // 在组件挂载时，如果没有来自服务端的 CSRF token，则主动调用 /api/csrf 以设置 HttpOnly cookie
   useEffect(() => {
     let cancelled = false;
     async function ensureCsrfCookie() {
@@ -66,13 +69,9 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
     return Object.keys(errors).length === 0;
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
-    // 清除对应字段的验证错误
     if (validationErrors[name]) {
       setValidationErrors(prev => {
         const newErrors = { ...prev };
@@ -84,13 +83,12 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return; // 防止重复提交
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
 
-    // 前端基础校验
     if (!validate()) {
       setIsSubmitting(false);
       return;
@@ -132,7 +130,6 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
           setErrorMessage(errorPayload?.message || t('errors.submitFailed'));
         }
         
-        // 开发环境下输出调试信息
         if (process.env.NODE_ENV === 'development' && errorPayload?.debug) {
           console.error('API debug info:', errorPayload.debug);
         }
@@ -148,20 +145,24 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
 
   if (submitStatus === 'success') {
     return (
-      <div className="text-center py-6">
-        <div className="w-12 h-12 bg-[#212529] rounded-full flex items-center justify-center mx-auto mb-4">
-          <Check className="h-6 w-6 text-yellow-500" />
+      <div className="text-center py-8">
+        <div className="w-14 h-14 bg-[#fdb827] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <Check className="h-7 w-7 text-[#212529]" />
         </div>
         <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('success.title')}</h4>
-        <p className="text-gray-800 mb-4">{t('success.description')}</p>
+        <p className="text-sm text-gray-600 mb-3">{t('success.description')}</p>
         {emailId && (
-          <p className="text-sm text-gray-700 mb-4">
+          <p className="text-xs text-gray-500 mb-4">
             {locale === 'en' ? 'Reference ID:' : 'ID de Referencia:'} {emailId.slice(0, 8)}...
           </p>
         )}
-        <button onClick={() => setSubmitStatus('idle')} className="w-full bg-gray-900 text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors">
+        <Button
+          onClick={() => setSubmitStatus('idle')}
+          className="w-full bg-[#212529] text-white hover:bg-[#212529]/90 font-semibold"
+          size="sm"
+        >
           {t('buttons.sendAnother')}
-        </button>
+        </Button>
       </div>
     );
   }
@@ -170,105 +171,111 @@ export default function QuickInquiry({ projectId, projectTitle, csrfToken }: Qui
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* 全局错误消息 */}
       {submitStatus === 'error' && errorMessage && (
-        <div className="p-3 bg-red-100 border border-red-300 rounded-md flex items-start">
-          <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" />
+        <div className="flex items-start gap-2.5 p-3 rounded-lg bg-destructive/10 border border-destructive/20">
+          <AlertCircle className="h-4 w-4 text-destructive mt-0.5 flex-shrink-0" />
           <div>
-            <p className="text-red-700 text-sm font-medium">{errorMessage}</p>
-            <p className="text-red-600 text-xs mt-1">
+            <p className="text-sm font-medium text-destructive">{errorMessage}</p>
+            <p className="text-xs mt-1 text-destructive/70">
               {locale === 'en' ? 'Please check your information and try again.' : 'Por favor verifique su información e inténtelo de nuevo.'}
             </p>
           </div>
         </div>
       )}
 
-      <div>
-        <label htmlFor="qi-name" className="sr-only">{t('form.name')}</label>
-        <input
+      {/* 姓名 */}
+      <div className="space-y-1.5">
+        <Label htmlFor="qi-name" className="sr-only">{t('form.name')}</Label>
+        <Input
           type="text"
           id="qi-name"
           name="name"
           value={formData.name}
           onChange={handleChange}
           required
-          className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white ${validationErrors.name ? 'border-red-500' : ''}`}
           placeholder={t('placeholders.name')}
           aria-describedby={validationErrors.name ? 'qi-name-error' : undefined}
+          className={validationErrors.name ? 'border-destructive ring-destructive/20' : 'border-gray-300'}
         />
         {validationErrors.name && (
-          <p id="qi-name-error" className="mt-1 text-xs text-red-700">{validationErrors.name}</p>
+          <p id="qi-name-error" className="text-xs text-destructive">{validationErrors.name}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="qi-email" className="sr-only">{t('form.email')}</label>
-        <input
+      {/* 邮箱 */}
+      <div className="space-y-1.5">
+        <Label htmlFor="qi-email" className="sr-only">{t('form.email')}</Label>
+        <Input
           type="email"
           id="qi-email"
           name="email"
           value={formData.email}
           onChange={handleChange}
           required
-          className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white ${validationErrors.email ? 'border-red-500' : ''}`}
           placeholder={t('placeholders.email')}
           aria-describedby={validationErrors.email ? 'qi-email-error' : undefined}
+          className={validationErrors.email ? 'border-destructive ring-destructive/20' : 'border-gray-300'}
         />
         {validationErrors.email && (
-          <p id="qi-email-error" className="mt-1 text-xs text-red-700">{validationErrors.email}</p>
+          <p id="qi-email-error" className="text-xs text-destructive">{validationErrors.email}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="qi-company" className="sr-only">{t('form.company')}</label>
-        <input
+      {/* 公司 */}
+      <div className="space-y-1.5">
+        <Label htmlFor="qi-company" className="sr-only">{t('form.company')}</Label>
+        <Input
           type="text"
           id="qi-company"
           name="company"
           value={formData.company}
           onChange={handleChange}
-          className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white ${validationErrors.company ? 'border-red-500' : ''}`}
           placeholder={t('placeholders.company')}
           aria-describedby={validationErrors.company ? 'qi-company-error' : undefined}
+          className={validationErrors.company ? 'border-destructive ring-destructive/20' : 'border-gray-300'}
         />
         {validationErrors.company && (
-          <p id="qi-company-error" className="mt-1 text-xs text-red-700">{validationErrors.company}</p>
+          <p id="qi-company-error" className="text-xs text-destructive">{validationErrors.company}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="qi-message" className="sr-only">{t('form.message')}</label>
-        <textarea
+      {/* 消息 */}
+      <div className="space-y-1.5">
+        <Label htmlFor="qi-message" className="sr-only">{t('form.message')}</Label>
+        <Textarea
           id="qi-message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           required
           rows={3}
-          className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-white ${validationErrors.message ? 'border-red-500' : ''}`}
           placeholder={t('placeholders.message')}
           aria-describedby={validationErrors.message ? 'qi-message-error' : undefined}
+          className={`resize-none ${validationErrors.message ? 'border-destructive ring-destructive/20' : 'border-gray-300'}`}
         />
         {validationErrors.message && (
-          <p id="qi-message-error" className="mt-1 text-xs text-red-700">{validationErrors.message}</p>
+          <p id="qi-message-error" className="text-xs text-destructive">{validationErrors.message}</p>
         )}
       </div>
 
-      <button
+      {/* 提交按钮 */}
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gray-900 text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full bg-[#212529] text-white hover:bg-[#212529]/90 font-semibold transition-all duration-200"
+        size="sm"
       >
         {isSubmitting ? (
           <>
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2 inline-block"></div>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             {t('buttons.sending')}
           </>
         ) : (
           <>
-            <Send className="mr-2 h-4 w-4 inline-block" />
+            <Send className="mr-2 h-4 w-4" />
             {t('buttons.submit')}
           </>
         )}
-      </button>
+      </Button>
     </form>
   );
 }

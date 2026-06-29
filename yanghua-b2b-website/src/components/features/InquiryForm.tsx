@@ -1,9 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, Check, AlertCircle } from 'lucide-react';
+import { Send, Check, AlertCircle, Loader2 } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { sendForm } from '@/lib/network/FormRequest';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
   const t = useTranslations('inquiry');
@@ -22,17 +35,22 @@ export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [emailId, setEmailId] = useState<string>('');
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    
-    // 清除对应字段的验证错误
-    if (validationErrors[name]) {
+    setFormData(prev => ({ ...prev, [name]: value }));
+    clearFieldError(name);
+  };
+
+  const handleSelectChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    clearFieldError(field);
+  };
+
+  const clearFieldError = (field: string) => {
+    if (validationErrors[field]) {
       setValidationErrors(prev => {
         const newErrors = { ...prev };
-        delete newErrors[name];
+        delete newErrors[field];
         return newErrors;
       });
     }
@@ -73,7 +91,6 @@ export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
         const errorPayload = result.error;
         const payloadErrors = (errorPayload?.errors || []);
         if (Array.isArray(payloadErrors) && payloadErrors.length > 0) {
-          // 处理验证错误
           const errors: Record<string, string> = {};
           payloadErrors.forEach((error: string) => {
             if (error.includes('Name')) errors.name = error;
@@ -83,7 +100,6 @@ export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
           });
           setValidationErrors(errors);
         } else {
-          // 如果后端返回了调试信息，开发模式下记录出来
           if (process.env.NODE_ENV === 'development' && errorPayload?.debug) {
             console.error('API debug info:', errorPayload.debug);
           }
@@ -94,7 +110,6 @@ export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
       console.error('Inquiry form submission error:', error);
       setSubmitStatus('error');
       
-      // 更详细的错误处理
       let errorMsg = locale === 'en' 
         ? 'Network error. Please check your connection and try again.'
         : 'Error de red. Por favor verifique su conexión e inténtelo de nuevo.';
@@ -108,7 +123,6 @@ export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
           ? 'Server response error. Please try again or contact support.'
           : 'Error de respuesta del servidor. Por favor inténtelo de nuevo o contacte soporte.';
         
-        // 在开发环境下显示更多信息
         if (process.env.NODE_ENV === 'development') {
           console.error('SyntaxError details:', {
             message: error.message,
@@ -128,198 +142,209 @@ export default function InquiryForm({ csrfToken }: { csrfToken: string }) {
     <section className="py-16 lg:py-24 bg-[#212529] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {t('title')}
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               {t('subtitle')}
             </p>
           </div>
 
-          <div className="bg-[#2c3034] rounded-lg p-8 md:p-12">
+          <Card className="bg-[#2c3034] border-[#495057] shadow-xl">
             {submitStatus === 'success' ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-[#fdb827] rounded-full flex items-center justify-center mx-auto mb-6">
+              <CardContent className="text-center py-16">
+                <div className="w-16 h-16 bg-[#fdb827] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#fdb827]/20">
                   <Check className="h-8 w-8 text-[#212529]" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{t('success.title')}</h3>
-                <p className="text-gray-300 mb-4">
+                <CardTitle className="text-2xl mb-2 text-white">{t('success.title')}</CardTitle>
+                <CardDescription className="text-base text-gray-300 mb-4">
                   {t('success.description')}
-                </p>
+                </CardDescription>
                 {emailId && (
                   <p className="text-sm text-gray-400 mb-8">
                     {locale === 'en' ? 'Reference ID:' : 'ID de Referencia:'} {emailId.slice(0, 8)}...
                   </p>
                 )}
-                <button
+                <Button
                   onClick={() => setSubmitStatus('idle')}
-                  className="btn-primary px-8 py-3"
+                  className="bg-[#fdb827] text-[#212529] hover:bg-[#fdb827]/90 px-8 py-3 font-semibold shadow-md"
+                  size="lg"
                 >
                   {t('buttons.sendAnother')}
-                </button>
-              </div>
+                </Button>
+              </CardContent>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* 全局错误消息 */}
-                {submitStatus === 'error' && errorMessage && (
-                  <div className="p-4 bg-red-900/50 border border-red-700 rounded-lg flex items-start">
-                    <AlertCircle className="h-5 w-5 text-red-300 mt-0.5 mr-3 flex-shrink-0" />
-                    <div>
-                      <p className="text-red-300 text-sm font-medium">{errorMessage}</p>
-                      <p className="text-red-400 text-xs mt-1">
-                        {locale === 'en' 
-                          ? 'Please check your information and try again.'
-                          : 'Por favor verifique su información e inténtelo de nuevo.'
-                        }
-                      </p>
+              <>
+                <CardContent className="p-8 md:p-12">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* 全局错误消息 */}
+                    {submitStatus === 'error' && errorMessage && (
+                      <div className="flex items-start gap-3 p-4 rounded-lg bg-red-950/50 border border-red-800 text-red-300">
+                        <AlertCircle className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-sm font-medium">{errorMessage}</p>
+                          <p className="text-xs mt-1 text-red-400">
+                            {locale === 'en' 
+                              ? 'Please check your information and try again.'
+                              : 'Por favor verifique su información e inténtelo de nuevo.'
+                            }
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {/* 姓名字段 */}
+                      <div className="space-y-2">
+                        <Label htmlFor="inquiry-name" className="text-gray-200">
+                          {t('form.name')} <span className="text-red-400">*</span>
+                        </Label>
+                        <Input
+                          type="text"
+                          id="inquiry-name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          placeholder={t('placeholders.name')}
+                          aria-describedby={validationErrors.name ? 'inquiry-name-error' : undefined}
+                          className={`bg-[#343a40] border-[#495057] text-white placeholder:text-gray-500 focus-visible:ring-[#fdb827] focus-visible:border-[#fdb827] ${validationErrors.name ? 'border-red-500 ring-red-500/20' : ''}`}
+                        />
+                        {validationErrors.name && (
+                          <p id="inquiry-name-error" className="text-sm text-red-400">
+                            {validationErrors.name}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* 邮箱字段 */}
+                      <div className="space-y-2">
+                        <Label htmlFor="inquiry-email" className="text-gray-200">
+                          {t('form.email')} <span className="text-red-400">*</span>
+                        </Label>
+                        <Input
+                          type="email"
+                          id="inquiry-email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          placeholder={t('placeholders.email')}
+                          aria-describedby={validationErrors.email ? 'inquiry-email-error' : undefined}
+                          className={`bg-[#343a40] border-[#495057] text-white placeholder:text-gray-500 focus-visible:ring-[#fdb827] focus-visible:border-[#fdb827] ${validationErrors.email ? 'border-red-500 ring-red-500/20' : ''}`}
+                        />
+                        {validationErrors.email && (
+                          <p id="inquiry-email-error" className="text-sm text-red-400">
+                            {validationErrors.email}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* 公司字段 */}
+                      <div className="space-y-2">
+                        <Label htmlFor="inquiry-company" className="text-gray-200">
+                          {t('form.company')} <span className="text-red-400">*</span>
+                        </Label>
+                        <Input
+                          type="text"
+                          id="inquiry-company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          required
+                          placeholder={t('placeholders.company')}
+                          aria-describedby={validationErrors.company ? 'inquiry-company-error' : undefined}
+                          className={`bg-[#343a40] border-[#495057] text-white placeholder:text-gray-500 focus-visible:ring-[#fdb827] focus-visible:border-[#fdb827] ${validationErrors.company ? 'border-red-500 ring-red-500/20' : ''}`}
+                        />
+                        {validationErrors.company && (
+                          <p id="inquiry-company-error" className="text-sm text-red-400">
+                            {validationErrors.company}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* 产品兴趣 */}
+                      <div className="space-y-2">
+                        <Label htmlFor="inquiry-productInterest" className="text-gray-200">
+                          {t('form.productInterest')}
+                        </Label>
+                        <Select
+                          value={formData.productInterest}
+                          onValueChange={(value) => handleSelectChange('productInterest', value)}
+                          name="productInterest"
+                        >
+                          <SelectTrigger
+                            id="inquiry-productInterest"
+                            className="bg-[#343a40] border-[#495057] text-white focus-visible:ring-[#fdb827] focus-visible:border-[#fdb827]"
+                          >
+                            <SelectValue placeholder={t('placeholders.selectCategory')} />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#2c3034] border-[#495057]">
+                            <SelectItem value="Flexible Busbar">{t('options.flexibleBusbar')}</SelectItem>
+                            <SelectItem value="Busbar Connector">{t('options.busbarConnector')}</SelectItem>
+                            <SelectItem value="Custom Solutions">{t('options.customSolutions')}</SelectItem>
+                            <SelectItem value="Other">{t('options.other')}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
-                  </div>
-                )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      {t('form.name')} *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className={`w-full px-4 py-3 bg-[#343a40] border rounded-lg focus:ring-2 focus:ring-[#fdb827] focus:border-[#fdb827] outline-none transition ${
-                        validationErrors.name ? 'border-red-500 bg-red-900/20' : 'border-[#495057]'
-                      }`}
-                      placeholder={t('placeholders.name')}
-                      aria-describedby={validationErrors.name ? 'name-error' : undefined}
-                    />
-                    {validationErrors.name && (
-                      <p id="name-error" className="mt-1 text-sm text-red-400">
-                        {validationErrors.name}
-                      </p>
-                    )}
-                  </div>
+                    <Separator className="bg-[#495057]" />
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      {t('form.email')} *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className={`w-full px-4 py-3 bg-[#343a40] border rounded-lg focus:ring-2 focus:ring-[#fdb827] focus:border-[#fdb827] outline-none transition ${
-                        validationErrors.email ? 'border-red-500 bg-red-900/20' : 'border-[#495057]'
-                      }`}
-                      placeholder={t('placeholders.email')}
-                      aria-describedby={validationErrors.email ? 'email-error' : undefined}
-                    />
-                    {validationErrors.email && (
-                      <p id="email-error" className="mt-1 text-sm text-red-400">
-                        {validationErrors.email}
-                      </p>
-                    )}
-                  </div>
+                    {/* 消息字段 */}
+                    <div className="space-y-2">
+                      <Label htmlFor="inquiry-message" className="text-gray-200">
+                        {t('form.message')} <span className="text-red-400">*</span>
+                      </Label>
+                      <Textarea
+                        id="inquiry-message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={5}
+                        placeholder={t('placeholders.message')}
+                        aria-describedby={validationErrors.message ? 'inquiry-message-error' : undefined}
+                        className={`resize-vertical bg-[#343a40] border-[#495057] text-white placeholder:text-gray-500 focus-visible:ring-[#fdb827] focus-visible:border-[#fdb827] ${validationErrors.message ? 'border-red-500 ring-red-500/20' : ''}`}
+                      />
+                      {validationErrors.message && (
+                        <p id="inquiry-message-error" className="text-sm text-red-400">
+                          {validationErrors.message}
+                        </p>
+                      )}
+                    </div>
 
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2">
-                      {t('form.company')} *
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      required
-                      className={`w-full px-4 py-3 bg-[#343a40] border rounded-lg focus:ring-2 focus:ring-[#fdb827] focus:border-[#fdb827] outline-none transition ${
-                        validationErrors.company ? 'border-red-500 bg-red-900/20' : 'border-[#495057]'
-                      }`}
-                      placeholder={t('placeholders.company')}
-                      aria-describedby={validationErrors.company ? 'company-error' : undefined}
-                    />
-                    {validationErrors.company && (
-                      <p id="company-error" className="mt-1 text-sm text-red-400">
-                        {validationErrors.company}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="productInterest" className="block text-sm font-medium mb-2">
-                      {t('form.productInterest')}
-                    </label>
-                    <select
-                      id="productInterest"
-                      name="productInterest"
-                      value={formData.productInterest}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-[#343a40] border border-[#495057] rounded-lg focus:ring-2 focus:ring-[#fdb827] focus:border-[#fdb827] outline-none transition"
-                    >
-                      <option value="">{t('placeholders.selectCategory')}</option>
-                      <option value="Flexible Busbar">{t('options.flexibleBusbar')}</option>
-                      <option value="Busbar Connector">{t('options.busbarConnector')}</option>
-                      <option value="Custom Solutions">{t('options.customSolutions')}</option>
-                      <option value="Other">{t('options.other')}</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    {t('form.message')} *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className={`w-full px-4 py-3 bg-[#343a40] border rounded-lg focus:ring-2 focus:ring-[#fdb827] focus:border-[#fdb827] outline-none transition resize-vertical ${
-                      validationErrors.message ? 'border-red-500 bg-red-900/20' : 'border-[#495057]'
-                    }`}
-                    placeholder={t('placeholders.message')}
-                    aria-describedby={validationErrors.message ? 'message-error' : undefined}
-                  ></textarea>
-                  {validationErrors.message && (
-                    <p id="message-error" className="mt-1 text-sm text-red-400">
-                      {validationErrors.message}
+                    {/* 提交按钮 */}
+                    <div className="pt-2">
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="bg-[#fdb827] text-[#212529] hover:bg-[#fdb827]/90 font-semibold shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[#fdb827]/20 px-8"
+                        size="lg"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            {t('buttons.submitting')}
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-2 h-5 w-5" />
+                            {t('buttons.submit')}
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    
+                    <p className="text-sm text-gray-400 mt-2">
+                      {t('privacyNote')}
                     </p>
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="btn-primary px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:shadow-lg"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#212529] mr-2 inline-block"></div>
-                        {t('buttons.submitting')}
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-5 w-5 inline-block" />
-                        {t('buttons.submit')}
-                      </>
-                    )}
-                  </button>
-                </div>
-                
-                <p className="text-sm text-gray-400 mt-4">
-                  {t('privacyNote')}
-                </p>
-              </form>
+                  </form>
+                </CardContent>
+              </>
             )}
-          </div>
+          </Card>
         </div>
       </div>
     </section>
