@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import Banner from '../../../../components/Banner.astro';
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob('../../../../../../yanghua-b2b-website/content/hubs/en/*.mdx');
+  return Object.keys(modules).map((path) => ({
+    params: { slug: path.split('/').pop().replace(/\.mdx$/, '') },
+    props: { path },
+  }));
+}
+
+const modules = import.meta.glob('../../../../../../yanghua-b2b-website/content/hubs/en/*.mdx');
+const { path } = Astro.props as { path: string };
+const mod: any = await (modules as any)[path]();
+const Content = mod.default;
+const fm = mod.frontmatter ?? {};
+const title = fm.metaTitle ?? fm.title ?? Astro.params.slug;
+const description = fm.metaDescription ?? fm.summary ?? '';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header slot="header" locale="en" />
+  <Banner title={title} locale="en" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <article class="prose prose-slate max-w-none">
+        <Content />
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" locale="en" />
+</BaseLayout>

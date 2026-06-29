@@ -87,6 +87,10 @@ out
 playwright-report-smoke/
 test-results/
 output/
+.trae/
+yanghua-cable-redesign-phase-1/
+astro-site/dist/
+astro-site/.astro/
 
 # WordPress
 /yanghua-b2b-website/wordpress-install/phpmyadmin/

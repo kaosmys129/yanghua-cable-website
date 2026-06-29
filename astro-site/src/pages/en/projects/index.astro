@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import { loadMessages } from '../../../lib/yanghua/loaders';
+import { t, tRaw } from '../../../lib/yanghua/t';
+import { route } from '../../../lib/yanghua/routes';
+
+const messages = await loadMessages('en');
+const projects = tRaw<any[]>(messages, 'projects.list', []);
+const stats = tRaw<Record<string, string>>(messages, 'projects.stats', {});
+---
+
+<BaseLayout title={t(messages, 'projects.page.title')} description={t(messages, 'projects.page.description')}>
+  <Header slot="header" locale="en" />
+  <Banner title={t(messages, 'projects.page.title')} locale="en" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-text-muted leading-relaxed">{t(messages, 'projects.page.description')}</p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {Object.entries(stats).map(([k, v]) => (
+          <div class="rounded-lg border border-border bg-surface p-5 text-center">
+            <div class="font-heading text-xl font-bold text-primary">{v}</div>
+            <div class="mt-1 text-xs uppercase tracking-wider text-text-muted">{k}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p) => (
+          <a href={`/en/projects/${p.id}`} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
+            <div class="h-44 overflow-hidden bg-background">
+              <img src={(p.images && p.images[0]) || '/images/projects/huawei-data-center-expansion.webp'} alt={p.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading text-lg font-semibold text-text">{p.title}</h3>
+              <p class="mt-2 text-sm text-text-muted">{p.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-text-muted">
+                <span class="rounded-md border border-border bg-background px-2 py-1">{p.industry}</span>
+                <span class="rounded-md border border-border bg-background px-2 py-1">{p.location}</span>
+                <span class="rounded-md border border-border bg-background px-2 py-1">{p.year}</span>
+              </div>
+              <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                {t(messages, 'projects.labels.viewDetails')}
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title={t(messages, 'projects.detailPage.quickInquiry')}
+    description={t(messages, 'projects.page.description')}
+    buttonText={t(messages, 'projects.detailPage.getQuote')}
+    buttonHref={route('contact', 'en')}
+  />
+
+  <Footer slot="footer" locale="en" />
+</BaseLayout>
+

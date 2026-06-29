@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import Services from '../../../components/Services.astro';
+import CTA from '../../../components/CTA.astro';
+import { loadMessages } from '../../../lib/yanghua/loaders';
+import { route } from '../../../lib/yanghua/routes';
+import { t, tRaw } from '../../../lib/yanghua/t';
+
+const messages = await loadMessages('es');
+
+const areas = tRaw<Record<string, any>>(messages, 'applicationAreas.areas', {});
+const services = Object.values(areas).map((a: any) => ({
+  title: a?.title ?? '',
+  description: a?.description ?? '',
+  href: route('solutions', 'es'),
+}));
+
+const featureCards = tRaw<Record<string, any>>(messages, 'productFeatures.cards', {});
+---
+
+<BaseLayout title={t(messages, 'products.title')} description={t(messages, 'products.subtitle')}>
+  <Header slot="header" locale="es" />
+  <Banner title={t(messages, 'products.title')} locale="es" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-text-muted">{t(messages, 'products.subtitle')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">{t(messages, 'productFeatures.title')}</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{t(messages, 'productFeatures.title')}</h2>
+        <p class="mt-3 text-text-muted">{t(messages, 'productFeatures.subtitle')}</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {Object.values(featureCards).map((c: any) => (
+          <div class="rounded-lg border border-border bg-background p-6 shadow-sm">
+            <h3 class="font-heading text-lg font-semibold text-text">{c?.title}</h3>
+            <p class="mt-2 text-sm text-text-muted">{c?.description}</p>
+            {c?.details && (
+              <ul class="mt-4 space-y-1.5 text-sm text-text-muted">
+                {Object.values(c.details).map((d: any) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Services
+    topper={t(messages, 'applicationAreas.title')}
+    heading={t(messages, 'applicationAreas.title')}
+    description={t(messages, 'applicationAreas.subtitle')}
+    services={services}
+  />
+
+  <CTA
+    title="¿Necesita una recomendación?"
+    description="Cuéntenos su escenario de aplicación y le recomendaremos productos adecuados."
+    buttonText="Contacto"
+    buttonHref={route('contact', 'es')}
+  />
+
+  <Footer slot="footer" locale="es" />
+</BaseLayout>
+

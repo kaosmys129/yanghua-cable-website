@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "strapi-cms",
-    "yanghua-b2b-website"
+    "yanghua-b2b-website",
+    "astro-site"
   ],
   "dependencies": {
     "@babel/parser": "^7.28.3",
@@ -21,9 +22,11 @@
   },
   "devDependencies": {
     "@types/babel__traverse": "^7.28.0",
-    "@types/multer": "^2.0.0"
+    "@types/multer": "^2.0.0",
+    "vite": "7.3.6"
   },
   "overrides": {
+    "vite": "7.3.6",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "@types/react": "18.3.24",

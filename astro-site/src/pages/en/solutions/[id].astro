@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import { loadMessages } from '../../../lib/yanghua/loaders';
+import { t, tRaw } from '../../../lib/yanghua/t';
+import { route } from '../../../lib/yanghua/routes';
+
+export async function getStaticPaths() {
+  const messages = await loadMessages('en');
+  const solutions = tRaw<any[]>(messages, 'solutions.solutions', []);
+  return solutions.map((s) => ({
+    params: { id: s.id },
+    props: { solution: s },
+  }));
+}
+
+const messages = await loadMessages('en');
+const { solution } = Astro.props as { solution: any };
+---
+
+<BaseLayout title={solution?.title} description={solution?.subtitle}>
+  <Header slot="header" locale="en" />
+  <Banner title={solution?.title ?? 'Solution'} locale="en" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <img src={solution?.image} alt={solution?.title} class="aspect-[16/9] w-full rounded-lg object-cover shadow-sm" />
+          <p class="mt-6 text-text-muted leading-relaxed">{solution?.description}</p>
+        </div>
+
+        <aside class="lg:col-span-5">
+          <div class="rounded-lg border border-border bg-surface p-6 shadow-sm">
+            <h2 class="font-heading text-lg font-semibold text-text">{t(messages, 'solutions.common.keyHighlights')}</h2>
+            <ul class="mt-4 space-y-2 text-sm text-text-muted">
+              {(solution?.highlights ?? []).map((h: string) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
+            <h2 class="font-heading text-lg font-semibold text-text">{t(messages, 'solutions.common.keyApplications')}</h2>
+            <ul class="mt-4 grid grid-cols-1 gap-2 text-sm text-text-muted sm:grid-cols-2">
+              {(solution?.applications ?? []).map((a: string) => (
+                <li class="rounded-md border border-border bg-background px-3 py-2">{a}</li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {solution?.advantages?.length > 0 && (
+    <section class="bg-surface py-section">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="mx-auto mb-10 max-w-2xl text-center">
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{t(messages, 'solutions.common.keyAdvantages')}</h2>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {solution.advantages.map((adv: any) => (
+            <div class="rounded-lg border border-border bg-background p-6 shadow-sm">
+              <h3 class="font-heading text-lg font-semibold text-text">{adv.title}</h3>
+              <p class="mt-2 text-sm text-text-muted">{adv.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {solution?.technicalSpecs?.length > 0 && (
+    <section class="py-section">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="mx-auto mb-10 max-w-2xl text-center">
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{t(messages, 'solutions.common.technicalSpecifications')}</h2>
+        </div>
+        <div class="mx-auto max-w-3xl overflow-hidden rounded-lg border border-border bg-surface">
+          <table class="w-full text-left text-sm">
+            <tbody>
+              {solution.technicalSpecs.map((row: any) => (
+                <tr class="border-t border-border first:border-0">
+                  <th class="w-1/2 px-5 py-3 font-medium text-text">{row.parameter}</th>
+                  <td class="px-5 py-3 text-text-muted">{row.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CTA
+    title={t(messages, 'solutions.cta.customSolution.title')}
+    description={t(messages, 'solutions.cta.customSolution.description')}
+    buttonText={t(messages, 'solutions.common.contactUs')}
+    buttonHref={route('contact', 'en')}
+  />
+
+  <Footer slot="footer" locale="en" />
+</BaseLayout>
+

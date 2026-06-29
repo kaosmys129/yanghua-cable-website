@@ -1,0 +1,5 @@
+---
+// 根路径统一跳转到默认语言前缀，保持与旧站一致（/ -> /en）
+export const prerender = false;
+return Astro.redirect('/en', 308);
+---

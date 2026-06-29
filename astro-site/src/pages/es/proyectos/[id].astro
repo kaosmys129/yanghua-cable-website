@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import { loadMessages } from '../../../lib/yanghua/loaders';
+import { t, tRaw } from '../../../lib/yanghua/t';
+import { route } from '../../../lib/yanghua/routes';
+
+export async function getStaticPaths() {
+  const messages = await loadMessages('es');
+  const projects = tRaw<any[]>(messages, 'projects.list', []);
+  return projects.map((p) => ({
+    params: { id: String(p.id) },
+    props: { project: p },
+  }));
+}
+
+const messages = await loadMessages('es');
+const { project } = Astro.props as { project: any };
+const labels = tRaw<Record<string, string>>(messages, 'projects.labels', {});
+const sections = tRaw<Record<string, string>>(messages, 'projects.detailPage', {});
+---
+
+<BaseLayout title={project?.title} description={project?.description}>
+  <Header slot="header" locale="es" />
+  <Banner title={project?.title ?? t(messages, 'projects.page.title')} locale="es" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <img src={(project?.images && project.images[0]) || '/images/projects/huawei-data-center-expansion.webp'} alt={project?.title} class="aspect-[16/9] w-full rounded-lg object-cover shadow-sm" />
+          <p class="mt-6 text-text-muted leading-relaxed">{project?.content ?? project?.description}</p>
+        </div>
+
+        <aside class="lg:col-span-5">
+          <div class="rounded-lg border border-border bg-surface p-6 shadow-sm">
+            <h2 class="font-heading text-lg font-semibold text-text">{sections.projectInformation ?? 'Información del proyecto'}</h2>
+            <dl class="mt-4 space-y-3 text-sm">
+              <div class="flex justify-between gap-4">
+                <dt class="text-text-muted">{labels.client ?? 'Cliente'}</dt>
+                <dd class="text-text">{project?.client}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-text-muted">{labels.industry ?? 'Industria'}</dt>
+                <dd class="text-text">{project?.industry}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-text-muted">{labels.location ?? 'Ubicación'}</dt>
+                <dd class="text-text">{project?.location}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-text-muted">{labels.duration ?? 'Duración'}</dt>
+                <dd class="text-text">{project?.duration}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-text-muted">{labels.completionDate ?? 'Finalización'}</dt>
+                <dd class="text-text">{project?.completionDate}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-text-muted">{labels.projectScale ?? 'Escala'}</dt>
+                <dd class="text-text">{project?.projectScale ?? project?.scale}</dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {project?.challenge && (
+    <section class="bg-surface py-section">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.challenges ?? 'Antecedentes y desafíos'}</h2>
+          <p class="mt-3 text-text-muted leading-relaxed">{project.challenge}</p>
+          {project?.challenges?.length > 0 && (
+            <ul class="mt-6 space-y-2 text-sm text-text-muted">
+              {project.challenges.map((c: string) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {(project?.solution || project?.solutionPoints?.length > 0) && (
+    <section class="py-section">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.solution ?? 'Solución'}</h2>
+          {project?.solution && <p class="mt-3 text-text-muted leading-relaxed">{project.solution}</p>}
+          {project?.solutionPoints?.length > 0 && (
+            <ul class="mt-6 space-y-2 text-sm text-text-muted">
+              {project.solutionPoints.map((c: string) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {project?.results?.length > 0 && (
+    <section class="bg-surface py-section">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="mx-auto mb-10 max-w-2xl text-center">
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.results ?? 'Resultados'}</h2>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {project.results.map((r: any) => (
+            <div class="rounded-lg border border-border bg-background p-6 text-center shadow-sm">
+              <div class="font-heading text-xl font-bold text-primary">{r.value}</div>
+              <div class="mt-2 text-sm text-text-muted">{r.metric}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {project?.productsUsed?.length > 0 && (
+    <section class="py-section">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.products ?? 'Productos usados'}</h2>
+          <ul class="mt-6 space-y-2 text-sm text-text-muted">
+            {project.productsUsed.map((p: string) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CTA
+    title={sections.quickInquiry ?? 'Consulta por proyectos similares'}
+    description={sections.getQuote ?? ''}
+    buttonText={sections.getQuote ?? 'Cotizar'}
+    buttonHref={route('contact', 'es')}
+  />
+
+  <Footer slot="footer" locale="es" />
+</BaseLayout>
+

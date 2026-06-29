@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import Banner from '../../../../components/Banner.astro';
+
+const modules = import.meta.glob('../../../../../../yanghua-b2b-website/content/hubs/en/*.mdx', {
+  eager: true,
+});
+
+const hubs = Object.entries(modules)
+  .map(([path, mod]: any) => {
+    const slug = path.split('/').pop().replace(/\.mdx$/, '');
+    const fm = mod.frontmatter ?? {};
+    return {
+      slug,
+      title: fm.metaTitle ?? fm.title ?? slug,
+      summary: fm.summary ?? fm.metaDescription ?? '',
+    };
+  })
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<BaseLayout title="Article Hubs" description="">
+  <Header slot="header" locale="en" />
+  <Banner title="Article Hubs" locale="en" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mt-2 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {hubs.map((h) => (
+          <a href={`/en/articles/hub/${h.slug}`} class="rounded-lg border border-border bg-surface p-6 shadow-sm transition hover:shadow-md">
+            <h3 class="font-heading text-lg font-semibold text-text">{h.title}</h3>
+            {h.summary && <p class="mt-2 text-sm text-text-muted">{h.summary}</p>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" locale="en" />
+</BaseLayout>
+

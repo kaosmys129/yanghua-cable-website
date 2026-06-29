@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import { loadPageJson } from '../../../lib/yanghua/loaders';
+import { route } from '../../../lib/yanghua/routes';
+
+const page = await loadPageJson<any>('en', 'about');
+const content = page?.content ?? {};
+---
+
+<BaseLayout title={content?.hero?.title ?? 'About'} description={content?.hero?.subtitle ?? ''}>
+  <Header slot="header" locale="en" />
+
+  <Banner title={content?.hero?.title ?? 'About'} locale="en" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{content?.overview?.title}</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">{content?.overview?.description}</p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {Object.values(content?.overview?.stats ?? {}).map((v: any) => (
+          <div class="rounded-lg border border-border bg-surface p-6 text-center shadow-sm">
+            <div class="font-heading text-xl font-bold text-primary">{v}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">{content?.mission?.title}</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">{content?.mission?.missionTitle}</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">{content?.mission?.missionContent}</p>
+        <p class="mt-3 text-text-muted leading-relaxed">{content?.mission?.missionDescription}</p>
+      </div>
+
+      <div class="mx-auto mt-10 max-w-3xl">
+        <h3 class="font-heading text-h3 font-semibold text-text">{content?.mission?.valuesTitle}</h3>
+        <ul class="mt-4 space-y-3">
+          {Object.values(content?.mission?.values ?? {}).map((v: any) => (
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 size-5 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-text">{v}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title={content?.cta?.title ?? 'Ready to Partner with Us?'}
+    description={content?.cta?.description ?? content?.cta?.subtitle ?? ''}
+    buttonText={content?.cta?.buttons?.contact ?? 'Contact'}
+    buttonHref={route('contact', 'en')}
+  />
+
+  <Footer slot="footer" locale="en" />
+</BaseLayout>
+

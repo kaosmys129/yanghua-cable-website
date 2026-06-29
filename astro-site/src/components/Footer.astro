@@ -1,0 +1,106 @@
+---
+import { route, localeFromPathname } from '../lib/yanghua/routes';
+import type { Locale } from '../lib/yanghua/loaders';
+import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
+import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
+
+interface Props {
+  locale?: Locale;
+  /**
+   * 可选：由页面/布局层注入站点数据，避免组件内隐式 IO。
+   * 若不传，则组件会自行读取旧站 `content/settings/site.json` 并归一化。
+   */
+  site?: NormalizedSiteSettings;
+}
+
+const year = new Date().getFullYear();
+const currentPath = Astro.url.pathname;
+const locale = (Astro.props.locale ?? localeFromPathname(currentPath) ?? 'en') as Locale;
+const site = Astro.props.site ?? (await loadAndNormalizeSiteSettings(locale));
+const phoneForTel = site.client.phoneForTel || site.client.phoneRaw;
+const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
+const copyrightText = site.footer.copyright.replace('{year}', String(year));
+---
+
+<footer class="bg-dark text-surface/80" transition:persist>
+  <div class="mx-auto max-w-site px-4 py-12 sm:px-6 lg:py-16">
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href={route('home', locale)} class="font-heading text-lg font-bold uppercase tracking-wide text-white">
+          {site.brand.name}
+        </a>
+        <p class="mt-3 max-w-xs text-sm leading-relaxed">
+          {site.footer.description || site.seo.defaultDescription}
+        </p>
+
+        {site.footer.links.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            {site.footer.links.map((l) => (
+              <a href={l.href} class="text-surface/70 hover:text-white transition-colors">
+                {l.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Nav columns -->
+      {site.footer.sections.map((col) => (
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-white">{col.title}</h3>
+          <ul class="mt-3 space-y-2">
+            {col.items.map(({ label, href }) => (
+              <li>
+                <a href={href} class="text-sm transition-colors hover:text-white">
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <!-- Contact info -->
+      <div>
+        <h3 class="text-sm font-bold uppercase tracking-wider text-white">
+          {locale === 'es' ? 'Contacto' : 'Contact'}
+        </h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          {phoneForTel && (
+            <li>
+              <a href={`tel:${phoneForTel}`} class="transition-colors hover:text-white">
+                {phoneFormatted}
+              </a>
+            </li>
+          )}
+          {site.client.email && (
+            <li>
+              <a href={`mailto:${site.client.email}`} class="transition-colors hover:text-white">
+                {site.client.email}
+              </a>
+            </li>
+          )}
+          {site.client.addressText && (
+            <li class="leading-relaxed">
+              {site.client.addressText}
+            </li>
+          )}
+          {site.client.whatsappForTel && (
+            <li>
+              <a href={`https://wa.me/${site.client.whatsappForTel.replace('+', '')}`} class="transition-colors hover:text-white">
+                WhatsApp: {site.client.whatsappRaw}
+              </a>
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-10 border-t border-surface/10 pt-6 text-center text-sm">
+      {copyrightText}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Services from '../../components/Services.astro';
+import About from '../../components/About.astro';
+import CTA from '../../components/CTA.astro';
+import { brand } from '../../config/brand';
+import { client } from '../../data/client';
+import { loadPageJson } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
+
+const page = await loadPageJson<any>('en', 'home');
+
+const trustItems = Object.values(page?.companyStrength?.stats ?? {}).map((s: any) => ({
+  value: s?.value,
+  label: s?.label ?? '',
+}));
+
+const services = Object.values(page?.applicationAreas?.areas ?? {}).map((a: any) => ({
+  title: a?.title ?? '',
+  description: a?.description ?? '',
+  href: route('solutions', 'en'),
+}));
+---
+
+<BaseLayout
+  title={page?.hero?.title ?? brand.name}
+  description={page?.hero?.description ?? brand.description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: client.name,
+    url: client.domain,
+    email: client.email,
+    telephone: client.phoneForTel,
+  }}
+>
+  <Header slot="header" locale="en" />
+
+  <Hero
+    topper={page?.hero?.subtitle}
+    heading={page?.hero?.title}
+    description={page?.hero?.description}
+    ctaLabel={page?.hero?.cta}
+    ctaHref={route('products', 'en')}
+    secondaryLabel={page?.hero?.learnMore}
+    secondaryHref={route('about', 'en')}
+  />
+
+  {trustItems.length > 0 && <TrustBar items={trustItems} />}
+
+  <Services
+    topper={page?.applicationAreas?.title}
+    heading={page?.applicationAreas?.title}
+    description={page?.applicationAreas?.subtitle}
+    services={services}
+  />
+
+  <About
+    topper={page?.companyStrength?.title}
+    heading={page?.companyStrength?.title}
+    body={[page?.companyStrength?.subtitle].filter(Boolean)}
+    benefits={Object.values(page?.companyStrength?.stats ?? {}).map((s: any) => s?.description).filter(Boolean)}
+    ctaLabel={page?.companyStrength?.ctaLearnMore}
+    ctaHref={route('about', 'en')}
+  />
+
+  <CTA
+    title="Ready to Get Started?"
+    description="Contact us for product selection, technical support, and quotations."
+    buttonText="Get Quote"
+    buttonHref={route('contact', 'en')}
+  />
+
+  <Footer slot="footer" locale="en" />
+</BaseLayout>
+

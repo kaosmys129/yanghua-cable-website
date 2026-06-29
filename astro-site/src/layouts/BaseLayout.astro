@@ -1,0 +1,143 @@
+---
+/**
+ * Base layout — wraps every page.
+ *
+ * Astro 6 features used:
+ *  • <Font />         — built-in font optimizer from astro.config.mjs fonts array
+ *  • <ClientRouter /> — client-side navigation with CSS transition animations
+ */
+import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import { brand } from '../config/brand';
+import { client } from '../data/client';
+import type { Locale } from '../lib/yanghua/loaders';
+import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
+import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
+
+interface Props {
+  locale?: Locale;
+  title?: string;
+  description?: string;
+  image?: string;
+  schema?: Record<string, unknown>;
+  /**
+   * 可选：由页面层注入站点设置，以避免 layout 内部读取文件。
+   * 若不传，则 layout 会自行从旧站 `content/settings/site.json` 读取并归一化。
+   */
+  site?: NormalizedSiteSettings;
+}
+
+function detectLocaleFromPathname(pathname: string): Locale {
+  if (pathname.startsWith('/es')) return 'es';
+  return 'en';
+}
+
+const locale = (Astro.props.locale ?? detectLocaleFromPathname(Astro.url.pathname)) as Locale;
+const site = Astro.props.site ?? (await loadAndNormalizeSiteSettings(locale));
+
+const {
+  title = site.seo.defaultTitle || brand.name,
+  description = site.seo.defaultDescription || brand.description,
+  image = site.seo.defaultOgImage || '/og-image.png',
+  schema,
+} = Astro.props;
+
+const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
+---
+
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="canonical" href={canonicalURL} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:title"       content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={image} />
+    <meta property="og:locale"      content={brand.locale} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Fonts -->
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body"    preload />
+
+    <!-- JSON-LD Structured Data -->
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+
+    <!-- FOUC prevention for dark mode -->
+    <script is:inline>
+      (function(){
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      })();
+    </script>
+
+    <!--
+      设计 token 单源覆盖：
+      theme.css 负责注册 token 名（Tailwind v4 @theme），这里以 brand.ts 的值在运行时覆盖，
+      避免每次换品牌都要手动同步 theme.css 里的 hex。
+    -->
+    <style is:inline>
+      :root {
+        --color-primary: {brand.colors.primary};
+        --color-primary-light: {brand.colors.primaryLight};
+        --color-primary-fg: {brand.colors.primaryFg};
+        --color-accent: {brand.colors.accent};
+        --color-accent-fg: {brand.colors.accentFg};
+        --color-background: {brand.colors.background};
+        --color-surface: {brand.colors.surface};
+        --color-border: {brand.colors.border};
+        --color-text: {brand.colors.text};
+        --color-text-muted: {brand.colors.textMuted};
+        --color-dark: {brand.colors.dark};
+        --color-dark-surface: {brand.colors.darkSurface};
+        --radius-sm: {brand.radius.sm};
+        --radius-md: {brand.radius.md};
+        --radius-lg: {brand.radius.lg};
+        --radius-full: {brand.radius.full};
+      }
+    </style>
+
+    <slot name="head" />
+    <ClientRouter />
+  </head>
+
+  <body class="bg-background text-text font-body antialiased">
+    <a
+      class="sr-only focus:not-sr-only focus:absolute focus:z-[99999] focus:bg-primary focus:text-primary-fg focus:px-4 focus:py-2 focus:rounded-md"
+      href="#main"
+    >
+      Skip to main content
+    </a>
+
+    <slot name="header" />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <slot name="footer" />
+  </body>
+</html>
