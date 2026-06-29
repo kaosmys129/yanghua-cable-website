@@ -1,11 +1,24 @@
 'use client';
+
 import React from 'react';
+import { Zap, Cable, Layers } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import type { Locale } from '@/lib/i18n';
 
 export default function ProductComparison({ locale }: { locale: Locale }) {
   const isEs = locale === 'es';
 
   const t = {
+    title: isEs ? 'Comparación de Productos' : 'Product Comparison',
     section1Title: isEs
       ? 'Barra Flexible Yanghua STI vs Soluciones Tradicionales'
       : 'Yanghua STI Flexible Busbar vs Traditional Solutions',
@@ -16,6 +29,7 @@ export default function ProductComparison({ locale }: { locale: Locale }) {
     flexibleBusbar: isEs ? 'Barra Flexible' : 'Flexible Busbar',
     multipleCables: isEs ? 'Múltiples Cables' : 'Multiple Cables',
     compactBusbar: isEs ? 'Barra Compacta' : 'Compact Busbar',
+    advantage: isEs ? 'Ventaja' : 'Advantage',
     rows1: [
       {
         c: isEs ? 'Rendimiento' : 'Performance',
@@ -100,52 +114,79 @@ export default function ProductComparison({ locale }: { locale: Locale }) {
   };
 
   return (
-    <section className="mb-12">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">Product Comparison</h2>
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden mb-8">
-        <h3 className="text-xl font-semibold text-gray-900 p-4 bg-gray-50">{t.section1Title}</h3>
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t.category}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t.flexibleBusbar}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t.multipleCables}</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {t.rows1.map((row, i) => (
-              <tr key={`r1-${i}`} className={i % 2 === 1 ? 'bg-gray-50' : ''}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{row.c}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{row.a}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{row.b}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <section className="mb-12 space-y-8">
+      <div className="flex items-center gap-3 mb-2">
+        <Zap className="h-6 w-6 text-primary" />
+        <h2 className="text-3xl font-bold text-foreground">{t.title}</h2>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-        <h3 className="text-xl font-semibold text-gray-900 p-4 bg-gray-50">{t.section2Title}</h3>
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t.category}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t.flexibleBusbar}</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t.compactBusbar}</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {t.rows2.map((row, i) => (
-              <tr key={`r2-${i}`} className={i % 2 === 1 ? 'bg-gray-50' : ''}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{row.c}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{row.a}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{row.b}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {/* Comparison Table 1 */}
+      <Card>
+        <CardHeader className="border-b bg-muted/30">
+          <div className="flex items-center gap-2">
+            <Cable className="h-5 w-5 text-primary" />
+            <CardTitle className="text-lg">{t.section1Title}</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-1/4 font-semibold">{t.category}</TableHead>
+                <TableHead className="w-[37.5%]">
+                  <Badge variant="success" className="font-normal">{t.flexibleBusbar}</Badge>
+                </TableHead>
+                <TableHead className="w-[37.5%]">
+                  <Badge variant="secondary" className="font-normal">{t.multipleCables}</Badge>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {t.rows1.map((row, i) => (
+                <TableRow key={`r1-${i}`}>
+                  <TableCell className="font-medium text-foreground">{row.c}</TableCell>
+                  <TableCell className="text-sm leading-relaxed">{row.a}</TableCell>
+                  <TableCell className="text-sm leading-relaxed">{row.b}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+
+      {/* Comparison Table 2 */}
+      <Card>
+        <CardHeader className="border-b bg-muted/30">
+          <div className="flex items-center gap-2">
+            <Layers className="h-5 w-5 text-primary" />
+            <CardTitle className="text-lg">{t.section2Title}</CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-1/4 font-semibold">{t.category}</TableHead>
+                <TableHead className="w-[37.5%]">
+                  <Badge variant="success" className="font-normal">{t.flexibleBusbar}</Badge>
+                </TableHead>
+                <TableHead className="w-[37.5%]">
+                  <Badge variant="secondary" className="font-normal">{t.compactBusbar}</Badge>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {t.rows2.map((row, i) => (
+                <TableRow key={`r2-${i}`}>
+                  <TableCell className="font-medium text-foreground">{row.c}</TableCell>
+                  <TableCell className="text-sm leading-relaxed">{row.a}</TableCell>
+                  <TableCell className="text-sm leading-relaxed">{row.b}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </section>
   );
 }
-
