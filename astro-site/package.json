@@ -54,16 +54,15 @@
     "zod": "^3.25.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "vite": "^7.3.6"
-  },
-  "overrides": {
-    "vite": "7.3.6"
+    "@playwright/test": "^1.58.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"
-    ]
+    ],
+    "overrides": {
+      "vite": "6.3.6"
+    }
   }
 }
