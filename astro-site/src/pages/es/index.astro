@@ -2,15 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
-import TrustBar from '../../components/TrustBar.astro';
-import Services from '../../components/Services.astro';
-import About from '../../components/About.astro';
-import CTA from '../../components/CTA.astro';
-import ProductComparison from '../../components/ProductComparison.astro';
-import PartnersGrid from '../../components/PartnersGrid.astro';
-import ProjectGallery from '../../components/ProjectGallery.astro';
-import InquiryForm from '../../components/InquiryForm.astro';
+import HeroSection from '../../components/react/HeroSection';
+import TrustBarSection from '../../components/react/TrustBarSection';
+import ServicesSection from '../../components/react/ServicesSection';
+import AboutSection from '../../components/react/AboutSection';
+import CTASection from '../../components/react/CTASection';
+import ProductComparisonSection from '../../components/react/ProductComparisonSection';
+import PartnersSection from '../../components/react/PartnersSection';
+import ProjectGallerySection from '../../components/react/ProjectGallerySection';
+import InquiryFormSection from '../../components/react/InquiryFormSection';
 import { brand } from '../../config/brand';
 import { client } from '../../data/client';
 import { loadMessages, loadPageJson } from '../../lib/yanghua/loaders';
@@ -89,7 +89,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
 >
   <Header slot="header" locale="es" />
 
-  <Hero
+  <HeroSection
     topper={page?.hero?.subtitle}
     heading={page?.hero?.title}
     description={page?.hero?.description}
@@ -97,18 +97,20 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     ctaHref={route('products', 'es')}
     secondaryLabel={page?.hero?.learnMore}
     secondaryHref={route('about', 'es')}
+    phone={client.phoneFormatted}
+    phoneHref={`tel:${client.phoneForTel}`}
   />
 
-  {trustItems.length > 0 && <TrustBar items={trustItems} />}
+  {trustItems.length > 0 && <TrustBarSection items={trustItems} />}
 
-  <Services
+  <ServicesSection
     topper={page?.applicationAreas?.title}
     heading={page?.applicationAreas?.title}
     description={page?.applicationAreas?.subtitle}
     services={services}
   />
 
-  <About
+  <AboutSection
     topper={page?.companyStrength?.title}
     heading={page?.companyStrength?.title}
     body={[page?.companyStrength?.subtitle].filter(Boolean)}
@@ -117,16 +119,21 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     ctaHref={route('about', 'es')}
   />
 
-  <ProductComparison content={tRaw(messages, 'flexibleBusbarComparison', {})} locale="es" />
-  <PartnersGrid title={page?.partners?.title} subtitle={page?.partners?.subtitle} partners={partners} />
-  <ProjectGallery content={tRaw(messages, 'projectGallery', {})} projects={projects} locale="es" />
-  <InquiryForm content={tRaw(messages, 'inquiry', {})} locale="es" />
+  <ProductComparisonSection content={tRaw(messages, 'flexibleBusbarComparison', {})} locale="es" />
 
-  <CTA
+  <PartnersSection title={page?.partners?.title} subtitle={page?.partners?.subtitle} partners={partners} />
+
+  <ProjectGallerySection content={tRaw(messages, 'projectGallery', {})} projects={projects} locale="es" />
+
+  <InquiryFormSection client:load content={tRaw(messages, 'inquiry', {})} locale="es" />
+
+  <CTASection
     title="¿Listo para empezar?"
     description="Contáctanos para selección de productos, soporte técnico y cotizaciones."
     buttonText="Solicitar cotización"
     buttonHref={route('contact', 'es')}
+    phone={client.phoneFormatted}
+    phoneHref={`tel:${client.phoneForTel}`}
   />
 
   <Footer slot="footer" locale="es" />

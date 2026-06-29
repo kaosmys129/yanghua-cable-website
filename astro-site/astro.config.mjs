@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
 import node from '@astrojs/node';
 
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
     mode: 'standalone',
   }),
 
-  integrations: [mdx(), sitemap(), robotsTxt()],
+  integrations: [mdx(), sitemap(), robotsTxt(), react()],
 
   prefetch: {
     prefetchAll: true,

@@ -1,0 +1,54 @@
+/*
+ * ── Shadcn/ui 主题层 ─────────────────────────────────────────────────────────
+ * 与现有 brand.ts token 体系兼容，复用品牌色并追加 shadcn 语义色。
+ * Tailwind v4 @layer base - 注册为 CSS 自定义属性。
+ */
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ── Shadcn 语义色 → 映射到 brand 色系 ──────────────────────────── */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* Primary: Yanghua 深灰 #212529 → HSL 210° 10% 15% */
+    --primary: 210 10% 15%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary: 浅灰 surface */
+    --secondary: 210 14% 96%;
+    --secondary-foreground: 210 10% 15%;
+
+    /* Muted */
+    --muted: 210 14% 96%;
+    --muted-foreground: 215 14% 45%;
+
+    /* Accent: Yanghua 金色 #fdb827 → HSL 40° 98% 57% */
+    --accent-shadcn: 40 98% 57%;
+    --accent-shadcn-foreground: 210 10% 15%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 214 20% 91%;
+    --input: 214 20% 91%;
+    --ring: 40 98% 57%;
+
+    /* Radius */
+    --radius: 0.625rem;
+
+    /* Chart colors */
+    --chart-1: 40 98% 57%;
+    --chart-2: 210 10% 40%;
+    --chart-3: 210 10% 25%;
+    --chart-4: 25 80% 55%;
+    --chart-5: 160 60% 45%;
+  }
+}
