@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import HeroSection from '../../components/react/HeroSection';
+import HeroCarousel from '../../components/react/HeroCarousel';
 import TrustBarSection from '../../components/react/TrustBarSection';
 import ServicesSection from '../../components/react/ServicesSection';
 import AboutSection from '../../components/react/AboutSection';
@@ -56,12 +56,14 @@ const applicationAreaImages: Record<string, { image: string; imageAlt: string }>
   },
 };
 
-const services = Object.entries(page?.applicationAreas?.areas ?? {}).map(([key, a]: [string, any]) => ({
-  title: a?.title ?? '',
-  description: a?.description ?? '',
-  href: route('solutions', 'en'),
-  ...applicationAreaImages[key],
-}));
+const services = Object.entries(page?.applicationAreas?.areas ?? {})
+  .filter(([key]) => key !== 'marine')
+  .map(([key, a]: [string, any]) => ({
+    title: a?.title ?? '',
+    description: a?.description ?? '',
+    href: route('solutions', 'en'),
+    ...applicationAreaImages[key],
+  }));
 
 const partners = [
   { name: 'BYD', logo: '/images/partners/byd.webp' },
@@ -89,7 +91,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
 >
   <Header slot="header" locale="en" />
 
-  <HeroSection
+  <HeroCarousel
     topper={page?.hero?.subtitle}
     heading={page?.hero?.title}
     description={page?.hero?.description}
@@ -99,6 +101,12 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     secondaryHref={route('about', 'en')}
     phone={client.phoneFormatted}
     phoneHref={`tel:${client.phoneForTel}`}
+    slides={[
+      { src: '/images/homepage/home-hero-bg.png', alt: 'Yanghua flexible busbar manufacturing facility' },
+      { src: '/images/homepage/hero-bg-3.webp', alt: 'Yanghua high-current flexible busbar product showcase' },
+      { src: '/images/projects-home/huawei-data-center-expansion.webp', alt: 'Data center power distribution project' },
+      { src: '/images/projects-home/byd-battery-manufacturing.webp', alt: 'EV battery manufacturing power solution' },
+    ]}
   />
 
   {trustItems.length > 0 && <TrustBarSection items={trustItems} />}

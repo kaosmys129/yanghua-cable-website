@@ -1,5 +1,5 @@
 ---
-import { route, localeFromPathname } from '../lib/yanghua/routes';
+import { route, localeFromPathname, switchLocalePath } from '../lib/yanghua/routes';
 import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedNavItem, NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
@@ -22,11 +22,11 @@ const navItems = Astro.props.navItems ?? site.navigation.items;
 const ctaLabel = Astro.props.ctaLabel ?? site.navigation.ctaLabel;
 const phoneForTel = site.client.phoneForTel || site.client.phoneRaw;
 const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
+const altLocalePath = switchLocalePath(currentPath);
 ---
 
 <header
   class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm"
-  transition:persist
 >
   <div class="mx-auto flex max-w-site items-center justify-between px-4 py-3 sm:px-6">
     <!-- Logo -->
@@ -58,8 +58,15 @@ const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
       })}
     </nav>
 
-    <!-- Desktop CTA + phone -->
+    <!-- Desktop CTA + phone + lang -->
     <div class="hidden items-center gap-4 lg:flex">
+      <a
+        href={altLocalePath}
+        class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary"
+        title={locale === 'en' ? 'Ver en Español' : 'View in English'}
+      >
+        {locale === 'en' ? 'ES' : 'EN'}
+      </a>
       <a
         href={`tel:${phoneForTel}`}
         class="text-sm font-semibold text-text hover:text-primary transition-colors"
@@ -68,7 +75,7 @@ const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
       </a>
       <a
         href={route('contact', locale)}
-        class="inline-flex min-h-[44px] items-center rounded-md bg-accent px-5 py-2.5 text-sm font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="inline-flex min-h-[44px] items-center rounded-md bg-[#fdb827] px-5 py-2.5 text-sm font-bold text-[#212529] shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fdb827]"
       >
         {ctaLabel}
       </a>
@@ -118,6 +125,15 @@ const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
 
     <div class="mt-4 flex flex-col gap-3 border-t border-border pt-4">
       <a
+        href={altLocalePath}
+        class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary"
+      >
+        <svg class="size-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+        </svg>
+        {locale === 'en' ? 'Español' : 'English'}
+      </a>
+      <a
         href={`tel:${phoneForTel}`}
         class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text"
       >
@@ -128,7 +144,7 @@ const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
       </a>
       <a
         href={route('contact', locale)}
-        class="flex min-h-[44px] items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90"
+        class="flex min-h-[44px] items-center justify-center rounded-md bg-[#fdb827] px-5 py-3 text-base font-bold text-[#212529] shadow-sm transition-opacity hover:opacity-90"
       >
         {ctaLabel}
       </a>

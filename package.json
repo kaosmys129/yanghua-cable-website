@@ -1,6 +1,19 @@
 {
   "name": "yanghua-b2b-monorepo",
   "private": true,
+  "scripts": {
+    "dev": "npm run dev -w astro-site",
+    "build": "npm run build -w astro-site",
+    "start": "npm run start -w astro-site",
+    "dev:astro": "npm run dev -w astro-site",
+    "build:astro": "npm run build -w astro-site",
+    "preview:astro": "npm run preview -w astro-site",
+    "dev:next": "npm run dev -w yanghua-b2b-website",
+    "build:next": "npm run build -w yanghua-b2b-website",
+    "start:next": "npm run start -w yanghua-b2b-website",
+    "cms:dev": "npm run develop -w strapi-cms",
+    "cms:build": "npm run build -w strapi-cms"
+  },
   "workspaces": [
     "strapi-cms",
     "yanghua-b2b-website",

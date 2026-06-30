@@ -32,7 +32,7 @@ export default function AboutSection({
 }: AboutSectionProps) {
   return (
     <section className="py-section">
-      <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
+      <div className="mx-auto grid max-w-site grid-cols-1 items-stretch gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
         {/* Image */}
         <div className="overflow-hidden rounded-lg shadow-lg">
           <img
@@ -41,7 +41,7 @@ export default function AboutSection({
             width={700}
             height={525}
             loading="eager"
-            className="size-full object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
 

@@ -31,27 +31,40 @@ export default function HeroSection({
   phoneHref = 'tel:+86-769-3893-9888',
 }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-background">
-      <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-4 py-section sm:px-6 lg:grid-cols-2 lg:gap-12">
-        {/* Text Content */}
-        <div className="order-2 space-y-5 lg:order-1 lg:space-y-6">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Full-screen background image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          loading="eager"
+          className="size-full object-cover"
+          style={{ viewTransitionName: 'hero-image' }}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+      </div>
+
+      {/* Content overlay */}
+      <div className="relative z-10 mx-auto w-full max-w-site px-4 py-section sm:px-6">
+        <div className="max-w-xl space-y-5 lg:space-y-6">
           {topper && (
             <Badge
               variant="secondary"
-              className="bg-[hsl(var(--accent-shadcn))/0.15] px-4 py-1.5 text-topper font-bold uppercase tracking-widest text-[hsl(var(--accent-shadcn))] border-none"
+              className="bg-[hsl(var(--accent-shadcn))/0.85] px-4 py-1.5 text-topper font-bold uppercase tracking-widest text-[hsl(var(--accent-shadcn))] border-none"
             >
               {topper}
             </Badge>
           )}
 
           <h1
-            className="font-heading text-display font-bold uppercase leading-none tracking-tight text-text"
+            className="font-heading text-display font-bold uppercase leading-none tracking-tight text-white"
             style={{ viewTransitionName: 'hero-heading' }}
           >
             {heading}
           </h1>
 
-          <p className="max-w-lg text-lead leading-relaxed text-text-muted">
+          <p className="max-w-lg text-lead leading-relaxed text-white/80">
             {description}
           </p>
 
@@ -71,7 +84,7 @@ export default function HeroSection({
               asChild
               variant="outline"
               size="lg"
-              className="min-h-[44px] border-2 border-primary font-bold text-primary hover:bg-primary hover:text-primary-foreground"
+              className="min-h-[44px] border-2 border-white/60 font-bold text-white hover:bg-white hover:text-black"
             >
               <a href={secondaryHref}>{secondaryLabel}</a>
             </Button>
@@ -80,26 +93,11 @@ export default function HeroSection({
           {/* Phone Contact */}
           <a
             href={phoneHref}
-            className="inline-flex items-center gap-2 pt-1 text-sm font-semibold text-text-muted transition-colors hover:text-primary"
+            className="inline-flex items-center gap-2 pt-1 text-sm font-semibold text-white/70 transition-colors hover:text-white"
           >
             <Phone className="h-4 w-4" />
             Call {phone}
           </a>
-        </div>
-
-        {/* Hero Image */}
-        <div
-          className="relative order-1 overflow-hidden rounded-lg shadow-xl aspect-4/3 lg:order-2"
-          style={{ viewTransitionName: 'hero-image' }}
-        >
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            width={800}
-            height={600}
-            loading="eager"
-            className="size-full object-cover"
-          />
         </div>
       </div>
     </section>

@@ -136,18 +136,18 @@ export default function ProductComparisonSection({
 
                 {/* 底部产品图片（前两张卡片有，第三张柔性母线没有） */}
                 <div
-                  className="mt-auto w-full overflow-hidden"
-                  style={{ height: IMAGE_HEIGHT }}
+                  className="mt-auto w-full overflow-hidden px-5 pb-5"
+                  style={{ height: IMAGE_HEIGHT + 20 }}
                 >
                   {img ? (
                     <img
                       src={img}
                       alt={alt}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full rounded-md object-cover"
                       loading="lazy"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-surface text-xs text-text-muted/50">
+                    <div className="flex h-full w-full items-center justify-center rounded-md bg-surface text-xs text-text-muted/50">
                       {item.name}
                     </div>
                   )}

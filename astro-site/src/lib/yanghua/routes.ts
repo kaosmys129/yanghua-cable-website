@@ -32,3 +32,61 @@ export function localeFromPathname(pathname: string): Locale | null {
   return null;
 }
 
+/**
+ * en ↔ es URL 段映射，用于 Header 语言切换。
+ * Key = en 段, Value = es 段（双向通过 Entry lookup）。
+ */
+const SEGMENT_MAP: Record<string, string> = {
+  about: 'acerca-de',
+  services: 'servicios',
+  contact: 'contacto',
+  products: 'productos',
+  'products/category': 'productos/categoria',
+  solutions: 'soluciones',
+  projects: 'proyectos',
+  articles: 'articulos',
+  'articles/hub': 'articulos/hub',
+  partners: 'socios',
+  privacy: 'privacidad',
+  terms: 'terminos',
+};
+
+const REVERSE_SEGMENT_MAP: Record<string, string> = Object.fromEntries(
+  Object.entries(SEGMENT_MAP).map(([en, es]) => [es, en]),
+);
+
+/**
+ * 根据当前路径和当前语言，返回另一语言的对应路径。
+ * 无法匹配时 fallback 到目标语言首页。
+ */
+export function switchLocalePath(currentPath: string): string {
+  const currentLocale = localeFromPathname(currentPath) ?? 'en';
+  const targetLocale: Locale = currentLocale === 'en' ? 'es' : 'en';
+
+  // 去掉语言前缀得到剩余路径段
+  const unprefixed = currentPath.replace(/^\/(en|es)\/?/, '');
+
+  if (!unprefixed) {
+    // 就是首页
+    return route('home', targetLocale);
+  }
+
+  // 尝试精确段映射
+  const map = targetLocale === 'es' ? SEGMENT_MAP : REVERSE_SEGMENT_MAP;
+  const mapped = map[unprefixed];
+  if (mapped) {
+    return `/${targetLocale}/${mapped}`;
+  }
+
+  // 尝试前缀匹配（如 /en/products/category/xxx → /es/productos/categoria/xxx）
+  for (const [from, to] of Object.entries(map)) {
+    if (unprefixed === from || unprefixed.startsWith(`${from}/`)) {
+      const rest = unprefixed.slice(from.length);
+      return `/${targetLocale}/${to}${rest}`;
+    }
+  }
+
+  // Fallback
+  return route('home', targetLocale);
+}
+
