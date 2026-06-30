@@ -1,4 +1,5 @@
 [build]
+  # Active Yanghua frontend: Astro Small Business theme.
   command = "npm run build"
   publish = "dist"
 

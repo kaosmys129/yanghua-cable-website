@@ -29,7 +29,7 @@ export default defineConfig({
   webServer: useExistingServer
     ? undefined
     : {
-        command: 'npm run dev:playwright',
+        command: 'npm run legacy:next:dev:playwright',
         url: `${baseURL}/api/health`,
         reuseExistingServer: !process.env.CI,
         timeout: 180 * 1000,

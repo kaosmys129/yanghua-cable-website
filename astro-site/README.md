@@ -1,6 +1,8 @@
-# Small Business Starter
+# Yanghua Astro Small Business Frontend
 
-A fast, mobile-first website template for trade and service businesses — handymen, electricians, plumbers, landscapers, and more. Built with [Astro 6](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com). Ready to deploy on [Netlify](https://netlify.com) in minutes.
+This is the active Yanghua local frontend. It uses the Astro Small Business theme with Astro 6, Tailwind CSS v4, and a small set of React islands for interactive sections.
+
+The legacy Next.js app in `../yanghua-b2b-website` remains available only as a content, Tina, and historical debugging source. It is not the default local frontend.
 
 ---
 
@@ -18,26 +20,42 @@ A fast, mobile-first website template for trade and service businesses — handy
 
 ## Quick start
 
+Run daily frontend commands from the monorepo root:
+
 ```bash
-# 1. Install dependencies (uses pnpm)
-pnpm install
+cd "/Users/peterpc/Documents/Documents/yanghua cable web/yanghua-b2b-website"
 
-# 2. Start the dev server
-pnpm run dev
-# → http://localhost:4321
+# Start the Astro dev server
+npm run dev
 
-# 3. Build for production
-pnpm run build
+# Build the Astro site
+npm run build
 
-# 4. Preview the production build locally
-pnpm run preview
+# Preview the Astro build locally
+npm run preview:astro
 ```
 
-> **Note:** This project uses `pnpm`. Do not use `npm install` or `yarn` — they will create a conflicting lockfile.
+Direct commands inside this folder also work for focused Astro work:
+
+```bash
+npm run dev
+npm run build
+npm run preview
+```
 
 ---
 
-## Customising for a client — start here
+## Theme source of truth
+
+The active theme is controlled by:
+
+- `src/config/brand.ts`
+- `src/styles/theme.css`
+- `src/layouts/BaseLayout.astro`
+
+Do not use the legacy Next.js `src/app/globals.css`, layout components, or business components as the source of the current frontend theme.
+
+## Customising the Yanghua theme
 
 All placeholder content lives in exactly **two files**. You do not need to touch any component or page files to swap out a client's information.
 
@@ -237,12 +255,13 @@ Set `draft: true` to write a post without publishing it.
 
 ---
 
-## Deploying to Netlify
+## Deploying
 
-1. Push the project to a GitHub repository
-2. In Netlify, click **Add new site → Import an existing project** and connect the repo
-3. Netlify will auto-detect the build settings from `netlify.toml` — no manual config needed
-4. Set your live domain in two places after deploying:
+The active Vercel deployment config lives at the monorepo root in `../vercel.json` and points to this Astro build output (`astro-site/dist`).
+
+Netlify remains supported for the Astro theme through `netlify.toml`.
+
+After deploying, keep the live domain aligned in:
    - `src/data/client.ts` → `domain`
    - `src/config/brand.ts` → `url`
    - `astro.config.mjs` → `site`
@@ -257,8 +276,8 @@ The `netlify.toml` file already includes security headers (`X-Frame-Options`, `X
 |---|---|---|
 | [Astro](https://astro.build) | 6 | Framework & static site generator |
 | [Tailwind CSS](https://tailwindcss.com) | 4 | Utility-first styling |
-| [Netlify](https://netlify.com) | — | Hosting, forms, CDN |
-| [pnpm](https://pnpm.io) | 9+ | Package manager |
+| [Vercel](https://vercel.com) / [Netlify](https://netlify.com) | — | Hosting |
+| [npm](https://www.npmjs.com) | 9+ | Package manager |
 
 ---
 
@@ -266,8 +285,8 @@ The `netlify.toml` file already includes security headers (`X-Frame-Options`, `X
 
 | Command | What it does |
 |---|---|
-| `pnpm install` | Install all dependencies |
-| `pnpm run dev` | Start dev server at `localhost:4321` |
-| `pnpm run build` | Build the production site to `./dist/` |
-| `pnpm run preview` | Preview the production build locally |
-| `pnpm run astro check` | Type-check all `.astro` files |
+| `npm install` | Install dependencies from the monorepo root |
+| `npm run dev` | Start the active Astro dev server |
+| `npm run build` | Build the production Astro site to `astro-site/dist/` |
+| `npm run preview:astro` | Preview the production Astro build locally |
+| `npm run astro -- check` | Type-check Astro files when run inside `astro-site` |

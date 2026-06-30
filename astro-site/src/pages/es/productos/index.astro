@@ -3,27 +3,24 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
-import Services from '../../../components/Services.astro';
 import CTA from '../../../components/CTA.astro';
 import ProductCategories from '../../../components/ProductCategories.astro';
 import TechnicalSpecs from '../../../components/TechnicalSpecs.astro';
+import FAQSection from '../../../components/FAQSection.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { route } from '../../../lib/yanghua/routes';
 import { t, tRaw } from '../../../lib/yanghua/t';
 
 const messages = await loadMessages('es');
 
-const areas = tRaw<Record<string, any>>(messages, 'applicationAreas.areas', {});
-const services = Object.values(areas).map((a: any) => ({
-  title: a?.title ?? '',
-  description: a?.description ?? '',
-  href: route('solutions', 'es'),
-}));
-
 const featureCards = tRaw<Record<string, any>>(messages, 'productFeatures.cards', {});
 const categories = tRaw<any[]>(messages, 'products.categories', []);
 const productLabels = tRaw<Record<string, string>>(messages, 'products.common', {});
 const specifications = tRaw<Record<string, any>>(messages, 'products.specifications', {});
+const faqContent = tRaw<Record<string, any>>(messages, 'services.faq', {});
+const faqItems = Object.values(faqContent)
+  .filter((value: any) => value && typeof value === 'object' && 'question' in value && 'answer' in value)
+  .map((value: any) => ({ question: value.question, answer: value.answer }));
 ---
 
 <BaseLayout title={t(messages, 'products.hero.title', 'Nuestros Productos')} description={t(messages, 'products.hero.subtitle', '')}>
@@ -72,11 +69,11 @@ const specifications = tRaw<Record<string, any>>(messages, 'products.specificati
     </div>
   </section>
 
-  <Services
-    topper={t(messages, 'applicationAreas.title')}
-    heading={t(messages, 'applicationAreas.title')}
-    description={t(messages, 'applicationAreas.subtitle')}
-    services={services}
+  <FAQSection
+    topper="FAQ"
+    title={faqContent?.title ?? 'Preguntas Frecuentes'}
+    description="Respuestas a preguntas comunes sobre selección de productos, certificaciones, soporte de instalación y pedidos personalizados."
+    items={faqItems}
   />
 
   <CTA
