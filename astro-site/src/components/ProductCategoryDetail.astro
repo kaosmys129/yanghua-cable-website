@@ -3,6 +3,7 @@ import type { Locale } from '../lib/yanghua/loaders';
 import type { ProductCategory } from '../lib/yanghua/products';
 import { categoryLabels } from '../lib/yanghua/products';
 import { route } from '../lib/yanghua/routes';
+import { productImageFromName } from '../lib/yanghua/assets';
 
 const { category, locale = 'en' } = Astro.props as { category: ProductCategory; locale: Locale };
 const labels = categoryLabels[locale];
@@ -30,8 +31,14 @@ const specLabels =
   <div class="mx-auto grid max-w-site grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
     <div class="space-y-12">
       <section class="grid grid-cols-1 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div class="overflow-hidden rounded-lg border border-border bg-surface">
-          <img src={category.image} alt={category.name} class="h-full min-h-72 w-full object-cover" loading="eager" />
+        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#f0f0f0] p-4">
+          <img
+            src={productImageFromName(category.name, (category as any).productIndex)}
+            alt={category.name}
+            class="absolute inset-0 h-full w-full object-contain p-2"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
         </div>
         <div>
           <span class="text-topper font-bold uppercase tracking-widest text-accent">{labels.productCategory}</span>

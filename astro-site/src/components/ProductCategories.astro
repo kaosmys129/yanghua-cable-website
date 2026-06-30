@@ -1,5 +1,5 @@
 ---
-import { productImageFromIndex } from '../lib/yanghua/assets';
+import { productImageFromName } from '../lib/yanghua/assets';
 import { slugifyProductCategoryName } from '../lib/yanghua/products';
 
 const { categories = [], labels = {}, locale = 'en' } = Astro.props;
@@ -12,7 +12,15 @@ const categoryBasePath = locale === 'es' ? '/es/productos/categoria' : '/en/prod
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
       {categories.map((category: any) => (
         <article class="overflow-hidden rounded-lg border border-border bg-surface shadow-sm">
-          <img src={productImageFromIndex(category.productIndex)} alt={category.name} class="h-56 w-full object-cover" loading="lazy" />
+          <div class="relative aspect-[4/3] w-full bg-[#f0f0f0] p-4">
+            <img
+              src={productImageFromName(category.name, category.productIndex)}
+              alt={category.name}
+              class="absolute inset-0 h-full w-full object-contain p-2 transition-transform duration-500 hover:scale-105"
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+          </div>
           <div class="p-6">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
