@@ -143,22 +143,40 @@ export default function ProductsPage() {
                 </div>
 
                 {/* Product Image */}
-                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted">
-                  {category.productIndex !== undefined ? (
-                    <Image
-                      src={`/images/product-center/${category.productIndex}.jpg`}
-                      alt={category.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={false}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                      <Cable className="h-12 w-12 opacity-30" />
+                {(() => {
+                  // Maps category names (English & Spanish) to image filenames
+                  const categoryImageMap: Record<string, string> = {
+                    'General Purpose Cables': 'general-purpose-cables',
+                    'Fire Resistant Cables': 'fire-resistant-cables',
+                    'Low Smoke & Halogen-Free Cables': 'low-smoke-halogen-free-cables',
+                    'Cables de Propósito General': 'general-purpose-cables',
+                    'Cables Resistentes al Fuego': 'fire-resistant-cables',
+                    'Cables Libres de Humo y Halógenos': 'low-smoke-halogen-free-cables',
+                  };
+                  const imageSlug = categoryImageMap[category.name]
+                    || category.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
+                  const imageSrc = `/images/product-center/${imageSlug}.jpg`;
+                  return (
+                    <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-[#f0f0f0] p-4">
+                      <Image
+                        src={imageSrc}
+                        alt={category.name}
+                        fill
+                        className="object-contain group-hover:scale-105 transition-transform duration-500 p-2"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={false}
+                        onError={(e) => {
+                          // Hide broken image, show fallback via parent styling
+                          (e.target as HTMLElement).style.display = 'none';
+                        }}
+                      />
+                      {/* Fallback: shown when image fails to load */}
+                      <div className="absolute inset-0 flex items-center justify-center text-muted-foreground pointer-events-none">
+                        <Cable className="h-12 w-12 opacity-20" />
+                      </div>
                     </div>
-                  )}
-                </div>
+                  );
+                })()}
               </CardContent>
 
               <CardFooter className="pt-6">

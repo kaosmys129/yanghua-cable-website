@@ -2,8 +2,6 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
-import Banner from '../../../components/Banner.astro';
-import CTA from '../../../components/CTA.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
@@ -11,59 +9,203 @@ import { route } from '../../../lib/yanghua/routes';
 const messages = await loadMessages('es');
 const projects = tRaw<any[]>(messages, 'projects.list', []);
 const stats = tRaw<Record<string, string>>(messages, 'projects.stats', {});
+const statLabels: Record<string, string> = {
+  totalProjects: 'Total de Proyectos',
+  industriesCovered: 'Industrias Cubiertas',
+  countriesServed: 'Países Atendidos',
+  totalCapacity: 'Capacidad Total',
+};
+
+const industryColors: Record<string, string> = {
+  'Centro de Datos': 'bg-blue-500 text-white border-blue-500',
+  'Nueva Energía': 'bg-emerald-500 text-white border-emerald-500',
+  'Industrial': 'bg-slate-600 text-white border-slate-600',
+  'Tránsito Ferroviario': 'bg-purple-500 text-white border-purple-500',
+  'Metalurgia': 'bg-orange-500 text-white border-orange-500',
+};
+
+const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as string[];
 ---
 
 <BaseLayout title={t(messages, 'projects.page.title')} description={t(messages, 'projects.page.description')}>
   <Header slot="header" locale="es" />
-  <Banner title={t(messages, 'projects.page.title')} locale="es" />
 
-  <section class="py-section">
+  <section class="pt-16 pb-4">
+    <div class="mx-auto max-w-site px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full border border-[#fdb827] px-3 py-1 text-sm text-[#fdb827] mb-4">
+        Nuestros Proyectos
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold text-[#212529] mb-4 tracking-tight">
+        {t(messages, 'projects.page.title')}
+      </h1>
+      <p class="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
+        {t(messages, 'projects.page.description')}
+      </p>
+      <hr class="mt-10 border-border" />
+    </div>
+  </section>
+
+  <section class="py-10">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="text-text-muted leading-relaxed">{t(messages, 'projects.page.description')}</p>
+      <div class="mb-10 space-y-6" id="filter-bar">
+        <div class="relative max-w-md mx-auto">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="project-search" placeholder="Buscar proyectos..." class="w-full pl-10 pr-10 h-11 rounded-xl border-2 border-border bg-transparent text-text placeholder:text-text-muted focus:outline-none focus:border-[#fdb827] transition-colors text-sm" />
+          <button id="search-clear" class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text transition-colors hidden" aria-label="Limpiar búsqueda">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="flex flex-wrap gap-2.5 justify-center" id="filter-buttons">
+          {industries.map((cat) => {
+            const isAll = cat === 'All';
+            const isActive = isAll;
+            const colorClass = isAll
+              ? 'border-amber-500'
+              : (industryColors[cat] || 'border-gray-500').replace(/^bg-\S+\s/, '').replace(/text-white\s/, '');
+            const activeClass = isAll
+              ? 'bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20'
+              : `${industryColors[cat] || 'bg-gray-500 text-white border-gray-500'} shadow-md`;
+            return (
+              <button data-filter={isAll ? 'all' : cat} class={`filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 ${isActive ? activeClass : `text-muted-foreground hover:text-foreground hover:border-foreground/30 ${colorClass}`}`}>
+                {cat === 'All' ? 'Todos' : cat}
+              </button>
+            );
+          })}
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-text-muted">
+          <button id="clear-filters" class="hidden h-8 text-xs gap-1 items-center text-text-muted hover:text-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            Limpiar filtros
+          </button>
+          <span id="result-count" class="ml-auto">{projects.length} proyectos encontrados</span>
+        </div>
       </div>
 
-      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {Object.entries(stats).map(([k, v]) => (
-          <div class="rounded-lg border border-border bg-surface p-5 text-center">
-            <div class="font-heading text-xl font-bold text-primary">{v}</div>
-            <div class="mt-1 text-xs uppercase tracking-wider text-text-muted">{k}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((p) => (
-          <a href={`/es/proyectos/${p.id}`} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
-            <div class="h-44 overflow-hidden bg-background">
-              <img src={(p.images && p.images[0]) || '/images/projects/huawei-data-center-expansion.webp'} alt={p.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-            </div>
-            <div class="p-6">
-              <h3 class="font-heading text-lg font-semibold text-text">{p.title}</h3>
-              <p class="mt-2 text-sm text-text-muted">{p.description}</p>
-              <div class="mt-4 flex flex-wrap gap-2 text-xs text-text-muted">
-                <span class="rounded-md border border-border bg-background px-2 py-1">{p.industry}</span>
-                <span class="rounded-md border border-border bg-background px-2 py-1">{p.location}</span>
-                <span class="rounded-md border border-border bg-background px-2 py-1">{p.year}</span>
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((p: any) => (
+          <a href={`/es/proyectos/${p.id}`} data-industry={p.industry} data-search-text={`${p.title} ${p.client} ${p.industry} ${p.description}`.toLowerCase()} class="project-card group overflow-hidden rounded-xl border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col bg-white">
+            <div class="relative h-52 overflow-hidden bg-gray-100">
+              <img src={(p.images && p.images[0]) || '/images/projects/no-image-available.webp'} alt={p.title} class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3">
+                <span class="inline-block rounded-md bg-white/90 backdrop-blur-sm px-2.5 py-1 text-xs font-medium text-[#212529] shadow-sm">{p.industry}</span>
               </div>
-              <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h3 class="text-lg font-semibold text-[#212529] mb-3 line-clamp-2 group-hover:text-[#fdb827] transition-colors duration-200">{p.title}</h3>
+              <div class="space-y-2.5 mb-4 flex-1">
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  <span>{p.client}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted"><svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>{p.location}</span></div>
+                <div class="flex items-center gap-2 text-sm text-text-muted"><svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>{p.year}</span></div>
+                <div class="flex items-center gap-2 text-sm text-text-muted"><svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>{p.scale || p.projectScale}</span></div>
+              </div>
+              <p class="text-sm text-text-muted line-clamp-2 leading-relaxed mb-4">{p.description}</p>
+              <span class="inline-flex items-center justify-center w-full rounded-lg border-2 border-[#fdb827] text-[#fdb827] px-4 py-2 text-sm font-medium group-hover:bg-[#fdb827] group-hover:text-[#212529] transition-all duration-300">
                 {t(messages, 'projects.labels.viewDetails')}
-                <span aria-hidden="true">→</span>
+                <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </span>
             </div>
           </a>
         ))}
       </div>
+
+      <div id="empty-state" class="hidden text-center py-20">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
+          <svg class="h-8 w-8 text-text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-[#212529] mb-2">No se encontraron proyectos</h3>
+        <p class="text-text-muted mb-6">Intenta ajustar los filtros o términos de búsqueda.</p>
+        <button id="reset-filters-btn" class="rounded-lg border-2 border-border px-4 py-2 text-sm font-medium text-text hover:border-[#fdb827] hover:text-[#fdb827] transition-colors">
+          Mostrar todos los proyectos
+        </button>
+      </div>
     </div>
   </section>
 
-  <CTA
-    title={t(messages, 'projects.detailPage.quickInquiry')}
-    description={t(messages, 'projects.page.description')}
-    buttonText={t(messages, 'projects.detailPage.getQuote')}
-    buttonHref={route('contact', 'es')}
-  />
+  <section class="pb-16">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="rounded-2xl bg-[#212529] p-10 md:p-12">
+        <div class="text-center mb-8">
+          <span class="inline-block rounded-full border border-white/30 px-3 py-1 text-sm text-white/80 mb-3">Nuestro Impacto</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">Por los Números</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {Object.entries(stats).map(([key, value]) => (
+            <div class="space-y-2">
+              <div class="text-4xl md:text-5xl font-extrabold text-[#fdb827] tracking-tight">{value}</div>
+              <div class="text-white/70 text-sm font-medium uppercase tracking-wider">{statLabels[key] || key}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>
 
+<script>
+  const searchInput = document.getElementById('project-search') as HTMLInputElement;
+  const searchClear = document.getElementById('search-clear') as HTMLButtonElement;
+  const clearFilters = document.getElementById('clear-filters') as HTMLButtonElement;
+  const resultCount = document.getElementById('result-count') as HTMLSpanElement;
+  const emptyState = document.getElementById('empty-state') as HTMLDivElement;
+  const filterButtons = document.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+  const resetBtn = document.getElementById('reset-filters-btn') as HTMLButtonElement;
+  const cards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
+  let activeFilter = 'all'; let searchQuery = '';
+  function updateUI() {
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const industry = card.dataset.industry || '';
+      const searchText = card.dataset.searchText || '';
+      const matchesFilter = activeFilter === 'all' || industry === activeFilter;
+      const matchesSearch = !searchQuery || searchText.includes(searchQuery.toLowerCase());
+      card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
+      if (matchesFilter && matchesSearch) visibleCount++;
+    });
+    resultCount.textContent = `${visibleCount} proyecto${visibleCount !== 1 ? 's' : ''} encontrado${visibleCount !== 1 ? 's' : ''}`;
+    emptyState.classList.toggle('hidden', visibleCount > 0);
+    clearFilters.classList.toggle('hidden', !(activeFilter !== 'all' || searchQuery));
+    searchClear.classList.toggle('hidden', !searchQuery);
+  }
+  searchInput.addEventListener('input', () => { searchQuery = searchInput.value; updateUI(); });
+  searchClear.addEventListener('click', () => { searchInput.value = ''; searchQuery = ''; updateUI(); });
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.filter || 'all';
+      filterButtons.forEach((b) => {
+        const f = b.dataset.filter || 'all';
+        const isActive = f === activeFilter;
+        if (isActive) {
+          if (f === 'all') b.className = 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20';
+          else b.className = `filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 ${(window as any).__industryColors?.[f] || 'bg-gray-500 text-white border-gray-500'} shadow-md`;
+        } else {
+          b.className = 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 text-muted-foreground hover:text-foreground hover:border-foreground/30 border-gray-300';
+        }
+      });
+      updateUI();
+    });
+  });
+  clearFilters.addEventListener('click', () => {
+    activeFilter = 'all'; searchInput.value = ''; searchQuery = '';
+    filterButtons.forEach((b) => { b.className = b.dataset.filter === 'all' ? 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20' : 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 text-muted-foreground hover:text-foreground hover:border-foreground/30 border-gray-300'; });
+    updateUI();
+  });
+  resetBtn?.addEventListener('click', () => {
+    activeFilter = 'all'; searchInput.value = ''; searchQuery = '';
+    filterButtons.forEach((b) => { b.className = b.dataset.filter === 'all' ? 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20' : 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 text-muted-foreground hover:text-foreground hover:border-foreground/30 border-gray-300'; });
+    updateUI();
+  });
+  (window as any).__industryColors = {
+    'Centro de Datos': 'bg-blue-500 text-white border-blue-500',
+    'Nueva Energía': 'bg-emerald-500 text-white border-emerald-500',
+    'Industrial': 'bg-slate-600 text-white border-slate-600',
+    'Tránsito Ferroviario': 'bg-purple-500 text-white border-purple-500',
+    'Metalurgia': 'bg-orange-500 text-white border-orange-500',
+  };
+</script>

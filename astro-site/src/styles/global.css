@@ -4,13 +4,19 @@
 @plugin "@tailwindcss/typography";
 
 @layer base {
+  :root {
+    color-scheme: light only;
+  }
+
   html {
     scroll-behavior: smooth;
+    color-scheme: light only;
   }
 
   body {
     font-family: var(--font-body);
     color: var(--color-text);
+    background-color: var(--color-background);
     transition: background-color 0.3s;
   }
 

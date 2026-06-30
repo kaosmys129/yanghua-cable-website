@@ -14,6 +14,18 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.yanghuasti.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'yanghuasti.jx5.szbdk.cn',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   // 不再使用 rewrites 来处理旧西语路径，统一由 middleware 返回 301 永久重定向

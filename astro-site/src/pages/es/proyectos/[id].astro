@@ -21,140 +21,223 @@ const messages = await loadMessages('es');
 const { project } = Astro.props as { project: any };
 const labels = tRaw<Record<string, string>>(messages, 'projects.labels', {});
 const sections = tRaw<Record<string, string>>(messages, 'projects.detailPage', {});
+const industry = project?.industry || '';
 ---
 
 <BaseLayout title={project?.title} description={project?.description}>
   <Header slot="header" locale="es" />
-  <Banner title={project?.title ?? t(messages, 'projects.page.title')} locale="es" />
+
+  <section class="relative">
+    <div class="relative h-64 md:h-80 overflow-hidden">
+      <img src={(project?.images && project.images[0]) || '/images/projects/huawei-data-center-expansion.webp'} alt={project?.title} class="h-full w-full object-cover" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 pb-8">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <a href="/es/proyectos" class="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm mb-4 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          {labels.backToProjects || 'Volver a Proyectos'}
+        </a>
+        <div class="flex items-center gap-3 mb-2">
+          {industry && <span class="inline-block rounded-md bg-[#fdb827] px-2.5 py-0.5 text-xs font-semibold text-[#212529]">{industry}</span>}
+        </div>
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-3xl">{project?.title}</h1>
+        <p class="text-white/70 mt-2 text-sm md:text-base">{project?.client}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-surface">
+    <div class="mx-auto max-w-site px-4 sm:px-6 py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="space-y-1">
+          <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            {sections.projectLocation || 'Ubicación'}
+          </div>
+          <div class="font-semibold text-text text-sm">{project?.location}</div>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            {sections.completionDate || 'Finalización'}
+          </div>
+          <div class="font-semibold text-text text-sm">{project?.completionDate}</div>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            {labels.projectScale || 'Escala'}
+          </div>
+          <div class="font-semibold text-text text-sm">{project?.projectScale || project?.scale || 'N/A'}</div>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {sections.projectDuration || 'Duración'}
+          </div>
+          <div class="font-semibold text-text text-sm">{project?.duration || 'N/A'}</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-7">
-          <img src={(project?.images && project.images[0]) || '/images/projects/huawei-data-center-expansion.webp'} alt={project?.title} class="aspect-[16/9] w-full rounded-lg object-cover shadow-sm" />
-          <p class="mt-6 text-text-muted leading-relaxed">{project?.content ?? project?.description}</p>
+        <div class="lg:col-span-8 space-y-10">
+          <div><p class="text-text-muted leading-relaxed">{project?.content ?? project?.description}</p></div>
+
+          {(project?.challenge || project?.challenges?.length > 0) && (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="rounded-xl bg-red-50 border border-red-100 p-6">
+                <h2 class="font-heading text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
+                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                  {sections.challenges || 'Desafíos'}
+                </h2>
+                {project?.challenge && <p class="text-sm text-red-800 mb-3 leading-relaxed">{project.challenge}</p>}
+                {project?.challenges?.length > 0 && (
+                  <ul class="space-y-2">
+                    {project.challenges.map((c: string) => (
+                      <li class="flex items-start gap-2 text-sm text-red-800"><span class="mt-1.5 inline-block size-1.5 rounded-full bg-red-500 flex-shrink-0"></span><span>{c}</span></li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              {(project?.solution || project?.solutionPoints?.length > 0) && (
+                <div class="rounded-xl bg-emerald-50 border border-emerald-100 p-6">
+                  <h2 class="font-heading text-lg font-bold text-emerald-700 mb-3 flex items-center gap-2">
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    {sections.solution || 'Solución'}
+                  </h2>
+                  {project?.solution && <p class="text-sm text-emerald-800 mb-3 leading-relaxed">{project.solution}</p>}
+                  {project?.solutionPoints?.length > 0 && (
+                    <ul class="space-y-2">
+                      {project.solutionPoints.map((s: string) => (
+                        <li class="flex items-start gap-2 text-sm text-emerald-800"><span class="mt-1.5 inline-block size-1.5 rounded-full bg-emerald-500 flex-shrink-0"></span><span>{s}</span></li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          {project?.results?.length > 0 && (
+            <div>
+              <h2 class="font-heading text-xl font-bold text-text mb-6">{sections.results || 'Resultados'}</h2>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {project.results.map((r: any) => (
+                  <div class="rounded-xl border-2 border-border bg-surface p-5 text-center">
+                    <div class="font-heading text-2xl font-extrabold text-[#fdb827]">{r.value}</div>
+                    <div class="mt-1.5 text-xs text-text-muted font-medium">{r.metric}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project?.productsUsed?.length > 0 && (
+            <div>
+              <h2 class="font-heading text-xl font-bold text-text mb-4">{sections.products || 'Productos Utilizados'}</h2>
+              <div class="flex flex-wrap gap-2">
+                {project.productsUsed.map((p: string) => (
+                  <span class="inline-block rounded-full bg-background border border-border px-3 py-1.5 text-sm text-text-muted">{p}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project?.images?.length > 1 && (
+            <div>
+              <h2 class="font-heading text-xl font-bold text-text mb-4">{sections.projectGallery || 'Galería'}</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="gallery-grid" data-images={JSON.stringify(project?.images || [])}>
+                {project.images.map((img: string, idx: number) => (
+                  <div class="aspect-[16/10] overflow-hidden rounded-xl bg-gray-100 cursor-zoom-in group/gallery" data-gallery-index={String(idx)}>
+                    <img src={img} alt={`${project.title} - image ${idx + 1}`} class="h-full w-full object-cover transition-transform duration-300 group-hover/gallery:scale-105" loading="lazy" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
-        <aside class="lg:col-span-5">
-          <div class="rounded-lg border border-border bg-surface p-6 shadow-sm">
-            <h2 class="font-heading text-lg font-semibold text-text">{sections.projectInformation ?? 'Información del proyecto'}</h2>
-            <dl class="mt-4 space-y-3 text-sm">
-              <div class="flex justify-between gap-4">
-                <dt class="text-text-muted">{labels.client ?? 'Cliente'}</dt>
-                <dd class="text-text">{project?.client}</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-text-muted">{labels.industry ?? 'Industria'}</dt>
-                <dd class="text-text">{project?.industry}</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-text-muted">{labels.location ?? 'Ubicación'}</dt>
-                <dd class="text-text">{project?.location}</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-text-muted">{labels.duration ?? 'Duración'}</dt>
-                <dd class="text-text">{project?.duration}</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-text-muted">{labels.completionDate ?? 'Finalización'}</dt>
-                <dd class="text-text">{project?.completionDate}</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-text-muted">{labels.projectScale ?? 'Escala'}</dt>
-                <dd class="text-text">{project?.projectScale ?? project?.scale}</dd>
-              </div>
+        <aside class="lg:col-span-4 space-y-6">
+          <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
+            <h2 class="font-heading text-lg font-semibold text-text mb-4">{sections.projectInformation || 'Información del Proyecto'}</h2>
+            <dl class="space-y-3.5 text-sm">
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.client || 'Cliente'}</dt><dd class="text-text font-medium text-right">{project?.client}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.industry || 'Industria'}</dt><dd class="text-text font-medium text-right">{project?.industry}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.location || 'Ubicación'}</dt><dd class="text-text font-medium text-right">{project?.location}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.duration || 'Duración'}</dt><dd class="text-text font-medium text-right">{project?.duration}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.completionDate || 'Finalización'}</dt><dd class="text-text font-medium text-right">{project?.completionDate}</dd></div>
+              <div class="flex justify-between gap-4"><dt class="text-text-muted">{labels.projectScale || 'Escala'}</dt><dd class="text-text font-medium text-right">{project?.projectScale || project?.scale}</dd></div>
             </dl>
           </div>
+          {project?.testimonial && (
+            <div class="rounded-xl bg-[#212529] p-6 shadow-sm">
+              <svg class="h-8 w-8 text-[#fdb827] mb-3 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="text-white/90 text-sm italic leading-relaxed">"{project.testimonial}"</p>
+              <div class="mt-3 text-xs text-white/60">
+                {project.testimonialAuthor && <span class="font-semibold">{project.testimonialAuthor}</span>}
+                {project.testimonialPosition && <span>, {project.testimonialPosition}</span>}
+              </div>
+            </div>
+          )}
         </aside>
       </div>
     </div>
   </section>
 
-  {project?.challenge && (
-    <section class="bg-surface py-section">
-      <div class="mx-auto max-w-site px-4 sm:px-6">
-        <div class="mx-auto max-w-3xl">
-          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.challenges ?? 'Antecedentes y desafíos'}</h2>
-          <p class="mt-3 text-text-muted leading-relaxed">{project.challenge}</p>
-          {project?.challenges?.length > 0 && (
-            <ul class="mt-6 space-y-2 text-sm text-text-muted">
-              {project.challenges.map((c: string) => (
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </section>
-  )}
-
-  {(project?.solution || project?.solutionPoints?.length > 0) && (
-    <section class="py-section">
-      <div class="mx-auto max-w-site px-4 sm:px-6">
-        <div class="mx-auto max-w-3xl">
-          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.solution ?? 'Solución'}</h2>
-          {project?.solution && <p class="mt-3 text-text-muted leading-relaxed">{project.solution}</p>}
-          {project?.solutionPoints?.length > 0 && (
-            <ul class="mt-6 space-y-2 text-sm text-text-muted">
-              {project.solutionPoints.map((c: string) => (
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </section>
-  )}
-
-  {project?.results?.length > 0 && (
-    <section class="bg-surface py-section">
-      <div class="mx-auto max-w-site px-4 sm:px-6">
-        <div class="mx-auto mb-10 max-w-2xl text-center">
-          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.results ?? 'Resultados'}</h2>
-        </div>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {project.results.map((r: any) => (
-            <div class="rounded-lg border border-border bg-background p-6 text-center shadow-sm">
-              <div class="font-heading text-xl font-bold text-primary">{r.value}</div>
-              <div class="mt-2 text-sm text-text-muted">{r.metric}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  {project?.productsUsed?.length > 0 && (
-    <section class="py-section">
-      <div class="mx-auto max-w-site px-4 sm:px-6">
-        <div class="mx-auto max-w-3xl">
-          <h2 class="font-heading text-h2 font-bold uppercase text-text">{sections.products ?? 'Productos usados'}</h2>
-          <ul class="mt-6 space-y-2 text-sm text-text-muted">
-            {project.productsUsed.map((p: string) => (
-              <li class="flex items-start gap-2">
-                <span class="mt-1 inline-block size-1.5 rounded-full bg-accent"></span>
-                <span>{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  )}
-
   <CTA
-    title={sections.quickInquiry ?? 'Consulta por proyectos similares'}
-    description={sections.getQuote ?? ''}
-    buttonText={sections.getQuote ?? 'Cotizar'}
+    title={sections.quickInquiry || 'Consultar Proyectos Similares'}
+    description={sections.getQuote || 'Contacta a nuestro equipo para una solución personalizada.'}
+    buttonText={sections.getQuote || 'Solicitar Cotización'}
     buttonHref={route('contact', 'es')}
   />
 
   <Footer slot="footer" locale="es" />
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/95 flex items-center justify-center" role="dialog" aria-modal="true" aria-label="Galería de imágenes">
+    <button id="lightbox-close" class="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10" aria-label="Cerrar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div id="lightbox-counter" class="absolute top-5 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium"></div>
+    <button id="lightbox-prev" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-10 p-3 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10" aria-label="Imagen anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="max-w-[90vw] max-h-[85vh] flex items-center justify-center">
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg select-none" />
+    </div>
+    <button id="lightbox-next" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-10 p-3 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10" aria-label="Siguiente imagen">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
 </BaseLayout>
 
+<script>
+  const galleryGrid = document.getElementById('gallery-grid') as HTMLDivElement;
+  const galleryImages: string[] = JSON.parse(galleryGrid.dataset.images || '[]');
+  const lightbox = document.getElementById('lightbox') as HTMLDivElement;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxCounter = document.getElementById('lightbox-counter') as HTMLDivElement;
+  const btnClose = document.getElementById('lightbox-close') as HTMLButtonElement;
+  const btnPrev = document.getElementById('lightbox-prev') as HTMLButtonElement;
+  const btnNext = document.getElementById('lightbox-next') as HTMLButtonElement;
+  let currentIndex = 0;
+  function openLightbox(index: number) { if (!galleryImages.length) return; currentIndex = index; updateLightbox(); lightbox.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+  function closeLightbox() { lightbox.classList.add('hidden'); document.body.style.overflow = ''; }
+  function updateLightbox() { lightboxImg.src = galleryImages[currentIndex] || ''; lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`; btnPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden'; btnNext.style.visibility = currentIndex < galleryImages.length - 1 ? 'visible' : 'hidden'; }
+  function showPrev() { if (currentIndex > 0) { currentIndex--; updateLightbox(); } }
+  function showNext() { if (currentIndex < galleryImages.length - 1) { currentIndex++; updateLightbox(); } }
+  document.querySelectorAll('[data-gallery-index]').forEach((el) => { el.addEventListener('click', () => { const idx = parseInt((el as HTMLElement).dataset.galleryIndex || '0'); openLightbox(idx); }); });
+  btnClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  btnPrev.addEventListener('click', showPrev);
+  btnNext.addEventListener('click', showNext);
+  document.addEventListener('keydown', (e) => { if (lightbox.classList.contains('hidden')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') showPrev(); if (e.key === 'ArrowRight') showNext(); });
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => { touchStartX = (e as TouchEvent).touches[0].clientX; });
+  lightbox.addEventListener('touchend', (e) => { const diff = touchStartX - (e as TouchEvent).changedTouches[0].clientX; if (Math.abs(diff) > 60) { diff > 0 ? showNext() : showPrev(); } });
+</script>
