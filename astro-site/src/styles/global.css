@@ -35,6 +35,41 @@
     color: var(--color-surface);
   }
 
+  /* ── 文章详情页 GFM 表格样式 ── */
+  article.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  article.prose thead {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  article.prose thead th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  article.prose tbody td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+
+  article.prose tbody tr:nth-child(even) {
+    background: #f9fafb;
+  }
+
+  article.prose tbody tr:hover {
+    background: #f3f4f6;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;

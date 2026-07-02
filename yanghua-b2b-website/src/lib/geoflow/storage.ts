@@ -30,7 +30,7 @@ type ImportLogEntry = ReceiveResult & {
   incomingPath: string;
   importedAt: string;
   targetQueries: string[];
-  reviewStatus: 'needs_review' | 'needs_geo_metadata';
+  reviewStatus: 'approved' | 'needs_review' | 'needs_geo_metadata';
 };
 
 export async function receiveGeoflowArticle(input: ReceiveInput): Promise<ReceiveResult> {
@@ -51,12 +51,12 @@ export async function receiveGeoflowArticle(input: ReceiveInput): Promise<Receiv
   }
 
   const article = normalizeGeoflowArticlePayload(input.payload);
-  const incomingDir = path.join(contentRoot, 'articles', '_incoming', article.locale);
-  fs.mkdirSync(incomingDir, { recursive: true });
+  const targetDir = path.join(contentRoot, 'articles', article.locale);
+  fs.mkdirSync(targetDir, { recursive: true });
 
-  const fileName = `geoflow-${article.slug}.mdx`;
-  const incomingPath = path.join(incomingDir, fileName);
-  fs.writeFileSync(incomingPath, buildIncomingArticleMdx(article), 'utf8');
+  const fileName = `${article.slug}.mdx`;
+  const targetPath = path.join(targetDir, fileName);
+  fs.writeFileSync(targetPath, buildIncomingArticleMdx(article), 'utf8');
 
   const result: ReceiveResult = {
     ok: true,
@@ -73,7 +73,7 @@ export async function receiveGeoflowArticle(input: ReceiveInput): Promise<Receiv
       geoflowArticleId: article.geoflow.articleId,
       locale: article.locale,
       slug: article.slug,
-      incomingPath: path.relative(contentRoot, incomingPath).replace(/\\/g, '/'),
+      incomingPath: path.relative(contentRoot, targetPath).replace(/\\/g, '/'),
       importedAt: (input.now || new Date()).toISOString(),
       targetQueries: article.geo.targetQueries,
       reviewStatus: article.geoflow.reviewStatus,

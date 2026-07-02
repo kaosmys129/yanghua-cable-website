@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 const localeSchema = z.enum(['en', 'es']);
 const buyerIntentSchema = z.enum(['awareness', 'comparison', 'selection', 'procurement']);
-const reviewStatusSchema = z.enum(['needs_review', 'needs_geo_metadata']);
+const reviewStatusSchema = z.enum(['approved', 'needs_review', 'needs_geo_metadata']);
 
 const faqSchema = z.object({
   question: z.string().min(1),
@@ -53,7 +53,7 @@ const payloadSchema = z.object({
     })
     .optional(),
   canonicalHint: z.string().optional(),
-  reviewStatus: reviewStatusSchema.default('needs_review'),
+  reviewStatus: reviewStatusSchema.default('approved'),
   authorBio: z.string().optional(),
   certifications: z.array(z.string()).default([]),
   relatedCaseStudies: z.array(z.string()).default([]),
@@ -382,12 +382,13 @@ function nativePayloadToFlatPayload(payload: Record<string, unknown>): z.input<t
         }
       : undefined,
     canonicalHint: metadata?.seo.canonicalHint,
-    reviewStatus: hasMetadata ? 'needs_review' : 'needs_geo_metadata',
+    reviewStatus: 'approved', // GEOFlow 已审核通过才触发分发 → 直接 approved
   };
 }
 
 function extractYanghuaGeoMetadata(markdown: string) {
-  const marker = /<!--\s*yanghua-geo-json\s*([\s\S]*?)-->/i;
+  // Match both literal <!-- yanghua-geo-json ... --> and escaped &lt;!-- ... --&gt;
+  const marker = /(?:<!--|&lt;!--)\s*yanghua-geo-json\s*([\s\S]*?)(?:-->|--&gt;)/i;
   const match = markdown.match(marker);
   if (!match) {
     return {
@@ -485,18 +486,17 @@ function injectBodyImages(markdown: string, relatedSolutionIds: string[]): strin
   const lines = markdown.split('\n');
   const insertionPoints: number[] = [];
 
-  // Find first H2 heading
+  // Find first H2 heading — insert image after it (not inside tables)
   for (let i = 0; i < lines.length; i++) {
-    if (/^## /.test(lines[i]) && insertionPoints.length === 0) {
-      insertionPoints.push(i); // insert before the heading
-      break;
-    }
-  }
-
-  // Find first markdown table separator row
-  for (let i = 0; i < lines.length; i++) {
-    if (/^\|[-:| ]+\|/.test(lines[i]) && insertionPoints.length < 2) {
-      insertionPoints.push(i + 1); // insert after the table header separator
+    if (/^## /.test(lines[i])) {
+      // Only insert if the NEXT non-empty line is NOT a table row
+      let nextLine = i + 1;
+      while (nextLine < lines.length && lines[nextLine].trim() === '') {
+        nextLine++;
+      }
+      if (nextLine < lines.length && !/^\|/.test(lines[nextLine])) {
+        insertionPoints.push(i + 1); // insert after the heading
+      }
       break;
     }
   }

@@ -171,15 +171,22 @@ Flexible busbars are preferred over parallel cables for high-current routes exce
     }
   }
 
-  // --- Test 5: Verify _incoming file was created ---
-  console.log('\n[Test 5] Verify _incoming file created');
-  const incomingDir = path.join(process.cwd(), 'content', 'articles', '_incoming', 'en');
-  const expectedFile = fs.readdirSync(incomingDir).find(f => f.startsWith('geoflow-smoke-test'));
+  // --- Test 5: Verify file created in articles/en/ with approved reviewStatus ---
+  console.log('\n[Test 5] Verify article written to articles/en/ with approved status');
+  const articleDir = path.join(process.cwd(), 'content', 'articles', 'en');
+  const expectedFile = fs.readdirSync(articleDir).find(f => f.startsWith('smoke-test-article'));
   if (expectedFile) {
-    console.log('  ✅ PASS: found file:', expectedFile);
-    passed++;
+    const content = fs.readFileSync(path.join(articleDir, expectedFile), 'utf8');
+    const hasApproved = /reviewStatus:\s*approved/.test(content);
+    if (hasApproved) {
+      console.log('  ✅ PASS: article written to articles/en/ with reviewStatus: approved');
+      passed++;
+    } else {
+      console.log('  ❌ FAIL: file found but reviewStatus is not approved');
+      failed++;
+    }
   } else {
-    console.log('  ❌ FAIL: no _incoming file found');
+    console.log('  ❌ FAIL: no article file found in articles/en/');
     failed++;
   }
 
@@ -189,7 +196,7 @@ Flexible busbars are preferred over parallel cables for high-current routes exce
 
   // Cleanup: remove smoke test files
   if (expectedFile) {
-    fs.unlinkSync(path.join(incomingDir, expectedFile));
+    fs.unlinkSync(path.join(articleDir, expectedFile));
     console.log('Cleaned up smoke test file.');
   }
 }

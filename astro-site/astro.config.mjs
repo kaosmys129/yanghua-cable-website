@@ -2,10 +2,10 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
+import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   site: 'https://www.yhflexiblebusbar.com',
@@ -14,7 +14,13 @@ export default defineConfig({
     mode: 'standalone',
   }),
 
-  integrations: [mdx(), sitemap(), robotsTxt(), react()],
+  integrations: [
+    mdx({
+      remarkPlugins: [remarkGfm],
+    }),
+    sitemap(),
+    react(),
+  ],
 
   prefetch: {
     prefetchAll: true,
