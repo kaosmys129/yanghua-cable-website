@@ -86,7 +86,7 @@ export interface QueryOptions {
  * 负责邮件数据的持久化存储和管理
  */
 export class EmailStorage {
-  private db: Database.Database;
+  private db: Database.Database | null = null;
   private dbPath: string;
 
   constructor(dbPath?: string) {
@@ -114,7 +114,13 @@ export class EmailStorage {
       this.db = new Database(this.dbPath);
     } catch (openErr) {
       console.error(`[EmailStorage] Failed to open database at ${this.dbPath}, falling back to in-memory:`, openErr);
-      this.db = new Database(':memory:');
+      try {
+        this.db = new Database(':memory:');
+      } catch (memoryErr) {
+        console.error('[EmailStorage] In-memory database is unavailable; email persistence is disabled:', memoryErr);
+        this.db = null;
+        return;
+      }
     }
     try {
       this.initializeDatabase();
@@ -127,6 +133,10 @@ export class EmailStorage {
    * 初始化数据库表结构
    */
   private initializeDatabase(): void {
+    if (!this.db) {
+      return;
+    }
+
     // 创建邮件记录表
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS emails (
@@ -190,6 +200,9 @@ export class EmailStorage {
   async saveEmail(email: Omit<EmailRecord, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const id = uuidv4();
     const now = new Date().toISOString();
+    if (!this.db) {
+      return id;
+    }
 
     const stmt = this.db.prepare(`
       INSERT INTO emails (
@@ -232,6 +245,10 @@ export class EmailStorage {
    * 更新邮件记录
    */
   async updateEmail(id: string, updates: Partial<EmailRecord>): Promise<boolean> {
+    if (!this.db) {
+      return false;
+    }
+
     const fields: string[] = [];
     const values: any[] = [];
 
@@ -268,6 +285,10 @@ export class EmailStorage {
    * 获取邮件记录
    */
   async getEmail(id: string): Promise<EmailRecord | null> {
+    if (!this.db) {
+      return null;
+    }
+
     const stmt = this.db.prepare('SELECT * FROM emails WHERE id = ?');
     const row = stmt.get(id) as any;
     
@@ -281,6 +302,10 @@ export class EmailStorage {
     emails: EmailRecord[];
     total: number;
   }> {
+    if (!this.db) {
+      return { emails: [], total: 0 };
+    }
+
     const {
       limit = 50,
       offset = 0,
@@ -345,6 +370,10 @@ export class EmailStorage {
    * 删除邮件记录
    */
   async deleteEmail(id: string): Promise<boolean> {
+    if (!this.db) {
+      return false;
+    }
+
     const stmt = this.db.prepare('DELETE FROM emails WHERE id = ?');
     const result = stmt.run(id);
     return result.changes > 0;
@@ -356,6 +385,9 @@ export class EmailStorage {
   async saveTemplate(template: Omit<EmailTemplate, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const id = uuidv4();
     const now = new Date().toISOString();
+    if (!this.db) {
+      return id;
+    }
 
     const stmt = this.db.prepare(`
       INSERT INTO email_templates (
@@ -387,6 +419,10 @@ export class EmailStorage {
    * 获取邮件模板
    */
   async getTemplate(id: string): Promise<EmailTemplate | null> {
+    if (!this.db) {
+      return null;
+    }
+
     const stmt = this.db.prepare('SELECT * FROM email_templates WHERE id = ?');
     const row = stmt.get(id) as any;
     
@@ -397,6 +433,10 @@ export class EmailStorage {
    * 根据类型和语言获取模板
    */
   async getTemplateByTypeAndLocale(type: string, locale: string): Promise<EmailTemplate | null> {
+    if (!this.db) {
+      return null;
+    }
+
     const stmt = this.db.prepare(`
       SELECT * FROM email_templates 
       WHERE type = ? AND locale = ? AND is_active = 1
@@ -412,6 +452,10 @@ export class EmailStorage {
    * 获取邮件统计信息
    */
   async getStats(): Promise<EmailStats> {
+    if (!this.db) {
+      return emptyEmailStats();
+    }
+
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const thisWeek = new Date(today.getTime() - (today.getDay() * 24 * 60 * 60 * 1000));
@@ -456,6 +500,10 @@ export class EmailStorage {
    * 清理旧的邮件记录
    */
   async cleanupOldEmails(daysToKeep: number = 90): Promise<number> {
+    if (!this.db) {
+      return 0;
+    }
+
     const cutoffDate = new Date();
     cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
 
@@ -533,6 +581,20 @@ export class EmailStorage {
       this.db.close();
     }
   }
+}
+
+function emptyEmailStats(): EmailStats {
+  return {
+    totalSent: 0,
+    totalFailed: 0,
+    totalPending: 0,
+    sentToday: 0,
+    sentThisWeek: 0,
+    sentThisMonth: 0,
+    byType: {},
+    byLocale: {},
+    byStatus: {},
+  };
 }
 
 /**

@@ -17,21 +17,209 @@ const { path } = Astro.props as { path: string };
 const mod: any = await (modules as any)[path]();
 const Content = mod.default;
 const fm = mod.frontmatter ?? {};
-const title = fm.metaTitle ?? fm.title ?? Astro.params.slug;
-const description = fm.metaDescription ?? fm.summary ?? '';
+
+// ── GEO metadata ──
+const geo = fm.geo ?? {};
+const seo = fm.seo ?? {};
+const hasGeo = !!(geo?.targetQueries?.length);
+const title = seo?.title || fm.metaTitle || fm.title || Astro.params.slug;
+const description = seo?.description || fm.metaDescription || fm.summary || '';
+const coverImage = fm.cover?.src || '/images/products/flexible-busbar-1.jpg';
+const coverAlt = fm.cover?.alt ?? title;
+
+// ── EEAT fields ──
+const authorBio = fm.authorBio || '';
+const certifications: string[] = fm.certifications ?? [];
+const hasProductImages = !!(geo?.relatedProductIds?.length);
+
+// ── FAQPage Schema ──
+const faqs: Array<{ question: string; answer: string }> = geo?.faqs ?? [];
+const faqSchema = faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${Astro.url}#geo-faq`,
+  mainEntity: faqs.map((faq: any) => ({
+    '@type': 'Question' as const,
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer' as const,
+      text: faq.answer,
+    },
+  })),
+} : undefined;
+
+// ── BlogPosting Schema (enhanced EEAT) ──
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: fm.title,
+  description: description || undefined,
+  datePublished: fm.publishedAt,
+  dateModified: fm.updatedAt || fm.publishedAt,
+  author: fm.author?.name ? {
+    '@type': 'Person',
+    name: fm.author.name,
+    description: authorBio || undefined,
+    affiliation: {
+      '@type': 'Organization',
+      name: 'Yanghua Cable',
+      url: 'https://www.yhflexiblebusbar.com',
+    },
+  } : undefined,
+  publisher: {
+    '@type': 'Organization',
+    name: 'Yanghua Cable',
+  },
+};
+
+const buyerIntentLabels: Record<string, string> = {
+  awareness: 'Conciencia',
+  comparison: 'Comparación',
+  selection: 'Guía de selección',
+  procurement: 'Adquisición',
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  schema={faqSchema}
+>
   <Header slot="header" locale="es" />
+
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+
   <Banner title={title} locale="es" />
+
+  <div class="mx-auto max-w-site px-4 sm:px-6 -mt-4">
+    <img src={coverImage} alt={coverAlt} class="w-full rounded-lg object-cover max-h-[480px] shadow-md" />
+  </div>
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <article class="prose prose-slate max-w-none">
-        <Content />
-      </article>
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div class="min-w-0">
+          {geo?.answerSummary && (
+            <div class="mb-8 rounded-xl border border-amber-300 bg-amber-50 px-5 py-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
+                Respuesta directa para IA
+              </p>
+              <p class="mt-3 text-base leading-7 text-slate-800">
+                {geo.answerSummary}
+              </p>
+              {geo.buyerIntent && (
+                <span class="mt-3 inline-block rounded-full bg-amber-200 px-3 py-1 text-xs font-medium text-amber-800">
+                  {buyerIntentLabels[geo.buyerIntent] || geo.buyerIntent}
+                </span>
+              )}
+            </div>
+          )}
+
+          <article class="prose prose-slate max-w-none geo-article">
+            <Content />
+          </article>
+
+          {hasProductImages && (
+            <div class="mt-8 rounded-xl border border-border bg-surface p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted mb-4">
+                Galería de productos
+              </p>
+              <div class="grid grid-cols-3 gap-3">
+                {fm.aiImages?.coverGenerated && fm.cover?.src?.startsWith('/images/ai-generated/') ? (
+                  <img src={fm.cover.src} alt={fm.cover?.alt || 'Portada del artículo'} class="rounded-lg w-full object-cover aspect-video" />
+                ) : null}
+                <img src="/images/products/flexible-busbar-1.jpg" alt="Producto busbar flexible" class="rounded-lg w-full object-cover aspect-video" />
+                <img src="/images/products/flexible-busbar-2.jpg" alt="Detalle de instalación" class="rounded-lg w-full object-cover aspect-video" />
+                <img src="/images/products/flexible-busbar-3.jpg" alt="Terminal busbar flexible" class="rounded-lg w-full object-cover aspect-video" />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {hasGeo && (
+          <aside class="space-y-5 lg:sticky lg:top-24 lg:self-start">
+            <div class="rounded-xl border border-border bg-surface p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">Consultas objetivo</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {geo.targetQueries?.slice(0, 8).map((q: string) => (
+                  <span class="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-slate-700">{q}</span>
+                ))}
+              </div>
+            </div>
+
+            {geo?.citations?.length > 0 && (
+              <div class="rounded-xl border border-border bg-surface p-5">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">Fuentes GEO</p>
+                <ul class="mt-3 space-y-3 text-sm leading-6 text-slate-600">
+                  {geo.citations.slice(0, 5).map((c: any) => (
+                    <li>
+                      {c.url ? (
+                        <a href={c.url} target="_blank" rel="noreferrer" class="font-medium text-text underline decoration-amber-300 underline-offset-4">{c.label}</a>
+                      ) : (
+                        <span class="font-medium text-text">{c.label}</span>
+                      )}
+                      {c.note && <p class="mt-1 text-xs text-text-muted">{c.note}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {seo?.keywords?.length > 0 && (
+              <div class="rounded-xl border border-border bg-surface p-5">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">Palabras clave SEO</p>
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  {seo.keywords.slice(0, 10).map((kw: string) => (
+                    <span class="rounded bg-slate-100 px-2 py-0.5 text-xs text-slate-600">{kw}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Author EEAT Card */}
+            <div class="rounded-xl border border-green-300 bg-green-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-700">Sobre el autor</p>
+              <div class="mt-4">
+                <p class="text-sm font-medium text-text">{fm.author?.name || 'Yanghua Engineering Team'}</p>
+                <p class="mt-2 text-xs leading-5 text-text-muted">
+                  {authorBio || 'Equipo de ingeniería con más de 15 años de experiencia en diseño, fabricación y entrega de proyectos de busbar flexible.'}
+                </p>
+                {certifications.length > 0 && (
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    {certifications.map((cert: string) => (
+                      <span class="rounded bg-green-100 border border-green-200 px-2 py-0.5 text-xs text-green-700">{cert}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-border bg-surface p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">Información</p>
+              <dl class="mt-4 space-y-3 text-sm">
+                {fm.publishedAt && (<div><dt class="text-xs font-medium text-text-muted">Publicado</dt><dd class="mt-0.5 text-text">{fm.publishedAt}</dd></div>)}
+                {fm.author?.name && (<div><dt class="text-xs font-medium text-text-muted">Autor</dt><dd class="mt-0.5 text-text">{fm.author.name}</dd></div>)}
+                {fm.category?.name && (<div><dt class="text-xs font-medium text-text-muted">Categoría</dt><dd class="mt-0.5 text-text">{fm.category.name}</dd></div>)}
+              </dl>
+            </div>
+          </aside>
+        )}
+      </div>
     </div>
   </section>
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>
+
+<style>
+  article.geo-article table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  article.geo-article thead { background-color: #f1f5f9; }
+  article.geo-article thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: #334155; border-bottom: 2px solid #cbd5e1; white-space: nowrap; }
+  article.geo-article tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  article.geo-article tbody tr:nth-child(even) { background-color: #f8fafc; }
+  article.geo-article blockquote { border-left: 4px solid #f59e0b; background-color: #fffbeb; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+  article.geo-article blockquote p { font-size: 0.875rem; line-height: 1.625; color: #334155; margin: 0; }
+  article.geo-article blockquote strong { color: #1e293b; }
+  article.geo-article hr + blockquote { border-left-color: #22c55e; background-color: #f0fdf4; }
+  article.geo-article p img { border-radius: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin: 1.5rem 0; }
+</style>

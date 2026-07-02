@@ -12,6 +12,18 @@ export interface Article {
   sourceUrl?: string;
   fallbackLocale?: 'en' | 'es';
   bodySource?: 'content' | 'summary' | 'summary+english-fallback' | 'placeholder';
+  geoflow?: {
+    articleId: string;
+    importedAt: string;
+    reviewStatus?: 'needs_review' | 'needs_geo_metadata';
+  };
+  geo?: ArticleGeo;
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+    canonicalHint?: string;
+  };
   cover: {
     id: number;
     documentId: string
@@ -55,6 +67,24 @@ export interface Article {
     }
   }
   blocks: Block[]
+}
+
+export interface ArticleGeo {
+  targetQueries: string[];
+  answerSummary: string;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+  citations: Array<{
+    label: string;
+    url?: string;
+    note?: string;
+  }>;
+  sourceMaterials: string[];
+  buyerIntent: 'awareness' | 'comparison' | 'selection' | 'procurement';
+  relatedProductIds: string[];
+  relatedSolutionIds: string[];
 }
 
 export interface ArticleSummary {

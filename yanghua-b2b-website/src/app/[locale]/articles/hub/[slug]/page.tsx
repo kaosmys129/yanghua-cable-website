@@ -7,9 +7,24 @@ import { generateCanonicalUrl, generateHreflangAlternatesForMetadata } from '@/l
 import { CmsImage } from '@/components/custom/CmsImage';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { getAllHubs } from '@/lib/content-api';
 
 interface PageProps {
   params: { slug: string; locale: string }
+}
+
+export async function generateStaticParams() {
+  const locales = ['en', 'es'] as const;
+  const params: Array<{ locale: string; slug: string }> = [];
+
+  for (const locale of locales) {
+    const result = await getAllHubs(locale);
+    for (const hub of result.data || []) {
+      params.push({ locale, slug: hub.slug });
+    }
+  }
+
+  return params;
 }
 
 export default async function HubPage({ params }: PageProps) {

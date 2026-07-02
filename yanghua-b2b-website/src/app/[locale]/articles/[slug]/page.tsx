@@ -16,6 +16,7 @@ import RelatedArticles from '@/components/RelatedArticles';
 import ReadNext from '@/components/ReadNext';
 import type { ContentApiLocale } from "@/lib/content-api";
 import { getAllArticles } from "@/lib/content-api";
+import { generateGeoArticleFAQSchema, generateGeoArticleHowToSchema } from '@/lib/geoflow/structured-data';
 
 // Generate static params for all articles
 export async function generateStaticParams() {
@@ -107,11 +108,19 @@ export default async function ArticlePage({ params }: PageProps) {
       { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
     ],
   };
+  const faqJsonLd = generateGeoArticleFAQSchema(article, articleUrl);
+  const howToJsonLd = generateGeoArticleHowToSchema(article, articleUrl);
 
   return (
     <main className="bg-[linear-gradient(180deg,#fff9ec_0%,#fffef8_18%,#ffffff_38%)]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      ) : null}
+      {howToJsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
+      ) : null}
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         {draft.isEnabled && (
           <div className="mb-6 rounded-2xl border border-yellow-200 bg-yellow-50 p-4 text-yellow-700 shadow-sm">
@@ -162,6 +171,26 @@ export default async function ArticlePage({ params }: PageProps) {
               <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
                 {article.description}
               </p>
+            ) : null}
+
+            {article.geo?.answerSummary ? (
+              <section className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
+                  {isSpanish ? 'Respuesta directa para IA' : 'Direct AI Answer'}
+                </p>
+                <p className="mt-3 max-w-3xl text-base leading-7 text-slate-800">
+                  {article.geo.answerSummary}
+                </p>
+                {article.geo.targetQueries?.length ? (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {article.geo.targetQueries.slice(0, 6).map((query) => (
+                      <span key={query} className="rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                        {query}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </section>
             ) : null}
 
             <div className="mt-8 flex items-center text-slate-500">
@@ -265,6 +294,28 @@ export default async function ArticlePage({ params }: PageProps) {
                     </a>
                   </div>
                 ) : null}
+
+                {article.geo?.citations?.length ? (
+                  <div className="rounded-[28px] border border-slate-200 bg-white p-6 text-sm leading-7 text-slate-600">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
+                      {isSpanish ? 'Fuentes GEO' : 'GEO Sources'}
+                    </p>
+                    <ul className="mt-3 space-y-3">
+                      {article.geo.citations.slice(0, 5).map((citation) => (
+                        <li key={`${citation.label}-${citation.url || citation.note || ''}`}>
+                          {citation.url ? (
+                            <a href={citation.url} target="_blank" rel="noreferrer" className="font-medium text-slate-900 underline decoration-amber-300 underline-offset-4">
+                              {citation.label}
+                            </a>
+                          ) : (
+                            <span className="font-medium text-slate-900">{citation.label}</span>
+                          )}
+                          {citation.note ? <p className="mt-1 text-slate-500">{citation.note}</p> : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </aside>
             </div>
           </div>
@@ -289,8 +340,8 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
   const { slug, locale } = params;
   const draft = await draftMode();
   const article = await getArticle(slug, locale, draft.isEnabled);
-  const title = article?.title ? `${article.title} | Yanghua` : 'Article | Yanghua';
-  const description = article?.description || 'Technical insights and resources from Yanghua on flexible busbar systems and applications.';
+  const title = article?.seo?.title || (article?.title ? `${article.title} | Yanghua` : 'Article | Yanghua');
+  const description = article?.seo?.description || article?.description || 'Technical insights and resources from Yanghua on flexible busbar systems and applications.';
 
   // 使用本地化URL生成器，确保西语翻译段作为规范路径
   const localizedPath = getLocalizedPath('articles-detail', locale as any, { slug });

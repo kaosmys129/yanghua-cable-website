@@ -1,0 +1,173 @@
+[
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "remoteUrl": "/en/articles/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-3-1782957639",
+    "geoflowArticleId": "3",
+    "locale": "en",
+    "slug": "yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "incomingPath": "articles/_incoming/en/geoflow-yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755.mdx",
+    "importedAt": "2026-07-02T02:01:27.586Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "high current multi-core cables requiring 4 or even 8 parallel connections 1600a flexible busbar vs 240mm² cable 4-parallel"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "remoteUrl": "/en/articles/high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-4-1782957639",
+    "geoflowArticleId": "4",
+    "locale": "en",
+    "slug": "high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "incomingPath": "articles/_incoming/en/geoflow-high-current-flexible-busbar-manufacturer-yanghuasti-560371.mdx",
+    "importedAt": "2026-07-02T02:01:29.018Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "custom flexible busbar manufacturer"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-5-1782957639",
+    "geoflowArticleId": "5",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "incomingPath": "articles/_incoming/en/geoflow-flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962.mdx",
+    "importedAt": "2026-07-02T02:01:29.203Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "flexible busbar industry solutions energy storage with complete manual download instructions"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "remoteUrl": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-6-1782957639",
+    "geoflowArticleId": "6",
+    "locale": "en",
+    "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "incomingPath": "articles/_incoming/en/geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260.mdx",
+    "importedAt": "2026-07-02T02:01:29.313Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "chemical plant multi-core cable connections causing problems vs. flexible busbar easy solutions"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-7-1782957639",
+    "geoflowArticleId": "7",
+    "locale": "en",
+    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "incomingPath": "articles/_incoming/en/geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
+    "importedAt": "2026-07-02T02:01:29.412Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "multi-parallel cables always have one heating up first this flexible busbar cures \"current inequality\"!"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "remoteUrl": "/en/articles/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-8-1782957639",
+    "geoflowArticleId": "8",
+    "locale": "en",
+    "slug": "supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "incomingPath": "articles/_incoming/en/geoflow-supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899.mdx",
+    "importedAt": "2026-07-02T02:01:29.653Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "remoteUrl": "/en/articles/factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-9-1782957639",
+    "geoflowArticleId": "9",
+    "locale": "en",
+    "slug": "factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "incomingPath": "articles/_incoming/en/geoflow-factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599.mdx",
+    "importedAt": "2026-07-02T02:01:29.861Z",
+    "targetQueries": [
+      "solar PV busbar",
+      "factory rooftop solar busbar",
+      "factory rooftop distributed solar projects flexible busbar handles it with ease"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-10-1782957639",
+    "geoflowArticleId": "10",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "incomingPath": "articles/_incoming/en/geoflow-flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369.mdx",
+    "importedAt": "2026-07-02T02:01:30.065Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "solar PV busbar",
+      "factory rooftop solar busbar",
+      "custom flexible busbar manufacturer",
+      "custom busbar system parameters",
+      "flexible busbar industry solutions solar pv with complete manual download instructions"
+    ],
+    "reviewStatus": "needs_review"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "remoteUrl": "/en/articles/another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "status": "imported",
+    "idempotencyKey": "manual-dist-11-1782957639",
+    "geoflowArticleId": "11",
+    "locale": "en",
+    "slug": "another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "incomingPath": "articles/_incoming/en/geoflow-another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298.mdx",
+    "importedAt": "2026-07-02T02:01:30.133Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "another breakthrough! flexible busbar assists energy storage project implementation!"
+    ],
+    "reviewStatus": "needs_review"
+  }
+]

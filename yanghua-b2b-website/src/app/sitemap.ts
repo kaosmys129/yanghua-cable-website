@@ -118,7 +118,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     // 预定义的3个专题落地页（静态路由），确保纳入站点地图
-    const predefinedHubSlugs = ['retrofit-fast-installation', 'high-current-safer-distribution', 'custom-busbar-systems'];
+    const predefinedHubSlugs = [
+      'retrofit-fast-installation',
+      'high-current-safer-distribution',
+      'custom-busbar-systems',
+      'flexible-busbar-vs-cable',
+      'high-current-power-distribution',
+      'energy-storage-busbar',
+      'solar-pv-busbar',
+      'ev-charging-busbar',
+    ];
     for (const slug of predefinedHubSlugs) {
       items.push({
         url: buildSitemapUrl('articles-hub-detail', locale, { slug }),

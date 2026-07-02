@@ -52,3 +52,4 @@ dist/
 coverage/
 *.tmp
 .env*.local
+exports/

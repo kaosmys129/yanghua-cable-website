@@ -43,6 +43,8 @@
     "validate:articles": "node --experimental-strip-types scripts/validate-article-content.ts",
     "validate:articles:ops": "tsx scripts/validate-operational-articles.ts",
     "verify:articles:workflow": "tsx scripts/verify-articles-workflow.ts",
+    "geoflow:export-rewrite-bundle": "node --import tsx scripts/geoflow-export-rewrite-bundle.ts",
+    "geoflow:promote": "node scripts/promote-geoflow-articles.mjs",
     "check:local-api": "sh scripts/check-local-api.sh"
   },
   "dependencies": {

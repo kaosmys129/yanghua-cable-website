@@ -12,16 +12,26 @@ const modules = import.meta.glob('../../../../../yanghua-b2b-website/content/art
   eager: true,
 });
 
+const buyerIntentLabels: Record<string, string> = {
+  awareness: 'Awareness',
+  comparison: 'Comparison',
+  selection: 'Selection',
+  procurement: 'Procurement',
+};
+
 const articles = Object.entries(modules)
   .map(([path, mod]: any) => {
     const slug = path.split('/').pop().replace(/\.mdx$/, '');
     const fm = mod.frontmatter ?? {};
     return {
       slug,
-      title: fm.metaTitle ?? fm.title ?? slug,
-      summary: fm.summary ?? fm.metaDescription ?? '',
+      title: fm.seo?.title || fm.metaTitle || fm.title || slug,
+      summary: fm.seo?.description || fm.summary || fm.metaDescription || '',
       publishedAt: fm.publishedAt ?? '',
       coverImage: fm.cover?.src ?? fm.coverImage ?? '',
+      buyerIntent: fm.geo?.buyerIntent ?? '',
+      targetQueryCount: fm.geo?.targetQueries?.length ?? 0,
+      hasGeo: !!(fm.geo?.targetQueries?.length),
     };
   })
   .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)));
@@ -48,6 +58,18 @@ const articles = Object.entries(modules)
               )}
             </div>
             <div class="p-6">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                {a.hasGeo && (
+                  <span class="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">
+                    GEO · {a.targetQueryCount}Q
+                  </span>
+                )}
+                {a.buyerIntent && (
+                  <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                    {buyerIntentLabels[a.buyerIntent] || a.buyerIntent}
+                  </span>
+                )}
+              </div>
               <h3 class="font-heading text-lg font-semibold text-text">{a.title}</h3>
               {a.publishedAt && <p class="mt-1 text-xs text-text-muted">{a.publishedAt}</p>}
               {a.summary && <p class="mt-3 line-clamp-3 text-sm text-text-muted">{a.summary}</p>}
@@ -64,4 +86,3 @@ const articles = Object.entries(modules)
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>
-

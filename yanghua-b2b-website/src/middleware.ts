@@ -46,6 +46,7 @@ export default async function middleware(request: NextRequest) {
   const clientIP = getClientIP(request);
   const userAgent = request.headers.get('user-agent') || '';
   const pathname = request.nextUrl.pathname;
+  const isGeoflowApiPath = pathname.startsWith('/api/geoflow/');
   console.log('[Middleware] invoked for path:', pathname);
 
   // Skip middleware for static assets and API routes that don't need security
@@ -175,7 +176,12 @@ export default async function middleware(request: NextRequest) {
     }
 
     // 3. CSRF protection for POST requests
-    if (request.method === 'POST' && pathname.startsWith('/api/') && !pathname.startsWith('/api/monitoring/errors')) {
+    if (
+      request.method === 'POST' &&
+      pathname.startsWith('/api/') &&
+      !pathname.startsWith('/api/monitoring/errors') &&
+      !isGeoflowApiPath
+    ) {
       if (!CSRFProtection.validateRequest(request)) {
         SecurityAuditor.logEvent({
           type: 'csrf_violation',
@@ -191,7 +197,11 @@ export default async function middleware(request: NextRequest) {
     }
 
     // 4. Input validation for form submissions
-    if (request.method === 'POST' && request.headers.get('content-type')?.includes('application/json')) {
+    if (
+      request.method === 'POST' &&
+      request.headers.get('content-type')?.includes('application/json') &&
+      !isGeoflowApiPath
+    ) {
       try {
         const body = await request.json();
         const validation = InputValidator.validateFormData(body);

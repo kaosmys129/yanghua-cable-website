@@ -33,6 +33,13 @@ type ArticleFrontmatter = {
   relatedSlugs?: string[];
   fallbackLocale?: ContentLocale;
   bodySource?: 'content' | 'summary' | 'summary+english-fallback' | 'placeholder';
+  geoflow?: {
+    articleId: string;
+    importedAt: string;
+    reviewStatus?: 'needs_review' | 'needs_geo_metadata';
+  };
+  geo?: Article['geo'];
+  seo?: Article['seo'];
 };
 
 type HubFrontmatter = {
@@ -103,6 +110,9 @@ function mapArticleDocument(
     sourceUrl: frontmatter.sourceUrl,
     fallbackLocale: frontmatter.fallbackLocale,
     bodySource: frontmatter.bodySource,
+    geoflow: frontmatter.geoflow,
+    geo: frontmatter.geo,
+    seo: frontmatter.seo,
     cover: {
       id: frontmatter.sourceId,
       documentId: `${frontmatter.translationKey}-${frontmatter.locale}-cover`,
