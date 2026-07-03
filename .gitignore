@@ -106,3 +106,18 @@ astro-site/.astro/
 
 # TypeScript build info
 *.tsbuildinfo
+
+# GEO audit documents (not part of the website)
+GEO_audit_crawl_data.md
+yanghua-geo-panorama-audit.*
+yhflexiblebusbar-brand-graph.*
+yhflexiblebusbar-geo-execution-roadmap.*
+yhflexiblebusbar-geo-panorama-audit.*
+quality-report.json
+i18n_mvp_prd.md
+next-intl.config.js
+next.config.mjs
+news_converter.js
+product category page template.html
+STRAPI_PREVIEW_SETUP.md
+yanghua_b2b_website_prd.md

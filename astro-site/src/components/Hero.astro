@@ -89,15 +89,27 @@ const {
       class="relative order-1 overflow-hidden rounded-lg shadow-xl aspect-4/3 lg:order-2"
       transition:name="hero-image"
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={800}
-        height={600}
-        loading="eager"
-        decoding="async"
-        class="size-full object-cover"
-      />
+      {typeof imageSrc === 'string' ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="800"
+          height="600"
+          loading="eager"
+          decoding="async"
+          class="size-full object-cover"
+        />
+      ) : (
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          width={800}
+          height={600}
+          loading="eager"
+          decoding="async"
+          class="size-full object-cover"
+        />
+      )}
     </div>
   </div>
 </section>

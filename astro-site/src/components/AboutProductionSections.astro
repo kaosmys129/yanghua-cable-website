@@ -256,7 +256,7 @@ const videoLabels = locale === 'es'
     if (!(modal instanceof HTMLElement) || !(modalImg instanceof HTMLImageElement) || !(track instanceof HTMLElement)) return;
     root.dataset.initialized = 'true';
 
-    const setModalOpen = (open) => {
+    const setModalOpen = (open: boolean) => {
       modal.classList.toggle('hidden', !open);
       modal.classList.toggle('flex', open);
       modal.setAttribute('aria-hidden', String(!open));
@@ -286,7 +286,7 @@ const videoLabels = locale === 'es'
       if (event.key === 'Escape' && !modal.classList.contains('hidden')) setModalOpen(false);
     });
 
-    const scrollByCard = (direction) => {
+    const scrollByCard = (direction: number) => {
       const card = track.querySelector('[data-cert-open]');
       const cardWidth = card instanceof HTMLElement ? card.offsetWidth : 180;
       track.scrollBy({ left: direction * (cardWidth + 16) * 2, behavior: 'smooth' });

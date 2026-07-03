@@ -48,16 +48,29 @@ const {
               data-skeleton
             />
 
-            <Image
-              src={src}
-              alt={alt}
-              width={600}
-              height={450}
-              loading="lazy"
-              decoding="async"
-              class="relative size-full object-cover opacity-0 transition-all duration-300 group-hover:scale-105"
-              data-gallery-img
-            />
+            {typeof src === 'string' ? (
+              <img
+                src={src}
+                alt={alt}
+                width="600"
+                height="450"
+                loading="lazy"
+                decoding="async"
+                class="relative size-full object-cover opacity-0 transition-all duration-300 group-hover:scale-105"
+                data-gallery-img
+              />
+            ) : (
+              <Image
+                src={src}
+                alt={alt}
+                width={600}
+                height={450}
+                loading="lazy"
+                decoding="async"
+                class="relative size-full object-cover opacity-0 transition-all duration-300 group-hover:scale-105"
+                data-gallery-img
+              />
+            )}
 
             {/* Error fallback — revealed by JS when src fails to load */}
             <div

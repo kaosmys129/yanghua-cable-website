@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent } from '../ui/card';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
@@ -46,23 +46,54 @@ export default function InquiryFormSection({
   const placeholders = (content as any).placeholders ?? {};
   const options = Object.values((content as any).options ?? {});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+  const [statusType, setStatusType] = useState<'idle' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    fetch('/api/csrf', { method: 'GET', credentials: 'include' }).catch(() => {});
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatusMessage('');
+    setStatusType('idle');
     try {
       const formData = new FormData(e.currentTarget);
-      formData.append('type', 'inquiry');
-      formData.append('locale', locale);
+      const payload = Object.fromEntries(formData.entries());
       const response = await fetch('/api/email/send', {
         method: 'POST',
-        body: formData,
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept-Language': locale,
+        },
+        body: JSON.stringify({
+          ...payload,
+          type: 'inquiry',
+          locale,
+        }),
       });
-      if (response.ok) {
-        (e.target as HTMLFormElement).reset();
+      const result = await response.json().catch(() => ({}));
+      if (response.ok && result?.success) {
+        e.currentTarget.reset();
+        setStatusType('success');
+        setStatusMessage(locale === 'es' ? 'Solicitud enviada con éxito.' : 'Inquiry sent successfully.');
+        const eventPayload = {
+          event: 'generate_lead',
+          form_name: 'homepage_inquiry',
+          language: locale,
+        };
+        (window as any).dataLayer?.push?.(eventPayload);
+        (window as any).gtag?.('event', 'generate_lead', eventPayload);
+      } else {
+        setStatusType('error');
+        setStatusMessage(result?.message || result?.error || (locale === 'es' ? 'Error al enviar.' : 'Failed to submit.'));
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      setStatusType('error');
+      setStatusMessage(locale === 'es' ? 'Error de red. Inténtalo de nuevo más tarde.' : 'Network error. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
@@ -171,6 +202,19 @@ export default function InquiryFormSection({
                   </>
                 )}
               </Button>
+              {statusMessage && (
+                <p
+                  className={`rounded-md border px-4 py-3 text-sm ${
+                    statusType === 'success'
+                      ? 'border-green-200 bg-green-50 text-green-800'
+                      : 'border-red-200 bg-red-50 text-red-800'
+                  }`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  {statusMessage}
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>

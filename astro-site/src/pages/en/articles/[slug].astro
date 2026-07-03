@@ -3,268 +3,247 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import { getAllArticles, getArticleStaticPaths } from '../../../lib/yanghua/articles.mjs';
 
-export async function getStaticPaths() {
-  const modules = import.meta.glob('../../../../../yanghua-b2b-website/content/articles/en/*.mdx');
-  return Object.keys(modules).map((path) => ({
-    params: { slug: path.split('/').pop().replace(/\.mdx$/, '') },
-    props: { path },
-  }));
+export function getStaticPaths() {
+  return getArticleStaticPaths('en');
 }
 
-const modules = import.meta.glob('../../../../../yanghua-b2b-website/content/articles/en/*.mdx');
-const { path } = Astro.props as { path: string };
-const mod: any = await (modules as any)[path]();
-const Content = mod.default;
-const fm = mod.frontmatter ?? {};
+const { article, Content } = Astro.props as { article: any; Content: any };
+const allArticles = getAllArticles();
+const translation = article.translationKey
+  ? allArticles.find((item: any) => item.translationKey === article.translationKey && item.locale !== article.locale)
+  : null;
 
-// ── GEO metadata ──
-const geo = fm.geo ?? {};
-const seo = fm.seo ?? {};
-const hasGeo = !!(geo?.targetQueries?.length);
-const title = seo?.title || fm.metaTitle || fm.title || Astro.params.slug;
-const description = seo?.description || fm.metaDescription || fm.summary || '';
-const coverImage = fm.cover?.src || '/images/products/flexible-busbar-1.jpg';
-const coverAlt = fm.cover?.alt ?? title;
-const date = fm.publishedAt ?? '';
-
-// ── EEAT fields ──
-const authorBio = fm.authorBio || '';
-const certifications: string[] = fm.certifications ?? [];
-const hasProductImages = !!(geo?.relatedProductIds?.length);
-
-// ── FAQPage Schema ──
-const faqs: Array<{ question: string; answer: string }> = geo?.faqs ?? [];
-const faqSchema = faqs.length > 0 ? {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  '@id': `${Astro.url}#geo-faq`,
-  mainEntity: faqs.map((faq: any) => ({
-    '@type': 'Question' as const,
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer' as const,
-      text: faq.answer,
-    },
-  })),
-} : undefined;
-
-// ── BlogPosting Schema (enhanced EEAT) ──
-const blogSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: fm.title,
-  description: description || undefined,
-  datePublished: fm.publishedAt,
-  dateModified: fm.updatedAt || fm.publishedAt,
-  author: fm.author?.name ? {
-    '@type': 'Person',
-    name: fm.author.name,
-    description: authorBio || undefined,
-    affiliation: {
-      '@type': 'Organization',
-      name: 'Yanghua Cable',
-      url: 'https://www.yhflexiblebusbar.com',
-    },
-  } : undefined,
-  publisher: {
-    '@type': 'Organization',
-    name: 'Yanghua Cable',
-  },
-};
+const geo = article.geo;
+const hasGeo = geo.targetQueries.length > 0 || geo.answerSummary || geo.citations.length > 0;
+const title = article.seo.title || article.title;
+const description = article.seo.description || article.description || article.summary;
+const coverImage = article.cover.src || '/images/products/flexible-busbar-1.jpg';
+const coverAlt = article.cover.alt || title;
+const sourceItems = geo.citations.length > 0
+  ? geo.citations
+  : article.sourceUrl
+    ? [{ label: 'Original Yanghua source', url: article.sourceUrl, note: 'Legacy source reference' }]
+    : [];
 
 const buyerIntentLabels: Record<string, string> = {
   awareness: 'Awareness',
   comparison: 'Comparison',
-  selection: 'Selection Guide',
+  selection: 'Selection guide',
   procurement: 'Procurement',
+};
+
+const statusLabels: Record<string, string> = {
+  legacy: 'Legacy article',
+  approved: 'Approved',
+  published: 'Published',
+};
+
+const productLinks = geo.relatedProductIds.map((id: string) => ({
+  id,
+  label: id.replace(/[-_]/g, ' '),
+  href: `/en/products/${id}`,
+}));
+
+const solutionLinks = geo.relatedSolutionIds.map((id: string) => ({
+  id,
+  label: id.replace(/[-_]/g, ' '),
+  href: `/en/solutions/${id}`,
+}));
+
+const faqSchema = geo.faqs.length > 0 ? {
+  '@type': 'FAQPage',
+  '@id': `${Astro.url}#geo-faq`,
+  mainEntity: geo.faqs.map((faq: any) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+} : null;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      headline: article.title,
+      description,
+      image: coverImage,
+      datePublished: article.publishedAt || undefined,
+      dateModified: article.updatedAt || article.publishedAt || undefined,
+      author: {
+        '@type': 'Organization',
+        name: article.author.name || 'Yanghua Editorial Team',
+        url: 'https://www.yhflexiblebusbar.com/en/about',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Yanghua Cable',
+        url: 'https://www.yhflexiblebusbar.com',
+      },
+      mainEntityOfPage: `https://www.yhflexiblebusbar.com${article.url}`,
+      about: geo.targetQueries,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.yhflexiblebusbar.com/en' },
+        { '@type': 'ListItem', position: 2, name: 'Articles', item: 'https://www.yhflexiblebusbar.com/en/articles' },
+        { '@type': 'ListItem', position: 3, name: article.title, item: `https://www.yhflexiblebusbar.com${article.url}` },
+      ],
+    },
+    ...(faqSchema ? [faqSchema] : []),
+  ],
 };
 ---
 
 <BaseLayout
+  locale="en"
   title={title}
   description={description}
-  schema={faqSchema}
+  image={coverImage}
+  schema={structuredData}
 >
   <Header slot="header" locale="en" />
-
-  {/* BlogPosting JSON-LD */}
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
-
   <Banner title={title} locale="en" />
 
-  {/* Cover image — always show, with fallback */}
-  <div class="mx-auto max-w-site px-4 sm:px-6 -mt-4">
-    <img
-      src={coverImage}
-      alt={coverAlt}
-      class="w-full rounded-lg object-cover max-h-[480px] shadow-md"
-    />
-  </div>
+  <section class="border-b border-border bg-surface">
+    <div class="mx-auto grid max-w-site gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-muted">
+          <span>Engineering article</span>
+          {geo.buyerIntent && <span>{buyerIntentLabels[geo.buyerIntent] || geo.buyerIntent}</span>}
+          <span>{statusLabels[article.geoflow.status] || article.geoflow.status}</span>
+        </div>
+        {description && <p class="mt-4 max-w-3xl text-base leading-7 text-text-muted">{description}</p>}
+        {translation && (
+          <a href={translation.url} class="mt-4 inline-flex text-sm font-semibold text-accent">
+            Spanish version
+          </a>
+        )}
+      </div>
+
+      <div class="overflow-hidden rounded-lg border border-border bg-background">
+        <img src={coverImage} alt={coverAlt} class="aspect-video h-full w-full object-cover" loading="eager" />
+      </div>
+    </div>
+  </section>
 
   <section class="py-section">
-    <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
-        {/* Main content */}
-        <div class="min-w-0">
-          {/* GEO Direct AI Answer */}
-          {geo?.answerSummary && (
-            <div class="mb-8 rounded-xl border border-amber-300 bg-amber-50 px-5 py-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
-                Direct AI Answer
-              </p>
-              <p class="mt-3 text-base leading-7 text-slate-800">
-                {geo.answerSummary}
-              </p>
-              {geo.buyerIntent && (
-                <span class="mt-3 inline-block rounded-full bg-amber-200 px-3 py-1 text-xs font-medium text-amber-800">
-                  {buyerIntentLabels[geo.buyerIntent] || geo.buyerIntent}
-                </span>
-              )}
+    <div class="mx-auto grid max-w-site grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div class="min-w-0">
+        {geo.answerSummary && (
+          <section class="mb-8 border-l-4 border-accent bg-surface px-5 py-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Direct AI Answer</p>
+            <p class="mt-3 text-base leading-7 text-text">{geo.answerSummary}</p>
+          </section>
+        )}
+
+        <article class="prose prose-slate max-w-none geo-article">
+          <Content />
+        </article>
+
+        {geo.faqs.length > 0 && (
+          <section id="geo-faq" class="mt-10 border-t border-border pt-8">
+            <h2 class="font-heading text-2xl font-semibold text-text">FAQ</h2>
+            <div class="mt-5 space-y-4">
+              {geo.faqs.map((faq: any) => (
+                <details class="rounded-lg border border-border bg-surface p-4">
+                  <summary class="cursor-pointer font-semibold text-text">{faq.question}</summary>
+                  <p class="mt-3 text-sm leading-6 text-text-muted">{faq.answer}</p>
+                </details>
+              ))}
             </div>
-          )}
+          </section>
+        )}
+      </div>
 
-          {date && <p class="text-sm text-text-muted mb-6">{date}</p>}
-
-          <article class="prose prose-slate max-w-none geo-article">
-            <Content />
-          </article>
-
-          {/* Product Image Gallery — use AI-generated images if available, fallback to static */}
-          {hasProductImages && (
-            <div class="mt-8 rounded-xl border border-border bg-surface p-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted mb-4">
-                Product Gallery
-              </p>
-              <div class="grid grid-cols-3 gap-3">
-                {fm.aiImages?.coverGenerated && fm.cover?.src?.startsWith('/images/ai-generated/') ? (
-                  <img src={fm.cover.src}
-                       alt={fm.cover?.alt || 'Article cover'}
-                       class="rounded-lg w-full object-cover aspect-video" />
-                ) : null}
-                <img src="/images/products/flexible-busbar-1.jpg"
-                     alt="Flexible busbar product"
-                     class="rounded-lg w-full object-cover aspect-video" />
-                <img src="/images/products/flexible-busbar-2.jpg"
-                     alt="Flexible busbar installation detail"
-                     class="rounded-lg w-full object-cover aspect-video" />
-                <img src="/images/products/flexible-busbar-3.jpg"
-                     alt="Flexible busbar terminal close-up"
-                     class="rounded-lg w-full object-cover aspect-video" />
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Sidebar */}
+      <aside class="space-y-5 lg:sticky lg:top-24 lg:self-start">
         {hasGeo && (
-          <aside class="space-y-5 lg:sticky lg:top-24 lg:self-start">
-            {/* Target queries */}
-            <div class="rounded-xl border border-border bg-surface p-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-                Target Queries
-              </p>
+          <section class="rounded-lg border border-border bg-surface p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">GEO Signals</p>
+            {geo.targetQueries.length > 0 && (
               <div class="mt-4 flex flex-wrap gap-2">
-                {geo.targetQueries?.slice(0, 8).map((q: string) => (
-                  <span class="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-slate-700">
-                    {q}
+                {geo.targetQueries.slice(0, 10).map((query: string) => (
+                  <span class="rounded-full bg-background px-3 py-1 text-xs font-medium text-text-muted ring-1 ring-border">
+                    {query}
                   </span>
                 ))}
               </div>
-            </div>
-
-            {/* GEO Citations */}
-            {geo?.citations?.length > 0 && (
-              <div class="rounded-xl border border-border bg-surface p-5">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-                  GEO Sources
-                </p>
-                <ul class="mt-3 space-y-3 text-sm leading-6 text-slate-600">
-                  {geo.citations.slice(0, 5).map((c: any) => (
-                    <li>
-                      {c.url ? (
-                        <a href={c.url} target="_blank" rel="noreferrer" class="font-medium text-text underline decoration-amber-300 underline-offset-4">
-                          {c.label}
-                        </a>
-                      ) : (
-                        <span class="font-medium text-text">{c.label}</span>
-                      )}
-                      {c.note && <p class="mt-1 text-xs text-text-muted">{c.note}</p>}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             )}
-
-            {/* SEO Keywords */}
-            {seo?.keywords?.length > 0 && (
-              <div class="rounded-xl border border-border bg-surface p-5">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-                  SEO Keywords
-                </p>
-                <div class="mt-3 flex flex-wrap gap-1.5">
-                  {seo.keywords.slice(0, 10).map((kw: string) => (
-                    <span class="rounded bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
-                      {kw}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Author EEAT Card */}
-            <div class="rounded-xl border border-green-300 bg-green-50 p-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-700">
-                About the Author
-              </p>
-              <div class="mt-4">
-                <p class="text-sm font-medium text-text">
-                  {fm.author?.name || 'Yanghua Engineering Team'}
-                </p>
-                <p class="mt-2 text-xs leading-5 text-text-muted">
-                  {authorBio || 'Engineering team with 15+ years of flexible busbar design, manufacturing, and project delivery experience.'}
-                </p>
-                {certifications.length > 0 && (
-                  <div class="mt-3 flex flex-wrap gap-1.5">
-                    {certifications.map((cert: string) => (
-                      <span class="rounded bg-green-100 border border-green-200 px-2 py-0.5 text-xs text-green-700">
-                        {cert}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Snapshot */}
-            <div class="rounded-xl border border-border bg-surface p-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-                Snapshot
-              </p>
-              <dl class="mt-4 space-y-3 text-sm">
-                {date && (
-                  <div>
-                    <dt class="text-xs font-medium text-text-muted">Published</dt>
-                    <dd class="mt-0.5 text-text">{date}</dd>
-                  </div>
-                )}
-                {fm.author?.name && (
-                  <div>
-                    <dt class="text-xs font-medium text-text-muted">Author</dt>
-                    <dd class="mt-0.5 text-text">{fm.author.name}</dd>
-                  </div>
-                )}
-                {fm.category?.name && (
-                  <div>
-                    <dt class="text-xs font-medium text-text-muted">Category</dt>
-                    <dd class="mt-0.5 text-text">{fm.category.name}</dd>
-                  </div>
-                )}
-              </dl>
-            </div>
-          </aside>
+          </section>
         )}
-      </div>
+
+        {sourceItems.length > 0 && (
+          <section class="rounded-lg border border-border bg-surface p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">GEO Sources</p>
+            <ul class="mt-4 space-y-3 text-sm leading-6">
+              {sourceItems.slice(0, 6).map((source: any) => (
+                <li>
+                  {source.url ? (
+                    <a href={source.url} class="font-medium text-accent underline underline-offset-4" target="_blank" rel="noreferrer">
+                      {source.label || source.url}
+                    </a>
+                  ) : (
+                    <span class="font-medium text-text">{source.label}</span>
+                  )}
+                  {source.note && <p class="mt-1 text-xs text-text-muted">{source.note}</p>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {(productLinks.length > 0 || solutionLinks.length > 0) && (
+          <section class="rounded-lg border border-border bg-surface p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Related Buying Paths</p>
+            <div class="mt-4 space-y-2">
+              {productLinks.map((item: any) => (
+                <a href={item.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium capitalize text-text transition hover:text-accent">
+                  {item.label}
+                </a>
+              ))}
+              {solutionLinks.map((item: any) => (
+                <a href={item.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium capitalize text-text transition hover:text-accent">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section class="rounded-lg border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Review Snapshot</p>
+          <dl class="mt-4 space-y-3 text-sm">
+            {article.updatedAt && (
+              <div>
+                <dt class="text-xs font-medium text-text-muted">Updated</dt>
+                <dd class="mt-0.5 text-text">{article.updatedAt}</dd>
+              </div>
+            )}
+            <div>
+              <dt class="text-xs font-medium text-text-muted">Author</dt>
+              <dd class="mt-0.5 text-text">{article.author.name}</dd>
+            </div>
+            {article.geoflow.reviewedBy && (
+              <div>
+                <dt class="text-xs font-medium text-text-muted">Reviewed by</dt>
+                <dd class="mt-0.5 text-text">{article.geoflow.reviewedBy}</dd>
+              </div>
+            )}
+            {article.geoflow.sourceBatchId && (
+              <div>
+                <dt class="text-xs font-medium text-text-muted">Batch</dt>
+                <dd class="mt-0.5 text-text">{article.geoflow.sourceBatchId}</dd>
+              </div>
+            )}
+          </dl>
+        </section>
+      </aside>
     </div>
   </section>
 
@@ -272,61 +251,35 @@ const buyerIntentLabels: Record<string, string> = {
 </BaseLayout>
 
 <style>
-  /* ── Enhanced table styling ── */
   article.geo-article table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.875rem;
   }
+
   article.geo-article thead {
     background-color: #f1f5f9;
   }
-  article.geo-article thead th {
+
+  article.geo-article th,
+  article.geo-article td {
+    border-bottom: 1px solid #e2e8f0;
     padding: 0.75rem 1rem;
     text-align: left;
-    font-weight: 600;
-    color: #334155;
-    border-bottom: 2px solid #cbd5e1;
-    white-space: nowrap;
-  }
-  article.geo-article tbody td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #f1f5f9;
     vertical-align: top;
   }
-  article.geo-article tbody tr:nth-child(even) {
-    background-color: #f8fafc;
-  }
 
-  /* ── Blockquote callout styling ── */
   article.geo-article blockquote {
-    border-left: 4px solid #f59e0b;
+    border-left: 4px solid var(--color-accent);
     background-color: #fffbeb;
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
     border-radius: 0 0.5rem 0.5rem 0;
-  }
-  article.geo-article blockquote p {
-    font-size: 0.875rem;
-    line-height: 1.625;
-    color: #334155;
-    margin: 0;
-  }
-  article.geo-article blockquote strong {
-    color: #1e293b;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
   }
 
-  /* ── EEAT author blockquote (green) ── */
-  article.geo-article hr + blockquote,
-  article.geo-article blockquote:has(strong:contains("About the Author")) {
-    border-left-color: #22c55e;
-    background-color: #f0fdf4;
-  }
-
-  /* ── Image in prose ── */
   article.geo-article p img {
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
     margin: 1.5rem 0;
   }
 </style>

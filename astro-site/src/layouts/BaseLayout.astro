@@ -8,7 +8,6 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { brand } from '../config/brand';
-import { client } from '../data/client';
 import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
@@ -43,6 +42,38 @@ const {
 
 const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
+
+const siteEnv = String(
+  import.meta.env.PUBLIC_SITE_ENV ||
+    process.env.PUBLIC_SITE_ENV ||
+    process.env.VERCEL_ENV ||
+    (import.meta.env.DEV ? 'development' : 'production')
+).toLowerCase();
+const isIndexableEnvironment = siteEnv === 'production';
+const robotsContent = isIndexableEnvironment ? 'index, follow' : 'noindex, nofollow';
+
+const gtmId = String(
+  import.meta.env.PUBLIC_GTM_ID ||
+    process.env.PUBLIC_GTM_ID ||
+    import.meta.env.NEXT_PUBLIC_GTM_ID ||
+    process.env.NEXT_PUBLIC_GTM_ID ||
+    ''
+).trim();
+const ga4Id = String(
+  import.meta.env.PUBLIC_GA4_ID ||
+    process.env.PUBLIC_GA4_ID ||
+    import.meta.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+    ''
+).trim();
+const hasGtm = /^GTM-[A-Z0-9]+$/i.test(gtmId);
+const hasGa4 = !hasGtm && /^G-[A-Z0-9]+$/i.test(ga4Id);
+const trackingConfig = {
+  gtmId: hasGtm ? gtmId : '',
+  ga4Id: hasGa4 ? ga4Id : '',
+  siteEnv,
+  language: locale,
+};
 ---
 
 <html lang={locale} class="scroll-smooth">
@@ -53,8 +84,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
     <meta name="generator" content={Astro.generator} />
 
     <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content={robotsContent} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+
+    {hasGtm && (
+      <script
+        is:inline
+        set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`}
+      />
+    )}
+
+    {hasGa4 && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script
+          is:inline
+          set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());`}
+        />
+      </>
+    )}
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
@@ -81,7 +130,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
 
     <!-- JSON-LD Structured Data -->
     {schema && (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
 
     <!--
@@ -112,10 +161,101 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
     </style>
 
     <slot name="head" />
+    <script is:inline set:html={`window.__YANGHUA_TRACKING__=${JSON.stringify(trackingConfig)};`} />
+    <script is:inline>
+      (() => {
+        const config = window.__YANGHUA_TRACKING__ || {};
+        window.dataLayer = window.dataLayer || [];
+
+        const enrich = (params = {}) => ({
+          page_location: window.location.href,
+          page_path: window.location.pathname,
+          page_title: document.title,
+          language: document.documentElement.lang || config.language || '',
+          site_env: config.siteEnv || '',
+          ...params,
+        });
+
+        const sendEvent = (eventName, params = {}) => {
+          const payload = enrich(params);
+          if (config.gtmId) {
+            window.dataLayer.push({ event: eventName, ...payload });
+          }
+          if (config.ga4Id && typeof window.gtag === 'function') {
+            window.gtag('event', eventName, payload);
+          }
+        };
+
+        let lastPageView = '';
+        const sendPageView = () => {
+          const key = `${window.location.pathname}${window.location.search}`;
+          if (lastPageView === key) return;
+          lastPageView = key;
+          if (config.gtmId) {
+            window.dataLayer.push({ event: 'page_view', ...enrich() });
+          }
+          if (config.ga4Id && typeof window.gtag === 'function') {
+            window.gtag('config', config.ga4Id, {
+              page_location: window.location.href,
+              page_path: window.location.pathname,
+              page_title: document.title,
+              send_page_view: true,
+            });
+          }
+        };
+
+        document.addEventListener('astro:page-load', sendPageView);
+        if (document.readyState !== 'loading') sendPageView();
+        else document.addEventListener('DOMContentLoaded', sendPageView, { once: true });
+
+        if (window.__YANGHUA_TRACKING_BOUND__) return;
+        window.__YANGHUA_TRACKING_BOUND__ = true;
+
+        document.addEventListener('click', (event) => {
+          const link = event.target instanceof Element ? event.target.closest('a,button') : null;
+          if (!(link instanceof HTMLElement)) return;
+
+          const href = link instanceof HTMLAnchorElement ? link.href : '';
+          const label = (link.textContent || link.getAttribute('aria-label') || '').trim().slice(0, 120);
+          const params = { link_url: href, link_text: label };
+
+          if (/wa\.me|whatsapp/i.test(href)) sendEvent('click_whatsapp', params);
+          else if (href.startsWith('mailto:')) sendEvent('click_email', params);
+          else if (href.startsWith('tel:')) sendEvent('click_phone', params);
+          else if (/\.(pdf|zip|docx?|xlsx?|pptx?)($|\?)/i.test(href)) sendEvent('click_download', params);
+          else if (/contact|quote|inquiry|product|solution/i.test(href + ' ' + label)) sendEvent('click_cta', params);
+          else if (link instanceof HTMLAnchorElement && link.origin && link.origin !== window.location.origin) sendEvent('outbound_click', params);
+        });
+
+        document.addEventListener('focusin', (event) => {
+          const form = event.target instanceof Element ? event.target.closest('form') : null;
+          if (!(form instanceof HTMLFormElement) || form.dataset.analyticsStarted === 'true') return;
+          form.dataset.analyticsStarted = 'true';
+          sendEvent('form_start', { form_name: form.id || form.getAttribute('name') || 'unknown' });
+        });
+
+        document.addEventListener('submit', (event) => {
+          const form = event.target;
+          if (!(form instanceof HTMLFormElement)) return;
+          sendEvent('form_submit', { form_name: form.id || form.getAttribute('name') || 'unknown' });
+        });
+      })();
+    </script>
     <ClientRouter />
   </head>
 
   <body class="bg-background text-text font-body antialiased">
+    {hasGtm && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        >
+        </iframe>
+      </noscript>
+    )}
     <a
       class="sr-only focus:not-sr-only focus:absolute focus:z-[99999] focus:bg-primary focus:text-primary-fg focus:px-4 focus:py-2 focus:rounded-md"
       href="#main"

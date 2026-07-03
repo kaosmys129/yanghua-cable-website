@@ -18,7 +18,7 @@ export const brand = {
   tagline: 'Flexible busbar and cable solutions for modern electrification.',
   description:
     'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
-  url: 'https://yhflexiblebusbar.com',
+  url: 'https://www.yhflexiblebusbar.com',
   locale: 'en_US',
 
   // ── Fonts ──────────────────────────────────────────────────────────────────

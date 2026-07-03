@@ -3,22 +3,9 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import Banner from '../../../../components/Banner.astro';
+import { getHubs } from '../../../../lib/yanghua/articles.mjs';
 
-const modules = import.meta.glob('../../../../../../yanghua-b2b-website/content/hubs/es/*.mdx', {
-  eager: true,
-});
-
-const hubs = Object.entries(modules)
-  .map(([path, mod]: any) => {
-    const slug = path.split('/').pop().replace(/\.mdx$/, '');
-    const fm = mod.frontmatter ?? {};
-    return {
-      slug,
-      title: fm.metaTitle ?? fm.title ?? slug,
-      summary: fm.summary ?? fm.metaDescription ?? '',
-    };
-  })
-  .sort((a, b) => a.title.localeCompare(b.title));
+const hubs = getHubs('es');
 ---
 
 <BaseLayout title="Hubs de artículos" description="">
@@ -29,9 +16,14 @@ const hubs = Object.entries(modules)
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mt-2 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {hubs.map((h) => (
-          <a href={`/es/articulos/hub/${h.slug}`} class="rounded-lg border border-border bg-surface p-6 shadow-sm transition hover:shadow-md">
+          <a href={h.url} class="rounded-lg border border-border bg-surface p-6 shadow-sm transition hover:shadow-md">
             <h3 class="font-heading text-lg font-semibold text-text">{h.title}</h3>
-            {h.summary && <p class="mt-2 text-sm text-text-muted">{h.summary}</p>}
+            {h.description && <p class="mt-2 text-sm text-text-muted">{h.description}</p>}
+            {h.featuredArticleSlugs.length > 0 && (
+              <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-accent">
+                {h.featuredArticleSlugs.length} articulos destacados
+              </p>
+            )}
           </a>
         ))}
       </div>
@@ -40,4 +32,3 @@ const hubs = Object.entries(modules)
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>
-

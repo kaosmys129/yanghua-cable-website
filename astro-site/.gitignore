@@ -44,6 +44,9 @@ pnpm-debug.log*
 # ── JetBrains ─────────────────────────────────────────────────────────────────
 .idea/
 
+# ── Legacy content (copied at build time) ──────────────────────────────────────
+src/data/legacy-content/
+
 # ── Testing ───────────────────────────────────────────────────────────────────
 playwright-report/
 test-results/

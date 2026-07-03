@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=18.17.0 <21.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=22.12.0 <23.0.0",
+    "npm": ">=10.0.0"
   },
   "scripts": {
     "dev": "node scripts/legacy-next-guard.mjs dev",
@@ -45,6 +45,7 @@
     "verify:articles:workflow": "tsx scripts/verify-articles-workflow.ts",
     "geoflow:export-rewrite-bundle": "node --import tsx scripts/geoflow-export-rewrite-bundle.ts",
     "geoflow:promote": "node scripts/promote-geoflow-articles.mjs",
+    "geoflow:promote:test": "node --test scripts/promote-geoflow-articles.test.mjs",
     "check:local-api": "sh scripts/check-local-api.sh"
   },
   "dependencies": {

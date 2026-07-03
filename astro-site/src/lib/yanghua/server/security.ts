@@ -60,6 +60,14 @@ export const SECURITY_HEADERS: Record<string, string> = {
   'Cross-Origin-Resource-Policy': 'cross-origin',
 };
 
+function resolveCsrfSecret(): string {
+  const secret = process.env.CSRF_SECRET || '';
+  if (import.meta.env.PROD && secret.length < 32) {
+    throw new Error('CSRF_SECRET must be set to at least 32 characters in production.');
+  }
+  return secret || 'development-csrf-secret';
+}
+
 /**
  * 为 Response 添加安全头。注意：Fetch Response 对象的 header 可能在部分运行时不可变，
  * 因此这里优先尝试原地写入；如果失败再回退为拷贝后的新 Response。
@@ -100,21 +108,20 @@ function base64Decode(input: string): string {
 }
 
 export class CSRFProtection {
-  private static readonly SECRET = process.env.CSRF_SECRET || 'default-csrf-secret';
   static readonly TOKEN_HEADER = 'X-CSRF-Token';
   static readonly COOKIE_NAME = 'csrf-token';
 
   static generateToken(): string {
     const timestamp = Date.now().toString();
     const random = Math.random().toString(36).substring(2);
-    return base64Encode(`${timestamp}:${random}:${this.SECRET}`);
+    return base64Encode(`${timestamp}:${random}:${resolveCsrfSecret()}`);
   }
 
   static validateToken(token: string, maxAgeMs = 60 * 60 * 1000): boolean {
     try {
       const decoded = base64Decode(token);
       const [timestamp, _random, secret] = decoded.split(':');
-      if (secret !== this.SECRET) return false;
+      if (secret !== resolveCsrfSecret()) return false;
       const tokenAge = Date.now() - parseInt(timestamp, 10);
       return tokenAge <= maxAgeMs;
     } catch {
