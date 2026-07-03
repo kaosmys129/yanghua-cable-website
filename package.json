@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "npm run dev -w astro-site",
-    "build": "cd astro-site && pnpm install --frozen-lockfile && pnpm run build",
+    "build": "cd astro-site && pnpm install --frozen-lockfile && pnpm run build && cd .. && rm -rf dist && cp -r astro-site/dist ./dist",
     "start": "npm run preview -w astro-site",
     "check": "npm run check -w astro-site",
     "typecheck": "npm run typecheck -w astro-site",
