@@ -98,7 +98,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
         return json({ success: false, error: 'Message requires manual review', code: 'MANUAL_REVIEW_REQUIRED' }, { status: 429 });
       }
 
-      const to = process.env.CONTACT_EMAIL || 'contact@yanghua.com';
+      const to = process.env.CONTACT_EMAIL || 'info@yhflexiblebusbar.com';
       const emailContent = await renderContactFormEmail({ ...payload, clientIP }, locale);
 
       const service = createEmailService();
@@ -149,7 +149,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       return json({ success: false, error: 'Message requires manual review', code: 'MANUAL_REVIEW_REQUIRED' }, { status: 429 });
     }
 
-    const to = process.env.INQUIRY_EMAIL || 'inquiry@yanghua.com';
+    const to = process.env.INQUIRY_EMAIL || 'sales@yhflexiblebusbar.com';
     const emailContent = await renderInquiryFormEmail({ ...payload, clientIP }, locale);
 
     const service = createEmailService();

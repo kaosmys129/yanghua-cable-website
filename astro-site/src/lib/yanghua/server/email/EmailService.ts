@@ -53,7 +53,7 @@ export class EmailService {
       port: config.port,
       secure: config.secure,
       auth: config.auth,
-      tls: { rejectUnauthorized: false },
+      tls: config.secure ? {} : { rejectUnauthorized: false },
     });
   }
 
@@ -115,7 +115,7 @@ export function createEmailService(): EmailService {
   const pass = process.env.SMTP_PASS || '';
 
   const fromName = process.env.EMAIL_FROM_NAME || 'Yanghua Cable';
-  const fromAddress = process.env.EMAIL_FROM || 'noreply@yanghua.com';
+  const fromAddress = process.env.EMAIL_FROM || 'noreply@yhflexiblebusbar.com';
 
   const auth = user && pass ? { user, pass } : undefined;
 

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+function getLocale(pathname: string): 'en' | 'es' {
+  if (pathname.startsWith('/es')) return 'es';
+  return 'en';
+}
+
+const locale = getLocale(Astro.url.pathname);
+const content = {
+  en: {
+    title: 'Page Not Found',
+    heading: '404',
+    subtitle: 'Page Not Found',
+    description: 'The page you are looking for does not exist or has been moved.',
+    homeLink: 'Back to Home',
+    productsLink: 'Browse Products',
+  },
+  es: {
+    title: 'Página no encontrada',
+    heading: '404',
+    subtitle: 'Página no encontrada',
+    description: 'La página que estás buscando no existe o ha sido movida.',
+    homeLink: 'Volver al inicio',
+    productsLink: 'Ver productos',
+  },
+};
+
+const t = content[locale];
+
+Astro.response.status = 404;
+---
+
+<BaseLayout title={t.title} description={t.description}>
+  <Header slot="header" locale={locale} />
+
+  <main class="flex min-h-[70vh] items-center justify-center bg-surface">
+    <div class="mx-auto max-w-site px-4 py-section text-center">
+      <p class="font-heading text-[clamp(6rem,12vw,10rem)] font-bold leading-none text-gray-200 select-none">
+        {t.heading}
+      </p>
+      <h1 class="font-heading text-display font-bold text-text">{t.subtitle}</h1>
+      <p class="mx-auto mt-4 max-w-md text-xl text-text-muted">{t.description}</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={locale === 'es' ? '/es' : '/en'}
+          class="inline-flex items-center rounded-lg bg-[#fdb827] px-6 py-3 font-semibold text-[#212529] transition hover:brightness-110"
+        >
+          {t.homeLink}
+        </a>
+        <a
+          href={locale === 'es' ? '/es/productos' : '/en/products'}
+          class="inline-flex items-center rounded-lg border border-border px-6 py-3 font-semibold text-text transition hover:bg-surface"
+        >
+          {t.productsLink}
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer slot="footer" locale={locale} />
+</BaseLayout>
