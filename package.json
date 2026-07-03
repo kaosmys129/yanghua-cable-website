@@ -13,36 +13,19 @@
     "lint": "npm run lint -w astro-site",
     "dev:astro": "npm run dev -w astro-site",
     "build:astro": "npm run build -w astro-site",
-    "preview:astro": "npm run preview -w astro-site",
-    "legacy:next:dev": "npm run legacy:next:dev -w yanghua-b2b-website",
-    "legacy:next:build": "npm run legacy:next:build -w yanghua-b2b-website",
-    "legacy:next:start": "npm run legacy:next:start -w yanghua-b2b-website",
-    "legacy:next:cms:dev": "npm run legacy:cms:dev -w yanghua-b2b-website",
-    "cms:dev": "npm run develop -w strapi-cms",
-    "cms:build": "npm run build -w strapi-cms"
+    "preview:astro": "npm run preview -w astro-site"
   },
   "workspaces": [
-    "strapi-cms",
-    "yanghua-b2b-website",
     "astro-site"
   ],
   "dependencies": {
-    "@babel/parser": "^7.28.3",
-    "@babel/traverse": "^7.28.3",
-    "@babel/types": "^7.28.2",
-    "@types/better-sqlite3": "^7.6.13",
-    "@types/uuid": "^10.0.0",
-    "better-sqlite3": "^12.2.0",
     "chokidar": "^4.0.3",
-    "multer": "^2.0.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "sharp": "^0.34.3",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@types/babel__traverse": "^7.28.0",
-    "@types/multer": "^2.0.0",
     "vite": "7.3.6"
   },
   "overrides": {
@@ -50,18 +33,6 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "@types/react": "18.3.24",
-    "@types/react-dom": "18.3.7",
-    "next": {
-      "react": "18.3.1",
-      "react-dom": "18.3.1"
-    },
-    "next-intl": {
-      "react": "18.3.1",
-      "react-dom": "18.3.1"
-    },
-    "@testing-library/react": {
-      "react": "18.3.1",
-      "react-dom": "18.3.1"
-    }
+    "@types/react-dom": "18.3.7"
   }
 }
