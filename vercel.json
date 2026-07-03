@@ -1,4 +1,0 @@
-{
-  "installCommand": "npm install -g pnpm@latest",
-  "buildCommand": "cd astro-site && pnpm install --frozen-lockfile && pnpm run build"
-}
