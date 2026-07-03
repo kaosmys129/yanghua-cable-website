@@ -1,5 +1,14 @@
 ---
-// 根路径统一跳转到默认语言前缀，保持与旧站一致（/ -> /en）
-export const prerender = false;
-return Astro.redirect('/en', 308);
+// 根路径静态重定向到默认语言前缀 (/ -> /en)
+// 使用 HTML meta refresh 实现，middleware 也提供备用重定向
 ---
+<html>
+<head>
+  <meta http-equiv="refresh" content="0;url=/en">
+  <link rel="canonical" href="/en">
+  <title>Redirecting to Yanghua Flexible Busbar</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/en">English homepage</a>...</p>
+</body>
+</html>

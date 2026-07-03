@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
-import vercel from '@astrojs/vercel';
 import remarkGfm from 'remark-gfm';
 
 function demoteArticleH1() {
@@ -30,11 +29,9 @@ function demoteArticleH1() {
 
 export default defineConfig({
   site: 'https://www.yhflexiblebusbar.com',
-  // Astro 6: static is default and supports per-page prerender=false (hybrid behavior built-in)
-  adapter: vercel({
-    imageService: true,
-    maxDuration: 10,
-  }),
+  output: 'static',
+  // 不使用 Vercel adapter，直接输出静态 HTML 文件
+  // API 路由和图片优化通过 Vercel 的 /api 目录和 Vercel 平台功能处理
 
   integrations: [
     mdx({

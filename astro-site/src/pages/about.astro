@@ -1,5 +1,14 @@
 ---
 // 旧主题的无语言前缀路径统一规范化到 /en/*
-export const prerender = false;
-return Astro.redirect('/en/about', 308);
+// 使用静态 HTML meta refresh 重定向
 ---
+<html>
+<head>
+  <meta http-equiv="refresh" content="0;url=/en/about">
+  <link rel="canonical" href="/en/about">
+  <title>Redirecting to About Page</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/en/about">About page</a>...</p>
+</body>
+</html>

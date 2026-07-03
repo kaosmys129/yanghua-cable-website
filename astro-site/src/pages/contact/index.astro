@@ -1,6 +1,14 @@
 ---
 // 旧主题遗留路径：/contact -> /en/contact
-export const prerender = false;
-return Astro.redirect('/en/contact', 308);
+// 使用静态 HTML meta refresh 重定向
 ---
-
+<html>
+<head>
+  <meta http-equiv="refresh" content="0;url=/en/contact">
+  <link rel="canonical" href="/en/contact">
+  <title>Redirecting to Contact Page</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/en/contact">Contact page</a>...</p>
+</body>
+</html>

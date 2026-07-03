@@ -1,5 +1,14 @@
 ---
 // 旧主题遗留页面：统一跳转到新站默认语言首页
-export const prerender = false;
-return Astro.redirect('/en', 308);
+// 使用静态 HTML meta refresh 重定向
 ---
+<html>
+<head>
+  <meta http-equiv="refresh" content="0;url=/en">
+  <link rel="canonical" href="/en">
+  <title>Redirecting to Homepage</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/en">Homepage</a>...</p>
+</body>
+</html>

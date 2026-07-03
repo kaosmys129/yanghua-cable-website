@@ -1,6 +1,14 @@
 ---
 // 旧主题遗留路径：/blog -> /en/articles
-export const prerender = false;
-return Astro.redirect('/en/articles', 308);
+// 使用静态 HTML meta refresh 重定向
 ---
-
+<html>
+<head>
+  <meta http-equiv="refresh" content="0;url=/en/articles">
+  <link rel="canonical" href="/en/articles">
+  <title>Redirecting to Articles</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/en/articles">Articles page</a>...</p>
+</body>
+</html>

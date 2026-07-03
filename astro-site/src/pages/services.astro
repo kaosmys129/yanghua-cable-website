@@ -1,5 +1,14 @@
 ---
 // 旧主题的无语言前缀路径统一规范化到 /en/*
-export const prerender = false;
-return Astro.redirect('/en/services', 308);
+// 使用静态 HTML meta refresh 重定向
 ---
+<html>
+<head>
+  <meta http-equiv="refresh" content="0;url=/en/services">
+  <link rel="canonical" href="/en/services">
+  <title>Redirecting to Services Page</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/en/services">Services page</a>...</p>
+</body>
+</html>
