@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run dev -w astro-site",
-    "build": "npm run build -w astro-site",
+    "build": "cd astro-site && pnpm install --frozen-lockfile && pnpm run build",
     "start": "npm run preview -w astro-site",
     "check": "npm run check -w astro-site",
     "typecheck": "npm run typecheck -w astro-site",

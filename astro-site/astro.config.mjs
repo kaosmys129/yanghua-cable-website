@@ -30,7 +30,7 @@ function demoteArticleH1() {
 
 export default defineConfig({
   site: 'https://www.yhflexiblebusbar.com',
-  output: 'static',
+  // Astro 6: static is default and supports per-page prerender=false (hybrid behavior built-in)
   adapter: vercel({
     imageService: true,
     maxDuration: 10,

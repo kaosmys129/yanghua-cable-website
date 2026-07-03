@@ -1,5 +1,20 @@
 ---
+export const prerender = true;
+
 // 旧主题遗留路径：/blog/* -> /en/articles/*
+export function getStaticPaths() {
+  // 预渲染所有已知的遗留 blog slug 重定向
+  const legacySlugs = [
+    'flexible-busbar-vs-cable-guide',
+    'copper-busbar-sizing',
+    'busbar-installation-tips',
+    'power-distribution-basics',
+  ];
+  return legacySlugs.map((slug) => ({
+    params: { slug },
+  }));
+}
+
 const slug = Astro.params.slug ? String(Astro.params.slug) : '';
 return Astro.redirect(slug ? `/en/articles/${slug}` : '/en/articles', 308);
 ---
