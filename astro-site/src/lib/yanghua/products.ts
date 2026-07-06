@@ -29,6 +29,7 @@ export type ProductDetail = {
 const CATEGORY_STRUCTURE = {
   en: ['Copper wire conductors', 'Winding layers', 'Insulation layers', 'Metal armor layers', 'Sheath layers'],
   es: ['Conductores de alambre de cobre', 'Capas de bobinado', 'Capas de aislamiento', 'Capas de armadura metálica', 'Capas de vaina'],
+  pt: ['Condutores de fio de cobre', 'Camadas de enrolamento', 'Camadas de isolamento', 'Camadas de armadura metálica', 'Camadas de bainha'],
 };
 
 const CORE_CONFIGURATIONS = {
@@ -45,6 +46,13 @@ const CORE_CONFIGURATIONS = {
     '3+1: A,B,C sección transversal igual, N 50% sección transversal (sin PE)',
     '4+1: A,B,C,N sección transversal igual, PE 50%',
     '3+2: A,B,C sección transversal igual, N y PE 50% sección transversal',
+  ],
+  pt: [
+    '4 vias: seção transversal igual para A, B, C, N',
+    '5 vias: seção transversal igual para A, B, C, N, PE',
+    '3+1: seção transversal igual para A, B, C, N 50% de seção transversal (sem PE)',
+    '4+1: seção transversal igual para A, B, C, N, PE 50% de seção transversal',
+    '3+2: seção transversal igual para A, B, C, N e PE 50% de seção transversal',
   ],
 };
 
@@ -97,6 +105,20 @@ export const categoryLabels = {
     back: 'Volver a Productos',
     heroDescription: 'Soluciones de barra colectora flexible de alto rendimiento para diversas aplicaciones',
   },
+  pt: {
+    productCategory: 'Categoria de Produto',
+    overview: 'Visão Geral do Produto',
+    applications: 'Aplicações',
+    structure: 'Estrutura do Produto',
+    specifications: 'Especificações Técnicas',
+    coreConfigurations: 'Configuraciones Principales',
+    gallery: 'Galeria de Produtos',
+    models: 'Modelos Disponíveis',
+    inquiry: 'Consultar Esta Categoria',
+    browse: 'Explorar Outras Categorias',
+    back: 'Voltar para Produtos',
+    heroDescription: 'Soluções de barramento flexível de alto desempenho para diversas aplicações',
+  },
 };
 
 export const productLabels = {
@@ -125,6 +147,19 @@ export const productLabels = {
     comparison: 'Comparación de Productos',
     inquiry: 'Consultar Este Producto',
     related: 'Productos Relacionados',
+  },
+  pt: {
+    productType: 'Sistema de Barramento Flexível',
+    overview: 'Visão Geral do Produto',
+    features: 'Principais Características',
+    structure: 'Estrutura do Produto',
+    nameExplanation: 'Explicação do Nome',
+    specifications: 'Especificações Técnicas',
+    applications: 'Cenários de Aplicação',
+    gallery: 'Galeria de Produtos',
+    comparison: 'Comparação de Produtos',
+    inquiry: 'Consultar Este Produto',
+    related: 'Produtos Relacionados',
   },
 };
 

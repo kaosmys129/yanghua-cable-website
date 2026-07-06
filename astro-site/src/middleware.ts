@@ -43,6 +43,16 @@ const LEGACY_ES_MAPPINGS: Array<{ from: RegExp; to: (m: RegExpMatchArray) => str
   { from: /^\/es\/products\/category(\/.*)?$/i, to: (m) => `/es/productos/categoria${m[1] || ''}` },
 ];
 
+const LEGACY_PT_MAPPINGS: Array<{ from: RegExp; to: (m: RegExpMatchArray) => string }> = [
+  { from: /^\/pt\/products(\/.*)?$/i, to: (m) => `/pt/produtos${m[1] || ''}` },
+  { from: /^\/pt\/solutions(\/.*)?$/i, to: (m) => `/pt/solucoes${m[1] || ''}` },
+  { from: /^\/pt\/services(\/.*)?$/i, to: (m) => `/pt/servicos${m[1] || ''}` },
+  { from: /^\/pt\/projects(\/.*)?$/i, to: (m) => `/pt/projetos${m[1] || ''}` },
+  { from: /^\/pt\/contact(\/.*)?$/i, to: (m) => `/pt/contato${m[1] || ''}` },
+  { from: /^\/pt\/about(\/.*)?$/i, to: (m) => `/pt/sobre${m[1] || ''}` },
+  { from: /^\/pt\/products\/category(\/.*)?$/i, to: (m) => `/pt/produtos/categoria${m[1] || ''}` },
+];
+
 function isLikelyAssetPath(pathname: string): boolean {
   return (
     pathname.startsWith('/_astro/') ||
@@ -84,7 +94,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   // 3) 无语言前缀的英文段 → /en 前缀（308）
-  if (!pathname.startsWith('/en') && !pathname.startsWith('/es')) {
+  if (!pathname.startsWith('/en') && !pathname.startsWith('/es') && !pathname.startsWith('/pt')) {
     if (ENGLISH_ROOT_PATTERNS.some((re) => re.test(pathname))) {
       return context.redirect(`/en${pathname}`, 308);
     }
@@ -98,10 +108,24 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
+  // 4.5) /pt 下出现英文段 → 301 到葡语翻译段
+  for (const rule of LEGACY_PT_MAPPINGS) {
+    const match = pathname.match(rule.from);
+    if (match) {
+      return context.redirect(rule.to(match), 301);
+    }
+  }
+
   // 5) 英文站下带 -es 的文章 → 西语 canonical（旧站行为）
   const enEsArticleMatch = pathname.match(/^\/en\/articles\/(.+-es)\/?$/i);
   if (enEsArticleMatch) {
     return context.redirect(`/es/articulos/${enEsArticleMatch[1]}`, 301);
+  }
+
+  // 5.5) 英文站下带 -pt 的文章 → 葡语 canonical
+  const enPtArticleMatch = pathname.match(/^\/en\/articles\/(.+-pt)\/?$/i);
+  if (enPtArticleMatch) {
+    return context.redirect(`/pt/artigos/${enPtArticleMatch[1]}`, 301);
   }
 
   return next();

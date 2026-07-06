@@ -1,0 +1,83 @@
+{
+  "translationKey": "contato",
+  "locale": "pt",
+  "content": {
+    "page": {
+      "title": "Contate-nos",
+      "description": "Entre em contato com nossa equipe para orçamentos, suporte técnico ou qualquer dúvida sobre nossas soluções de barramentos flexíveis."
+    },
+    "sections": {
+      "getInTouch": "Entre em contato"
+    },
+    "info": {
+      "phone": {
+        "title": "Telefone",
+        "content": "+86-19359963105",
+        "description": "Ligue-nos em horário comercial"
+      },
+      "email": {
+        "title": "E-mail",
+        "content": "info@yhflexiblebusbar.com",
+        "description": "Envie-nos um e-mail a qualquer momento"
+      },
+      "address": {
+        "title": "Endereço",
+        "content": "Shenzhen, Guangdong, China",
+        "description": "Visite nossa unidade fabril"
+      },
+      "hours": {
+        "title": "Horário comercial",
+        "content": "De segunda a sexta: 8h00 - 18h00 (CST)",
+        "description": "Estamos aqui para ajudar"
+      }
+    },
+    "globalSupport": {
+      "title": "Suporte Global",
+      "description": "Fornecemos suporte e serviços em todo o mundo para todos os nossos produtos.",
+      "regions": {
+        "northAmerica": "América do Norte",
+        "europe": "Europa",
+        "asiaPacific": "Ásia-Pacífico"
+      }
+    },
+    "form": {
+      "labels": {
+        "name": "Nome",
+        "email": "E-mail",
+        "company": "Empresa",
+        "country": "País",
+        "phone": "Telefone",
+        "subject": "Assunto",
+        "message": "Mensagem"
+      },
+      "placeholders": {
+        "name": "Digite seu nome completo",
+        "email": "Digite seu endereço de e-mail",
+        "company": "Digite o nome da sua empresa",
+        "country": "Insira seu país",
+        "phone": "Digite seu número de telefone",
+        "subject": "Selecione um assunto",
+        "message": "Digite sua mensagem"
+      },
+      "subjects": {
+        "selectSubject": "Selecione um assunto",
+        "productInquiry": "Consulta de produto",
+        "technicalSupport": "Suporte Técnico",
+        "partnership": "Parceria",
+        "customSolution": "Solução personalizada",
+        "other": "Outro"
+      },
+      "buttons": {
+        "submit": "Enviar mensagem",
+        "sending": "Enviando..."
+      },
+      "messages": {
+        "success": "Obrigado pela sua mensagem! Entraremos em contato com você em breve.",
+        "error": "Erro ao enviar mensagem. Por favor, tente novamente."
+      },
+      "validation": {
+        "required": "Este campo é obrigatório"
+      }
+    }
+  }
+}

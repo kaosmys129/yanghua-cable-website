@@ -1,0 +1,97 @@
+---
+export const prerender = true;
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import { loadMessages } from '../../../lib/yanghua/loaders';
+import { t } from '../../../lib/yanghua/t';
+import { getArticles, getHubs } from '../../../lib/yanghua/articles.mjs';
+
+const messages = await loadMessages('pt');
+const articles = getArticles('pt');
+const hubs = getHubs('pt');
+const pageTitle = t(messages, 'articles.page.title', 'Artículos');
+const pageDescription = t(
+  messages,
+  'articles.page.description',
+  'Artículos técnicos, guías preparadas para GEO, preguntas frecuentes e información de aplicaciones para busbar flexible, almacenamiento de energía, solar fotovoltaica, carga EV y distribución de alta corriente.'
+);
+
+const buyerIntentLabels: Record<string, string> = {
+  awareness: 'Conciencia',
+  comparison: 'Comparación',
+  selection: 'Selección',
+  procurement: 'Adquisición',
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" locale="pt" />
+  <Banner title={pageTitle} locale="pt" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-text-muted leading-relaxed">{pageDescription}</p>
+      </div>
+
+      {hubs.length > 0 && (
+        <nav class="mt-8 flex flex-wrap justify-center gap-2" aria-label="Hubs de articulos">
+          {hubs.map((hub) => (
+            <a href={hub.url} class="rounded-full border border-border bg-surface px-3 py-1.5 text-sm font-medium text-text-muted transition hover:border-accent hover:text-accent">
+              {hub.title}
+            </a>
+          ))}
+        </nav>
+      )}
+
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {articles.map((a) => (
+          <a href={a.url} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
+            <div class="h-44 overflow-hidden bg-background">
+              {a.cover.src ? (
+                <img src={a.cover.src} alt={a.cover.alt || a.title} referrerpolicy="no-referrer" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none'" />
+              ) : (
+                <div class="flex h-full items-center justify-center text-sm text-text-muted">Sin imagen</div>
+              )}
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                {a.geo.targetQueries.length > 0 && (
+                  <span class="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">
+                    GEO · {a.geo.targetQueries.length}Q
+                  </span>
+                )}
+                {a.geo.buyerIntent && (
+                  <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                    {buyerIntentLabels[a.geo.buyerIntent] || a.geo.buyerIntent}
+                  </span>
+                )}
+                {a.translationKey && (
+                  <span class="rounded-full bg-surface px-2 py-0.5 text-[10px] font-medium text-text-muted ring-1 ring-border">
+                    EN/ES
+                  </span>
+                )}
+              </div>
+              <h3 class="font-heading text-lg font-semibold text-text">{a.title}</h3>
+              {a.publishedAt && <p class="mt-1 text-xs text-text-muted">{a.publishedAt}</p>}
+              {a.summary && <p class="mt-3 line-clamp-3 text-sm text-text-muted">{a.summary}</p>}
+              {a.geo.targetQueries[0] && (
+                <p class="mt-3 rounded-md bg-background px-3 py-2 text-xs font-medium text-text-muted">
+                  Consulta objetivo: {a.geo.targetQueries[0]}
+                </p>
+              )}
+              <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                Leer
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

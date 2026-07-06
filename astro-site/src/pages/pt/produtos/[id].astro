@@ -1,0 +1,28 @@
+---
+export const prerender = true;
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import ProductDetailContent from '../../../components/ProductDetailContent.astro';
+import { findProductDetail, getProductDetails } from '../../../lib/yanghua/products';
+
+export function getStaticPaths() {
+  return getProductDetails().map((product) => ({ params: { id: product.id }, props: { product } }));
+}
+
+const product = Astro.props.product ?? findProductDetail(Astro.params.id ?? '');
+
+if (!product) {
+  return Astro.redirect('/es/productos', 302);
+}
+
+const related = product.relatedProducts.map((id: string) => findProductDetail(id)).filter(Boolean);
+---
+
+<BaseLayout title={`${product.name} | Fiable y Eficiente | Yanghua`} description={product.description} image={product.images[0]}>
+  <Header slot="header" locale="pt" />
+  <Banner title={product.name} locale="pt" />
+  <ProductDetailContent product={product} related={related} locale="pt" />
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

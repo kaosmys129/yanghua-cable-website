@@ -1,0 +1,150 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import HeroCarousel from '../../components/react/HeroCarousel';
+import TrustBarSection from '../../components/react/TrustBarSection';
+import ServicesSection from '../../components/react/ServicesSection';
+import AboutSection from '../../components/react/AboutSection';
+import CTASection from '../../components/react/CTASection';
+import ProductComparisonSection from '../../components/react/ProductComparisonSection';
+import PartnersSection from '../../components/react/PartnersSection';
+import ProjectGallerySection from '../../components/react/ProjectGallerySection';
+import InquiryFormSection from '../../components/react/InquiryFormSection';
+import { brand } from '../../config/brand';
+import { client } from '../../data/client';
+import { loadMessages, loadPageJson } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
+import { tRaw } from '../../lib/yanghua/t';
+import { generateFullOrganizationSchema } from '../../lib/schema-utils';
+
+const page = await loadPageJson<any>('pt', 'home');
+const messages = await loadMessages('pt');
+
+const trustItems = Object.values(page?.companyStrength?.stats ?? {}).map((s: any) => ({
+  value: s?.value,
+  label: s?.label ?? '',
+}));
+
+const applicationAreaImages: Record<string, { image: string; imageAlt: string }> = {
+  energy: {
+    image: '/images/projects/50mw-solar-farm-power-distribution.webp',
+    imageAlt: 'Planta solar con infraestructura de distribución eléctrica',
+  },
+  building: {
+    image: '/images/projects/metro-line-14.webp',
+    imageAlt: 'Gabinetes exteriores de distribución eléctrica en sitio de proyecto',
+  },
+  industry: {
+    image: '/images/projects/midea-industrial-complex.webp',
+    imageAlt: 'Complejo industrial con infraestructura eléctrica',
+  },
+  dataCenter: {
+    image: '/images/projects/huawei-data-center-expansion.webp',
+    imageAlt: 'Proyecto de expansión de centro de datos con infraestructura eléctrica',
+  },
+  railway: {
+    image: '/images/projects/metro-line-14.webp',
+    imageAlt: 'Gabinetes de distribución eléctrica para infraestructura ferroviaria',
+  },
+  chemical: {
+    image: '/images/projects/steel-mill-modernization.webp',
+    imageAlt: 'Sitio industrial pesado con distribución eléctrica',
+  },
+  marine: {
+    image: '/images/projects/steel-mill-modernization.webp',
+    imageAlt: 'Entorno industrial exterior de distribución eléctrica',
+  },
+};
+
+const services = Object.entries(page?.applicationAreas?.areas ?? {})
+  .filter(([key]) => key !== 'marine')
+  .map(([key, a]: [string, any]) => ({
+  title: a?.title ?? '',
+  description: a?.description ?? '',
+  href: route('solutions', 'pt'),
+  ...applicationAreaImages[key],
+}));
+
+const partners = [
+  { name: 'BYD', logo: '/images/partners/byd.webp' },
+  { name: 'CATL', logo: '/images/partners/catl.webp' },
+  { name: 'Huawei', logo: '/images/partners/huawei.webp' },
+  { name: 'State Grid', logo: '/images/partners/state grid.webp' },
+  { name: 'Southern Power Grid', logo: '/images/partners/southern power grid.webp' },
+  { name: 'Power China', logo: '/images/partners/powerchina.webp' },
+];
+
+const projects = tRaw<any[]>(messages, 'projects.list', []);
+---
+
+<BaseLayout
+  title={page?.hero?.title ?? brand.name}
+  description={page?.hero?.description ?? brand.description}
+  schema={generateFullOrganizationSchema(brand.url)}
+>
+  <Header slot="header" locale="pt" />
+
+  <HeroCarousel
+    topper={page?.hero?.subtitle}
+    heading={page?.hero?.title}
+    description={page?.hero?.description}
+    ctaLabel={page?.hero?.cta}
+    ctaHref={route('products', 'pt')}
+    secondaryLabel={page?.hero?.learnMore}
+    secondaryHref={route('about', 'pt')}
+    phone={client.phoneFormatted}
+    phoneHref={`tel:${client.phoneForTel}`}
+    slides={[
+      { src: '/images/homepage/home-hero-bg.png', alt: 'Yanghua flexible busbar manufacturing facility' },
+      { src: '/images/homepage/hero-bg-3.webp', alt: 'Yanghua high-current flexible busbar product showcase' },
+      { src: '/images/projects-home/huawei-data-center-expansion.webp', alt: 'Data center power distribution project' },
+      { src: '/images/projects-home/byd-battery-manufacturing.webp', alt: 'EV battery manufacturing power solution' },
+    ]}
+  />
+
+  {trustItems.length > 0 && <TrustBarSection items={trustItems} />}
+
+  <ServicesSection
+    topper={page?.applicationAreas?.title}
+    heading={page?.applicationAreas?.title}
+    description={page?.applicationAreas?.subtitle}
+    services={services}
+  />
+
+  <AboutSection
+    topper={page?.companyStrength?.title}
+    heading={page?.companyStrength?.title}
+    body={[page?.companyStrength?.subtitle].filter(Boolean)}
+    benefits={Object.values(page?.companyStrength?.stats ?? {}).map((s: any) => s?.description).filter(Boolean)}
+    ctaLabel={page?.companyStrength?.ctaLearnMore}
+    ctaHref={route('about', 'pt')}
+  />
+
+  <ProductComparisonSection
+    content={tRaw(messages, 'flexibleBusbarComparison', {})}
+    locale="pt"
+    traditionalImage="/images/homepage/ArmouredCable.webp"
+    traditionalImageAlt="Cable blindado tradicional - sección transversal"
+    rigidBusbarImage="/images/homepage/contract-busbar-1756864022556-rvsop0-original.webp"
+    rigidBusbarImageAlt="Sistema de barra colectora rígida"
+  />
+
+  <PartnersSection title={page?.partners?.title} subtitle={page?.partners?.subtitle} partners={partners} />
+
+  <ProjectGallerySection content={tRaw(messages, 'projectGallery', {})} projects={projects} locale="pt" />
+
+  <InquiryFormSection client:load content={tRaw(messages, 'inquiry', {})} locale="pt" />
+
+  <CTASection
+    title="Pronto para começar?"
+    description="Entre em contato conosco para seleção de produtos, suporte técnico e cotações."
+    buttonText="Solicitar orçamento"
+    buttonHref={route('contact', 'pt')}
+    phone={client.phoneFormatted}
+    phoneHref={`tel:${client.phoneForTel}`}
+  />
+
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

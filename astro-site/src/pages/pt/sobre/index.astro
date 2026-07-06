@@ -1,0 +1,32 @@
+---
+export const prerender = true;
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import AboutProductionSections from '../../../components/AboutProductionSections.astro';
+import { loadPageJson } from '../../../lib/yanghua/loaders';
+import { route } from '../../../lib/yanghua/routes';
+
+const page = await loadPageJson<any>('pt', 'about');
+const content = page?.content ?? {};
+---
+
+<BaseLayout title={content?.hero?.title ?? 'Acerca de'} description={content?.hero?.subtitle ?? ''}>
+  <Header slot="header" locale="pt" />
+
+  <Banner title={content?.hero?.title ?? 'Acerca de'} locale="pt" />
+
+  <AboutProductionSections content={content} locale="pt" />
+
+  <CTA
+    title={content?.cta?.title ?? '¿Listo para asociarte con nosotros?'}
+    description={content?.cta?.description ?? content?.cta?.subtitle ?? ''}
+    buttonText={content?.cta?.buttons?.contact ?? 'Contacto'}
+    buttonHref={route('contact', 'pt')}
+    showPhone={false}
+  />
+
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

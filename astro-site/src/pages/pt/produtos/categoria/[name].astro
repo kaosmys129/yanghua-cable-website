@@ -1,0 +1,34 @@
+---
+export const prerender = true;
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import Banner from '../../../../components/Banner.astro';
+import ProductCategoryDetail from '../../../../components/ProductCategoryDetail.astro';
+import { loadMessages } from '../../../../lib/yanghua/loaders';
+import { tRaw } from '../../../../lib/yanghua/t';
+import { buildProductCategories, findProductCategory } from '../../../../lib/yanghua/products';
+
+export async function getStaticPaths() {
+  const messages = await loadMessages('pt');
+  const categories = buildProductCategories('pt', tRaw<any[]>(messages, 'products.categories', []));
+  return categories.flatMap((category) =>
+    [category.slug, ...category.aliases].map((name) => ({ params: { name }, props: { category } }))
+  );
+}
+
+const messages = await loadMessages('pt');
+const categories = buildProductCategories('pt', tRaw<any[]>(messages, 'products.categories', []));
+const category = Astro.props.category ?? findProductCategory(categories, Astro.params.name ?? '');
+
+if (!category) {
+  return Astro.redirect('/es/productos', 302);
+}
+---
+
+<BaseLayout title={`${category.name} | Categoría de Barra Colectora Flexible | Yanghua`} description={`Descubra modelos, estructura y especificaciones de ${category.name} en barras colectoras flexibles para diversas aplicaciones.`}>
+  <Header slot="header" locale="pt" />
+  <Banner title={`${category.name}`} locale="pt" />
+  <ProductCategoryDetail category={category} locale="pt" />
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

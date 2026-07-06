@@ -90,9 +90,11 @@ function pickLocaleText(map: Record<string, any> | undefined, locale: Locale): s
  */
 function normalizeLegacyHref(raw: string): string {
   // /en/products/category/* → /en/products
-  let h = raw.replace(/^(\/(en|es))\/products\/category\/.*$/i, '$1/products');
+  let h = raw.replace(/^(\/(en|es|pt))\/products\/category\/.*$/i, '$1/products');
   // /es/productos/categoria/* → /es/productos
-  h = h.replace(/^(\/(en|es))\/productos\/categoria\/.*$/i, '$1/productos');
+  h = h.replace(/^(\/(en|es|pt))\/productos\/categoria\/.*$/i, '$1/productos');
+  // /pt/produtos/categoria/* → /pt/produtos
+  h = h.replace(/^(\/pt)\/produtos\/categoria\/.*$/i, '$1/produtos');
   return h;
 }
 

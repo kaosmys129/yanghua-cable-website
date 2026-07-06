@@ -1,0 +1,65 @@
+---
+export const prerender = true;
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import Banner from '../../../../components/Banner.astro';
+import { getArticles, getHubStaticPaths } from '../../../../lib/yanghua/articles.mjs';
+
+export function getStaticPaths() {
+  return getHubStaticPaths('pt');
+}
+
+const { hub, Content } = Astro.props as { hub: any; Content: any };
+const articles = getArticles('pt');
+const featuredArticles = hub.featuredArticleSlugs
+  .map((slug: string) => articles.find((article: any) => article.slug === slug))
+  .filter(Boolean);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: hub.title,
+  description: hub.description,
+  url: `https://www.yhflexiblebusbar.com${hub.url}`,
+  hasPart: featuredArticles.map((article: any) => ({
+    '@type': 'BlogPosting',
+    headline: article.title,
+    url: `https://www.yhflexiblebusbar.com${article.url}`,
+  })),
+};
+---
+
+<BaseLayout locale="pt" title={hub.title} description={hub.description} schema={structuredData}>
+  <Header slot="header" locale="pt" />
+  <Banner title={hub.title} locale="pt" />
+
+  <section class="py-section">
+    <div class="mx-auto grid max-w-site grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <article class="prose prose-slate max-w-none">
+        <Content />
+      </article>
+
+      <aside class="space-y-4 lg:sticky lg:top-24 lg:self-start">
+        <section class="rounded-lg border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Articulos destacados</p>
+          <div class="mt-4 space-y-3">
+            {featuredArticles.map((article: any) => (
+              <a href={article.url} class="block rounded-md bg-background px-3 py-3 transition hover:text-accent">
+                <span class="block text-sm font-semibold text-text">{article.title}</span>
+                {article.geo.targetQueries[0] && (
+                  <span class="mt-1 block text-xs text-text-muted">{article.geo.targetQueries[0]}</span>
+                )}
+              </a>
+            ))}
+            {featuredArticles.length === 0 && (
+              <p class="text-sm text-text-muted">Los articulos relacionados apareceran aqui despues de la revision.</p>
+            )}
+          </div>
+        </section>
+      </aside>
+    </div>
+  </section>
+
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

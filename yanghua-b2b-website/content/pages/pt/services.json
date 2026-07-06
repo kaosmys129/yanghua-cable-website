@@ -1,0 +1,85 @@
+{
+  "translationKey": "serviços",
+  "locale": "pt",
+  "content": {
+    "page": {
+      "title": "Serviço e suporte",
+      "description": "Suporte abrangente durante todo o ciclo de vida do projeto, desde o projeto inicial até a manutenção de longo prazo."
+    },
+    "services": [
+      {
+        "number": "01",
+        "title": "Suporte Técnico",
+        "description": "Orientação especializada desde a consulta inicial até o comissionamento do sistema",
+        "features": [
+          "Consulta técnica 24 horas por dia, 7 dias por semana",
+          "Assistência no projeto do sistema",
+          "Supervisão de instalação",
+          "Otimização de desempenho"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Guia de instalação",
+        "description": "Suporte abrangente à instalação com documentação e treinamento detalhados",
+        "features": [
+          "Manuais de instalação detalhados",
+          "Tutoriais em vídeo",
+          "Treinamento no local",
+          "Assistência remota"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Serviço pós-venda",
+        "description": "Suporte e manutenção de longo prazo para garantir o desempenho ideal do sistema",
+        "features": [
+          "Manutenção preventiva",
+          "Serviço de garantia",
+          "Fornecimento de peças de reposição",
+          "Atualizações do sistema"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Centro de download",
+        "description": "Acesse documentos técnicos, certificações e recursos 24 horas por dia, 7 dias por semana",
+        "features": [
+          "Especificações do produto",
+          "Desenhos CAD",
+          "Documentos de certificação",
+          "Estudos de caso"
+        ]
+      }
+    ],
+    "faq": {
+      "title": "Perguntas frequentes",
+      "q1": {
+        "question": "Quais são as principais vantagens dos sistemas de barramentos flexíveis em relação aos sistemas de cabos tradicionais?",
+        "answer": "Os sistemas de barramentos flexíveis oferecem capacidade de condução de corrente superior, melhor dissipação de calor, tempo de instalação reduzido e menores requisitos de manutenção em comparação com sistemas de cabos tradicionais. Eles também proporcionam melhor utilização do espaço e recursos de segurança aprimorados."
+      },
+      "q2": {
+        "question": "Como determino a classificação atual correta para minha aplicação?",
+        "answer": "A classificação atual depende dos requisitos de carga, temperatura ambiente, método de instalação e fatores de segurança. Nossa equipe técnica pode ajudá-lo a calcular a classificação ideal com base nos requisitos específicos de sua aplicação e nos códigos elétricos locais."
+      },
+      "q3": {
+        "question": "Quais certificações seus produtos possuem?",
+        "answer": "Nossos produtos são certificados de acordo com padrões internacionais, incluindo IEC, UL, CE e CCC. Também temos certificação de gestão de qualidade ISO 9001 e certificação de gestão ambiental ISO 14001. As certificações específicas variam de acordo com a linha de produto."
+      },
+      "q4": {
+        "question": "Você fornece suporte e treinamento de instalação?",
+        "answer": "Sim, oferecemos suporte de instalação abrangente, incluindo manuais detalhados, tutoriais em vídeo, treinamento no local e assistência remota. Nossa equipe técnica também pode supervisionar instalações críticas para garantir o desempenho ideal."
+      },
+      "q5": {
+        "question": "Qual é o prazo de entrega típico para pedidos personalizados?",
+        "answer": "Os prazos de entrega variam dependendo da complexidade e quantidade do pedido. Os produtos padrão normalmente são enviados dentro de 2 a 3 semanas, enquanto as soluções personalizadas podem levar de 4 a 8 semanas. Forneceremos cronogramas de entrega precisos durante o processo de cotação."
+      }
+    },
+    "cta": {
+      "title": "Precisa de suporte técnico?",
+      "description": "Nossa equipe técnica está pronta para atender às suas necessidades específicas.",
+      "contactSupport": "Entre em contato com o suporte técnico",
+      "downloadResources": "Baixar recursos"
+    }
+  }
+}

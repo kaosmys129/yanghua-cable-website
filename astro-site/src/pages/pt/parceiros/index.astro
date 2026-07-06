@@ -1,0 +1,59 @@
+---
+export const prerender = true;
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import PartnersGrid from '../../../components/PartnersGrid.astro';
+import { loadPageJson } from '../../../lib/yanghua/loaders';
+import { route } from '../../../lib/yanghua/routes';
+
+const page = await loadPageJson<any>('pt', 'partners');
+const content = page?.content ?? {};
+
+const partners = [
+  { name: 'BYD', logo: '/images/partners/byd.webp' },
+  { name: 'CATL', logo: '/images/partners/catl.webp' },
+  { name: 'Huawei', logo: '/images/partners/huawei.webp' },
+  { name: 'CRCC', logo: '/images/partners/crcc.png' },
+  { name: 'State Grid', logo: '/images/partners/state grid.webp' },
+  { name: 'Southern Power Grid', logo: '/images/partners/southern power grid.webp' },
+  { name: 'Power China', logo: '/images/partners/power china.png' },
+  { name: 'Sinopec', logo: '/images/partners/sinopec.webp' },
+  { name: 'Oil China', logo: '/images/partners/oil china.webp' },
+  { name: 'Energy China', logo: '/images/partners/energy china .webp' },
+  { name: 'CEDC', logo: '/images/partners/cedc.png' },
+];
+
+const benefits = [
+  {
+    title: 'Cooperación Estratégica',
+    description: 'Una red de socios enfocada en sistemas de barra colectora flexible de cobre, distribución de alta corriente y soporte de proyectos.',
+  },
+  {
+    title: 'Adopción Industrial Probada',
+    description: 'Las referencias incluyen energía, red eléctrica, transporte, manufactura e infraestructura atendidas por soluciones Yanghua.',
+  },
+  {
+    title: 'Soporte Confiable de Proyecto',
+    description: 'Las consultas de asociación conectan con el mismo flujo de cotización usado para productos, proyectos y requisitos técnicos.',
+  },
+];
+---
+
+<BaseLayout title={content?.title ?? 'Socios'} description={content?.subtitle ?? ''}>
+  <Header slot="header" locale="pt" />
+  <Banner title={content?.title ?? 'Socios'} locale="pt" />
+
+  <PartnersGrid title={content?.title} subtitle={content?.subtitle} partners={partners} benefits={benefits} />
+
+  <CTA
+    title={content?.title ?? 'Socios'}
+    description={content?.subtitle ?? ''}
+    buttonText={content?.ctaAllPartners ?? 'Solicitar orçamento'}
+    buttonHref={route('contact', 'pt')}
+  />
+
+  <Footer slot="footer" locale="pt" />
+</BaseLayout>

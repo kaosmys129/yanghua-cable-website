@@ -1,0 +1,111 @@
+{
+  "translationKey": "sobre",
+  "locale": "pt",
+  "content": {
+    "hero": {
+      "title": "Sobre o cabo Yanghua - fabricante de barramento de cobre flexível",
+      "subtitle": "Liderando o futuro da tecnologia de sistemas de distribuição de energia elétrica com inovação, qualidade e confiabilidade desde 2013.",
+      "cta": {
+        "explore": "Explore nossas soluções",
+        "download": "Baixar perfil da empresa"
+      }
+    },
+    "overview": {
+      "title": "Excelência líder em soluções de barramento de alta corrente",
+      "description": "Com mais de uma década de experiência, estamos comprometidos em fornecer soluções de design de barramentos personalizados de alta qualidade que atendam aos mais exigentes padrões da indústria. Nossas instalações de última geração e equipe especializada garantem aplicações confiáveis ​​de barramentos industriais para cada projeto.",
+      "stats": {
+        "patents": "Mais de 50 patentes",
+        "productionlines": "8 linhas de produção",
+        "laboratories": "3 laboratórios de testes",
+        "enterprisestandards": "15 padrões empresariais"
+      }
+    },
+    "mission": {
+      "title": "Missão e Valores",
+      "subtitle": "Impulsionando a inovação e a excelência na fabricação de cabos",
+      "missionTitle": "Nossa Missão",
+      "missionContent": "Fornecer soluções de cabos inovadoras, confiáveis ​​e sustentáveis ​​que alimentam a infraestrutura mais crítica do mundo e permitem o avanço tecnológico.",
+      "missionDescription": "Estamos comprometidos com a excelência em todos os aspectos do nosso negócio, desde pesquisa e desenvolvimento até fabricação e atendimento ao cliente.",
+      "valuesTitle": "Nossos valores",
+      "values": {
+        "innovation": "Inovação - Expandindo continuamente os limites da tecnologia de cabos",
+        "responsibility": "Responsabilidade - Comprometidos com a sustentabilidade ambiental e a responsabilidade social",
+        "cooperation": "Cooperação - Construindo parcerias fortes com clientes e fornecedores",
+        "sustainability": "Sustentabilidade - Desenvolvendo soluções ecológicas para um futuro melhor"
+      }
+    },
+    "journey": {
+      "title": "Nossa jornada",
+      "subtitle": "De uma pequena startup a líder do setor, nossa jornada reflete nosso compromisso com a excelência e a inovação."
+    },
+    "timeline": {
+      "title": "Nossa jornada de desenvolvimento",
+      "subtitle": "Marcos importantes em nosso crescimento e inovação",
+      "milestones": [
+        {
+          "year": "2010",
+          "event": "Empresa fundada com a visão de revolucionar a fabricação de cabos"
+        },
+        {
+          "year": "2015",
+          "event": "Obteve a certificação ISO 9001 e expandiu a capacidade de produção"
+        },
+        {
+          "year": "2018",
+          "event": "Lançada série inovadora de cabos resistentes ao fogo para aplicações críticas"
+        },
+        {
+          "year": "2021",
+          "event": "Estabeleceu parcerias internacionais e entrou em mercados globais"
+        },
+        {
+          "year": "2023",
+          "event": "Atingiu o marco de 1 milhão de metros de produção de cabos"
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Qualidade e Certificações",
+      "subtitle": "Nosso compromisso com a qualidade é validado por certificações internacionais e rigorosos padrões de testes.",
+      "description": "Todos os nossos produtos passam por testes rigorosos e processos de controle de qualidade para garantir que atendam ou excedam os padrões internacionais de segurança, desempenho e confiabilidade.",
+      "cta": "Ver todas as certificações"
+    },
+    "team": {
+      "title": "Nossa equipe de liderança",
+      "subtitle": "Conheça os profissionais experientes que impulsionam a visão e o crescimento da nossa empresa.",
+      "positions": {
+        "ceo": "Diretor Executivo",
+        "cto": "Diretor de Tecnologia",
+        "engineer": "Engenheiro Sênior",
+        "qa": "Diretor de Garantia de Qualidade"
+      },
+      "experience": {
+        "ceo": "Mais de 15 anos em engenharia elétrica e liderança empresarial",
+        "cto": "Mais de 20 anos em pesquisa e desenvolvimento de tecnologia de cabos",
+        "engineer": "Mais de 12 anos em design de produtos e otimização de fabricação",
+        "qa": "Mais de 18 anos em gestão de qualidade e padrões internacionais"
+      }
+    },
+    "cta": {
+      "title": "Pronto para fazer parceria conosco?",
+      "subtitle": "Vamos discutir como nossas soluções inovadoras de cabos podem atender às suas necessidades específicas e ajudá-lo a atingir os objetivos do seu projeto.",
+      "description": "Vamos discutir como nossas soluções inovadoras de cabos podem atender às suas necessidades específicas e impulsionar o sucesso do seu projeto.",
+      "buttons": {
+        "contact": "Entre em contato",
+        "quote": "Solicite um orçamento"
+      }
+    },
+    "video": {
+      "playButton": "Reproduzir vídeo",
+      "companyIntro": "Vídeo de introdução da empresa",
+      "watchVideo": "Assista nossa história",
+      "loading": "Carregando vídeo...",
+      "error": "Não foi possível carregar o vídeo"
+    },
+    "equipment": {
+      "title": "Equipamento de teste",
+      "subtitle": "Nossos equipamentos de teste de última geração garantem a mais alta qualidade e confiabilidade de nossos produtos",
+      "badge": "Tecnologia Avançada"
+    }
+  }
+}

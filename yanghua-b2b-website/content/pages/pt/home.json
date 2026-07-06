@@ -1,0 +1,83 @@
+{
+  "translationKey": "lar",
+  "locale": "pt",
+  "hero": {
+    "title": "Cabo Yanghua - Inovador em distribuição de barramentos de cobre de baixa tensão e alta corrente",
+    "subtitle": "O único barramento elétrico flexível de alta corrente da Yanghua do mundo, você pode confiar nele",
+    "description": "O cabo Yanghua oferece grau de proteção IP68, capacidade máxima de transporte de corrente única 6400A, barramento de cobre flexível fácil de instalar",
+    "cta": "Explore os produtos Yanghua",
+    "learnMore": "Saiba mais sobre Yanghua"
+  },
+  "companyStrength": {
+    "title": "Força da Yanghua Cable Company",
+    "subtitle": "O compromisso da Yanghua com a inovação e a qualidade na fabricação de barramentos elétricos é apoiado por extensas capacidades de P&D, sistemas abrangentes de garantia de qualidade e histórico comprovado com empresas da Fortune 500.",
+    "stats": {
+      "certifications": {
+        "value": "40+",
+        "label": "Patentes e certificações Yanghua",
+        "description": "Liderança em tecnologia de barramentos de cobre impulsionada pela inovação da Yanghua Cable"
+      },
+      "capacity": {
+        "value": "2",
+        "label": "Linhas de produção Yanghua",
+        "description": "Instalações de fabricação de barramentos elétricos de última geração em Yanghua"
+      },
+      "testing": {
+        "value": "3",
+        "label": "Laboratórios de testes Yanghua",
+        "description": "Garantia de qualidade abrangente do barramento de cobre do cabo Yanghua"
+      },
+      "documentation": {
+        "value": "11",
+        "label": "Padrões Empresariais Yanghua",
+        "description": "Especificações de barramento elétrico líder da indústria Yanghua"
+      }
+    },
+    "ctaLearnMore": "Saiba mais sobre o cabo Yanghua"
+  },
+  "applicationAreas": {
+    "title": "Áreas de aplicação",
+    "subtitle": "Atendendo diversos setores com soluções de cabos especializadas",
+    "areas": {
+      "energy": {
+        "title": "Nova Energia",
+        "description": "Soluções avançadas de cabos para sistemas solares, eólicos e de armazenamento de energia."
+      },
+      "building": {
+        "title": "Sistemas de Energia",
+        "description": "Cabos confiáveis ​​de transmissão e distribuição de energia para concessionárias."
+      },
+      "industry": {
+        "title": "Industrial",
+        "description": "Cabos pesados ​​para fabricação e aplicações industriais."
+      },
+      "dataCenter": {
+        "title": "Centro de dados",
+        "description": "Cabos de alto desempenho para data centers e infraestrutura de TI."
+      },
+      "railway": {
+        "title": "Estação para carregar",
+        "description": "Cabos especializados para estação de carregamento de carros EV."
+      },
+      "chemical": {
+        "title": "Metalurgia e Química",
+        "description": "Cabos resistentes à corrosão para ambientes industriais agressivos."
+      },
+      "marine": {
+        "title": "Marinha e Expedição",
+        "description": "Cabos de qualidade marítima para aplicações offshore e de construção naval."
+      }
+    },
+    "ctaViewSolution": "Ver solução",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Próximo"
+    }
+  },
+  "partners": {
+    "title": "Nossos parceiros",
+    "subtitle": "Aprovado por empresas líderes em todo o mundo",
+    "viewAll": "Ver todos os parceiros",
+    "ctaAllPartners": "Obter cotação"
+  }
+}

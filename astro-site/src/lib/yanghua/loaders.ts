@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { legacyContentRoot, legacyMessagesRoot, legacyPublicDataRoot } from './paths';
 
-export type Locale = 'en' | 'es';
+export type Locale = 'en' | 'es' | 'pt';
 
 async function readJsonFile<T>(absolutePath: string): Promise<T> {
   const raw = await readFile(absolutePath, 'utf-8');

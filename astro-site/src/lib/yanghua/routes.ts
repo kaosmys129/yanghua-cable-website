@@ -5,19 +5,19 @@ import type { Locale } from './loaders';
  * 约束：URL 必须是对外真实路径（西语使用翻译段，如 productos）。
  */
 export const ROUTES = {
-  home: { en: '/en', es: '/es' },
-  about: { en: '/en/about', es: '/es/acerca-de' },
-  services: { en: '/en/services', es: '/es/servicios' },
-  contact: { en: '/en/contact', es: '/es/contacto' },
-  partners: { en: '/en/partners', es: '/es/socios' },
-  products: { en: '/en/products', es: '/es/productos' },
-  productCategory: { en: '/en/products/category', es: '/es/productos/categoria' },
-  solutions: { en: '/en/solutions', es: '/es/soluciones' },
-  projects: { en: '/en/projects', es: '/es/proyectos' },
-  articles: { en: '/en/articles', es: '/es/articulos' },
-  hubs: { en: '/en/articles/hub', es: '/es/articulos/hub' },
-  privacy: { en: '/en/privacy', es: '/es/privacidad' },
-  terms: { en: '/en/terms', es: '/es/terminos' },
+  home: { en: '/en', es: '/es', pt: '/pt' },
+  about: { en: '/en/about', es: '/es/acerca-de', pt: '/pt/sobre' },
+  services: { en: '/en/services', es: '/es/servicios', pt: '/pt/servicos' },
+  contact: { en: '/en/contact', es: '/es/contacto', pt: '/pt/contato' },
+  partners: { en: '/en/partners', es: '/es/socios', pt: '/pt/parceiros' },
+  products: { en: '/en/products', es: '/es/productos', pt: '/pt/produtos' },
+  productCategory: { en: '/en/products/category', es: '/es/productos/categoria', pt: '/pt/produtos/categoria' },
+  solutions: { en: '/en/solutions', es: '/es/soluciones', pt: '/pt/solucoes' },
+  projects: { en: '/en/projects', es: '/es/proyectos', pt: '/pt/projetos' },
+  articles: { en: '/en/articles', es: '/es/articulos', pt: '/pt/artigos' },
+  hubs: { en: '/en/articles/hub', es: '/es/articulos/hub', pt: '/pt/artigos/hub' },
+  privacy: { en: '/en/privacy', es: '/es/privacidad', pt: '/pt/privacidade' },
+  terms: { en: '/en/terms', es: '/es/terminos', pt: '/pt/termos' },
 } as const;
 
 export type RouteKey = keyof typeof ROUTES;
@@ -29,14 +29,12 @@ export function route(key: RouteKey, locale: Locale): string {
 export function localeFromPathname(pathname: string): Locale | null {
   if (pathname === '/en' || pathname.startsWith('/en/')) return 'en';
   if (pathname === '/es' || pathname.startsWith('/es/')) return 'es';
+  if (pathname === '/pt' || pathname.startsWith('/pt/')) return 'pt';
   return null;
 }
 
-/**
- * en ↔ es URL 段映射，用于 Header 语言切换。
- * Key = en 段, Value = es 段（双向通过 Entry lookup）。
- */
-const SEGMENT_MAP: Record<string, string> = {
+// en -> es 映射
+const ES_SEGMENT_MAP: Record<string, string> = {
   about: 'acerca-de',
   services: 'servicios',
   contact: 'contacto',
@@ -50,43 +48,87 @@ const SEGMENT_MAP: Record<string, string> = {
   privacy: 'privacidad',
   terms: 'terminos',
 };
+const REVERSE_ES_MAP = Object.fromEntries(
+  Object.entries(ES_SEGMENT_MAP).map(([en, es]) => [es, en])
+);
 
-const REVERSE_SEGMENT_MAP: Record<string, string> = Object.fromEntries(
-  Object.entries(SEGMENT_MAP).map(([en, es]) => [es, en]),
+// en -> pt 映射
+const PT_SEGMENT_MAP: Record<string, string> = {
+  about: 'sobre',
+  services: 'servicos',
+  contact: 'contato',
+  products: 'produtos',
+  'products/category': 'produtos/categoria',
+  solutions: 'solucoes',
+  projects: 'projetos',
+  articles: 'artigos',
+  'articles/hub': 'artigos/hub',
+  partners: 'parceiros',
+  privacy: 'privacidade',
+  terms: 'termos',
+};
+const REVERSE_PT_MAP = Object.fromEntries(
+  Object.entries(PT_SEGMENT_MAP).map(([en, pt]) => [pt, en])
 );
 
 /**
- * 根据当前路径和当前语言，返回另一语言的对应路径。
+ * 根据当前路径和目标语言，返回目标语言的对应路径。
  * 无法匹配时 fallback 到目标语言首页。
  */
-export function switchLocalePath(currentPath: string): string {
+export function switchLocalePath(currentPath: string, targetLocale: Locale): string {
   const currentLocale = localeFromPathname(currentPath) ?? 'en';
-  const targetLocale: Locale = currentLocale === 'en' ? 'es' : 'en';
+  if (currentLocale === targetLocale) return currentPath;
 
-  // 去掉语言前缀得到剩余路径段
-  const unprefixed = currentPath.replace(/^\/(en|es)\/?/, '');
-
+  // 1. 去掉当前语言前缀，获得未带前缀的路径
+  const unprefixed = currentPath.replace(/^\/(en|es|pt)\/?/, '');
   if (!unprefixed) {
-    // 就是首页
     return route('home', targetLocale);
   }
 
-  // 尝试精确段映射
-  const map = targetLocale === 'es' ? SEGMENT_MAP : REVERSE_SEGMENT_MAP;
-  const mapped = map[unprefixed];
-  if (mapped) {
-    return `/${targetLocale}/${mapped}`;
+  // 2. 先把 unprefixed 转换为英文规范路径 (English Segment)
+  let enSegment = unprefixed;
+  if (currentLocale === 'es') {
+    if (REVERSE_ES_MAP[unprefixed]) {
+      enSegment = REVERSE_ES_MAP[unprefixed];
+    } else {
+      for (const [es, en] of Object.entries(REVERSE_ES_MAP)) {
+        if (unprefixed.startsWith(`${es}/`)) {
+          enSegment = en + unprefixed.slice(es.length);
+          break;
+        }
+      }
+    }
+  } else if (currentLocale === 'pt') {
+    if (REVERSE_PT_MAP[unprefixed]) {
+      enSegment = REVERSE_PT_MAP[unprefixed];
+    } else {
+      for (const [pt, en] of Object.entries(REVERSE_PT_MAP)) {
+        if (unprefixed.startsWith(`${pt}/`)) {
+          enSegment = en + unprefixed.slice(pt.length);
+          break;
+        }
+      }
+    }
   }
 
-  // 尝试前缀匹配（如 /en/products/category/xxx → /es/productos/categoria/xxx）
-  for (const [from, to] of Object.entries(map)) {
-    if (unprefixed === from || unprefixed.startsWith(`${from}/`)) {
-      const rest = unprefixed.slice(from.length);
-      return `/${targetLocale}/${to}${rest}`;
+  // 3. 将英文规范路径转换为 targetLocale 的路径
+  if (targetLocale === 'en') {
+    return `/en/${enSegment}`;
+  }
+
+  const map = targetLocale === 'es' ? ES_SEGMENT_MAP : PT_SEGMENT_MAP;
+  
+  if (map[enSegment]) {
+    return `/${targetLocale}/${map[enSegment]}`;
+  }
+  
+  for (const [en, target] of Object.entries(map)) {
+    if (enSegment === en || enSegment.startsWith(`${en}/`)) {
+      const rest = enSegment.slice(en.length);
+      return `/${targetLocale}/${target}${rest}`;
     }
   }
 
   // Fallback
   return route('home', targetLocale);
 }
-

@@ -4,7 +4,8 @@
   "defaultLocale": "en",
   "locales": [
     "en",
-    "es"
+    "es",
+    "pt"
   ],
   "logo": {
     "textPrimary": "Yanghua",
@@ -34,6 +35,18 @@
         { "label": "Contacto", "href": "/es/contacto" }
       ],
       "ctaLabel": "Solicitar cotización"
+    },
+    "pt": {
+      "items": [
+        { "label": "Início", "href": "/pt" },
+        { "label": "Produtos", "href": "/pt/produtos" },
+        { "label": "Soluções", "href": "/pt/solucoes" },
+        { "label": "Projetos", "href": "/pt/projetos" },
+        { "label": "Artigos", "href": "/pt/artigos" },
+        { "label": "Sobre Nós", "href": "/pt/sobre" },
+        { "label": "Contato", "href": "/pt/contato" }
+      ],
+      "ctaLabel": "Solicitar orçamento"
     }
   },
   "contact": {
@@ -42,7 +55,8 @@
     "whatsapp": "+86-138-2698-2553",
     "address": {
       "en": "Dongguan, Guangdong, China",
-      "es": "Dongguan, Guangdong, China"
+      "es": "Dongguan, Guangdong, China",
+      "pt": "Dongguan, Guangdong, China"
     }
   },
   "footer": {
@@ -110,6 +124,40 @@
             { "label": "Artículos", "href": "/es/articulos" },
             { "label": "Sobre nosotros", "href": "/es/acerca-de" },
             { "label": "Contacto", "href": "/es/contacto" }
+          ]
+        }
+      }
+    },
+    "pt": {
+      "description": "Soluções de barramento flexível e cabeamento para eletrificação industrial, armazenamento de energia, fotovoltaica e distribuição de energia.",
+      "copyright": "© {year} Yanghua Cable. Todos os direitos reservados.",
+      "links": {
+        "privacy": { "label": "Política de Privacidade", "href": "/pt/privacidade" },
+        "terms": { "label": "Termos de Serviço", "href": "/pt/termos" }
+      },
+      "sections": {
+        "products": {
+          "title": "Produtos",
+          "items": [
+            { "label": "Barramento flexível", "href": "/pt/produtos" },
+            { "label": "Acessórios", "href": "/pt/produtos/categoria/accessories" },
+            { "label": "Downloads", "href": "/pt/solucoes" }
+          ]
+        },
+        "solutions": {
+          "title": "Soluções",
+          "items": [
+            { "label": "Armazenamento de Energia", "href": "/pt/solucoes" },
+            { "label": "Solar Fotovoltaica", "href": "/pt/solucoes" },
+            { "label": "Energia Industrial", "href": "/pt/projetos" }
+          ]
+        },
+        "support": {
+          "title": "Suporte",
+          "items": [
+            { "label": "Artigos", "href": "/pt/artigos" },
+            { "label": "Sobre Nós", "href": "/pt/sobre" },
+            { "label": "Contato", "href": "/pt/contato" }
           ]
         }
       }

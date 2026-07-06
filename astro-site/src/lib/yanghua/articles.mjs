@@ -16,22 +16,26 @@ export const YANGHUA_SITE_URL = 'https://www.yhflexiblebusbar.com';
 const localArticleModules = {
   en: import.meta.glob('../../data/legacy-content/content/articles/en/*.mdx', { eager: true }),
   es: import.meta.glob('../../data/legacy-content/content/articles/es/*.mdx', { eager: true }),
+  pt: import.meta.glob('../../data/legacy-content/content/articles/pt/*.mdx', { eager: true }),
 };
 
 const localHubModules = {
   en: import.meta.glob('../../data/legacy-content/content/hubs/en/*.mdx', { eager: true }),
   es: import.meta.glob('../../data/legacy-content/content/hubs/es/*.mdx', { eager: true }),
+  pt: import.meta.glob('../../data/legacy-content/content/hubs/pt/*.mdx', { eager: true }),
 };
 
 // 原始旧站路径（相对于 src/lib/yanghua/ → yanghua-b2b-website/content/）
 const legacyArticleModules = {
   en: import.meta.glob('../../../../yanghua-b2b-website/content/articles/en/*.mdx', { eager: true }),
   es: import.meta.glob('../../../../yanghua-b2b-website/content/articles/es/*.mdx', { eager: true }),
+  pt: import.meta.glob('../../../../yanghua-b2b-website/content/articles/pt/*.mdx', { eager: true }),
 };
 
 const legacyHubModules = {
   en: import.meta.glob('../../../../yanghua-b2b-website/content/hubs/en/*.mdx', { eager: true }),
   es: import.meta.glob('../../../../yanghua-b2b-website/content/hubs/es/*.mdx', { eager: true }),
+  pt: import.meta.glob('../../../../yanghua-b2b-website/content/hubs/pt/*.mdx', { eager: true }),
 };
 
 // 运行时选择：prebuild 本地内容优先
@@ -39,7 +43,7 @@ const articleModules = Object.keys(localArticleModules.en).length > 0 ? localArt
 const hubModules = Object.keys(localHubModules.en).length > 0 ? localHubModules : legacyHubModules;
 
 function asLocale(locale) {
-  return locale === 'es' ? 'es' : 'en';
+  return locale === 'es' ? 'es' : locale === 'pt' ? 'pt' : 'en';
 }
 
 function withContent(entry) {
@@ -76,7 +80,7 @@ export function getArticles(locale, options = {}) {
 }
 
 export function getAllArticles(options = {}) {
-  return ['en', 'es'].flatMap((locale) => getArticles(locale, options));
+  return ['en', 'es', 'pt'].flatMap((locale) => getArticles(locale, options));
 }
 
 export function getHubs(locale) {
@@ -87,7 +91,7 @@ export function getHubs(locale) {
 }
 
 export function getAllHubs() {
-  return ['en', 'es'].flatMap((locale) => getHubs(locale));
+  return ['en', 'es', 'pt'].flatMap((locale) => getHubs(locale));
 }
 
 export function getArticleStaticPaths(locale) {
