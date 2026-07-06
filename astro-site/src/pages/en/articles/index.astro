@@ -7,6 +7,8 @@ import Banner from '../../../components/Banner.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t } from '../../../lib/yanghua/t';
 import { getArticles, getHubs } from '../../../lib/yanghua/articles.mjs';
+import { generateCollectionPageSchema } from '../../../lib/schema-utils';
+import type { CollectionPageArticle } from '../../../lib/schema-utils';
 
 const messages = await loadMessages('en');
 const articles = getArticles('en');
@@ -24,9 +26,19 @@ const buyerIntentLabels: Record<string, string> = {
   selection: 'Selection',
   procurement: 'Procurement',
 };
+
+const collectionArticles: CollectionPageArticle[] = articles.map((a) => ({
+  title: a.title,
+  description: a.summary || a.description || '',
+  url: a.url,
+  image: a.cover?.src || undefined,
+  publishedAt: a.publishedAt || undefined,
+  geoQueries: a.geo?.targetQueries || [],
+}));
+const collectionPageSchema = generateCollectionPageSchema(collectionArticles, undefined, 'en');
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} schema={collectionPageSchema}>
   <Header slot="header" locale="en" />
   <Banner title={pageTitle} locale="en" />
 

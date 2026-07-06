@@ -17,6 +17,7 @@ import { client } from '../../data/client';
 import { loadMessages, loadPageJson } from '../../lib/yanghua/loaders';
 import { route } from '../../lib/yanghua/routes';
 import { tRaw } from '../../lib/yanghua/t';
+import { generateFullOrganizationSchema } from '../../lib/schema-utils';
 
 const page = await loadPageJson<any>('es', 'home');
 const messages = await loadMessages('es');
@@ -81,14 +82,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
 <BaseLayout
   title={page?.hero?.title ?? brand.name}
   description={page?.hero?.description ?? brand.description}
-  schema={{
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: client.name,
-    url: client.domain,
-    email: client.email,
-    telephone: client.phoneForTel,
-  }}
+  schema={generateFullOrganizationSchema(brand.url)}
 >
   <Header slot="header" locale="es" />
 

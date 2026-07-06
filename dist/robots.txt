@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /geoflow/articles-map.json
+Disallow: /api/
+
+Sitemap: https://www.yhflexiblebusbar.com/sitemap.xml

@@ -11,6 +11,7 @@ import { brand } from '../config/brand';
 import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
+import { generateFullOrganizationSchema } from '../lib/schema-utils';
 
 interface Props {
   locale?: Locale;
@@ -39,6 +40,8 @@ const {
   image = site.seo.defaultOgImage || '/og-image.png',
   schema,
 } = Astro.props;
+
+const resolvedSchema = schema ?? generateFullOrganizationSchema(String(Astro.site ?? brand.url));
 
 const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
@@ -128,10 +131,8 @@ const trackingConfig = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- JSON-LD Structured Data -->
-    {schema && (
-      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
-    )}
+    <!-- JSON-LD Structured Data (auto-generated Organization schema when no page-level schema provided) -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(resolvedSchema)} />
 
     <!--
       设计 token 单源覆盖：

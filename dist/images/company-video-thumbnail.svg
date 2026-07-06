@@ -1,0 +1,52 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#1a1a1a"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#333" stroke-width="1" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)"/>
+  
+  <!-- Company building silhouette -->
+  <rect x="100" y="200" width="80" height="150" fill="#2d3748" opacity="0.8"/>
+  <rect x="200" y="180" width="100" height="170" fill="#2d3748" opacity="0.8"/>
+  <rect x="320" y="160" width="120" height="190" fill="#2d3748" opacity="0.8"/>
+  <rect x="460" y="190" width="90" height="160" fill="#2d3748" opacity="0.8"/>
+  <rect x="570" y="210" width="70" height="140" fill="#2d3748" opacity="0.8"/>
+  
+  <!-- Windows -->
+  <rect x="110" y="220" width="8" height="12" fill="#fdb827" opacity="0.6"/>
+  <rect x="125" y="220" width="8" height="12" fill="#fdb827" opacity="0.6"/>
+  <rect x="140" y="220" width="8" height="12" fill="#fdb827" opacity="0.6"/>
+  <rect x="155" y="220" width="8" height="12" fill="#fdb827" opacity="0.6"/>
+  
+  <rect x="220" y="200" width="10" height="15" fill="#fdb827" opacity="0.6"/>
+  <rect x="240" y="200" width="10" height="15" fill="#fdb827" opacity="0.6"/>
+  <rect x="260" y="200" width="10" height="15" fill="#fdb827" opacity="0.6"/>
+  <rect x="280" y="200" width="10" height="15" fill="#fdb827" opacity="0.6"/>
+  
+  <!-- Company name -->
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#fdb827" text-anchor="middle">
+    YANGHUA STI
+  </text>
+  <text x="400" y="130" font-family="Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" opacity="0.8">
+    Company Introduction Video
+  </text>
+  
+  <!-- Play button overlay -->
+  <circle cx="400" cy="225" r="40" fill="#fdb827" opacity="0.9"/>
+  <polygon points="385,210 385,240 415,225" fill="#1a1a1a"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="80" r="3" fill="#fdb827" opacity="0.5"/>
+  <circle cx="650" cy="120" r="2" fill="#fdb827" opacity="0.5"/>
+  <circle cx="700" cy="90" r="4" fill="#fdb827" opacity="0.5"/>
+  
+  <!-- Bottom text -->
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" opacity="0.6">
+    Click to watch our company story
+  </text>
+</svg>

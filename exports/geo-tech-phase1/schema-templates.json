@@ -1,0 +1,181 @@
+{
+  "@context": "https://schema.org",
+  "$comment": "==================================================",
+  "$comment": " 扬华科创 -- Schema 代码模板集合",
+  "$comment": " 可直接复制到 Astro 布局或 HTML <head> 中使用",
+  "$comment": " 每个模板标注了适用的页面类型",
+  "$comment": "==================================================",
+
+  "template_1_organization": {
+    "description": "增强版 Organization Schema -- 首页 / 全局页脚",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.yhflexiblebusbar.com/en#org",
+      "name": "Yanghua Cable",
+      "alternateName": "Yanghuasti",
+      "url": "https://www.yhflexiblebusbar.com",
+      "logo": "https://www.yhflexiblebusbar.com/logo.png",
+      "description": "Manufacturer of high-current flexible copper busbar systems (200-6300A) for data centers, energy storage, solar PV, EV charging, and industrial power distribution.",
+      "foundingDate": "[待补充]",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dongguan",
+        "addressRegion": "Guangdong",
+        "addressCountry": "CN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+86-769-3893-9888",
+        "email": "info@yhflexiblebusbar.com",
+        "contactType": "sales"
+      },
+      "sameAs": [
+        "[待补充 LinkedIn URL]"
+      ]
+    }
+  },
+
+  "template_2_collection_page": {
+    "description": "CollectionPage + ItemList Schema -- 产品列表页",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Flexible Copper Busbar Products",
+      "description": "High-current flexible copper busbar systems from Yanghua Cable. Current range 200-6300A, rated voltage up to 3kV, IP68 protection available.",
+      "url": "https://www.yhflexiblebusbar.com/en/products",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Product",
+              "@id": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2000a#product",
+              "name": "Flexible Busbar 2000A",
+              "category": "Flexible Busbar",
+              "manufacturer": { "@id": "https://www.yhflexiblebusbar.com/en#org" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Product",
+              "@id": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-1500a#product",
+              "name": "Flexible Busbar 1500A",
+              "category": "Flexible Busbar",
+              "manufacturer": { "@id": "https://www.yhflexiblebusbar.com/en#org" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Product",
+              "@id": "https://www.yhflexiblebusbar.com/en/products/flexible-busbar-2500a#product",
+              "name": "Flexible Busbar 2500A",
+              "category": "Flexible Busbar",
+              "manufacturer": { "@id": "https://www.yhflexiblebusbar.com/en#org" }
+            }
+          }
+        ]
+      }
+    }
+  },
+
+  "template_3_product": {
+    "description": "Product Schema -- 个体产品详情页",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": "#product",
+      "name": "[产品名称]",
+      "description": "[产品描述]",
+      "category": "[产品类目]",
+      "manufacturer": { "@id": "https://www.yhflexiblebusbar.com/en#org" },
+      "brand": { "@type": "Brand", "name": "Yanghua Cable" },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "businessFunction": "https://schema.org/LeaseOut"
+      }
+    }
+  },
+
+  "template_4_article": {
+    "description": "Article Schema -- 文章/GEO文章/案例详情页",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "#article",
+      "headline": "[文章标题]",
+      "description": "[文章摘要]",
+      "author": { "@type": "Organization", "name": "Yanghua Cable" },
+      "publisher": { "@id": "https://www.yhflexiblebusbar.com/en#org" },
+      "datePublished": "[YYYY-MM-DD]",
+      "dateModified": "[YYYY-MM-DD]",
+      "url": "[文章URL]",
+      "mainEntityOfPage": "[文章URL]",
+      "inLanguage": "en",
+      "about": [
+        { "@type": "Thing", "name": "[主题标签1]" },
+        { "@type": "Thing", "name": "[主题标签2]" }
+      ]
+    }
+  },
+
+  "template_5_faq_page": {
+    "description": "FAQPage Schema -- 产品页/文章页 FAQ 区",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "[问题1]",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[答案1]"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "[问题2]",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "[答案2]"
+          }
+        }
+      ]
+    }
+  },
+
+  "template_6_breadcrumb": {
+    "description": "BreadcrumbList Schema -- 所有有面包屑导航的页面",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.yhflexiblebusbar.com/en" },
+        { "@type": "ListItem", "position": 2, "name": "[一级页面]", "item": "[一级URL]" },
+        { "@type": "ListItem", "position": 3, "name": "[当前页面]" }
+      ]
+    }
+  },
+
+  "$rules": {
+    "禁止事项": [
+      "不要在 Schema 中写入页面正文没有出现的事实",
+      "不要编造评分/价格/库存/评价数据",
+      "不要使用未核验的认证、资质、客户名称",
+      "FAQPage 不作为 Google 富结果承诺",
+      "所有 @id 引用必须可解析到同一页面的其他 Schema 块"
+    ],
+    "校验工具": [
+      "https://validator.schema.org/",
+      "https://search.google.com/test/rich-results"
+    ]
+  }
+}
