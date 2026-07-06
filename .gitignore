@@ -121,3 +121,10 @@ news_converter.js
 product category page template.html
 STRAPI_PREVIEW_SETUP.md
 yanghua_b2b_website_prd.md
+
+# Build output & Playwright cache
+/dist/
+.playwright-cli/
+.astro/
+
+
