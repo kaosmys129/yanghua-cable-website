@@ -77,26 +77,6 @@
   },
   {
     "ok": true,
-    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "status": "imported",
-    "idempotencyKey": "manual-dist-7-1782957639",
-    "geoflowArticleId": "7",
-    "locale": "en",
-    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "incomingPath": "articles/_incoming/en/geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
-    "importedAt": "2026-07-02T02:01:29.412Z",
-    "targetQueries": [
-      "flexible busbar vs cable",
-      "busbar replacement for parallel cables",
-      "high current power distribution",
-      "high current flexible busbar",
-      "multi-parallel cables always have one heating up first this flexible busbar cures \"current inequality\"!"
-    ],
-    "reviewStatus": "needs_review"
-  },
-  {
-    "ok": true,
     "remoteId": "geoflow-supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
     "remoteUrl": "/en/articles/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
     "status": "imported",
@@ -223,20 +203,6 @@
     "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
     "incomingPath": "articles/_incoming/en/geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260.mdx",
     "importedAt": "2026-07-02T13:40:40.315Z",
-    "targetQueries": [],
-    "reviewStatus": "needs_review"
-  },
-  {
-    "ok": true,
-    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "status": "imported",
-    "idempotencyKey": "batch8-7-1782999640",
-    "geoflowArticleId": "7",
-    "locale": "en",
-    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "incomingPath": "articles/_incoming/en/geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
-    "importedAt": "2026-07-02T13:40:40.323Z",
     "targetQueries": [],
     "reviewStatus": "needs_review"
   },
@@ -655,31 +621,11 @@
     "locale": "en",
     "slug": "demo-datacenter-flexible-busbar-1783005886",
     "incomingPath": "articles/en/demo-datacenter-flexible-busbar-1783005886.mdx",
-    "importedAt": "2026-07-02T15:36:27.202Z",
+    "importedAt": "2026-07-06T13:57:05.316Z",
     "targetQueries": [
       "flexible busbar",
       "data center",
       "power distribution"
-    ],
-    "reviewStatus": "approved"
-  },
-  {
-    "ok": true,
-    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "status": "imported",
-    "idempotencyKey": "article-7-channel-1-publish-v1",
-    "geoflowArticleId": "7",
-    "locale": "en",
-    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
-    "incomingPath": "articles/en/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
-    "importedAt": "2026-07-03T03:31:55.288Z",
-    "targetQueries": [
-      "flexible busbar vs cable",
-      "busbar replacement for parallel cables",
-      "high current power distribution",
-      "high current flexible busbar",
-      "multi-parallel cables always have one heating up first this flexible busbar cures \"current inequality\"!"
     ],
     "reviewStatus": "approved"
   },
@@ -1148,6 +1094,2162 @@
       "busbar installation cost",
       "flexible busbar vs cable cost",
       "flexible busbar installation time"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "remoteUrl": "/en/articles/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "status": "imported",
+    "idempotencyKey": "article-3-channel-1-publish-v1",
+    "geoflowArticleId": "3",
+    "locale": "en",
+    "slug": "yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "incomingPath": "articles/en/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755.mdx",
+    "importedAt": "2026-07-06T13:57:04.735Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "high current multi-core cables requiring 4 or even 8 parallel connections 1600a flexible busbar vs 240mm² cable 4-parallel"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "remoteUrl": "/en/articles/high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "status": "imported",
+    "idempotencyKey": "article-4-channel-1-publish-v1",
+    "geoflowArticleId": "4",
+    "locale": "en",
+    "slug": "high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "incomingPath": "articles/en/high-current-flexible-busbar-manufacturer-yanghuasti-560371.mdx",
+    "importedAt": "2026-07-06T13:57:04.865Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "custom flexible busbar manufacturer"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "status": "imported",
+    "idempotencyKey": "article-5-channel-1-publish-v1",
+    "geoflowArticleId": "5",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962.mdx",
+    "importedAt": "2026-07-06T13:57:09.277Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "flexible busbar industry solutions energy storage with complete manual download instructions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "remoteUrl": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "status": "imported",
+    "idempotencyKey": "article-6-channel-1-publish-v1",
+    "geoflowArticleId": "6",
+    "locale": "en",
+    "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "incomingPath": "articles/en/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260.mdx",
+    "importedAt": "2026-07-06T13:57:05.034Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "chemical plant multi-core cable connections causing problems vs. flexible busbar easy solutions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "status": "imported",
+    "idempotencyKey": "article-7-channel-1-publish-v1",
+    "geoflowArticleId": "7",
+    "locale": "en",
+    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "incomingPath": "articles/en/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
+    "importedAt": "2026-07-06T13:57:05.095Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "multi-parallel cables always have one heating up first this flexible busbar cures \"current inequality\"!"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "remoteUrl": "/en/articles/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "status": "imported",
+    "idempotencyKey": "article-8-channel-1-publish-v1",
+    "geoflowArticleId": "8",
+    "locale": "en",
+    "slug": "supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "incomingPath": "articles/en/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899.mdx",
+    "importedAt": "2026-07-06T13:57:08.439Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "remoteUrl": "/en/articles/factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "status": "imported",
+    "idempotencyKey": "article-9-channel-1-publish-v1",
+    "geoflowArticleId": "9",
+    "locale": "en",
+    "slug": "factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "incomingPath": "articles/en/factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599.mdx",
+    "importedAt": "2026-07-06T13:57:06.952Z",
+    "targetQueries": [
+      "solar PV busbar",
+      "factory rooftop solar busbar",
+      "factory rooftop distributed solar projects flexible busbar handles it with ease"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "status": "imported",
+    "idempotencyKey": "article-10-channel-1-publish-v1",
+    "geoflowArticleId": "10",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369.mdx",
+    "importedAt": "2026-07-06T13:57:09.112Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "solar PV busbar",
+      "factory rooftop solar busbar",
+      "custom flexible busbar manufacturer",
+      "custom busbar system parameters",
+      "flexible busbar industry solutions solar pv with complete manual download instructions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307",
+    "status": "imported",
+    "idempotencyKey": "article-12-channel-1-publish-v1",
+    "geoflowArticleId": "12",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307.mdx",
+    "importedAt": "2026-07-06T13:57:07.017Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "EV charging busbar",
+      "charging pile flexible busbar",
+      "custom flexible busbar manufacturer",
+      "custom busbar system parameters",
+      "flexible busbar industry solutions charging stations with complete manual download instructions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "remoteUrl": "/en/articles/another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "status": "imported",
+    "idempotencyKey": "article-11-channel-1-publish-v1",
+    "geoflowArticleId": "11",
+    "locale": "en",
+    "slug": "another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "incomingPath": "articles/en/another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298.mdx",
+    "importedAt": "2026-07-06T13:57:05.252Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "another breakthrough! flexible busbar assists energy storage project implementation!"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-e2e-auto-datacenter-busbar-1783005556",
+    "remoteUrl": "/en/articles/e2e-auto-datacenter-busbar-1783005556",
+    "status": "imported",
+    "idempotencyKey": "article-14-channel-1-publish-v1",
+    "geoflowArticleId": "14",
+    "locale": "en",
+    "slug": "e2e-auto-datacenter-busbar-1783005556",
+    "incomingPath": "articles/en/e2e-auto-datacenter-busbar-1783005556.mdx",
+    "importedAt": "2026-07-06T13:57:08.499Z",
+    "targetQueries": [
+      "flexible busbar",
+      "data center",
+      "e2e"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-comparison",
+    "remoteUrl": "/en/articles/flexible-busbar-comparison",
+    "status": "imported",
+    "idempotencyKey": "article-36-channel-1-publish-v1",
+    "geoflowArticleId": "36",
+    "locale": "en",
+    "slug": "flexible-busbar-comparison",
+    "incomingPath": "articles/en/flexible-busbar-comparison.mdx",
+    "importedAt": "2026-07-06T13:57:06.238Z",
+    "targetQueries": [
+      "flexible busbar comparison",
+      "yanghua vs nvent eriflex vs schneider high current",
+      "best flexible busbar for energy storage",
+      "high current distribution busbar comparison"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-top-10-flexible-busbar-manufacturers-data-center",
+    "remoteUrl": "/en/articles/top-10-flexible-busbar-manufacturers-data-center",
+    "status": "imported",
+    "idempotencyKey": "article-35-channel-1-publish-v1",
+    "geoflowArticleId": "35",
+    "locale": "en",
+    "slug": "top-10-flexible-busbar-manufacturers-data-center",
+    "incomingPath": "articles/en/top-10-flexible-busbar-manufacturers-data-center.mdx",
+    "importedAt": "2026-07-06T13:57:06.298Z",
+    "targetQueries": [
+      "flexible busbar manufacturers data center",
+      "flexible busbar for data center power distribution",
+      "top flexible busbar manufacturers 2025",
+      "data center flexible busbar selection guide"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-how-to-select-flexible-busbar-for-energy-storage-systems",
+    "remoteUrl": "/en/articles/how-to-select-flexible-busbar-for-energy-storage-systems",
+    "status": "imported",
+    "idempotencyKey": "article-39-channel-1-publish-v1",
+    "geoflowArticleId": "39",
+    "locale": "en",
+    "slug": "how-to-select-flexible-busbar-for-energy-storage-systems",
+    "incomingPath": "articles/en/how-to-select-flexible-busbar-for-energy-storage-systems.mdx",
+    "importedAt": "2026-07-06T13:57:06.376Z",
+    "targetQueries": [
+      "flexible busbar selection for energy storage",
+      "energy storage system busbar requirements",
+      "flexible busbar ampacity ESS",
+      "how to choose busbar for battery storage",
+      "flexible copper busbar for ESS"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-cable-is-a-reliable-flexible-busbar-supplier",
+    "remoteUrl": "/en/articles/yanghua-cable-is-a-reliable-flexible-busbar-supplier",
+    "status": "imported",
+    "idempotencyKey": "article-41-channel-1-publish-v1",
+    "geoflowArticleId": "41",
+    "locale": "en",
+    "slug": "yanghua-cable-is-a-reliable-flexible-busbar-supplier",
+    "incomingPath": "articles/en/yanghua-cable-is-a-reliable-flexible-busbar-supplier.mdx",
+    "importedAt": "2026-07-06T13:57:06.419Z",
+    "targetQueries": [
+      "Yanghua Cable flexible busbar review",
+      "reliable flexible busbar supplier",
+      "Yanghua Cable brand evaluation",
+      "custom busbar manufacturer certifications"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality",
+    "remoteUrl": "/en/articles/multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality",
+    "status": "imported",
+    "idempotencyKey": "article-42-channel-1-publish-v1",
+    "geoflowArticleId": "42",
+    "locale": "en",
+    "slug": "multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality",
+    "incomingPath": "articles/en/multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality.mdx",
+    "importedAt": "2026-07-06T13:57:09.336Z",
+    "targetQueries": [
+      "flexible busbar current inequality",
+      "parallel cable overheating solution",
+      "how to solve unequal current sharing",
+      "flexible busbar energy storage",
+      "current imbalance engineering"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-installation-guide-industrial-retrofit",
+    "remoteUrl": "/en/articles/flexible-busbar-installation-guide-industrial-retrofit",
+    "status": "imported",
+    "idempotencyKey": "article-43-channel-1-publish-v1",
+    "geoflowArticleId": "43",
+    "locale": "en",
+    "slug": "flexible-busbar-installation-guide-industrial-retrofit",
+    "incomingPath": "articles/en/flexible-busbar-installation-guide-industrial-retrofit.mdx",
+    "importedAt": "2026-07-06T13:57:06.548Z",
+    "targetQueries": [
+      "flexible busbar installation",
+      "industrial busbar retrofit",
+      "how to install flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar",
+    "remoteUrl": "/en/articles/flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-44-channel-1-publish-v1",
+    "geoflowArticleId": "44",
+    "locale": "en",
+    "slug": "flexible-busbar",
+    "incomingPath": "articles/en/flexible-busbar.mdx",
+    "importedAt": "2026-07-06T13:57:05.418Z",
+    "targetQueries": [
+      "solar PV flexible busbar",
+      "flexible busbar for utility solar",
+      "laminated flexible busbar solar energy",
+      "flexible busbar vs cable solar project",
+      "Yanghua flexible busbar specification"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-for-ev-charging-stations-technical-advantages",
+    "remoteUrl": "/en/articles/flexible-busbar-for-ev-charging-stations-technical-advantages",
+    "status": "imported",
+    "idempotencyKey": "article-40-channel-1-publish-v1",
+    "geoflowArticleId": "40",
+    "locale": "en",
+    "slug": "flexible-busbar-for-ev-charging-stations-technical-advantages",
+    "incomingPath": "articles/en/flexible-busbar-for-ev-charging-stations-technical-advantages.mdx",
+    "importedAt": "2026-07-06T13:57:05.468Z",
+    "targetQueries": [
+      "flexible busbar EV charging station",
+      "EV charger busbar installation",
+      "flexible busbar vs rigid copper bar",
+      "busbar for DC fast charger"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-vs-multiple-parallel-cables",
+    "remoteUrl": "/en/articles/flexible-busbar-vs-multiple-parallel-cables",
+    "status": "imported",
+    "idempotencyKey": "article-47-channel-1-publish-v1",
+    "geoflowArticleId": "47",
+    "locale": "en",
+    "slug": "flexible-busbar-vs-multiple-parallel-cables",
+    "incomingPath": "articles/en/flexible-busbar-vs-multiple-parallel-cables.mdx",
+    "importedAt": "2026-07-06T13:57:08.549Z",
+    "targetQueries": [
+      "flexible busbar cost vs parallel cables",
+      "flexible busbar TCO comparison",
+      "busbar vs cable cost analysis"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-data-center-power-distribution-best-practices-2025",
+    "remoteUrl": "/en/articles/data-center-power-distribution-best-practices-2025",
+    "status": "imported",
+    "idempotencyKey": "article-45-channel-1-publish-v1",
+    "geoflowArticleId": "45",
+    "locale": "en",
+    "slug": "data-center-power-distribution-best-practices-2025",
+    "incomingPath": "articles/en/data-center-power-distribution-best-practices-2025.mdx",
+    "importedAt": "2026-07-06T13:57:06.615Z",
+    "targetQueries": [
+      "data center power distribution best practices 2025",
+      "busbar vs cable data center 2025",
+      "flexible busbar system data center",
+      "data center power system design",
+      "data center power distribution procurement"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-specifications",
+    "remoteUrl": "/en/articles/flexible-busbar-specifications",
+    "status": "imported",
+    "idempotencyKey": "article-46-channel-1-publish-v1",
+    "geoflowArticleId": "46",
+    "locale": "en",
+    "slug": "flexible-busbar-specifications",
+    "incomingPath": "articles/en/flexible-busbar-specifications.mdx",
+    "importedAt": "2026-07-06T13:57:07.104Z",
+    "targetQueries": [
+      "flexible busbar specifications",
+      "flexible busbar ampacity chart",
+      "flexible busbar IP rating guide",
+      "flexible busbar insulation voltage rating",
+      "flexible busbar vs cable selection guide"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide",
+    "remoteUrl": "/en/articles/energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide",
+    "status": "imported",
+    "idempotencyKey": "article-48-channel-1-publish-v1",
+    "geoflowArticleId": "48",
+    "locale": "en",
+    "slug": "energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide",
+    "incomingPath": "articles/en/energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide.mdx",
+    "importedAt": "2026-07-06T13:57:07.192Z",
+    "targetQueries": [
+      "energy storage DC busbar",
+      "flexible busbar BESS",
+      "DC side power distribution busbar",
+      "flexible busbar technical guide",
+      "battery storage busbar selection"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-standards-guide",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-standards-guide",
+    "status": "imported",
+    "idempotencyKey": "article-49-channel-1-publish-v1",
+    "geoflowArticleId": "49",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-standards-guide",
+    "incomingPath": "articles/en/flexible-busbar-industry-standards-guide.mdx",
+    "importedAt": "2026-07-06T13:57:09.436Z",
+    "targetQueries": [
+      "flexible busbar standards",
+      "flexible busbar certifications",
+      "UL 758 flexible busbar",
+      "flexible busbar industry guide",
+      "flexible busbar procurement specification"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation",
+    "remoteUrl": "/en/articles/yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation",
+    "status": "imported",
+    "idempotencyKey": "article-50-channel-1-publish-v1",
+    "geoflowArticleId": "50",
+    "locale": "en",
+    "slug": "yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation",
+    "incomingPath": "articles/en/yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation.mdx",
+    "importedAt": "2026-07-06T13:57:07.350Z",
+    "targetQueries": [
+      "APAC data center flexible busbar installation",
+      "Yanghua Cable data center case study",
+      "flexible busbar for hyperscale data center",
+      "data center power distribution flexible busbar",
+      "Yanghua busbar installation case study"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-copper-busbar-trends-2025",
+    "remoteUrl": "/en/articles/flexible-copper-busbar-trends-2025",
+    "status": "imported",
+    "idempotencyKey": "article-52-channel-1-publish-v1",
+    "geoflowArticleId": "52",
+    "locale": "en",
+    "slug": "flexible-copper-busbar-trends-2025",
+    "incomingPath": "articles/en/flexible-copper-busbar-trends-2025.mdx",
+    "importedAt": "2026-07-06T13:57:07.408Z",
+    "targetQueries": [
+      "flexible copper busbar trends 2025",
+      "smart busbar monitoring technology",
+      "busbar insulation materials comparison",
+      "energy storage busbar selection"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-why-replace-parallel-cables-with-flexible-busbar",
+    "remoteUrl": "/en/articles/why-replace-parallel-cables-with-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-51-channel-1-publish-v1",
+    "geoflowArticleId": "51",
+    "locale": "en",
+    "slug": "why-replace-parallel-cables-with-flexible-busbar",
+    "incomingPath": "articles/en/why-replace-parallel-cables-with-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T13:57:06.723Z",
+    "targetQueries": [
+      "factory power distribution busbar",
+      "flexible busbar vs parallel cables",
+      "busbar for industrial power distribution",
+      "replace parallel cables with busbar",
+      "flexible busbar installation space"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-bipv-power-distribution-flexible-busbar",
+    "remoteUrl": "/en/articles/bipv-power-distribution-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-53-channel-1-publish-v1",
+    "geoflowArticleId": "53",
+    "locale": "en",
+    "slug": "bipv-power-distribution-flexible-busbar",
+    "incomingPath": "articles/en/bipv-power-distribution-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T13:57:07.543Z",
+    "targetQueries": [
+      "BIPV flexible busbar application",
+      "flexible busbar for building integrated photovoltaics",
+      "BIPV power distribution solution",
+      "flexible busbar engineering criteria",
+      "BIPV busbar vs cable comparison"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-automated-factory-power-distribution-flexible-busbar-system-design-guide",
+    "remoteUrl": "/en/articles/automated-factory-power-distribution-flexible-busbar-system-design-guide",
+    "status": "imported",
+    "idempotencyKey": "article-54-channel-1-publish-v1",
+    "geoflowArticleId": "54",
+    "locale": "en",
+    "slug": "automated-factory-power-distribution-flexible-busbar-system-design-guide",
+    "incomingPath": "articles/en/automated-factory-power-distribution-flexible-busbar-system-design-guide.mdx",
+    "importedAt": "2026-07-06T13:57:08.612Z",
+    "targetQueries": [
+      "automated factory busbar",
+      "flexible busbar system design",
+      "factory power distribution busbar",
+      "busbar tap-off reconfiguration",
+      "automated production line power"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-safe-high-current-distribution-flexible-busbar",
+    "remoteUrl": "/en/articles/safe-high-current-distribution-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-55-channel-1-publish-v1",
+    "geoflowArticleId": "55",
+    "locale": "en",
+    "slug": "safe-high-current-distribution-flexible-busbar",
+    "incomingPath": "articles/en/safe-high-current-distribution-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T13:57:08.689Z",
+    "targetQueries": [
+      "flexible busbar fire protection",
+      "flexible busbar overload analysis",
+      "high current distribution busbar safety",
+      "flexible busbar vs cable fire safety",
+      "busbar thermal management energy storage"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications",
+    "remoteUrl": "/en/articles/comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications",
+    "status": "imported",
+    "idempotencyKey": "article-57-channel-1-publish-v1",
+    "geoflowArticleId": "57",
+    "locale": "en",
+    "slug": "comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications",
+    "incomingPath": "articles/en/comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications.mdx",
+    "importedAt": "2026-07-06T13:57:09.502Z",
+    "targetQueries": [
+      "busbar types comparison",
+      "flexible busbar vs rigid busbar",
+      "laminated busbar applications",
+      "busbar selection for renewable energy",
+      "busbar engineering criteria"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-installation-cost",
+    "remoteUrl": "/en/articles/flexible-busbar-installation-cost",
+    "status": "imported",
+    "idempotencyKey": "article-58-channel-1-publish-v1",
+    "geoflowArticleId": "58",
+    "locale": "en",
+    "slug": "flexible-busbar-installation-cost",
+    "incomingPath": "articles/en/flexible-busbar-installation-cost.mdx",
+    "importedAt": "2026-07-06T13:57:07.467Z",
+    "targetQueries": [
+      "busbar installation cost",
+      "flexible busbar vs cable cost",
+      "flexible busbar installation time"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures",
+    "remoteUrl": "/en/articles/flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures",
+    "status": "imported",
+    "idempotencyKey": "article-56-channel-1-publish-v1",
+    "geoflowArticleId": "56",
+    "locale": "en",
+    "slug": "flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures",
+    "incomingPath": "articles/en/flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures.mdx",
+    "importedAt": "2026-07-06T13:57:06.870Z",
+    "targetQueries": [
+      "flexible busbar maintenance",
+      "busbar inspection intervals",
+      "busbar testing procedures",
+      "how to maintain flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-for-mining-and-heavy-industry-power-distribution",
+    "remoteUrl": "/en/articles/flexible-busbar-for-mining-and-heavy-industry-power-distribution",
+    "status": "imported",
+    "idempotencyKey": "article-59-channel-1-publish-v1",
+    "geoflowArticleId": "59",
+    "locale": "en",
+    "slug": "flexible-busbar-for-mining-and-heavy-industry-power-distribution",
+    "incomingPath": "articles/en/flexible-busbar-for-mining-and-heavy-industry-power-distribution.mdx",
+    "importedAt": "2026-07-06T13:57:07.597Z",
+    "targetQueries": [
+      "mining busbar",
+      "flexible busbar mining",
+      "heavy industry power distribution",
+      "busbar mining application",
+      "flexible busbar vs cable mining"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-underground-power-distribution-ip68-flexible-busbar-advantages",
+    "remoteUrl": "/en/articles/underground-power-distribution-ip68-flexible-busbar-advantages",
+    "status": "imported",
+    "idempotencyKey": "article-60-channel-1-publish-v1",
+    "geoflowArticleId": "60",
+    "locale": "en",
+    "slug": "underground-power-distribution-ip68-flexible-busbar-advantages",
+    "incomingPath": "articles/en/underground-power-distribution-ip68-flexible-busbar-advantages.mdx",
+    "importedAt": "2026-07-06T13:57:07.656Z",
+    "targetQueries": [
+      "IP68 flexible busbar for underground power",
+      "waterproof busbar system tunnel",
+      "flexible busbar vs cable underground",
+      "IP68 busbar specification",
+      "underground power distribution flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions",
+    "remoteUrl": "/en/articles/retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions",
+    "status": "imported",
+    "idempotencyKey": "article-61-channel-1-publish-v1",
+    "geoflowArticleId": "61",
+    "locale": "en",
+    "slug": "retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions",
+    "incomingPath": "articles/en/retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions.mdx",
+    "importedAt": "2026-07-06T13:57:05.570Z",
+    "targetQueries": [
+      "flexible busbar retrofit",
+      "space saving electrical room busbar",
+      "retrofit old electrical panel busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-bend-radius-design-considerations-for-tight-spaces",
+    "remoteUrl": "/en/articles/flexible-busbar-bend-radius-design-considerations-for-tight-spaces",
+    "status": "imported",
+    "idempotencyKey": "article-62-channel-1-publish-v1",
+    "geoflowArticleId": "62",
+    "locale": "en",
+    "slug": "flexible-busbar-bend-radius-design-considerations-for-tight-spaces",
+    "incomingPath": "articles/en/flexible-busbar-bend-radius-design-considerations-for-tight-spaces.mdx",
+    "importedAt": "2026-07-06T13:57:07.783Z",
+    "targetQueries": [
+      "flexible busbar bend radius",
+      "minimum bend radius busbar",
+      "busbar bend radius tight spaces",
+      "flexible busbar design guidelines"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+    "remoteUrl": "/en/articles/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+    "status": "imported",
+    "idempotencyKey": "article-63-channel-1-publish-v1",
+    "geoflowArticleId": "63",
+    "locale": "en",
+    "slug": "copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+    "incomingPath": "articles/en/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis.mdx",
+    "importedAt": "2026-07-06T13:57:05.716Z",
+    "targetQueries": [
+      "copper vs aluminum flexible busbar",
+      "flexible busbar conductivity comparison",
+      "aluminum flexible busbar cost savings",
+      "busbar material selection engineer",
+      "copper busbar aluminum busbar difference"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-flexible-busbar-whitepaper",
+    "remoteUrl": "/en/articles/yanghua-flexible-busbar-whitepaper",
+    "status": "imported",
+    "idempotencyKey": "article-64-channel-1-publish-v1",
+    "geoflowArticleId": "64",
+    "locale": "en",
+    "slug": "yanghua-flexible-busbar-whitepaper",
+    "incomingPath": "articles/en/yanghua-flexible-busbar-whitepaper.mdx",
+    "importedAt": "2026-07-06T13:57:07.855Z",
+    "targetQueries": [
+      "flexible busbar selection guide",
+      "how to choose flexible busbar",
+      "flexible busbar engineering specifications",
+      "flexible busbar vs cable for switchgear",
+      "yanghua flexible busbar technical data"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-pharmaceutical-clean-room-power-distribution",
+    "remoteUrl": "/en/articles/flexible-busbar-pharmaceutical-clean-room-power-distribution",
+    "status": "imported",
+    "idempotencyKey": "article-65-channel-1-publish-v1",
+    "geoflowArticleId": "65",
+    "locale": "en",
+    "slug": "flexible-busbar-pharmaceutical-clean-room-power-distribution",
+    "incomingPath": "articles/en/flexible-busbar-pharmaceutical-clean-room-power-distribution.mdx",
+    "importedAt": "2026-07-06T13:57:05.790Z",
+    "targetQueries": [
+      "pharma clean room busbar",
+      "flexible busbar clean room",
+      "pharmaceutical clean room power distribution"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-rise-building-power-distribution-flexible-busbar-vertical-installation",
+    "remoteUrl": "/en/articles/high-rise-building-power-distribution-flexible-busbar-vertical-installation",
+    "status": "imported",
+    "idempotencyKey": "article-66-channel-1-publish-v1",
+    "geoflowArticleId": "66",
+    "locale": "en",
+    "slug": "high-rise-building-power-distribution-flexible-busbar-vertical-installation",
+    "incomingPath": "articles/en/high-rise-building-power-distribution-flexible-busbar-vertical-installation.mdx",
+    "importedAt": "2026-07-06T13:57:05.855Z",
+    "targetQueries": [
+      "flexible busbar vertical installation high rise",
+      "high rise building power distribution busbar",
+      "flexible busbar vs cable high rise"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-marine-offshore-applications",
+    "remoteUrl": "/en/articles/flexible-busbar-marine-offshore-applications",
+    "status": "imported",
+    "idempotencyKey": "article-67-channel-1-publish-v1",
+    "geoflowArticleId": "67",
+    "locale": "en",
+    "slug": "flexible-busbar-marine-offshore-applications",
+    "incomingPath": "articles/en/flexible-busbar-marine-offshore-applications.mdx",
+    "importedAt": "2026-07-06T13:57:08.747Z",
+    "targetQueries": [
+      "marine flexible busbar",
+      "offshore busbar supplier",
+      "shipboard flexible conductor",
+      "salt spray resistant busbar",
+      "marine electrical busbar vibration"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-data-center-pue-optimization-flexible-busbar",
+    "remoteUrl": "/en/articles/data-center-pue-optimization-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-70-channel-1-publish-v1",
+    "geoflowArticleId": "70",
+    "locale": "en",
+    "slug": "data-center-pue-optimization-flexible-busbar",
+    "incomingPath": "articles/en/data-center-pue-optimization-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T13:57:07.918Z",
+    "targetQueries": [
+      "data center PUE optimization",
+      "flexible busbar data center",
+      "PUE reduction busbar",
+      "energy efficient power distribution data center"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-rail-transit-busbar-solutions",
+    "remoteUrl": "/en/articles/rail-transit-busbar-solutions",
+    "status": "imported",
+    "idempotencyKey": "article-68-channel-1-publish-v1",
+    "geoflowArticleId": "68",
+    "locale": "en",
+    "slug": "rail-transit-busbar-solutions",
+    "incomingPath": "articles/en/rail-transit-busbar-solutions.mdx",
+    "importedAt": "2026-07-06T13:57:08.051Z",
+    "targetQueries": [
+      "rails transit busbar",
+      "IP68 flexible busbar rail",
+      "subway tunnel power distribution",
+      "railway busbar waterproof"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-vs-cable-tray-space-weight-comparison",
+    "remoteUrl": "/en/articles/flexible-busbar-vs-cable-tray-space-weight-comparison",
+    "status": "imported",
+    "idempotencyKey": "article-71-channel-1-publish-v1",
+    "geoflowArticleId": "71",
+    "locale": "en",
+    "slug": "flexible-busbar-vs-cable-tray-space-weight-comparison",
+    "incomingPath": "articles/en/flexible-busbar-vs-cable-tray-space-weight-comparison.mdx",
+    "importedAt": "2026-07-06T13:57:09.557Z",
+    "targetQueries": [
+      "flexible busbar vs cable tray space comparison",
+      "cable tray weight vs busbar weight",
+      "space savings flexible busbar",
+      "flexible busbar weight reduction energy storage"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-emergency-power-systems-flexible-busbar-for-backup-generator-connections",
+    "remoteUrl": "/en/articles/emergency-power-systems-flexible-busbar-for-backup-generator-connections",
+    "status": "imported",
+    "idempotencyKey": "article-72-channel-1-publish-v1",
+    "geoflowArticleId": "72",
+    "locale": "en",
+    "slug": "emergency-power-systems-flexible-busbar-for-backup-generator-connections",
+    "incomingPath": "articles/en/emergency-power-systems-flexible-busbar-for-backup-generator-connections.mdx",
+    "importedAt": "2026-07-06T13:57:08.799Z",
+    "targetQueries": [
+      "emergency power busbar",
+      "generator connection busbar",
+      "flexible busbar for backup generators",
+      "busbar vs cable generator",
+      "emergency power system busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring",
+    "remoteUrl": "/en/articles/smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring",
+    "status": "imported",
+    "idempotencyKey": "article-73-channel-1-publish-v1",
+    "geoflowArticleId": "73",
+    "locale": "en",
+    "slug": "smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring",
+    "incomingPath": "articles/en/smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring.mdx",
+    "importedAt": "2026-07-06T13:57:09.648Z",
+    "targetQueries": [
+      "flexible busbar IoT monitoring smart factory",
+      "Industry 4.0 power distribution flexible busbar",
+      "flexible busbar with temperature sensor predictive maintenance",
+      "smart factory busbar selection criteria",
+      "flexible vs rigid busbar comparison for automation"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-renewable-energy-integration-flexible-busbar-for-hybrid-power-systems",
+    "remoteUrl": "/en/articles/renewable-energy-integration-flexible-busbar-for-hybrid-power-systems",
+    "status": "imported",
+    "idempotencyKey": "article-74-channel-1-publish-v1",
+    "geoflowArticleId": "74",
+    "locale": "en",
+    "slug": "renewable-energy-integration-flexible-busbar-for-hybrid-power-systems",
+    "incomingPath": "articles/en/renewable-energy-integration-flexible-busbar-for-hybrid-power-systems.mdx",
+    "importedAt": "2026-07-06T13:57:08.898Z",
+    "targetQueries": [
+      "renewable energy busbar",
+      "flexible busbar for hybrid power systems",
+      "busbar renewable energy integration"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-sustainable-power-distribution-eco-friendly-flexible-busbar-materials",
+    "remoteUrl": "/en/articles/sustainable-power-distribution-eco-friendly-flexible-busbar-materials",
+    "status": "imported",
+    "idempotencyKey": "article-69-channel-1-publish-v1",
+    "geoflowArticleId": "69",
+    "locale": "en",
+    "slug": "sustainable-power-distribution-eco-friendly-flexible-busbar-materials",
+    "incomingPath": "articles/en/sustainable-power-distribution-eco-friendly-flexible-busbar-materials.mdx",
+    "importedAt": "2026-07-06T13:57:09.019Z",
+    "targetQueries": [
+      "sustainable busbar",
+      "eco-friendly busbar materials",
+      "flexible busbar for ESS"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "remoteUrl": "/en/articles/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "status": "imported",
+    "idempotencyKey": "article-75-channel-1-publish-v1",
+    "geoflowArticleId": "75",
+    "locale": "en",
+    "slug": "yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "incomingPath": "articles/en/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755.mdx",
+    "importedAt": "2026-07-06T13:57:08.158Z",
+    "targetQueries": [
+      "flexible busbar 1600A vs 4 parallel 240mm² cable",
+      "high current cable parallel connection problems",
+      "busbar vs parallel cables for data center",
+      "1600A power distribution busbar",
+      "240mm² cable 4 parallel ampacity derating"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "status": "imported",
+    "idempotencyKey": "article-77-channel-1-publish-v1",
+    "geoflowArticleId": "77",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962.mdx",
+    "importedAt": "2026-07-06T13:57:09.757Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "flexible busbar for battery storage"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "remoteUrl": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "status": "imported",
+    "idempotencyKey": "article-78-channel-1-publish-v1",
+    "geoflowArticleId": "78",
+    "locale": "en",
+    "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "incomingPath": "articles/en/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260.mdx",
+    "importedAt": "2026-07-06T13:57:08.284Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement in chemical plants",
+      "multi-core cable problems chemical plant",
+      "flexible busbar benefits chemical industry"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "remoteUrl": "/en/articles/high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "status": "imported",
+    "idempotencyKey": "article-76-channel-1-publish-v1",
+    "geoflowArticleId": "76",
+    "locale": "en",
+    "slug": "high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "incomingPath": "articles/en/high-current-flexible-busbar-manufacturer-yanghuasti-560371.mdx",
+    "importedAt": "2026-07-06T13:57:08.401Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "custom flexible busbar manufacturer"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-guide",
+    "remoteUrl": "/en/articles/flexible-busbar-guide",
+    "status": "imported",
+    "idempotencyKey": "article-37-channel-1-publish-v1",
+    "geoflowArticleId": "37",
+    "locale": "en",
+    "slug": "flexible-busbar-guide",
+    "incomingPath": "articles/en/flexible-busbar-guide.mdx",
+    "importedAt": "2026-07-06T13:57:05.997Z",
+    "targetQueries": [
+      "what is flexible busbar",
+      "flexible busbar vs cable",
+      "flexible busbar applications",
+      "high current flexible connector"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+    "remoteUrl": "/en/articles/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+    "status": "imported",
+    "idempotencyKey": "article-38-channel-1-publish-v1",
+    "geoflowArticleId": "38",
+    "locale": "en",
+    "slug": "flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+    "incomingPath": "articles/en/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants.mdx",
+    "importedAt": "2026-07-06T13:57:06.147Z",
+    "targetQueries": [
+      "flexible busbar vs busduct",
+      "flexible busbar advantages",
+      "busduct vs flexible busbar industrial",
+      "choose busbar busduct",
+      "industrial power distribution comparison"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-rail-transit-busbar-solutions",
+    "remoteUrl": "/en/articles/rail-transit-busbar-solutions",
+    "status": "imported",
+    "idempotencyKey": "article-68-channel-1-update-v1",
+    "geoflowArticleId": "68",
+    "locale": "en",
+    "slug": "rail-transit-busbar-solutions",
+    "incomingPath": "articles/en/rail-transit-busbar-solutions.mdx",
+    "importedAt": "2026-07-06T14:16:12.281Z",
+    "targetQueries": [
+      "rails transit busbar",
+      "IP68 flexible busbar rail",
+      "subway tunnel power distribution",
+      "railway busbar waterproof"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-marine-offshore-applications",
+    "remoteUrl": "/en/articles/flexible-busbar-marine-offshore-applications",
+    "status": "imported",
+    "idempotencyKey": "article-67-channel-1-update-v1",
+    "geoflowArticleId": "67",
+    "locale": "en",
+    "slug": "flexible-busbar-marine-offshore-applications",
+    "incomingPath": "articles/en/flexible-busbar-marine-offshore-applications.mdx",
+    "importedAt": "2026-07-06T14:16:42.544Z",
+    "targetQueries": [
+      "marine flexible busbar",
+      "offshore busbar supplier",
+      "shipboard flexible conductor",
+      "salt spray resistant busbar",
+      "marine electrical busbar vibration"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-safe-high-current-distribution-flexible-busbar",
+    "remoteUrl": "/en/articles/safe-high-current-distribution-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-55-channel-1-update-v1",
+    "geoflowArticleId": "55",
+    "locale": "en",
+    "slug": "safe-high-current-distribution-flexible-busbar",
+    "incomingPath": "articles/en/safe-high-current-distribution-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T14:16:57.526Z",
+    "targetQueries": [
+      "flexible busbar fire protection",
+      "flexible busbar overload analysis",
+      "high current distribution busbar safety",
+      "flexible busbar vs cable fire safety",
+      "busbar thermal management energy storage"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "remoteUrl": "/en/articles/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "status": "imported",
+    "idempotencyKey": "article-3-channel-1-update-v1",
+    "geoflowArticleId": "3",
+    "locale": "en",
+    "slug": "yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "incomingPath": "articles/en/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755.mdx",
+    "importedAt": "2026-07-06T14:17:12.773Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "high current multi-core cables requiring 4 or even 8 parallel connections 1600a flexible busbar vs 240mm² cable 4-parallel"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "remoteUrl": "/en/articles/high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "status": "imported",
+    "idempotencyKey": "article-4-channel-1-update-v1",
+    "geoflowArticleId": "4",
+    "locale": "en",
+    "slug": "high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "incomingPath": "articles/en/high-current-flexible-busbar-manufacturer-yanghuasti-560371.mdx",
+    "importedAt": "2026-07-06T14:17:26.353Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "custom flexible busbar manufacturer"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "remoteUrl": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "status": "imported",
+    "idempotencyKey": "article-6-channel-1-update-v1",
+    "geoflowArticleId": "6",
+    "locale": "en",
+    "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "incomingPath": "articles/en/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260.mdx",
+    "importedAt": "2026-07-06T14:17:42.575Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "chemical plant multi-core cable connections causing problems vs. flexible busbar easy solutions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "remoteUrl": "/en/articles/factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "status": "imported",
+    "idempotencyKey": "article-9-channel-1-update-v1",
+    "geoflowArticleId": "9",
+    "locale": "en",
+    "slug": "factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+    "incomingPath": "articles/en/factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599.mdx",
+    "importedAt": "2026-07-06T14:17:56.074Z",
+    "targetQueries": [
+      "solar PV busbar",
+      "factory rooftop solar busbar",
+      "factory rooftop distributed solar projects flexible busbar handles it with ease"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "status": "imported",
+    "idempotencyKey": "article-7-channel-1-update-v1",
+    "geoflowArticleId": "7",
+    "locale": "en",
+    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "incomingPath": "articles/en/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
+    "importedAt": "2026-07-06T14:18:08.515Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement for parallel cables",
+      "high current power distribution",
+      "high current flexible busbar",
+      "multi-parallel cables always have one heating up first this flexible busbar cures \"current inequality\"!"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307",
+    "status": "imported",
+    "idempotencyKey": "article-12-channel-1-update-v1",
+    "geoflowArticleId": "12",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-527307.mdx",
+    "importedAt": "2026-07-06T14:18:22.563Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "EV charging busbar",
+      "charging pile flexible busbar",
+      "custom flexible busbar manufacturer",
+      "custom busbar system parameters",
+      "flexible busbar industry solutions charging stations with complete manual download instructions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "status": "imported",
+    "idempotencyKey": "article-5-channel-1-update-v1",
+    "geoflowArticleId": "5",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962.mdx",
+    "importedAt": "2026-07-06T14:18:36.739Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "flexible busbar industry solutions energy storage with complete manual download instructions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "remoteUrl": "/en/articles/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "status": "imported",
+    "idempotencyKey": "article-8-channel-1-update-v1",
+    "geoflowArticleId": "8",
+    "locale": "en",
+    "slug": "supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+    "incomingPath": "articles/en/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899.mdx",
+    "importedAt": "2026-07-06T14:18:51.807Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-bipv-power-distribution-flexible-busbar",
+    "remoteUrl": "/en/articles/bipv-power-distribution-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-53-channel-1-update-v1",
+    "geoflowArticleId": "53",
+    "locale": "en",
+    "slug": "bipv-power-distribution-flexible-busbar",
+    "incomingPath": "articles/en/bipv-power-distribution-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T14:19:05.403Z",
+    "targetQueries": [
+      "BIPV flexible busbar application",
+      "flexible busbar for building integrated photovoltaics",
+      "BIPV power distribution solution",
+      "flexible busbar engineering criteria",
+      "BIPV busbar vs cable comparison"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-automated-factory-power-distribution-flexible-busbar-system-design-guide",
+    "remoteUrl": "/en/articles/automated-factory-power-distribution-flexible-busbar-system-design-guide",
+    "status": "imported",
+    "idempotencyKey": "article-54-channel-1-update-v1",
+    "geoflowArticleId": "54",
+    "locale": "en",
+    "slug": "automated-factory-power-distribution-flexible-busbar-system-design-guide",
+    "incomingPath": "articles/en/automated-factory-power-distribution-flexible-busbar-system-design-guide.mdx",
+    "importedAt": "2026-07-06T14:19:19.489Z",
+    "targetQueries": [
+      "automated factory busbar",
+      "flexible busbar system design",
+      "factory power distribution busbar",
+      "busbar tap-off reconfiguration",
+      "automated production line power"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-why-replace-parallel-cables-with-flexible-busbar",
+    "remoteUrl": "/en/articles/why-replace-parallel-cables-with-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-51-channel-1-update-v1",
+    "geoflowArticleId": "51",
+    "locale": "en",
+    "slug": "why-replace-parallel-cables-with-flexible-busbar",
+    "incomingPath": "articles/en/why-replace-parallel-cables-with-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T14:19:32.568Z",
+    "targetQueries": [
+      "factory power distribution busbar",
+      "flexible busbar vs parallel cables",
+      "busbar for industrial power distribution",
+      "replace parallel cables with busbar",
+      "flexible busbar installation space"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-copper-busbar-trends-2025",
+    "remoteUrl": "/en/articles/flexible-copper-busbar-trends-2025",
+    "status": "imported",
+    "idempotencyKey": "article-52-channel-1-update-v1",
+    "geoflowArticleId": "52",
+    "locale": "en",
+    "slug": "flexible-copper-busbar-trends-2025",
+    "incomingPath": "articles/en/flexible-copper-busbar-trends-2025.mdx",
+    "importedAt": "2026-07-06T14:19:48.962Z",
+    "targetQueries": [
+      "flexible copper busbar trends 2025",
+      "smart busbar monitoring technology",
+      "busbar insulation materials comparison",
+      "energy storage busbar selection"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "status": "imported",
+    "idempotencyKey": "article-10-channel-1-update-v1",
+    "geoflowArticleId": "10",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369.mdx",
+    "importedAt": "2026-07-06T14:20:02.049Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "solar PV busbar",
+      "factory rooftop solar busbar",
+      "custom flexible busbar manufacturer",
+      "custom busbar system parameters",
+      "flexible busbar industry solutions solar pv with complete manual download instructions"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation",
+    "remoteUrl": "/en/articles/yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation",
+    "status": "imported",
+    "idempotencyKey": "article-50-channel-1-update-v1",
+    "geoflowArticleId": "50",
+    "locale": "en",
+    "slug": "yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation",
+    "incomingPath": "articles/en/yanghua-cable-customer-case-apac-data-center-flexible-busbar-installation.mdx",
+    "importedAt": "2026-07-06T14:20:14.884Z",
+    "targetQueries": [
+      "APAC data center flexible busbar installation",
+      "Yanghua Cable data center case study",
+      "flexible busbar for hyperscale data center",
+      "data center power distribution flexible busbar",
+      "Yanghua busbar installation case study"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-underground-power-distribution-ip68-flexible-busbar-advantages",
+    "remoteUrl": "/en/articles/underground-power-distribution-ip68-flexible-busbar-advantages",
+    "status": "imported",
+    "idempotencyKey": "article-60-channel-1-update-v1",
+    "geoflowArticleId": "60",
+    "locale": "en",
+    "slug": "underground-power-distribution-ip68-flexible-busbar-advantages",
+    "incomingPath": "articles/en/underground-power-distribution-ip68-flexible-busbar-advantages.mdx",
+    "importedAt": "2026-07-06T14:20:26.694Z",
+    "targetQueries": [
+      "IP68 flexible busbar for underground power",
+      "waterproof busbar system tunnel",
+      "flexible busbar vs cable underground",
+      "IP68 busbar specification",
+      "underground power distribution flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "remoteUrl": "/en/articles/another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "status": "imported",
+    "idempotencyKey": "article-11-channel-1-update-v1",
+    "geoflowArticleId": "11",
+    "locale": "en",
+    "slug": "another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+    "incomingPath": "articles/en/another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298.mdx",
+    "importedAt": "2026-07-06T14:20:41.640Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "another breakthrough! flexible busbar assists energy storage project implementation!"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-standards-guide",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-standards-guide",
+    "status": "imported",
+    "idempotencyKey": "article-49-channel-1-update-v1",
+    "geoflowArticleId": "49",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-standards-guide",
+    "incomingPath": "articles/en/flexible-busbar-industry-standards-guide.mdx",
+    "importedAt": "2026-07-06T14:20:56.365Z",
+    "targetQueries": [
+      "flexible busbar standards",
+      "flexible busbar certifications",
+      "UL 758 flexible busbar",
+      "flexible busbar industry guide",
+      "flexible busbar procurement specification"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures",
+    "remoteUrl": "/en/articles/flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures",
+    "status": "imported",
+    "idempotencyKey": "article-56-channel-1-update-v1",
+    "geoflowArticleId": "56",
+    "locale": "en",
+    "slug": "flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures",
+    "incomingPath": "articles/en/flexible-busbar-maintenance-guide-inspection-intervals-and-testing-procedures.mdx",
+    "importedAt": "2026-07-06T14:21:09.425Z",
+    "targetQueries": [
+      "flexible busbar maintenance",
+      "busbar inspection intervals",
+      "busbar testing procedures",
+      "how to maintain flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar",
+    "remoteUrl": "/en/articles/flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-44-channel-1-update-v1",
+    "geoflowArticleId": "44",
+    "locale": "en",
+    "slug": "flexible-busbar",
+    "incomingPath": "articles/en/flexible-busbar.mdx",
+    "importedAt": "2026-07-06T14:21:22.097Z",
+    "targetQueries": [
+      "solar PV flexible busbar",
+      "flexible busbar for utility solar",
+      "laminated flexible busbar solar energy",
+      "flexible busbar vs cable solar project",
+      "Yanghua flexible busbar specification"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-guide",
+    "remoteUrl": "/en/articles/flexible-busbar-guide",
+    "status": "imported",
+    "idempotencyKey": "article-37-channel-1-update-v1",
+    "geoflowArticleId": "37",
+    "locale": "en",
+    "slug": "flexible-busbar-guide",
+    "incomingPath": "articles/en/flexible-busbar-guide.mdx",
+    "importedAt": "2026-07-06T14:21:33.913Z",
+    "targetQueries": [
+      "what is flexible busbar",
+      "flexible busbar vs cable",
+      "flexible busbar applications",
+      "high current flexible connector"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-top-10-flexible-busbar-manufacturers-data-center",
+    "remoteUrl": "/en/articles/top-10-flexible-busbar-manufacturers-data-center",
+    "status": "imported",
+    "idempotencyKey": "article-35-channel-1-update-v1",
+    "geoflowArticleId": "35",
+    "locale": "en",
+    "slug": "top-10-flexible-busbar-manufacturers-data-center",
+    "incomingPath": "articles/en/top-10-flexible-busbar-manufacturers-data-center.mdx",
+    "importedAt": "2026-07-06T14:21:47.148Z",
+    "targetQueries": [
+      "flexible busbar manufacturers data center",
+      "flexible busbar for data center power distribution",
+      "top flexible busbar manufacturers 2025",
+      "data center flexible busbar selection guide"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-data-center-power-distribution-best-practices-2025",
+    "remoteUrl": "/en/articles/data-center-power-distribution-best-practices-2025",
+    "status": "imported",
+    "idempotencyKey": "article-45-channel-1-update-v1",
+    "geoflowArticleId": "45",
+    "locale": "en",
+    "slug": "data-center-power-distribution-best-practices-2025",
+    "incomingPath": "articles/en/data-center-power-distribution-best-practices-2025.mdx",
+    "importedAt": "2026-07-06T14:22:08.735Z",
+    "targetQueries": [
+      "data center power distribution best practices 2025",
+      "busbar vs cable data center 2025",
+      "flexible busbar system data center",
+      "data center power system design",
+      "data center power distribution procurement"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-comparison",
+    "remoteUrl": "/en/articles/flexible-busbar-comparison",
+    "status": "imported",
+    "idempotencyKey": "article-36-channel-1-update-v1",
+    "geoflowArticleId": "36",
+    "locale": "en",
+    "slug": "flexible-busbar-comparison",
+    "incomingPath": "articles/en/flexible-busbar-comparison.mdx",
+    "importedAt": "2026-07-06T14:22:34.243Z",
+    "targetQueries": [
+      "flexible busbar comparison",
+      "yanghua vs nvent eriflex vs schneider high current",
+      "best flexible busbar for energy storage",
+      "high current distribution busbar comparison"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality",
+    "remoteUrl": "/en/articles/multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality",
+    "status": "imported",
+    "idempotencyKey": "article-42-channel-1-update-v1",
+    "geoflowArticleId": "42",
+    "locale": "en",
+    "slug": "multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality",
+    "incomingPath": "articles/en/multi-parallel-cable-overheating-how-flexible-busbar-solves-current-inequality.mdx",
+    "importedAt": "2026-07-06T14:22:51.513Z",
+    "targetQueries": [
+      "flexible busbar current inequality",
+      "parallel cable overheating solution",
+      "how to solve unequal current sharing",
+      "flexible busbar energy storage",
+      "current imbalance engineering"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-cable-is-a-reliable-flexible-busbar-supplier",
+    "remoteUrl": "/en/articles/yanghua-cable-is-a-reliable-flexible-busbar-supplier",
+    "status": "imported",
+    "idempotencyKey": "article-41-channel-1-update-v1",
+    "geoflowArticleId": "41",
+    "locale": "en",
+    "slug": "yanghua-cable-is-a-reliable-flexible-busbar-supplier",
+    "incomingPath": "articles/en/yanghua-cable-is-a-reliable-flexible-busbar-supplier.mdx",
+    "importedAt": "2026-07-06T14:23:05.650Z",
+    "targetQueries": [
+      "Yanghua Cable flexible busbar review",
+      "reliable flexible busbar supplier",
+      "Yanghua Cable brand evaluation",
+      "custom busbar manufacturer certifications"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-specifications",
+    "remoteUrl": "/en/articles/flexible-busbar-specifications",
+    "status": "imported",
+    "idempotencyKey": "article-46-channel-1-update-v1",
+    "geoflowArticleId": "46",
+    "locale": "en",
+    "slug": "flexible-busbar-specifications",
+    "incomingPath": "articles/en/flexible-busbar-specifications.mdx",
+    "importedAt": "2026-07-06T14:23:18.543Z",
+    "targetQueries": [
+      "flexible busbar specifications",
+      "flexible busbar ampacity chart",
+      "flexible busbar IP rating guide",
+      "flexible busbar insulation voltage rating",
+      "flexible busbar vs cable selection guide"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-installation-guide-industrial-retrofit",
+    "remoteUrl": "/en/articles/flexible-busbar-installation-guide-industrial-retrofit",
+    "status": "imported",
+    "idempotencyKey": "article-43-channel-1-update-v1",
+    "geoflowArticleId": "43",
+    "locale": "en",
+    "slug": "flexible-busbar-installation-guide-industrial-retrofit",
+    "incomingPath": "articles/en/flexible-busbar-installation-guide-industrial-retrofit.mdx",
+    "importedAt": "2026-07-06T14:23:31.446Z",
+    "targetQueries": [
+      "flexible busbar installation",
+      "industrial busbar retrofit",
+      "how to install flexible busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications",
+    "remoteUrl": "/en/articles/comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications",
+    "status": "imported",
+    "idempotencyKey": "article-57-channel-1-update-v1",
+    "geoflowArticleId": "57",
+    "locale": "en",
+    "slug": "comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications",
+    "incomingPath": "articles/en/comparing-busbar-types-flexible-vs-laminated-vs-rigid-for-different-applications.mdx",
+    "importedAt": "2026-07-06T14:23:46.053Z",
+    "targetQueries": [
+      "busbar types comparison",
+      "flexible busbar vs rigid busbar",
+      "laminated busbar applications",
+      "busbar selection for renewable energy",
+      "busbar engineering criteria"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-e2e-auto-datacenter-busbar-1783005556",
+    "remoteUrl": "/en/articles/e2e-auto-datacenter-busbar-1783005556",
+    "status": "imported",
+    "idempotencyKey": "article-14-channel-1-update-v1",
+    "geoflowArticleId": "14",
+    "locale": "en",
+    "slug": "e2e-auto-datacenter-busbar-1783005556",
+    "incomingPath": "articles/en/e2e-auto-datacenter-busbar-1783005556.mdx",
+    "importedAt": "2026-07-06T14:24:07.860Z",
+    "targetQueries": [
+      "flexible busbar",
+      "data center",
+      "e2e"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-demo-datacenter-flexible-busbar-1783005886",
+    "remoteUrl": "/en/articles/demo-datacenter-flexible-busbar-1783005886",
+    "status": "imported",
+    "idempotencyKey": "article-15-channel-1-update-v1",
+    "geoflowArticleId": "15",
+    "locale": "en",
+    "slug": "demo-datacenter-flexible-busbar-1783005886",
+    "incomingPath": "articles/en/demo-datacenter-flexible-busbar-1783005886.mdx",
+    "importedAt": "2026-07-06T14:24:27.592Z",
+    "targetQueries": [
+      "flexible busbar",
+      "data center",
+      "power distribution"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide",
+    "remoteUrl": "/en/articles/energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide",
+    "status": "imported",
+    "idempotencyKey": "article-48-channel-1-update-v1",
+    "geoflowArticleId": "48",
+    "locale": "en",
+    "slug": "energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide",
+    "incomingPath": "articles/en/energy-storage-dc-side-power-distribution-flexible-busbar-technical-guide.mdx",
+    "importedAt": "2026-07-06T14:24:40.810Z",
+    "targetQueries": [
+      "energy storage DC busbar",
+      "flexible busbar BESS",
+      "DC side power distribution busbar",
+      "flexible busbar technical guide",
+      "battery storage busbar selection"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-vs-multiple-parallel-cables",
+    "remoteUrl": "/en/articles/flexible-busbar-vs-multiple-parallel-cables",
+    "status": "imported",
+    "idempotencyKey": "article-47-channel-1-update-v1",
+    "geoflowArticleId": "47",
+    "locale": "en",
+    "slug": "flexible-busbar-vs-multiple-parallel-cables",
+    "incomingPath": "articles/en/flexible-busbar-vs-multiple-parallel-cables.mdx",
+    "importedAt": "2026-07-06T14:24:54.382Z",
+    "targetQueries": [
+      "flexible busbar cost vs parallel cables",
+      "flexible busbar TCO comparison",
+      "busbar vs cable cost analysis"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions",
+    "remoteUrl": "/en/articles/retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions",
+    "status": "imported",
+    "idempotencyKey": "article-61-channel-1-update-v1",
+    "geoflowArticleId": "61",
+    "locale": "en",
+    "slug": "retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions",
+    "incomingPath": "articles/en/retrofitting-old-electrical-rooms-with-flexible-busbar-space-saving-solutions.mdx",
+    "importedAt": "2026-07-06T14:25:08.374Z",
+    "targetQueries": [
+      "flexible busbar retrofit",
+      "space saving electrical room busbar",
+      "retrofit old electrical panel busbar"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-flexible-busbar-whitepaper",
+    "remoteUrl": "/en/articles/yanghua-flexible-busbar-whitepaper",
+    "status": "imported",
+    "idempotencyKey": "article-64-channel-1-update-v1",
+    "geoflowArticleId": "64",
+    "locale": "en",
+    "slug": "yanghua-flexible-busbar-whitepaper",
+    "incomingPath": "articles/en/yanghua-flexible-busbar-whitepaper.mdx",
+    "importedAt": "2026-07-06T14:25:25.254Z",
+    "targetQueries": [
+      "flexible busbar selection guide",
+      "how to choose flexible busbar",
+      "flexible busbar engineering specifications",
+      "flexible busbar vs cable for switchgear",
+      "yanghua flexible busbar technical data"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "status": "imported",
+    "idempotencyKey": "article-79-channel-1-update-v1",
+    "geoflowArticleId": "79",
+    "locale": "en",
+    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "incomingPath": "articles/en/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
+    "importedAt": "2026-07-06T14:25:39.275Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "multi-parallel cable overheating solution",
+      "current inequality busbar",
+      "energy storage busbar current sharing"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "remoteUrl": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "status": "imported",
+    "idempotencyKey": "article-79-channel-1-publish-v1",
+    "geoflowArticleId": "79",
+    "locale": "en",
+    "slug": "yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+    "incomingPath": "articles/en/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135.mdx",
+    "importedAt": "2026-07-06T14:25:40.295Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "multi-parallel cable overheating solution",
+      "current inequality busbar",
+      "energy storage busbar current sharing"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "remoteUrl": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "status": "imported",
+    "idempotencyKey": "article-78-channel-1-update-v1",
+    "geoflowArticleId": "78",
+    "locale": "en",
+    "slug": "yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+    "incomingPath": "articles/en/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260.mdx",
+    "importedAt": "2026-07-06T14:25:51.040Z",
+    "targetQueries": [
+      "flexible busbar vs cable",
+      "busbar replacement in chemical plants",
+      "multi-core cable problems chemical plant",
+      "flexible busbar benefits chemical industry"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "remoteUrl": "/en/articles/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "status": "imported",
+    "idempotencyKey": "article-77-channel-1-update-v1",
+    "geoflowArticleId": "77",
+    "locale": "en",
+    "slug": "flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962",
+    "incomingPath": "articles/en/flexible-busbar-industry-solutions-energy-storage-with-complete-manual-download-instructions-566962.mdx",
+    "importedAt": "2026-07-06T14:26:03.135Z",
+    "targetQueries": [
+      "energy storage busbar",
+      "BESS flexible busbar",
+      "flexible busbar for battery storage"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+    "remoteUrl": "/en/articles/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+    "status": "imported",
+    "idempotencyKey": "article-63-channel-1-update-v1",
+    "geoflowArticleId": "63",
+    "locale": "en",
+    "slug": "copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+    "incomingPath": "articles/en/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis.mdx",
+    "importedAt": "2026-07-06T14:26:15.164Z",
+    "targetQueries": [
+      "copper vs aluminum flexible busbar",
+      "flexible busbar conductivity comparison",
+      "aluminum flexible busbar cost savings",
+      "busbar material selection engineer",
+      "copper busbar aluminum busbar difference"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-sustainable-power-distribution-eco-friendly-flexible-busbar-materials",
+    "remoteUrl": "/en/articles/sustainable-power-distribution-eco-friendly-flexible-busbar-materials",
+    "status": "imported",
+    "idempotencyKey": "article-69-channel-1-update-v1",
+    "geoflowArticleId": "69",
+    "locale": "en",
+    "slug": "sustainable-power-distribution-eco-friendly-flexible-busbar-materials",
+    "incomingPath": "articles/en/sustainable-power-distribution-eco-friendly-flexible-busbar-materials.mdx",
+    "importedAt": "2026-07-06T14:26:34.320Z",
+    "targetQueries": [
+      "sustainable busbar",
+      "eco-friendly busbar materials",
+      "flexible busbar for ESS"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-for-ev-charging-stations-technical-advantages",
+    "remoteUrl": "/en/articles/flexible-busbar-for-ev-charging-stations-technical-advantages",
+    "status": "imported",
+    "idempotencyKey": "article-40-channel-1-update-v1",
+    "geoflowArticleId": "40",
+    "locale": "en",
+    "slug": "flexible-busbar-for-ev-charging-stations-technical-advantages",
+    "incomingPath": "articles/en/flexible-busbar-for-ev-charging-stations-technical-advantages.mdx",
+    "importedAt": "2026-07-06T14:26:52.402Z",
+    "targetQueries": [
+      "flexible busbar EV charging station",
+      "EV charger busbar installation",
+      "flexible busbar vs rigid copper bar",
+      "busbar for DC fast charger"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+    "remoteUrl": "/en/articles/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+    "status": "imported",
+    "idempotencyKey": "article-38-channel-1-update-v1",
+    "geoflowArticleId": "38",
+    "locale": "en",
+    "slug": "flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+    "incomingPath": "articles/en/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants.mdx",
+    "importedAt": "2026-07-06T14:27:11.413Z",
+    "targetQueries": [
+      "flexible busbar vs busduct",
+      "flexible busbar advantages",
+      "busduct vs flexible busbar industrial",
+      "choose busbar busduct",
+      "industrial power distribution comparison"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-how-to-select-flexible-busbar-for-energy-storage-systems",
+    "remoteUrl": "/en/articles/how-to-select-flexible-busbar-for-energy-storage-systems",
+    "status": "imported",
+    "idempotencyKey": "article-39-channel-1-update-v1",
+    "geoflowArticleId": "39",
+    "locale": "en",
+    "slug": "how-to-select-flexible-busbar-for-energy-storage-systems",
+    "incomingPath": "articles/en/how-to-select-flexible-busbar-for-energy-storage-systems.mdx",
+    "importedAt": "2026-07-06T14:27:33.208Z",
+    "targetQueries": [
+      "flexible busbar selection for energy storage",
+      "energy storage system busbar requirements",
+      "flexible busbar ampacity ESS",
+      "how to choose busbar for battery storage",
+      "flexible copper busbar for ESS"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-rise-building-power-distribution-flexible-busbar-vertical-installation",
+    "remoteUrl": "/en/articles/high-rise-building-power-distribution-flexible-busbar-vertical-installation",
+    "status": "imported",
+    "idempotencyKey": "article-66-channel-1-update-v1",
+    "geoflowArticleId": "66",
+    "locale": "en",
+    "slug": "high-rise-building-power-distribution-flexible-busbar-vertical-installation",
+    "incomingPath": "articles/en/high-rise-building-power-distribution-flexible-busbar-vertical-installation.mdx",
+    "importedAt": "2026-07-06T14:27:51.707Z",
+    "targetQueries": [
+      "flexible busbar vertical installation high rise",
+      "high rise building power distribution busbar",
+      "flexible busbar vs cable high rise"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-pharmaceutical-clean-room-power-distribution",
+    "remoteUrl": "/en/articles/flexible-busbar-pharmaceutical-clean-room-power-distribution",
+    "status": "imported",
+    "idempotencyKey": "article-65-channel-1-update-v1",
+    "geoflowArticleId": "65",
+    "locale": "en",
+    "slug": "flexible-busbar-pharmaceutical-clean-room-power-distribution",
+    "incomingPath": "articles/en/flexible-busbar-pharmaceutical-clean-room-power-distribution.mdx",
+    "importedAt": "2026-07-06T14:28:03.779Z",
+    "targetQueries": [
+      "pharma clean room busbar",
+      "flexible busbar clean room",
+      "pharmaceutical clean room power distribution"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-bend-radius-design-considerations-for-tight-spaces",
+    "remoteUrl": "/en/articles/flexible-busbar-bend-radius-design-considerations-for-tight-spaces",
+    "status": "imported",
+    "idempotencyKey": "article-62-channel-1-update-v1",
+    "geoflowArticleId": "62",
+    "locale": "en",
+    "slug": "flexible-busbar-bend-radius-design-considerations-for-tight-spaces",
+    "incomingPath": "articles/en/flexible-busbar-bend-radius-design-considerations-for-tight-spaces.mdx",
+    "importedAt": "2026-07-06T14:28:16.358Z",
+    "targetQueries": [
+      "flexible busbar bend radius",
+      "minimum bend radius busbar",
+      "busbar bend radius tight spaces",
+      "flexible busbar design guidelines"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-for-mining-and-heavy-industry-power-distribution",
+    "remoteUrl": "/en/articles/flexible-busbar-for-mining-and-heavy-industry-power-distribution",
+    "status": "imported",
+    "idempotencyKey": "article-59-channel-1-update-v1",
+    "geoflowArticleId": "59",
+    "locale": "en",
+    "slug": "flexible-busbar-for-mining-and-heavy-industry-power-distribution",
+    "incomingPath": "articles/en/flexible-busbar-for-mining-and-heavy-industry-power-distribution.mdx",
+    "importedAt": "2026-07-06T14:28:28.209Z",
+    "targetQueries": [
+      "mining busbar",
+      "flexible busbar mining",
+      "heavy industry power distribution",
+      "busbar mining application",
+      "flexible busbar vs cable mining"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-renewable-energy-integration-flexible-busbar-for-hybrid-power-systems",
+    "remoteUrl": "/en/articles/renewable-energy-integration-flexible-busbar-for-hybrid-power-systems",
+    "status": "imported",
+    "idempotencyKey": "article-74-channel-1-update-v1",
+    "geoflowArticleId": "74",
+    "locale": "en",
+    "slug": "renewable-energy-integration-flexible-busbar-for-hybrid-power-systems",
+    "incomingPath": "articles/en/renewable-energy-integration-flexible-busbar-for-hybrid-power-systems.mdx",
+    "importedAt": "2026-07-06T14:28:44.034Z",
+    "targetQueries": [
+      "renewable energy busbar",
+      "flexible busbar for hybrid power systems",
+      "busbar renewable energy integration"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "remoteUrl": "/en/articles/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "status": "imported",
+    "idempotencyKey": "article-75-channel-1-update-v1",
+    "geoflowArticleId": "75",
+    "locale": "en",
+    "slug": "yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755",
+    "incomingPath": "articles/en/yanghua-insights-high-current-multi-core-cables-requiring-4-or-even-8-parallel-connections-1600a-flexible-busbar-vs-240mm2-cable-4-parallel-591755.mdx",
+    "importedAt": "2026-07-06T14:28:56.985Z",
+    "targetQueries": [
+      "flexible busbar 1600A vs 4 parallel 240mm² cable",
+      "high current cable parallel connection problems",
+      "busbar vs parallel cables for data center",
+      "1600A power distribution busbar",
+      "240mm² cable 4 parallel ampacity derating"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "remoteUrl": "/en/articles/high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "status": "imported",
+    "idempotencyKey": "article-76-channel-1-update-v1",
+    "geoflowArticleId": "76",
+    "locale": "en",
+    "slug": "high-current-flexible-busbar-manufacturer-yanghuasti-560371",
+    "incomingPath": "articles/en/high-current-flexible-busbar-manufacturer-yanghuasti-560371.mdx",
+    "importedAt": "2026-07-06T14:29:09.105Z",
+    "targetQueries": [
+      "high current power distribution",
+      "high current flexible busbar",
+      "custom flexible busbar manufacturer"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-flexible-busbar-vs-cable-tray-space-weight-comparison",
+    "remoteUrl": "/en/articles/flexible-busbar-vs-cable-tray-space-weight-comparison",
+    "status": "imported",
+    "idempotencyKey": "article-71-channel-1-update-v1",
+    "geoflowArticleId": "71",
+    "locale": "en",
+    "slug": "flexible-busbar-vs-cable-tray-space-weight-comparison",
+    "incomingPath": "articles/en/flexible-busbar-vs-cable-tray-space-weight-comparison.mdx",
+    "importedAt": "2026-07-06T14:29:26.015Z",
+    "targetQueries": [
+      "flexible busbar vs cable tray space comparison",
+      "cable tray weight vs busbar weight",
+      "space savings flexible busbar",
+      "flexible busbar weight reduction energy storage"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-data-center-pue-optimization-flexible-busbar",
+    "remoteUrl": "/en/articles/data-center-pue-optimization-flexible-busbar",
+    "status": "imported",
+    "idempotencyKey": "article-70-channel-1-update-v1",
+    "geoflowArticleId": "70",
+    "locale": "en",
+    "slug": "data-center-pue-optimization-flexible-busbar",
+    "incomingPath": "articles/en/data-center-pue-optimization-flexible-busbar.mdx",
+    "importedAt": "2026-07-06T14:29:38.380Z",
+    "targetQueries": [
+      "data center PUE optimization",
+      "flexible busbar data center",
+      "PUE reduction busbar",
+      "energy efficient power distribution data center"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring",
+    "remoteUrl": "/en/articles/smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring",
+    "status": "imported",
+    "idempotencyKey": "article-73-channel-1-update-v1",
+    "geoflowArticleId": "73",
+    "locale": "en",
+    "slug": "smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring",
+    "incomingPath": "articles/en/smart-factory-industry-4-0-flexible-busbar-with-iot-monitoring.mdx",
+    "importedAt": "2026-07-06T14:29:51.551Z",
+    "targetQueries": [
+      "flexible busbar IoT monitoring smart factory",
+      "Industry 4.0 power distribution flexible busbar",
+      "flexible busbar with temperature sensor predictive maintenance",
+      "smart factory busbar selection criteria",
+      "flexible vs rigid busbar comparison for automation"
+    ],
+    "reviewStatus": "approved"
+  },
+  {
+    "ok": true,
+    "remoteId": "geoflow-emergency-power-systems-flexible-busbar-for-backup-generator-connections",
+    "remoteUrl": "/en/articles/emergency-power-systems-flexible-busbar-for-backup-generator-connections",
+    "status": "imported",
+    "idempotencyKey": "article-72-channel-1-update-v1",
+    "geoflowArticleId": "72",
+    "locale": "en",
+    "slug": "emergency-power-systems-flexible-busbar-for-backup-generator-connections",
+    "incomingPath": "articles/en/emergency-power-systems-flexible-busbar-for-backup-generator-connections.mdx",
+    "importedAt": "2026-07-06T14:30:08.480Z",
+    "targetQueries": [
+      "emergency power busbar",
+      "generator connection busbar",
+      "flexible busbar for backup generators",
+      "busbar vs cable generator",
+      "emergency power system busbar"
     ],
     "reviewStatus": "approved"
   }

@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import remarkGfm from 'remark-gfm';
+import vercel from '@astrojs/vercel';
 
 function demoteArticleH1() {
   /** @param {any} tree @param {any} file */
@@ -30,8 +31,9 @@ function demoteArticleH1() {
 export default defineConfig({
   site: 'https://www.yhflexiblebusbar.com',
   output: 'static',
-  // 不使用 Vercel adapter，直接输出静态 HTML 文件
-  // API 路由和图片优化通过 Vercel 的 /api 目录和 Vercel 平台功能处理
+  adapter: vercel(),
+  // 使用 Vercel adapter，以支持 API 端点的混合部署模式
+
 
   integrations: [
     mdx({
@@ -50,6 +52,15 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       cssMinify: 'lightningcss',
+    },
+    server: {
+      allowedHosts: ['host.docker.internal'],
+      proxy: {
+        '/storage': {
+          target: 'http://127.0.0.1:18080',
+          changeOrigin: true,
+        },
+      },
     },
   },
 });

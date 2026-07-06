@@ -124,23 +124,25 @@ export default async function middleware(request: NextRequest) {
       return applySecurityHeaders(res);
     }
 
-    // 1. Rate limiting
-    const rateLimitKey = `${clientIP}:${pathname}`;
-    const isRateLimited = RateLimiter.isRateLimited(rateLimitKey);
-    
-    if (isRateLimited) {
-      SecurityAuditor.logEvent({
-        type: 'rate_limit',
-        severity: 'medium',
-        ip: clientIP,
-        userAgent,
-        url: request.url,
-        details: { pathname },
-      });
+    // 1. Rate limiting (skip for GEOFlow API - uses HMAC authentication instead)
+    if (!isGeoflowApiPath) {
+      const rateLimitKey = `${clientIP}:${pathname}`;
+      const isRateLimited = RateLimiter.isRateLimited(rateLimitKey);
+      
+      if (isRateLimited) {
+        SecurityAuditor.logEvent({
+          type: 'rate_limit',
+          severity: 'medium',
+          ip: clientIP,
+          userAgent,
+          url: request.url,
+          details: { pathname },
+        });
 
-      const response = new NextResponse('Too Many Requests', { status: 429 });
-      response.headers.set('Retry-After', '900'); // 15 minutes
-      return applySecurityHeaders(response);
+        const response = new NextResponse('Too Many Requests', { status: 429 });
+        response.headers.set('Retry-After', '900'); // 15 minutes
+        return applySecurityHeaders(response);
+      }
     }
 
     // 2. Bot detection and handling
