@@ -59,9 +59,101 @@ function resolveContentRoots() {
   return { astroContentRoot, legacyContentRoot };
 }
 
+// 健壮的 public 目录解析逻辑
+function resolvePublicRoots() {
+  const cwd = process.cwd();
+  let astroPublicRoot = '';
+  let legacyPublicRoot = '';
+
+  // 1. 如果是在 astro-site 目录下
+  if (fs.existsSync(path.join(cwd, 'public'))) {
+    astroPublicRoot = path.join(cwd, 'public');
+    legacyPublicRoot = path.resolve(cwd, '../yanghua-b2b-website/public');
+  } 
+  // 2. 如果是在 monorepo 根目录下
+  else if (fs.existsSync(path.join(cwd, 'astro-site/public'))) {
+    astroPublicRoot = path.join(cwd, 'astro-site/public');
+    legacyPublicRoot = path.join(cwd, 'yanghua-b2b-website/public');
+  }
+  // 3. Fallback 回退
+  else {
+    astroPublicRoot = path.join(cwd, 'public');
+  }
+
+  return { astroPublicRoot, legacyPublicRoot };
+}
+
+// 保存从 Webhook 传输过来的 base64 图片资源
+function saveImageAssets(payload: any) {
+  const assets = payload?.assets;
+  if (!assets || !Array.isArray(assets.images)) {
+    return;
+  }
+
+  const { astroPublicRoot, legacyPublicRoot } = resolvePublicRoots();
+
+  for (const image of assets.images) {
+    const { source_url, content_base64 } = image;
+    if (!source_url || !content_base64) {
+      continue;
+    }
+
+    let relativeUrlPath = source_url;
+    if (source_url.startsWith('http://') || source_url.startsWith('https://')) {
+      try {
+        const parsed = new URL(source_url);
+        relativeUrlPath = parsed.pathname;
+      } catch {
+        continue;
+      }
+    }
+
+    const cleanRelativePath = relativeUrlPath.replace(/^\//, '');
+
+    // 仅保存 storage/ 或 uploads/ 目录下的静态图片
+    if (!cleanRelativePath.startsWith('storage/') && !cleanRelativePath.startsWith('uploads/')) {
+      continue;
+    }
+
+    const buffer = Buffer.from(content_base64, 'base64');
+
+    // 双重写入：Astro 站点
+    if (astroPublicRoot) {
+      const targetPathAstro = path.join(astroPublicRoot, cleanRelativePath);
+      try {
+        fs.mkdirSync(path.dirname(targetPathAstro), { recursive: true });
+        fs.writeFileSync(targetPathAstro, buffer);
+        console.log(`[geoflow-import] 已写入 Astro 图片: ${targetPathAstro}`);
+      } catch (e) {
+        console.warn(`[geoflow-import] 写入 Astro 图片失败: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    }
+
+    // 双重写入：Legacy Next 站点
+    if (legacyPublicRoot && fs.existsSync(path.dirname(legacyPublicRoot))) {
+      const targetPathLegacy = path.join(legacyPublicRoot, cleanRelativePath);
+      try {
+        fs.mkdirSync(path.dirname(targetPathLegacy), { recursive: true });
+        fs.writeFileSync(targetPathLegacy, buffer);
+        console.log(`[geoflow-import] 已写入 Legacy 图片: ${targetPathLegacy}`);
+      } catch (e) {
+        console.warn(`[geoflow-import] 写入 Legacy 图片失败: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    }
+  }
+}
+
+
 export async function receiveGeoflowArticle(input: ReceiveInput): Promise<ReceiveResult> {
   if (!input.idempotencyKey) {
     throw new Error('idempotencyKey is required');
+  }
+
+  // 保存该文章关联的所有图片素材到 public/storage/ 目录
+  try {
+    saveImageAssets(input.payload);
+  } catch (e) {
+    console.warn(`[geoflow-import] 提取并保存图片资源失败: ${e instanceof Error ? e.message : String(e)}`);
   }
 
   const { astroContentRoot, legacyContentRoot } = resolveContentRoots();
