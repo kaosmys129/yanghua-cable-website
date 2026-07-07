@@ -24,7 +24,6 @@
   "packageManager": "pnpm@10.6.4",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/copy-legacy-content.mjs",
     "build": "astro build",
     "start": "astro preview",
     "preview": "astro preview",

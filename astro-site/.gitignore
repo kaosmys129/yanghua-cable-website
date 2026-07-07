@@ -45,7 +45,8 @@ pnpm-debug.log*
 .idea/
 
 # ── Legacy content (copied at build time) ──────────────────────────────────────
-src/data/legacy-content/
+# src/data/legacy-content/
+
 
 # ── Testing ───────────────────────────────────────────────────────────────────
 playwright-report/

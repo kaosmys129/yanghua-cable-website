@@ -1,1 +1,0 @@
-console.log("Debug: Project ID:", id, "Projects found:", projects?.length);

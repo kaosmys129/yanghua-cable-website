@@ -1,11 +1,19 @@
 ---
 interface Props {
   title: string;
-  locale?: 'en' | 'es';
+  locale?: 'en' | 'es' | 'pt';
   homeLabel?: string;
 }
 
-const { title, locale = 'en', homeLabel = locale === 'es' ? 'Inicio' : 'Home' } = Astro.props;
+const { title, locale = 'en', homeLabel } = Astro.props;
+
+const homeLabels = {
+  en: 'Home',
+  es: 'Inicio',
+  pt: 'Início'
+};
+
+const finalHomeLabel = homeLabel || homeLabels[locale] || 'Home';
 
 const segments = Astro.url.pathname
   .split('/')
@@ -23,7 +31,7 @@ const segments = Astro.url.pathname
     <nav aria-label="Breadcrumb" class="mb-4">
       <ol class="flex flex-wrap items-center gap-1.5 text-sm text-primary-fg/60">
         <li>
-          <a href={`/${locale}`} class="transition-colors hover:text-primary-fg">{homeLabel}</a>
+          <a href={`/${locale}`} class="transition-colors hover:text-primary-fg">{finalHomeLabel}</a>
         </li>
         {segments.map(({ label, href, isLast }) => (
           <li class="flex items-center gap-1.5">
