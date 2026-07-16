@@ -19,6 +19,8 @@
         { "label": "Solutions", "href": "/en/solutions" },
         { "label": "Projects", "href": "/en/projects" },
         { "label": "Articles", "href": "/en/articles" },
+        { "label": "FAQ", "href": "/en/faq" },
+        { "label": "What is Flexible Busbar?", "href": "/en/what-is-flexible-busbar" },
         { "label": "About", "href": "/en/about" },
         { "label": "Contact", "href": "/en/contact" }
       ],
@@ -31,6 +33,7 @@
         { "label": "Soluciones", "href": "/es/soluciones" },
         { "label": "Proyectos", "href": "/es/proyectos" },
         { "label": "Artículos", "href": "/es/articulos" },
+        { "label": "FAQ", "href": "/es/preguntas-frecuentes" },
         { "label": "Nosotros", "href": "/es/acerca-de" },
         { "label": "Contacto", "href": "/es/contacto" }
       ],
@@ -88,6 +91,8 @@
           "title": "Support",
           "items": [
             { "label": "Articles", "href": "/en/articles" },
+            { "label": "FAQ", "href": "/en/faq" },
+            { "label": "What is Flexible Busbar?", "href": "/en/what-is-flexible-busbar" },
             { "label": "About Us", "href": "/en/about" },
             { "label": "Contact", "href": "/en/contact" }
           ]
@@ -122,6 +127,7 @@
           "title": "Soporte",
           "items": [
             { "label": "Artículos", "href": "/es/articulos" },
+            { "label": "Preguntas Frecuentes", "href": "/es/preguntas-frecuentes" },
             { "label": "Sobre nosotros", "href": "/es/acerca-de" },
             { "label": "Contacto", "href": "/es/contacto" }
           ]

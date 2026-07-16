@@ -277,14 +277,6 @@ export function generateWebsiteSchema(siteUrl?: string): Record<string, unknown>
     alternateName: 'YanghuaSTI',
     url: baseUrl,
     description: brand.description,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
@@ -293,7 +285,76 @@ export function generateWebsiteSchema(siteUrl?: string): Record<string, unknown>
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. Validation helpers
+// 6. FAQPage Schema
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function generateFAQSchema(faqs: Array<{ question: string; answer: string }>): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6b. Product Schema (individual product detail pages)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface ProductSchemaInput {
+  id: string;
+  name: string;
+  description: string;
+  detailedDescription?: string;
+  image?: string[];
+  technicalSpecs?: Record<string, string>;
+  url?: string;
+  locale?: string;
+}
+
+export function generateProductSchema(
+  product: ProductSchemaInput,
+  siteUrl?: string,
+): Record<string, unknown> {
+  const baseUrl = siteUrl || brand.url;
+
+  const images = (product.image ?? []).map((img) =>
+    img.startsWith('http') ? img : `${baseUrl}${img}`,
+  );
+
+  const additionalProperty = product.technicalSpecs
+    ? Object.entries(product.technicalSpecs).map(([name, value]) => ({
+        '@type': 'PropertyValue',
+        name,
+        value,
+      }))
+    : undefined;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': `${product.url ?? baseUrl}#product`,
+    name: product.name,
+    description: product.detailedDescription || product.description,
+    ...(images.length > 0 && { image: images }),
+    brand: {
+      '@type': 'Brand',
+      name: client.name,
+    },
+    ...(additionalProperty && { additionalProperty }),
+    ...(product.url && { url: product.url }),
+    ...(product.locale && { inLanguage: product.locale }),
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7. Validation helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**

@@ -12,6 +12,7 @@ import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
 import { generateFullOrganizationSchema } from '../lib/schema-utils';
+import { buildHreflangAlternates } from '../lib/yanghua/hreflang';
 
 interface Props {
   locale?: Locale;
@@ -19,6 +20,12 @@ interface Props {
   description?: string;
   image?: string;
   schema?: Record<string, unknown>;
+  /**
+   * Locales that actually have this page. For CMS-driven content (articles)
+   * the page computes this from real data so we never emit a 404 alternate.
+   * When omitted, structural locale exceptions are applied (see hreflang.ts).
+   */
+  availableLocales?: Locale[];
   /**
    * 可选：由页面层注入站点设置，以避免 layout 内部读取文件。
    * 若不传，则 layout 会自行从旧站 `content/settings/site.json` 读取并归一化。
@@ -28,6 +35,7 @@ interface Props {
 
 function detectLocaleFromPathname(pathname: string): Locale {
   if (pathname.startsWith('/es')) return 'es';
+  if (pathname.startsWith('/pt')) return 'pt';
   return 'en';
 }
 
@@ -45,6 +53,12 @@ const resolvedSchema = schema ?? generateFullOrganizationSchema(String(Astro.sit
 
 const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
+
+const hreflangAlternates = buildHreflangAlternates(
+  Astro.url.pathname,
+  String(Astro.site ?? brand.url),
+  Astro.props.availableLocales
+);
 
 const siteEnv = String(
   import.meta.env.PUBLIC_SITE_ENV ||
@@ -87,6 +101,9 @@ const trackingConfig = {
     <meta name="generator" content={Astro.generator} />
 
     <link rel="canonical" href={canonicalURL} />
+    {hreflangAlternates.map((a) => (
+      <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+    ))}
     <meta name="robots" content={robotsContent} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />

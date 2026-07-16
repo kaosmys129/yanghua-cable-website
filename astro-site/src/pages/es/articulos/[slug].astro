@@ -5,6 +5,7 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
 import { getAllArticles, getArticleStaticPaths } from '../../../lib/yanghua/articles.mjs';
+import type { Locale } from '../../../lib/yanghua/loaders';
 
 export function getStaticPaths() {
   return getArticleStaticPaths('es');
@@ -15,6 +16,17 @@ const allArticles = getAllArticles();
 const translation = article.translationKey
   ? allArticles.find((item: any) => item.translationKey === article.translationKey && item.locale !== article.locale)
   : null;
+
+const availableLocales = Array.from(
+  new Set([
+    article.locale,
+    ...(article.translationKey
+      ? allArticles
+          .filter((a: any) => a.translationKey === article.translationKey)
+          .map((a: any) => a.locale)
+      : []),
+  ])
+) as Locale[];
 
 const geo = article.geo;
 const hasGeo = geo.targetQueries.length > 0 || geo.answerSummary || geo.citations.length > 0;
@@ -108,6 +120,7 @@ const structuredData = {
   description={description}
   image={coverImage}
   schema={structuredData}
+  availableLocales={availableLocales}
 >
   <Header slot="header" locale="es" />
   <Banner title={title} locale="es" />

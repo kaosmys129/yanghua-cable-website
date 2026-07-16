@@ -1,0 +1,67 @@
+---
+export const prerender = true;
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Banner from '../../../components/Banner.astro';
+import CTA from '../../../components/CTA.astro';
+import { generateFAQSchema } from '../../../lib/schema-utils';
+import { repoRoot } from '../../../lib/yanghua/paths';
+
+let faqs: Array<{ question: string; answer: string }> = [];
+
+try {
+  // Read the generated JSON file from the sub-agent
+  const jsonPath = path.join(repoRoot, 'exports', 'geo-knowledge-base', 'faq_es.json');
+  if (fs.existsSync(jsonPath)) {
+    faqs = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  }
+} catch (e) {
+  console.error('Error loading FAQ JSON:', e);
+}
+
+const schema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+---
+
+<BaseLayout title="Preguntas Frecuentes - Yanghua Cable" description="Encuentre respuestas a preguntas comunes sobre busbar flexible, instalación, especificaciones técnicas y escenarios de aplicación." schema={schema} locale="es">
+  <Header slot="header" locale="es" />
+
+  <Banner title="Preguntas Frecuentes" locale="es" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      {faqs.length > 0 ? (
+        <div class="space-y-6">
+          {faqs.map((faq) => (
+            <details class="group rounded-lg border border-border bg-surface p-6 shadow-sm open:ring-2 open:ring-primary/20">
+              <summary class="flex cursor-pointer items-center justify-between font-heading text-lg font-semibold text-text">
+                {faq.question}
+                <span class="ml-4 flex-shrink-0 text-primary transition-transform group-open:rotate-180">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="mt-4 text-text-muted prose prose-sm max-w-none" set:html={faq.answer} />
+            </details>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 text-text-muted">
+          <p>Nuestra biblioteca de preguntas frecuentes se está compilando actualmente. Por favor, vuelva pronto.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CTA 
+    title="¿Todavía tiene preguntas?"
+    description="Nuestro equipo técnico está listo para ofrecer soluciones a medida para su proyecto."
+    buttonText="Contactar Soporte"
+    buttonHref="/es/contacto"
+  />
+
+  <Footer slot="footer" locale="es" />
+</BaseLayout>

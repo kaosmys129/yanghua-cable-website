@@ -6,6 +6,8 @@ import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
 import ProductDetailContent from '../../../components/ProductDetailContent.astro';
 import { findProductDetail, getProductDetails } from '../../../lib/yanghua/products';
+import { brand } from '../../../config/brand';
+import { generateFullOrganizationSchema, generateProductSchema, generateBreadcrumbSchema } from '../../../lib/schema-utils';
 
 export function getStaticPaths() {
   return getProductDetails().map((product) => ({ params: { id: product.id }, props: { product } }));
@@ -18,9 +20,40 @@ if (!product) {
 }
 
 const related = product.relatedProducts.map((id: string) => findProductDetail(id)).filter(Boolean);
+
+const siteUrl = String(Astro.site ?? brand.url);
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const productSchema = generateProductSchema(
+  {
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    detailedDescription: product.detailedDescription,
+    image: product.images,
+    technicalSpecs: product.technicalSpecs,
+    url: canonical,
+    locale: 'en',
+  },
+  siteUrl,
+);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    generateFullOrganizationSchema(siteUrl),
+    productSchema,
+    generateBreadcrumbSchema(
+      [
+        { name: 'Home', url: `${siteUrl}/en` },
+        { name: 'Products', url: `${siteUrl}/en/products` },
+        { name: product.name, url: canonical },
+      ],
+      siteUrl,
+    ),
+  ],
+};
 ---
 
-<BaseLayout title={`${product.name} | High Current & Reliable | Yanghua`} description={product.description} image={product.images[0]}>
+<BaseLayout title={`${product.name} | High Current & Reliable | Yanghua`} description={product.description} image={product.images[0]} schema={structuredData}>
   <Header slot="header" locale="en" />
   <Banner title={product.name} locale="en" />
   <ProductDetailContent product={product} related={related} locale="en" />
