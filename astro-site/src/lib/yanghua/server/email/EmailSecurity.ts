@@ -227,9 +227,10 @@ export class EmailSecurity {
       errors.push('Invalid email address');
     }
 
-    if (!data.company || data.company.trim().length < 2) {
+    const company = data.company?.trim() || '';
+    if (company && company.length < 2) {
       errors.push('Company name must be at least 2 characters long');
-    } else if (data.company.length > 100) {
+    } else if (company.length > 100) {
       errors.push('Company name cannot exceed 100 characters');
     }
 
@@ -382,7 +383,7 @@ export function createValidationSchemas(locale: string = 'en') {
   const contactFormSchema = z.object({
     name: z.string().min(2, msg.nameMinLength).max(50, msg.nameMaxLength),
     email: z.string().min(1, msg.emailRequired).email(msg.emailInvalid),
-    company: z.string().min(2, msg.companyMinLength).max(100, msg.companyMaxLength),
+    company: z.string().max(100, msg.companyMaxLength).optional().default(''),
     country: z.string().optional().default(''),
     phone: z.string().optional(),
     subject: z.string().optional().default(''),
@@ -392,11 +393,10 @@ export function createValidationSchemas(locale: string = 'en') {
   const inquiryFormSchema = z.object({
     name: z.string().min(2, msg.nameMinLength).max(50, msg.nameMaxLength),
     email: z.string().min(1, msg.emailRequired).email(msg.emailInvalid),
-    company: z.string().min(2, msg.companyMinLength).max(100, msg.companyMaxLength),
+    company: z.string().max(100, msg.companyMaxLength).optional().default(''),
     productInterest: z.string().optional(),
     message: z.string().min(10, msg.messageMinLength).max(1000, msg.messageMaxLength),
   });
 
   return { contactFormSchema, inquiryFormSchema };
 }
-
