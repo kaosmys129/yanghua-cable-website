@@ -44,13 +44,21 @@ function mapContactSubject(locale: string, raw: string): string {
     other: 'Consulta General',
     '': 'Consulta General',
   };
+  const pt: Record<string, string> = {
+    'product-inquiry': 'Consulta de Produto',
+    'technical-support': 'Solicitação de Suporte Técnico',
+    partnership: 'Consulta de Parceria',
+    'custom-solution': 'Solicitação de Solução Personalizada',
+    other: 'Consulta Geral',
+    '': 'Consulta Geral',
+  };
 
-  const dict = locale === 'es' ? es : en;
+  const dict = locale === 'es' ? es : locale === 'pt' ? pt : en;
   return dict[normalized] || raw || dict.other;
 }
 
 function renderEmailHtml(params: {
-  locale: 'en' | 'es';
+  locale: 'en' | 'es' | 'pt';
   title: string;
   subtitle: string;
   fields: Array<{ label: string; value: string }>;
@@ -67,7 +75,8 @@ function renderEmailHtml(params: {
     )
     .join('\n');
 
-  const messageHeading = params.locale === 'es' ? 'Contenido del Mensaje' : 'Message Content';
+  const messageHeading =
+    params.locale === 'es' ? 'Contenido del Mensaje' : params.locale === 'pt' ? 'Conteúdo da Mensagem' : 'Message Content';
 
   return `<!doctype html>
   <html lang="${params.locale}">
@@ -94,7 +103,9 @@ function renderEmailHtml(params: {
         <div style="background:#e9ecef;padding:14px 28px;color:#6c757d;font-size:12px;text-align:center;">
           ${params.locale === 'es'
             ? 'Este correo fue generado automáticamente por el formulario del sitio web.'
-            : 'This email was generated automatically by the website form.'}
+            : params.locale === 'pt'
+              ? 'Este e-mail foi gerado automaticamente pelo formulário do site.'
+              : 'This email was generated automatically by the website form.'}
         </div>
       </div>
     </body>
@@ -112,23 +123,24 @@ export async function renderContactFormEmail(
     message: string;
     clientIP?: string;
   },
-  locale: 'en' | 'es'
+  locale: 'en' | 'es' | 'pt'
 ): Promise<{ subject: string; html: string; text: string }> {
   const subjectLabel = mapContactSubject(locale, data.subject || '');
-  const headline = locale === 'es' ? 'Nueva Consulta de Contacto' : 'New Contact Form Submission';
+  const headline =
+    locale === 'es' ? 'Nueva Consulta de Contacto' : locale === 'pt' ? 'Nova Solicitação de Contato' : 'New Contact Form Submission';
   const subject = `${headline} - ${subjectLabel} - ${data.company || data.name || 'Website'}`;
   const sentAt = formatDate(new Date(), locale);
 
   const fields: Array<{ label: string; value: string }> = [
-    { label: locale === 'es' ? 'Tipo' : 'Type', value: 'Contact' },
-    { label: locale === 'es' ? 'Nombre' : 'Name', value: data.name },
-    { label: locale === 'es' ? 'Correo' : 'Email', value: data.email },
-    { label: locale === 'es' ? 'Empresa' : 'Company', value: data.company },
-    { label: locale === 'es' ? 'País' : 'Country', value: data.country || '' },
-    { label: locale === 'es' ? 'Teléfono' : 'Phone', value: data.phone || '' },
-    { label: locale === 'es' ? 'Asunto' : 'Subject', value: subjectLabel },
+    { label: locale === 'es' ? 'Tipo' : locale === 'pt' ? 'Tipo' : 'Type', value: 'Contact' },
+    { label: locale === 'es' ? 'Nombre' : locale === 'pt' ? 'Nome' : 'Name', value: data.name },
+    { label: locale === 'es' ? 'Correo' : locale === 'pt' ? 'E-mail' : 'Email', value: data.email },
+    { label: locale === 'es' ? 'Empresa' : locale === 'pt' ? 'Empresa' : 'Company', value: data.company },
+    { label: locale === 'es' ? 'País' : locale === 'pt' ? 'País' : 'Country', value: data.country || '' },
+    { label: locale === 'es' ? 'Teléfono' : locale === 'pt' ? 'Telefone' : 'Phone', value: data.phone || '' },
+    { label: locale === 'es' ? 'Asunto' : locale === 'pt' ? 'Assunto' : 'Subject', value: subjectLabel },
     { label: 'IP', value: data.clientIP || '' },
-    { label: locale === 'es' ? 'Fecha' : 'Date', value: sentAt },
+    { label: locale === 'es' ? 'Fecha' : locale === 'pt' ? 'Data' : 'Date', value: sentAt },
   ];
 
   const html = renderEmailHtml({
@@ -144,7 +156,7 @@ export async function renderContactFormEmail(
     '',
     ...fields.filter((f) => f.value).map((f) => `${f.label}: ${f.value}`),
     '',
-    locale === 'es' ? 'Mensaje:' : 'Message:',
+    locale === 'es' ? 'Mensaje:' : locale === 'pt' ? 'Mensagem:' : 'Message:',
     data.message,
   ].join('\n');
 
@@ -160,20 +172,20 @@ export async function renderInquiryFormEmail(
     message: string;
     clientIP?: string;
   },
-  locale: 'en' | 'es'
+  locale: 'en' | 'es' | 'pt'
 ): Promise<{ subject: string; html: string; text: string }> {
-  const headline = locale === 'es' ? 'Nueva Consulta de Producto' : 'New Product Inquiry';
+  const headline = locale === 'es' ? 'Nueva Consulta de Producto' : locale === 'pt' ? 'Nova Consulta de Produto' : 'New Product Inquiry';
   const subject = `${headline} - ${data.company || data.name || 'Website'}${data.productInterest ? ` - ${data.productInterest}` : ''}`;
   const sentAt = formatDate(new Date(), locale);
 
   const fields: Array<{ label: string; value: string }> = [
-    { label: locale === 'es' ? 'Tipo' : 'Type', value: 'Inquiry' },
-    { label: locale === 'es' ? 'Nombre' : 'Name', value: data.name },
-    { label: locale === 'es' ? 'Correo' : 'Email', value: data.email },
-    { label: locale === 'es' ? 'Empresa' : 'Company', value: data.company },
-    { label: locale === 'es' ? 'Interés' : 'Product interest', value: data.productInterest || '' },
+    { label: locale === 'es' ? 'Tipo' : locale === 'pt' ? 'Tipo' : 'Type', value: 'Inquiry' },
+    { label: locale === 'es' ? 'Nombre' : locale === 'pt' ? 'Nome' : 'Name', value: data.name },
+    { label: locale === 'es' ? 'Correo' : locale === 'pt' ? 'E-mail' : 'Email', value: data.email },
+    { label: locale === 'es' ? 'Empresa' : locale === 'pt' ? 'Empresa' : 'Company', value: data.company },
+    { label: locale === 'es' ? 'Interés' : locale === 'pt' ? 'Interesse do produto' : 'Product interest', value: data.productInterest || '' },
     { label: 'IP', value: data.clientIP || '' },
-    { label: locale === 'es' ? 'Fecha' : 'Date', value: sentAt },
+    { label: locale === 'es' ? 'Fecha' : locale === 'pt' ? 'Data' : 'Date', value: sentAt },
   ];
 
   const html = renderEmailHtml({
@@ -189,10 +201,9 @@ export async function renderInquiryFormEmail(
     '',
     ...fields.filter((f) => f.value).map((f) => `${f.label}: ${f.value}`),
     '',
-    locale === 'es' ? 'Mensaje:' : 'Message:',
+    locale === 'es' ? 'Mensaje:' : locale === 'pt' ? 'Mensagem:' : 'Message:',
     data.message,
   ].join('\n');
 
   return { subject, html, text };
 }
-

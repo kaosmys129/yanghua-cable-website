@@ -88,7 +88,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
   }
 
   const type = body.type === 'inquiry' ? 'inquiry' : 'contact';
-  const locale = body.locale === 'es' ? 'es' : 'en';
+  const locale = body.locale === 'es' || body.locale === 'pt' ? body.locale : 'en';
   const clientIP = getClientIP(request);
   const emailId = crypto.randomUUID();
   const createdAt = new Date().toISOString();
@@ -171,7 +171,12 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
     return json({
       success: true,
-      message: locale === 'es' ? 'Correo enviado exitosamente' : 'Email sent successfully',
+      message:
+        locale === 'es'
+          ? 'Correo enviado exitosamente'
+          : locale === 'pt'
+            ? 'E-mail enviado com sucesso'
+            : 'Email sent successfully',
       emailId,
       messageId: result.messageId,
       processingTime: Date.now() - startedAt,

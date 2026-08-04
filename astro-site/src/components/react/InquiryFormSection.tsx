@@ -78,7 +78,13 @@ export default function InquiryFormSection({
       if (response.ok && result?.success) {
         e.currentTarget.reset();
         setStatusType('success');
-        setStatusMessage(locale === 'es' ? 'Solicitud enviada con éxito.' : 'Inquiry sent successfully.');
+        setStatusMessage(
+          locale === 'es'
+            ? 'Solicitud enviada con éxito.'
+            : locale === 'pt'
+              ? 'Consulta enviada com sucesso.'
+              : 'Inquiry sent successfully.',
+        );
         const eventPayload = {
           event: 'generate_lead',
           form_name: 'homepage_inquiry',
@@ -88,12 +94,22 @@ export default function InquiryFormSection({
         (window as any).gtag?.('event', 'generate_lead', eventPayload);
       } else {
         setStatusType('error');
-        setStatusMessage(result?.message || result?.error || (locale === 'es' ? 'Error al enviar.' : 'Failed to submit.'));
+        setStatusMessage(
+          result?.message ||
+            result?.error ||
+            (locale === 'es' ? 'Error al enviar.' : locale === 'pt' ? 'Falha ao enviar.' : 'Failed to submit.'),
+        );
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setStatusType('error');
-      setStatusMessage(locale === 'es' ? 'Error de red. Inténtalo de nuevo más tarde.' : 'Network error. Please try again later.');
+      setStatusMessage(
+        locale === 'es'
+          ? 'Error de red. Inténtalo de nuevo más tarde.'
+          : locale === 'pt'
+            ? 'Erro de rede. Tente novamente mais tarde.'
+            : 'Network error. Please try again later.',
+      );
     } finally {
       setIsSubmitting(false);
     }

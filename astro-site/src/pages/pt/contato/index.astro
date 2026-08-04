@@ -159,14 +159,14 @@ const subjects = form?.subjects ?? {};
         .then(async (res) => {
           const data = await res.json().catch(() => ({}));
           if (res.ok && data?.success) {
-            status.textContent = 'Mensaje enviado con éxito.';
+            status.textContent = 'Mensagem enviada com sucesso.';
             form.reset();
           } else {
-            status.textContent = data?.message || data?.error || 'Error al enviar.';
+            status.textContent = data?.message || data?.error || 'Erro ao enviar.';
           }
         })
         .catch(() => {
-          status.textContent = 'Error de red. Inténtalo de nuevo más tarde.';
+          status.textContent = 'Erro de rede. Tente novamente mais tarde.';
         });
     });
   })();
