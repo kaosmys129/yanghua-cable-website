@@ -8,6 +8,9 @@ import CTA from '../../../components/CTA.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
+import { buildSolutionAlternates } from '../../../lib/yanghua/seo-localized-routes.mjs';
+import { brand } from '../../../config/brand';
+import { generateBreadcrumbSchema, generateFullOrganizationSchema, generateServiceSchema, generateWebPageSchema } from '../../../lib/schema-utils';
 
 export async function getStaticPaths() {
   const messages = await loadMessages('en');
@@ -20,10 +23,35 @@ export async function getStaticPaths() {
 
 const messages = await loadMessages('en');
 const { solution } = Astro.props as { solution: any };
+const alternates = buildSolutionAlternates('en', solution?.id);
+const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
+const canonical = new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const serviceInput = {
+  id: String(solution?.id ?? ''),
+  name: solution?.title ?? '',
+  description: solution?.subtitle ?? solution?.description ?? '',
+  url: canonical,
+  locale: 'en',
+  image: solution?.image,
+  serviceType: solution?.title,
+};
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    generateFullOrganizationSchema(siteUrl),
+    generateWebPageSchema(serviceInput, `${canonical}#service`, siteUrl),
+    generateServiceSchema(serviceInput, siteUrl),
+    generateBreadcrumbSchema([
+      { name: 'Home', url: `${siteUrl}/en` },
+      { name: 'Solutions', url: `${siteUrl}/en/solutions` },
+      { name: serviceInput.name, url: canonical },
+    ], siteUrl),
+  ],
+};
 ---
 
-<BaseLayout title={solution?.title} description={solution?.subtitle}>
-  <Header slot="header" locale="en" />
+<BaseLayout title={solution?.title} description={solution?.subtitle} alternates={alternates} schema={structuredData}>
+  <Header slot="header" locale="en" alternates={alternates} />
   <Banner title={solution?.title ?? 'Solution'} locale="en" />
 
   <section class="py-section">
@@ -109,4 +137,3 @@ const { solution } = Astro.props as { solution: any };
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>
-

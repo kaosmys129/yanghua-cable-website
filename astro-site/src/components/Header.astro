@@ -1,5 +1,6 @@
 ---
-import { route, localeFromPathname, switchLocalePath } from '../lib/yanghua/routes';
+import { route, localeFromPathname } from '../lib/yanghua/routes';
+import { buildHreflangAlternates } from '../lib/yanghua/hreflang';
 import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedNavItem, NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
@@ -13,6 +14,8 @@ interface Props {
   site?: NormalizedSiteSettings;
   navItems?: NormalizedNavItem[];
   ctaLabel?: string;
+  /** Exact translated URLs for pages whose localized slugs are not mechanical. */
+  alternates?: { hreflang: string; href: string }[];
 }
 
 const currentPath = Astro.url.pathname;
@@ -22,9 +25,14 @@ const navItems = Astro.props.navItems ?? site.navigation.items;
 const ctaLabel = Astro.props.ctaLabel ?? site.navigation.ctaLabel;
 const phoneForTel = site.client.phoneForTel || site.client.phoneRaw;
 const phoneFormatted = site.client.phoneFormatted || site.client.phoneRaw;
-const enPath = switchLocalePath(currentPath, 'en');
-const esPath = switchLocalePath(currentPath, 'es');
-const ptPath = switchLocalePath(currentPath, 'pt');
+const effectiveAlternates = Astro.props.alternates ?? buildHreflangAlternates(
+  currentPath,
+  String(Astro.site ?? 'https://www.yhflexiblebusbar.com')
+);
+const alternatePaths = new Map(effectiveAlternates.map((alternate) => [alternate.hreflang, alternate.href]));
+const enPath = alternatePaths.get('en');
+const esPath = alternatePaths.get('es');
+const ptPath = alternatePaths.get('pt');
 ---
 
 <header
@@ -62,14 +70,14 @@ const ptPath = switchLocalePath(currentPath, 'pt');
 
     <!-- Desktop CTA + phone + lang -->
     <div class="hidden items-center gap-4 lg:flex">
-      {locale !== 'en' && (
-        <a href={enPath} class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary" title="View in English">EN</a>
+      {locale !== 'en' && enPath && (
+        <a href={enPath} hreflang="en" class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary" title="View in English">EN</a>
       )}
-      {locale !== 'es' && (
-        <a href={esPath} class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary" title="Ver en Español">ES</a>
+      {locale !== 'es' && esPath && (
+        <a href={esPath} hreflang="es" class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary" title="Ver en Español">ES</a>
       )}
-      {locale !== 'pt' && (
-        <a href={ptPath} class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary" title="Ver em Português">PT</a>
+      {locale !== 'pt' && ptPath && (
+        <a href={ptPath} hreflang="pt" class="rounded-md border border-border px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:border-primary hover:text-primary" title="Ver em Português">PT</a>
       )}
       <a
         href={`tel:${phoneForTel}`}
@@ -128,20 +136,20 @@ const ptPath = switchLocalePath(currentPath, 'pt');
     </nav>
 
     <div class="mt-4 flex flex-col gap-3 border-t border-border pt-4">
-      {locale !== 'en' && (
-        <a href={enPath} class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary">
+      {locale !== 'en' && enPath && (
+        <a href={enPath} hreflang="en" class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary">
           <svg class="size-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
           English
         </a>
       )}
-      {locale !== 'es' && (
-        <a href={esPath} class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary">
+      {locale !== 'es' && esPath && (
+        <a href={esPath} hreflang="es" class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary">
           <svg class="size-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
           Español
         </a>
       )}
-      {locale !== 'pt' && (
-        <a href={ptPath} class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary">
+      {locale !== 'pt' && ptPath && (
+        <a href={ptPath} hreflang="pt" class="flex items-center gap-2 px-3 py-2 text-base font-semibold text-text-muted hover:text-primary">
           <svg class="size-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
           Português
         </a>

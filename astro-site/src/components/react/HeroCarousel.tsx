@@ -5,6 +5,7 @@ import { ArrowRight, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface SlideImage {
   src: string;
+  mobileSrc?: string;
   alt: string;
 }
 
@@ -141,13 +142,19 @@ export default function HeroCarousel({
           }}
         >
           {loadedImages.has(i) && (
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-              className="size-full object-cover"
-            />
+            <picture>
+              {slide.mobileSrc && <source media="(max-width: 640px)" srcSet={slide.mobileSrc} />}
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                width="1920"
+                height="911"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                fetchPriority={i === 0 ? 'high' : 'auto'}
+                decoding={i === 0 ? 'sync' : 'async'}
+                className="size-full object-cover"
+              />
+            </picture>
           )}
           {/* 深色遮罩 */}
           <div
@@ -204,7 +211,7 @@ export default function HeroCarousel({
 
           <h1
             className="font-heading text-display font-bold uppercase leading-none tracking-tight text-white"
-            style={{ viewTransitionName: 'hero-heading' }}
+            style={{ fontFamily: 'ui-sans-serif, system-ui, sans-serif' }}
           >
             {heading}
           </h1>

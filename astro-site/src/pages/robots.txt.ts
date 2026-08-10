@@ -25,7 +25,7 @@ const robots = isIndexableEnvironment
       'User-agent: PerplexityBot',
       'Allow: /',
       '',
-      'Sitemap: https://www.yhflexiblebusbar.com/sitemap.xml',
+      'Sitemap: https://www.yhflexiblebusbar.com/sitemap-index.xml',
       '',
     ].join('\n')
   : [

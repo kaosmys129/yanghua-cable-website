@@ -3,8 +3,8 @@ import { productImageFromName } from '../lib/yanghua/assets';
 import { slugifyProductCategoryName } from '../lib/yanghua/products';
 
 const { categories = [], labels = {}, locale = 'en' } = Astro.props;
-const basePath = locale === 'es' ? '/es/productos' : '/en/products';
-const categoryBasePath = locale === 'es' ? '/es/productos/categoria' : '/en/products/category';
+const basePath = locale === 'es' ? '/es/productos' : locale === 'pt' ? '/pt/produtos' : '/en/products';
+const categoryBasePath = locale === 'es' ? '/es/productos/categoria' : locale === 'pt' ? '/pt/produtos/categoria' : '/en/products/category';
 ---
 
 <section class="py-section">

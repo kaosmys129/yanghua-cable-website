@@ -15,14 +15,22 @@ const homeLabels = {
 
 const finalHomeLabel = homeLabel || homeLabels[locale] || 'Home';
 
+const isTransitionPath = (path: string) => {
+  return /^\/(en|es|pt)\/(products\/category|productos\/categoria|produtos\/categoria)$/i.test(path);
+};
+
 const segments = Astro.url.pathname
   .split('/')
   .filter(Boolean)
-  .map((seg, i, arr) => ({
-    label: seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
-    href: '/' + arr.slice(0, i + 1).join('/'),
-    isLast: i === arr.length - 1,
-  }));
+  .map((seg, i, arr) => {
+    const rawHref = '/' + arr.slice(0, i + 1).join('/');
+    return {
+      label: seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      href: isTransitionPath(rawHref) ? '/' + arr.slice(0, i).join('/') : rawHref,
+      isLast: i === arr.length - 1,
+      isTransition: isTransitionPath(rawHref),
+    };
+  });
 ---
 
 <section class="bg-primary py-14 sm:py-16 lg:py-20">

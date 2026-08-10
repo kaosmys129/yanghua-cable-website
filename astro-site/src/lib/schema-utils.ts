@@ -15,6 +15,10 @@
 import { brand } from '../config/brand';
 import { client } from '../data/client';
 
+function normalizeBaseUrl(siteUrl?: string): string {
+  return String(siteUrl || brand.url).replace(/\/+$/, '');
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
 // ─────────────────────────────────────────────────────────────────────────────
@@ -52,7 +56,7 @@ export interface ArticlePost {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function generateFullOrganizationSchema(siteUrl?: string): Record<string, unknown> {
-  const baseUrl = siteUrl || brand.url;
+  const baseUrl = normalizeBaseUrl(siteUrl);
 
   return {
     '@context': 'https://schema.org',
@@ -63,9 +67,9 @@ export function generateFullOrganizationSchema(siteUrl?: string): Record<string,
     url: baseUrl,
     logo: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/images/logo.png`,
-      width: 200,
-      height: 60,
+      url: `${baseUrl}/favicon.svg`,
+      width: 128,
+      height: 128,
     },
     description:
       'Leading manufacturer of high-current flexible busbar and electrical solutions for industrial applications worldwide',
@@ -124,8 +128,8 @@ export function generateCollectionPageSchema(
   siteUrl?: string,
   locale: string = 'en',
 ): Record<string, unknown> {
-  const baseUrl = siteUrl || brand.url;
-  const listPath = locale === 'es' ? '/es/articulos' : '/en/articles';
+  const baseUrl = normalizeBaseUrl(siteUrl);
+  const listPath = locale === 'es' ? '/es/articulos' : locale === 'pt' ? '/pt/artigos' : '/en/articles';
 
   return {
     '@context': 'https://schema.org',
@@ -192,7 +196,7 @@ export function generateBreadcrumbSchema(
   items: BreadcrumbItem[],
   siteUrl?: string,
 ): Record<string, unknown> {
-  const baseUrl = siteUrl || brand.url;
+  const baseUrl = normalizeBaseUrl(siteUrl);
 
   return {
     '@context': 'https://schema.org',
@@ -217,7 +221,7 @@ export function generateArticleSchema(
   post: ArticlePost,
   siteUrl?: string,
 ): Record<string, unknown> {
-  const baseUrl = siteUrl || brand.url;
+  const baseUrl = normalizeBaseUrl(siteUrl);
 
   return {
     '@context': 'https://schema.org',
@@ -243,7 +247,7 @@ export function generateArticleSchema(
       name: client.name,
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/images/logo.png`,
+        url: `${baseUrl}/favicon.svg`,
       },
     },
     ...(post.category && { articleSection: post.category }),
@@ -267,7 +271,7 @@ export function generateArticleSchema(
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function generateWebsiteSchema(siteUrl?: string): Record<string, unknown> {
-  const baseUrl = siteUrl || brand.url;
+  const baseUrl = normalizeBaseUrl(siteUrl);
 
   return {
     '@context': 'https://schema.org',
@@ -322,7 +326,7 @@ export function generateProductSchema(
   product: ProductSchemaInput,
   siteUrl?: string,
 ): Record<string, unknown> {
-  const baseUrl = siteUrl || brand.url;
+  const baseUrl = normalizeBaseUrl(siteUrl);
 
   const images = (product.image ?? []).map((img) =>
     img.startsWith('http') ? img : `${baseUrl}${img}`,
@@ -350,6 +354,102 @@ export function generateProductSchema(
     ...(additionalProperty && { additionalProperty }),
     ...(product.url && { url: product.url }),
     ...(product.locale && { inLanguage: product.locale }),
+  };
+}
+
+export interface EntityPageSchemaInput {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  locale: string;
+  image?: string;
+  location?: string;
+  serviceType?: string;
+}
+
+export function generateWebPageSchema(
+  page: EntityPageSchemaInput,
+  entityId: string,
+  siteUrl?: string,
+): Record<string, unknown> {
+  const baseUrl = normalizeBaseUrl(siteUrl);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${page.url}#webpage`,
+    url: page.url,
+    name: page.name,
+    description: page.description,
+    inLanguage: page.locale,
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': `${baseUrl}/#website`,
+    },
+    mainEntity: {
+      '@id': entityId,
+    },
+  };
+}
+
+export function generateProjectSchema(
+  project: EntityPageSchemaInput,
+  siteUrl?: string,
+): Record<string, unknown> {
+  const baseUrl = normalizeBaseUrl(siteUrl);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Project',
+    '@id': `${project.url}#project`,
+    identifier: project.id,
+    name: project.name,
+    description: project.description,
+    url: project.url,
+    inLanguage: project.locale,
+    ...(project.image && {
+      image: project.image.startsWith('http') ? project.image : `${baseUrl}${project.image}`,
+    }),
+    ...(project.location && {
+      location: {
+        '@type': 'Place',
+        name: project.location,
+      },
+    }),
+    parentOrganization: {
+      '@type': 'Organization',
+      '@id': `${baseUrl}/#organization`,
+    },
+    mainEntityOfPage: {
+      '@id': `${project.url}#webpage`,
+    },
+  };
+}
+
+export function generateServiceSchema(
+  service: EntityPageSchemaInput,
+  siteUrl?: string,
+): Record<string, unknown> {
+  const baseUrl = normalizeBaseUrl(siteUrl);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${service.url}#service`,
+    name: service.name,
+    description: service.description,
+    serviceType: service.serviceType || service.name,
+    url: service.url,
+    inLanguage: service.locale,
+    ...(service.image && {
+      image: service.image.startsWith('http') ? service.image : `${baseUrl}${service.image}`,
+    }),
+    areaServed: 'Worldwide',
+    provider: {
+      '@type': 'Organization',
+      '@id': `${baseUrl}/#organization`,
+    },
+    mainEntityOfPage: {
+      '@id': `${service.url}#webpage`,
+    },
   };
 }
 

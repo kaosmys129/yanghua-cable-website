@@ -89,7 +89,7 @@ const contactHref = route('contact', locale);
           <h2 class="font-heading text-lg font-semibold text-text">{labels.related}</h2>
           <div class="mt-4 space-y-3">
             {related.map((item) => (
-              <a href={`${locale === 'es' ? '/es/productos' : '/en/products'}/${item.id}`} class="flex gap-3 rounded-md border border-border bg-background p-3 transition-colors hover:border-primary">
+              <a href={`${locale === 'es' ? '/es/productos' : locale === 'pt' ? '/pt/produtos' : '/en/products'}/${item.id}`} class="flex gap-3 rounded-md border border-border bg-background p-3 transition-colors hover:border-primary">
                 <img src={item.images[0]} alt={item.name} class="size-14 shrink-0 rounded-md object-cover" loading="lazy" />
                 <span>
                   <span class="block text-sm font-semibold text-text">{item.name}</span>

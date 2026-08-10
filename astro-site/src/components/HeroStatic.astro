@@ -1,0 +1,75 @@
+---
+interface Props {
+  topper?: string;
+  heading?: string;
+  description?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  phone?: string;
+  phoneHref?: string;
+  image: string;
+  mobileImage?: string;
+  imageAlt: string;
+}
+
+const {
+  topper,
+  heading = 'Flexible busbar and cable solutions',
+  description = 'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
+  ctaLabel = 'View Products',
+  ctaHref = '/en/products',
+  secondaryLabel = 'About Us',
+  secondaryHref = '/en/about',
+  phone = '+86-769-3893-9888',
+  phoneHref = 'tel:+86-769-3893-9888',
+  image,
+  mobileImage,
+  imageAlt,
+} = Astro.props;
+---
+
+<section class="relative flex min-h-screen items-center overflow-hidden">
+  <picture class="absolute inset-0 z-0 block">
+    {mobileImage && <source media="(max-width: 640px)" srcset={mobileImage} />}
+    <img
+      src={image}
+      alt={imageAlt}
+      width="1920"
+      height="911"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      class="size-full object-cover"
+    />
+    <span class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" aria-hidden="true"></span>
+  </picture>
+
+  <div class="relative z-10 mx-auto w-full max-w-site px-4 py-section sm:px-6">
+    <div class="max-w-xl space-y-5 lg:space-y-6">
+      {topper && (
+        <span class="inline-flex rounded-full bg-[hsl(var(--accent-shadcn))/0.85] px-4 py-1.5 text-topper font-bold uppercase tracking-widest text-[hsl(var(--accent-shadcn))]">
+          {topper}
+        </span>
+      )}
+
+      <h1 class="font-heading text-display font-bold uppercase leading-none tracking-tight text-white" style="font-family: ui-sans-serif, system-ui, sans-serif">
+        {heading}
+      </h1>
+
+      <p class="max-w-lg text-lead leading-relaxed text-white/80">{description}</p>
+
+      <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
+        <a href={ctaHref} class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-[hsl(var(--accent-shadcn))] px-6 py-3 font-bold text-[hsl(var(--accent-shadcn-foreground))]">
+          {ctaLabel}<span class="ml-2" aria-hidden="true">→</span>
+        </a>
+        <a href={secondaryHref} class="inline-flex min-h-[44px] items-center justify-center rounded-md border-2 border-white/60 px-6 py-3 font-bold text-white">
+          {secondaryLabel}
+        </a>
+      </div>
+
+      <a href={phoneHref} class="inline-flex items-center gap-2 pt-1 text-sm font-semibold text-white/70">Call {phone}</a>
+    </div>
+  </div>
+</section>

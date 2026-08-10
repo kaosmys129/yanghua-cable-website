@@ -8,26 +8,25 @@ import ProductCategoryDetail from '../../../../components/ProductCategoryDetail.
 import { loadMessages } from '../../../../lib/yanghua/loaders';
 import { tRaw } from '../../../../lib/yanghua/t';
 import { buildProductCategories, findProductCategory } from '../../../../lib/yanghua/products';
+import { buildProductCategoryAlternates } from '../../../../lib/yanghua/seo-localized-routes.mjs';
 
 export async function getStaticPaths() {
   const messages = await loadMessages('es');
   const categories = buildProductCategories('es', tRaw<any[]>(messages, 'products.categories', []));
-  return categories.flatMap((category) =>
-    [category.slug, ...category.aliases].map((name) => ({ params: { name }, props: { category } }))
-  );
+  return categories.map((category) => ({ params: { name: category.slug }, props: { categoryData: category } }));
 }
-
 const messages = await loadMessages('es');
 const categories = buildProductCategories('es', tRaw<any[]>(messages, 'products.categories', []));
-const category = Astro.props.category ?? findProductCategory(categories, Astro.params.name ?? '');
+const category = Astro.props.categoryData ?? findProductCategory(categories, Astro.params.name ?? '');
 
 if (!category) {
   return Astro.redirect('/es/productos', 302);
 }
+const alternates = buildProductCategoryAlternates('es', category.slug);
 ---
 
-<BaseLayout title={`${category.name} | Categoría de Barra Colectora Flexible | Yanghua`} description={`Descubra modelos, estructura y especificaciones de ${category.name} en barras colectoras flexibles para diversas aplicaciones.`}>
-  <Header slot="header" locale="es" />
+<BaseLayout title={`${category.name} | Categoría de Barra Colectora Flexible | Yanghua`} description={`Descubra modelos, estructura y especificaciones de ${category.name} en barras colectoras flexibles para diversas aplicaciones.`} alternates={alternates}>
+  <Header slot="header" locale="es" alternates={alternates} />
   <Banner title={`${category.name}`} locale="es" />
   <ProductCategoryDetail category={category} locale="es" />
   <Footer slot="footer" locale="es" />

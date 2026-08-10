@@ -7,6 +7,7 @@ interface ServiceItem {
   description: string;
   href?: string;
   image?: string;
+  mobileImage?: string;
   imageAlt?: string;
 }
 
@@ -80,12 +81,18 @@ export default function ServicesSection({
               <Card className="relative flex min-h-64 cursor-pointer flex-col overflow-hidden border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
                 {service.image && (
                   <>
-                    <img
-                      src={service.image}
-                      alt={service.imageAlt || service.title}
-                      className="absolute inset-0 h-full w-full object-cover opacity-[0.22] saturate-90 transition duration-300 group-hover:scale-105 group-hover:opacity-[0.3]"
-                      loading="lazy"
-                    />
+                    <picture>
+                      {service.mobileImage && <source media="(max-width: 640px)" srcSet={service.mobileImage} />}
+                      <img
+                        src={service.image}
+                        alt={service.imageAlt || service.title}
+                        width="1280"
+                        height="720"
+                        className="absolute inset-0 h-full w-full object-cover opacity-[0.22] saturate-90 transition duration-300 group-hover:scale-105 group-hover:opacity-[0.3]"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
                     <span className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background/70" />
                   </>
                 )}

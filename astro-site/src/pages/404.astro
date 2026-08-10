@@ -34,7 +34,13 @@ const t = content[locale];
 Astro.response.status = 404;
 ---
 
-<BaseLayout title={t.title} description={t.description}>
+<BaseLayout
+  title={t.title}
+  description={t.description}
+  canonical={false}
+  robots="noindex, follow"
+  includeHreflang={false}
+>
   <Header slot="header" locale={locale} />
 
   <main class="flex min-h-[70vh] items-center justify-center bg-surface">

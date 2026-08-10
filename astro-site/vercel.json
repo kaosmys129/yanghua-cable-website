@@ -1,7 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": "astro",
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -52,9 +54,328 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ],
   "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/en/articles",
+      "statusCode": 301
+    },
+    {
+      "source": "/products",
+      "destination": "/en/products",
+      "statusCode": 301
+    },
+    {
+      "source": "/solutions",
+      "destination": "/en/solutions",
+      "statusCode": 301
+    },
+    {
+      "source": "/projects",
+      "destination": "/en/projects",
+      "statusCode": 301
+    },
+    {
+      "source": "/articles",
+      "destination": "/en/articles",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articles",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/category",
+      "destination": "/es/productos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/categoria/general",
+      "destination": "/es/productos/categoria/cables-de-proposito-general",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/categoria/flame-retardant",
+      "destination": "/es/productos/categoria/cables-retardantes-de-llama",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/category/fire-resistant",
+      "destination": "/es/productos/categoria/cables-resistentes-al-fuego",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/category/cables-libres-de-humo-y-halogenos",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/projetos/64",
+      "destination": "/es/proyectos/64",
+      "statusCode": 301
+    },
+    {
+      "source": "/pt/proyectos/64",
+      "destination": "/pt/projetos/64",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/artigos/hub/custom-busbar-systems",
+      "destination": "/es/articulos/hub/custom-busbar-systems",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/products/categoria/fire-resistant",
+      "destination": "/en/products/category/fire-resistant-cables",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions",
+      "destination": "/en/articles/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-es",
+      "destination": "/es/articulos/pionero-de-energia-digital-futuro-de-innovacion-inteligente-destacados-de-la-exposicion-de-busbar-de-alta-corriente-flexible-512155",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-es",
+      "destination": "/es/articulos/liderazgo-de-shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-visita-yanghuasti-para-intercambio-508737",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong-es",
+      "destination": "/en/articles/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong-507559",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/bendicion-del-ano-de-la-serpiente-prosperidad-y-alegria-deseando-a-todos-un-feliz-ano-nuevo-505792",
+      "destination": "/es/articulos/bendicion-del-ano-de-la-serpiente-prosperidad-y-alegria-deseando-a-todos-un-feliz-ano-nuevo-505792",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/categoria/low-smoke-halogen-free-cables",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year-es",
+      "destination": "/en/articles/as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year-532956",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year",
+      "destination": "/en/articles/year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year-505792",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/work-resumes-with-good-fortune-everything-is-promising",
+      "destination": "/en/articles/work-resumes-with-good-fortune-everything-is-promising-532350",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions",
+      "destination": "/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality",
+      "destination": "/en/articles/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-505135",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong",
+      "destination": "/en/articles/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong-507559",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing",
+      "destination": "/en/articles/first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing-501651",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/invitation-april-10-12-13th-international-energy-storage-summit-exhibition-high-current-flexible-busbar-booth-b2119-hall-b2-es",
+      "destination": "/es/articulos/invitacion-10-12-de-abril-13a-cumbre-y-exposicion-internacional-de-almacenamiento-de-energia-busbar-flexible-de-alta-corriente-stand-b2119-salon-b2-515322",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-es",
+      "destination": "/en/articles/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-501599",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/yanghuasti-2024-annual-review-es",
+      "destination": "/es/articulos/revision-anual-de-yanghuasti-2024-528905",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-es",
+      "destination": "/es/articulos/diez-anos-de-construccion-de-plataforma-de-la-camara-de-comercio-busbar-de-alta-corriente-flexible-avanzando-con-honor-859905",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/yanghua-insights-multi-parallel-cables-always-have-one-heating-up-first-this-flexible-busbar-cures-current-inequality-es",
+      "destination": "/es/articulos/perspectivas-de-yanghua-los-cables-multiparalelos-siempre-tienen-uno-que-se-calienta-primero-este-busbar-flexible-cura-la-desigualdad-de-corriente-505135",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/work-resumes-with-good-fortune-everything-is-promising-es",
+      "destination": "/es/articulos/reanudacion-del-trabajo-con-buena-fortuna-todo-es-prometedor-532350",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-es",
+      "destination": "/es/articulos/segunda-aparicion-busbar-flexible-de-alta-corriente-presentado-en-el-foro-de-tecnologia-de-eficiencia-energetica-de-bajo-carbono-de-ingenieria-electrica-de-edificios-551521",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-es",
+      "destination": "/es/articulos/soluciones-de-industria-de-busbar-flexible-energia-solar-fotovoltaica-con-instrucciones-completas-de-descarga-del-manual-517369",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-es",
+      "destination": "/es/articulos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-es",
+      "destination": "/en/articles/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/:legacySection(articles|articulos)/flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-es",
+      "destination": "/es/articulos/soluciones-de-industria-de-busbar-flexible-estaciones-de-carga-con-instrucciones-completas-de-descarga-del-manual-527307",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/products",
+      "destination": "/es/productos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/products/category",
+      "destination": "/es/productos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/solutions",
+      "destination": "/es/soluciones",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/projects",
+      "destination": "/es/proyectos",
+      "statusCode": 301
+    },
+    {
+      "source": "/pt/products",
+      "destination": "/pt/produtos",
+      "statusCode": 301
+    },
+    {
+      "source": "/pt/products/category",
+      "destination": "/pt/produtos",
+      "statusCode": 301
+    },
+    {
+      "source": "/pt/solutions",
+      "destination": "/pt/solucoes",
+      "statusCode": 301
+    },
+    {
+      "source": "/pt/projects",
+      "destination": "/pt/projetos",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:path+",
+      "destination": "/en/articles/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/products/:path+",
+      "destination": "/en/products/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/:path+",
+      "destination": "/en/solutions/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/projects/:path+",
+      "destination": "/en/projects/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/articles/:path+",
+      "destination": "/en/articles/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/articles/:path+",
+      "destination": "/es/articulos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/productos/category/:path+",
+      "destination": "/es/productos/categoria/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/products/category/:path+",
+      "destination": "/es/productos/categoria/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/products/:path+",
+      "destination": "/es/productos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/solutions/:path+",
+      "destination": "/es/soluciones/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/projects/:path+",
+      "destination": "/es/proyectos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pt/products/category/:path+",
+      "destination": "/pt/produtos/categoria/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pt/products/:path+",
+      "destination": "/pt/produtos/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pt/solutions/:path+",
+      "destination": "/pt/solucoes/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/pt/projects/:path+",
+      "destination": "/pt/projetos/:path*",
+      "permanent": true
+    },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "yhflexiblebusbar.com" }],

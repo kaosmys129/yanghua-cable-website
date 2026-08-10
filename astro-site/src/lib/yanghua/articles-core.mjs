@@ -1,17 +1,19 @@
 const ARTICLE_BASE_PATH = {
   en: '/en/articles',
   es: '/es/articulos',
+  pt: '/pt/artigos',
 };
 
 const HUB_BASE_PATH = {
   en: '/en/articles/hub',
   es: '/es/articulos/hub',
+  pt: '/pt/artigos/hub',
 };
 
 const PUBLIC_GEOFLOW_STATUSES = new Set(['approved', 'published']);
 
 function asLocale(value) {
-  return value === 'es' ? 'es' : 'en';
+  return value === 'es' ? 'es' : value === 'pt' ? 'pt' : 'en';
 }
 
 function asArray(value) {
@@ -44,6 +46,39 @@ export function getHubUrl(locale, slug) {
   return `${HUB_BASE_PATH[normalizedLocale]}/${slug}`;
 }
 
+export function buildArticleHreflangAlternates(article, articles, siteUrl) {
+  const origin = String(siteUrl || '').replace(/\/+$/, '');
+  const translations = article.translationKey
+    ? articles.filter((item) => item.translationKey === article.translationKey && item.isPublic !== false)
+    : [article];
+  const localeCounts = translations.reduce((counts, item) => {
+    counts.set(item.locale, (counts.get(item.locale) ?? 0) + 1);
+    return counts;
+  }, new Map());
+
+  // A repeated locale means the translation key identifies more than one page.
+  // In that case, cross-language alternates would be arbitrary and non-reciprocal.
+  if ([...localeCounts.values()].some((count) => count > 1)) {
+    const href = `${origin}${article.url}`;
+    return [
+      { hreflang: article.locale, href },
+      { hreflang: 'x-default', href },
+    ];
+  }
+  const byLocale = new Map(translations.map((item) => [item.locale, item]));
+  if (!byLocale.has(article.locale)) byLocale.set(article.locale, article);
+
+  const alternates = ['en', 'es', 'pt']
+    .filter((locale) => byLocale.has(locale))
+    .map((locale) => ({
+      hreflang: locale,
+      href: `${origin}${byLocale.get(locale).url}`,
+    }));
+  const defaultArticle = byLocale.get('en') ?? article;
+  alternates.push({ hreflang: 'x-default', href: `${origin}${defaultArticle.url}` });
+  return alternates;
+}
+
 export function normalizeGeoflowStatus(frontmatter = {}) {
   const geoflow = asObject(frontmatter.geoflow);
   if (!Object.keys(geoflow).length) return 'legacy';
@@ -65,7 +100,7 @@ export function normalizeArticleModule(input) {
   const category = asObject(frontmatter.category);
   const author = asObject(frontmatter.author);
   const aiImages = asObject(frontmatter.aiImages);
-  const locale = asLocale(frontmatter.locale || localeFromPath(input?.path));
+  const locale = asLocale(localeFromPath(input?.path) || frontmatter.locale);
   const slug = firstText(frontmatter.slug, basenameSlug(input?.path));
   const title = firstText(seo.title, frontmatter.metaTitle, frontmatter.title, slug);
   const description = firstText(
@@ -129,7 +164,7 @@ export function normalizeArticleModule(input) {
 
 export function normalizeHubModule(input) {
   const frontmatter = asObject(input?.frontmatter);
-  const locale = asLocale(frontmatter.locale || localeFromPath(input?.path));
+  const locale = asLocale(localeFromPath(input?.path) || frontmatter.locale);
   const slug = firstText(frontmatter.slug, basenameSlug(input?.path));
   const title = firstText(frontmatter.metaTitle, frontmatter.title, slug);
   const description = firstText(frontmatter.metaDescription, frontmatter.summary, frontmatter.intro);
@@ -267,7 +302,9 @@ export function buildSitemapXml(input) {
 function localeFromPath(path) {
   const normalizedPath = String(path || '');
   if (normalizedPath.includes('/es/')) return 'es';
-  return 'en';
+  if (normalizedPath.includes('/pt/')) return 'pt';
+  if (normalizedPath.includes('/en/')) return 'en';
+  return '';
 }
 
 function escapeXml(value) {

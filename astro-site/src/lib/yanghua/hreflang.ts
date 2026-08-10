@@ -59,8 +59,11 @@ export function translatePath(pathname: string, target: Locale): string {
   const stripped = pathname.replace(/^\/(en|es|pt)(?=\/|$)/, '');
   const segs = stripped.split('/').filter(Boolean);
   const translated = segs.map((seg) => {
-    const m = SEGMENT_MAP[seg];
-    return m?.[target] ?? seg;
+    const englishSegment = Object.entries(SEGMENT_MAP).find(
+      ([english, localized]) => seg === english || Object.values(localized).includes(seg)
+    )?.[0] ?? seg;
+    const m = SEGMENT_MAP[englishSegment];
+    return target === 'en' ? englishSegment : m?.[target] ?? englishSegment;
   });
   const base = localePrefix(target);
   return translated.length ? `${base}/${translated.join('/')}` : base;

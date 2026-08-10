@@ -3,7 +3,7 @@ export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import HeroCarousel from '../../components/react/HeroCarousel';
+import HeroStatic from '../../components/HeroStatic.astro';
 import TrustBarSection from '../../components/react/TrustBarSection';
 import ServicesSection from '../../components/react/ServicesSection';
 import AboutSection from '../../components/react/AboutSection';
@@ -11,7 +11,7 @@ import CTASection from '../../components/react/CTASection';
 import ProductComparisonSection from '../../components/react/ProductComparisonSection';
 import PartnersSection from '../../components/react/PartnersSection';
 import ProjectGallerySection from '../../components/react/ProjectGallerySection';
-import InquiryFormSection from '../../components/react/InquiryFormSection';
+import InquiryForm from '../../components/InquiryForm.astro';
 import { brand } from '../../config/brand';
 import { client } from '../../data/client';
 import { loadMessages, loadPageJson } from '../../lib/yanghua/loaders';
@@ -27,33 +27,40 @@ const trustItems = Object.values(page?.companyStrength?.stats ?? {}).map((s: any
   label: s?.label ?? '',
 }));
 
-const applicationAreaImages: Record<string, { image: string; imageAlt: string }> = {
+const applicationAreaImages: Record<string, { image: string; mobileImage: string; imageAlt: string }> = {
   energy: {
     image: '/images/projects/50mw-solar-farm-power-distribution.webp',
+    mobileImage: '/images/projects/50mw-solar-farm-power-distribution-mobile.webp',
     imageAlt: 'Solar facility power distribution project site',
   },
   building: {
     image: '/images/projects/metro-line-14.webp',
+    mobileImage: '/images/projects/metro-line-14-mobile.webp',
     imageAlt: 'Outdoor utility power distribution cabinets at a project site',
   },
   industry: {
     image: '/images/projects/midea-industrial-complex.webp',
+    mobileImage: '/images/projects/midea-industrial-complex-mobile.webp',
     imageAlt: 'Industrial manufacturing complex with electrical infrastructure',
   },
   dataCenter: {
     image: '/images/projects/huawei-data-center-expansion.webp',
+    mobileImage: '/images/projects/huawei-data-center-expansion-mobile.webp',
     imageAlt: 'Data center expansion project building and power infrastructure',
   },
   railway: {
     image: '/images/projects/metro-line-14.webp',
+    mobileImage: '/images/projects/metro-line-14-mobile.webp',
     imageAlt: 'Metro power distribution cabinets for rail transit infrastructure',
   },
   chemical: {
     image: '/images/projects/steel-mill-modernization.webp',
+    mobileImage: '/images/projects/steel-mill-modernization-mobile.webp',
     imageAlt: 'Heavy industrial plant power distribution project site',
   },
   marine: {
     image: '/images/projects/steel-mill-modernization.webp',
+    mobileImage: '/images/projects/steel-mill-modernization-mobile.webp',
     imageAlt: 'Large outdoor industrial power distribution environment',
   },
 };
@@ -83,10 +90,12 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
   title={page?.hero?.title ?? brand.name}
   description={page?.hero?.description ?? brand.description}
   schema={generateFullOrganizationSchema(brand.url)}
+  preloadImage="/images/homepage/home-hero-bg.webp"
+  preloadMobileImage="/images/homepage/home-hero-bg-mobile.webp"
 >
   <Header slot="header" locale="en" />
 
-  <HeroCarousel
+  <HeroStatic
     topper={page?.hero?.subtitle}
     heading={page?.hero?.title}
     description={page?.hero?.description}
@@ -96,14 +105,12 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     secondaryHref={route('about', 'en')}
     phone={client.phoneFormatted}
     phoneHref={`tel:${client.phoneForTel}`}
-    slides={[
-      { src: '/images/homepage/home-hero-bg.png', alt: 'Yanghua flexible busbar manufacturing facility' },
-      { src: '/images/homepage/hero-bg-3.webp', alt: 'Yanghua high-current flexible busbar product showcase' },
-      { src: '/images/projects-home/huawei-data-center-expansion.webp', alt: 'Data center power distribution project' },
-      { src: '/images/projects-home/byd-battery-manufacturing.webp', alt: 'EV battery manufacturing power solution' },
-    ]}
+    image="/images/homepage/home-hero-bg.webp"
+    mobileImage="/images/homepage/home-hero-bg-mobile.webp"
+    imageAlt="Yanghua flexible busbar manufacturing facility"
   />
 
+  <div class="below-fold-sections">
   {trustItems.length > 0 && <TrustBarSection items={trustItems} />}
 
   <ServicesSection
@@ -135,7 +142,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
 
   <ProjectGallerySection content={tRaw(messages, 'projectGallery', {})} projects={projects} locale="en" />
 
-  <InquiryFormSection client:load content={tRaw(messages, 'inquiry', {})} locale="en" />
+  <InquiryForm content={tRaw(messages, 'inquiry', {})} locale="en" />
 
   <CTASection
     title="Ready to Get Started?"
@@ -145,6 +152,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     phone={client.phoneFormatted}
     phoneHref={`tel:${client.phoneForTel}`}
   />
+  </div>
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>

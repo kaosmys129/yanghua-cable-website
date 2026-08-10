@@ -4,7 +4,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
-import { getAllArticles, getArticleStaticPaths } from '../../../lib/yanghua/articles.mjs';
+import { getAllArticles, getArticleStaticPaths, YANGHUA_SITE_URL } from '../../../lib/yanghua/articles.mjs';
+import { buildArticleHreflangAlternates } from '../../../lib/yanghua/articles-core.mjs';
 import type { Locale } from '../../../lib/yanghua/loaders';
 
 export function getStaticPaths() {
@@ -27,6 +28,7 @@ const availableLocales = Array.from(
       : []),
   ])
 ) as Locale[];
+const alternates = buildArticleHreflangAlternates(article, allArticles, YANGHUA_SITE_URL);
 
 const geo = article.geo;
 const hasGeo = geo.targetQueries.length > 0 || geo.answerSummary || geo.citations.length > 0;
@@ -47,6 +49,8 @@ const buyerIntentLabels: Record<string, string> = {
   procurement: 'Adquisicion',
 };
 
+import { normalizeProductHref, normalizeSolutionHref } from '../../../lib/yanghua/link-normalizer';
+
 const statusLabels: Record<string, string> = {
   legacy: 'Articulo heredado',
   approved: 'Aprobado',
@@ -56,13 +60,13 @@ const statusLabels: Record<string, string> = {
 const productLinks = geo.relatedProductIds.map((id: string) => ({
   id,
   label: id.replace(/[-_]/g, ' '),
-  href: `/es/productos/${id}`,
+  href: normalizeProductHref(id, 'es'),
 }));
 
 const solutionLinks = geo.relatedSolutionIds.map((id: string) => ({
   id,
   label: id.replace(/[-_]/g, ' '),
-  href: `/es/soluciones/${id}`,
+  href: normalizeSolutionHref(id, 'es'),
 }));
 
 const faqSchema = geo.faqs.length > 0 ? {
@@ -121,8 +125,9 @@ const structuredData = {
   image={coverImage}
   schema={structuredData}
   availableLocales={availableLocales}
+  alternates={alternates}
 >
-  <Header slot="header" locale="es" />
+  <Header slot="header" locale="es" alternates={alternates} />
   <Banner title={title} locale="es" />
 
   <section class="border-b border-border bg-surface">

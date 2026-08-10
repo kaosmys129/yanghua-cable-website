@@ -21,7 +21,7 @@ if (!product) {
 
 const related = product.relatedProducts.map((id: string) => findProductDetail(id)).filter(Boolean);
 
-const siteUrl = String(Astro.site ?? brand.url);
+const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const productSchema = generateProductSchema(
   {

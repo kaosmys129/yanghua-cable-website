@@ -11,7 +11,7 @@ export const ROUTES = {
   contact: { en: '/en/contact', es: '/es/contacto', pt: '/pt/contato' },
   partners: { en: '/en/partners', es: '/es/socios', pt: '/pt/parceiros' },
   products: { en: '/en/products', es: '/es/productos', pt: '/pt/produtos' },
-  productCategory: { en: '/en/products/category', es: '/es/productos/categoria', pt: '/pt/produtos/categoria' },
+  productCategory: { en: '/en/products', es: '/es/productos', pt: '/pt/produtos' },
   solutions: { en: '/en/solutions', es: '/es/soluciones', pt: '/pt/solucoes' },
   projects: { en: '/en/projects', es: '/es/proyectos', pt: '/pt/projetos' },
   articles: { en: '/en/articles', es: '/es/articulos', pt: '/pt/artigos' },

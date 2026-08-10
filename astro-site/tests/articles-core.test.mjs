@@ -8,6 +8,7 @@ import {
   normalizeArticleModule,
   normalizeHubModule,
 } from '../src/lib/yanghua/articles-core.mjs';
+import * as articlesCore from '../src/lib/yanghua/articles-core.mjs';
 
 const baseArticleFrontmatter = {
   locale: 'en',
@@ -53,6 +54,82 @@ test('normalizes bilingual article URLs and GEO status for public rendering', ()
   assert.equal(spanish.geoflow.status, 'approved');
   assert.equal(english.isPublic, true);
   assert.equal(spanish.isPublic, true);
+});
+
+test('normalizes Portuguese article URLs under the Portuguese route', () => {
+  const portuguese = normalizeArticleModule({
+    path: '/content/articles/pt/barramento-flexivel-vs-cabo.mdx',
+    frontmatter: {
+      ...baseArticleFrontmatter,
+      locale: 'pt',
+      slug: 'barramento-flexivel-vs-cabo',
+      title: 'Barramento flexível vs cabo',
+      geoflow: { status: 'published' },
+    },
+  });
+
+  assert.equal(portuguese.locale, 'pt');
+  assert.equal(portuguese.url, '/pt/artigos/barramento-flexivel-vs-cabo');
+});
+
+test('uses the article directory locale when stale frontmatter disagrees', () => {
+  const portuguese = normalizeArticleModule({
+    path: '/content/articles/pt/artigo-importado.mdx',
+    frontmatter: {
+      ...baseArticleFrontmatter,
+      locale: 'es',
+      slug: 'artigo-importado',
+      geoflow: { status: 'published' },
+    },
+  });
+
+  assert.equal(portuguese.locale, 'pt');
+  assert.equal(portuguese.url, '/pt/artigos/artigo-importado');
+});
+
+test('builds article hreflang URLs from each translation actual URL', () => {
+  assert.equal(typeof articlesCore.buildArticleHreflangAlternates, 'function');
+
+  const articles = [
+    ['en', 'flexible-busbar-vs-cable'],
+    ['es', 'busbar-flexible-vs-cable'],
+    ['pt', 'barramento-flexivel-vs-cabo'],
+  ].map(([locale, slug]) => normalizeArticleModule({
+    path: `/content/articles/${locale}/${slug}.mdx`,
+    frontmatter: {
+      ...baseArticleFrontmatter,
+      locale,
+      slug,
+      geoflow: { status: 'published' },
+    },
+  }));
+
+  const alternates = articlesCore.buildArticleHreflangAlternates(articles[0], articles, 'https://www.yhflexiblebusbar.com/');
+  assert.deepEqual(alternates, [
+    { hreflang: 'en', href: 'https://www.yhflexiblebusbar.com/en/articles/flexible-busbar-vs-cable' },
+    { hreflang: 'es', href: 'https://www.yhflexiblebusbar.com/es/articulos/busbar-flexible-vs-cable' },
+    { hreflang: 'pt', href: 'https://www.yhflexiblebusbar.com/pt/artigos/barramento-flexivel-vs-cabo' },
+    { hreflang: 'x-default', href: 'https://www.yhflexiblebusbar.com/en/articles/flexible-busbar-vs-cable' },
+  ]);
+});
+
+test('does not invent hreflang relationships when a translation key is ambiguous', () => {
+  const articles = ['preferred-slug', 'duplicate-slug'].map((slug) => normalizeArticleModule({
+    path: `/content/articles/en/${slug}.mdx`,
+    frontmatter: {
+      ...baseArticleFrontmatter,
+      slug,
+      geoflow: { status: 'published' },
+    },
+  }));
+
+  assert.deepEqual(
+    articlesCore.buildArticleHreflangAlternates(articles[0], articles, 'https://www.yhflexiblebusbar.com'),
+    [
+      { hreflang: 'en', href: 'https://www.yhflexiblebusbar.com/en/articles/preferred-slug' },
+      { hreflang: 'x-default', href: 'https://www.yhflexiblebusbar.com/en/articles/preferred-slug' },
+    ]
+  );
 });
 
 test('keeps legacy articles public but blocks unapproved GEOFlow drafts', () => {

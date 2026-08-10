@@ -1,5 +1,6 @@
 import type { Locale } from './loaders';
 import { productImageFromIndex } from './assets';
+import { PRODUCT_CATEGORY_ALIASES } from './seo-localized-routes.mjs';
 
 export type ProductCategory = {
   slug: string;
@@ -62,18 +63,6 @@ const CATEGORY_SPECIFICATIONS = {
   ratedFrequency: '50Hz',
   protectionLevel: 'IP68',
   maxOperatingTemp: '105℃',
-};
-
-const CATEGORY_ALIASES: Record<string, string[]> = {
-  'general-purpose-cables': ['general'],
-  'fire-resistant-cables': ['fire-resistant'],
-  'low-smoke-halogen-free-cables': ['low-smoke-halogen-free'],
-  'flexible-busbar-systems-accessories': ['accessories-components'],
-  'cables-de-propósito-general': ['cables-de-uso-general', 'cables-de-proposito-general'],
-  'cables-retardantes-de-llama': [],
-  'cables-resistentes-al-fuego': [],
-  'cables-libres-de-humo-y-halógenos': ['cables-libres-de-humo-y-halogenos'],
-  'accesorios-y-componentes': ['accessories-components'],
 };
 
 export const categoryLabels = {
@@ -180,7 +169,9 @@ export function buildProductCategories(locale: Locale, rawCategories: any[]): Pr
       const slug = slugifyProductCategoryName(String(category?.name ?? ''));
       return {
         slug,
-        aliases: CATEGORY_ALIASES[slug] ?? [],
+        aliases: Object.entries(PRODUCT_CATEGORY_ALIASES[locale] ?? {})
+          .filter(([, canonical]) => canonical === slug)
+          .map(([alias]) => alias),
         name: String(category?.name ?? ''),
         description: String(category?.description ?? ''),
         models: Array.isArray(category?.models) ? category.models : [],

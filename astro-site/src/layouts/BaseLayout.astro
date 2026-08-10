@@ -19,7 +19,13 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  preloadImage?: string;
+  preloadMobileImage?: string;
   schema?: Record<string, unknown>;
+  canonical?: string | false;
+  robots?: string;
+  includeHreflang?: boolean;
+  alternates?: { hreflang: string; href: string }[];
   /**
    * Locales that actually have this page. For CMS-driven content (articles)
    * the page computes this from real data so we never emit a 404 alternate.
@@ -46,19 +52,26 @@ const {
   title = site.seo.defaultTitle || brand.name,
   description = site.seo.defaultDescription || brand.description,
   image = site.seo.defaultOgImage || '/og-image.png',
+  preloadImage,
+  preloadMobileImage,
   schema,
 } = Astro.props;
 
 const resolvedSchema = schema ?? generateFullOrganizationSchema(String(Astro.site ?? brand.url));
 
 const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
+const canonicalURL = Astro.props.canonical === false
+  ? null
+  : new URL(Astro.props.canonical ?? canonicalPath, Astro.site ?? brand.url);
 
-const hreflangAlternates = buildHreflangAlternates(
-  Astro.url.pathname,
-  String(Astro.site ?? brand.url),
-  Astro.props.availableLocales
-);
+const hreflangAlternates = Astro.props.alternates ?? (Astro.props.includeHreflang === false
+  ? []
+  : buildHreflangAlternates(
+      canonicalPath,
+      String(Astro.site ?? brand.url),
+      Astro.props.availableLocales
+    ));
 
 const siteEnv = String(
   import.meta.env.PUBLIC_SITE_ENV ||
@@ -67,7 +80,7 @@ const siteEnv = String(
     (import.meta.env.DEV ? 'development' : 'production')
 ).toLowerCase();
 const isIndexableEnvironment = siteEnv === 'production';
-const robotsContent = isIndexableEnvironment ? 'index, follow' : 'noindex, nofollow';
+const robotsContent = Astro.props.robots ?? (isIndexableEnvironment ? 'index, follow' : 'noindex, nofollow');
 
 const gtmId = String(
   import.meta.env.PUBLIC_GTM_ID ||
@@ -100,7 +113,7 @@ const trackingConfig = {
     <meta name="color-scheme" content="light" />
     <meta name="generator" content={Astro.generator} />
 
-    <link rel="canonical" href={canonicalURL} />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
     {hreflangAlternates.map((a) => (
       <link rel="alternate" hreflang={a.hreflang} href={a.href} />
     ))}
@@ -116,18 +129,15 @@ const trackingConfig = {
     )}
 
     {hasGa4 && (
-      <>
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
-        <script
-          is:inline
-          set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());`}
-        />
-      </>
+      <script
+        is:inline
+        set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());window.addEventListener('load',function(){var loaded=false;var load=function(){if(loaded)return;loaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=${ga4Id}';document.head.appendChild(s);};['pointerdown','keydown','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});window.setTimeout(load,10000);});`}
+      />
     )}
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
-    <meta property="og:url"         content={canonicalURL} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
     <meta property="og:title"       content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image"       content={image} />
@@ -143,10 +153,39 @@ const trackingConfig = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Fonts: use a plain stylesheet to avoid Astro's build-time font HTTP server in restricted environments. -->
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadImage}
+        media={preloadMobileImage ? '(min-width: 641px)' : undefined}
+        imagesrcset="/images/homepage/home-hero-bg-mobile.webp 768w, /images/homepage/home-hero-bg.webp 1920w"
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )}
+    {preloadMobileImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadMobileImage}
+        media="(max-width: 640px)"
+        fetchpriority="high"
+      />
+    )}
+
+    <!-- Load fonts without delaying first paint; system fallbacks keep text visible immediately. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- JSON-LD Structured Data (auto-generated Organization schema when no page-level schema provided) -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(resolvedSchema)} />
@@ -259,7 +298,9 @@ const trackingConfig = {
         });
       })();
     </script>
-    <ClientRouter />
+    {
+      !['/', '/en', '/en/', '/es', '/es/', '/pt', '/pt/'].includes(Astro.url.pathname) && <ClientRouter />
+    }
   </head>
 
   <body class="bg-background text-text font-body antialiased">

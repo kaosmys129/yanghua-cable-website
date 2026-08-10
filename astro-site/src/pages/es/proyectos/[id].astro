@@ -8,6 +8,8 @@ import CTA from '../../../components/CTA.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
+import { brand } from '../../../config/brand';
+import { generateBreadcrumbSchema, generateFullOrganizationSchema, generateProjectSchema, generateWebPageSchema } from '../../../lib/schema-utils';
 
 export async function getStaticPaths() {
   const messages = await loadMessages('es');
@@ -23,9 +25,33 @@ const { project } = Astro.props as { project: any };
 const labels = tRaw<Record<string, string>>(messages, 'projects.labels', {});
 const sections = tRaw<Record<string, string>>(messages, 'projects.detailPage', {});
 const industry = project?.industry || '';
+const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
+const canonical = new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const projectInput = {
+  id: String(project?.id ?? ''),
+  name: project?.title ?? '',
+  description: project?.description ?? project?.content ?? '',
+  url: canonical,
+  locale: 'es',
+  image: project?.images?.[0],
+  location: project?.location,
+};
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    generateFullOrganizationSchema(siteUrl),
+    generateWebPageSchema(projectInput, `${canonical}#project`, siteUrl),
+    generateProjectSchema(projectInput, siteUrl),
+    generateBreadcrumbSchema([
+      { name: 'Inicio', url: `${siteUrl}/es` },
+      { name: 'Proyectos', url: `${siteUrl}/es/proyectos` },
+      { name: projectInput.name, url: canonical },
+    ], siteUrl),
+  ],
+};
 ---
 
-<BaseLayout title={project?.title} description={project?.description}>
+<BaseLayout title={project?.title} description={project?.description} schema={structuredData}>
   <Header slot="header" locale="es" />
 
   <section class="relative">

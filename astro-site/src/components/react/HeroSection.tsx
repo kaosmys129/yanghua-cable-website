@@ -25,7 +25,7 @@ export default function HeroSection({
   ctaHref = '/en/products',
   secondaryLabel = 'About Us',
   secondaryHref = '/en/about',
-  imageSrc = '/images/homepage/home-hero-bg.png',
+  imageSrc = '/images/homepage/home-hero-bg.webp',
   imageAlt = 'Yanghua flexible busbar manufacturing',
   phone = '+86-769-3893-9888',
   phoneHref = 'tel:+86-769-3893-9888',

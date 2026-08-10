@@ -8,13 +8,12 @@ import ProductCategoryDetail from '../../../../components/ProductCategoryDetail.
 import { loadMessages } from '../../../../lib/yanghua/loaders';
 import { tRaw } from '../../../../lib/yanghua/t';
 import { buildProductCategories, categoryLabels, findProductCategory } from '../../../../lib/yanghua/products';
+import { buildProductCategoryAlternates } from '../../../../lib/yanghua/seo-localized-routes.mjs';
 
 export async function getStaticPaths() {
   const messages = await loadMessages('en');
   const categories = buildProductCategories('en', tRaw<any[]>(messages, 'products.categories', []));
-  return categories.flatMap((category) =>
-    [category.slug, ...category.aliases].map((name) => ({ params: { name }, props: { category } }))
-  );
+  return categories.map((category) => ({ params: { name: category.slug }, props: { category } }));
 }
 
 const messages = await loadMessages('en');
@@ -24,11 +23,12 @@ const category = Astro.props.category ?? findProductCategory(categories, Astro.p
 if (!category) {
   return Astro.redirect('/en/products', 302);
 }
+const alternates = buildProductCategoryAlternates('en', category.slug);
 
 ---
 
-<BaseLayout title={`${category.name} | Flexible Busbar Category | Yanghua`} description={`Discover ${category.name} flexible busbar models, structure and specifications for diverse applications.`}>
-  <Header slot="header" locale="en" />
+<BaseLayout title={`${category.name} | Flexible Busbar Category | Yanghua`} description={`Discover ${category.name} flexible busbar models, structure and specifications for diverse applications.`} alternates={alternates}>
+  <Header slot="header" locale="en" alternates={alternates} />
   <Banner title={`${category.name} Flexible Busbar`} locale="en" />
   <ProductCategoryDetail category={category} locale="en" />
   <Footer slot="footer" locale="en" />

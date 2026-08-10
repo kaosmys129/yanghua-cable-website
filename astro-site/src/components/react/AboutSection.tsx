@@ -10,6 +10,7 @@ interface AboutSectionProps {
   ctaLabel?: string;
   ctaHref?: string;
   imageSrc?: string;
+  mobileImageSrc?: string;
   imageAlt?: string;
 }
 
@@ -27,7 +28,8 @@ export default function AboutSection({
   ],
   ctaLabel = 'More About Us',
   ctaHref = '/about',
-  imageSrc = '/images/about/img-strength.jpg',
+  imageSrc = '/images/about/img-strength.webp',
+  mobileImageSrc = '/images/about/img-strength-mobile.webp',
   imageAlt = 'Yanghua professional team',
 }: AboutSectionProps) {
   return (
@@ -35,14 +37,18 @@ export default function AboutSection({
       <div className="mx-auto grid max-w-site grid-cols-1 items-stretch gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
         {/* Image */}
         <div className="overflow-hidden rounded-lg shadow-lg">
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            width={700}
-            height={525}
-            loading="eager"
-            className="h-full w-full object-cover"
-          />
+          <picture>
+            <source media="(max-width: 1023px)" srcSet={mobileImageSrc} />
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              width={1600}
+              height={640}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </picture>
         </div>
 
         {/* Content */}
