@@ -4,6 +4,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import Banner from '../../../../components/Banner.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
 import ProductCategoryDetail from '../../../../components/ProductCategoryDetail.astro';
 import { loadMessages } from '../../../../lib/yanghua/loaders';
 import { tRaw } from '../../../../lib/yanghua/t';
@@ -29,6 +30,7 @@ const alternates = buildProductCategoryAlternates('en', category.slug);
 
 <BaseLayout title={`${category.name} | Flexible Busbar Category | Yanghua`} description={`Discover ${category.name} flexible busbar models, structure and specifications for diverse applications.`} alternates={alternates}>
   <Header slot="header" locale="en" alternates={alternates} />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Products', href: '/en/products' }, { name: category.name, current: true }]} />
   <Banner title={`${category.name} Flexible Busbar`} locale="en" />
   <ProductCategoryDetail category={category} locale="en" />
   <Footer slot="footer" locale="en" />

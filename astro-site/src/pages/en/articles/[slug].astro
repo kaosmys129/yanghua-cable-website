@@ -4,8 +4,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { getAllArticles, getArticleStaticPaths, YANGHUA_SITE_URL } from '../../../lib/yanghua/articles.mjs';
 import { buildArticleHreflangAlternates } from '../../../lib/yanghua/articles-core.mjs';
+import { buildArticlePathways, getRelatedArticles } from '../../../lib/yanghua/content-governance';
 import type { Locale } from '../../../lib/yanghua/loaders';
 
 export function getStaticPaths() {
@@ -41,6 +44,9 @@ const sourceItems = geo.citations.length > 0
   : article.sourceUrl
     ? [{ label: 'Original Yanghua source', url: article.sourceUrl, note: 'Legacy source reference' }]
     : [];
+const relatedArticles = getRelatedArticles(article, allArticles, 4);
+const pathways = buildArticlePathways(article, 'en');
+const translationLabel = translation?.locale === 'pt' ? 'Portuguese version' : translation?.locale === 'es' ? 'Spanish version' : 'Translated version';
 
 const buyerIntentLabels: Record<string, string> = {
   awareness: 'Awareness',
@@ -49,25 +55,12 @@ const buyerIntentLabels: Record<string, string> = {
   procurement: 'Procurement',
 };
 
-import { normalizeProductHref, normalizeSolutionHref } from '../../../lib/yanghua/link-normalizer';
 
 const statusLabels: Record<string, string> = {
   legacy: 'Legacy article',
   approved: 'Approved',
   published: 'Published',
 };
-
-const productLinks = geo.relatedProductIds.map((id: string) => ({
-  id,
-  label: id.replace(/[-_]/g, ' '),
-  href: normalizeProductHref(id, 'en'),
-}));
-
-const solutionLinks = geo.relatedSolutionIds.map((id: string) => ({
-  id,
-  label: id.replace(/[-_]/g, ' '),
-  href: normalizeSolutionHref(id, 'en'),
-}));
 
 const faqSchema = geo.faqs.length > 0 ? {
   '@type': 'FAQPage',
@@ -128,6 +121,14 @@ const structuredData = {
   alternates={alternates}
 >
   <Header slot="header" locale="en" alternates={alternates} />
+  <Breadcrumbs
+    locale="en"
+    items={[
+      { name: 'Home', href: '/en' },
+      { name: 'Technical Articles', href: '/en/articles' },
+      { name: article.title, current: true },
+    ]}
+  />
   <Banner title={title} locale="en" />
 
   <section class="border-b border-border bg-surface">
@@ -141,7 +142,7 @@ const structuredData = {
         {description && <p class="mt-4 max-w-3xl text-base leading-7 text-text-muted">{description}</p>}
         {translation && (
           <a href={translation.url} class="mt-4 inline-flex text-sm font-semibold text-accent">
-            Spanish version
+            {translationLabel}
           </a>
         )}
       </div>
@@ -217,18 +218,27 @@ const structuredData = {
           </section>
         )}
 
-        {(productLinks.length > 0 || solutionLinks.length > 0) && (
+        {pathways.length > 0 && (
           <section class="rounded-lg border border-border bg-surface p-5">
             <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Related Buying Paths</p>
             <div class="mt-4 space-y-2">
-              {productLinks.map((item: any) => (
-                <a href={item.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium capitalize text-text transition hover:text-accent">
+              {pathways.slice(0, 4).map((item: any) => (
+                <a href={item.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium text-text transition hover:text-accent">
                   {item.label}
                 </a>
               ))}
-              {solutionLinks.map((item: any) => (
-                <a href={item.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium capitalize text-text transition hover:text-accent">
-                  {item.label}
+            </div>
+          </section>
+        )}
+
+        {relatedArticles.length > 0 && (
+          <section class="rounded-lg border border-border bg-surface p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Related Technical Reading</p>
+            <div class="mt-4 space-y-3">
+              {relatedArticles.map((related: any) => (
+                <a href={related.url} class="block rounded-md bg-background px-3 py-3 transition hover:text-accent">
+                  <span class="block text-sm font-semibold text-text">{related.title}</span>
+                  {related.summary && <span class="mt-1 block text-xs leading-5 text-text-muted">{related.summary}</span>}
                 </a>
               ))}
             </div>
@@ -265,6 +275,8 @@ const structuredData = {
       </aside>
     </div>
   </section>
+
+  <SeoPathways links={pathways} />
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>

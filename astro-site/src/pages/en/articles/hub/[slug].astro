@@ -4,7 +4,10 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import Banner from '../../../../components/Banner.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../../components/SeoPathways.astro';
 import { getArticles, getHubStaticPaths } from '../../../../lib/yanghua/articles.mjs';
+import { buildHubPathways, getRelatedArticles } from '../../../../lib/yanghua/content-governance';
 
 export function getStaticPaths() {
   return getHubStaticPaths('en');
@@ -15,6 +18,10 @@ const articles = getArticles('en');
 const featuredArticles = hub.featuredArticleSlugs
   .map((slug: string) => articles.find((article: any) => article.slug === slug))
   .filter(Boolean);
+const relatedArticles = featuredArticles.length >= 4
+  ? featuredArticles
+  : getRelatedArticles({ slug: hub.slug, title: hub.title, url: hub.url, locale: 'en', description: hub.description }, articles, 6);
+const pathways = buildHubPathways(hub, 'en');
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -32,6 +39,15 @@ const structuredData = {
 
 <BaseLayout locale="en" title={hub.title} description={hub.description} schema={structuredData}>
   <Header slot="header" locale="en" />
+  <Breadcrumbs
+    locale="en"
+    items={[
+      { name: 'Home', href: '/en' },
+      { name: 'Technical Articles', href: '/en/articles' },
+      { name: 'Article Hubs', href: '/en/articles/hub' },
+      { name: hub.title, current: true },
+    ]}
+  />
   <Banner title={hub.title} locale="en" />
 
   <section class="py-section">
@@ -44,7 +60,7 @@ const structuredData = {
         <section class="rounded-lg border border-border bg-surface p-5">
           <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Featured Articles</p>
           <div class="mt-4 space-y-3">
-            {featuredArticles.map((article: any) => (
+            {relatedArticles.map((article: any) => (
               <a href={article.url} class="block rounded-md bg-background px-3 py-3 transition hover:text-accent">
                 <span class="block text-sm font-semibold text-text">{article.title}</span>
                 {article.geo.targetQueries[0] && (
@@ -52,14 +68,24 @@ const structuredData = {
                 )}
               </a>
             ))}
-            {featuredArticles.length === 0 && (
+            {relatedArticles.length === 0 && (
               <p class="text-sm text-text-muted">Related articles will appear here after review.</p>
             )}
+          </div>
+        </section>
+        <section class="rounded-lg border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Project Pathways</p>
+          <div class="mt-4 space-y-2">
+            {pathways.map((link) => (
+              <a href={link.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium text-text transition hover:text-accent">{link.label}</a>
+            ))}
           </div>
         </section>
       </aside>
     </div>
   </section>
+
+  <SeoPathways links={pathways} title="Apply this topic to your project" />
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>

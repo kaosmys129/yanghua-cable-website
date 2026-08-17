@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import nodemailer from 'nodemailer';
+import nodemailer, { type Transporter } from 'nodemailer';
 
 export interface EmailConfig {
   host: string;
@@ -39,7 +39,7 @@ export interface EmailResult {
 }
 
 export class EmailService {
-  private transporter: nodemailer.Transporter;
+  private transporter: Transporter;
   private config: EmailConfig;
   private retryAttempts: number;
   private retryDelay: number;
@@ -131,4 +131,3 @@ export function createEmailService(): EmailService {
     parseInt(process.env.EMAIL_RETRY_DELAY_MS || '1000', 10),
   );
 }
-

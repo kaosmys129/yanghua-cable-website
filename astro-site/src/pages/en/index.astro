@@ -12,6 +12,7 @@ import ProductComparisonSection from '../../components/react/ProductComparisonSe
 import PartnersSection from '../../components/react/PartnersSection';
 import ProjectGallerySection from '../../components/react/ProjectGallerySection';
 import InquiryForm from '../../components/InquiryForm.astro';
+import SeoPathways from '../../components/SeoPathways.astro';
 import { brand } from '../../config/brand';
 import { client } from '../../data/client';
 import { loadMessages, loadPageJson } from '../../lib/yanghua/loaders';
@@ -143,6 +144,17 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
   <ProjectGallerySection content={tRaw(messages, 'projectGallery', {})} projects={projects} locale="en" />
 
   <InquiryForm content={tRaw(messages, 'inquiry', {})} locale="en" />
+
+  <SeoPathways
+    title="Explore the engineering path for your project"
+    description="Use the core product, solution, evidence, and technical guidance pages to move from an application question to a quotation."
+    links={[
+      { kind: 'product', href: '/en/products', label: 'Flexible busbar products' },
+      { kind: 'solution', href: '/en/solutions/data-center', label: 'Data center solutions' },
+      { kind: 'project', href: '/en/projects', label: 'Project evidence' },
+      { kind: 'article', href: '/en/articles/hub/flexible-busbar-vs-cable', label: 'Technical comparison hub' },
+    ]}
+  />
 
   <CTASection
     title="Ready to Get Started?"

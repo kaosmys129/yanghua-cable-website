@@ -60,10 +60,14 @@ const options = Object.values(content.options ?? {});
       const status = form.querySelector<HTMLElement>('[data-inquiry-status]');
       if (button) button.disabled = true;
       try {
+        const localeField = form.elements.namedItem('locale');
+        const locale = localeField instanceof HTMLInputElement || localeField instanceof HTMLSelectElement
+          ? localeField.value
+          : 'en';
         const response = await fetch(form.action, {
           method: 'POST',
           credentials: 'include',
-          headers: { 'Content-Type': 'application/json', 'Accept-Language': form.elements.namedItem('locale')?.value || 'en' },
+          headers: { 'Content-Type': 'application/json', 'Accept-Language': locale },
           body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), type: 'inquiry' }),
         });
         const result = await response.json().catch(() => ({}));

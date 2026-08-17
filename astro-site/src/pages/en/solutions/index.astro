@@ -4,7 +4,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTA from '../../../components/CTA.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
@@ -15,6 +17,7 @@ const solutions = tRaw<any[]>(messages, 'solutions.solutions', []);
 
 <BaseLayout title={t(messages, 'solutions.page.title')} description={t(messages, 'solutions.page.description')}>
   <Header slot="header" locale="en" />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Solutions', current: true }]} />
   <Banner title={t(messages, 'solutions.page.title')} locale="en" />
 
   <section class="py-section">
@@ -51,6 +54,16 @@ const solutions = tRaw<any[]>(messages, 'solutions.solutions', []);
     buttonHref={route('contact', 'en')}
   />
 
+  <SeoPathways
+    title="Connect solutions to evidence and products"
+    description="Review product capabilities, technical hubs, and completed project examples before requesting a tailored design."
+    links={[
+      { kind: 'product', href: '/en/products', label: 'Browse flexible busbar products' },
+      { kind: 'project', href: '/en/projects', label: 'Review project examples' },
+      { kind: 'hub', href: '/en/articles/hub/high-current-power-distribution', label: 'High-current distribution hub' },
+      { kind: 'contact', href: '/en/contact', label: 'Request a tailored quotation' },
+    ]}
+  />
+
   <Footer slot="footer" locale="en" />
 </BaseLayout>
-

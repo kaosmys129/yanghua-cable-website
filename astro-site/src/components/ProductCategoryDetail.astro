@@ -4,11 +4,15 @@ import type { ProductCategory } from '../lib/yanghua/products';
 import { categoryLabels } from '../lib/yanghua/products';
 import { route } from '../lib/yanghua/routes';
 import { productImageFromName } from '../lib/yanghua/assets';
+import SeoPathways from './SeoPathways.astro';
 
 const { category, locale = 'en' } = Astro.props as { category: ProductCategory; locale: Locale };
 const labels = categoryLabels[locale];
 const productHref = route('products', locale);
 const contactHref = route('contact', locale);
+const solutionHref = locale === 'es' ? '/es/soluciones' : locale === 'pt' ? '/pt/solucoes' : '/en/solutions';
+const articlesHref = locale === 'es' ? '/es/articulos/hub' : locale === 'pt' ? '/pt/artigos/hub' : '/en/articles/hub';
+const projectsHref = locale === 'es' ? '/es/proyectos' : locale === 'pt' ? '/pt/projetos' : '/en/projects';
 const specLabels =
   locale === 'es'
     ? {
@@ -123,3 +127,14 @@ const specLabels =
     </aside>
   </div>
 </section>
+
+<SeoPathways
+  title={locale === 'en' ? 'Connect this category to a project need' : locale === 'es' ? 'Conecte esta categoría con su proyecto' : 'Conecte esta categoria ao seu projeto'}
+  links={[
+    { kind: 'solution', href: solutionHref, label: locale === 'en' ? 'Explore industry solutions' : locale === 'es' ? 'Explorar soluciones' : 'Explorar soluções' },
+    { kind: 'article', href: articlesHref, label: locale === 'en' ? 'Read technical hubs' : locale === 'es' ? 'Leer hubs técnicos' : 'Ler hubs técnicos' },
+    { kind: 'project', href: projectsHref, label: locale === 'en' ? 'Review project examples' : locale === 'es' ? 'Ver proyectos' : 'Ver projetos' },
+    { kind: 'contact', href: contactHref, label: locale === 'en' ? 'Request a quotation' : locale === 'es' ? 'Solicitar cotización' : 'Solicitar cotação' },
+  ]}
+  locale={locale}
+/>

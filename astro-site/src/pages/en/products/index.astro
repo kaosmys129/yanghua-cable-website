@@ -4,7 +4,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTA from '../../../components/CTA.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import ProductCategories from '../../../components/ProductCategories.astro';
 import TechnicalSpecs from '../../../components/TechnicalSpecs.astro';
 import FAQSection from '../../../components/FAQSection.astro';
@@ -26,6 +28,7 @@ const faqItems = Object.values(faqContent)
 
 <BaseLayout title={t(messages, 'products.hero.title', 'Our Products')} description={t(messages, 'products.hero.subtitle', '')}>
   <Header slot="header" locale="en" />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Products', current: true }]} />
   <Banner title={t(messages, 'products.hero.title', 'Products')} locale="en" />
 
   <section class="py-section">
@@ -82,6 +85,17 @@ const faqItems = Object.values(faqContent)
     description="Tell us your application scenario and we will recommend suitable products."
     buttonText="Contact"
     buttonHref={route('contact', 'en')}
+  />
+
+  <SeoPathways
+    title="Choose the right busbar path"
+    description="Start with your application, compare the technical guidance, review project evidence, or send the engineering team your requirements."
+    links={[
+      { kind: 'solution', href: '/en/solutions/data-center', label: 'Data center applications' },
+      { kind: 'solution', href: '/en/solutions/new-energy', label: 'New energy and storage' },
+      { kind: 'hub', href: '/en/articles/hub/flexible-busbar-vs-cable', label: 'Flexible busbar vs cable guide' },
+      { kind: 'project', href: '/en/projects', label: 'Review project examples' },
+    ]}
   />
 
   <Footer slot="footer" locale="en" />

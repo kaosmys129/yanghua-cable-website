@@ -96,7 +96,6 @@ export default defineConfig({
     '/en/articles/what-s-inside-a-black-hole-es': { status: 301, destination: '/en/articles' },
     '/es/products/category/fire-resistant': { status: 301, destination: '/es/productos/categoria/cables-resistentes-al-fuego' },
     '/es/productos/category/cables-libres-de-humo-y-halogenos': { status: 301, destination: '/es/productos/categoria/cables-libres-de-humo-y-halogenos' },
-    '/es/productos/flexible-busbar-2000a': { status: 301, destination: '/es/productos' },
     '/es/servicios': { status: 301, destination: '/es/contacto' },
     '/projects/2': { status: 301, destination: '/en/projects/2' },
     '/es/projects/2': { status: 301, destination: '/es/proyectos/2' },

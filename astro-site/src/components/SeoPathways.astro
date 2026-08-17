@@ -1,0 +1,28 @@
+---
+import type { GovernanceLink } from '../lib/yanghua/content-governance';
+
+const {
+  title = 'Continue your project research',
+  description = 'Move from technical guidance to a relevant solution, product, project example, or engineering quotation.',
+  links = [],
+} = Astro.props as { title?: string; description?: string; links?: GovernanceLink[] };
+---
+
+<section class="border-y border-border bg-surface py-10" aria-labelledby="seo-pathways-title">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="max-w-2xl">
+      <h2 id="seo-pathways-title" class="font-heading text-2xl font-semibold text-text">{title}</h2>
+      <p class="mt-2 text-sm leading-6 text-text-muted">{description}</p>
+    </div>
+    {links.length > 0 && (
+      <nav class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Related project pathways">
+        {links.map((link) => (
+          <a href={link.href} class="rounded-lg border border-border bg-background p-4 transition hover:border-accent hover:text-accent">
+            <span class="block text-xs font-semibold uppercase tracking-wide text-text-muted">{link.kind}</span>
+            <span class="mt-2 block text-sm font-semibold text-text">{link.label}</span>
+          </a>
+        ))}
+      </nav>
+    )}
+  </div>
+</section>

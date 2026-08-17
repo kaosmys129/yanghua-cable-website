@@ -4,7 +4,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTA from '../../../components/CTA.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
@@ -25,7 +27,8 @@ const messages = await loadMessages('en');
 const { solution } = Astro.props as { solution: any };
 const alternates = buildSolutionAlternates('en', solution?.id);
 const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
-const canonical = new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const cleanPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
 const serviceInput = {
   id: String(solution?.id ?? ''),
   name: solution?.title ?? '',
@@ -52,6 +55,7 @@ const structuredData = {
 
 <BaseLayout title={solution?.title} description={solution?.subtitle} alternates={alternates} schema={structuredData}>
   <Header slot="header" locale="en" alternates={alternates} />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Solutions', href: '/en/solutions' }, { name: solution?.title ?? 'Solution', current: true }]} />
   <Banner title={solution?.title ?? 'Solution'} locale="en" />
 
   <section class="py-section">
@@ -133,6 +137,17 @@ const structuredData = {
     description={t(messages, 'solutions.cta.customSolution.description')}
     buttonText={t(messages, 'solutions.common.contactUs')}
     buttonHref={route('contact', 'en')}
+  />
+
+  <SeoPathways
+    title="Build the solution around your project"
+    description="Review compatible products, technical guidance, project evidence, and the engineering contact path for a tailored design."
+    links={[
+      { kind: 'product', href: '/en/products', label: 'Browse compatible products' },
+      { kind: 'article', href: '/en/articles/hub/high-current-power-distribution', label: 'High-current technical hub' },
+      { kind: 'project', href: '/en/projects', label: 'Review project evidence' },
+      { kind: 'contact', href: '/en/contact', label: 'Request a tailored quotation' },
+    ]}
   />
 
   <Footer slot="footer" locale="en" />

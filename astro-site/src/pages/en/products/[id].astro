@@ -4,7 +4,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import ProductDetailContent from '../../../components/ProductDetailContent.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { findProductDetail, getProductDetails } from '../../../lib/yanghua/products';
 import { brand } from '../../../config/brand';
 import { generateFullOrganizationSchema, generateProductSchema, generateBreadcrumbSchema } from '../../../lib/schema-utils';
@@ -22,7 +24,8 @@ if (!product) {
 const related = product.relatedProducts.map((id: string) => findProductDetail(id)).filter(Boolean);
 
 const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
-const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const cleanPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
 const productSchema = generateProductSchema(
   {
     id: product.id,
@@ -55,7 +58,18 @@ const structuredData = {
 
 <BaseLayout title={`${product.name} | High Current & Reliable | Yanghua`} description={product.description} image={product.images[0]} schema={structuredData}>
   <Header slot="header" locale="en" />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Products', href: '/en/products' }, { name: product.name, current: true }]} />
   <Banner title={product.name} locale="en" />
   <ProductDetailContent product={product} related={related} locale="en" />
+  <SeoPathways
+    title="Apply this product to a real installation"
+    description="Connect the product specification to an application solution, technical guidance, project evidence, or an engineering quotation."
+    links={[
+      { kind: 'solution', href: '/en/solutions/data-center', label: 'Data center solution' },
+      { kind: 'article', href: '/en/articles/hub/flexible-busbar-vs-cable', label: 'Flexible busbar comparison hub' },
+      { kind: 'project', href: '/en/projects', label: 'Project evidence' },
+      { kind: 'contact', href: '/en/contact', label: 'Request product selection support' },
+    ]}
+  />
   <Footer slot="footer" locale="en" />
 </BaseLayout>

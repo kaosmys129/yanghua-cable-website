@@ -1,0 +1,24 @@
+---
+const { items = [], locale = 'en' } = Astro.props as {
+  items?: Array<{ name: string; href?: string; current?: boolean }>;
+  locale?: 'en' | 'es' | 'pt';
+};
+const label = locale === 'es' ? 'Ruta de navegación' : locale === 'pt' ? 'Navegação estrutural' : 'Breadcrumb';
+---
+
+{items.length > 0 && (
+  <nav class="mx-auto max-w-site px-4 pt-6 sm:px-6" aria-label={label}>
+    <ol class="flex flex-wrap items-center gap-2 text-sm text-text-muted">
+      {items.map((item, index) => (
+        <li class="flex items-center gap-2">
+          {index > 0 && <span aria-hidden="true">/</span>}
+          {item.href && !item.current ? (
+            <a href={item.href} class="hover:text-accent">{item.name}</a>
+          ) : (
+            <span aria-current={item.current ? 'page' : undefined}>{item.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

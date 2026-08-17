@@ -113,22 +113,24 @@ export function parseGeoflowSecrets(value = import.meta.env.GEOFLOW_HMAC_KEYS ||
 
   if (trimmed.startsWith('{')) {
     const parsed = JSON.parse(trimmed) as Record<string, string>;
-    return Object.fromEntries(Object.entries(parsed).filter(([, secret]) => Boolean(secret)));
+    return Object.fromEntries(
+      (Object.entries(parsed) as Array<[string, string]>).filter(([, secret]) => Boolean(secret)),
+    );
   }
 
   return Object.fromEntries(
     trimmed
       .split(',')
-      .map((entry) => entry.trim())
+      .map((entry: string) => entry.trim())
       .filter(Boolean)
-      .map((entry) => {
+      .map((entry: string) => {
         const separator = entry.indexOf(':');
         if (separator === -1) {
           return [entry, ''] as const;
         }
         return [entry.slice(0, separator).trim(), entry.slice(separator + 1).trim()] as const;
       })
-      .filter(([, secret]) => Boolean(secret))
+      .filter(([, secret]: [string, string]) => Boolean(secret))
   );
 }
 

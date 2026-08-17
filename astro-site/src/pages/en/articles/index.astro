@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t } from '../../../lib/yanghua/t';
 import { getArticles, getHubs } from '../../../lib/yanghua/articles.mjs';
@@ -40,6 +41,7 @@ const collectionPageSchema = generateCollectionPageSchema(collectionArticles, un
 
 <BaseLayout title={pageTitle} description={pageDescription} schema={collectionPageSchema}>
   <Header slot="header" locale="en" />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Technical Articles', current: true }]} />
   <Banner title={pageTitle} locale="en" />
 
   <section class="py-section">

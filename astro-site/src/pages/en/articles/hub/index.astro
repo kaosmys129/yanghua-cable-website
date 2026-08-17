@@ -4,13 +4,16 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import Banner from '../../../../components/Banner.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../../components/SeoPathways.astro';
 import { getHubs } from '../../../../lib/yanghua/articles.mjs';
 
 const hubs = getHubs('en');
 ---
 
-<BaseLayout title="Article Hubs" description="">
+<BaseLayout title="Article Hubs" description="Topic hubs for flexible busbar selection, high-current power distribution, data centers, energy storage, EV charging, and industrial retrofit projects.">
   <Header slot="header" locale="en" />
+  <Breadcrumbs locale="en" items={[{ name: 'Home', href: '/en' }, { name: 'Technical Articles', href: '/en/articles' }, { name: 'Article Hubs', current: true }]} />
   <Banner title="Article Hubs" locale="en" />
 
   <section class="py-section">
@@ -30,6 +33,17 @@ const hubs = getHubs('en');
       </div>
     </div>
   </section>
+
+  <SeoPathways
+    title="Start with a commercial topic"
+    description="Use a topic hub to compare technical options, review project evidence, and reach the relevant product or solution page."
+    links={[
+      { kind: 'solution', href: '/en/solutions/data-center', label: 'Data center solution' },
+      { kind: 'solution', href: '/en/solutions/new-energy', label: 'New energy solution' },
+      { kind: 'product', href: '/en/products', label: 'Flexible busbar products' },
+      { kind: 'contact', href: '/en/contact', label: 'Request an engineering quotation' },
+    ]}
+  />
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>

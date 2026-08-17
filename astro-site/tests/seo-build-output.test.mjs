@@ -227,7 +227,7 @@ test('structured data uses one canonical origin and a crawlable local organizati
     'en/projects/1/index.html',
     'en/solutions/data-center/index.html',
     'es/proyectos/1/index.html',
-    'pt/solucoes/centro de dados/index.html',
+    'pt/solucoes/data-center/index.html',
   ];
 
   for (const path of cases) {

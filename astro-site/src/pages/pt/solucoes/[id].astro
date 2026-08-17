@@ -37,7 +37,8 @@ const messages = await loadMessages('pt');
 const { solution } = Astro.props as { solution: any };
 const alternates = buildSolutionAlternates('pt', solution?.id);
 const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
-const canonical = new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const cleanPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
 const serviceInput = {
   id: String(solution?.id ?? ''),
   name: solution?.title ?? '',
@@ -64,7 +65,7 @@ const structuredData = {
 
 <BaseLayout title={solution?.title} description={solution?.subtitle} alternates={alternates} schema={structuredData}>
   <Header slot="header" locale="pt" alternates={alternates} />
-  <Banner title={solution?.title ?? 'Solución'} locale="pt" />
+  <Banner title={solution?.title ?? 'Solução'} locale="pt" />
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
