@@ -26,7 +26,8 @@ const labels = tRaw<Record<string, string>>(messages, 'projects.labels', {});
 const sections = tRaw<Record<string, string>>(messages, 'projects.detailPage', {});
 const industry = project?.industry || '';
 const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
-const canonical = new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const cleanPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
 const projectInput = {
   id: String(project?.id ?? ''),
   name: project?.title ?? '',
@@ -61,9 +62,9 @@ const structuredData = {
     </div>
     <div class="absolute bottom-0 left-0 right-0 pb-8">
       <div class="mx-auto max-w-site px-4 sm:px-6">
-        <a href="/es/proyectos" class="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm mb-4 transition-colors">
+        <a href="/pt/projetos" class="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm mb-4 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-          {labels.backToProjects || 'Volver a Proyectos'}
+          {labels.backToProjects || 'Voltar aos Projetos'}
         </a>
         <div class="flex items-center gap-3 mb-2">
           {industry && <span class="inline-block rounded-md bg-[#fdb827] px-2.5 py-0.5 text-xs font-semibold text-[#212529]">{industry}</span>}
@@ -80,14 +81,14 @@ const structuredData = {
         <div class="space-y-1">
           <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
             <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-            {sections.projectLocation || 'Ubicación'}
+            {sections.projectLocation || 'Localização'}
           </div>
           <div class="font-semibold text-text text-sm">{project?.location}</div>
         </div>
         <div class="space-y-1">
           <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
             <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            {sections.completionDate || 'Finalización'}
+            {sections.completionDate || 'Conclusão'}
           </div>
           <div class="font-semibold text-text text-sm">{project?.completionDate}</div>
         </div>
@@ -101,7 +102,7 @@ const structuredData = {
         <div class="space-y-1">
           <div class="flex items-center justify-center gap-1.5 text-text-muted text-xs uppercase tracking-wider">
             <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            {sections.projectDuration || 'Duración'}
+            {sections.projectDuration || 'Duração'}
           </div>
           <div class="font-semibold text-text text-sm">{project?.duration || 'N/A'}</div>
         </div>
@@ -120,7 +121,7 @@ const structuredData = {
               <div class="rounded-xl bg-red-50 border border-red-100 p-6">
                 <h2 class="font-heading text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
                   <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                  {sections.challenges || 'Desafíos'}
+                  {sections.challenges || 'Desafios'}
                 </h2>
                 {project?.challenge && <p class="text-sm text-red-800 mb-3 leading-relaxed">{project.challenge}</p>}
                 {project?.challenges?.length > 0 && (
@@ -135,7 +136,7 @@ const structuredData = {
                 <div class="rounded-xl bg-emerald-50 border border-emerald-100 p-6">
                   <h2 class="font-heading text-lg font-bold text-emerald-700 mb-3 flex items-center gap-2">
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    {sections.solution || 'Solución'}
+                    {sections.solution || 'Solução'}
                   </h2>
                   {project?.solution && <p class="text-sm text-emerald-800 mb-3 leading-relaxed">{project.solution}</p>}
                   {project?.solutionPoints?.length > 0 && (
@@ -166,7 +167,7 @@ const structuredData = {
 
           {project?.productsUsed?.length > 0 && (
             <div>
-              <h2 class="font-heading text-xl font-bold text-text mb-4">{sections.products || 'Productos Utilizados'}</h2>
+              <h2 class="font-heading text-xl font-bold text-text mb-4">{sections.products || 'Produtos Utilizados'}</h2>
               <div class="flex flex-wrap gap-2">
                 {project.productsUsed.map((p: string) => (
                   <span class="inline-block rounded-full bg-background border border-border px-3 py-1.5 text-sm text-text-muted">{p}</span>
@@ -177,7 +178,7 @@ const structuredData = {
 
           {project?.images?.length > 1 && (
             <div>
-              <h2 class="font-heading text-xl font-bold text-text mb-4">{sections.projectGallery || 'Galería'}</h2>
+              <h2 class="font-heading text-xl font-bold text-text mb-4">{sections.projectGallery || 'Galeria'}</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="gallery-grid" data-images={JSON.stringify(project?.images || [])}>
                 {project.images.map((img: string, idx: number) => (
                   <div class="aspect-[16/10] overflow-hidden rounded-xl bg-gray-100 cursor-zoom-in group/gallery" data-gallery-index={String(idx)}>
@@ -191,13 +192,13 @@ const structuredData = {
 
         <aside class="lg:col-span-4 space-y-6">
           <div class="rounded-xl border border-border bg-surface p-6 shadow-sm">
-            <h2 class="font-heading text-lg font-semibold text-text mb-4">{sections.projectInformation || 'Información del Proyecto'}</h2>
+            <h2 class="font-heading text-lg font-semibold text-text mb-4">{sections.projectInformation || 'Informações do Projeto'}</h2>
             <dl class="space-y-3.5 text-sm">
               <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.client || 'Cliente'}</dt><dd class="text-text font-medium text-right">{project?.client}</dd></div>
-              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.industry || 'Industria'}</dt><dd class="text-text font-medium text-right">{project?.industry}</dd></div>
-              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.location || 'Ubicación'}</dt><dd class="text-text font-medium text-right">{project?.location}</dd></div>
-              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.duration || 'Duración'}</dt><dd class="text-text font-medium text-right">{project?.duration}</dd></div>
-              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.completionDate || 'Finalización'}</dt><dd class="text-text font-medium text-right">{project?.completionDate}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.industry || 'Indústria'}</dt><dd class="text-text font-medium text-right">{project?.industry}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.location || 'Localização'}</dt><dd class="text-text font-medium text-right">{project?.location}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.duration || 'Duração'}</dt><dd class="text-text font-medium text-right">{project?.duration}</dd></div>
+              <div class="flex justify-between gap-4 pb-3 border-b border-border/50"><dt class="text-text-muted">{labels.completionDate || 'Conclusão'}</dt><dd class="text-text font-medium text-right">{project?.completionDate}</dd></div>
               <div class="flex justify-between gap-4"><dt class="text-text-muted">{labels.projectScale || 'Escala'}</dt><dd class="text-text font-medium text-right">{project?.projectScale || project?.scale}</dd></div>
             </dl>
           </div>
@@ -217,9 +218,9 @@ const structuredData = {
   </section>
 
   <CTA
-    title={sections.quickInquiry || 'Consultar Proyectos Similares'}
-    description={sections.getQuote || 'Contacta a nuestro equipo para una solución personalizada.'}
-    buttonText={sections.getQuote || 'Solicitar Cotización'}
+    title={sections.quickInquiry || 'Consultar Projetos Semelhantes'}
+    description={sections.getQuote || 'Entre em contato com nossa equipe para uma solução personalizada.'}
+    buttonText={sections.getQuote || 'Solicitar Cotação'}
     buttonHref={route('contact', 'pt')}
   />
 

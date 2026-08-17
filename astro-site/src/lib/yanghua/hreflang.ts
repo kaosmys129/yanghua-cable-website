@@ -40,6 +40,7 @@ const SEGMENT_MAP: Record<string, Partial<Record<Locale, string>>> = {
  * Only the listed locales (plus x-default) get an alternate for these.
  */
 const LOCALE_EXCEPTIONS: Record<string, Locale[]> = {
+  '/en/services': ['en', 'pt'],
   '/en/faq': ['en', 'es'],
   '/en/what-is-flexible-busbar': ['en'],
 };

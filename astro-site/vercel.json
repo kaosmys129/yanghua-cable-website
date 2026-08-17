@@ -197,6 +197,91 @@
       "statusCode": 301
     },
     {
+      "source": "/en/articles/flexible-busbar-impltement-shenzhen-datacenter-summarzie",
+      "destination": "/en/articles",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/a-bug-is-becoming-a-meme-on-the-internet-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/what-s-inside-a-black-hole-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/this-shrimp-is-awesome-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/the-internet-s-own-boy-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/beautiful-picture-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/a-bug-is-becoming-a-meme-on-the-internet-es",
+      "destination": "/en/articles",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/what-s-inside-a-black-hole-es",
+      "destination": "/en/articles",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/products/category/fire-resistant",
+      "destination": "/es/productos/categoria/cables-resistentes-al-fuego",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/category/cables-libres-de-humo-y-halogenos",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/flexible-busbar-2000a",
+      "destination": "/es/productos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/servicios",
+      "destination": "/es/contacto",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/servicios/:path*",
+      "destination": "/es/contacto",
+      "statusCode": 301
+    },
+    {
+      "source": "/projects/2",
+      "destination": "/en/projects/2",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/projects/2",
+      "destination": "/es/proyectos/2",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/projects/4",
+      "destination": "/es/proyectos/4",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/projects/6",
+      "destination": "/es/proyectos/6",
+      "statusCode": 301
+    },
+    {
       "source": "/en/articles/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong",
       "destination": "/en/articles/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong-507559",
       "statusCode": 301

@@ -61,9 +61,14 @@ const resolvedSchema = schema ?? generateFullOrganizationSchema(String(Astro.sit
 
 const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
 const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
-const canonicalURL = Astro.props.canonical === false
-  ? null
-  : new URL(Astro.props.canonical ?? canonicalPath, Astro.site ?? brand.url);
+let canonicalURL: string | null = null;
+if (Astro.props.canonical !== false) {
+  const parsed = new URL(Astro.props.canonical ?? canonicalPath, Astro.site ?? brand.url);
+  if (parsed.pathname !== '/') {
+    parsed.pathname = parsed.pathname.replace(/\/+$/, '');
+  }
+  canonicalURL = parsed.href;
+}
 
 const hreflangAlternates = Astro.props.alternates ?? (Astro.props.includeHreflang === false
   ? []
