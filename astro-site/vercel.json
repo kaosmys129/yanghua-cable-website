@@ -277,6 +277,76 @@
       "statusCode": 301
     },
     {
+      "source": "/en/articles/2ikgue6k",
+      "destination": "/en/articles/flexible-busbar-industry-solutions-solar-pv-with-complete-manual-download-instructions-517369",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/6s9rfzeo",
+      "destination": "/en/articles/another-breakthrough-flexible-busbar-assists-energy-storage-project-implementation-560298",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/90gnzqpu",
+      "destination": "/en/articles/supporting-xinjiang-s-belt-and-road-construction-flexible-busbar-always-on-the-road-532899",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/articles/esz5g5ao",
+      "destination": "/en/articles/factory-rooftop-distributed-solar-projects-flexible-busbar-handles-it-with-ease-966599",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/invitation-april-10-12-13th-international-energy-storage-summit-exhibition-high-current-flexible-busbar-booth-b2119-hall-b2-es",
+      "destination": "/es/articulos/invitacion-10-12-de-abril-13a-cumbre-y-exposicion-internacional-de-almacenamiento-de-energia-busbar-flexible-de-alta-corriente-stand-b2119-salon-b2-515322",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articles/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/yanghuasti-2024-annual-review-es",
+      "destination": "/es/articulos/revision-anual-de-yanghuasti-2024-528905",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-es",
+      "destination": "/es/articulos/diez-anos-de-construccion-de-plataforma-de-la-camara-de-comercio-busbar-de-alta-corriente-flexible-avanzando-con-honor-859905",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-es",
+      "destination": "/es/articulos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-es",
+      "destination": "/es/articulos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/products/flexible-busbar-2000a",
+      "destination": "/es/productos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-es",
+      "destination": "/es/articulos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/articulos/flexible-busbar-industry-solutions-charging-stations-with-complete-manual-download-instructions-es",
+      "destination": "/es/articulos/soluciones-de-industria-de-busbar-flexible-estaciones-de-carga-con-instrucciones-completas-de-descarga-del-manual-527307",
+      "statusCode": 301
+    },
+    {
       "source": "/es/projects/6",
       "destination": "/es/proyectos/6",
       "statusCode": 301

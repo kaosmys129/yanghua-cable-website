@@ -28,6 +28,16 @@ const industry = project?.industry || '';
 const siteUrl = String(Astro.site ?? brand.url).replace(/\/+$/, '');
 const cleanPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const canonical = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
+
+const allProjects = tRaw<any[]>(messages, 'projects.list', []);
+const relatedProjects = allProjects
+  .filter((p: any) => String(p.id) !== String(project?.id) && (p.industry === project?.industry || !project?.industry))
+  .slice(0, 3);
+if (relatedProjects.length < 3) {
+  const fallback = allProjects.filter((p: any) => String(p.id) !== String(project?.id) && !relatedProjects.includes(p));
+  relatedProjects.push(...fallback.slice(0, 3 - relatedProjects.length));
+}
+
 const projectInput = {
   id: String(project?.id ?? ''),
   name: project?.title ?? '',
@@ -267,6 +277,38 @@ const structuredData = {
       </div>
     </div>
   </section>
+
+  {relatedProjects.length > 0 && (
+    <section class="py-12 bg-slate-50 border-t border-border">
+      <div class="mx-auto max-w-site px-4 sm:px-6">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-[#212529]">{sections.relatedProjects || 'Related Projects'}</h2>
+            <p class="text-sm text-text-muted mt-1">Explore similar industrial busbar installation cases</p>
+          </div>
+          <a href="/en/projects" class="text-sm font-semibold text-[#fdb827] hover:underline inline-flex items-center gap-1">
+            {labels.allProjects || 'View All Projects'} &rarr;
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedProjects.map((rp: any) => (
+            <a href={`/en/projects/${rp.id}`} class="group rounded-xl border border-border bg-white p-5 shadow-sm hover:shadow-md transition-all flex flex-col">
+              <div class="h-44 overflow-hidden rounded-lg bg-gray-100 mb-4">
+                <img src={(rp.images && rp.images[0]) || '/images/projects/no-image-available.webp'} alt={rp.title} class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+              </div>
+              <span class="inline-block self-start rounded bg-amber-50 text-amber-700 px-2 py-0.5 text-xs font-semibold mb-2">{rp.industry}</span>
+              <h3 class="font-bold text-[#212529] group-hover:text-amber-600 transition-colors line-clamp-1 text-base">{rp.title}</h3>
+              <p class="text-xs text-text-muted mt-1 line-clamp-2 leading-relaxed flex-1">{rp.description}</p>
+              <div class="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs text-text-muted">
+                <span>{rp.location}</span>
+                <span class="font-semibold text-amber-600 group-hover:translate-x-0.5 transition-transform">Explore &rarr;</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <CTA
     title={sections.quickInquiry || 'Inquire About Similar Projects'}
