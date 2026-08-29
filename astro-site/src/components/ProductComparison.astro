@@ -1,4 +1,6 @@
 ---
+import { route } from '../lib/yanghua/routes';
+
 const { content = {}, locale = 'en' } = Astro.props;
 
 const competitors = [content.traditional, content.compact].filter(Boolean);
@@ -49,10 +51,10 @@ const flexibleFeatures = Object.values(flexible.features ?? {});
           ))}
         </ul>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
-          <a href={locale === 'es' ? '/es/contacto' : '/en/contact'} class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold text-accent-fg">
+          <a href={route('contact', locale)} class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold text-accent-fg">
             {content.getQuote}
           </a>
-          <a href={locale === 'es' ? '/es/productos' : '/en/products'} class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-primary-fg/40 px-5 py-3 text-sm font-bold text-primary-fg">
+          <a href={route('products', locale)} class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-primary-fg/40 px-5 py-3 text-sm font-bold text-primary-fg">
             {content.learnMore}
           </a>
         </div>

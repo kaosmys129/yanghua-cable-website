@@ -13,6 +13,8 @@ import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
 import { generateFullOrganizationSchema } from '../lib/schema-utils';
 import { buildHreflangAlternates } from '../lib/yanghua/hreflang';
+import { localeFromPathname } from '../lib/yanghua/routes';
+import { buildSeoMetadata } from '../lib/yanghua/seo-meta.mjs';
 
 interface Props {
   locale?: Locale;
@@ -39,13 +41,7 @@ interface Props {
   site?: NormalizedSiteSettings;
 }
 
-function detectLocaleFromPathname(pathname: string): Locale {
-  if (pathname.startsWith('/es')) return 'es';
-  if (pathname.startsWith('/pt')) return 'pt';
-  return 'en';
-}
-
-const locale = (Astro.props.locale ?? detectLocaleFromPathname(Astro.url.pathname)) as Locale;
+const locale = (Astro.props.locale ?? localeFromPathname(Astro.url.pathname) ?? 'en') as Locale;
 const site = Astro.props.site ?? (await loadAndNormalizeSiteSettings(locale));
 
 const {
@@ -59,7 +55,19 @@ const {
 
 const resolvedSchema = schema ?? generateFullOrganizationSchema(String(Astro.site ?? brand.url));
 
-const pageTitle = title === site.brand.name ? title : `${title} — ${site.brand.name}`;
+const localizedDefaultDescription = locale === 'es'
+  ? 'Soluciones de busbar flexible y distribución de energía de alta corriente para aplicaciones industriales, comerciales y energéticas.'
+  : locale === 'pt'
+    ? 'Soluções de barramento flexível e distribuição de energia de alta corrente para aplicações industriais, comerciais e de energia.'
+    : site.seo.defaultDescription || brand.description;
+const seoMetadata = buildSeoMetadata({
+  title,
+  description,
+  fallbackDescription: localizedDefaultDescription,
+  brandName: site.brand.name || brand.name,
+});
+const pageTitle = seoMetadata.title;
+const pageDescription = seoMetadata.description;
 const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
 let canonicalURL: string | null = null;
 if (Astro.props.canonical !== false) {
@@ -124,7 +132,7 @@ const trackingConfig = {
     ))}
     <meta name="robots" content={robotsContent} />
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={pageDescription} />
 
     {hasGtm && (
       <script
@@ -144,14 +152,14 @@ const trackingConfig = {
     <meta property="og:type"        content="website" />
     {canonicalURL && <meta property="og:url" content={canonicalURL} />}
     <meta property="og:title"       content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:image"       content={image} />
     <meta property="og:locale"      content={locale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card"        content="summary_large_image" />
     <meta name="twitter:title"       content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image"       content={image} />
 
     <!-- Favicon -->

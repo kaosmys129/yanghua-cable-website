@@ -24,16 +24,17 @@ const faqItems = Object.values(content?.faq ?? {})
   .map((v: any) => ({ q: v.question, a: v.answer }));
 ---
 
-<BaseLayout title={content?.page?.title ?? 'Servicios'} description={content?.page?.description ?? ''}>
+<BaseLayout title={content?.page?.title ?? 'Serviços'} description={content?.page?.description ?? 'Suporte abrangente durante todo o ciclo de vida do projeto, desde o projeto inicial até a manutenção de longo prazo.'}>
   <Header slot="header" locale="pt" />
 
-  <Banner title={content?.page?.title ?? 'Servicios'} locale="pt" />
+  <Banner title={content?.page?.title ?? 'Serviços'} locale="pt" />
 
   <Services
-    topper="Servicio y Soporte"
-    heading={content?.page?.title ?? 'Servicios'}
+    topper="Serviço e suporte"
+    heading={content?.page?.title ?? 'Serviços'}
     description={content?.page?.description ?? ''}
     services={cards}
+    locale="pt"
   />
 
   {faqItems.length > 0 && (
@@ -55,16 +56,17 @@ const faqItems = Object.values(content?.faq ?? {})
   )}
 
   <CTA
-    title={content?.cta?.title ?? '¿Necesita Soporte Técnico?'}
+    title={content?.cta?.title ?? 'Precisa de suporte técnico?'}
     description={content?.cta?.description ?? ''}
-    buttonText={content?.cta?.contactSupport ?? 'Contacto'}
+    buttonText={content?.cta?.contactSupport ?? 'Contato'}
     buttonHref={route('contact', 'pt')}
+    locale="pt"
   />
 
   <section class="pb-section">
     <div class="mx-auto max-w-site px-4 text-center sm:px-6">
       <a href={route('products', 'pt')} class="inline-flex min-h-[44px] items-center justify-center rounded-md border-2 border-primary px-6 py-3 font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg">
-        {content?.cta?.downloadResources ?? 'Descargar recursos'}
+      {content?.cta?.downloadResources ?? 'Baixar recursos'}
       </a>
     </div>
   </section>

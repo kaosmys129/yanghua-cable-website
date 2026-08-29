@@ -28,31 +28,32 @@ const partners = [
 
 const benefits = [
   {
-    title: 'Cooperación Estratégica',
-    description: 'Una red de socios enfocada en sistemas de barra colectora flexible de cobre, distribución de alta corriente y soporte de proyectos.',
+    title: 'Cooperação estratégica',
+    description: 'Uma rede de parceiros focada em barramentos flexíveis de cobre, distribuição de alta corrente e suporte a projetos.',
   },
   {
-    title: 'Adopción Industrial Probada',
-    description: 'Las referencias incluyen energía, red eléctrica, transporte, manufactura e infraestructura atendidas por soluciones Yanghua.',
+    title: 'Adoção industrial comprovada',
+    description: 'As referências abrangem energia, rede elétrica, transporte, manufatura e infraestrutura atendidas pelas soluções Yanghua.',
   },
   {
-    title: 'Soporte Confiable de Proyecto',
-    description: 'Las consultas de asociación conectan con el mismo flujo de cotización usado para productos, proyectos y requisitos técnicos.',
+    title: 'Suporte confiável ao projeto',
+    description: 'As consultas de parceria seguem o mesmo fluxo de orçamento utilizado para produtos, projetos e requisitos técnicos.',
   },
 ];
 ---
 
-<BaseLayout title={content?.title ?? 'Socios'} description={content?.subtitle ?? ''}>
+<BaseLayout title={content?.title ?? 'Parceiros'} description={content?.subtitle ?? 'Conheça os parceiros que confiam nas soluções Yanghua para distribuição de energia.'}>
   <Header slot="header" locale="pt" />
-  <Banner title={content?.title ?? 'Socios'} locale="pt" />
+  <Banner title={content?.title ?? 'Parceiros'} locale="pt" />
 
   <PartnersGrid title={content?.title} subtitle={content?.subtitle} partners={partners} benefits={benefits} />
 
   <CTA
-    title={content?.title ?? 'Socios'}
+    title={content?.title ?? 'Nossos parceiros'}
     description={content?.subtitle ?? ''}
     buttonText={content?.ctaAllPartners ?? 'Solicitar orçamento'}
     buttonHref={route('contact', 'pt')}
+    locale="pt"
   />
 
   <Footer slot="footer" locale="pt" />

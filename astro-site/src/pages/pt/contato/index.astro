@@ -14,15 +14,15 @@ const placeholders = form?.placeholders ?? {};
 const subjects = form?.subjects ?? {};
 ---
 
-<BaseLayout title={content?.page?.title ?? 'Contacto'} description={content?.page?.description ?? ''}>
+<BaseLayout title={content?.page?.title ?? 'Contate-nos'} description={content?.page?.description ?? 'Entre em contato com a equipe Yanghua para orçamentos, suporte técnico e soluções de barramento flexível.'}>
   <Header slot="header" locale="pt" />
 
-  <Banner title={content?.page?.title ?? 'Contacto'} locale="pt" />
+  <Banner title={content?.page?.title ?? 'Contate-nos'} locale="pt" />
 
   <section class="py-section">
     <div class="mx-auto grid max-w-site grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:gap-14">
       <div class="lg:col-span-3">
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">{content?.sections?.getInTouch ?? 'Ponte en contacto'}</h2>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{content?.sections?.getInTouch ?? 'Entre em contato'}</h2>
         <p class="mt-2 mb-8 text-text-muted">{content?.page?.description ?? ''}</p>
 
         <form id="contact-form" class="flex flex-col gap-5">
@@ -87,22 +87,22 @@ const subjects = form?.subjects ?? {};
 
       <aside class="space-y-8 lg:col-span-2">
         <div>
-          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.phone?.title ?? 'Teléfono'}</h3>
+          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.phone?.title ?? 'Telefone'}</h3>
           <p class="mt-1 text-primary-light font-medium">{content?.info?.phone?.content}</p>
           <p class="mt-1 text-sm text-text-muted">{content?.info?.phone?.description}</p>
         </div>
         <div>
-          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.email?.title ?? 'Correo'}</h3>
+          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.email?.title ?? 'E-mail'}</h3>
           <p class="mt-1 text-primary-light font-medium">{content?.info?.email?.content}</p>
           <p class="mt-1 text-sm text-text-muted">{content?.info?.email?.description}</p>
         </div>
         <div>
-          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.address?.title ?? 'Dirección'}</h3>
+          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.address?.title ?? 'Endereço'}</h3>
           <p class="mt-1 text-text-muted">{content?.info?.address?.content}</p>
           <p class="mt-1 text-sm text-text-muted">{content?.info?.address?.description}</p>
         </div>
         <div>
-          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.hours?.title ?? 'Horario'}</h3>
+          <h3 class="font-heading text-lg font-semibold text-text">{content?.info?.hours?.title ?? 'Horário'}</h3>
           <p class="mt-1 text-text-muted">{content?.info?.hours?.content}</p>
           <p class="mt-1 text-sm text-text-muted">{content?.info?.hours?.description}</p>
         </div>

@@ -1,5 +1,7 @@
 ---
 import { client } from '../data/client';
+import type { Locale } from '../lib/yanghua/loaders';
+import { route } from '../lib/yanghua/routes';
 
 interface Props {
   title?: string;
@@ -7,15 +9,19 @@ interface Props {
   buttonText?: string;
   buttonHref?: string;
   showPhone?: boolean;
+  locale?: Locale;
 }
 
 const {
   title = 'Ready to Get Started?',
   description = 'Contact us today for a free, no-obligation quote. We\'re here to help with any project — big or small.',
   buttonText = 'Get Your Free Quote',
-  buttonHref = '/contact',
+  buttonHref,
   showPhone = true,
+  locale = 'en',
 } = Astro.props;
+
+const resolvedButtonHref = buttonHref ?? route('contact', locale);
 ---
 
 <section class="relative overflow-hidden bg-primary py-16 sm:py-20 lg:py-24">
@@ -29,7 +35,7 @@ const {
 
     <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
       <a
-        href={buttonHref}
+        href={resolvedButtonHref}
         class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-8 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {buttonText}

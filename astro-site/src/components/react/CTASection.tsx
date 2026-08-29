@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import { Phone } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface CTASectionProps {
   title?: string;
@@ -9,16 +11,20 @@ interface CTASectionProps {
   buttonHref?: string;
   phone?: string;
   phoneHref?: string;
+  locale?: Locale;
 }
 
 export default function CTASection({
   title = 'Ready to Get Started?',
   description = 'Contact us for product selection, technical support, and quotations.',
   buttonText = 'Get Quote',
-  buttonHref = '/en/contact',
+  buttonHref,
   phone = '+86-769-3893-9888',
   phoneHref = 'tel:+86-769-3893-9888',
+  locale = 'en',
 }: CTASectionProps) {
+  const resolvedButtonHref = buttonHref ?? route('contact', locale);
+
   return (
     <section className="relative overflow-hidden bg-primary py-16 sm:py-20 lg:py-24">
       {/* Decorative background pattern */}
@@ -41,7 +47,7 @@ export default function CTASection({
             size="lg"
             className="min-h-[44px] bg-[hsl(var(--accent-shadcn))] font-bold text-[hsl(var(--accent-shadcn-foreground))] hover:bg-[hsl(var(--accent-shadcn))]/90"
           >
-            <a href={buttonHref}>{buttonText}</a>
+            <a href={resolvedButtonHref}>{buttonText}</a>
           </Button>
           <Button
             asChild

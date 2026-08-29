@@ -50,6 +50,8 @@ const collectionPageSchema = generateCollectionPageSchema(collectionArticles, un
         <p class="text-text-muted leading-relaxed">{pageDescription}</p>
       </div>
 
+      <h2 class="mt-10 text-center font-heading text-2xl font-semibold text-text">Latest technical articles</h2>
+
       {hubs.length > 0 && (
         <nav class="mt-8 flex flex-wrap justify-center gap-2" aria-label="Article hubs">
           {hubs.map((hub) => (
@@ -60,7 +62,7 @@ const collectionPageSchema = generateCollectionPageSchema(collectionArticles, un
         </nav>
       )}
 
-      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((a) => (
           <a href={a.url} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
             <div class="h-44 overflow-hidden bg-background">

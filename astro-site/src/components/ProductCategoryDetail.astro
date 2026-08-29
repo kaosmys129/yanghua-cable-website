@@ -10,9 +10,9 @@ const { category, locale = 'en' } = Astro.props as { category: ProductCategory; 
 const labels = categoryLabels[locale];
 const productHref = route('products', locale);
 const contactHref = route('contact', locale);
-const solutionHref = locale === 'es' ? '/es/soluciones' : locale === 'pt' ? '/pt/solucoes' : '/en/solutions';
-const articlesHref = locale === 'es' ? '/es/articulos/hub' : locale === 'pt' ? '/pt/artigos/hub' : '/en/articles/hub';
-const projectsHref = locale === 'es' ? '/es/proyectos' : locale === 'pt' ? '/pt/projetos' : '/en/projects';
+const solutionHref = route('solutions', locale);
+const articlesHref = route('hubs', locale);
+const projectsHref = route('projects', locale);
 const specLabels =
   locale === 'es'
     ? {
@@ -115,7 +115,7 @@ const specLabels =
         <h2 class="font-heading text-lg font-semibold">{labels.inquiry}</h2>
         <p class="mt-2 text-sm leading-relaxed opacity-85">{category.name}</p>
         <a href={contactHref} class="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-fg">
-          {locale === 'es' ? 'Solicitar Cotización' : 'Submit Inquiry'}
+          {locale === 'es' ? 'Solicitar Cotización' : locale === 'pt' ? 'Enviar consulta' : 'Submit Inquiry'}
         </a>
       </div>
       <div class="rounded-lg border border-border bg-surface p-6 shadow-sm">

@@ -80,7 +80,7 @@ const contactHref = route('contact', locale);
         <h2 class="font-heading text-lg font-semibold">{labels.inquiry}</h2>
         <p class="mt-2 text-sm leading-relaxed opacity-85">{product.description}</p>
         <a href={contactHref} class="mt-5 inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-fg">
-          {locale === 'es' ? 'Solicitar Cotización' : 'Submit Inquiry'}
+          {locale === 'es' ? 'Solicitar Cotización' : locale === 'pt' ? 'Enviar consulta' : 'Submit Inquiry'}
         </a>
       </div>
 
@@ -89,7 +89,7 @@ const contactHref = route('contact', locale);
           <h2 class="font-heading text-lg font-semibold text-text">{labels.related}</h2>
           <div class="mt-4 space-y-3">
             {related.map((item) => (
-              <a href={`${locale === 'es' ? '/es/productos' : locale === 'pt' ? '/pt/produtos' : '/en/products'}/${item.id}`} class="flex gap-3 rounded-md border border-border bg-background p-3 transition-colors hover:border-primary">
+              <a href={`${route('products', locale)}/${item.id}`} class="flex gap-3 rounded-md border border-border bg-background p-3 transition-colors hover:border-primary">
                 <img src={item.images[0]} alt={item.name} class="size-14 shrink-0 rounded-md object-cover" loading="lazy" />
                 <span>
                   <span class="block text-sm font-semibold text-text">{item.name}</span>

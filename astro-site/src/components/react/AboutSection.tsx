@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import { ArrowRight, Check } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface AboutSectionProps {
   topper?: string;
@@ -12,6 +14,7 @@ interface AboutSectionProps {
   imageSrc?: string;
   mobileImageSrc?: string;
   imageAlt?: string;
+  locale?: Locale;
 }
 
 export default function AboutSection({
@@ -27,11 +30,14 @@ export default function AboutSection({
     'Satisfaction guaranteed on every project',
   ],
   ctaLabel = 'More About Us',
-  ctaHref = '/about',
+  ctaHref,
   imageSrc = '/images/about/img-strength.webp',
   mobileImageSrc = '/images/about/img-strength-mobile.webp',
   imageAlt = 'Yanghua professional team',
+  locale = 'en',
 }: AboutSectionProps) {
+  const resolvedCtaHref = ctaHref ?? route('about', locale);
+
   return (
     <section className="py-section">
       <div className="mx-auto grid max-w-site grid-cols-1 items-stretch gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
@@ -78,7 +84,7 @@ export default function AboutSection({
 
           <div className="pt-2">
             <Button asChild size="lg" className="min-h-[44px] bg-primary font-bold text-primary-foreground">
-              <a href={ctaHref}>
+              <a href={resolvedCtaHref}>
                 {ctaLabel}
                 <ArrowRight className="ml-1 h-4 w-4" />
               </a>

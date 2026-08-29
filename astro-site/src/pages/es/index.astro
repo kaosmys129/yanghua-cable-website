@@ -103,6 +103,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     ctaHref={route('products', 'es')}
     secondaryLabel={page?.hero?.learnMore}
     secondaryHref={route('about', 'es')}
+    locale="es"
     phone={client.phoneFormatted}
     phoneHref={`tel:${client.phoneForTel}`}
     slides={[
@@ -124,6 +125,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     heading={page?.applicationAreas?.title}
     description={page?.applicationAreas?.subtitle}
     services={services}
+    locale="es"
   />
 
   <AboutSection
@@ -133,6 +135,7 @@ const projects = tRaw<any[]>(messages, 'projects.list', []);
     benefits={Object.values(page?.companyStrength?.stats ?? {}).map((s: any) => s?.description).filter(Boolean)}
     ctaLabel={page?.companyStrength?.ctaLearnMore}
     ctaHref={route('about', 'es')}
+    locale="es"
   />
 
   <ProductComparisonSection

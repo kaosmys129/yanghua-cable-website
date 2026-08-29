@@ -78,6 +78,14 @@ function hreflangAlternatesFrom(html) {
     .map((match) => ({ hreflang: match[1], href: match[2] }));
 }
 
+function seoMetaFrom(html) {
+  const decodeHtmlEntities = (value) => value.replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)));
+  return {
+    title: decodeHtmlEntities(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? ''),
+    description: decodeHtmlEntities(html.match(/<meta name="description" content="([^"]*)"/i)?.[1] ?? ''),
+  };
+}
+
 function xmlLocations(xml) {
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 }
@@ -128,6 +136,10 @@ const sitemapDocuments = await mapConcurrent(sitemapUrls, async (sitemapUrl) => 
 const urls = sitemapDocuments.flatMap(xmlLocations);
 const urlSet = new Set(urls);
 if (urlSet.size !== urls.length) errors.push('sitemap contains duplicate URLs');
+for (const path of ['/pt', '/pt/produtos', '/pt/projetos', '/pt/artigos']) {
+  const expectedUrl = `${SITE_ORIGIN}${path}`;
+  if (!urlSet.has(expectedUrl)) errors.push(`sitemap is missing ${expectedUrl}`);
+}
 
 const pages = await mapConcurrent(urls, async (url) => {
   try {
@@ -137,6 +149,11 @@ const pages = await mapConcurrent(urls, async (url) => {
     if (canonicalFrom(html) !== url) errors.push(`${url}: self-canonical mismatch (${canonicalFrom(html)})`);
     if (!/<meta name="robots" content="index, follow">/i.test(html)) errors.push(`${url}: missing index, follow robots meta`);
     if (/http-equiv="refresh"/i.test(html)) errors.push(`${url}: contains meta refresh`);
+    const { title, description } = seoMetaFrom(html);
+    if (!title) errors.push(`${url}: missing title`);
+    if (Array.from(title).length > 60) errors.push(`${url}: title exceeds 60 Unicode characters`);
+    if (!description) errors.push(`${url}: missing meta description`);
+    if (Array.from(description).length > 160) errors.push(`${url}: meta description exceeds 160 Unicode characters`);
     return { url, html, alternates: hreflangAlternatesFrom(html) };
   } catch (error) {
     errors.push(`${url}: fetch failed (${error.message})`);

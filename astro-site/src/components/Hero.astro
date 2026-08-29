@@ -4,6 +4,8 @@ import type { ImageMetadata } from 'astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
 import { heroImage as localHeroImage } from '../config/images';
+import type { Locale } from '../lib/yanghua/loaders';
+import { route } from '../lib/yanghua/routes';
 
 // Fallback Unsplash URL used until a local image is added to
 // src/assets/images/hero/ and registered in src/config/images.ts
@@ -19,6 +21,7 @@ interface Props {
   secondaryHref?: string;
   imageSrc?: ImageMetadata | string;
   imageAlt?: string;
+  locale?: Locale;
 }
 
 const {
@@ -26,12 +29,15 @@ const {
   heading = brand.tagline,
   description = brand.description,
   ctaLabel = 'Get a Free Quote',
-  ctaHref = '/contact',
+  ctaHref,
   secondaryLabel = 'Our Services',
-  secondaryHref = '/services',
+  secondaryHref,
   imageSrc = localHeroImage ?? PLACEHOLDER,
   imageAlt = 'Professional tradesperson at work',
+  locale = 'en',
 } = Astro.props;
+const resolvedCtaHref = ctaHref ?? route('contact', locale);
+const resolvedSecondaryHref = secondaryHref ?? route('services', locale);
 ---
 
 <section class="relative overflow-hidden bg-background py-12 sm:py-16 md:py-20 lg:py-24">
@@ -59,13 +65,13 @@ const {
       <!-- CTA row -->
       <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:gap-4">
         <a
-          href={ctaHref}
+          href={resolvedCtaHref}
           class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {ctaLabel}
         </a>
         <a
-          href={secondaryHref}
+          href={resolvedSecondaryHref}
           class="inline-flex min-h-[44px] items-center justify-center rounded-md border-2 border-primary px-6 py-3 text-base font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           {secondaryLabel}

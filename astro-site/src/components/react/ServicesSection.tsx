@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, CardContent } from '../ui/card';
 import { ArrowRight } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface ServiceItem {
   title: string;
@@ -16,15 +18,16 @@ interface ServicesSectionProps {
   heading?: string;
   description?: string;
   services?: ServiceItem[];
+  locale?: Locale;
 }
 
 const defaultServices: ServiceItem[] = [
-  { title: 'General Repairs', description: 'Reliable fixes for plumbing, electrical, drywall — done right.', href: '/services' },
-  { title: 'Installations', description: 'Professional installation of fixtures, appliances, and systems.', href: '/services' },
-  { title: 'Inspections', description: 'Thorough property inspections to catch issues early.', href: '/services' },
-  { title: 'Remodeling', description: 'Transform kitchens, bathrooms, and living spaces.', href: '/services' },
-  { title: 'Emergency Service', description: '24/7 emergency response when you need help fast.', href: '/services' },
-  { title: 'Maintenance Plans', description: 'Scheduled preventive maintenance to protect your property.', href: '/services' },
+  { title: 'General Repairs', description: 'Reliable fixes for plumbing, electrical, drywall — done right.' },
+  { title: 'Installations', description: 'Professional installation of fixtures, appliances, and systems.' },
+  { title: 'Inspections', description: 'Thorough property inspections to catch issues early.' },
+  { title: 'Remodeling', description: 'Transform kitchens, bathrooms, and living spaces.' },
+  { title: 'Emergency Service', description: '24/7 emergency response when you need help fast.' },
+  { title: 'Maintenance Plans', description: 'Scheduled preventive maintenance to protect your property.' },
 ];
 
 const icons = [
@@ -54,6 +57,7 @@ export default function ServicesSection({
   heading = 'Our Services',
   description = 'From routine maintenance to complex projects, we deliver quality workmanship.',
   services = defaultServices,
+  locale = 'en',
 }: ServicesSectionProps) {
   return (
     <section className="bg-surface py-section">
@@ -74,7 +78,7 @@ export default function ServicesSection({
           {services.map((service, i) => (
             <a
               key={service.title}
-              href={service.href || '/services'}
+              href={service.href || route('services', locale)}
               aria-label={`Learn more about ${service.title}`}
               className="group"
             >

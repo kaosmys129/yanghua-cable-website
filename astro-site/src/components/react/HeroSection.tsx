@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { ArrowRight, Phone } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface HeroSectionProps {
   topper?: string;
@@ -15,6 +17,7 @@ interface HeroSectionProps {
   imageAlt?: string;
   phone?: string;
   phoneHref?: string;
+  locale?: Locale;
 }
 
 export default function HeroSection({
@@ -22,14 +25,18 @@ export default function HeroSection({
   heading = 'Flexible busbar and cable solutions',
   description = 'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
   ctaLabel = 'View Products',
-  ctaHref = '/en/products',
+  ctaHref,
   secondaryLabel = 'About Us',
-  secondaryHref = '/en/about',
+  secondaryHref,
   imageSrc = '/images/homepage/home-hero-bg.webp',
   imageAlt = 'Yanghua flexible busbar manufacturing',
   phone = '+86-769-3893-9888',
   phoneHref = 'tel:+86-769-3893-9888',
+  locale = 'en',
 }: HeroSectionProps) {
+  const resolvedCtaHref = ctaHref ?? route('products', locale);
+  const resolvedSecondaryHref = secondaryHref ?? route('about', locale);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Full-screen background image */}
@@ -75,7 +82,7 @@ export default function HeroSection({
               size="lg"
               className="min-h-[44px] bg-[hsl(var(--accent-shadcn))] text-[hsl(var(--accent-shadcn-foreground))] font-bold hover:bg-[hsl(var(--accent-shadcn))]/90"
             >
-              <a href={ctaHref}>
+              <a href={resolvedCtaHref}>
                 {ctaLabel}
                 <ArrowRight className="ml-1 h-4 w-4" />
               </a>
@@ -86,7 +93,7 @@ export default function HeroSection({
               size="lg"
               className="min-h-[44px] border-2 border-white/60 font-bold text-white hover:bg-white hover:text-black"
             >
-              <a href={secondaryHref}>{secondaryLabel}</a>
+              <a href={resolvedSecondaryHref}>{secondaryLabel}</a>
             </Button>
           </div>
 

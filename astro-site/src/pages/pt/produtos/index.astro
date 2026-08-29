@@ -24,14 +24,14 @@ const faqItems = Object.values(faqContent)
   .map((value: any) => ({ question: value.question, answer: value.answer }));
 ---
 
-<BaseLayout title={t(messages, 'products.hero.title', 'Nuestros Productos')} description={t(messages, 'products.hero.subtitle', '')}>
+<BaseLayout title={t(messages, 'products.hero.title', 'Produtos de barramento flexível')} description={t(messages, 'products.hero.subtitle', 'Soluções de barramento flexível e distribuição de energia de alta corrente para aplicações industriais, comerciais e de energia.')}>
   <Header slot="header" locale="pt" />
-  <Banner title={t(messages, 'products.hero.title', 'Productos')} locale="pt" />
+  <Banner title={t(messages, 'products.hero.title', 'Produtos de barramento flexível')} locale="pt" />
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">{t(messages, 'products.overview.title', 'Descripción de Productos')}</h2>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{t(messages, 'products.overview.title', 'Visão geral dos produtos')}</h2>
         <p class="mt-3 text-text-muted">{t(messages, 'products.overview.subtitle', t(messages, 'products.hero.subtitle', ''))}</p>
       </div>
     </div>
@@ -73,14 +73,14 @@ const faqItems = Object.values(faqContent)
   <FAQSection
     topper="FAQ"
     title={faqContent?.title ?? 'Perguntas Frequentes'}
-    description="Respuestas a preguntas comunes sobre selección de productos, certificaciones, soporte de instalación y pedidos personalizados."
+    description="Respostas às principais dúvidas sobre seleção de produtos, certificações, suporte de instalação e pedidos personalizados."
     items={faqItems}
   />
 
   <CTA
-    title="¿Necesita una recomendación?"
-    description="Cuéntenos su escenario de aplicación y le recomendaremos productos adecuados."
-    buttonText="Contacto"
+    title="Precisa de uma recomendação?"
+    description="Conte-nos o seu cenário de aplicação e recomendaremos os produtos mais adequados."
+    buttonText="Contato"
     buttonHref={route('contact', 'pt')}
   />
 

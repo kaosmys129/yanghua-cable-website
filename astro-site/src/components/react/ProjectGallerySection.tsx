@@ -2,6 +2,8 @@ import React from 'react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { ArrowRight } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface Project {
   id: string;
@@ -18,7 +20,7 @@ interface ProjectGallerySectionProps {
     viewAllProjects?: string;
   };
   projects?: Project[];
-  locale?: string;
+  locale?: Locale;
 }
 
 export default function ProjectGallerySection({
@@ -33,7 +35,7 @@ export default function ProjectGallerySection({
     viewAllProjects = 'View All Projects',
   } = content;
 
-  const basePath = locale === 'es' ? '/es/proyectos' : '/en/projects';
+  const basePath = route('projects', locale);
 
   return (
     <section className="py-section">

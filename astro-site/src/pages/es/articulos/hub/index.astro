@@ -9,7 +9,10 @@ import { getHubs } from '../../../../lib/yanghua/articles.mjs';
 const hubs = getHubs('es');
 ---
 
-<BaseLayout title="Hubs de artículos" description="">
+<BaseLayout
+  title="Hubs de artículos"
+  description="Explora hubs técnicos sobre busbar flexible, distribución de energía, almacenamiento y aplicaciones de alta corriente."
+>
   <Header slot="header" locale="es" />
   <Banner title="Hubs de artículos" locale="es" />
 
@@ -22,7 +25,7 @@ const hubs = getHubs('es');
             {h.description && <p class="mt-2 text-sm text-text-muted">{h.description}</p>}
             {h.featuredArticleSlugs.length > 0 && (
               <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-accent">
-                {h.featuredArticleSlugs.length} articulos destacados
+                {h.featuredArticleSlugs.length} artículos destacados
               </p>
             )}
           </a>

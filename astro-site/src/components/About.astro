@@ -1,5 +1,7 @@
 ---
 import { aboutImage as localAboutImage } from '../config/images';
+import type { Locale } from '../lib/yanghua/loaders';
+import { route } from '../lib/yanghua/routes';
 
 // Fallback Unsplash URL used until a local image is added to
 // src/assets/images/about/ and registered in src/config/images.ts
@@ -14,6 +16,7 @@ interface Props {
   ctaHref?: string;
   imageSrc?: ImageMetadata | string;
   imageAlt?: string;
+  locale?: Locale;
 }
 
 const {
@@ -29,10 +32,12 @@ const {
     'Satisfaction guaranteed on every project',
   ],
   ctaLabel = 'More About Us',
-  ctaHref = '/about',
+  ctaHref,
   imageSrc = localAboutImage ?? PLACEHOLDER,
   imageAlt = 'Friendly professional team on a job site',
+  locale = 'en',
 } = Astro.props;
+const resolvedCtaHref = ctaHref ?? route('about', locale);
 ---
 
 <section class="py-section">
@@ -73,7 +78,7 @@ const {
 
       <div class="pt-2">
         <a
-          href={ctaHref}
+          href={resolvedCtaHref}
           class="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-primary px-6 py-3 text-base font-bold text-primary-fg shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           {ctaLabel}

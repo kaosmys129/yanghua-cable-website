@@ -3,6 +3,8 @@ import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Check } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface FeatureItem {
   name?: string;
@@ -33,7 +35,7 @@ interface ProductComparisonProps {
   traditionalImageAlt?: string;
   rigidBusbarImage?: string;
   rigidBusbarImageAlt?: string;
-  locale?: string;
+  locale?: Locale;
 }
 
 /** 每张卡片底部填充的图片高度（像素） */
@@ -72,8 +74,8 @@ export default function ProductComparisonSection({
     rigidBusbarImageAlt ?? (compact as any)?.imageAlt,
   ];
 
-  const contactHref = locale === 'es' ? '/es/contacto' : '/en/contact';
-  const productsHref = locale === 'es' ? '/es/productos' : '/en/products';
+  const contactHref = route('contact', locale);
+  const productsHref = route('products', locale);
 
   // If no content loaded, show empty state
   if (!competitors.length && !flexibleFeatures.length) {

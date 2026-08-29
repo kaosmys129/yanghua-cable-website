@@ -15,6 +15,29 @@ function canonicalFrom(html) {
   return html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] ?? null;
 }
 
+function decodeHtmlEntities(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)));
+}
+
+function seoMetaFrom(html) {
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? '';
+  const description = html.match(/<meta name="description" content="([^"]*)"/i)?.[1] ?? '';
+  return {
+    title: decodeHtmlEntities(title),
+    description: decodeHtmlEntities(description),
+  };
+}
+
+function headingLevelsFrom(html) {
+  return [...html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
+}
+
 function hreflangAlternatesFrom(html) {
   return [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/gi)]
     .map((match) => ({ hreflang: match[1], href: match[2] }));
@@ -196,9 +219,47 @@ test('build publishes one canonical sitemap set covering every locale', () => {
   assert.ok(urls.includes(`${SITE_URL}/en/projects/1`));
   assert.ok(urls.includes(`${SITE_URL}/es/productos`));
   assert.ok(urls.includes(`${SITE_URL}/pt/produtos`));
+  assert.ok(urls.includes(`${SITE_URL}/pt`));
+  assert.ok(urls.includes(`${SITE_URL}/pt/projetos`));
+  assert.ok(urls.includes(`${SITE_URL}/pt/artigos`));
 
   const robots = readOutput('robots.txt');
   assert.match(robots, new RegExp(`Sitemap: ${SITE_URL}/sitemap-index\\.xml`));
+});
+
+test('all sitemap pages expose bounded title and meta description lengths', () => {
+  const xml = readOutput('sitemap-0.xml');
+  const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+
+  for (const url of urls) {
+    const pathname = decodeURIComponent(new URL(url).pathname).replace(/^\//, '');
+    const { title, description } = seoMetaFrom(readOutput(`${pathname}/index.html`));
+    assert.ok(title.length > 0, `missing title: ${url}`);
+    assert.ok(Array.from(title).length <= 60, `title exceeds 60 Unicode characters: ${url} (${Array.from(title).length})`);
+    assert.ok((title.match(/Yanghua Cable/giu) ?? []).length <= 1, `title repeats the brand: ${url}`);
+    assert.ok(description.length > 0, `missing meta description: ${url}`);
+    assert.ok(Array.from(description).length <= 160, `description exceeds 160 Unicode characters: ${url} (${Array.from(description).length})`);
+  }
+});
+
+test('Portuguese cornerstone pages keep visible internal links in Portuguese', () => {
+  for (const path of ['pt/index.html', 'pt/produtos/index.html', 'pt/projetos/index.html']) {
+    const html = readOutput(path);
+    const wrongLocaleLinks = [...html.matchAll(/<a\b[^>]*href="(\/(?:en|es)(?:\/[^\"]*)?)"[^>]*>/gi)]
+      .filter((match) => !/\bhreflang="(?:en|es)"/i.test(match[0]));
+    assert.deepEqual(wrongLocaleLinks, [], `${path} contains an unintended English/Spanish visible link`);
+  }
+});
+
+test('article listing pages use a non-skipping heading hierarchy', () => {
+  for (const path of ['en/articles/index.html', 'es/articulos/index.html', 'pt/artigos/index.html']) {
+    const levels = headingLevelsFrom(readOutput(path));
+    assert.equal(levels[0], 1, `${path} must begin with H1`);
+    for (let index = 1; index < levels.length; index += 1) {
+      assert.ok(levels[index] <= levels[index - 1] + 1, `${path} skips from H${levels[index - 1]} to H${levels[index]}`);
+    }
+    assert.ok(levels.includes(2), `${path} must include an H2 grouping heading`);
+  }
 });
 
 test('indexable pages expose canonicals matching the no-trailing-slash policy', () => {

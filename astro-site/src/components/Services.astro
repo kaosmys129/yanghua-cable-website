@@ -1,4 +1,7 @@
 ---
+import type { Locale } from '../lib/yanghua/loaders';
+import { route } from '../lib/yanghua/routes';
+
 interface ServiceItem {
   title: string;
   description: string;
@@ -12,6 +15,7 @@ interface Props {
   heading?: string;
   description?: string;
   services?: ServiceItem[];
+  locale?: Locale;
 }
 
 const icons = [
@@ -28,13 +32,14 @@ const {
   heading = 'Our Services',
   description = 'From routine maintenance to complex projects, we deliver quality workmanship with honest pricing.',
   services = [
-    { title: 'General Repairs',      description: 'Reliable fixes for plumbing, electrical, drywall, and more — done right the first time.', href: '/services' },
-    { title: 'Installations',        description: 'Professional installation of fixtures, appliances, and systems with clean, code-compliant results.', href: '/services' },
-    { title: 'Inspections',          description: 'Thorough property inspections to catch issues before they become costly problems.', href: '/services' },
-    { title: 'Remodeling',           description: 'Transform kitchens, bathrooms, and living spaces with expert craftsmanship and attention to detail.', href: '/services' },
-    { title: 'Emergency Service',    description: '24/7 emergency response when you need help fast — we\'re just a phone call away.', href: '/services' },
-    { title: 'Maintenance Plans',    description: 'Scheduled preventive maintenance to protect your property and avoid surprise repair bills.', href: '/services' },
+    { title: 'General Repairs',      description: 'Reliable fixes for plumbing, electrical, drywall, and more — done right the first time.' },
+    { title: 'Installations',        description: 'Professional installation of fixtures, appliances, and systems with clean, code-compliant results.' },
+    { title: 'Inspections',          description: 'Thorough property inspections to catch issues before they become costly problems.' },
+    { title: 'Remodeling',           description: 'Transform kitchens, bathrooms, and living spaces with expert craftsmanship and attention to detail.' },
+    { title: 'Emergency Service',    description: '24/7 emergency response when you need help fast — we\'re just a phone call away.' },
+    { title: 'Maintenance Plans',    description: 'Scheduled preventive maintenance to protect your property and avoid surprise repair bills.' },
   ],
+  locale = 'en',
 } = Astro.props;
 ---
 
@@ -50,7 +55,7 @@ const {
       {services.map((service, i) => (
         <li>
           <a
-            href={service.href || '/services'}
+            href={service.href || route('services', locale)}
             aria-label={`Learn more about ${service.title}`}
             class="group relative flex min-h-64 cursor-pointer flex-col overflow-hidden rounded-lg border border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
           >

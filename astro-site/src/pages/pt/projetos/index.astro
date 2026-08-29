@@ -11,17 +11,17 @@ const messages = await loadMessages('pt');
 const projects = tRaw<any[]>(messages, 'projects.list', []);
 const stats = tRaw<Record<string, string>>(messages, 'projects.stats', {});
 const statLabels: Record<string, string> = {
-  totalProjects: 'Total de Proyectos',
-  industriesCovered: 'Industrias Cubiertas',
-  countriesServed: 'Países Atendidos',
-  totalCapacity: 'Capacidad Total',
+  totalProjects: 'Total de projetos',
+  industriesCovered: 'Setores atendidos',
+  countriesServed: 'Países atendidos',
+  totalCapacity: 'Capacidade total',
 };
 
 const industryColors: Record<string, string> = {
-  'Centro de Datos': 'bg-blue-500 text-white border-blue-500',
-  'Nueva Energía': 'bg-emerald-500 text-white border-emerald-500',
+  'Centro de dados': 'bg-blue-500 text-white border-blue-500',
+  'Nova Energia': 'bg-emerald-500 text-white border-emerald-500',
   'Industrial': 'bg-slate-600 text-white border-slate-600',
-  'Tránsito Ferroviario': 'bg-purple-500 text-white border-purple-500',
+  'Trânsito Ferroviário': 'bg-purple-500 text-white border-purple-500',
   'Metalurgia': 'bg-orange-500 text-white border-orange-500',
 };
 
@@ -34,7 +34,7 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
   <section class="pt-16 pb-4">
     <div class="mx-auto max-w-site px-4 sm:px-6 text-center">
       <span class="inline-block rounded-full border border-[#fdb827] px-3 py-1 text-sm text-[#fdb827] mb-4">
-        Nuestros Proyectos
+        Nossos projetos
       </span>
       <h1 class="text-4xl md:text-5xl font-bold text-[#212529] mb-4 tracking-tight">
         {t(messages, 'projects.page.title')}
@@ -51,8 +51,8 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
       <div class="mb-10 space-y-6" id="filter-bar">
         <div class="relative max-w-md mx-auto">
           <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" id="project-search" placeholder="Buscar proyectos..." class="w-full pl-10 pr-10 h-11 rounded-xl border-2 border-border bg-transparent text-text placeholder:text-text-muted focus:outline-none focus:border-[#fdb827] transition-colors text-sm" />
-          <button id="search-clear" class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text transition-colors hidden" aria-label="Limpiar búsqueda">
+          <input type="text" id="project-search" placeholder="Buscar projetos..." class="w-full pl-10 pr-10 h-11 rounded-xl border-2 border-border bg-transparent text-text placeholder:text-text-muted focus:outline-none focus:border-[#fdb827] transition-colors text-sm" />
+          <button id="search-clear" class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text transition-colors hidden" aria-label="Limpar busca">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
@@ -78,15 +78,15 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
         <div class="flex items-center justify-between text-sm text-text-muted">
           <button id="clear-filters" class="hidden h-8 text-xs gap-1 items-center text-text-muted hover:text-text">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-            Limpiar filtros
+            Limpar filtros
           </button>
-          <span id="result-count" class="ml-auto">{projects.length} proyectos encontrados</span>
+          <span id="result-count" class="ml-auto">{projects.length} projetos encontrados</span>
         </div>
       </div>
 
       <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p: any) => (
-          <a href={`/es/proyectos/${p.id}`} data-industry={p.industry} data-search-text={`${p.title} ${p.client} ${p.industry} ${p.description}`.toLowerCase()} class="project-card group overflow-hidden rounded-xl border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col bg-white">
+          <a href={`${route('projects', 'pt')}/${p.id}`} data-industry={p.industry} data-search-text={`${p.title} ${p.client} ${p.industry} ${p.description}`.toLowerCase()} class="project-card group overflow-hidden rounded-xl border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col bg-white">
             <div class="relative h-52 overflow-hidden bg-gray-100">
               <img src={(p.images && p.images[0]) || '/images/projects/no-image-available.webp'} alt={p.title} class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
               <div class="absolute top-3 left-3">
@@ -118,10 +118,10 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
           <svg class="h-8 w-8 text-text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </div>
-        <h3 class="text-xl font-semibold text-[#212529] mb-2">No se encontraron proyectos</h3>
-        <p class="text-text-muted mb-6">Intenta ajustar los filtros o términos de búsqueda.</p>
+        <h3 class="text-xl font-semibold text-[#212529] mb-2">Nenhum projeto encontrado</h3>
+        <p class="text-text-muted mb-6">Ajuste os filtros ou os termos de busca.</p>
         <button id="reset-filters-btn" class="rounded-lg border-2 border-border px-4 py-2 text-sm font-medium text-text hover:border-[#fdb827] hover:text-[#fdb827] transition-colors">
-          Mostrar todos los proyectos
+          Mostrar todos os projetos
         </button>
       </div>
     </div>
@@ -131,8 +131,8 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="rounded-2xl bg-[#212529] p-10 md:p-12">
         <div class="text-center mb-8">
-          <span class="inline-block rounded-full border border-white/30 px-3 py-1 text-sm text-white/80 mb-3">Nuestro Impacto</span>
-          <h2 class="text-2xl md:text-3xl font-bold text-white">Por los Números</h2>
+          <span class="inline-block rounded-full border border-white/30 px-3 py-1 text-sm text-white/80 mb-3">Nosso impacto</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">Em números</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {Object.entries(stats).map(([key, value]) => (
@@ -169,7 +169,7 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
       card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
       if (matchesFilter && matchesSearch) visibleCount++;
     });
-    resultCount.textContent = `${visibleCount} proyecto${visibleCount !== 1 ? 's' : ''} encontrado${visibleCount !== 1 ? 's' : ''}`;
+    resultCount.textContent = `${visibleCount} projeto${visibleCount !== 1 ? 's' : ''} encontrado${visibleCount !== 1 ? 's' : ''}`;
     emptyState.classList.toggle('hidden', visibleCount > 0);
     clearFilters.classList.toggle('hidden', !(activeFilter !== 'all' || searchQuery));
     searchClear.classList.toggle('hidden', !searchQuery);
@@ -203,10 +203,10 @@ const industries = ['All', ...new Set(projects.map((p: any) => p.industry))] as 
     updateUI();
   });
   (window as any).__industryColors = {
-    'Centro de Datos': 'bg-blue-500 text-white border-blue-500',
-    'Nueva Energía': 'bg-emerald-500 text-white border-emerald-500',
+    'Centro de dados': 'bg-blue-500 text-white border-blue-500',
+    'Nova Energia': 'bg-emerald-500 text-white border-emerald-500',
     'Industrial': 'bg-slate-600 text-white border-slate-600',
-    'Tránsito Ferroviario': 'bg-purple-500 text-white border-purple-500',
+    'Trânsito Ferroviário': 'bg-purple-500 text-white border-purple-500',
     'Metalurgia': 'bg-orange-500 text-white border-orange-500',
   };
 </script>

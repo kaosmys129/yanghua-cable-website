@@ -1,8 +1,10 @@
 ---
 import { publicAsset } from '../lib/yanghua/assets';
+import { route } from '../lib/yanghua/routes';
+import type { Locale } from '../lib/yanghua/loaders';
 
 const { content = {}, projects = [], locale = 'en' } = Astro.props;
-const basePath = locale === 'es' ? '/es/proyectos' : locale === 'pt' ? '/pt/projetos' : '/en/projects';
+const basePath = route('projects', locale as Locale);
 ---
 
 <section class="py-section">

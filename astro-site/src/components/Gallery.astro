@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import { galleryImages as defaultImages } from "../config/images";
 import type { GalleryImage } from "../config/images";
+import type { Locale } from "../lib/yanghua/loaders";
+import { route } from "../lib/yanghua/routes";
 
 interface Props {
   topper?: string;
@@ -10,6 +12,7 @@ interface Props {
   images?: GalleryImage[];
   ctaLabel?: string;
   ctaHref?: string;
+  locale?: Locale;
 }
 
 const {
@@ -18,8 +21,10 @@ const {
   description = "See the quality and attention to detail we bring to every project.",
   images = defaultImages,
   ctaLabel = "View All Projects",
-  ctaHref = "/services",
+  ctaHref,
+  locale = 'en',
 } = Astro.props;
+const resolvedCtaHref = ctaHref ?? route('projects', locale);
 ---
 
 <section class="py-section">
@@ -108,7 +113,7 @@ const {
       ctaLabel && (
         <div class="mt-10 text-center">
           <a
-            href={ctaHref}
+            href={resolvedCtaHref}
             class="inline-flex min-h-[44px] items-center gap-2 rounded-md border-2 border-primary px-6 py-3 text-base font-bold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
           >
             {ctaLabel}

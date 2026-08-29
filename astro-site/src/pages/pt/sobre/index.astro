@@ -13,18 +13,19 @@ const page = await loadPageJson<any>('pt', 'about');
 const content = page?.content ?? {};
 ---
 
-<BaseLayout title={content?.hero?.title ?? 'Acerca de'} description={content?.hero?.subtitle ?? ''}>
+<BaseLayout title={content?.hero?.title ?? 'Sobre nós'} description={content?.hero?.subtitle ?? 'Conheça a Yanghua Cable, fabricante de barramentos flexíveis e soluções de distribuição de energia.'}>
   <Header slot="header" locale="pt" />
 
-  <Banner title={content?.hero?.title ?? 'Acerca de'} locale="pt" />
+  <Banner title={content?.hero?.title ?? 'Sobre nós'} locale="pt" />
 
   <AboutProductionSections content={content} locale="pt" />
 
   <CTA
-    title={content?.cta?.title ?? '¿Listo para asociarte con nosotros?'}
+    title={content?.cta?.title ?? 'Pronto para fazer parceria conosco?'}
     description={content?.cta?.description ?? content?.cta?.subtitle ?? ''}
-    buttonText={content?.cta?.buttons?.contact ?? 'Contacto'}
+    buttonText={content?.cta?.buttons?.contact ?? 'Contato'}
     buttonHref={route('contact', 'pt')}
+    locale="pt"
     showPhone={false}
   />
 

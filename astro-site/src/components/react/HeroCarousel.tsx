@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { ArrowRight, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
+import type { Locale } from '../../lib/yanghua/loaders';
+import { route } from '../../lib/yanghua/routes';
 
 interface SlideImage {
   src: string;
@@ -25,6 +27,7 @@ interface HeroCarouselProps {
   interval?: number;
   /** 过渡动画时长（毫秒），默认 800 */
   transitionDuration?: number;
+  locale?: Locale;
 }
 
 export default function HeroCarousel({
@@ -32,15 +35,19 @@ export default function HeroCarousel({
   heading = 'Flexible busbar and cable solutions',
   description = 'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
   ctaLabel = 'View Products',
-  ctaHref = '/en/products',
+  ctaHref,
   secondaryLabel = 'About Us',
-  secondaryHref = '/en/about',
+  secondaryHref,
   phone = '+86-769-3893-9888',
   phoneHref = 'tel:+86-769-3893-9888',
   slides,
   interval = 5000,
   transitionDuration = 800,
+  locale = 'en',
 }: HeroCarouselProps) {
+  const resolvedCtaHref = ctaHref ?? route('products', locale);
+  const resolvedSecondaryHref = secondaryHref ?? route('about', locale);
+
   const totalSlides = slides.length;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
@@ -227,7 +234,7 @@ export default function HeroCarousel({
               size="lg"
               className="min-h-[44px] bg-[hsl(var(--accent-shadcn))] text-[hsl(var(--accent-shadcn-foreground))] font-bold hover:bg-[hsl(var(--accent-shadcn))]/90"
             >
-              <a href={ctaHref}>
+              <a href={resolvedCtaHref}>
                 {ctaLabel}
                 <ArrowRight className="ml-1 h-4 w-4" />
               </a>
@@ -238,7 +245,7 @@ export default function HeroCarousel({
               size="lg"
               className="min-h-[44px] border-2 border-white/60 font-bold text-white hover:bg-white hover:text-black"
             >
-              <a href={secondaryHref}>{secondaryLabel}</a>
+              <a href={resolvedSecondaryHref}>{secondaryLabel}</a>
             </Button>
           </div>
 

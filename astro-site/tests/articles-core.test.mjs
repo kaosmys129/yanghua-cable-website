@@ -240,5 +240,8 @@ test('builds sitemap xml for public articles and hubs', () => {
 
   assert.match(xml, /<loc>https:\/\/www\.yhflexiblebusbar\.com\/en\/articles\/flexible-busbar-vs-cable<\/loc>/);
   assert.match(xml, /<loc>https:\/\/www\.yhflexiblebusbar\.com\/en\/articles\/hub\/flexible-busbar-vs-cable<\/loc>/);
+  assert.match(xml, /<loc>https:\/\/www\.yhflexiblebusbar\.com\/pt<\/loc>/);
+  assert.match(xml, /<loc>https:\/\/www\.yhflexiblebusbar\.com\/pt\/produtos<\/loc>/);
+  assert.match(xml, /<loc>https:\/\/www\.yhflexiblebusbar\.com\/pt\/artigos<\/loc>/);
   assert.doesNotMatch(xml, /geoflow-draft/);
 });

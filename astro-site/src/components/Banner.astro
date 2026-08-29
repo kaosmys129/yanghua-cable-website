@@ -1,4 +1,6 @@
 ---
+import { route } from '../lib/yanghua/routes';
+
 interface Props {
   title: string;
   locale?: 'en' | 'es' | 'pt';
@@ -39,7 +41,7 @@ const segments = Astro.url.pathname
     <nav aria-label="Breadcrumb" class="mb-4">
       <ol class="flex flex-wrap items-center gap-1.5 text-sm text-primary-fg/60">
         <li>
-          <a href={`/${locale}`} class="transition-colors hover:text-primary-fg">{finalHomeLabel}</a>
+          <a href={route('home', locale)} class="transition-colors hover:text-primary-fg">{finalHomeLabel}</a>
         </li>
         {segments.map(({ label, href, isLast }) => (
           <li class="flex items-center gap-1.5">
