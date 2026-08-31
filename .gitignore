@@ -91,6 +91,7 @@ output/
 yanghua-cable-redesign-phase-1/
 astro-site/dist/
 astro-site/.astro/
+/yanghua-b2b-website/
 
 # WordPress
 /yanghua-b2b-website/wordpress-install/phpmyadmin/
@@ -126,5 +127,6 @@ yanghua_b2b_website_prd.md
 /dist/
 .playwright-cli/
 .astro/
+test_screenshots/
 
 

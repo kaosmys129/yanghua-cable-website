@@ -43,6 +43,18 @@ npm run build
 npm run preview
 ```
 
+## Email delivery
+
+The contact, inquiry, and footer newsletter forms use `/api/email/send`. For a Vercel deployment, copy the values from `.env.example` into the project environment:
+
+- `RESEND_API_KEY`: Resend server-side API key; this provider takes priority over SMTP.
+- `EMAIL_FROM`: a sender address on a verified Resend domain.
+- `CONTACT_EMAIL`, `INQUIRY_EMAIL`, `SUBSCRIPTION_EMAIL`: internal recipients for each form type.
+- `RESEND_AUDIENCE_ID`: optional Resend Audience ID; when set, newsletter signups are also added to that audience.
+- `CSRF_SECRET`: a random value with at least 32 characters in production.
+
+SMTP variables remain available for local integration tests and as a fallback when `RESEND_API_KEY` is not set.
+
 ---
 
 ## Theme source of truth

@@ -2,8 +2,8 @@ import type { APIRoute } from 'astro';
 import crypto from 'node:crypto';
 import { applySecurityHeaders, CSRFProtection } from '../../../lib/yanghua/server/security';
 import { defaultEmailSecurity, getClientIP } from '../../../lib/yanghua/server/email/EmailSecurity';
-import { createEmailService } from '../../../lib/yanghua/server/email/EmailService';
-import { renderContactFormEmail, renderInquiryFormEmail } from '../../../lib/yanghua/server/email/EmailTemplates';
+import { addResendAudienceContact, createEmailService } from '../../../lib/yanghua/server/email/EmailService';
+import { renderContactFormEmail, renderInquiryFormEmail, renderSubscriptionEmail } from '../../../lib/yanghua/server/email/EmailTemplates';
 
 export const prerender = false;
 
@@ -51,8 +51,10 @@ function setRecord(id: string, record: Omit<EmailRecord, 'id'>): void {
   emailStore.set(id, { id, ...record });
 }
 
-function smtpConfigurationError(): Error | null {
-  return process.env.SMTP_HOST?.trim() ? null : new Error('SMTP_HOST is not configured');
+function emailConfigurationError(): Error | null {
+  return process.env.RESEND_API_KEY?.trim() || process.env.SMTP_HOST?.trim()
+    ? null
+    : new Error('RESEND_API_KEY or SMTP_HOST is not configured');
 }
 
 export const GET: APIRoute = async ({ url }) => {
@@ -87,7 +89,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     );
   }
 
-  const type = body.type === 'inquiry' ? 'inquiry' : 'contact';
+  const type = body.type === 'inquiry' || body.type === 'subscribe' ? body.type : 'contact';
   const locale = body.locale === 'es' || body.locale === 'pt' ? body.locale : 'en';
   const clientIP = getClientIP(request);
   const emailId = crypto.randomUUID();
@@ -128,7 +130,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       ({ subject, html, text } = content);
       replyTo = payload.email;
       priority = 'normal';
-    } else {
+    } else if (type === 'inquiry') {
       const payload = {
         name: toStringValue(body.name),
         email: toStringValue(body.email),
@@ -152,10 +154,37 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       ({ subject, html, text } = content);
       replyTo = payload.email;
       priority = 'high';
+    } else {
+      const payload = {
+        email: toStringValue(body.email).trim().toLowerCase(),
+        website: toStringValue(body.website).trim(),
+      };
+
+      if (payload.website) {
+        setRecord(emailId, { status: 'failed', error: 'Spam trap triggered', createdAt, updatedAt: new Date().toISOString() });
+        return json({ success: false, error: 'Validation failed', code: 'VALIDATION_FAILED' }, 400);
+      }
+
+      const validation = defaultEmailSecurity.validateSubscriptionForm(payload, clientIP);
+      if (!validation.isValid) {
+        setRecord(emailId, { status: 'failed', error: 'Validation failed', createdAt, updatedAt: new Date().toISOString() });
+        return json({ success: false, error: 'Validation failed', errors: validation.errors, warnings: validation.warnings, code: 'VALIDATION_FAILED' }, 400);
+      }
+      if (validation.riskScore > 70) {
+        setRecord(emailId, { status: 'failed', error: 'Subscription requires manual review', createdAt, updatedAt: new Date().toISOString() });
+        return json({ success: false, error: 'Subscription requires manual review', code: 'MANUAL_REVIEW_REQUIRED' }, 429);
+      }
+
+      await addResendAudienceContact(payload.email);
+      const content = await renderSubscriptionEmail(payload, locale);
+      recipient = process.env.SUBSCRIPTION_EMAIL || process.env.CONTACT_EMAIL || 'info@yhflexiblebusbar.com';
+      ({ subject, html, text } = content);
+      replyTo = payload.email;
+      priority = 'normal';
     }
 
-    const smtpError = smtpConfigurationError();
-    if (smtpError) throw smtpError;
+    const emailError = emailConfigurationError();
+    if (emailError) throw emailError;
 
     const service = createEmailService();
     if (!(await service.verifyConnection())) throw new Error('Email service connection failed');
@@ -188,7 +217,16 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     let responseCode = 'INTERNAL_ERROR';
     let message = 'Internal server error';
 
-    if (rawMessage === 'SMTP_HOST is not configured' || lowerMessage.includes('smtp')) {
+    if (rawMessage.includes('RESEND_API_KEY or SMTP_HOST is not configured')) {
+      responseCode = 'EMAIL_CONFIG_ERROR';
+      message = 'Email service configuration error';
+    } else if (lowerMessage.includes('resend audience')) {
+      responseCode = 'RESEND_AUDIENCE_ERROR';
+      message = 'Subscription service configuration error';
+    } else if (lowerMessage.includes('resend api')) {
+      responseCode = 'RESEND_API_ERROR';
+      message = 'Email service connection failed';
+    } else if (rawMessage === 'SMTP_HOST is not configured' || lowerMessage.includes('smtp')) {
       responseCode = 'SMTP_CONFIG_ERROR';
       message = 'Email service configuration error';
     } else if (lowerMessage.includes('auth') || lowerMessage.includes('invalid login')) {
@@ -214,7 +252,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
         processingTime: Date.now() - startedAt,
         debug: import.meta.env.DEV ? { originalError: rawMessage } : undefined,
       },
-      responseCode.startsWith('SMTP_') ? 503 : 500,
+      responseCode === 'EMAIL_CONFIG_ERROR' || responseCode.startsWith('SMTP_') || responseCode.startsWith('RESEND_') ? 503 : 500,
     );
   }
 };

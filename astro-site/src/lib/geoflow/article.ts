@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { z } from 'zod';
+import { assertSpanishArticleBody } from '../yanghua/spanish-article-policy.mjs';
 
 const localeSchema = z.enum(['en', 'es']);
 const buyerIntentSchema = z.preprocess((val) => {
@@ -194,6 +195,7 @@ export interface AIImagePrompts {
 
 export function normalizeGeoflowArticlePayload(payload: GeoflowArticlePayload) {
   const parsed = payloadSchema.parse(toFlatPayload(payload));
+  assertSpanishArticleBody(parsed.locale, parsed.bodyMarkdown);
   const slug = sanitizeSlug(parsed.slug);
   const sourceId = stableSourceId(parsed.geoflowArticleId);
 

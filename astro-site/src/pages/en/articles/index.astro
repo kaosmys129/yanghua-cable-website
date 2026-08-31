@@ -27,6 +27,7 @@ const buyerIntentLabels: Record<string, string> = {
   selection: 'Selection',
   procurement: 'Procurement',
 };
+const imageFallback = '/images/no-image-available.webp';
 
 const collectionArticles: CollectionPageArticle[] = articles.map((a) => ({
   title: a.title,
@@ -67,7 +68,7 @@ const collectionPageSchema = generateCollectionPageSchema(collectionArticles, un
           <a href={a.url} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
             <div class="h-44 overflow-hidden bg-background">
               {a.cover.src ? (
-                <img src={a.cover.src} alt={a.cover.alt || a.title} referrerpolicy="no-referrer" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none'" />
+                <img src={a.cover.src} alt={a.cover.alt || a.title} referrerpolicy="no-referrer" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" onerror={`if (!this.dataset.fallbackApplied) { this.dataset.fallbackApplied = 'true'; this.src = '${imageFallback}'; }`} />
               ) : (
                 <div class="flex h-full items-center justify-center text-sm text-text-muted">No image</div>
               )}

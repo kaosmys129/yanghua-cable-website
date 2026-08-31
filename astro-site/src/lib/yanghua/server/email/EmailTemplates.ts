@@ -207,3 +207,37 @@ export async function renderInquiryFormEmail(
 
   return { subject, html, text };
 }
+
+export async function renderSubscriptionEmail(
+  data: {
+    email: string;
+    clientIP?: string;
+  },
+  locale: 'en' | 'es' | 'pt'
+): Promise<{ subject: string; html: string; text: string }> {
+  const headline = locale === 'es' ? 'Nueva Suscripción' : locale === 'pt' ? 'Nova Inscrição' : 'New Newsletter Subscription';
+  const subject = `${headline} - ${data.email}`;
+  const sentAt = formatDate(new Date(), locale);
+  const fields: Array<{ label: string; value: string }> = [
+    { label: locale === 'es' ? 'Tipo' : locale === 'pt' ? 'Tipo' : 'Type', value: 'Newsletter subscription' },
+    { label: locale === 'es' ? 'Correo' : locale === 'pt' ? 'E-mail' : 'Email', value: data.email },
+    { label: 'IP', value: data.clientIP || '' },
+    { label: locale === 'es' ? 'Fecha' : locale === 'pt' ? 'Data' : 'Date', value: sentAt },
+  ];
+  const message = locale === 'es'
+    ? 'Este contacto solicitó recibir novedades de Yanghua Cable.'
+    : locale === 'pt'
+      ? 'Este contato solicitou receber novidades da Yanghua Cable.'
+      : 'This contact requested Yanghua Cable updates.';
+
+  const html = renderEmailHtml({
+    locale,
+    title: subject,
+    subtitle: 'Yanghua Cable Website',
+    fields,
+    message,
+  });
+  const text = [subject, '', ...fields.filter((f) => f.value).map((f) => `${f.label}: ${f.value}`), '', message].join('\n');
+
+  return { subject, html, text };
+}

@@ -3,6 +3,7 @@ import { route, localeFromPathname } from '../lib/yanghua/routes';
 import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
+import NewsletterSignup from './NewsletterSignup.astro';
 
 interface Props {
   locale?: Locale;
@@ -24,6 +25,8 @@ const copyrightText = site.footer.copyright.replace('{year}', String(year));
 
 <footer class="bg-dark text-surface/80">
   <div class="mx-auto max-w-site px-4 py-12 sm:px-6 lg:py-16">
+    <NewsletterSignup locale={locale} />
+
     <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
 
       <!-- Brand -->

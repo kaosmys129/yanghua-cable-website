@@ -175,6 +175,28 @@ async function sendInquiry({ locale, type }) {
   return { response, body };
 }
 
+async function sendSubscription({ locale }) {
+  const cookie = await getCsrfCookie();
+  requestIndex += 1;
+  const response = await fetch(`${baseURL}/api/email/send`, {
+    method: 'POST',
+    signal: AbortSignal.timeout(10_000),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept-Language': locale,
+      'X-Forwarded-For': `198.51.100.${requestIndex}`,
+      Cookie: cookie,
+    },
+    body: JSON.stringify({
+      type: 'subscribe',
+      locale,
+      email: `newsletter-${locale}@example.com`,
+    }),
+  });
+  const body = await response.json();
+  return { response, body };
+}
+
 async function waitForMessages(count) {
   const deadline = Date.now() + 15_000;
   while (Date.now() < deadline) {
@@ -254,4 +276,19 @@ test('contact and product inquiry send successfully in every supported locale', 
   assert.ok(latestMessages.some((message) => message.includes('New Product Inquiry')));
   assert.ok(latestMessages.some((message) => message.includes('Nueva Consulta de Producto')));
   assert.ok(latestMessages.some((message) => message.includes('Nova Consulta de Produto')));
+});
+
+test('newsletter subscriptions send successfully in every supported locale', async () => {
+  for (const item of locales) {
+    const subscription = await sendSubscription({ locale: item.locale });
+    assert.equal(subscription.response.status, 200, `${item.locale} subscription status`);
+    assert.equal(subscription.body.success, true, `${item.locale} subscription success`);
+    assert.equal(subscription.body.message, item.responseMessage, `${item.locale} subscription message`);
+  }
+
+  await waitForMessages(locales.length * 3);
+  const latestMessages = smtpMessages.slice(-locales.length * 3);
+  assert.ok(latestMessages.some((message) => message.includes('New Newsletter Subscription')));
+  assert.ok(latestMessages.some((message) => message.includes('newsletter-es@example.com') && message.includes('Nueva')));
+  assert.ok(latestMessages.some((message) => message.includes('newsletter-pt@example.com') && message.includes('Nova')));
 });

@@ -200,6 +200,36 @@ export class EmailSecurity {
     };
   }
 
+  validateSubscriptionForm(data: { email: string }, clientIP?: string): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+    let riskScore = 0;
+
+    if (!z.string().email().safeParse(data.email).success) {
+      errors.push('Invalid email address');
+    }
+
+    if (clientIP) {
+      const rl = this.checkRateLimit(clientIP);
+      if (!rl.allowed) {
+        errors.push('Too many requests. Please try again later.');
+        riskScore += 30;
+      }
+    }
+
+    const domainCheck = this.validateEmailDomain(data.email);
+    errors.push(...domainCheck.errors);
+    warnings.push(...domainCheck.warnings);
+    riskScore += domainCheck.riskScore;
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+      warnings,
+      riskScore: Math.min(riskScore, 100),
+    };
+  }
+
   private validateBaseFields(data: {
     name: string;
     email: string;

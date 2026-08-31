@@ -37,7 +37,8 @@ const geo = article.geo;
 const hasGeo = geo.targetQueries.length > 0 || geo.answerSummary || geo.citations.length > 0;
 const title = article.seo.title || article.title;
 const description = article.seo.description || article.description || article.summary;
-const coverImage = article.cover.src || '/images/products/flexible-busbar-1.jpg';
+const coverImage = article.cover.src || '/images/no-image-available.webp';
+const coverImageUrl = new URL(coverImage, YANGHUA_SITE_URL).toString();
 const coverAlt = article.cover.alt || title;
 const sourceItems = geo.citations.length > 0
   ? geo.citations
@@ -82,7 +83,7 @@ const structuredData = {
       '@type': 'BlogPosting',
       headline: article.title,
       description,
-      image: coverImage,
+      image: coverImageUrl,
       datePublished: article.publishedAt || undefined,
       dateModified: article.updatedAt || article.publishedAt || undefined,
       author: {
@@ -115,7 +116,7 @@ const structuredData = {
   locale="en"
   title={title}
   description={description}
-  image={coverImage}
+  image={coverImageUrl}
   schema={structuredData}
   availableLocales={availableLocales}
   alternates={alternates}
@@ -148,7 +149,7 @@ const structuredData = {
       </div>
 
       <div class="overflow-hidden rounded-lg border border-border bg-background">
-        <img src={coverImage} alt={coverAlt} class="aspect-video h-full w-full object-cover" loading="eager" />
+        <img src={coverImage} alt={coverAlt} class="aspect-video h-full w-full object-cover" loading="eager" onerror={`if (!this.dataset.fallbackApplied) { this.dataset.fallbackApplied = 'true'; this.src = '/images/no-image-available.webp'; }`} />
       </div>
     </div>
   </section>
