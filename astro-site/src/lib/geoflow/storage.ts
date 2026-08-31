@@ -36,23 +36,22 @@ type ImportLogEntry = ReceiveResult & {
 
 // 健壮的目录解析逻辑，支持在不同 cwd 下定位双重目录
 function resolveContentRoots() {
-  const cwd = process.cwd();
+  const getCwd = () => process.env.SITE_ROOT || process.cwd();
+  const cwd = getCwd();
   let astroContentRoot = '';
   let legacyContentRoot = '';
 
-  // 1. 如果是在 astro-site 目录下
-  if (fs.existsSync(path.join(cwd, 'src/data/legacy-content/content'))) {
-    astroContentRoot = path.join(cwd, 'src/data/legacy-content/content');
-    legacyContentRoot = path.resolve(cwd, '../yanghua-b2b-website/content');
-  } 
-  // 2. 如果是在 monorepo 根目录下
-  else if (fs.existsSync(path.join(cwd, 'astro-site/src/data/legacy-content/content'))) {
-    astroContentRoot = path.join(cwd, 'astro-site/src/data/legacy-content/content');
-    legacyContentRoot = path.join(cwd, 'yanghua-b2b-website/content');
-  }
-  // 3. Fallback 回退
-  else {
-    astroContentRoot = path.join(cwd, 'src/data/legacy-content/content');
+  const pathAstro = [cwd, 'src', 'data', 'legacy-content', 'content'].join(path.sep);
+  const pathMonorepoAstro = [cwd, 'astro-site', 'src', 'data', 'legacy-content', 'content'].join(path.sep);
+
+  if (fs.existsSync(pathAstro)) {
+    astroContentRoot = pathAstro;
+    legacyContentRoot = path.resolve(cwd, '..', 'yanghua-b2b-website', 'content');
+  } else if (fs.existsSync(pathMonorepoAstro)) {
+    astroContentRoot = pathMonorepoAstro;
+    legacyContentRoot = [cwd, 'yanghua-b2b-website', 'content'].join(path.sep);
+  } else {
+    astroContentRoot = pathAstro;
     legacyContentRoot = '';
   }
 
@@ -61,23 +60,22 @@ function resolveContentRoots() {
 
 // 健壮的 public 目录解析逻辑
 function resolvePublicRoots() {
-  const cwd = process.cwd();
+  const getCwd = () => process.env.SITE_ROOT || process.cwd();
+  const cwd = getCwd();
   let astroPublicRoot = '';
   let legacyPublicRoot = '';
 
-  // 1. 如果是在 astro-site 目录下
-  if (fs.existsSync(path.join(cwd, 'public'))) {
-    astroPublicRoot = path.join(cwd, 'public');
-    legacyPublicRoot = path.resolve(cwd, '../yanghua-b2b-website/public');
-  } 
-  // 2. 如果是在 monorepo 根目录下
-  else if (fs.existsSync(path.join(cwd, 'astro-site/public'))) {
-    astroPublicRoot = path.join(cwd, 'astro-site/public');
-    legacyPublicRoot = path.join(cwd, 'yanghua-b2b-website/public');
-  }
-  // 3. Fallback 回退
-  else {
-    astroPublicRoot = path.join(cwd, 'public');
+  const pathPublic = [cwd, 'public'].join(path.sep);
+  const pathMonorepoPublic = [cwd, 'astro-site', 'public'].join(path.sep);
+
+  if (fs.existsSync(pathPublic)) {
+    astroPublicRoot = pathPublic;
+    legacyPublicRoot = path.resolve(cwd, '..', 'yanghua-b2b-website', 'public');
+  } else if (fs.existsSync(pathMonorepoPublic)) {
+    astroPublicRoot = pathMonorepoPublic;
+    legacyPublicRoot = [cwd, 'yanghua-b2b-website', 'public'].join(path.sep);
+  } else {
+    astroPublicRoot = pathPublic;
   }
 
   return { astroPublicRoot, legacyPublicRoot };

@@ -33,8 +33,15 @@ export default defineConfig({
   site: 'https://www.yhflexiblebusbar.com',
   output: 'static',
   trailingSlash: 'never',
-  adapter: vercel(),
-  // 使用 Vercel adapter，以支持 API 端点的混合部署模式
+  adapter: vercel({
+    excludeFiles: [
+      '**/public/**',
+      '**/videos/**',
+      '**/storage/**',
+      '**/images/**',
+    ],
+  }),
+  // 使用 Vercel adapter，以支持 API 端点的混合部署模式，排查排除静态大文件避免超过 250MB 限制
 
 
   integrations: [
