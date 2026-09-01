@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import { z } from 'zod';
 import { assertSpanishArticleBody } from '../yanghua/spanish-article-policy.mjs';
 
-const localeSchema = z.enum(['en', 'es']);
+const localeSchema = z.enum(['en', 'es', 'pt']);
 const buyerIntentSchema = z.preprocess((val) => {
   if (typeof val === 'string') {
     const cleaned = val.trim().toLowerCase();
@@ -297,8 +297,10 @@ export function buildIncomingArticleMdx(article: NormalizedGeoflowArticle) {
   return matter.stringify(`${article.bodyMarkdown}\n`, stripUndefined(frontmatter));
 }
 
-export function getArticleRelativeUrl(locale: 'en' | 'es', slug: string) {
-  return locale === 'es' ? `/es/articulos/${slug}` : `/en/articles/${slug}`;
+export function getArticleRelativeUrl(locale: 'en' | 'es' | 'pt', slug: string) {
+  if (locale === 'es') return `/es/articulos/${slug}`;
+  if (locale === 'pt') return `/pt/artigos/${slug}`;
+  return `/en/articles/${slug}`;
 }
 
 function sanitizeSlug(value: string) {

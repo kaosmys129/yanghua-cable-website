@@ -142,7 +142,7 @@ const structuredData = {
         {description && <p class="mt-4 max-w-3xl text-base leading-7 text-text-muted">{description}</p>}
         {translation && (
           <a href={translation.url} class="mt-4 inline-flex text-sm font-semibold text-accent">
-            Version en ingles
+            {translation.locale === 'en' ? 'Versión en inglés' : translation.locale === 'pt' ? 'Versión en portugués' : 'Versión en español'}
           </a>
         )}
       </div>

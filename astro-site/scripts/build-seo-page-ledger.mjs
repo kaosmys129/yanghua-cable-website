@@ -5,9 +5,18 @@ import matter from 'gray-matter';
 const astroRoot = process.cwd();
 const contentRoot = path.resolve(astroRoot, 'src/data/legacy-content/content');
 const outputPath = path.resolve(astroRoot, '..', 'exports/seo-content-governance/page-asset-ledger.json');
+const assignmentPath = path.resolve(astroRoot, 'src/data/legacy-content/content/seo-page-assignments.json');
 const locales = ['en', 'es', 'pt'];
 const articleBase = { en: '/en/articles', es: '/es/articulos', pt: '/pt/artigos' };
 const hubBase = { en: '/en/articles/hub', es: '/es/articulos/hub', pt: '/pt/artigos/hub' };
+const assignments = JSON.parse(fs.readFileSync(assignmentPath, 'utf8'));
+const assignmentsByPath = new Map(
+  assignments.flatMap((assignment) => Object.entries(assignment.paths).map(([locale, url]) => [url, {
+    ...assignment,
+    locale,
+    primaryQuery: assignment.primaryQueries[locale],
+  }]))
+);
 
 const clusterDefinitions = [
   { id: 'data-center', terms: ['data center', 'datacenter', 'server farm', 'cloud facility', 'colocation', 'hyperscale'], primary: '/en/solutions/data-center' },
@@ -67,6 +76,7 @@ function parsePage(file, locale, type) {
   const relatedProducts = Array.isArray(data.geo?.relatedProductIds) ? data.geo.relatedProductIds.filter(Boolean) : [];
   const relatedSolutions = Array.isArray(data.geo?.relatedSolutionIds) ? data.geo.relatedSolutionIds.filter(Boolean) : [];
   const cluster = findCluster([slug, title, description, ...queries].join(' '));
+  const assignment = assignmentsByPath.get(url) ?? null;
   const evidenceSignals = [
     citations.length > 0,
     /\b(iec|ul|vde|standard|test|tested|calculation|case study|project|measurement|amp|a\b|kw\b|mw\b)/i.test(parsed.content),
@@ -101,6 +111,18 @@ function parsePage(file, locale, type) {
     },
     relatedProductIds: relatedProducts,
     relatedSolutionIds: relatedSolutions,
+    ...(assignment ? {
+      seoAssignment: {
+        id: assignment.id,
+        translationKey: assignment.translationKey,
+        pageRole: assignment.pageRole,
+        primaryQuery: assignment.primaryQuery,
+        secondaryQueries: assignment.secondaryQueries,
+        intent: assignment.intent,
+        evidenceStatus: assignment.evidenceStatus,
+        reviewStatus: assignment.reviewStatus,
+      },
+    } : {}),
     governance: {
       disposition: 'review',
       gsc: { clicks: null, impressions: null, indexed: null, lastCrawl: null },
@@ -136,6 +158,8 @@ export function buildPageLedger() {
       needsGscSnapshot: pages.length,
       lowEvidencePages: pages.filter((page) => page.evidence.score < 2).length,
       pagesWithoutDescription: pages.filter((page) => !page.description).length,
+      plannedSeoAssignments: assignments.length * locales.length,
+      mappedSeoAssignments: pages.filter((page) => page.seoAssignment).length,
     },
     pages,
   };
@@ -146,6 +170,7 @@ function verify(ledger) {
   const warnings = [];
   const urls = new Set();
   const titlesByLocale = new Map();
+  const primaryQueriesByLocale = new Map();
 
   for (const page of ledger.pages) {
     if (urls.has(page.url)) errors.push(`Duplicate URL: ${page.url}`);
@@ -158,6 +183,16 @@ function verify(ledger) {
     titlesByLocale.set(titleKey, page.url);
     if (page.locale === 'en' && page.status !== 'draft' && page.type === 'article' && page.evidence.score < 2) {
       warnings.push(`Low evidence score (${page.evidence.score}/3): ${page.url}`);
+    }
+    if (page.seoAssignment?.evidenceStatus === 'needs_source') {
+      warnings.push(`SEO assignment needs source review: ${page.url}`);
+    }
+    if (page.seoAssignment?.primaryQuery) {
+      const queryKey = `${page.locale}:${page.seoAssignment.primaryQuery.toLocaleLowerCase()}`;
+      if (primaryQueriesByLocale.has(queryKey)) {
+        errors.push(`Duplicate primary query: ${page.seoAssignment.primaryQuery} (${page.locale}) on ${page.url} and ${primaryQueriesByLocale.get(queryKey)}`);
+      }
+      primaryQueriesByLocale.set(queryKey, page.url);
     }
   }
 

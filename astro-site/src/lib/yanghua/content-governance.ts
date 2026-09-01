@@ -133,34 +133,33 @@ export function classifyArticleTopic(article: ArticleLike): TopicRule {
   return TOPIC_RULES.find((rule) => rule.terms.some((term) => text.includes(term))) ?? TOPIC_RULES[TOPIC_RULES.length - 1];
 }
 
-function localeBase(locale: Locale): string {
-  return locale === 'es' ? '/es' : locale === 'pt' ? '/pt' : '/en';
+function localizedLabel(locale: Locale, labels: { en: string; es: string; pt: string }): string {
+  return labels[locale];
 }
 
 export function buildArticlePathways(article: ArticleLike, locale: Locale = 'en'): GovernanceLink[] {
   const topic = classifyArticleTopic(article);
   const productId = article.geo?.relatedProductIds?.[0] ?? topic.product;
   const solutionId = article.geo?.relatedSolutionIds?.[0] ?? topic.solution;
-  const base = localeBase(locale);
-  const projectBase = locale === 'es' ? '/es/proyectos' : locale === 'pt' ? '/pt/projetos' : '/en/projects';
+  const projectBase = route('projects', locale);
 
   return [
-    { kind: 'solution', href: normalizeSolutionHref(solutionId, locale), label: topic.solutionLabel },
-    { kind: 'product', href: normalizeProductHref(productId, locale), label: topic.productLabel },
-    { kind: 'project', href: `${projectBase}/${topic.projectId}`, label: topic.projectLabel },
-    { kind: 'contact', href: route('contact', locale), label: locale === 'en' ? 'Request an engineering quotation' : 'Request a project quotation' },
-    { kind: 'hub', href: `${base}/articles/hub/${topic.hub}`, label: locale === 'en' ? 'Explore this topic hub' : 'Explore related technical topics' },
+    { kind: 'solution', href: normalizeSolutionHref(solutionId, locale), label: localizedLabel(locale, { en: topic.solutionLabel, es: 'Solución de distribución eléctrica', pt: 'Solução de distribuição elétrica' }) },
+    { kind: 'product', href: normalizeProductHref(productId, locale), label: localizedLabel(locale, { en: topic.productLabel, es: 'Gama de barras colectoras flexibles', pt: 'Linha de barramentos flexíveis' }) },
+    { kind: 'project', href: `${projectBase}/${topic.projectId}`, label: localizedLabel(locale, { en: topic.projectLabel, es: 'Evidencia de proyecto', pt: 'Evidência de projeto' }) },
+    { kind: 'contact', href: route('contact', locale), label: localizedLabel(locale, { en: 'Request an engineering quotation', es: 'Solicitar una cotización técnica', pt: 'Solicitar uma cotação técnica' }) },
+    { kind: 'hub', href: `${route('hubs', locale)}/${topic.hub}`, label: localizedLabel(locale, { en: 'Explore this topic hub', es: 'Explorar este hub técnico', pt: 'Explorar este hub técnico' }) },
   ];
 }
 
 export function buildHubPathways(hub: HubLike, locale: Locale = 'en'): GovernanceLink[] {
   const topic = TOPIC_RULES.find((rule) => rule.hub === hub.slug) ?? TOPIC_RULES[TOPIC_RULES.length - 1];
-  const projectBase = locale === 'es' ? '/es/proyectos' : locale === 'pt' ? '/pt/projetos' : '/en/projects';
+  const projectBase = route('projects', locale);
   return [
-    { kind: 'solution', href: normalizeSolutionHref(topic.solution, locale), label: topic.solutionLabel },
-    { kind: 'product', href: normalizeProductHref(topic.product, locale), label: topic.productLabel },
-    { kind: 'project', href: `${projectBase}/${topic.projectId}`, label: topic.projectLabel },
-    { kind: 'contact', href: route('contact', locale), label: locale === 'en' ? 'Discuss your project requirements' : 'Discuss your project requirements' },
+    { kind: 'solution', href: normalizeSolutionHref(topic.solution, locale), label: localizedLabel(locale, { en: topic.solutionLabel, es: 'Solución de distribución eléctrica', pt: 'Solução de distribuição elétrica' }) },
+    { kind: 'product', href: normalizeProductHref(topic.product, locale), label: localizedLabel(locale, { en: topic.productLabel, es: 'Gama de barras colectoras flexibles', pt: 'Linha de barramentos flexíveis' }) },
+    { kind: 'project', href: `${projectBase}/${topic.projectId}`, label: localizedLabel(locale, { en: topic.projectLabel, es: 'Evidencia de proyecto', pt: 'Evidência de projeto' }) },
+    { kind: 'contact', href: route('contact', locale), label: localizedLabel(locale, { en: 'Discuss your project requirements', es: 'Comentar los requisitos del proyecto', pt: 'Falar sobre os requisitos do projeto' }) },
   ];
 }
 

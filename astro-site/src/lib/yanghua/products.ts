@@ -302,10 +302,105 @@ const productDetails: ProductDetail[] = [
   },
 ];
 
-export function getProductDetails(): ProductDetail[] {
-  return productDetails;
+type LocalizedProductCopy = Partial<Omit<ProductDetail, 'id'>>;
+
+const localizedProductCopy: Record<'es' | 'pt', Record<string, LocalizedProductCopy>> = {
+  es: {
+    'flexible-busbar-2000a': {
+      name: 'Sistema de barra colectora flexible de 2000 A',
+      description: 'Sistema de barra colectora flexible de alta corriente para una transmisión eléctrica eficiente',
+      detailedDescription: 'Nuestro sistema de barra colectora flexible de 2000 A está diseñado para aplicaciones de alta potencia en nuevas energías, centros de datos e instalaciones industriales. Su conductividad y flexibilidad ofrecen una solución fiable y eficiente para la distribución eléctrica.',
+      applications: ['Plantas de nueva energía', 'Centros de datos', 'Fabricación industrial', 'Edificios comerciales'],
+      features: [
+        'Alta capacidad de corriente: la corriente nominal de 2000 A mantiene una transmisión estable',
+        'Diseño flexible: se adapta a recorridos complejos y reduce la dificultad de instalación',
+        'Baja resistencia: el cobre de alta conductividad reduce las pérdidas eléctricas',
+        'Alta seguridad: aislamiento y conexiones diseñados para una protección fiable',
+        'Mantenimiento sencillo: diseño modular para facilitar la instalación y el mantenimiento',
+        'Adaptación ambiental: resistencia a temperatura, humedad y corrosión',
+      ],
+      technicalSpecs: {
+        Tensión: '1000 V CA/1500 V CC',
+        Corriente: '2000 A',
+        Material: 'Cobre de alta pureza + cubierta aislante',
+        Temperatura: '-40 °C a +105 °C',
+        Aislamiento: 'Polietileno reticulado (XLPE)',
+        Normas: 'IEC 60228, IEC 60454',
+      },
+    },
+    'flexible-busbar-1500a': {
+      name: 'Sistema de barra colectora flexible de 1500 A',
+      description: 'Sistema de barra colectora flexible de corriente media para una distribución eléctrica versátil',
+      detailedDescription: 'Nuestro sistema de barra colectora flexible de 1500 A ofrece un rendimiento fiable para aplicaciones de potencia media en entornos industriales y comerciales.',
+    },
+    'flexible-busbar-2500a': {
+      name: 'Sistema de barra colectora flexible de 2500 A',
+      description: 'Sistema de barra colectora flexible de alta capacidad para transmisión eléctrica exigente',
+      detailedDescription: 'Nuestro sistema de barra colectora flexible de 2500 A está diseñado para la transmisión de alta capacidad en instalaciones industriales exigentes.',
+    },
+    'insulation-accessories': {
+      name: 'Accesorios y componentes de aislamiento',
+      description: 'Gama completa de accesorios de aislamiento para sistemas de barras colectoras flexibles',
+      detailedDescription: 'Nuestra gama de accesorios y componentes de aislamiento ayuda a mantener el rendimiento y la seguridad de las instalaciones de barras colectoras flexibles.',
+    },
+  },
+  pt: {
+    'flexible-busbar-2000a': {
+      name: 'Sistema de barramento flexível de 2000 A',
+      description: 'Sistema de barramento flexível de alta corrente para transmissão eficiente de energia',
+      detailedDescription: 'Nosso sistema de barramento flexível de 2000 A foi desenvolvido para aplicações de alta potência em novas energias, data centers e instalações industriais. A alta condutividade e a flexibilidade oferecem uma solução confiável e eficiente para a distribuição de energia.',
+      applications: ['Usinas de novas energias', 'Data centers', 'Fabricação industrial', 'Edifícios comerciais'],
+      features: [
+        'Alta capacidade de corrente: a corrente nominal de 2000 A garante transmissão estável',
+        'Design flexível: adapta-se a percursos complexos e reduz a dificuldade de instalação',
+        'Baixa resistência: o cobre de alta condutividade reduz as perdas de energia',
+        'Alta segurança: isolamento e conexões projetados para proteção confiável',
+        'Manutenção simples: design modular facilita a instalação e a manutenção',
+        'Adaptação ambiental: resistência a temperatura, umidade e corrosão',
+      ],
+      technicalSpecs: {
+        Tensão: '1000 V CA/1500 V CC',
+        Corrente: '2000 A',
+        Material: 'Cobre de alta pureza + cobertura isolante',
+        Temperatura: '-40 °C a +105 °C',
+        Isolamento: 'Polietileno reticulado (XLPE)',
+        Normas: 'IEC 60228, IEC 60454',
+      },
+    },
+    'flexible-busbar-1500a': {
+      name: 'Sistema de barramento flexível de 1500 A',
+      description: 'Sistema de barramento flexível de corrente média para distribuição versátil de energia',
+      detailedDescription: 'Nosso sistema de barramento flexível de 1500 A oferece desempenho confiável para aplicações de média potência em ambientes industriais e comerciais.',
+    },
+    'flexible-busbar-2500a': {
+      name: 'Sistema de barramento flexível de 2500 A',
+      description: 'Sistema de barramento flexível de alta capacidade para transmissão exigente de energia',
+      detailedDescription: 'Nosso sistema de barramento flexível de 2500 A foi projetado para transmissão de alta capacidade em instalações industriais exigentes.',
+    },
+    'insulation-accessories': {
+      name: 'Acessórios e componentes de isolamento',
+      description: 'Linha completa de acessórios de isolamento para sistemas de barramentos flexíveis',
+      detailedDescription: 'Nossa linha de acessórios e componentes de isolamento ajuda a manter o desempenho e a segurança das instalações de barramentos flexíveis.',
+    },
+  },
+};
+
+export function localizeProductDetail(product: ProductDetail, locale: Locale): ProductDetail {
+  if (locale === 'en') return product;
+  const copy = localizedProductCopy[locale]?.[product.id];
+  if (!copy) return product;
+  return {
+    ...product,
+    ...copy,
+    technicalSpecs: copy.technicalSpecs ?? product.technicalSpecs,
+  };
 }
 
-export function findProductDetail(id: string): ProductDetail | undefined {
-  return productDetails.find((product) => product.id === id);
+export function getProductDetails(locale: Locale = 'en'): ProductDetail[] {
+  return productDetails.map((product) => localizeProductDetail(product, locale));
+}
+
+export function findProductDetail(id: string, locale: Locale = 'en'): ProductDetail | undefined {
+  const product = productDetails.find((product) => product.id === id);
+  return product ? localizeProductDetail(product, locale) : undefined;
 }

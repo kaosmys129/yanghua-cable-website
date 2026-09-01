@@ -6,6 +6,7 @@ const SITE_URL = 'https://www.yhflexiblebusbar.com';
 const outputRoot = new URL('../.vercel/output/', import.meta.url);
 const staticRoot = new URL('static/', outputRoot);
 const vercelConfigUrl = new URL('../vercel.json', import.meta.url);
+const seoAssignmentsUrl = new URL('../src/data/legacy-content/content/seo-page-assignments.json', import.meta.url);
 
 function readOutput(relativePath) {
   return readFileSync(new URL(relativePath, staticRoot), 'utf8');
@@ -75,6 +76,21 @@ test('build emits server-side permanent redirects before static files', () => {
   assert.ok(destinations.includes('/en/articles'), '/blog must permanently redirect to /en/articles');
   assert.ok(destinations.includes('/en/services'), '/services must permanently redirect to /en/services');
   assert.ok(destinations.includes('/sitemap-index.xml'), 'legacy /sitemap.xml must redirect to the canonical sitemap index');
+});
+
+test('SEO assignment map covers six topics across all three locales without duplicate ownership', () => {
+  const assignments = JSON.parse(readFileSync(seoAssignmentsUrl, 'utf8'));
+  assert.equal(assignments.length, 6);
+
+  const pagePaths = assignments.flatMap((assignment) => Object.entries(assignment.paths).map(([locale, path]) => `${locale}:${path}`));
+  assert.equal(pagePaths.length, 18);
+  assert.equal(new Set(pagePaths).size, pagePaths.length, 'SEO assignment paths must be unique');
+
+  for (const locale of ['en', 'es', 'pt']) {
+    const primaryQueries = assignments.map((assignment) => assignment.primaryQueries[locale].toLocaleLowerCase());
+    assert.equal(new Set(primaryQueries).size, primaryQueries.length, `duplicate primary query in ${locale}`);
+    assert.ok(primaryQueries.every(Boolean), `missing primary query in ${locale}`);
+  }
 });
 
 test('Vercel exact section redirects run before zero-segment wildcard redirects', () => {

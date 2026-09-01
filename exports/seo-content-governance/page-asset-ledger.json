@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T04:37:58.396Z",
+  "generatedAt": "2026-09-01T12:43:29.688Z",
   "site": "https://www.yhflexiblebusbar.com",
   "policy": {
     "strategy": "evidence-first",
@@ -101,8 +101,10 @@
       "hub": 24
     },
     "needsGscSnapshot": 231,
-    "lowEvidencePages": 173,
-    "pagesWithoutDescription": 0
+    "lowEvidencePages": 175,
+    "pagesWithoutDescription": 0,
+    "plannedSeoAssignments": 18,
+    "mappedSeoAssignments": 5
   },
   "pages": [
     {
@@ -161,8 +163,11 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 20,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong-507559/body-1.jpg",
+        "/storage/uploads/images/articles/en/2024-yanghuasti-dongguan-alliance-partner-high-current-flexible-busbar-product-promotion-tomorrow-coming-strong-507559/body-2.webp"
+      ],
+      "internalLinkCount": 2,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -192,7 +197,7 @@
       "title": "Flexible Busbar Industry Solutions [Solar PV] (With Complete Manual Download Instructions)",
       "description": "Flexible Busbar Industry Solutions for Solar PV: High Current Distribution for Rooftop and Utility Scale Systems High current flexible busbars from Yanghua Technology provide a pro",
       "translationKey": "geoflow-10",
-      "status": "approved",
+      "status": "draft",
       "publishedAt": "2026-07-02T00:00:00.000Z",
       "updatedAt": "2026-07-02T12:00:00.000Z",
       "topicCluster": "energy-storage",
@@ -203,7 +208,7 @@
       "buyerIntent": "selection",
       "bodyWords": 1093,
       "internalLinks": [
-        "/images/products/flexible-busbar-1.jpg"
+        "/storage/uploads/images/articles/en/2ikgue6k/body-1.jpg"
       ],
       "internalLinkCount": 1,
       "evidence": {
@@ -237,7 +242,7 @@
       "title": "Another Breakthrough! Flexible Busbar Assists Energy Storage Project Implementation!",
       "description": "Another Breakthrough! Flexible Busbar Assists Energy Storage Project Implementation! Direct Answer: Yanghua's flexible busbar technology has achieved a new milestone in energy stor",
       "translationKey": "geoflow-11",
-      "status": "approved",
+      "status": "draft",
       "publishedAt": "2026-07-02T00:00:00.000Z",
       "updatedAt": "2026-07-02T12:00:00.000Z",
       "topicCluster": "energy-storage",
@@ -248,7 +253,7 @@
       "buyerIntent": "selection",
       "bodyWords": 682,
       "internalLinks": [
-        "/images/products/flexible-busbar-1.jpg"
+        "/storage/uploads/images/articles/en/6s9rfzeo/body-1.jpg"
       ],
       "internalLinkCount": 1,
       "evidence": {
@@ -282,7 +287,7 @@
       "title": "Supporting Xinjiang's \"Belt and Road\" Construction, Flexible Busbar Always on the Road",
       "description": "Supporting Xinjiang's \"Belt and Road\" Construction: High Current Flexible Busbar Solutions for Reliable Power Distribution Yanghua Technology's flexible busbars are engineered for",
       "translationKey": "geoflow-8",
-      "status": "approved",
+      "status": "draft",
       "publishedAt": "2026-07-02T00:00:00.000Z",
       "updatedAt": "2026-07-02T12:00:00.000Z",
       "topicCluster": "general",
@@ -293,7 +298,7 @@
       "buyerIntent": "procurement",
       "bodyWords": 860,
       "internalLinks": [
-        "/images/products/flexible-busbar-1.jpg"
+        "/storage/uploads/images/articles/en/90gnzqpu/body-1.jpg"
       ],
       "internalLinkCount": 1,
       "evidence": {
@@ -765,8 +770,13 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 452,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/china-korea-changchun-international-cooperation-demonstration-zone-development-and-reform-bureau-visits-yanghuasti-for-exchange-and-negotiation-526050/body-1.webp",
+        "/storage/uploads/images/articles/en/china-korea-changchun-international-cooperation-demonstration-zone-development-and-reform-bureau-visits-yanghuasti-for-exchange-and-negotiation-526050/body-2.webp",
+        "/storage/uploads/images/articles/en/china-korea-changchun-international-cooperation-demonstration-zone-development-and-reform-bureau-visits-yanghuasti-for-exchange-and-negotiation-526050/body-3.webp",
+        "/storage/uploads/images/articles/en/china-korea-changchun-international-cooperation-demonstration-zone-development-and-reform-bureau-visits-yanghuasti-for-exchange-and-negotiation-526050/body-4.webp"
+      ],
+      "internalLinkCount": 4,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -894,6 +904,7 @@
       "topicCluster": "comparison",
       "primaryPage": "/en/articles/hub/flexible-busbar-vs-cable",
       "targetQueries": [
+        "flexible copper busbar",
         "copper vs aluminum flexible busbar",
         "flexible busbar conductivity comparison",
         "aluminum flexible busbar cost savings",
@@ -921,6 +932,19 @@
       "relatedSolutionIds": [
         "energy-storage"
       ],
+      "seoAssignment": {
+        "id": "copper-vs-aluminum-flexible-busbar",
+        "translationKey": "seo-copper-vs-aluminum-flexible-busbar",
+        "pageRole": "spoke",
+        "primaryQuery": "flexible copper busbar",
+        "secondaryQueries": [
+          "aluminum bus bar",
+          "copper vs aluminum busbar"
+        ],
+        "intent": "commercial",
+        "evidenceStatus": "verified",
+        "reviewStatus": "native_review"
+      },
       "governance": {
         "disposition": "review",
         "gsc": {
@@ -947,6 +971,7 @@
       "topicCluster": "data-center",
       "primaryPage": "/en/solutions/data-center",
       "targetQueries": [
+        "data center busbar",
         "data center power distribution best practices 2025",
         "busbar vs cable data center 2025",
         "flexible busbar system data center",
@@ -974,6 +999,19 @@
       "relatedSolutionIds": [
         "energy-storage"
       ],
+      "seoAssignment": {
+        "id": "data-center-busbar",
+        "translationKey": "seo-data-center-busbar",
+        "pageRole": "spoke",
+        "primaryQuery": "data center busbar",
+        "secondaryQueries": [
+          "high current busbar",
+          "data center power distribution"
+        ],
+        "intent": "commercial",
+        "evidenceStatus": "needs_source",
+        "reviewStatus": "native_review"
+      },
       "governance": {
         "disposition": "review",
         "gsc": {
@@ -1044,7 +1082,7 @@
       "slug": "demo-datacenter-flexible-busbar-1783005886",
       "sourceFile": "astro-site/src/data/legacy-content/content/articles/en/demo-datacenter-flexible-busbar-1783005886.mdx",
       "title": "Demo — Flexible Busbar in Data Center Power Distribution (1783005886)",
-      "description": "Flexible busbar for data center power distribution.",
+      "description": "See how flexible busbar supports high-current data center power distribution with compact routing, IP68 protection, 400A–6400A capacity, and faster installation.",
       "translationKey": "geoflow-15",
       "status": "approved",
       "publishedAt": "2026-07-02T15:24:47.000000Z",
@@ -1101,8 +1139,17 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 123,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-1.webp",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-2.webp",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-3.webp",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-4.webp",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-5.jpg",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-6.webp",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-7.webp",
+        "/storage/uploads/images/articles/en/digital-energy-pioneer-smart-innovation-future-high-current-flexible-busbar-exhibition-highlights-512155/body-8.webp"
+      ],
+      "internalLinkCount": 8,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -1169,7 +1216,7 @@
       "slug": "dragon-boat-festival-greetings-757667",
       "sourceFile": "astro-site/src/data/legacy-content/content/articles/en/dragon-boat-festival-greetings-757667.mdx",
       "title": "Dragon Boat Festival Greetings",
-      "description": "Dragon Boat Festival Greetings",
+      "description": "Yanghua Cable shares a Dragon Boat Festival greeting with customers, partners, and colleagues while celebrating tradition, health, and continued cooperation.",
       "translationKey": "news-757667",
       "status": "legacy",
       "publishedAt": "2025-05-30T00:00:00.000Z",
@@ -1208,7 +1255,7 @@
       "slug": "e2e-auto-datacenter-busbar-1783005556",
       "sourceFile": "astro-site/src/data/legacy-content/content/articles/en/e2e-auto-datacenter-busbar-1783005556.mdx",
       "title": "E2E Auto Test — Flexible Busbar Data Center Power Distribution 1783005556",
-      "description": "E2E test.",
+      "description": "Explore a flexible busbar data center power distribution example with low impedance, compact routing, faster installation, and modular maintenance.",
       "translationKey": "geoflow-14",
       "status": "approved",
       "publishedAt": "2026-07-02T15:19:27.000000Z",
@@ -1363,7 +1410,7 @@
       "title": "Factory Rooftop Distributed Solar Projects, Flexible Busbar Handles It with Ease!",
       "description": "Factory Rooftop Distributed Solar Projects, Flexible Busbar Handles It with Ease! Direct Answer: Factory rooftop distributed solar projects require efficient, safe, and space savin",
       "translationKey": "geoflow-9",
-      "status": "approved",
+      "status": "draft",
       "publishedAt": "2026-07-02T00:00:00.000Z",
       "updatedAt": "2026-07-02T12:00:00.000Z",
       "topicCluster": "manufacturing",
@@ -1374,7 +1421,7 @@
       "buyerIntent": "selection",
       "bodyWords": 940,
       "internalLinks": [
-        "/images/products/flexible-busbar-1.jpg"
+        "/storage/uploads/images/articles/en/esz5g5ao/body-1.jpg"
       ],
       "internalLinkCount": 1,
       "evidence": {
@@ -1506,8 +1553,13 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 751,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing-501651/body-1.webp",
+        "/storage/uploads/images/articles/en/first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing-501651/body-2.png",
+        "/storage/uploads/images/articles/en/first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing-501651/body-3.webp",
+        "/storage/uploads/images/articles/en/first-academic-monograph-in-fire-resistant-cable-field-yanghuasti-chief-technical-expert-du-jinbiao-and-chief-engineer-hu-runyi-participate-in-writing-501651/body-4.webp"
+      ],
+      "internalLinkCount": 4,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -1791,6 +1843,7 @@
       "topicCluster": "energy-storage",
       "primaryPage": "/en/solutions/new-energy",
       "targetQueries": [
+        "flexible busbar",
         "what is flexible busbar",
         "flexible busbar vs cable",
         "flexible busbar applications",
@@ -1818,6 +1871,20 @@
         "energy-storage",
         "ev-power-distribution"
       ],
+      "seoAssignment": {
+        "id": "flexible-busbar-guide",
+        "translationKey": "seo-flexible-busbar-guide",
+        "pageRole": "hub",
+        "primaryQuery": "flexible busbar",
+        "secondaryQueries": [
+          "flexible copper busbar",
+          "insulated flexible busbar",
+          "flexible busbar applications"
+        ],
+        "intent": "informational",
+        "evidenceStatus": "verified",
+        "reviewStatus": "native_review"
+      },
       "governance": {
         "disposition": "review",
         "gsc": {
@@ -2512,6 +2579,7 @@
       "topicCluster": "comparison",
       "primaryPage": "/en/articles/hub/flexible-busbar-vs-cable",
       "targetQueries": [
+        "flexible busduct",
         "flexible busbar vs busduct",
         "flexible busbar advantages",
         "busduct vs flexible busbar industrial",
@@ -2539,6 +2607,19 @@
       "relatedSolutionIds": [
         "energy-storage"
       ],
+      "seoAssignment": {
+        "id": "flexible-busbar-vs-busduct",
+        "translationKey": "seo-flexible-busbar-vs-busduct",
+        "pageRole": "spoke",
+        "primaryQuery": "flexible busduct",
+        "secondaryQueries": [
+          "bus duct vs busbar",
+          "busbar trunking system"
+        ],
+        "intent": "commercial",
+        "evidenceStatus": "needs_source",
+        "reviewStatus": "native_review"
+      },
       "governance": {
         "disposition": "review",
         "gsc": {
@@ -2828,8 +2909,15 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 288,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti-526020/body-1.jpg",
+        "/storage/uploads/images/articles/en/guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti-526020/body-2.webp",
+        "/storage/uploads/images/articles/en/guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti-526020/body-3.webp",
+        "/storage/uploads/images/articles/en/guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti-526020/body-4.webp",
+        "/storage/uploads/images/articles/en/guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti-526020/body-5.jpg",
+        "/storage/uploads/images/articles/en/guangdong-wire-and-cable-industry-association-secretary-general-visits-yanghuasti-526020/body-6.webp"
+      ],
+      "internalLinkCount": 6,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -2996,8 +3084,13 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 482,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-501599/body-1.webp",
+        "/storage/uploads/images/articles/en/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-501599/body-2.webp",
+        "/storage/uploads/images/articles/en/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-501599/body-3.jpg",
+        "/storage/uploads/images/articles/en/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-501599/body-4.webp"
+      ],
+      "internalLinkCount": 4,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -3139,8 +3232,10 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 19,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/invitation-april-10-12-13th-international-energy-storage-summit-and-exhibition-high-current-flexible-busbar-booth-b2119-hall-b2-515322/body-1.jpg"
+      ],
+      "internalLinkCount": 1,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -3348,8 +3443,18 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 936,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-1.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-2.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-3.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-4.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-5.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-6.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-7.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-8.webp",
+        "/storage/uploads/images/articles/en/new-infrastructure-track-new-energy-vehicle-charging-pile-development-new-infrastructure-new-busbar-series-sharing-507951/body-9.webp"
+      ],
+      "internalLinkCount": 9,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -3711,8 +3816,19 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 151,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-1.jpg",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-2.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-3.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-4.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-5.jpg",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-6.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-7.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-8.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-9.webp",
+        "/storage/uploads/images/articles/en/second-appearance-high-current-flexible-busbar-showcased-at-building-electrical-low-carbon-energy-efficiency-forum-551521/body-10.webp"
+      ],
+      "internalLinkCount": 10,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -3789,8 +3905,15 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 37,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-508737/body-1.webp",
+        "/storage/uploads/images/articles/en/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-508737/body-2.webp",
+        "/storage/uploads/images/articles/en/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-508737/body-3.jpg",
+        "/storage/uploads/images/articles/en/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-508737/body-4.webp",
+        "/storage/uploads/images/articles/en/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-508737/body-5.png",
+        "/storage/uploads/images/articles/en/shenzhen-china-southern-power-grid-shenzhen-hong-kong-technology-innovation-co-ltd-leadership-visits-yanghuasti-for-exchange-508737/body-6.webp"
+      ],
+      "internalLinkCount": 6,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -4060,8 +4183,19 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 151,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-1.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-2.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-3.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-4.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-5.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-6.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-7.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-8.jpg",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-9.webp",
+        "/storage/uploads/images/articles/en/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-859905/body-10.webp"
+      ],
+      "internalLinkCount": 10,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -4097,6 +4231,7 @@
       "topicCluster": "data-center",
       "primaryPage": "/en/solutions/data-center",
       "targetQueries": [
+        "flexible busbar manufacturers",
         "flexible busbar manufacturers data center",
         "flexible busbar for data center power distribution",
         "top flexible busbar manufacturers 2025",
@@ -4123,6 +4258,19 @@
       "relatedSolutionIds": [
         "energy-storage"
       ],
+      "seoAssignment": {
+        "id": "flexible-busbar-manufacturers",
+        "translationKey": "seo-flexible-busbar-manufacturers",
+        "pageRole": "spoke",
+        "primaryQuery": "flexible busbar manufacturers",
+        "secondaryQueries": [
+          "custom busbar manufacturer",
+          "flexible busbar supplier"
+        ],
+        "intent": "commercial",
+        "evidenceStatus": "needs_source",
+        "reviewStatus": "native_review"
+      },
       "governance": {
         "disposition": "review",
         "gsc": {
@@ -4258,8 +4406,10 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 9,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/work-resumes-with-good-fortune-everything-is-promising-532350/body-1.webp"
+      ],
+      "internalLinkCount": 1,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -4729,8 +4879,10 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 9,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/yanghuasti-2024-annual-review-528905/body-1.webp"
+      ],
+      "internalLinkCount": 1,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -4963,8 +5115,16 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 365,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-1.webp",
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-2.png",
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-3.webp",
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-4.webp",
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-5.webp",
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-6.jpg",
+        "/storage/uploads/images/articles/en/yanghuasti-participates-in-2024-shenzhen-building-electrical-academic-annual-conference-501606/body-7.webp"
+      ],
+      "internalLinkCount": 7,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -5197,8 +5357,10 @@
       "targetQueries": [],
       "buyerIntent": null,
       "bodyWords": 17,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "internalLinks": [
+        "/storage/uploads/images/articles/en/year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year-505792/body-1.webp"
+      ],
+      "internalLinkCount": 1,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
@@ -5586,15 +5748,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 493,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -5625,15 +5787,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 21,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -5781,7 +5943,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 155,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6093,7 +6255,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 23,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6171,7 +6333,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 41,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6327,7 +6489,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 419,
+      "bodyWords": 63,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6483,15 +6645,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 480,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
-        "hasStructuredLists": true,
-        "score": 2
+        "hasTechnicalSignals": false,
+        "hasStructuredLists": false,
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -6522,7 +6684,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 127,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6756,7 +6918,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 13,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6834,7 +6996,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 13,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6873,15 +7035,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 292,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -6912,7 +7074,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 155,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -6990,15 +7152,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 180,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -7029,15 +7191,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 223,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -7263,15 +7425,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 369,
+      "bodyWords": 29,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -7731,15 +7893,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 496,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -7770,15 +7932,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 22,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -7926,7 +8088,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 169,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -8238,7 +8400,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 24,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -8316,15 +8478,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 44,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -8472,7 +8634,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 424,
+      "bodyWords": 68,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -8628,15 +8790,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 480,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
-        "hasStructuredLists": true,
-        "score": 2
+        "hasTechnicalSignals": false,
+        "hasStructuredLists": false,
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -8667,7 +8829,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 134,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -8901,15 +9063,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 16,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -8979,15 +9141,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 16,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -9018,15 +9180,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 298,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -9057,7 +9219,7 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 169,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
@@ -9135,15 +9297,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 182,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -9174,15 +9336,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 226,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -9408,15 +9570,15 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 370,
+      "bodyWords": 26,
       "internalLinks": [],
       "internalLinkCount": 0,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": true,
+        "hasTechnicalSignals": false,
         "hasStructuredLists": false,
-        "score": 1
+        "score": 0
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],

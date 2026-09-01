@@ -1,0 +1,128 @@
+[
+  {
+    "id": "flexible-busbar-guide",
+    "translationKey": "seo-flexible-busbar-guide",
+    "cluster": "core",
+    "pageRole": "hub",
+    "paths": {
+      "en": "/en/articles/flexible-busbar-guide",
+      "es": "/es/articulos/flexible-busbar-guide",
+      "pt": "/pt/artigos/flexible-busbar-guide"
+    },
+    "primaryQueries": {
+      "en": "flexible busbar",
+      "es": "barra colectora flexible",
+      "pt": "barramento flexível"
+    },
+    "secondaryQueries": ["flexible copper busbar", "insulated flexible busbar", "flexible busbar applications"],
+    "intent": "informational",
+    "evidenceStatus": "verified",
+    "evidenceRefs": ["src/data/legacy-content/content/articles/en/flexible-busbar-guide.mdx", "src/lib/yanghua/products.ts"],
+    "reviewStatus": "native_review"
+  },
+  {
+    "id": "flexible-busbar-2000a",
+    "translationKey": "seo-flexible-busbar-2000a",
+    "cluster": "product",
+    "pageRole": "money",
+    "paths": {
+      "en": "/en/products/flexible-busbar-2000a",
+      "es": "/es/productos/flexible-busbar-2000a",
+      "pt": "/pt/produtos/flexible-busbar-2000a"
+    },
+    "primaryQueries": {
+      "en": "2000A busbar",
+      "es": "barra colectora de 2000 A",
+      "pt": "barramento de 2000 A"
+    },
+    "secondaryQueries": ["busbar 2000A", "high current busbar"],
+    "intent": "transactional",
+    "evidenceStatus": "verified",
+    "evidenceRefs": ["src/lib/yanghua/products.ts"],
+    "reviewStatus": "native_review"
+  },
+  {
+    "id": "flexible-busbar-manufacturers",
+    "translationKey": "seo-flexible-busbar-manufacturers",
+    "cluster": "manufacturing",
+    "pageRole": "spoke",
+    "paths": {
+      "en": "/en/articles/top-10-flexible-busbar-manufacturers-data-center",
+      "es": "/es/articulos/top-10-flexible-busbar-manufacturers-data-center",
+      "pt": "/pt/artigos/top-10-flexible-busbar-manufacturers-data-center"
+    },
+    "primaryQueries": {
+      "en": "flexible busbar manufacturers",
+      "es": "fabricantes de barras colectoras flexibles",
+      "pt": "fabricantes de barramentos flexíveis"
+    },
+    "secondaryQueries": ["custom busbar manufacturer", "flexible busbar supplier"],
+    "intent": "commercial",
+    "evidenceStatus": "needs_source",
+    "evidenceRefs": ["src/data/legacy-content/content/articles/en/top-10-flexible-busbar-manufacturers-data-center.mdx"],
+    "reviewStatus": "native_review"
+  },
+  {
+    "id": "data-center-busbar",
+    "translationKey": "seo-data-center-busbar",
+    "cluster": "data-center",
+    "pageRole": "spoke",
+    "paths": {
+      "en": "/en/articles/data-center-power-distribution-best-practices-2025",
+      "es": "/es/articulos/data-center-power-distribution-best-practices-2025",
+      "pt": "/pt/artigos/data-center-power-distribution-best-practices-2025"
+    },
+    "primaryQueries": {
+      "en": "data center busbar",
+      "es": "barra colectora para centros de datos",
+      "pt": "barramento para data center"
+    },
+    "secondaryQueries": ["high current busbar", "data center power distribution"],
+    "intent": "commercial",
+    "evidenceStatus": "needs_source",
+    "evidenceRefs": ["src/data/legacy-content/content/articles/en/data-center-power-distribution-best-practices-2025.mdx"],
+    "reviewStatus": "native_review"
+  },
+  {
+    "id": "copper-vs-aluminum-flexible-busbar",
+    "translationKey": "seo-copper-vs-aluminum-flexible-busbar",
+    "cluster": "materials",
+    "pageRole": "spoke",
+    "paths": {
+      "en": "/en/articles/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+      "es": "/es/articulos/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis",
+      "pt": "/pt/artigos/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis"
+    },
+    "primaryQueries": {
+      "en": "flexible copper busbar",
+      "es": "barra colectora flexible de cobre",
+      "pt": "barramento flexível de cobre"
+    },
+    "secondaryQueries": ["aluminum bus bar", "copper vs aluminum busbar"],
+    "intent": "commercial",
+    "evidenceStatus": "verified",
+    "evidenceRefs": ["src/data/legacy-content/content/articles/en/copper-vs-aluminum-flexible-busbar-conductivity-and-cost-analysis.mdx", "src/lib/yanghua/products.ts"],
+    "reviewStatus": "native_review"
+  },
+  {
+    "id": "flexible-busbar-vs-busduct",
+    "translationKey": "seo-flexible-busbar-vs-busduct",
+    "cluster": "comparison",
+    "pageRole": "spoke",
+    "paths": {
+      "en": "/en/articles/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+      "es": "/es/articulos/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants",
+      "pt": "/pt/artigos/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants"
+    },
+    "primaryQueries": {
+      "en": "flexible busduct",
+      "es": "busduct flexible",
+      "pt": "busduct flexível"
+    },
+    "secondaryQueries": ["bus duct vs busbar", "busbar trunking system"],
+    "intent": "commercial",
+    "evidenceStatus": "needs_source",
+    "evidenceRefs": ["src/data/legacy-content/content/articles/en/flexible-busbar-vs-traditional-busduct-which-is-better-for-industrial-plants.mdx"],
+    "reviewStatus": "native_review"
+  }
+]
