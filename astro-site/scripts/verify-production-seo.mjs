@@ -79,7 +79,17 @@ function hreflangAlternatesFrom(html) {
 }
 
 function seoMetaFrom(html) {
-  const decodeHtmlEntities = (value) => value.replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)));
+  const decodeHtmlEntities = (value) => value
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)))
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&(?:amp|apos|gt|lt|nbsp|quot);/gi, (entity) => ({
+      '&amp;': '&',
+      '&apos;': "'",
+      '&gt;': '>',
+      '&lt;': '<',
+      '&nbsp;': ' ',
+      '&quot;': '"',
+    }[entity.toLowerCase()] ?? entity));
   return {
     title: decodeHtmlEntities(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? ''),
     description: decodeHtmlEntities(html.match(/<meta name="description" content="([^"]*)"/i)?.[1] ?? ''),

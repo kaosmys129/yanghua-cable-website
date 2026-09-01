@@ -247,11 +247,6 @@
       "statusCode": 301
     },
     {
-      "source": "/es/productos/flexible-busbar-2000a",
-      "destination": "/es/productos",
-      "statusCode": 301
-    },
-    {
       "source": "/es/servicios",
       "destination": "/es/contacto",
       "statusCode": 301
