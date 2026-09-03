@@ -1,6 +1,12 @@
 import matter from 'gray-matter';
 import { z } from 'zod';
 import { assertSpanishArticleBody } from '../yanghua/spanish-article-policy.mjs';
+import {
+  normalizeAuthorManifest,
+  normalizeContentOwnership,
+  normalizeContentRevision,
+  normalizeEvidenceManifest,
+} from '../yanghua/article-governance.mjs';
 
 const localeSchema = z.enum(['en', 'es', 'pt']);
 const buyerIntentSchema = z.preprocess((val) => {
@@ -26,7 +32,50 @@ const citationSchema = z.object({
   label: z.string().min(1),
   url: z.string().url().optional(),
   note: z.string().optional(),
+  evidenceGrade: z.enum(['A', 'B', 'C', 'D', 'E']).optional(),
+  approvalStatus: z.enum(['approved', 'approval_needed']).optional(),
+  visibility: z.enum(['public', 'private']).optional(),
 });
+
+const publicClaimSchema = z.object({
+  id: z.string().optional(),
+  claim: z.string().optional(),
+  text: z.string().optional(),
+  evidenceGrade: z.enum(['A', 'B', 'C', 'D', 'E']).optional(),
+  approvalStatus: z.enum(['approved', 'approval_needed']).optional(),
+  note: z.string().optional(),
+});
+
+const contentOwnershipSchema = z.object({
+  system: z.string().optional(),
+  durableSource: z.string().optional(),
+  canonicalPath: z.string().optional(),
+  runtimeWrites: z.string().optional(),
+  sourceMode: z.string().optional(),
+}).optional();
+
+const contentRevisionSchema = z.object({
+  reviewStatus: z.string().optional(),
+  lastReviewedAt: z.string().optional(),
+  lastReviewedBy: z.string().optional(),
+  revisionSource: z.string().optional(),
+  publicVersion: z.string().optional(),
+}).optional();
+
+const authorManifestSchema = z.object({
+  kind: z.string().optional(),
+  displayName: z.string().optional(),
+  role: z.string().optional(),
+  bio: z.string().optional(),
+  approvalStatus: z.string().optional(),
+}).optional();
+
+const evidenceManifestSchema = z.object({
+  mode: z.string().optional(),
+  summaryGrade: z.enum(['A', 'B', 'C', 'D', 'E']).optional(),
+  items: z.array(citationSchema).optional(),
+  publicClaims: z.array(publicClaimSchema).optional(),
+}).optional();
 
 const payloadSchema = z.object({
   geoflowArticleId: z.string().min(1),
@@ -69,6 +118,11 @@ const payloadSchema = z.object({
   authorBio: z.string().optional(),
   certifications: z.array(z.string()).default([]),
   relatedCaseStudies: z.array(z.string()).default([]),
+  contentOwnership: contentOwnershipSchema,
+  contentRevision: contentRevisionSchema,
+  authorManifest: authorManifestSchema,
+  evidenceManifest: evidenceManifestSchema,
+  publicClaims: z.array(publicClaimSchema).default([]),
   imagePrompts: z
     .object({
       cover: z
@@ -145,6 +199,11 @@ const geoMetadataSchema = z.object({
         .optional(),
     })
     .optional(),
+  contentOwnership: contentOwnershipSchema,
+  contentRevision: contentRevisionSchema,
+  authorManifest: authorManifestSchema,
+  evidenceManifest: evidenceManifestSchema,
+  publicClaims: z.array(publicClaimSchema).optional(),
 });
 
 const nativeArticleSchema = z.object({
@@ -208,6 +267,29 @@ export function normalizeGeoflowArticlePayload(payload: GeoflowArticlePayload) {
   // 转义非 HTML 标签的独立小于号，以防止 MDX 编译语法错误 (MDXError)
   bodyMarkdown = bodyMarkdown.replace(/<(?![a-zA-Z!/])/g, '&lt;');
   const authorBio = parsed.authorBio || DEFAULT_AUTHOR_BIO;
+  const frontmatterLike = {
+    author: parsed.author,
+    authorBio,
+    geoflow: {
+      articleId: parsed.geoflowArticleId,
+      importedAt: new Date().toISOString(),
+      reviewStatus: parsed.reviewStatus,
+    },
+    geo: {
+      citations: parsed.citations,
+    },
+    contentOwnership: parsed.contentOwnership,
+    contentRevision: parsed.contentRevision,
+    authorManifest: parsed.authorManifest,
+    evidenceManifest: parsed.evidenceManifest,
+    publicClaims: parsed.publicClaims,
+    updatedAt: parsed.updatedAt,
+    publishedAt: parsed.publishedAt,
+  };
+  const contentOwnership = normalizeContentOwnership(frontmatterLike, '');
+  const contentRevision = normalizeContentRevision(frontmatterLike, contentOwnership);
+  const authorManifest = normalizeAuthorManifest(frontmatterLike, contentOwnership);
+  const evidenceManifest = normalizeEvidenceManifest(frontmatterLike);
 
   // ── AI Image Prompts (from GEOFlow AI) ──
   const aiImagePrompts = parsed.imagePrompts as AIImagePrompts | undefined;
@@ -247,7 +329,7 @@ export function normalizeGeoflowArticlePayload(payload: GeoflowArticlePayload) {
       targetQueries: parsed.targetQueries.map((query) => query.trim()).filter(Boolean),
       answerSummary: parsed.answerSummary.trim(),
       faqs: parsed.faqs,
-      citations: parsed.citations,
+      citations: evidenceManifest.publicSources,
       sourceMaterials: parsed.sourceMaterials.map((source) => source.trim()).filter(Boolean),
       buyerIntent: parsed.buyerIntent,
       relatedProductIds: parsed.relatedProductIds,
@@ -262,6 +344,11 @@ export function normalizeGeoflowArticlePayload(payload: GeoflowArticlePayload) {
     authorBio,
     certifications: parsed.certifications,
     relatedCaseStudies: parsed.relatedCaseStudies,
+    contentOwnership,
+    contentRevision,
+    authorManifest,
+    evidenceManifest,
+    publicClaims: evidenceManifest.publicClaims,
     aiImagePrompts,
     aiImages: aiImagesTrack,
     bodyMarkdown,
@@ -290,6 +377,11 @@ export function buildIncomingArticleMdx(article: NormalizedGeoflowArticle) {
     authorBio: article.authorBio,
     certifications: article.certifications,
     relatedCaseStudies: article.relatedCaseStudies,
+    contentOwnership: article.contentOwnership,
+    contentRevision: article.contentRevision,
+    authorManifest: article.authorManifest,
+    evidenceManifest: article.evidenceManifest,
+    publicClaims: article.publicClaims,
     aiImagePrompts: article.aiImagePrompts,
     aiImages: article.aiImages,
   };
@@ -344,6 +436,11 @@ function toFlatPayload(payload: unknown): z.input<typeof payloadSchema> {
     canonicalHint: payload.canonicalHint ?? metadata?.seo.canonicalHint,
     imagePrompts: payload.imagePrompts ?? metadata?.imagePrompts,
     reviewStatus: payload.reviewStatus ?? 'needs_review',
+    contentOwnership: payload.contentOwnership ?? metadata?.contentOwnership,
+    contentRevision: payload.contentRevision ?? metadata?.contentRevision,
+    authorManifest: payload.authorManifest ?? metadata?.authorManifest,
+    evidenceManifest: payload.evidenceManifest ?? metadata?.evidenceManifest,
+    publicClaims: payload.publicClaims ?? metadata?.publicClaims,
   } as z.input<typeof payloadSchema>;
 }
 
@@ -400,6 +497,17 @@ function nativePayloadToFlatPayload(payload: Record<string, unknown>): z.input<t
       : undefined,
     canonicalHint: metadata?.seo.canonicalHint,
     reviewStatus: 'approved', // GEOFlow 已审核通过才触发分发 → 直接 approved
+    contentOwnership: {
+      system: 'geoflow',
+      durableSource: 'astro-mdx',
+      runtimeWrites: 'disallowed',
+      sourceMode: 'imported',
+    },
+    contentRevision: {
+      reviewStatus: 'approved',
+      revisionSource: 'geoflow',
+      publicVersion: 'managed-import',
+    },
   };
 }
 
@@ -474,7 +582,7 @@ const PRODUCT_IMAGES: Record<string, { src: string; alt: string; width: number; 
 } as const;
 
 const DEFAULT_AUTHOR_BIO =
-  'Yanghua Engineering Team — 15+ years of flexible busbar design, manufacturing, and project delivery for energy storage, solar PV, EV charging, and industrial electrification.';
+  'Yanghua Editorial Team — This article is maintained in the Astro MDX repository and reviewed against the source materials listed for the page.';
 
 function inferCoverImage(
   relatedSolutionIds: string[],
@@ -563,9 +671,9 @@ function appendAuthorEEATBlock(
     '> **About the Author**',
     `> ${DEFAULT_AUTHOR_BIO}`,
     '>',
-    '> The team holds a VDE flexible industrial cable training certificate (2024) and operates an in-house R&D Experimental Center. Yanghua flexible busbar products have passed type testing with official test reports.',
+    '> Certifications, test reports, and performance claims require explicit approval before public publication.',
     '>',
-    '> *Contact: info@yhflexiblebusbar.com | Hotline: 400-883-1383*',
+    '> *Contact: info@yhflexiblebusbar.com | Phone: +86-769-3893-9888*',
     '',
   ].join('\n');
 

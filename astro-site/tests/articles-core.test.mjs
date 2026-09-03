@@ -193,6 +193,8 @@ test('builds public machine-readable articles map and llms text', () => {
   assert.equal(map.articles.length, 1);
   assert.equal(map.articles[0].url, 'https://www.yhflexiblebusbar.com/en/articles/flexible-busbar-vs-cable');
   assert.deepEqual(map.articles[0].targetQueries, ['flexible busbar vs cable']);
+  assert.equal(map.articles[0].governance.ownership.system, 'geoflow');
+  assert.equal(map.articles[0].evidence.summaryGrade, 'C');
   assert.equal(map.hubs[0].url, 'https://www.yhflexiblebusbar.com/en/articles/hub/flexible-busbar-vs-cable');
 
   const llms = buildLlmsTxt({
@@ -202,9 +204,82 @@ test('builds public machine-readable articles map and llms text', () => {
   });
 
   assert.match(llms, /## GEO Topic Hubs/);
+  assert.match(llms, /Flexible busbar and cable solutions for industrial electrification/);
   assert.match(llms, /Flexible Busbar vs Cable: https:\/\/www\.yhflexiblebusbar\.com\/en\/articles\/hub\/flexible-busbar-vs-cable/);
   assert.match(llms, /Target queries: flexible busbar vs cable/);
+  assert.match(llms, /Evidence grade: C\./);
   assert.doesNotMatch(llms, /geoflow-draft/);
+});
+
+test('normalizes ownership and blocks unapproved public claims from public outputs', () => {
+  const article = normalizeArticleModule({
+    path: '/content/articles/en/approval-aware-article.mdx',
+    frontmatter: {
+      ...baseArticleFrontmatter,
+      geoflow: { status: 'published' },
+      contentOwnership: {
+        system: 'astro',
+        durableSource: 'astro-mdx',
+      },
+      contentRevision: {
+        reviewStatus: 'legacy',
+      },
+      authorManifest: {
+        displayName: 'Yanghua Editorial Team',
+        role: 'reviewer',
+      },
+      evidenceManifest: {
+        summaryGrade: 'B',
+        items: [
+          {
+            label: 'Approved source',
+            url: 'https://www.yhflexiblebusbar.com/en/articles/source-a',
+            evidenceGrade: 'B',
+            approvalStatus: 'approved',
+          },
+          {
+            label: 'Blocked source',
+            url: 'https://www.yhflexiblebusbar.com/en/articles/source-b',
+            evidenceGrade: 'D',
+            approvalStatus: 'approval_needed',
+          },
+        ],
+        publicClaims: [
+          {
+            id: 'claim-approved',
+            claim: 'Approved internal routing note',
+            evidenceGrade: 'B',
+            approvalStatus: 'approved',
+          },
+          {
+            id: 'claim-blocked',
+            claim: 'Unapproved certification claim',
+            evidenceGrade: 'E',
+            approvalStatus: 'approval_needed',
+          },
+        ],
+      },
+    },
+  });
+
+  assert.equal(article.governance.ownership.system, 'astro');
+  assert.equal(article.governance.revision.reviewStatus, 'legacy');
+  assert.equal(article.authorManifest.displayName, 'Yanghua Editorial Team');
+  assert.equal(article.evidence.summaryGrade, 'B');
+  assert.equal(article.evidence.publicSources.length, 1);
+  assert.equal(article.geo.citations.length, 1);
+  assert.equal(article.evidence.approvedPublicClaims.length, 1);
+  assert.equal(article.evidence.blockedPublicClaims.length, 1);
+  assert.equal(article.evidence.hasUnapprovedPublicClaims, true);
+
+  const llms = buildLlmsTxt({
+    siteUrl: 'https://www.yhflexiblebusbar.com/',
+    articles: [article],
+    hubs: [],
+  });
+
+  assert.match(llms, /Approved internal routing note/);
+  assert.doesNotMatch(llms, /Unapproved certification claim/);
 });
 
 test('builds sitemap xml for public articles and hubs', () => {

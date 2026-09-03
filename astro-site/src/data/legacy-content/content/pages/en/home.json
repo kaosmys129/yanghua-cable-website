@@ -30,7 +30,7 @@
       "documentation": {
         "value": "11",
         "label": "Yanghua Enterprise Standards",
-        "description": "Yanghua industry-leading electrical busbar specifications"
+        "description": "Yanghua electrical busbar specifications for industrial and energy projects"
       }
     },
     "ctaLearnMore": "Learn More About Yanghua Cable"
@@ -76,7 +76,7 @@
   },
   "partners": {
     "title": "Our Partners",
-    "subtitle": "Trusted by leading companies worldwide",
+    "subtitle": "Supporting industrial electrification and power distribution teams",
     "viewAll": "View All Partners",
     "ctaAllPartners": "Get Quote"
   }

@@ -17,7 +17,7 @@ export const brand = {
   name: 'Yanghua Cable',
   tagline: 'Flexible busbar and cable solutions for modern electrification.',
   description:
-    'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
+    'Flexible busbar and cable solutions for industrial electrification, energy storage, photovoltaics, EV charging, and power distribution projects.',
   url: 'https://www.yhflexiblebusbar.com',
   locale: 'en_US',
 

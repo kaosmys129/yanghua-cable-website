@@ -1,3 +1,11 @@
+import {
+  normalizeAuthorManifest,
+  normalizeContentOwnership,
+  normalizeContentRevision,
+  normalizeEvidenceManifest,
+} from './article-governance.mjs';
+import { getPublicCompanyProfile } from './company-facts.mjs';
+
 const ARTICLE_BASE_PATH = {
   en: '/en/articles',
   es: '/es/articulos',
@@ -111,6 +119,10 @@ export function normalizeArticleModule(input) {
   );
   const geoflow = asObject(frontmatter.geoflow);
   const status = normalizeGeoflowStatus(frontmatter);
+  const ownership = normalizeContentOwnership(frontmatter, input?.path || '');
+  const revision = normalizeContentRevision(frontmatter, ownership);
+  const authorManifest = normalizeAuthorManifest(frontmatter, ownership);
+  const evidence = normalizeEvidenceManifest(frontmatter);
 
   return {
     path: input?.path || '',
@@ -145,7 +157,7 @@ export function normalizeArticleModule(input) {
       targetQueries: asArray(geo.targetQueries),
       answerSummary: firstText(geo.answerSummary),
       buyerIntent: firstText(geo.buyerIntent),
-      citations: asArray(geo.citations),
+      citations: evidence.publicSources,
       faqs: asArray(geo.faqs),
       relatedProductIds: asArray(geo.relatedProductIds),
       relatedSolutionIds: asArray(geo.relatedSolutionIds),
@@ -156,6 +168,12 @@ export function normalizeArticleModule(input) {
       reviewedBy: firstText(geoflow.reviewedBy),
       sourceBatchId: firstText(geoflow.sourceBatchId),
     },
+    governance: {
+      ownership,
+      revision,
+    },
+    authorManifest,
+    evidence,
     aiImages,
     isPublic: isPublicArticle(frontmatter),
     raw: frontmatter,
@@ -192,9 +210,10 @@ export function buildArticlesMapPayload(input) {
   const siteUrl = String(input.siteUrl || '').replace(/\/+$/, '');
   const articles = (input.articles || []).filter((article) => article.isPublic);
   const hubs = input.hubs || [];
+  const company = getPublicCompanyProfile(siteUrl);
 
   return {
-    site: 'Yanghua Cable',
+    site: company.name,
     generatedAt: input.generatedAt || new Date().toISOString(),
     articles: articles.map((article) => ({
       title: article.title,
@@ -212,6 +231,14 @@ export function buildArticlesMapPayload(input) {
       relatedProductIds: article.geo.relatedProductIds,
       relatedSolutionIds: article.geo.relatedSolutionIds,
       geoflow: article.geoflow,
+      governance: article.governance,
+      authorManifest: article.authorManifest,
+      evidence: {
+        summaryGrade: article.evidence.summaryGrade,
+        publicSources: article.evidence.publicSources,
+        approvedPublicClaims: article.evidence.approvedPublicClaims,
+        claimApprovalStatus: article.evidence.claimApprovalStatus,
+      },
     })),
     hubs: hubs.map((hub) => ({
       title: hub.title,
@@ -226,6 +253,7 @@ export function buildArticlesMapPayload(input) {
 
 export function buildLlmsTxt(input) {
   const siteUrl = String(input.siteUrl || '').replace(/\/+$/, '');
+  const company = getPublicCompanyProfile(siteUrl);
   const articles = (input.articles || [])
     .filter((article) => article.isPublic)
     .sort((left, right) => right.geo.targetQueries.length - left.geo.targetQueries.length)
@@ -233,9 +261,9 @@ export function buildLlmsTxt(input) {
   const hubs = input.hubs || [];
 
   const lines = [
-    '# Yanghua Cable',
+    `# ${company.name}`,
     '',
-    '> Yanghua Cable manufactures flexible busbar and cable solutions for industrial electrification, energy storage, photovoltaics, EV charging, and high-current power distribution projects.',
+    `> ${company.description}`,
     '',
     '## Core Pages',
     `- Home: ${siteUrl}/en`,
@@ -255,7 +283,11 @@ export function buildLlmsTxt(input) {
         ? ` Target queries: ${article.geo.targetQueries.join('; ')}.`
         : '';
       const answer = article.geo.answerSummary ? ` Answer summary: ${article.geo.answerSummary}` : '';
-      return `- ${article.title}: ${siteUrl}${article.url}.${queries}${answer}`;
+      const evidence = ` Evidence grade: ${article.evidence.summaryGrade}.`;
+      const claims = article.evidence.approvedPublicClaims.length > 0
+        ? ` Approved claims: ${article.evidence.approvedPublicClaims.map((claim) => claim.claim).join(' | ')}.`
+        : '';
+      return `- ${article.title}: ${siteUrl}${article.url}.${queries}${answer}${evidence}${claims}`;
     }),
     '',
     '## Agent Notes',

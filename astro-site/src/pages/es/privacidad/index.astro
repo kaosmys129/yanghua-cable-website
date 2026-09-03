@@ -16,7 +16,7 @@ const page = await loadPageJson<any>('es', 'privacy');
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="rounded-lg border border-border bg-surface p-8 text-text-muted">
-        El contenido de privacidad está vacío en `content/pages/es/privacy.json` (sitio anterior). Agrega contenido allí y se mostrará aquí.
+        La publicación de privacidad está pendiente de aprobación. Agrega contenido aprobado en `content/pages/es/privacy.json` y se mostrará aquí.
       </div>
       {page?.content && Object.keys(page.content).length > 0 && (
         <pre class="mt-8 overflow-auto rounded-lg border border-border bg-background p-6 text-xs text-text">
@@ -28,4 +28,3 @@ const page = await loadPageJson<any>('es', 'privacy');
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>
-

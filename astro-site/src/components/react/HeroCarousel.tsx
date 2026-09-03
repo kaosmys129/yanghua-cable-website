@@ -33,7 +33,7 @@ interface HeroCarouselProps {
 export default function HeroCarousel({
   topper,
   heading = 'Flexible busbar and cable solutions',
-  description = 'Leading manufacturer of flexible busbars and cable solutions for industrial applications.',
+  description = 'Flexible busbar and cable solutions for industrial electrification, energy storage, photovoltaics, EV charging, and power distribution projects.',
   ctaLabel = 'View Products',
   ctaHref,
   secondaryLabel = 'About Us',

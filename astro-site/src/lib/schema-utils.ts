@@ -13,7 +13,7 @@
  */
 
 import { brand } from '../config/brand';
-import { client } from '../data/client';
+import { getPublicCompanyProfile } from './yanghua/company-facts.mjs';
 
 function normalizeBaseUrl(siteUrl?: string): string {
   return String(siteUrl || brand.url).replace(/\/+$/, '');
@@ -57,63 +57,55 @@ export interface ArticlePost {
 
 export function generateFullOrganizationSchema(siteUrl?: string): Record<string, unknown> {
   const baseUrl = normalizeBaseUrl(siteUrl);
+  const company = getPublicCompanyProfile(baseUrl);
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${baseUrl}/#organization`,
-    name: client.name,
-    alternateName: ['YanghuaSTI', 'Yanghua Flexible Busbar'],
+    name: company.name,
+    ...(company.alternateNames.length > 0 && { alternateName: company.alternateNames }),
     url: baseUrl,
     logo: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/favicon.svg`,
+      url: company.logoUrl,
       width: 128,
       height: 128,
     },
-    description:
-      'Leading manufacturer of high-current flexible busbar and electrical solutions for industrial applications worldwide',
-    foundingDate: '2010',
-    numberOfEmployees: {
-      '@type': 'QuantitativeValue',
-      minValue: 100,
-      maxValue: 500,
-    },
+    description: company.description,
+    ...(company.foundingDate && { foundingDate: company.foundingDate }),
+    ...(company.numberOfEmployees && { numberOfEmployees: company.numberOfEmployees }),
     address: {
       '@type': 'PostalAddress',
-      streetAddress: client.address.lineOne,
-      addressLocality: client.address.city,
-      addressRegion: client.address.state,
-      addressCountry: client.address.country,
+      streetAddress: company.address.streetAddress,
+      addressLocality: company.address.addressLocality,
+      addressRegion: company.address.addressRegion,
+      addressCountry: company.address.addressCountry,
     },
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: client.phoneForTel,
+        telephone: company.phone,
         contactType: 'customer service',
-        email: client.email,
+        email: company.email,
         availableLanguage: ['English', 'Spanish', 'Chinese'],
         areaServed: 'Worldwide',
       },
       {
         '@type': 'ContactPoint',
-        telephone: client.phoneForTel,
+        telephone: company.phone,
         contactType: 'technical support',
-        email: client.email,
+        email: company.email,
         availableLanguage: ['English', 'Chinese'],
         areaServed: 'Worldwide',
       },
     ],
-    sameAs: [
-      'https://www.linkedin.com/company/yanghua-cable',
-      'https://twitter.com/yanghuacable',
-      'https://www.facebook.com/yanghuacable',
-    ],
+    ...(company.sameAs.length > 0 && { sameAs: company.sameAs }),
     makesOffer: {
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Service',
-        name: 'Flexible Busbar Manufacturing and Solutions',
+        name: company.offeringName,
       },
     },
   };
@@ -171,12 +163,12 @@ export function generateCollectionPageSchema(
           publisher: {
             '@type': 'Organization',
             '@id': `${baseUrl}/#organization`,
-            name: client.name,
+            name: getPublicCompanyProfile(baseUrl).name,
           },
           author: {
             '@type': 'Organization',
             '@id': `${baseUrl}/#organization`,
-            name: client.name,
+            name: getPublicCompanyProfile(baseUrl).name,
           },
         },
       })),
@@ -222,6 +214,7 @@ export function generateArticleSchema(
   siteUrl?: string,
 ): Record<string, unknown> {
   const baseUrl = normalizeBaseUrl(siteUrl);
+  const company = getPublicCompanyProfile(baseUrl);
 
   return {
     '@context': 'https://schema.org',
@@ -239,15 +232,15 @@ export function generateArticleSchema(
     author: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
-      name: client.name,
+      name: company.name,
     },
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
-      name: client.name,
+      name: company.name,
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/favicon.svg`,
+        url: company.logoUrl,
       },
     },
     ...(post.category && { articleSection: post.category }),
@@ -272,15 +265,16 @@ export function generateArticleSchema(
 
 export function generateWebsiteSchema(siteUrl?: string): Record<string, unknown> {
   const baseUrl = normalizeBaseUrl(siteUrl);
+  const company = getPublicCompanyProfile(baseUrl);
 
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${baseUrl}/#website`,
-    name: client.name,
-    alternateName: 'YanghuaSTI',
+    name: company.name,
+    ...(company.alternateNames[0] && { alternateName: company.alternateNames[0] }),
     url: baseUrl,
-    description: brand.description,
+    description: company.description,
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
@@ -327,6 +321,7 @@ export function generateProductSchema(
   siteUrl?: string,
 ): Record<string, unknown> {
   const baseUrl = normalizeBaseUrl(siteUrl);
+  const company = getPublicCompanyProfile(baseUrl);
 
   const images = (product.image ?? []).map((img) =>
     img.startsWith('http') ? img : `${baseUrl}${img}`,
@@ -349,7 +344,7 @@ export function generateProductSchema(
     ...(images.length > 0 && { image: images }),
     brand: {
       '@type': 'Brand',
-      name: client.name,
+      name: company.name,
     },
     ...(additionalProperty && { additionalProperty }),
     ...(product.url && { url: product.url }),

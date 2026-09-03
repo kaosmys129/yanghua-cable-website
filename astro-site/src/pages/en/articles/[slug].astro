@@ -10,6 +10,7 @@ import { getAllArticles, getArticleStaticPaths, YANGHUA_SITE_URL } from '../../.
 import { buildArticleHreflangAlternates } from '../../../lib/yanghua/articles-core.mjs';
 import { buildArticlePathways, getRelatedArticles } from '../../../lib/yanghua/content-governance';
 import type { Locale } from '../../../lib/yanghua/loaders';
+import { getPublicCompanyProfile } from '../../../lib/yanghua/company-facts.mjs';
 
 export function getStaticPaths() {
   return getArticleStaticPaths('en');
@@ -40,8 +41,9 @@ const description = article.seo.description || article.description || article.su
 const coverImage = article.cover.src || '/images/no-image-available.webp';
 const coverImageUrl = new URL(coverImage, YANGHUA_SITE_URL).toString();
 const coverAlt = article.cover.alt || title;
-const sourceItems = geo.citations.length > 0
-  ? geo.citations
+const company = getPublicCompanyProfile(YANGHUA_SITE_URL);
+const sourceItems = article.evidence.publicSources.length > 0
+  ? article.evidence.publicSources
   : article.sourceUrl
     ? [{ label: 'Original Yanghua source', url: article.sourceUrl, note: 'Legacy source reference' }]
     : [];
@@ -88,13 +90,13 @@ const structuredData = {
       dateModified: article.updatedAt || article.publishedAt || undefined,
       author: {
         '@type': 'Organization',
-        name: article.author.name || 'Yanghua Editorial Team',
-        url: 'https://www.yhflexiblebusbar.com/en/about',
+        name: article.authorManifest.displayName || article.author.name || company.name,
+        url: company.aboutUrl,
       },
       publisher: {
         '@type': 'Organization',
-        name: 'Yanghua Cable',
-        url: 'https://www.yhflexiblebusbar.com',
+        name: company.name,
+        url: company.url,
       },
       mainEntityOfPage: `https://www.yhflexiblebusbar.com${article.url}`,
       about: geo.targetQueries,
@@ -257,12 +259,26 @@ const structuredData = {
             )}
             <div>
               <dt class="text-xs font-medium text-text-muted">Author</dt>
-              <dd class="mt-0.5 text-text">{article.author.name}</dd>
+              <dd class="mt-0.5 text-text">{article.authorManifest.displayName || article.author.name}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-medium text-text-muted">Content owner</dt>
+              <dd class="mt-0.5 text-text">{article.governance.ownership.system}</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-medium text-text-muted">Evidence grade</dt>
+              <dd class="mt-0.5 text-text">{article.evidence.summaryGrade}</dd>
             </div>
             {article.geoflow.reviewedBy && (
               <div>
                 <dt class="text-xs font-medium text-text-muted">Reviewed by</dt>
                 <dd class="mt-0.5 text-text">{article.geoflow.reviewedBy}</dd>
+              </div>
+            )}
+            {article.evidence.hasUnapprovedPublicClaims && (
+              <div>
+                <dt class="text-xs font-medium text-text-muted">Public claims</dt>
+                <dd class="mt-0.5 text-text">Approval needed before publishing blocked claims</dd>
               </div>
             )}
             {article.geoflow.sourceBatchId && (

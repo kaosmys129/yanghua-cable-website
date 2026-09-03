@@ -248,7 +248,7 @@
   },
   "partners": {
     "title": "Our Partners",
-    "subtitle": "Trusted by leading companies worldwide",
+    "subtitle": "Supporting industrial electrification and power distribution teams",
     "viewAll": "View All Partners",
     "ctaAllPartners": "Get Quote"
   },
@@ -333,7 +333,7 @@
   },
   "footer": {
     "company": {
-      "description": "Yanghua Cable - Leading manufacturer of high-quality flexible busbar solutions for global industries. Yanghua trusted by 500+ companies worldwide for reliable power distribution systems.",
+      "description": "Yanghua Cable provides flexible busbar and cable solutions for industrial electrification, energy storage, photovoltaics, EV charging, and power distribution projects.",
       "address": "Yanghua Cable Manufacturing Base, Dongguan, Guangdong, China"
     },
     "support": {
@@ -367,7 +367,7 @@
       "documentation": {
         "value": "11",
         "label": "Yanghua Enterprise Standards",
-        "description": "Yanghua industry-leading electrical busbar specifications"
+        "description": "Yanghua electrical busbar specifications for industrial and energy projects"
       }
     },
     "ctaLearnMore": "Learn More About Yanghua Cable"

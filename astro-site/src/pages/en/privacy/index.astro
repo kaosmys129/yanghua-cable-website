@@ -16,7 +16,7 @@ const page = await loadPageJson<any>('en', 'privacy');
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
       <div class="rounded-lg border border-border bg-surface p-8 text-text-muted">
-        Privacy policy content is currently empty in `content/pages/en/privacy.json` (legacy site). Add content there and it will be rendered here.
+        Privacy policy publication is pending approval. Add approved content to `content/pages/en/privacy.json` and it will be rendered here.
       </div>
       {page?.content && Object.keys(page.content).length > 0 && (
         <pre class="mt-8 overflow-auto rounded-lg border border-border bg-background p-6 text-xs text-text">
@@ -28,4 +28,3 @@ const page = await loadPageJson<any>('en', 'privacy');
 
   <Footer slot="footer" locale="en" />
 </BaseLayout>
-
