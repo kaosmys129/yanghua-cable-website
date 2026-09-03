@@ -1,0 +1,380 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import PaginationNav from './PaginationNav.astro';
+import { buildHreflangAlternates } from '../lib/yanghua/hreflang';
+import { loadMessages } from '../lib/yanghua/loaders';
+import { t, tRaw } from '../lib/yanghua/t';
+import { buildPaginationLinks, buildPaginatedPath, getTotalPages, paginateItems } from '../lib/yanghua/pagination';
+import { generateCollectionPageSchema, generateFullOrganizationSchema, generateWebsiteSchema } from '../lib/schema-utils';
+import type { CollectionPageArticle } from '../lib/schema-utils';
+import type { Locale } from '../lib/yanghua/loaders';
+
+interface Props {
+  locale: Locale;
+  pageNumber?: number;
+}
+
+const { locale, pageNumber = 1 } = Astro.props as Props;
+const messages = await loadMessages(locale);
+const projects = tRaw<any[]>(messages, 'projects.list', []);
+const stats = tRaw<Record<string, string>>(messages, 'projects.stats', {});
+const pagination = paginateItems(projects, pageNumber);
+const listingPath = locale === 'es' ? '/es/proyectos' : locale === 'pt' ? '/pt/projetos' : '/en/projects';
+const currentPath = buildPaginatedPath(listingPath, pagination.pageNumber);
+const paginationLinks = buildPaginationLinks(listingPath, pagination.pageNumber, pagination.totalPages);
+const baseTitle = t(messages, 'projects.page.title');
+const description = t(messages, 'projects.page.description');
+const fullTitle = pagination.pageNumber > 1 ? `${baseTitle} Page ${pagination.pageNumber}` : baseTitle;
+const allLocaleMessages = {
+  en: await loadMessages('en'),
+  es: await loadMessages('es'),
+  pt: await loadMessages('pt'),
+};
+const availableLocales = (['en', 'es', 'pt'] as Locale[]).filter((candidateLocale) =>
+  getTotalPages(tRaw<any[]>(allLocaleMessages[candidateLocale], 'projects.list', []).length) >= pagination.pageNumber
+);
+const alternates = buildHreflangAlternates(currentPath, 'https://www.yhflexiblebusbar.com', availableLocales);
+
+const statLabels: Record<Locale, Record<string, string>> = {
+  en: {
+    totalProjects: 'Total Projects',
+    industriesCovered: 'Industries Covered',
+    countriesServed: 'Countries Served',
+    totalCapacity: 'Total Capacity',
+  },
+  es: {
+    totalProjects: 'Total de Proyectos',
+    industriesCovered: 'Industrias Cubiertas',
+    countriesServed: 'Países Atendidos',
+    totalCapacity: 'Capacidad Total',
+  },
+  pt: {
+    totalProjects: 'Total de projetos',
+    industriesCovered: 'Setores atendidos',
+    countriesServed: 'Países atendidos',
+    totalCapacity: 'Capacidade total',
+  },
+};
+
+const industryColors: Record<Locale, Record<string, string>> = {
+  en: {
+    'Data Center': 'bg-blue-500 text-white border-blue-500',
+    'New Energy': 'bg-emerald-500 text-white border-emerald-500',
+    'Industrial': 'bg-slate-600 text-white border-slate-600',
+    'Rail Transit': 'bg-purple-500 text-white border-purple-500',
+    'Metallurgy': 'bg-orange-500 text-white border-orange-500',
+  },
+  es: {
+    'Centro de Datos': 'bg-blue-500 text-white border-blue-500',
+    'Nueva Energía': 'bg-emerald-500 text-white border-emerald-500',
+    'Industrial': 'bg-slate-600 text-white border-slate-600',
+    'Tránsito Ferroviario': 'bg-purple-500 text-white border-purple-500',
+    'Metalurgia': 'bg-orange-500 text-white border-orange-500',
+  },
+  pt: {
+    'Centro de dados': 'bg-blue-500 text-white border-blue-500',
+    'Nova Energia': 'bg-emerald-500 text-white border-emerald-500',
+    'Industrial': 'bg-slate-600 text-white border-slate-600',
+    'Trânsito Ferroviário': 'bg-purple-500 text-white border-purple-500',
+    'Metalurgia': 'bg-orange-500 text-white border-orange-500',
+  },
+};
+
+const industries = ['All', ...new Set(pagination.items.map((project: any) => project.industry))] as string[];
+
+const collectionProjects: CollectionPageArticle[] = pagination.items.map((project: any) => ({
+  title: project.title,
+  description: project.description || project.content || '',
+  url: `${listingPath}/${project.id}`,
+  image: project.images?.[0],
+  itemType: 'Project',
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    generateFullOrganizationSchema(),
+    generateWebsiteSchema(),
+    generateCollectionPageSchema(collectionProjects, undefined, locale, {
+      path: currentPath,
+      name: baseTitle,
+      description,
+    }),
+  ],
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title={fullTitle}
+  description={description}
+  canonical={currentPath}
+  schema={schema}
+  availableLocales={availableLocales}
+>
+  <Header slot="header" locale={locale} alternates={alternates} />
+
+  <section class="pb-4 pt-16">
+    <div class="mx-auto max-w-site px-4 text-center sm:px-6">
+      <span class="mb-4 inline-block rounded-full border border-[#fdb827] px-3 py-1 text-sm text-[#fdb827]">
+        {locale === 'es' ? 'Nuestros Proyectos' : locale === 'pt' ? 'Nossos projetos' : 'Our Projects'}
+      </span>
+      <h1 class="mb-4 text-4xl font-bold tracking-tight text-[#212529] md:text-5xl">
+        {baseTitle}
+      </h1>
+      <p class="mx-auto max-w-3xl text-xl leading-relaxed text-text-muted">
+        {description}
+      </p>
+      <hr class="mt-10 border-border" />
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mb-10 space-y-6" id="filter-bar">
+        <div class="relative mx-auto max-w-md">
+          <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input
+            type="text"
+            id="project-search"
+            placeholder={locale === 'es' ? 'Buscar proyectos...' : locale === 'pt' ? 'Buscar projetos...' : 'Search projects by name, client, or industry...'}
+            class="h-11 w-full rounded-xl border-2 border-border bg-transparent pl-10 pr-10 text-sm text-text placeholder:text-text-muted transition-colors focus:border-[#fdb827] focus:outline-none"
+          />
+          <button
+            id="search-clear"
+            class="absolute right-3 top-1/2 hidden -translate-y-1/2 text-text-muted transition-colors hover:text-text"
+            aria-label={locale === 'es' ? 'Limpiar búsqueda' : locale === 'pt' ? 'Limpar busca' : 'Clear search'}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2.5" id="filter-buttons">
+          {industries.map((industry) => {
+            const isAll = industry === 'All';
+            const colorClass = isAll
+              ? 'border-amber-500'
+              : (industryColors[locale][industry] || 'border-gray-500').replace(/^bg-\S+\s/, '').replace(/text-white\s/, '');
+            const activeClass = isAll
+              ? 'bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20'
+              : `${industryColors[locale][industry] || 'bg-gray-500 text-white border-gray-500'} shadow-md`;
+            return (
+              <button
+                data-filter={isAll ? 'all' : industry}
+                class={`filter-btn rounded-full border-2 px-4 py-2 text-sm font-medium transition-all duration-300 ${isAll ? activeClass : `text-muted-foreground hover:text-foreground hover:border-foreground/30 ${colorClass}`}`}
+              >
+                {isAll ? (locale === 'es' ? 'Todos' : locale === 'pt' ? 'Todos' : 'All') : industry}
+              </button>
+            );
+          })}
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-text-muted">
+          <button id="clear-filters" class="hidden h-8 items-center gap-1 text-xs text-text-muted hover:text-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            {locale === 'es' ? 'Limpiar filtros' : locale === 'pt' ? 'Limpar filtros' : 'Clear filters'}
+          </button>
+          <span id="result-count" class="ml-auto">
+            {pagination.items.length} {locale === 'es' ? 'proyectos encontrados' : locale === 'pt' ? 'projetos encontrados' : 'projects found'}
+          </span>
+        </div>
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {pagination.items.map((project: any) => (
+          <a
+            href={`${listingPath}/${project.id}`}
+            data-industry={project.industry}
+            data-search-text={`${project.title} ${project.client} ${project.industry} ${project.description}`.toLowerCase()}
+            class="project-card group flex flex-col overflow-hidden rounded-xl border-0 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div class="relative h-52 overflow-hidden bg-gray-100">
+              <img
+                src={(project.images && project.images[0]) || '/images/projects/no-image-available.webp'}
+                alt={project.title}
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute left-3 top-3">
+                <span class="inline-block rounded-md bg-white/90 px-2.5 py-1 text-xs font-medium text-[#212529] shadow-sm backdrop-blur-sm">
+                  {project.industry}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-5">
+              <h2 class="mb-3 line-clamp-2 text-lg font-semibold text-[#212529] transition-colors duration-200 group-hover:text-[#fdb827]">
+                {project.title}
+              </h2>
+
+              <div class="mb-4 flex-1 space-y-2.5">
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                  <span>{project.client}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>{project.location}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>{project.year}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-text-muted">
+                  <svg class="h-3.5 w-3.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>{project.scale || project.projectScale}</span>
+                </div>
+              </div>
+
+              <p class="mb-4 line-clamp-2 text-sm leading-relaxed text-text-muted">
+                {project.description}
+              </p>
+
+              <span class="inline-flex w-full items-center justify-center rounded-lg border-2 border-[#fdb827] px-4 py-2 text-sm font-medium text-[#fdb827] transition-all duration-300 group-hover:bg-[#fdb827] group-hover:text-[#212529]">
+                {t(messages, 'projects.labels.viewDetails')}
+                <svg class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div id="empty-state" class="hidden py-20 text-center">
+        <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+          <svg class="h-8 w-8 text-text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h2 class="mb-2 text-xl font-semibold text-[#212529]">
+          {locale === 'es' ? 'No se encontraron proyectos' : locale === 'pt' ? 'Nenhum projeto encontrado' : 'No projects found'}
+        </h2>
+        <p class="mb-6 text-text-muted">
+          {locale === 'es' ? 'Intenta ajustar los filtros o términos de búsqueda.' : locale === 'pt' ? 'Ajuste os filtros ou os termos de busca.' : 'Try adjusting your filters or search terms.'}
+        </p>
+        <button id="reset-filters-btn" class="rounded-lg border-2 border-border px-4 py-2 text-sm font-medium text-text transition-colors hover:border-[#fdb827] hover:text-[#fdb827]">
+          {locale === 'es' ? 'Mostrar todos los proyectos' : locale === 'pt' ? 'Mostrar todos os projetos' : 'Show all projects'}
+        </button>
+      </div>
+
+      <PaginationNav
+        links={paginationLinks}
+        previousHref={pagination.hasPrevious ? buildPaginatedPath(listingPath, pagination.pageNumber - 1) : null}
+        nextHref={pagination.hasNext ? buildPaginatedPath(listingPath, pagination.pageNumber + 1) : null}
+        previousLabel={locale === 'es' ? 'Anterior' : locale === 'pt' ? 'Anterior' : 'Previous'}
+        nextLabel={locale === 'es' ? 'Siguiente' : locale === 'pt' ? 'Proxima' : 'Next'}
+        ariaLabel={locale === 'es' ? 'Paginacion de proyectos' : locale === 'pt' ? 'Paginacao de projetos' : 'Project pagination'}
+      />
+    </div>
+  </section>
+
+  <section class="pb-16">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="rounded-2xl bg-[#212529] p-10 md:p-12">
+        <div class="mb-8 text-center">
+          <span class="mb-3 inline-block rounded-full border border-white/30 px-3 py-1 text-sm text-white/80">
+            {locale === 'es' ? 'Nuestro Impacto' : locale === 'pt' ? 'Nosso impacto' : 'Our Impact'}
+          </span>
+          <h2 class="text-2xl font-bold text-white md:text-3xl">
+            {locale === 'es' ? 'Por los Números' : locale === 'pt' ? 'Em números' : 'By the Numbers'}
+          </h2>
+        </div>
+        <div class="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+          {Object.entries(stats).map(([key, value]) => (
+            <div class="space-y-2">
+              <div class="text-4xl font-extrabold tracking-tight text-[#fdb827] md:text-5xl">{value}</div>
+              <div class="text-sm font-medium uppercase tracking-wider text-white/70">{statLabels[locale][key] || key}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" locale={locale} />
+</BaseLayout>
+
+<script define:vars={{ locale, industryColors: industryColors[locale] }}>
+  const searchInput = document.getElementById('project-search');
+  const searchClear = document.getElementById('search-clear');
+  const clearFilters = document.getElementById('clear-filters');
+  const resultCount = document.getElementById('result-count');
+  const emptyState = document.getElementById('empty-state');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const resetBtn = document.getElementById('reset-filters-btn');
+  const cards = document.querySelectorAll('.project-card');
+
+  let activeFilter = 'all';
+  let searchQuery = '';
+
+  function resultLabel(count) {
+    if (locale === 'es') return `${count} proyecto${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`;
+    if (locale === 'pt') return `${count} projeto${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`;
+    return `${count} project${count !== 1 ? 's' : ''} found`;
+  }
+
+  function inactiveClass() {
+    return 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 text-muted-foreground hover:text-foreground hover:border-foreground/30 border-gray-300';
+  }
+
+  function allActiveClass() {
+    return 'filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20';
+  }
+
+  function updateUI() {
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const industry = card.dataset.industry || '';
+      const searchText = card.dataset.searchText || '';
+      const matchesFilter = activeFilter === 'all' || industry === activeFilter;
+      const matchesSearch = !searchQuery || searchText.includes(searchQuery.toLowerCase());
+      card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
+      if (matchesFilter && matchesSearch) visibleCount += 1;
+    });
+
+    if (resultCount) resultCount.textContent = resultLabel(visibleCount);
+    if (emptyState) emptyState.classList.toggle('hidden', visibleCount > 0);
+    if (clearFilters) clearFilters.classList.toggle('hidden', !(activeFilter !== 'all' || searchQuery));
+    if (searchClear) searchClear.classList.toggle('hidden', !searchQuery);
+  }
+
+  searchInput?.addEventListener('input', () => {
+    searchQuery = searchInput.value;
+    updateUI();
+  });
+
+  searchClear?.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    updateUI();
+  });
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter || 'all';
+      filterButtons.forEach((candidate) => {
+        const filter = candidate.dataset.filter || 'all';
+        if (filter === activeFilter) {
+          candidate.className = filter === 'all'
+            ? allActiveClass()
+            : `filter-btn rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border-2 ${industryColors[filter] || 'bg-gray-500 text-white border-gray-500'} shadow-md`;
+        } else {
+          candidate.className = inactiveClass();
+        }
+      });
+      updateUI();
+    });
+  });
+
+  function resetFilters() {
+    activeFilter = 'all';
+    if (searchInput) searchInput.value = '';
+    searchQuery = '';
+    filterButtons.forEach((button) => {
+      button.className = button.dataset.filter === 'all' ? allActiveClass() : inactiveClass();
+    });
+    updateUI();
+  }
+
+  clearFilters?.addEventListener('click', resetFilters);
+  resetBtn?.addEventListener('click', resetFilters);
+</script>

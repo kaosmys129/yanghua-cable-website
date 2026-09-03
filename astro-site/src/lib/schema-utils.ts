@@ -34,7 +34,9 @@ export interface CollectionPageArticle {
   url: string;
   image?: string;
   publishedAt?: string;
+  modifiedAt?: string;
   geoQueries?: string[];
+  itemType?: string;
 }
 
 export interface ArticlePost {
@@ -49,6 +51,11 @@ export interface ArticlePost {
   tags?: string[];
   wordCount?: number;
   readingTime?: number;
+  authorName?: string;
+  authorKind?: 'person' | 'organization';
+  authorBio?: string;
+  authorApproved?: boolean;
+  schemaType?: 'Article' | 'TechArticle';
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -101,13 +108,6 @@ export function generateFullOrganizationSchema(siteUrl?: string): Record<string,
       },
     ],
     ...(company.sameAs.length > 0 && { sameAs: company.sameAs }),
-    makesOffer: {
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: company.offeringName,
-      },
-    },
   };
 }
 
@@ -119,19 +119,28 @@ export function generateCollectionPageSchema(
   articles: CollectionPageArticle[],
   siteUrl?: string,
   locale: string = 'en',
+  options: {
+    path?: string;
+    id?: string;
+    name?: string;
+    description?: string;
+  } = {},
 ): Record<string, unknown> {
   const baseUrl = normalizeBaseUrl(siteUrl);
-  const listPath = locale === 'es' ? '/es/articulos' : locale === 'pt' ? '/pt/artigos' : '/en/articles';
+  const listPath = options.path ?? (locale === 'es' ? '/es/articulos' : locale === 'pt' ? '/pt/artigos' : '/en/articles');
 
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    '@id': `${baseUrl}${listPath}#collection`,
-    name: locale === 'es' ? 'Articulos tecnicos' : 'Technical Articles',
-    description:
+    '@id': options.id ?? `${baseUrl}${listPath}#collection`,
+    name: options.name ?? (locale === 'es' ? 'Articulos tecnicos' : locale === 'pt' ? 'Artigos tecnicos' : 'Technical Articles'),
+    description: options.description ?? (
       locale === 'es'
         ? 'Articulos tecnicos, guias GEO, preguntas frecuentes y perspectivas de aplicacion para proyectos de barras flexibles, almacenamiento de energia, energia solar fotovoltaica, carga de VE y distribucion de energia de alta corriente.'
-        : 'Technical articles, GEO-ready guides, FAQs, and application insights for flexible busbar, energy storage, solar PV, EV charging, and high-current power distribution projects.',
+        : locale === 'pt'
+          ? 'Artigos tecnicos, guias GEO, perguntas frequentes e perspectivas de aplicacao para barramento flexivel, armazenamento de energia, energia solar fotovoltaica, carregamento de VE e distribuicao de alta corrente.'
+          : 'Technical articles, GEO-ready guides, FAQs, and application insights for flexible busbar, energy storage, solar PV, EV charging, and high-current power distribution projects.'
+    ),
     url: `${baseUrl}${listPath}`,
     mainEntity: {
       '@type': 'ItemList',
@@ -140,7 +149,7 @@ export function generateCollectionPageSchema(
         '@type': 'ListItem',
         position: index + 1,
         item: {
-          '@type': 'TechArticle',
+          '@type': article.itemType ?? 'TechArticle',
           '@id': `${baseUrl}${article.url}#article`,
           name: article.title,
           headline: article.title,
@@ -152,6 +161,7 @@ export function generateCollectionPageSchema(
           }),
           url: `${baseUrl}${article.url}`,
           ...(article.publishedAt && { datePublished: article.publishedAt }),
+          ...(article.modifiedAt && { dateModified: article.modifiedAt }),
           ...(article.geoQueries &&
             article.geoQueries.length > 0 && {
               about: article.geoQueries.map((q) => ({
@@ -159,7 +169,7 @@ export function generateCollectionPageSchema(
                 name: q,
               })),
             }),
-          inLanguage: locale === 'es' ? 'es' : 'en',
+          inLanguage: locale === 'es' ? 'es' : locale === 'pt' ? 'pt' : 'en',
           publisher: {
             '@type': 'Organization',
             '@id': `${baseUrl}/#organization`,
@@ -197,11 +207,24 @@ export function generateBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: {
-        '@type': 'WebPage',
-        '@id': item.url.startsWith('http') ? item.url : `${baseUrl}${item.url}`,
-      },
+      item: item.url.startsWith('http') ? item.url : `${baseUrl}${item.url}`,
     })),
+  };
+}
+
+function buildAuthorSchema(post: ArticlePost, baseUrl: string): Record<string, unknown> {
+  if (post.authorApproved && post.authorKind === 'person' && post.authorName) {
+    return {
+      '@type': 'Person',
+      name: post.authorName,
+      ...(post.authorBio && { description: post.authorBio }),
+    };
+  }
+
+  return {
+    '@type': 'Organization',
+    '@id': `${baseUrl}/#organization`,
+    name: getPublicCompanyProfile(baseUrl).name,
   };
 }
 
@@ -218,7 +241,7 @@ export function generateArticleSchema(
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'TechArticle',
+    '@type': post.schemaType ?? 'TechArticle',
     '@id': `${baseUrl}${post.url}#article`,
     headline: post.title,
     description: post.description,
@@ -229,11 +252,7 @@ export function generateArticleSchema(
     }),
     datePublished: post.publishedAt || new Date().toISOString(),
     dateModified: post.modifiedAt || post.publishedAt || new Date().toISOString(),
-    author: {
-      '@type': 'Organization',
-      '@id': `${baseUrl}/#organization`,
-      name: company.name,
-    },
+    author: buildAuthorSchema(post, baseUrl),
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
@@ -278,6 +297,14 @@ export function generateWebsiteSchema(siteUrl?: string): Record<string, unknown>
     publisher: {
       '@type': 'Organization',
       '@id': `${baseUrl}/#organization`,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/en/articles?query={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
     },
   };
 }

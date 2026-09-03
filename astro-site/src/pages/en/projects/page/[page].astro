@@ -1,0 +1,19 @@
+---
+export const prerender = true;
+import ProjectListingPage from '../../../../components/ProjectListingPage.astro';
+import { loadMessages } from '../../../../lib/yanghua/loaders';
+import { tRaw } from '../../../../lib/yanghua/t';
+import { getTotalPages } from '../../../../lib/yanghua/pagination';
+
+export async function getStaticPaths() {
+  const messages = await loadMessages('en');
+  const totalPages = getTotalPages(tRaw<any[]>(messages, 'projects.list', []).length);
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => ({
+    params: { page: String(index + 2) },
+  }));
+}
+
+const pageNumber = Number(Astro.params.page || '2');
+---
+
+<ProjectListingPage locale="en" pageNumber={pageNumber} />

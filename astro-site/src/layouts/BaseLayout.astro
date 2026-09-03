@@ -11,7 +11,7 @@ import { brand } from '../config/brand';
 import type { Locale } from '../lib/yanghua/loaders';
 import type { NormalizedSiteSettings } from '../lib/yanghua/site-settings';
 import { loadAndNormalizeSiteSettings } from '../lib/yanghua/site-settings';
-import { generateFullOrganizationSchema } from '../lib/schema-utils';
+import { generateFullOrganizationSchema, generateWebsiteSchema } from '../lib/schema-utils';
 import { buildHreflangAlternates } from '../lib/yanghua/hreflang';
 import { localeFromPathname } from '../lib/yanghua/routes';
 import { buildSeoMetadata } from '../lib/yanghua/seo-meta.mjs';
@@ -26,6 +26,7 @@ interface Props {
   schema?: Record<string, unknown>;
   canonical?: string | false;
   robots?: string;
+  seoProtectedPhrases?: string[];
   includeHreflang?: boolean;
   alternates?: { hreflang: string; href: string }[];
   /**
@@ -51,9 +52,17 @@ const {
   preloadImage,
   preloadMobileImage,
   schema,
+  seoProtectedPhrases = [],
 } = Astro.props;
 
-const resolvedSchema = schema ?? generateFullOrganizationSchema(String(Astro.site ?? brand.url));
+const siteOrigin = String(Astro.site ?? brand.url);
+const resolvedSchema = schema ?? {
+  '@context': 'https://schema.org',
+  '@graph': [
+    generateFullOrganizationSchema(siteOrigin),
+    generateWebsiteSchema(siteOrigin),
+  ],
+};
 
 const localizedDefaultDescription = locale === 'es'
   ? 'Soluciones de busbar flexible y distribución de energía de alta corriente para aplicaciones industriales, comerciales y energéticas.'
@@ -65,6 +74,7 @@ const seoMetadata = buildSeoMetadata({
   description,
   fallbackDescription: localizedDefaultDescription,
   brandName: site.brand.name || brand.name,
+  protectedPhrases: seoProtectedPhrases,
 });
 const pageTitle = seoMetadata.title;
 const pageDescription = seoMetadata.description;

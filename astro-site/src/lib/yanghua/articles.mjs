@@ -1,5 +1,6 @@
 import {
   buildArticlesMapPayload,
+  buildLlmsFullTxt,
   buildLlmsTxt,
   buildSitemapXml,
   normalizeArticleModule,
@@ -119,6 +120,14 @@ export function getArticlesMapPayload(options = {}) {
 
 export function getLlmsTxt(options = {}) {
   return buildLlmsTxt({
+    siteUrl: options.siteUrl || YANGHUA_SITE_URL,
+    articles: getAllArticles(),
+    hubs: getAllHubs(),
+  });
+}
+
+export function getLlmsFullTxt(options = {}) {
+  return buildLlmsFullTxt({
     siteUrl: options.siteUrl || YANGHUA_SITE_URL,
     articles: getAllArticles(),
     hubs: getAllHubs(),

@@ -7,7 +7,14 @@ import Banner from '../../../components/Banner.astro';
 import { getAllArticles, getArticleStaticPaths, YANGHUA_SITE_URL } from '../../../lib/yanghua/articles.mjs';
 import { buildArticleHreflangAlternates } from '../../../lib/yanghua/articles-core.mjs';
 import type { Locale } from '../../../lib/yanghua/loaders';
-import { getPublicCompanyProfile } from '../../../lib/yanghua/company-facts.mjs';
+import { APPROVAL_APPROVED, getPublicCompanyProfile } from '../../../lib/yanghua/company-facts.mjs';
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+  generateFullOrganizationSchema,
+  generateWebsiteSchema,
+} from '../../../lib/schema-utils';
 
 export function getStaticPaths() {
   return getArticleStaticPaths('es');
@@ -71,52 +78,37 @@ const solutionLinks = geo.relatedSolutionIds.map((id: string) => ({
   label: id.replace(/[-_]/g, ' '),
   href: normalizeSolutionHref(id, 'es'),
 }));
-
-const faqSchema = geo.faqs.length > 0 ? {
-  '@type': 'FAQPage',
-  '@id': `${Astro.url}#geo-faq`,
-  mainEntity: geo.faqs.map((faq: any) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-} : null;
+const normalizedFaqs = geo.faqs;
+const hasApprovedPersonAuthor = article.authorManifest?.approvalStatus === APPROVAL_APPROVED
+  && article.authorManifest?.kind === 'person'
+  && article.authorManifest?.displayName;
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BlogPosting',
-      headline: article.title,
+    generateFullOrganizationSchema(YANGHUA_SITE_URL),
+    generateWebsiteSchema(YANGHUA_SITE_URL),
+    generateArticleSchema({
+      title,
       description,
-      image: coverImageUrl,
-      datePublished: article.publishedAt || undefined,
-      dateModified: article.updatedAt || article.publishedAt || undefined,
-      author: {
-        '@type': 'Organization',
-        name: article.authorManifest.displayName || article.author.name || company.name,
-        url: `${company.url}/es/acerca-de`,
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: company.name,
-        url: company.url,
-      },
-      mainEntityOfPage: `https://www.yhflexiblebusbar.com${article.url}`,
-      about: geo.targetQueries,
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.yhflexiblebusbar.com/es' },
-        { '@type': 'ListItem', position: 2, name: 'Articulos', item: 'https://www.yhflexiblebusbar.com/es/articulos' },
-        { '@type': 'ListItem', position: 3, name: article.title, item: `https://www.yhflexiblebusbar.com${article.url}` },
-      ],
-    },
-    ...(faqSchema ? [faqSchema] : []),
+      url: article.url,
+      image: coverImage,
+      publishedAt: article.publishedAt || undefined,
+      modifiedAt: article.updatedAt || article.publishedAt || undefined,
+      category: article.category?.name || undefined,
+      tags: article.seo?.keywords || undefined,
+      authorName: article.authorManifest.displayName || article.author.name || company.name,
+      authorKind: hasApprovedPersonAuthor ? 'person' : 'organization',
+      authorBio: hasApprovedPersonAuthor ? article.authorManifest.bio : undefined,
+      authorApproved: hasApprovedPersonAuthor,
+      schemaType: 'TechArticle',
+    }, YANGHUA_SITE_URL),
+    generateBreadcrumbSchema([
+      { name: 'Inicio', url: `${YANGHUA_SITE_URL}/es` },
+      { name: 'Articulos', url: `${YANGHUA_SITE_URL}/es/articulos` },
+      { name: article.title, url: `${YANGHUA_SITE_URL}${article.url}` },
+    ], YANGHUA_SITE_URL),
+    ...(normalizedFaqs.length > 0 ? [generateFAQSchema(normalizedFaqs)] : []),
   ],
 };
 ---
@@ -129,6 +121,7 @@ const structuredData = {
   schema={structuredData}
   availableLocales={availableLocales}
   alternates={alternates}
+  seoProtectedPhrases={geo.targetQueries.slice(0, 1)}
 >
   <Header slot="header" locale="es" alternates={alternates} />
   <Banner title={title} locale="es" />
@@ -169,11 +162,11 @@ const structuredData = {
           <Content />
         </article>
 
-        {geo.faqs.length > 0 && (
+        {normalizedFaqs.length > 0 && (
           <section id="geo-faq" class="mt-10 border-t border-border pt-8">
             <h2 class="font-heading text-2xl font-semibold text-text">FAQ</h2>
             <div class="mt-5 space-y-4">
-              {geo.faqs.map((faq: any) => (
+              {normalizedFaqs.map((faq: any) => (
                 <details class="rounded-lg border border-border bg-surface p-4">
                   <summary class="cursor-pointer font-semibold text-text">{faq.question}</summary>
                   <p class="mt-3 text-sm leading-6 text-text-muted">{faq.answer}</p>

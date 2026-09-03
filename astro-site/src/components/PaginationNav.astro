@@ -1,0 +1,68 @@
+---
+interface LinkItem {
+  href: string;
+  label: string;
+  pageNumber: number;
+  current: boolean;
+}
+
+interface Props {
+  links: LinkItem[];
+  previousHref?: string | null;
+  nextHref?: string | null;
+  previousLabel: string;
+  nextLabel: string;
+  ariaLabel: string;
+}
+
+const {
+  links = [],
+  previousHref = null,
+  nextHref = null,
+  previousLabel,
+  nextLabel,
+  ariaLabel,
+} = Astro.props as Props;
+---
+
+{links.length > 1 && (
+  <nav class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label={ariaLabel}>
+    {previousHref ? (
+      <a href={previousHref} class="rounded-md border border-border px-3 py-2 text-sm font-medium text-text transition hover:border-accent hover:text-accent">
+        {previousLabel}
+      </a>
+    ) : (
+      <span class="rounded-md border border-border px-3 py-2 text-sm font-medium text-text-muted/60">
+        {previousLabel}
+      </span>
+    )}
+
+    {links.map((link) => (
+      link.current ? (
+        <span
+          aria-current="page"
+          class="rounded-md border border-accent bg-accent px-3 py-2 text-sm font-semibold text-accent-fg"
+        >
+          {link.label}
+        </span>
+      ) : (
+        <a
+          href={link.href}
+          class="rounded-md border border-border px-3 py-2 text-sm font-medium text-text transition hover:border-accent hover:text-accent"
+        >
+          {link.label}
+        </a>
+      )
+    ))}
+
+    {nextHref ? (
+      <a href={nextHref} class="rounded-md border border-border px-3 py-2 text-sm font-medium text-text transition hover:border-accent hover:text-accent">
+        {nextLabel}
+      </a>
+    ) : (
+      <span class="rounded-md border border-border px-3 py-2 text-sm font-medium text-text-muted/60">
+        {nextLabel}
+      </span>
+    )}
+  </nav>
+)}

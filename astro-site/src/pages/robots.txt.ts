@@ -10,6 +10,7 @@ const robots = isIndexableEnvironment
       'User-agent: *',
       'Allow: /',
       'Allow: /llms.txt',
+      'Allow: /llms-full.txt',
       'Allow: /geoflow/articles-map.json',
       'Disallow: /api/',
       '',

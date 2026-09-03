@@ -1,12 +1,85 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
+import matter from 'gray-matter';
 import remarkGfm from 'remark-gfm';
 import vercel from '@astrojs/vercel';
 import { buildProductCategoryRedirects } from './src/lib/yanghua/seo-localized-routes.mjs';
+import { normalizeArticleModule } from './src/lib/yanghua/articles-core.mjs';
+
+const SITE_URL = 'https://www.yhflexiblebusbar.com';
+const LISTING_PAGE_SIZE = 24;
+const ARTICLE_SOURCE_ROOT = path.resolve(process.cwd(), 'src/data/legacy-content/content/articles');
+
+/**
+ * @param {string} basePath
+ * @param {number} pageNumber
+ */
+function buildPaginatedPath(basePath, pageNumber) {
+  return pageNumber <= 1 ? basePath : `${basePath}/page/${pageNumber}`;
+}
+
+function loadPublicArticlesForSitemap() {
+  return ['en', 'es', 'pt'].flatMap((locale) => {
+    const directory = path.join(ARTICLE_SOURCE_ROOT, locale);
+    return readdirSync(directory)
+      .filter((file) => file.endsWith('.mdx'))
+      .map((file) => {
+        const fullPath = path.join(directory, file);
+        const frontmatter = matter(readFileSync(fullPath, 'utf8')).data;
+        return normalizeArticleModule({
+          path: fullPath,
+          frontmatter,
+        });
+      })
+      .filter((article) => article.isPublic);
+  });
+}
+
+/**
+ * @param {Array<{updatedAt?: string, publishedAt?: string}>} articles
+ */
+function sortArticlesByUpdatedAt(articles) {
+  return [...articles].sort((left, right) =>
+    String(right.updatedAt || right.publishedAt).localeCompare(String(left.updatedAt || left.publishedAt)),
+  );
+}
+
+function buildSitemapLastmodLookup() {
+  const articles = loadPublicArticlesForSitemap();
+  const lookup = new Map();
+
+  for (const article of articles) {
+    if (article.updatedAt) {
+      lookup.set(`${SITE_URL}${article.url}`, article.updatedAt);
+    }
+  }
+
+  const listingBases = {
+    en: '/en/articles',
+    es: '/es/articulos',
+    pt: '/pt/artigos',
+  };
+
+  for (const [locale, basePath] of Object.entries(listingBases)) {
+    const localized = sortArticlesByUpdatedAt(articles.filter((article) => article.locale === locale));
+    const totalPages = Math.max(1, Math.ceil(localized.length / LISTING_PAGE_SIZE));
+    for (let pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
+      const firstArticle = localized[(pageNumber - 1) * LISTING_PAGE_SIZE];
+      if (!firstArticle?.updatedAt) continue;
+      lookup.set(`${SITE_URL}${buildPaginatedPath(basePath, pageNumber)}`, firstArticle.updatedAt);
+    }
+  }
+
+  return lookup;
+}
+
+const sitemapLastmodLookup = buildSitemapLastmodLookup();
 
 function demoteArticleH1() {
   /** @param {any} tree @param {any} file */
@@ -52,6 +125,17 @@ export default defineConfig({
       // Publish only canonical, locale-prefixed pages. Legacy redirect URLs,
       // utility pages, and status pages must not compete in the sitemap.
       filter: (page) => /^https:\/\/www\.yhflexiblebusbar\.com\/(en|es|pt)(\/|$)/.test(page),
+      serialize: (item) => {
+        const canonicalUrl = item.url.endsWith('/') && item.url !== `${SITE_URL}/`
+          ? item.url.replace(/\/+$/, '')
+          : item.url;
+        const lastmod = sitemapLastmodLookup.get(canonicalUrl);
+        return {
+          ...item,
+          url: canonicalUrl,
+          ...(lastmod && { lastmod: new Date(lastmod) }),
+        };
+      },
     }),
     react(),
   ],

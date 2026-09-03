@@ -101,6 +101,21 @@ const copyrightText = site.footer.copyright.replace('{year}', String(year));
       </div>
     </div>
 
+    <div class="mt-8 rounded-lg border border-surface/10 bg-white/5 p-4 text-sm">
+      <p class="font-semibold text-white">
+        {locale === 'es'
+          ? 'Recursos legibles por máquinas'
+          : locale === 'pt'
+            ? 'Recursos legiveis por maquina'
+            : 'Machine-readable resources'}
+      </p>
+      <div class="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-surface/80">
+        <a href="/llms.txt" class="transition-colors hover:text-white">llms.txt</a>
+        <a href="/llms-full.txt" class="transition-colors hover:text-white">llms-full.txt</a>
+        <a href="/geoflow/articles-map.json" class="transition-colors hover:text-white">articles-map.json</a>
+      </div>
+    </div>
+
     <!-- Copyright -->
     <div class="mt-10 border-t border-surface/10 pt-6 text-center text-sm">
       {copyrightText}

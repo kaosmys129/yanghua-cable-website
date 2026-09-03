@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Banner from './Banner.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import PaginationNav from './PaginationNav.astro';
+import { buildHreflangAlternates } from '../lib/yanghua/hreflang';
+import { loadMessages } from '../lib/yanghua/loaders';
+import { t } from '../lib/yanghua/t';
+import { getArticles, getHubs } from '../lib/yanghua/articles.mjs';
+import { buildPaginationLinks, buildPaginatedPath, getTotalPages, paginateItems } from '../lib/yanghua/pagination';
+import { generateCollectionPageSchema, generateFullOrganizationSchema, generateWebsiteSchema } from '../lib/schema-utils';
+import type { CollectionPageArticle } from '../lib/schema-utils';
+import type { Locale } from '../lib/yanghua/loaders';
+
+interface Props {
+  locale: Locale;
+  pageNumber?: number;
+}
+
+const { locale, pageNumber = 1 } = Astro.props as Props;
+const messages = await loadMessages(locale);
+const allArticles = getArticles(locale);
+const hubs = getHubs(locale);
+const pagination = paginateItems(allArticles, pageNumber);
+const listingPath = locale === 'es' ? '/es/articulos' : locale === 'pt' ? '/pt/artigos' : '/en/articles';
+const currentPath = buildPaginatedPath(listingPath, pagination.pageNumber);
+const paginationLinks = buildPaginationLinks(listingPath, pagination.pageNumber, pagination.totalPages);
+const availableLocales = (['en', 'es', 'pt'] as Locale[]).filter((candidateLocale) =>
+  getTotalPages(getArticles(candidateLocale).length) >= pagination.pageNumber
+);
+const alternates = buildHreflangAlternates(currentPath, 'https://www.yhflexiblebusbar.com', availableLocales);
+const pageTitle = t(messages, 'articles.page.title', locale === 'es' ? 'Artículos' : locale === 'pt' ? 'Artigos' : 'Articles');
+const pageDescription = t(
+  messages,
+  'articles.page.description',
+  locale === 'es'
+    ? 'Artículos técnicos, guías preparadas para GEO, preguntas frecuentes e información de aplicaciones para busbar flexible, almacenamiento de energía, solar fotovoltaica, carga EV y distribución de alta corriente.'
+    : locale === 'pt'
+      ? 'Artigos técnicos, guias preparadas para GEO, perguntas frequentes e informações de aplicação para barramento flexível, armazenamento de energia, energia solar fotovoltaica, carregamento de veículos elétricos e distribuição de alta corrente.'
+      : 'Technical articles, GEO-ready guides, FAQs, and application insights for flexible busbar, energy storage, solar PV, EV charging, and high-current power distribution projects.'
+);
+const fullTitle = pagination.pageNumber > 1
+  ? `${pageTitle} Page ${pagination.pageNumber}`
+  : pageTitle;
+
+const buyerIntentLabels: Record<Locale, Record<string, string>> = {
+  en: {
+    awareness: 'Awareness',
+    comparison: 'Comparison',
+    selection: 'Selection',
+    procurement: 'Procurement',
+  },
+  es: {
+    awareness: 'Conciencia',
+    comparison: 'Comparación',
+    selection: 'Selección',
+    procurement: 'Adquisición',
+  },
+  pt: {
+    awareness: 'Conhecimento',
+    comparison: 'Comparação',
+    selection: 'Seleção',
+    procurement: 'Aquisição',
+  },
+};
+
+const articleHeading = locale === 'es'
+  ? 'Artículos técnicos recientes'
+  : locale === 'pt'
+    ? 'Artigos técnicos recentes'
+    : 'Latest technical articles';
+const hubAriaLabel = locale === 'es'
+  ? 'Hubs de articulos'
+  : locale === 'pt'
+    ? 'Hubs de artigos'
+    : 'Article hubs';
+const targetQuestionLabel = locale === 'es'
+  ? 'Consulta objetivo'
+  : locale === 'pt'
+    ? 'Consulta-alvo'
+    : 'Target question';
+const readLabel = locale === 'es' ? 'Leer' : locale === 'pt' ? 'Ler' : 'Read';
+const noImageLabel = locale === 'es' ? 'Sin imagen' : locale === 'pt' ? 'Sem imagem' : 'No image';
+const imageFallback = '/images/no-image-available.webp';
+
+const translationLocaleMap = allArticles.reduce((map, article) => {
+  if (!article.translationKey) return map;
+  const locales = map.get(article.translationKey) ?? new Set();
+  locales.add(article.locale);
+  map.set(article.translationKey, locales);
+  return map;
+}, new Map<string, Set<string>>());
+
+const collectionArticles: CollectionPageArticle[] = pagination.items.map((article) => ({
+  title: article.title,
+  description: article.summary || article.description || '',
+  url: article.url,
+  image: article.cover?.src || undefined,
+  publishedAt: article.publishedAt || undefined,
+  modifiedAt: article.updatedAt || undefined,
+  geoQueries: article.geo?.targetQueries || [],
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    generateFullOrganizationSchema(),
+    generateWebsiteSchema(),
+    generateCollectionPageSchema(collectionArticles, undefined, locale, {
+      path: currentPath,
+      name: pageTitle,
+      description: pageDescription,
+    }),
+  ],
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title={fullTitle}
+  description={pageDescription}
+  canonical={currentPath}
+  schema={schema}
+  seoProtectedPhrases={pagination.items[0]?.geo?.targetQueries?.slice(0, 1) ?? []}
+  availableLocales={availableLocales}
+>
+  <Header slot="header" locale={locale} alternates={alternates} />
+  <Breadcrumbs
+    locale={locale}
+    items={[
+      { name: 'Home', href: locale === 'es' ? '/es' : locale === 'pt' ? '/pt' : '/en' },
+      { name: pageTitle, current: true },
+    ]}
+  />
+  <Banner title={pageTitle} locale={locale} />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-text-muted leading-relaxed">{pageDescription}</p>
+      </div>
+
+      <h2 class="mt-10 text-center font-heading text-2xl font-semibold text-text">{articleHeading}</h2>
+
+      {hubs.length > 0 && (
+        <nav class="mt-8 flex flex-wrap justify-center gap-2" aria-label={hubAriaLabel}>
+          {hubs.map((hub) => (
+            <a href={hub.url} class="rounded-full border border-border bg-surface px-3 py-1.5 text-sm font-medium text-text-muted transition hover:border-accent hover:text-accent">
+              {hub.title}
+            </a>
+          ))}
+        </nav>
+      )}
+
+      <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {pagination.items.map((article) => {
+          const translationLocales = article.translationKey ? [...(translationLocaleMap.get(article.translationKey) ?? [])].sort() : [];
+          const localeBadge = translationLocales.length > 1 ? translationLocales.map((item) => item.toUpperCase()).join('/') : '';
+          return (
+            <a href={article.url} class="group overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition hover:shadow-md">
+              <div class="h-44 overflow-hidden bg-background">
+                {article.cover.src ? (
+                  <img src={article.cover.src} alt={article.cover.alt || article.title} referrerpolicy="no-referrer" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" onerror={`if (!this.dataset.fallbackApplied) { this.dataset.fallbackApplied = 'true'; this.src = '${imageFallback}'; }`} />
+                ) : (
+                  <div class="flex h-full items-center justify-center text-sm text-text-muted">{noImageLabel}</div>
+                )}
+              </div>
+              <div class="p-6">
+                <div class="mb-2 flex flex-wrap items-center gap-2">
+                  {article.geo.targetQueries.length > 0 && (
+                    <span class="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">
+                      GEO · {article.geo.targetQueries.length}Q
+                    </span>
+                  )}
+                  {article.geo.buyerIntent && (
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                      {buyerIntentLabels[locale][article.geo.buyerIntent] || article.geo.buyerIntent}
+                    </span>
+                  )}
+                  {localeBadge && (
+                    <span class="rounded-full bg-surface px-2 py-0.5 text-[10px] font-medium text-text-muted ring-1 ring-border">
+                      {localeBadge}
+                    </span>
+                  )}
+                </div>
+                <h3 class="font-heading text-lg font-semibold text-text">{article.title}</h3>
+                {article.publishedAt && <p class="mt-1 text-xs text-text-muted">{article.publishedAt}</p>}
+                {article.summary && <p class="mt-3 line-clamp-3 text-sm text-text-muted">{article.summary}</p>}
+                {article.geo.targetQueries[0] && (
+                  <p class="mt-3 rounded-md bg-background px-3 py-2 text-xs font-medium text-text-muted">
+                    {targetQuestionLabel}: {article.geo.targetQueries[0]}
+                  </p>
+                )}
+                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                  {readLabel}
+                  <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <PaginationNav
+        links={paginationLinks}
+        previousHref={pagination.hasPrevious ? buildPaginatedPath(listingPath, pagination.pageNumber - 1) : null}
+        nextHref={pagination.hasNext ? buildPaginatedPath(listingPath, pagination.pageNumber + 1) : null}
+        previousLabel={locale === 'es' ? 'Anterior' : locale === 'pt' ? 'Anterior' : 'Previous'}
+        nextLabel={locale === 'es' ? 'Siguiente' : locale === 'pt' ? 'Proxima' : 'Next'}
+        ariaLabel={locale === 'es' ? 'Paginacion de articulos' : locale === 'pt' ? 'Paginacao de artigos' : 'Article pagination'}
+      />
+    </div>
+  </section>
+
+  <Footer slot="footer" locale={locale} />
+</BaseLayout>

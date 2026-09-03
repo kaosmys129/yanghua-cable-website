@@ -6,6 +6,12 @@ function normalizeWhitespace(value) {
   return String(value ?? '').replace(/\s+/gu, ' ').trim();
 }
 
+function asProtectedPhrases(value) {
+  return Array.isArray(value)
+    ? value.map((item) => normalizeWhitespace(item)).filter(Boolean)
+    : [];
+}
+
 function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
 }
@@ -48,20 +54,37 @@ function removeBrandMentions(title, brandName) {
     .trim();
 }
 
-function shortenAtBoundary(value, maxLength) {
+function shortenAtBoundary(value, maxLength, protectedPhrases = []) {
   const text = normalizeWhitespace(value);
   const characters = Array.from(text);
   if (characters.length <= maxLength) return text;
 
-  const clipped = characters.slice(0, Math.max(1, maxLength - 1)).join('').trim();
-  const boundary = clipped.lastIndexOf(' ');
-  const prefix = boundary >= Math.floor(clipped.length * 0.55)
-    ? clipped.slice(0, boundary).trim()
-    : clipped;
-  return `${prefix}…`;
+  const limit = Math.max(1, maxLength - 1);
+  const clipped = characters.slice(0, limit).join('').trim();
+  const protectedRanges = asProtectedPhrases(protectedPhrases)
+    .map((phrase) => {
+      const start = text.toLocaleLowerCase().indexOf(phrase.toLocaleLowerCase());
+      return start >= 0 ? { start, end: start + phrase.length } : null;
+    })
+    .filter(Boolean);
+
+  let safeClip = clipped;
+  for (const range of protectedRanges) {
+    if (range.start < clipped.length && range.end > clipped.length) {
+      safeClip = clipped.slice(0, Math.max(0, range.start)).trim();
+      break;
+    }
+  }
+
+  const boundary = safeClip.lastIndexOf(' ');
+  const prefix = boundary >= Math.floor(Math.max(1, safeClip.length) * 0.55)
+    ? safeClip.slice(0, boundary).trim()
+    : safeClip.trim();
+  const finalPrefix = prefix || characters.slice(0, limit).join('').trim();
+  return `${finalPrefix}…`;
 }
 
-export function normalizeSeoTitle(title, brandName = DEFAULT_BRAND_NAME) {
+export function normalizeSeoTitle(title, brandName = DEFAULT_BRAND_NAME, options = {}) {
   const brand = normalizeWhitespace(brandName) || DEFAULT_BRAND_NAME;
   const base = removeBrandMentions(title, brand);
   if (!base || base.toLocaleLowerCase() === brand.toLocaleLowerCase()) return brand;
@@ -70,13 +93,13 @@ export function normalizeSeoTitle(title, brandName = DEFAULT_BRAND_NAME) {
   const available = MAX_TITLE_LENGTH - Array.from(suffix).length;
   if (Array.from(base).length <= available) return `${base}${suffix}`;
 
-  return `${shortenAtBoundary(base, available)}${suffix}`;
+  return `${shortenAtBoundary(base, available, options.protectedPhrases)}${suffix}`;
 }
 
-export function normalizeMetaDescription(description, fallbackDescription = '') {
+export function normalizeMetaDescription(description, fallbackDescription = '', options = {}) {
   const source = normalizeWhitespace(description) || normalizeWhitespace(fallbackDescription);
   if (!source) return '';
-  return shortenAtBoundary(source, MAX_DESCRIPTION_LENGTH);
+  return shortenAtBoundary(source, MAX_DESCRIPTION_LENGTH, options.protectedPhrases);
 }
 
 /**
@@ -85,6 +108,7 @@ export function normalizeMetaDescription(description, fallbackDescription = '') 
  *   description?: string,
  *   fallbackDescription?: string,
  *   brandName?: string,
+ *   protectedPhrases?: string[],
  * }} options
  */
 export function buildSeoMetadata(options = {}) {
@@ -93,10 +117,11 @@ export function buildSeoMetadata(options = {}) {
     description,
     fallbackDescription,
     brandName = DEFAULT_BRAND_NAME,
+    protectedPhrases = [],
   } = options;
   return {
-    title: normalizeSeoTitle(title, brandName),
-    description: normalizeMetaDescription(description, fallbackDescription),
+    title: normalizeSeoTitle(title, brandName, { protectedPhrases }),
+    description: normalizeMetaDescription(description, fallbackDescription, { protectedPhrases }),
   };
 }
 
