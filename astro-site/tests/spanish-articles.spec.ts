@@ -12,11 +12,11 @@ async function expectImagesLoaded(page: Page, selector: string) {
   )).toBe(true);
 }
 
-test('Spanish article listing renders all local cover images', async ({ page }) => {
+test('Spanish article listing first page renders local cover images', async ({ page }) => {
   await page.goto('/es/articulos');
   const cards = page.locator('a[href^="/es/articulos/"] img');
 
-  await expect(cards).toHaveCount(47);
+  await expect(cards).toHaveCount(24);
   await expectImagesLoaded(page, 'a[href^="/es/articulos/"] img');
 
     const sources = await cards.evaluateAll((images) => images.map((image) => image.getAttribute('src')));
