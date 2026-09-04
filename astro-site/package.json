@@ -37,7 +37,7 @@
     "seo:content-check": "node scripts/build-seo-page-ledger.mjs --check",
     "content:check": "node scripts/verify-spanish-articles.mjs",
     "content:check:en": "node scripts/verify-english-articles.mjs",
-    "test:seo": "pnpm run seo:ledger && node --test tests/content-governance.test.mjs && node scripts/verify-indexing-health.mjs",
+    "test:seo": "pnpm run seo:ledger && node --test tests/content-governance.test.mjs tests/geo-seo-governance.test.mjs && node scripts/verify-indexing-health.mjs",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:perf": "playwright test tests/performance.spec.ts",
