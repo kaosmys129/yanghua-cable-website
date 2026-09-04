@@ -144,6 +144,17 @@ for (const filePath of htmlFiles) {
       if (linkPath.endsWith('/') && linkPath !== '/') {
         linkPath = linkPath.slice(0, -1);
       }
+
+      // Machine-readable resources are valid internal links but are not HTML
+      // pages, so validate them against their emitted asset path directly.
+      if (/\.(?:txt|json|xml)$/i.test(linkPath)) {
+        const resourcePath = path.join(distDir, linkPath.slice(1));
+        if (!fs.existsSync(resourcePath)) {
+          errors.push(`[Internal Resource Error] '${routePath}' links to missing resource: '${href}'`);
+        }
+        continue;
+      }
+
       const targetHtmlPath = linkPath === '/' ? 'index.html' : path.join(linkPath.slice(1), 'index.html');
       const targetDiskPath = path.join(distDir, targetHtmlPath);
       

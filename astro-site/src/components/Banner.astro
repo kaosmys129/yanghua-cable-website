@@ -21,9 +21,11 @@ const isTransitionPath = (path: string) => {
   return /^\/(en|es|pt)\/(products\/category|productos\/categoria|produtos\/categoria)$/i.test(path);
 };
 
+const paginationPath = /\/page\/\d+\/?$/i.test(Astro.url.pathname);
 const segments = Astro.url.pathname
   .split('/')
   .filter(Boolean)
+  .filter((seg, index, arr) => !paginationPath || !(seg === 'page' || index === arr.length - 1))
   .map((seg, i, arr) => {
     const rawHref = '/' + arr.slice(0, i + 1).join('/');
     return {
