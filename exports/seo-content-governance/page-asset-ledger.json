@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T01:34:17.990Z",
+  "generatedAt": "2026-09-16T02:02:51.835Z",
   "site": "https://www.yhflexiblebusbar.com",
   "policy": {
     "strategy": "evidence-first",
@@ -107,7 +107,7 @@
     "mappedSeoAssignments": 5,
     "mappedPages": 5,
     "pagesNeedingMappingReview": 226,
-    "gscSnapshotsImported": 0
+    "gscSnapshotsImported": 44
   },
   "pages": [
     {
@@ -4577,18 +4577,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Crawled - currently not indexed",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": true,
+          "lastCrawl": "2026-09-05",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -5294,18 +5294,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Crawled - currently not indexed",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": true,
+          "lastCrawl": "2026-09-04",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -6185,18 +6185,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-17",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -6571,18 +6571,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Crawled - currently not indexed",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": true,
+          "lastCrawl": "2026-05-27",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -7111,18 +7111,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -7429,18 +7429,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -7535,18 +7535,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -7588,18 +7588,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -7641,18 +7641,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -8171,18 +8171,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -8383,18 +8383,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -8436,18 +8436,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -8807,18 +8807,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -8860,18 +8860,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9072,18 +9072,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9284,18 +9284,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9602,18 +9602,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9655,18 +9655,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-14",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9761,18 +9761,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9920,18 +9920,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Crawled - currently not indexed",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": true,
+          "lastCrawl": "2026-06-04",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -9973,18 +9973,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10026,18 +10026,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10079,18 +10079,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10132,18 +10132,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10291,18 +10291,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10344,18 +10344,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10450,18 +10450,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10556,18 +10556,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -10874,18 +10874,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -11086,18 +11086,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -11139,18 +11139,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-14",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -11298,18 +11298,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -11775,18 +11775,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -11987,18 +11987,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12093,18 +12093,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-14",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12199,18 +12199,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12517,18 +12517,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12570,18 +12570,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-14",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12676,18 +12676,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12888,18 +12888,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12941,18 +12941,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -12994,18 +12994,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -13047,18 +13047,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     },
     {
@@ -13206,18 +13206,18 @@
       "governance": {
         "disposition": "review",
         "gsc": {
-          "state": null,
+          "state": "Duplicate, Google chose different canonical than user",
           "clicks": null,
           "impressions": null,
           "ctr": null,
           "position": null,
-          "indexed": null,
-          "lastCrawl": null,
+          "indexed": false,
+          "lastCrawl": "2026-07-13",
           "canonicalDeclared": null,
           "canonicalSelected": null,
-          "snapshotSource": null
+          "snapshotSource": "Google Search Console coverage export 2026-09-16"
         },
-        "notes": "Import a URL-level GSC snapshot before merge, noindex, or 410 decisions."
+        "notes": "Review URL-level GSC evidence before merge, noindex, or 410 decisions."
       }
     }
   ]

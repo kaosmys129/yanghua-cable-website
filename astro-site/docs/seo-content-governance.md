@@ -14,6 +14,16 @@ pnpm run seo:ledger
 
 GSC URL 级快照可按 `../exports/seo-content-governance/gsc-url-snapshot.example.json` 的格式复制为 `gsc-url-snapshot.json`，然后运行 `pnpm run seo:ledger`。快照字段会合并到页面台账中，包括 GSC 状态、展示、点击、最后抓取时间、用户声明的 canonical 和 Google 选择的 canonical。没有快照的页面仍保持 `review`，不会自动触发合并、noindex 或 410。
 
+Coverage 导出 ZIP 可先按两类分别分析，并生成实际快照和逐 URL 处理队列：
+
+```bash
+node scripts/analyze-gsc-coverage.mjs \
+  --canonical-zip "/path/to/canonical-coverage.zip" \
+  --crawled-zip "/path/to/crawled-not-indexed-coverage.zip"
+```
+
+输出为 `../exports/seo-content-governance/gsc-url-snapshot.json` 和 `gsc-coverage-analysis.json`。分析器只确认当前构建路由、自声明 canonical 和已配置的一跳重定向；它不会替代 GSC URL 检查中“Google 选择的规范网址”字段，也不会自动执行删除、noindex 或 410。
+
 ## 主题主页面
 
 | 主题集群 | 英文主页面 |
