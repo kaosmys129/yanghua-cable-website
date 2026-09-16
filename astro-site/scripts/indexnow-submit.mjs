@@ -40,6 +40,21 @@ function parseUrls(input = process.env.INDEXNOW_URLS) {
   return [...new Set(values.map(normalizeUrl))];
 }
 
+export function parseSitemapUrls(xml) {
+  return [...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map((match) => match[1]);
+}
+
+async function loadSubmissionUrls(fetchImpl = fetch) {
+  if (!process.env.INDEXNOW_SITEMAP_URL) return parseUrls();
+  const response = await fetchImpl(process.env.INDEXNOW_SITEMAP_URL);
+  if (!response.ok) {
+    throw new Error(`Unable to read IndexNow sitemap with HTTP ${response.status}`);
+  }
+  const urls = parseSitemapUrls(await response.text());
+  if (urls.length === 0) throw new Error('IndexNow sitemap contains no URLs');
+  return urls;
+}
+
 export function buildIndexNowPayload({ key, urls = parseUrls(), keyLocation = KEY_LOCATION }) {
   if (!/^[A-Za-z0-9-]{8,128}$/.test(key || '')) {
     throw new Error('INDEXNOW_KEY must contain 8-128 letters, numbers, or dashes');
@@ -76,7 +91,8 @@ export async function submitIndexNow({
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const key = process.env.INDEXNOW_KEY;
-  submitIndexNow({ key })
+  loadSubmissionUrls()
+    .then((urls) => submitIndexNow({ key, urls }))
     .then(({ status, count }) => {
       console.log(`IndexNow accepted ${count} URLs (HTTP ${status}).`);
     })

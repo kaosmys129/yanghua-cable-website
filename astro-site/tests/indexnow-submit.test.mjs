@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildIndexNowPayload, submitIndexNow } from '../scripts/indexnow-submit.mjs';
+import { buildIndexNowPayload, parseSitemapUrls, submitIndexNow } from '../scripts/indexnow-submit.mjs';
 
 const KEY = '664b51f681d527165b2b9ddfa0baa0d3941c8392135481d74ac3d0278eda514d';
 
@@ -40,4 +40,11 @@ test('submits JSON and accepts a successful IndexNow response', async () => {
   assert.equal(request.endpoint, 'https://api.indexnow.org/indexnow');
   assert.equal(request.options.method, 'POST');
   assert.deepEqual(request.body.urlList, ['https://www.yhflexiblebusbar.com/pt']);
+});
+
+test('extracts URLs from a sitemap without including sitemap metadata', () => {
+  assert.deepEqual(
+    parseSitemapUrls('<urlset><url><loc>https://www.yhflexiblebusbar.com/en</loc></url></urlset>'),
+    ['https://www.yhflexiblebusbar.com/en'],
+  );
 });
