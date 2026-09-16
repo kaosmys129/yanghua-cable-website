@@ -126,6 +126,22 @@ test('Vercel exact section redirects run before zero-segment wildcard redirects'
   }
 });
 
+test('Vercel normalizes encoded Spanish halogen category paths before generic locale redirects', () => {
+  const config = JSON.parse(readFileSync(vercelConfigUrl, 'utf8'));
+  const exactSources = config.redirects.slice(0, 4).map((redirect) => redirect.source);
+
+  assert.deepEqual(exactSources, [
+    '/es/products/category/cables-libres-de-humo-y-halógenos',
+    '/es/products/category/cables-libres-de-humo-y-hal%C3%B3genos',
+    '/es/productos/category/cables-libres-de-humo-y-halógenos',
+    '/es/productos/category/cables-libres-de-humo-y-hal%C3%B3genos',
+  ]);
+  for (const redirect of config.redirects.slice(0, 4)) {
+    assert.equal(redirect.destination, '/es/productos/categoria/cables-libres-de-humo-y-halogenos');
+    assert.equal(redirect.statusCode, 301);
+  }
+});
+
 test('Vercel retires Search Console legacy Spanish paths with one-hop permanent redirects', () => {
   const config = JSON.parse(readFileSync(vercelConfigUrl, 'utf8'));
   const expected = new Map([

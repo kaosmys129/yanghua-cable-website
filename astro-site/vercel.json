@@ -67,6 +67,26 @@
   ],
   "redirects": [
     {
+      "source": "/es/products/category/cables-libres-de-humo-y-halógenos",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/products/category/cables-libres-de-humo-y-hal%C3%B3genos",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/category/cables-libres-de-humo-y-halógenos",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/productos/category/cables-libres-de-humo-y-hal%C3%B3genos",
+      "destination": "/es/productos/categoria/cables-libres-de-humo-y-halogenos",
+      "statusCode": 301
+    },
+    {
       "source": "/blog",
       "destination": "/en/articles",
       "statusCode": 301
