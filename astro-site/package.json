@@ -36,6 +36,7 @@
     "seo:ledger": "node scripts/build-seo-page-ledger.mjs --write",
     "seo:content-check": "node scripts/build-seo-page-ledger.mjs --check",
     "seo:verify:build": "node scripts/verify-seo-build-graph.mjs",
+    "indexnow:submit": "node scripts/indexnow-submit.mjs",
     "content:check": "node scripts/verify-spanish-articles.mjs",
     "content:check:en": "node scripts/verify-english-articles.mjs",
     "test:seo": "pnpm run seo:ledger && pnpm run seo:verify:build && node --test tests/content-governance.test.mjs tests/geo-seo-governance.test.mjs && node scripts/verify-indexing-health.mjs",
