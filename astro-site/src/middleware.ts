@@ -11,6 +11,14 @@ const LEGACY_PRODUCT_CATEGORY_REDIRECTS: Array<{ from: RegExp; to: string }> = [
   { from: /^\/en\/products\/fire-resistant-cables\/?$/i, to: '/en/products/category/fire-resistant-cables' },
   { from: /^\/en\/products\/low-smoke-halogen-free-cables\/?$/i, to: '/en/products/category/low-smoke-halogen-free-cables' },
   {
+    from: /^\/es\/products\/category\/cables-libres-de-humo-y-(?:halógenos|hal%C3%B3genos)\/?$/i,
+    to: '/es/productos/categoria/cables-libres-de-humo-y-halogenos',
+  },
+  {
+    from: /^\/es\/productos\/category\/cables-libres-de-humo-y-(?:halógenos|hal%C3%B3genos)\/?$/i,
+    to: '/es/productos/categoria/cables-libres-de-humo-y-halogenos',
+  },
+  {
     from: /^\/es\/productos\/categoria\/cables-de-prop%C3%B3sito-general\/?$/i,
     to: '/es/productos/categoria/cables-de-proposito-general',
   },

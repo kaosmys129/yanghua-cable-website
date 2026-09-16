@@ -201,6 +201,7 @@ test('Vercel preserves exact GSC legacy equivalents with one-hop permanent redir
       '/es/productos/categoria/low-smoke-halogen-free-cables',
       '/es/productos/categoria/cables-libres-de-humo-y-halogenos',
     ],
+    ['/es/products/flexible-busbar-2000a', '/es/productos/flexible-busbar-2000a'],
     [
       '/es/articulos/as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year-es',
       '/en/articles/as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year-532956',

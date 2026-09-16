@@ -4,7 +4,10 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import Banner from '../../../../components/Banner.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../../components/SeoPathways.astro';
 import { getArticles, getHubStaticPaths } from '../../../../lib/yanghua/articles.mjs';
+import { buildHubPathways } from '../../../../lib/yanghua/content-governance';
 
 export function getStaticPaths() {
   return getHubStaticPaths('es');
@@ -15,6 +18,7 @@ const articles = getArticles('es');
 const featuredArticles = hub.featuredArticleSlugs
   .map((slug: string) => articles.find((article: any) => article.slug === slug))
   .filter(Boolean);
+const pathways = buildHubPathways(hub, 'es');
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -32,6 +36,7 @@ const structuredData = {
 
 <BaseLayout locale="es" title={hub.title} description={hub.description} schema={structuredData}>
   <Header slot="header" locale="es" />
+  <Breadcrumbs locale="es" items={[{ name: 'Inicio', href: '/es' }, { name: 'Artículos técnicos', href: '/es/articulos' }, { name: 'Hubs temáticos', href: '/es/articulos/hub' }, { name: hub.title, current: true }]} />
   <Banner title={hub.title} locale="es" />
 
   <section class="py-section">
@@ -57,9 +62,23 @@ const structuredData = {
             )}
           </div>
         </section>
+        <section class="rounded-lg border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Rutas de decisión</p>
+          <div class="mt-4 space-y-2">
+            {pathways.map((link) => (
+              <a href={link.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium text-text transition hover:text-accent">{link.label}</a>
+            ))}
+          </div>
+        </section>
       </aside>
     </div>
   </section>
+
+  <SeoPathways
+    title="Lleve este tema a su proyecto"
+    description="Conecte la investigación sobre sistemas personalizados con productos, soluciones, evidencia de proyectos y contacto de ingeniería."
+    links={pathways}
+  />
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>

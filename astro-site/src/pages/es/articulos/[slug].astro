@@ -4,8 +4,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { getAllArticles, getArticleStaticPaths, YANGHUA_SITE_URL } from '../../../lib/yanghua/articles.mjs';
 import { buildArticleHreflangAlternates } from '../../../lib/yanghua/articles-core.mjs';
+import { buildArticlePathways, getRelatedArticles } from '../../../lib/yanghua/content-governance';
 import type { Locale } from '../../../lib/yanghua/loaders';
 import { APPROVAL_APPROVED, getPublicCompanyProfile } from '../../../lib/yanghua/company-facts.mjs';
 import {
@@ -78,6 +81,8 @@ const solutionLinks = geo.relatedSolutionIds.map((id: string) => ({
   label: id.replace(/[-_]/g, ' '),
   href: normalizeSolutionHref(id, 'es'),
 }));
+const pathways = buildArticlePathways(article, 'es');
+const relatedArticles = getRelatedArticles(article, allArticles, 4);
 const normalizedFaqs = geo.faqs;
 const hasApprovedPersonAuthor = article.authorManifest?.approvalStatus === APPROVAL_APPROVED
   && article.authorManifest?.kind === 'person'
@@ -124,6 +129,14 @@ const structuredData = {
   seoProtectedPhrases={geo.targetQueries.slice(0, 1)}
 >
   <Header slot="header" locale="es" alternates={alternates} />
+  <Breadcrumbs
+    locale="es"
+    items={[
+      { name: 'Inicio', href: '/es' },
+      { name: 'Artículos técnicos', href: '/es/articulos' },
+      { name: article.title, current: true },
+    ]}
+  />
   <Banner title={title} locale="es" />
 
   <section class="border-b border-border bg-surface">
@@ -232,6 +245,31 @@ const structuredData = {
         )}
 
         <section class="rounded-lg border border-border bg-surface p-5">
+          <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Siguientes pasos del proyecto</p>
+          <div class="mt-4 space-y-2">
+            {pathways.slice(0, 4).map((item: any) => (
+              <a href={item.href} class="block rounded-md bg-background px-3 py-2 text-sm font-medium text-text transition hover:text-accent">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {relatedArticles.length > 0 && (
+          <section class="rounded-lg border border-border bg-surface p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Lecturas técnicas relacionadas</p>
+            <div class="mt-4 space-y-3">
+              {relatedArticles.map((related: any) => (
+                <a href={related.url} class="block rounded-md bg-background px-3 py-3 transition hover:text-accent">
+                  <span class="block text-sm font-semibold text-text">{related.title}</span>
+                  {related.summary && <span class="mt-1 block text-xs leading-5 text-text-muted">{related.summary}</span>}
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section class="rounded-lg border border-border bg-surface p-5">
           <p class="text-xs font-semibold uppercase tracking-wide text-text-muted">Revision</p>
           <dl class="mt-4 space-y-3 text-sm">
             {article.updatedAt && (
@@ -275,6 +313,12 @@ const structuredData = {
       </aside>
     </div>
   </section>
+
+  <SeoPathways
+    title="Continúe su investigación técnica"
+    description="Pase de la respuesta técnica a una solución, producto, proyecto comparable o cotización de ingeniería en español."
+    links={pathways}
+  />
 
   <Footer slot="footer" locale="es" />
 </BaseLayout>

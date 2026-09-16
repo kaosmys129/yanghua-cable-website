@@ -5,6 +5,8 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
 import CTA from '../../../components/CTA.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
@@ -65,6 +67,7 @@ const structuredData = {
 
 <BaseLayout title={solution?.title} description={solution?.subtitle} alternates={alternates} schema={structuredData}>
   <Header slot="header" locale="pt" alternates={alternates} />
+  <Breadcrumbs locale="pt" items={[{ name: 'Início', href: '/pt' }, { name: 'Soluções', href: '/pt/solucoes' }, { name: solution?.title ?? 'Solução', current: true }]} />
   <Banner title={solution?.title ?? 'Solução'} locale="pt" />
 
   <section class="py-section">
@@ -146,6 +149,17 @@ const structuredData = {
     description={t(messages, 'solutions.cta.customSolution.description')}
     buttonText={t(messages, 'solutions.common.contactUs')}
     buttonHref={route('contact', 'pt')}
+  />
+
+  <SeoPathways
+    title="Conecte a solução ao seu projeto"
+    description="Compare produtos compatíveis, evidências de projetos, orientação técnica e o contato de engenharia para definir o próximo passo."
+    links={[
+      { kind: 'product', href: '/pt/produtos', label: 'Ver produtos compatíveis' },
+      { kind: 'article', href: '/pt/artigos/hub/high-current-power-distribution', label: 'Explorar o hub técnico' },
+      { kind: 'project', href: '/pt/projetos', label: 'Revisar evidências de projetos' },
+      { kind: 'contact', href: '/pt/contato', label: 'Solicitar uma cotação técnica' },
+    ]}
   />
 
   <Footer slot="footer" locale="pt" />

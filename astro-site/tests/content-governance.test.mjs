@@ -37,3 +37,27 @@ test('English core templates expose commercial pathways and visible breadcrumbs'
   assert.match(product, /href="\/en\/articles\/hub\/flexible-busbar-vs-cable"/);
   assert.match(solution, /href="\/en\/articles\/hub\/high-current-power-distribution"/);
 });
+
+test('Spanish and Portuguese core templates expose localized breadcrumbs and commercial pathways', () => {
+  const pages = [
+    html('/es/articulos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260'),
+    html('/pt/artigos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260'),
+    html('/es/articulos/hub/custom-busbar-systems'),
+    html('/pt/artigos/hub/custom-busbar-systems'),
+    html('/es/productos/flexible-busbar-2500a'),
+    html('/pt/produtos/flexible-busbar-2500a'),
+    html('/es/soluciones/data-center'),
+    html('/pt/solucoes/data-center'),
+    html('/es/proyectos/4'),
+    html('/pt/projetos/4'),
+  ];
+
+  for (const page of pages) {
+    assert.match(page, /aria-label="(?:Ruta de navegación|Navegação estrutural)"/);
+    assert.match(page, /href="\/(?:es\/contacto|pt\/contato)"/);
+    assert.match(page, /href="\/(?:es\/productos|pt\/produtos)"/);
+  }
+
+  assert.match(html('/es/articulos/hub/custom-busbar-systems'), /Qué confirmar antes de solicitar un diseño/);
+  assert.match(html('/pt/artigos/hub/custom-busbar-systems'), /O que confirmar antes de solicitar um projeto/);
+});

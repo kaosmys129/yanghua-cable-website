@@ -5,6 +5,8 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Banner from '../../../components/Banner.astro';
 import CTA from '../../../components/CTA.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SeoPathways from '../../../components/SeoPathways.astro';
 import { loadMessages } from '../../../lib/yanghua/loaders';
 import { t, tRaw } from '../../../lib/yanghua/t';
 import { route } from '../../../lib/yanghua/routes';
@@ -64,6 +66,14 @@ const structuredData = {
 
 <BaseLayout title={project?.title} description={project?.description} schema={structuredData}>
   <Header slot="header" locale="es" />
+  <Breadcrumbs
+    locale="es"
+    items={[
+      { name: 'Inicio', href: '/es' },
+      { name: 'Proyectos', href: '/es/proyectos' },
+      { name: project?.title ?? 'Proyecto', current: true },
+    ]}
+  />
 
   <section class="relative">
     <div class="relative h-64 md:h-80 overflow-hidden">
@@ -264,6 +274,17 @@ const structuredData = {
     description={sections.getQuote || 'Contacta a nuestro equipo para una solución personalizada.'}
     buttonText={sections.getQuote || 'Solicitar Cotización'}
     buttonHref={route('contact', 'es')}
+  />
+
+  <SeoPathways
+    title="Conecte este proyecto con la siguiente decisión"
+    description="Consulte los productos relacionados, las soluciones de aplicación, el hub técnico y la ruta de cotización para una instalación comparable."
+    links={[
+      { kind: 'product', href: '/es/productos', label: 'Ver productos de barra flexible' },
+      { kind: 'solution', href: '/es/soluciones/data-center', label: 'Consultar soluciones de aplicación' },
+      { kind: 'hub', href: '/es/articulos/hub/high-current-power-distribution', label: 'Leer el hub técnico de alta corriente' },
+      { kind: 'contact', href: '/es/contacto', label: 'Solicitar cotización del proyecto' },
+    ]}
   />
 
   <Footer slot="footer" locale="es" />

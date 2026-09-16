@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T02:02:51.835Z",
+  "generatedAt": "2026-09-16T02:27:20.489Z",
   "site": "https://www.yhflexiblebusbar.com",
   "policy": {
     "strategy": "evidence-first",
@@ -101,7 +101,7 @@
       "hub": 24
     },
     "needsGscSnapshot": 231,
-    "lowEvidencePages": 175,
+    "lowEvidencePages": 172,
     "pagesWithoutDescription": 0,
     "plannedSeoAssignments": 18,
     "mappedSeoAssignments": 5,
@@ -6982,15 +6982,23 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 10,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "bodyWords": 274,
+      "internalLinks": [
+        "/en/products",
+        "/en/solutions/power-system",
+        "/en/solutions/manufacturing",
+        "/en/solutions/data-center",
+        "/en/articles/hub/flexible-busbar-vs-cable",
+        "/en/articles/hub/high-current-power-distribution",
+        "/en/contact"
+      ],
+      "internalLinkCount": 7,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": false,
-        "hasStructuredLists": false,
-        "score": 0
+        "hasTechnicalSignals": true,
+        "hasStructuredLists": true,
+        "score": 2
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -9897,15 +9905,23 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 11,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "bodyWords": 326,
+      "internalLinks": [
+        "/es/productos",
+        "/es/soluciones/power-system",
+        "/es/soluciones/manufacturing",
+        "/es/soluciones/data-center",
+        "/es/articulos/hub/flexible-busbar-vs-cable",
+        "/es/articulos/hub/high-current-power-distribution",
+        "/es/contacto"
+      ],
+      "internalLinkCount": 7,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
         "hasTechnicalSignals": true,
-        "hasStructuredLists": false,
-        "score": 1
+        "hasStructuredLists": true,
+        "score": 2
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],
@@ -12812,15 +12828,23 @@
       "primaryPage": "/en/articles/hub/high-current-power-distribution",
       "targetQueries": [],
       "buyerIntent": null,
-      "bodyWords": 10,
-      "internalLinks": [],
-      "internalLinkCount": 0,
+      "bodyWords": 320,
+      "internalLinks": [
+        "/pt/produtos",
+        "/pt/solucoes/power-system",
+        "/pt/solucoes/manufacturing",
+        "/pt/solucoes/data-center",
+        "/pt/artigos/hub/flexible-busbar-vs-cable",
+        "/pt/artigos/hub/high-current-power-distribution",
+        "/pt/contato"
+      ],
+      "internalLinkCount": 7,
       "evidence": {
         "citations": 0,
         "hasAnswerSummary": false,
-        "hasTechnicalSignals": false,
-        "hasStructuredLists": false,
-        "score": 0
+        "hasTechnicalSignals": true,
+        "hasStructuredLists": true,
+        "score": 2
       },
       "relatedProductIds": [],
       "relatedSolutionIds": [],

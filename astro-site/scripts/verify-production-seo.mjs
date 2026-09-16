@@ -67,6 +67,58 @@ const expectedRedirects = new Map([
     '/es/articulos/as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year-es',
     '/en/articles/as-spring-festival-approaches-yanghuasti-wishes-you-a-happy-new-year-532956',
   ],
+  // GSC 2026-09-16 crawled-not-indexed legacy URL queue.
+  ['/es/productos/categoria/flame-retardant', '/es/productos/categoria/cables-retardantes-de-llama'],
+  [
+    '/en/articles/year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year',
+    '/en/articles/year-of-the-snake-blessing-prosperity-and-joy-wishing-everyone-a-happy-new-year-505792',
+  ],
+  [
+    '/es/articulos/invitation-april-10-12-13th-international-energy-storage-summit-exhibition-high-current-flexible-busbar-booth-b2119-hall-b2-es',
+    '/es/articulos/invitacion-10-12-de-abril-13a-cumbre-y-exposicion-internacional-de-almacenamiento-de-energia-busbar-flexible-de-alta-corriente-stand-b2119-salon-b2-515322',
+  ],
+  ['/en/articles/what-s-inside-a-black-hole-es', '/en/articles'],
+  [
+    '/es/articles/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-es',
+    '/es/articulos',
+  ],
+  [
+    '/es/articulos/high-current-flexible-busbar-officially-debuts-in-dongguan-yanghuasti-dongguan-alliance-partner-product-promotion-successfully-held-es',
+    '/es/articulos',
+  ],
+  ['/en/products/category/fire-resistant', '/en/products/category/fire-resistant-cables'],
+  ['/es/servicios', '/es/contacto'],
+  ['/es/products/category/cables-libres-de-humo-y-halógenos', '/es/productos/categoria/cables-libres-de-humo-y-halogenos'],
+  ['/es/products/category/cables-libres-de-humo-y-hal%C3%B3genos', '/es/productos/categoria/cables-libres-de-humo-y-halogenos'],
+  ['/es/productos/category/cables-libres-de-humo-y-halógenos', '/es/productos/categoria/cables-libres-de-humo-y-halogenos'],
+  ['/es/productos/category/cables-libres-de-humo-y-hal%C3%B3genos', '/es/productos/categoria/cables-libres-de-humo-y-halogenos'],
+  ['/es/solutions/metallurgy', '/es/soluciones/metallurgy'],
+  ['/es/projects/6', '/es/proyectos/6'],
+  ['/es/productos/categoria/general', '/es/productos/categoria/cables-de-proposito-general'],
+  ['/projects/2', '/en/projects/2'],
+  [
+    '/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions',
+    '/en/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-532260',
+  ],
+  [
+    '/es/articulos/ten-years-of-chamber-platform-building-dreams-high-current-flexible-busbar-moving-forward-with-honor-es',
+    '/es/articulos/diez-anos-de-construccion-de-plataforma-de-la-camara-de-comercio-busbar-de-alta-corriente-flexible-avanzando-con-honor-859905',
+  ],
+  [
+    '/es/articles/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-es',
+    '/es/articulos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260',
+  ],
+  [
+    '/es/articulos/yanghua-insights-chemical-plant-multi-core-cable-connections-causing-problems-vs-flexible-busbar-easy-solutions-es',
+    '/es/articulos/perspectivas-de-yanghua-conexiones-de-cables-multicore-en-plantas-quimicas-causando-problemas-vs-soluciones-faciles-con-busbar-flexible-532260',
+  ],
+  ['/es/projects/2', '/es/proyectos/2'],
+  ['/es/products/flexible-busbar-2000a', '/es/productos/flexible-busbar-2000a'],
+  ['/es/projects/4', '/es/proyectos/4'],
+  ['/es/projects', '/es/proyectos'],
+  ['/es/products/category/fire-resistant', '/es/productos/categoria/cables-resistentes-al-fuego'],
+  ['/pt/solucoes/fabricação', '/pt/solucoes/manufacturing'],
+  ['/pt/solucoes/fabrica%C3%A7%C3%A3o', '/pt/solucoes/manufacturing'],
 ]);
 
 function canonicalFrom(html) {
