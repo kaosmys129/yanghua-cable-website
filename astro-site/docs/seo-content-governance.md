@@ -12,6 +12,8 @@ pnpm run seo:ledger
 
 输出文件为 `../exports/seo-content-governance/page-asset-ledger.json`，包含 URL、语言、页面类型、主题集群、目标查询、内容长度、证据信号、相关产品/解决方案和待补充的 GSC/GA4/RFQ 字段。
 
+GSC URL 级快照可按 `../exports/seo-content-governance/gsc-url-snapshot.example.json` 的格式复制为 `gsc-url-snapshot.json`，然后运行 `pnpm run seo:ledger`。快照字段会合并到页面台账中，包括 GSC 状态、展示、点击、最后抓取时间、用户声明的 canonical 和 Google 选择的 canonical。没有快照的页面仍保持 `review`，不会自动触发合并、noindex 或 410。
+
 ## 主题主页面
 
 | 主题集群 | 英文主页面 |
@@ -33,6 +35,7 @@ pnpm run seo:ledger
 
 ```bash
 pnpm run seo:content-check
+pnpm run seo:verify:build
 pnpm run check
 pnpm run build
 pnpm run test:seo

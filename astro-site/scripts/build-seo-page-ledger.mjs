@@ -6,6 +6,9 @@ const astroRoot = process.cwd();
 const contentRoot = path.resolve(astroRoot, 'src/data/legacy-content/content');
 const outputPath = path.resolve(astroRoot, '..', 'exports/seo-content-governance/page-asset-ledger.json');
 const assignmentPath = path.resolve(astroRoot, 'src/data/legacy-content/content/seo-page-assignments.json');
+const gscSnapshotPath = path.resolve(
+  process.env.SEO_GSC_SNAPSHOT || path.resolve(astroRoot, '..', 'exports/seo-content-governance/gsc-url-snapshot.json'),
+);
 const locales = ['en', 'es', 'pt'];
 const articleBase = { en: '/en/articles', es: '/es/articulos', pt: '/pt/artigos' };
 const hubBase = { en: '/en/articles/hub', es: '/es/articulos/hub', pt: '/pt/artigos/hub' };
@@ -17,6 +20,39 @@ const assignmentsByPath = new Map(
     primaryQuery: assignment.primaryQueries[locale],
   }]))
 );
+
+function normalizeUrl(value) {
+  const raw = text(value);
+  if (!raw) return '';
+  try {
+    const url = new URL(raw, 'https://www.yhflexiblebusbar.com');
+    let pathname = url.pathname;
+    if (pathname.length > 1) pathname = pathname.replace(/\/+$/, '');
+    return pathname || '/';
+  } catch {
+    return raw;
+  }
+}
+
+function loadGscSnapshot() {
+  if (!fs.existsSync(gscSnapshotPath)) return new Map();
+  const parsed = JSON.parse(fs.readFileSync(gscSnapshotPath, 'utf8'));
+  const rows = Array.isArray(parsed) ? parsed : parsed.rows;
+  if (!Array.isArray(rows)) throw new Error(`GSC snapshot must be an array or { rows: [] }: ${gscSnapshotPath}`);
+  return new Map(rows.map((row) => [normalizeUrl(row.url), {
+    state: text(row.state || row.status || row.indexingState) || null,
+    clicks: row.clicks == null ? null : Number(row.clicks),
+    impressions: row.impressions == null ? null : Number(row.impressions),
+    ctr: row.ctr == null ? null : Number(row.ctr),
+    position: row.position == null ? null : Number(row.position),
+    lastCrawl: text(row.lastCrawl || row.lastCrawled) || null,
+    canonicalDeclared: normalizeUrl(row.canonicalDeclared || row.userCanonical) || null,
+    canonicalSelected: normalizeUrl(row.canonicalSelected || row.googleCanonical) || null,
+    source: text(row.source || 'gsc-export') || 'gsc-export',
+  }]).filter(([url]) => url));
+}
+
+const gscByPath = loadGscSnapshot();
 
 const clusterDefinitions = [
   { id: 'data-center', terms: ['data center', 'datacenter', 'server farm', 'cloud facility', 'colocation', 'hyperscale'], primary: '/en/solutions/data-center' },
@@ -77,6 +113,7 @@ function parsePage(file, locale, type) {
   const relatedSolutions = Array.isArray(data.geo?.relatedSolutionIds) ? data.geo.relatedSolutionIds.filter(Boolean) : [];
   const cluster = findCluster([slug, title, description, ...queries].join(' '));
   const assignment = assignmentsByPath.get(url) ?? null;
+  const gsc = gscByPath.get(url) ?? null;
   const evidenceSignals = [
     citations.length > 0,
     /\b(iec|ul|vde|standard|test|tested|calculation|case study|project|measurement|amp|a\b|kw\b|mw\b)/i.test(parsed.content),
@@ -123,10 +160,31 @@ function parsePage(file, locale, type) {
         reviewStatus: assignment.reviewStatus,
       },
     } : {}),
+    mapping: {
+      status: assignment ? 'assigned' : 'needs_review',
+      pageRole: assignment?.pageRole ?? (type === 'hub' ? 'hub_candidate' : 'spoke_candidate'),
+      primaryQuery: assignment?.primaryQuery ?? queries[0] ?? null,
+      primaryPage: assignment?.paths?.en ?? cluster.primary,
+      intent: assignment?.intent ?? null,
+      evidenceStatus: assignment?.evidenceStatus ?? 'needs_source',
+    },
     governance: {
       disposition: 'review',
-      gsc: { clicks: null, impressions: null, indexed: null, lastCrawl: null },
-      notes: 'Populate GSC/GA4/RFQ fields before merge, noindex, or 410 decisions.',
+      gsc: {
+        state: gsc?.state ?? null,
+        clicks: gsc?.clicks ?? null,
+        impressions: gsc?.impressions ?? null,
+        ctr: gsc?.ctr ?? null,
+        position: gsc?.position ?? null,
+        indexed: gsc ? /indexed|submitted and indexed/i.test(gsc.state ?? '') : null,
+        lastCrawl: gsc?.lastCrawl ?? null,
+        canonicalDeclared: gsc?.canonicalDeclared ?? null,
+        canonicalSelected: gsc?.canonicalSelected ?? null,
+        snapshotSource: gsc?.source ?? null,
+      },
+      notes: gsc
+        ? 'Review URL-level GSC evidence before merge, noindex, or 410 decisions.'
+        : 'Import a URL-level GSC snapshot before merge, noindex, or 410 decisions.',
     },
   };
 }
@@ -160,6 +218,9 @@ export function buildPageLedger() {
       pagesWithoutDescription: pages.filter((page) => !page.description).length,
       plannedSeoAssignments: assignments.length * locales.length,
       mappedSeoAssignments: pages.filter((page) => page.seoAssignment).length,
+      mappedPages: pages.filter((page) => page.mapping.status === 'assigned').length,
+      pagesNeedingMappingReview: pages.filter((page) => page.mapping.status !== 'assigned').length,
+      gscSnapshotsImported: pages.filter((page) => page.governance.gsc.snapshotSource).length,
     },
     pages,
   };
